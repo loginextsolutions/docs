@@ -243,523 +243,14 @@
 
 </span></code></pre>
 
-<h1 id="driver">Driver</h1>
+<h1 id="ondemand">OnDemand</h1>
 
-<h2 id="create">Create</h2>
+<h1 id="mile">Mile</h1>
 
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="s2">"D0011"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="s2">"LN110090"</span><span class="p">,</span><span class="w">
-
-        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Test001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"addressList"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
-                                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Loginext"</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"country"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-                                 </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
-
-                        </span><span class="p">}],</span><span class="w">
-        </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
-                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
-
-        </span><span class="p">}]</span><span class="w">
-
-
-    </span><span class="p">}</span><span class="w">    
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
+<h2 id="trip-start">Trip Start</h2>
 
 <blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint creates a new driver.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/create</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h2 id="read">Read</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint lists an existing driver.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/list</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h2 id="update">Update</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="s2">"D0011"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="s2">"LN110090"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"test_shiv"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"addressList"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
-                                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Loginext"</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"country"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-                                 </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
-
-                        </span><span class="p">}],</span><span class="w">
-        </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
-                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
-                            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
-
-        </span><span class="p">}]</span><span class="w">
-
-
-    </span><span class="p">}</span><span class="w">    
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint updates an existing driver.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/update</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h2 id="delete">Delete</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint deletes an existing driver.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/delete</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h1 id="delivery-medium">Delivery Medium</h1>
-
-<h2 id="create">Create</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userGroupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyUser"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9876543210</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dummy123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Password123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint creates a new delivery medium.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h1 id="trip-haul">Trip(Haul)</h1>
-
-<h2 id="create">Create</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint creates a new trip.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h2 id="start">Start</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips started successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint starts a trip.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h2 id="stop">Stop</h2>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips ended successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint stops a trip.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
-
-<h3 id="http-request-headers">HTTP Request Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Sample Value</th>
-<th>Brief Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-<td>Json request</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
-<td>Authentication token</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
-<td>Authentication key</td>
-</tr>
-</tbody></table>
-
-<h1 id="trip-mile">Trip(Mile)</h1>
-
-<h2 id="start">Start</h2>
-
-<blockquote>
-<p>Sample Request</p>
+<p>Trip Start - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="w">    
@@ -767,7 +258,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Trip Start - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -810,10 +301,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="stop">Stop</h2>
+<h2 id="trip-stop">Trip Stop</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Trip Stop - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[{</span><span class="w">
     </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">
@@ -824,7 +315,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Trip Stop - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -867,18 +358,44 @@
 </tr>
 </tbody></table>
 
-<h1 id="orders">Orders</h1>
+<h1 id="haul">Haul</h1>
 
-<h2 id="create">Create</h2>
+<h2 id="driver-create">Driver Create</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Driver Create - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="s2">"D0011"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="s2">"LN110090"</span><span class="p">,</span><span class="w">
+
+        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Test001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addressList"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Loginext"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"country"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+                                 </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
+
+                        </span><span class="p">}],</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
+                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
+
+        </span><span class="p">}]</span><span class="w">
+
+
+    </span><span class="p">}</span><span class="w">    
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Driver Create - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -889,11 +406,11 @@
 
 </span></code></pre>
 
-<p>This endpoint creates a new order.</p>
+<p>This endpoint creates a new driver.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -921,16 +438,16 @@
 </tr>
 </tbody></table>
 
-<h2 id="create-return-order">Create Return Order</h2>
+<h2 id="driver-read">Driver Read</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Driver Read - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Driver Read - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -941,11 +458,11 @@
 
 </span></code></pre>
 
-<p>This endpoint creates a return order.</p>
+<p>This endpoint lists an existing driver.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create/return</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/list</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -973,52 +490,42 @@
 </tr>
 </tbody></table>
 
-<h2 id="add-crates">Add Crates</h2>
+<h2 id="driver-update">Driver Update</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Driver Update - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"shipmentCrates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate1"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate2"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8714df4347911e6829f000d3aa04450"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="s2">"D0011"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="s2">"LN110090"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"test_shiv"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addressList"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Loginext"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"country"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+                                 </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
+
+                        </span><span class="p">}],</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
+                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
+
+        </span><span class="p">}]</span><span class="w">
+
+
+    </span><span class="p">}</span><span class="w">    
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Driver Update - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1029,11 +536,11 @@
 
 </span></code></pre>
 
-<p>This endpoint adds crates to an existing order.</p>
+<p>This endpoint updates an existing driver.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/crate</code></p>
+<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/update</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1061,31 +568,31 @@
 </tr>
 </tbody></table>
 
-<h2 id="cancel">Cancel</h2>
+<h2 id="driver-delete">Driver Delete</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Driver Delete - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Driver Delete - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No of orders cancelled:1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>This endpoint cancels an order.</p>
+<p>This endpoint deletes an existing driver.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/cancel</code></p>
+<p><code class="prettyprint">DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/delete</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1113,37 +620,46 @@
 </tr>
 </tbody></table>
 
-<h2 id="get-status">Get Status</h2>
+<h2 id="trip-create">Trip Create</h2>
 
 <blockquote>
-<p>Sample Request</p>
+<p>Trip Create - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"c8714df4347911e6829f000d3aa04450"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Trip Create - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8714528347911e6829f000d3aa04450"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>This endpoint gets an order status.</p>
+<p>This endpoint creates a new trip.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/status</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1161,12 +677,120 @@
 </tr>
 <tr>
 <td>WWW-Authenticate</td>
-<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
 <td>Authentication token</td>
 </tr>
 <tr>
 <td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="trip-start">Trip Start</h2>
+
+<blockquote>
+<p>Trip Start - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Trip Start - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips started successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint starts a trip.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="trip-stop">Trip Stop</h2>
+
+<blockquote>
+<p>Trip Stop - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Trip Stop - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips ended successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint stops a trip.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC f522631c-490c-46fd-9f79-ca8d14a704d7</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
 <td>Authentication key</td>
 </tr>
 </tbody></table>
