@@ -285,6 +285,61 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
+
+# Delivery Medium
+
+## Create
+
+> Sample Request
+
+```json
+[
+  {
+    "employeeId": "1001",
+    "userGroupId": 55,
+    "deliveryMediumMasterName": "DummyUser",
+    "phoneNumber": 9876543210,
+    "imei": null,
+    "emailId": "",
+    "userName": "Dummy123",
+    "password": "Password123",
+    "capacityInUnits": 10,
+    "capacityInVolume": null,
+    "capacityInWeight": null,
+    "gender": "Male",
+    "isOwnVehicleFl": "Company",
+    "maxDistance": null,
+    "shiftList": []
+  }
+]
+```
+
+> Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint creates a new delivery medium.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
 # Trip(Haul)
 
 ## Create
@@ -486,145 +541,222 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
 
 # Orders
 
-## Get All Orders
+## Create
 
-```ruby
-require 'kittn'
+> Sample Request
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```json
+
 ```
 
-```python
-import kittn
+> Sample Response
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
 ```
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+This endpoint creates a new order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+## Create Return Order
+
+> Sample Request
+
+```json
+["863fe69239bc4f738ca275a809c3b2e2"]
 ```
 
-> The above command returns JSON structured like this:
+> Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint creates a return order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create/return`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Add Crates
+
+> Sample Request
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "shipmentCrates": [
+      {
+        "crateCd": "Crate1",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item1",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      },
+      {
+        "crateCd": "Crate2",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item2",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      }
+    ],
+    "referenceId": "c8714df4347911e6829f000d3aa04450"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
+> Sample Response
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
 }
+
 ```
 
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint adds crates to an existing order.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/crate`
 
-### URL Parameters
+### HTTP Request Headers
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+## Cancel
+
+> Sample Request
+
+```json
+["e0eaebdd84ac4c40af72d827ab610090"]
+```
+
+> Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": "No of orders cancelled:1",
+  "hasError": false
+}
+
+```
+
+This endpoint cancels an order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/cancel`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Get Status
+
+> Sample Request
+
+```json
+["c8714df4347911e6829f000d3aa04450"]
+```
+
+> Sample Response
+
+```json
+{
+  "status": 200,
+  "message": null,
+  "data": [
+    {
+      "state": "FORWARD",
+      "status": "NOTDISPATCHED",
+      "referenceId": "c8714528347911e6829f000d3aa04450"
+    }
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint gets an order status.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/status`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
 
