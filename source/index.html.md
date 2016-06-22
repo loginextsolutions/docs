@@ -92,12 +92,93 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 ```
 
 
+# OnDemand
 
-# Driver
 
-## Create
+# Mile
 
-> Sample Request
+## Trip Start
+
+> Trip Start - Sample Request
+
+```json
+[
+    "a9be39b9347911e6829f000d3aa04450"    
+]
+```
+
+> Trip Start - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "1 trip(s) started",
+  "data": true,
+  "hasError": false
+}
+
+```
+
+This endpoint starts a trip.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/start`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
+
+## Trip Stop
+
+> Trip Stop - Sample Request
+
+```json
+[{
+    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
+    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
+    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
+}
+]
+```
+
+> Trip Stop - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "Trips ended successfully",
+  "data": true,
+  "hasError": false
+}
+
+```
+
+This endpoint stops a trip.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+  
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
+
+
+
+# Haul
+
+## Driver Create
+
+> Driver Create - Sample Request
 
 ```json
 [
@@ -129,7 +210,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 ]
 ```
 
-> Sample Response
+> Driver Create - Sample Response
 
 ```json
 {
@@ -156,15 +237,15 @@ WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication t
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 
-## Read
+## Driver Read
 
-> Sample Request
+> Driver Read - Sample Request
 
 ```json
 ["863fe69239bc4f738ca275a809c3b2e2"]
 ```
 
-> Sample Response
+> Driver Read - Sample Response
 
 ```json
 {
@@ -190,9 +271,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-## Update
+## Driver Update
 
-> Sample Request
+> Driver Update - Sample Request
 
 ```json
 [
@@ -224,7 +305,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Sample Response
+> Driver Update - Sample Response
 
 ```json
 {
@@ -251,15 +332,15 @@ WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication t
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 
-## Delete
+## Driver Delete
 
-> Sample Request
+> Driver Delete - Sample Request
 
 ```json
 ["e0eaebdd84ac4c40af72d827ab610090"]
 ```
 
-> Sample Response
+> Driver Delete - Sample Response
 
 ```json
 {
@@ -285,11 +366,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-# Trip(Haul)
+## Trip Create
 
-## Create
-
-> Sample Request
+> Trip Create - Sample Request
 
 ```json
 {
@@ -310,7 +389,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 }
 ```
 
-> Sample Response
+> Trip Create - Sample Response
 
 ```json
 {
@@ -336,9 +415,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-## Start
+## Trip Start
 
-> Sample Request
+> Trip Start - Sample Request
 
 ```json
 [
@@ -346,7 +425,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 ]
 ```
 
-> Sample Response
+> Trip Start - Sample Response
 
 ```json
 {
@@ -372,9 +451,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-## Stop
+## Trip Stop
 
-> Sample Request
+> Trip Stop - Sample Request
 
 ```json
 [
@@ -382,7 +461,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 ]
 ```
 
-> Sample Response
+> Trip Stop - Sample Response
 
 ```json
 {
@@ -407,224 +486,3 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
-
-
-# Trip(Mile)
-
-## Start
-
-> Sample Request
-
-```json
-[
-    "a9be39b9347911e6829f000d3aa04450"    
-]
-```
-
-> Sample Response
-
-```json
-{
-  "status": 200,
-  "message": "1 trip(s) started",
-  "data": true,
-  "hasError": false
-}
-
-```
-
-This endpoint starts a trip.
-
-### HTTP Request
-
-`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/start`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-## Stop
-
-> Sample Request
-
-```json
-[{
-    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
-    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
-    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
-}
-]
-```
-
-> Sample Response
-
-```json
-{
-  "status": 200,
-  "message": "Trips ended successfully",
-  "data": true,
-  "hasError": false
-}
-
-```
-
-This endpoint stops a trip.
-
-### HTTP Request
-
-`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/stop`
-  
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-# Orders
-
-## Get All Orders
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
