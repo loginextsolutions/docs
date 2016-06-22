@@ -97,6 +97,222 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 # Mile
 
+## Create Order
+
+> Create Order - Sample Request
+
+```json
+
+```
+
+> Create Order - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint creates a new order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+## Create Return Order
+
+> Create Return Order - Sample Request
+
+```json
+["863fe69239bc4f738ca275a809c3b2e2"]
+```
+
+> Create Return Order - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint creates a return order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create/return`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Add Crates
+
+> Add Crates - Sample Request
+
+```json
+[
+  {
+    "shipmentCrates": [
+      {
+        "crateCd": "Crate1",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item1",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      },
+      {
+        "crateCd": "Crate2",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item2",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      }
+    ],
+    "referenceId": "c8714df4347911e6829f000d3aa04450"
+  }
+]
+```
+
+> Add Crates - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint adds crates to an existing order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/crate`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+## Cancel Order
+
+> Cancel Order - Sample Request
+
+```json
+["e0eaebdd84ac4c40af72d827ab610090"]
+```
+
+> Cancel Order - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": "No of orders cancelled:1",
+  "hasError": false
+}
+
+```
+
+This endpoint cancels an order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/cancel`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Get Status
+
+> Get Status - Sample Request
+
+```json
+["c8714df4347911e6829f000d3aa04450"]
+```
+
+> Get Status - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": null,
+  "data": [
+    {
+      "state": "FORWARD",
+      "status": "NOTDISPATCHED",
+      "referenceId": "c8714528347911e6829f000d3aa04450"
+    }
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint gets an order status.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/status`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+
 ## Trip Start
 
 > Trip Start - Sample Request
