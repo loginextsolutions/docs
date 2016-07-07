@@ -16,11 +16,7 @@ search: true
 
 # Introduction
 
-Welcome to the Loginext API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the Loginext API
 
 # Authentication
 
@@ -66,7 +62,7 @@ This endpoint invalidates a user.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/LoginApp/token/refresh`
+`GET http://endpoint.loginextsolutions.com/LoginApp/token/refresh`
 
 
 ### HTTP Request Headers
@@ -121,7 +117,7 @@ This endpoint creates a new order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create`
 
 ### HTTP Request Headers
 
@@ -156,7 +152,7 @@ This endpoint creates a return order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create/return`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
 
 ### HTTP Request Headers
 
@@ -226,7 +222,7 @@ This endpoint adds crates to an existing order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/crate`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/crate`
 
 ### HTTP Request Headers
 
@@ -261,7 +257,7 @@ This endpoint cancels an order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/cancel`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
 
 ### HTTP Request Headers
 
@@ -301,7 +297,7 @@ This endpoint gets an order status.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/status`
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status`
 
 ### HTTP Request Headers
 
@@ -582,54 +578,54 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-## Trip Create
+  ## Trip Create
 
-> Trip Create - Sample Request
+  > Trip Create - Sample Request
 
-```json
-{
-  "shipmentType": "Bag",
-  "lrNumber":"LR123",
-  "originAddr": "CNND",
-  "destinationAddr": "NAGD",
-  "name": "CNN-NAG-12221",
-  "packageWeight": 6,
-  "packageValue": 8,
-  "packageVolume": 10,
-  "vehicleReportingDate": "2016-02-27T18:30:00.000Z",
-  "vehicleReportingTime": "1970-02-01T07:30:00.000Z",
-  "modeOfTransport": "ROAD",
-  "vehicleNumber": "MH40AK0175",
-  "barcode": "LN00590915",
-  "startNow":false
-}
-```
+  ```json
+  {
+    "shipmentType": "Bag",
+    "lrNumber":"LR123",
+    "originAddr": "CNND",
+    "destinationAddr": "NAGD",
+    "name": "CNN-NAG-12221",
+    "packageWeight": 6,
+    "packageValue": 8,
+    "packageVolume": 10,
+    "vehicleReportingDate": "2016-02-27T18:30:00.000Z",
+    "vehicleReportingTime": "1970-02-01T07:30:00.000Z",
+    "modeOfTransport": "ROAD",
+    "vehicleNumber": "MH40AK0175",
+    "barcode": "LN00590915",
+    "startNow":false
+  }
+  ```
 
-> Trip Create - Sample Response
+  > Trip Create - Sample Response
 
-```json
-{
-  "status": 200,
-  "message": "Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f",
-  "data": null,
-  "hasError": false
-}
+  ```json
+  {
+    "status": 200,
+    "message": "Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f",
+    "data": null,
+    "hasError": false
+  }
 
-```
+  ```
 
-This endpoint creates a new trip.
+  This endpoint creates a new trip.
 
-### HTTP Request
+  ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create`
+  `POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
-### HTTP Request Headers
+  ### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
+  Header | Sample Value | Brief Info
+  --------- | ------- | -------------
+  Content-Type | application/json | Json request
+  WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
+  CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
 ## Trip Start
 
@@ -657,7 +653,7 @@ This endpoint starts a trip.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start`
+`PUT http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
 ### HTTP Request Headers
 
@@ -702,3 +698,19 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
+
+## Trip iFrame
+
+This endpoint is to get iFrame view of a trip.
+
+### HTTP Request
+
+`GET https://endpoint.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
+
+### HTTP Request Parameters
+
+Parameter | Sample Value | Brief Info
+--------- | ------- | -------------
+aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
+key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
+tripname | TestTripName| Trip name 
