@@ -388,6 +388,191 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 # Haul
 
+## Vehicle Create
+
+> Vehicle Create - Sample Request
+
+```json
+[
+    {
+        "vehicleNumber":"MH 02 TA 2143"
+    }    
+]
+```
+
+> Vehicle Create - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": [
+			{
+				"vehicleNumber":"MH 02 TA 2143",
+				"referenceId":"a9be39b9347911e6829f000d3aa04450"
+			}
+	   ],
+  "hasError": false
+}
+
+```
+
+This endpoint creates a new Vehicle.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/create`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Vehicle Read (Single)
+
+> Vehicle Read - Sample Request
+
+```json
+
+```
+
+> Vehicle Read - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint returns the vehicle details for the client with the given Reference ID.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/{reference_id}`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Vehicle Read
+
+> Vehicle Read - Sample Request
+
+```json
+
+```
+
+> Vehicle Read - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint lists an existing Vehicles for the client.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Vehicle Update
+
+> Vehicle Update - Sample Request
+
+```json
+
+[{
+	"referenceId":"a9be39b9347911e6829f000d3aa04450",        
+	"vehicleNumber":"MH 02 TA 2144"      
+}]    
+```
+
+> Vehicle Update - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint updates the vehicle details with given reference id.
+
+### HTTP Request
+
+`PUT http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Vehicle Delete
+
+> Vehicle Delete - Sample Request
+
+```json
+["a9be39b9347911e6829f000d3aa04450"]
+```
+
+> Vehicle Delete - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+
+This endpoint deletes the Vehicle with given list of reference IDs.
+
+### HTTP Request
+
+`DELETE http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+
 ## Driver Create
 
 > Driver Create - Sample Request
