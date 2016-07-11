@@ -457,11 +457,6 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Vehicle Read (Single)
 
-> Vehicle Read - Sample Request
-
-```json
-
-```
 
 > Vehicle Read - Sample Response
 
@@ -533,11 +528,6 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Vehicle Read
 
-> Vehicle Read - Sample Request
-
-```json
-
-```
 
 > Vehicle Read - Sample Response
 
