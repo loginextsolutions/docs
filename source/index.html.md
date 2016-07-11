@@ -394,10 +394,34 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ```json
 [
-    {
-        "vehicleNumber":"MH 02 TA 2143"
-    }    
-]
+	{
+    		"vehicleNumber":"MH-111",
+    		"vehicleMake":"2015",
+   		"vehicleModel":"OMNI",
+    		"typeOfBody":"Flat Bed",
+    		"unladdenWeight":10,
+    		"capacityInWeight":10,
+    		"capacityInUnits":10,
+    		"capacityInVolume":10,
+    		"chasisNumber":"CHASIS-123",
+    		"engineNumber":"A-12353-D1234",
+    		"markerName":"Marker-1",
+    		"registrationNumber":"",
+    		"pucValidity":"2016-07-01T11:18:00.000Z",
+    		"insuranceValidity":"2016-07-01T11:18:00.000Z",
+    		"vehiclePermit":"Andhra Pradesh,Delhi",
+    		"ownership":"company",
+    		"ownerName":"ABC",
+    		"transporter":"",
+    		"financer":"",
+    		"accidentHistory":"",
+    		"rentStartDate":null,
+    		"rentEndDate":null,
+    		"deviceId":{
+        		"barcode":""
+    		}
+    }
+]  
 ```
 
 > Vehicle Create - Sample Response
@@ -408,7 +432,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
   "message": "success",
   "data": [
 			{
-				"vehicleNumber":"MH 02 TA 2143",
+				"vehicleNumber":"MH-111",
 				"referenceId":"a9be39b9347911e6829f000d3aa04450"
 			}
 	   ],
@@ -445,7 +469,49 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 {
   "status": 200,
   "message": "success",
-  "data": null,
+  "data": {
+    "vehicleId": 1182,
+    "vehicleName": null,
+    "guid": "1efc418bd9f54bd99955cfdcccdc27a2",
+    "vehicleNumber": "VH-00-1122",
+    "vehicleMake": null,
+    "vehicleModel": null,
+    "vehicleType": null,
+    "typeOfBody": "",
+    "unladdenWeight": null,
+    "capacityInUnits": 12,
+    "capacityInVolume": 12,
+    "capacityInWeight": 12,
+    "chasisNumber": null,
+    "engineNumber": null,
+    "markerName": null,
+    "registrationNumber": null,
+    "pucValidity": null,
+    "insuranceValidity": null,
+    "vehiclePermit": null,
+    "ownerName": null,
+    "clientBranchId": 1402,
+    "rentEndDate": null,
+    "rentStartDate": null,
+    "transporter": null,
+    "financer": null,
+    "permit": null,
+    "ownership": null,
+    "accidentHistory": null,
+    "deviceId": {
+      "deviceId": null,
+      "barcode": null,
+      "statusCd": null,
+      "trackeeId": null
+    },
+    "registrationCopy": [],
+    "pucCopy": [],
+    "insuranceCopy": [],
+    "registrationCopyExists": null,
+    "insuranceCopyExists": null,
+    "pucValidityExists": null,
+    "clientBranchName": "Mahindra Logistics Ltd"
+  },
   "hasError": false
 }
 
@@ -479,7 +545,140 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 {
   "status": 200,
   "message": "success",
-  "data": null,
+  "data": {
+    "totalCount": 119,
+    "otherCount": 0,
+    "results": [
+      {
+        "createdOnDt": null,
+        "updatedOnDt": null,
+        "createdByUserId": null,
+        "updatedByUserId": null,
+        "isDeleteFl": null,
+        "isActiveFl": true,
+        "vehicleId": 1182,
+        "vehicleName": null,
+        "guid": null,
+        "vehicleNumber": "VH-00-1122",
+        "vehicleMake": null,
+        "vehicleModel": null,
+        "vehicleType": null,
+        "typeOfBody": "",
+        "previousVehiclenumber": null,
+        "unladdenWeight": null,
+        "capacityInUnits": 12,
+        "capacityInVolume": 12,
+        "capacityInWeight": 12,
+        "chasisNumber": null,
+        "engineNumber": null,
+        "markerName": null,
+        "batteryPercentage": null,
+        "registrationNumber": null,
+        "mediaList": null,
+        "pucValidity": null,
+        "insuranceValidity": null,
+        "vehiclePermit": null,
+        "ownerName": null,
+        "clientBranchId": null,
+        "rentEndDate": null,
+        "rentStartDate": null,
+        "transporter": null,
+        "financer": null,
+        "status": "Available",
+        "permit": null,
+        "ownership": null,
+        "lat": null,
+        "lng": null,
+        "accidentHistory": null,
+        "lastTrackingDate": null,
+        "vendorName": null,
+        "removedRegistrationMediaId": null,
+        "removedInsuranceMediaId": null,
+        "removedPucMediaId": null,
+        "deviceId": {
+          "deviceId": null,
+          "barcode": "Not Assigned",
+          "statusCd": null,
+          "trackeeId": null
+        },
+        "clientId": null,
+        "tripDetail": null,
+        "insuranceAlertWindow": null,
+        "pucAlertWindow": null,
+        "lastInsuranceAlertSentDt": null,
+        "lastPUCAlertSentDt": null,
+        "client_Id": null,
+        "gpsStatus": null,
+        "speed": null,
+        "branchName": null,
+        "referenceId": "538649a7b9fc45be8d75b5932cc8ab60"
+      },
+      {
+        "createdOnDt": null,
+        "updatedOnDt": null,
+        "createdByUserId": null,
+        "updatedByUserId": null,
+        "isDeleteFl": null,
+        "isActiveFl": true,
+        "vehicleId": 1170,
+        "vehicleName": null,
+        "guid": null,
+        "vehicleNumber": "Mh04HD1531",
+        "vehicleMake": null,
+        "vehicleModel": null,
+        "vehicleType": null,
+        "typeOfBody": "",
+        "previousVehiclenumber": null,
+        "unladdenWeight": null,
+        "capacityInUnits": 7500,
+        "capacityInVolume": null,
+        "capacityInWeight": null,
+        "chasisNumber": null,
+        "engineNumber": null,
+        "markerName": null,
+        "batteryPercentage": null,
+        "registrationNumber": null,
+        "mediaList": null,
+        "pucValidity": null,
+        "insuranceValidity": null,
+        "vehiclePermit": null,
+        "ownerName": null,
+        "clientBranchId": null,
+        "rentEndDate": null,
+        "rentStartDate": null,
+        "transporter": null,
+        "financer": null,
+        "status": "Available",
+        "permit": null,
+        "ownership": null,
+        "lat": null,
+        "lng": null,
+        "accidentHistory": null,
+        "lastTrackingDate": null,
+        "vendorName": null,
+        "removedRegistrationMediaId": null,
+        "removedInsuranceMediaId": null,
+        "removedPucMediaId": null,
+        "deviceId": {
+          "deviceId": 3182,
+          "barcode": "LN00700416",
+          "statusCd": null,
+          "trackeeId": "358899057353677"
+        },
+        "clientId": null,
+        "tripDetail": null,
+        "insuranceAlertWindow": null,
+        "pucAlertWindow": null,
+        "lastInsuranceAlertSentDt": null,
+        "lastPUCAlertSentDt": null,
+        "client_Id": null,
+        "gpsStatus": null,
+        "speed": null,
+        "branchName": null,
+        "referenceId": "f9d77411a3f94f58910e241019a0ee4e"
+      }
+    ]
+  },
   "hasError": false
 }
 
@@ -504,11 +703,36 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Vehicle Update - Sample Request
 
 ```json
-
-[{
-	"referenceId":"a9be39b9347911e6829f000d3aa04450",        
-	"vehicleNumber":"MH 02 TA 2144"      
-}]    
+[
+	{
+		"referenceId":"a9be39b9347911e6829f000d3aa04450",        
+    		"vehicleNumber":"MH-111",
+    		"vehicleMake":"2015",
+   		"vehicleModel":"OMNI",
+    		"typeOfBody":"Flat Bed",
+    		"unladdenWeight":1099,
+    		"capacityInWeight":1099,
+    		"capacityInUnits":1099,
+    		"capacityInVolume":1099,
+    		"chasisNumber":"CHASIS-123",
+    		"engineNumber":"A-12353-D1234",
+    		"markerName":"Marker-1",
+    		"registrationNumber":"",
+    		"pucValidity":"2016-07-01T11:18:00.000Z",
+    		"insuranceValidity":"2016-07-01T11:18:00.000Z",
+    		"vehiclePermit":"Andhra Pradesh,Delhi",
+    		"ownership":"company",
+    		"ownerName":"ABC",
+    		"transporter":"",
+    		"financer":"",
+    		"accidentHistory":"",
+    		"rentStartDate":null,
+    		"rentEndDate":null,
+    		"deviceId":{
+        		"barcode":""
+    		}
+    }
+]
 ```
 
 > Vehicle Update - Sample Response
