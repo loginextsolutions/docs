@@ -119,11 +119,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Loginext API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>Welcome to the Loginext API</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -209,7 +205,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></p>
+<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -271,7 +267,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -323,7 +319,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/create/return</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -411,7 +407,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/crate</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -463,7 +459,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/cancel</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -521,7 +517,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/fmflm/shipment/v1/status</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -661,6 +657,491 @@
 </tbody></table>
 
 <h1 id="haul">Haul</h1>
+
+<h2 id="vehicle-create">Vehicle Create</h2>
+
+<blockquote>
+<p>Vehicle Create - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
+                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">  
+</span></code></pre>
+
+<blockquote>
+<p>Vehicle Create - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint creates a new Vehicle.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/create</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="vehicle-read-single">Vehicle Read (Single)</h2>
+
+<blockquote>
+<p>Vehicle Read - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"vehicleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1182</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1efc418bd9f54bd99955cfdcccdc27a2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VH-00-1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1402</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"permit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"registrationCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"pucCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"insuranceCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"registrationCopyExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"insuranceCopyExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pucValidityExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mahindra Logistics Ltd"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint returns the vehicle details for the client with the given Reference ID.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/{reference_id}</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="vehicle-read">Vehicle Read</h2>
+
+<blockquote>
+<p>Vehicle Read - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1182</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VH-00-1122"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previousVehiclenumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"batteryPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"permit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastTrackingDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vendorName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedRegistrationMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedInsuranceMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedPucMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Assigned"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tripDetail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastInsuranceAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastPUCAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"client_Id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"538649a7b9fc45be8d75b5932cc8ab60"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mh04HD1531"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"previousVehiclenumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">7500</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"batteryPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"permit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastTrackingDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vendorName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedRegistrationMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedInsuranceMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"removedPucMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3182</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00700416"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358899057353677"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tripDetail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastInsuranceAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastPUCAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"client_Id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9d77411a3f94f58910e241019a0ee4e"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint lists an existing Vehicles for the client.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="vehicle-update">Vehicle Update</h2>
+
+<blockquote>
+<p>Vehicle Update - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">        
+            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
+                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Vehicle Update - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint updates the vehicle details with given reference id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="vehicle-delete">Vehicle Delete</h2>
+
+<blockquote>
+<p>Vehicle Delete - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Vehicle Delete - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint deletes the Vehicle with given list of reference IDs.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
 
 <h2 id="driver-create">Driver Create</h2>
 
@@ -922,48 +1403,48 @@
 </tr>
 </tbody></table>
 
-<h2 id="trip-create">Trip Create</h2>
+<p>## Trip Create</p>
 
 <blockquote>
 <p>Trip Create - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
 <p>Trip Create - Sample Response</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
 <p>This endpoint creates a new trip.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<p>### HTTP Request</p>
 
 <p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
 
-<h3 id="http-request-headers">HTTP Request Headers</h3>
+<p>### HTTP Request Headers</p>
 
 <table><thead>
 <tr>
@@ -1015,7 +1496,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
+<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1094,6 +1575,40 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="trip-iframe">Trip iFrame</h2>
+
+<p>This endpoint is to get iFrame view of a trip.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://endpoint.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>aid</td>
+<td>f522631c-490c-46fd-9f79-ca8d14a704d7</td>
+<td>Value of authentication token without &lsquo;BASIC&rsquo; keyword</td>
+</tr>
+<tr>
+<td>key</td>
+<td>$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT</td>
+<td>Client Secret Key</td>
+</tr>
+<tr>
+<td>tripname</td>
+<td>TestTripName</td>
+<td>Trip name</td>
 </tr>
 </tbody></table>
 
