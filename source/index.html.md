@@ -805,11 +805,11 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
                                 "country":10,
                                 "state":20,
                                 "isCurrentAddress":true,
-                                 "guid":"bd53"
+                                "guid":"bd53"
                                 
                         }],
         "shiftList":[{
-                            "shiftStartTime"  :"07:03pm",
+                            "shiftStartTime" :"07:03pm",
                             "shiftEndTime":"07:10am",
                             "startTime":"2016-06-13",
                             "endTime":"2016-06-15"
@@ -846,6 +846,12 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### HTTP Request Parameters
+
+Param | DataType |  isMandatory | Brief Info
+--------- | ------- | ---------- | ------------ 
+driverEmployeeId | String | Yes | Driver EmployeeID
 
 
 ## Driver Read
@@ -1137,7 +1143,7 @@ This notification is sent when an order is accepted by a delivery boy.
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1167,7 +1173,7 @@ This notification is sent when an order is rejected by a delivery boy.
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1203,7 +1209,7 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1247,7 +1253,7 @@ This notification is sent when an order is partially delivered by a delivery boy
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1287,7 +1293,7 @@ This notification is sent when an order is not delivered by a delivery boy.
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1320,7 +1326,7 @@ This notification is sent when an order is picked up by a delivery boy.
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
@@ -1356,7 +1362,7 @@ This notification is sent when an order is picked up by a delivery boy.
 
 
 
-### HTTP Response JSON Keys
+### HTTP Response Parameters
 
 Key | Brief Info
 --------- | -------
