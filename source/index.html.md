@@ -1113,3 +1113,263 @@ Parameter | Sample Value | Brief Info
 aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 tripname | TestTripName| Trip name 
+
+
+# Webhooks
+
+## Accept Order
+
+> Accept Order - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "status": "ORDER ACCEPTED",
+  "deliveryMediumName": "TestDM",
+  "phoneNumber": 1234567890,
+  "tripName": "TestTrip",
+  "updatedOn": "2016-06-30 19:43:07"
+}
+
+```
+
+This notification is sent when an order is accepted by a delivery boy.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+status | Status of the order
+deliveryMediumName | Name of delivery medium who accepted the order
+phoneNumber | Phone no. of delivery medium
+tripName | Trip name
+updatedOn | Accept order timestamp
+
+## Reject Order
+
+> Reject Order - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "status": "ORDER REJECTED",
+  "tripName": "TestTrip",
+  "updatedOn": "2016-06-30 20:47:20",
+  "reasonOfRejection": "Cannot reach on ETA"
+}
+
+```
+
+This notification is sent when an order is rejected by a delivery boy.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+status | Status of the order
+tripName | Trip name
+updatedOn | Accept order timestamp
+reasonOfRejection | Reason provided by Delivery medium while rejecting the order
+
+## Delivered
+
+> Delivery - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "latitude": 28.283528,
+  "longitude": 76.921535,
+  "notificationType": "DELIVEREDNOTIFICATION",
+  "customerComment": "Test comments",
+  "customerRating": 5,
+  "deliveryTime": "2016-06-30 19:12:49",
+  "cashAmount": 100,
+  "deliveryLocationType": "Customer",
+  "transactionId": "0",
+  "actualCashAmount": 100,
+  "recipientName": "RecipientName"
+}
+
+```
+
+This notification is sent when an order is delivered by a delivery boy to customer.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+latitude | Latitude where order was delivered
+longitude | Longitude where order was delivered
+notificationType | DELIVEREDNOTIFICATION
+customerComment | Customer comments 
+customerRating | Rating provided by customer
+deliveryTime | Delivery timestamp
+cashAmount | Cash amount to collect
+deliveryLocationType | Delivery Location
+transactionId | Transaction id
+actualCashAmount | Cash amount actually collected
+recipientName | Name of recipient
+
+
+## Partially Delivered
+
+> Partial Delivery - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "statusCd": "PARTIALLYDELIVERED",
+  "notificationType": "PARTIALDELIVERYNOTIFICATION",
+  "customerComments": "",
+  "customerRating": 4,
+  "reason": "Customer not accepting",
+  "reasonCd": "",
+  "cashAmount": 1,
+  "transactionId": "",
+  "actualCashAmount": 100,
+  "shipmentCrateMappingList": [],
+  "recipientName": "John2"
+}
+
+```
+
+This notification is sent when an order is partially delivered by a delivery boy to customer.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+statusCd | PARTIALLYDELIVERED
+notificationType | PARTIALDELIVERYNOTIFICATION
+customerComments | Customer comments 
+customerRating | Rating provided by customer
+reason | Reason for the order being partially delivered
+reasonCd | Reason code
+cashAmount | Cash amount to be collected
+transactionId | Transaction id
+actualCashAmount | Cash amount actually collected
+shipmentCrateMappingList | Shipment crates
+recipientName | Name of recipient
+
+## Not Delivered
+
+> Not Delivered - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "notificationType": "NOTDELIVEREDNOTIFICATION",
+  "customerComments": "Test comments",
+  "customerRating": 5,
+  "reason": "Product damaged in transit",
+  "reasonCd": "",
+  "deliveryTime": "2016-06-30 19:12:49",
+  "deliveryLocationType": "Customer",
+  "recipientName": "RecipientName"
+}
+
+```
+
+This notification is sent when an order is not delivered by a delivery boy.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+notificationType | NOTDELIVEREDNOTIFICATION
+customerComments | Customer comments 
+customerRating | Rating provided by customer
+reason | Reason for the order not delivered
+reasonCd | Reason code
+deliveryTime | Undelivered timestamp
+deliveryLocationType | Delivery location
+recipientName | Name of recipient
+
+## Pickedup
+
+> Order pickup - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "latitude": 28.283528,
+  "longitude": 76.921535,
+  "pickedUpTime": "2016-06-30 19:10:56",
+  "status": "PICKEDUPNOTIFICATION"
+}
+
+```
+
+This notification is sent when an order is picked up by a delivery boy.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+latitude | Latitude where order was pickedup
+longitude | Longitude where order was pickedup
+pickedUpTime | Pickup order timestamp
+status | PICKEDUPNOTIFICATION
+
+## Not Pickedup
+
+> Order not pickup - Sample Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "notificationType": "NOTPICKEDUPNOTIFICATION",
+  "orderLeg": "DELIVER",
+  "awbNumber": "",
+  "customerComments": "",
+  "customerRating": 0,
+  "deliveryMediumName": "TestDM",
+  "phoneNumber": 1234567890,
+  "orderState": "FORWARD",
+  "customerName": "Customer name",
+  "reason": "Product damaged in transit",
+  "reasonCd": ""
+}
+
+```
+
+This notification is sent when an order is picked up by a delivery boy.
+
+
+
+### HTTP Response JSON Keys
+
+Key | Brief Info
+--------- | -------
+clientShipmentId | Order no.
+notificationType | NOTPICKEDUPNOTIFICATION
+orderLeg | Order leg
+awbNumber | Airway Bill Number
+customerComments | Customer comments
+customerRating | Rating provided by customer
+deliveryMediumName | Name of delivery medium
+phoneNumber | Phone no of delivery medium
+orderState | State of the order
+customerName | Name of customer
+reason | Reason for order not pickedup
+reasonCd | Reason code
+
