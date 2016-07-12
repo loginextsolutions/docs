@@ -1612,6 +1612,467 @@
 </tr>
 </tbody></table>
 
+<h1 id="webhooks">Webhooks</h1>
+
+<h2 id="accept-order">Accept Order</h2>
+
+<blockquote>
+<p>Accept Order - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER ACCEPTED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is accepted by a delivery boy.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status of the order</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>Name of delivery medium who accepted the order</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Phone no. of delivery medium</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>updatedOn</td>
+<td>Accept order timestamp</td>
+</tr>
+</tbody></table>
+
+<h2 id="reject-order">Reject Order</h2>
+
+<blockquote>
+<p>Reject Order - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER REJECTED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 20:47:20"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonOfRejection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot reach on ETA"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is rejected by a delivery boy.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status of the order</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>updatedOn</td>
+<td>Accept order timestamp</td>
+</tr>
+<tr>
+<td>reasonOfRejection</td>
+<td>Reason provided by Delivery medium while rejecting the order</td>
+</tr>
+</tbody></table>
+
+<h2 id="delivered">Delivered</h2>
+
+<blockquote>
+<p>Delivery - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.283528</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">76.921535</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:12:49"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecipientName"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is delivered by a delivery boy to customer.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Latitude where order was delivered</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Longitude where order was delivered</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>DELIVEREDNOTIFICATION</td>
+</tr>
+<tr>
+<td>customerComment</td>
+<td>Customer comments</td>
+</tr>
+<tr>
+<td>customerRating</td>
+<td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryTime</td>
+<td>Delivery timestamp</td>
+</tr>
+<tr>
+<td>cashAmount</td>
+<td>Cash amount to collect</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>Delivery Location</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>Transaction id</td>
+</tr>
+<tr>
+<td>actualCashAmount</td>
+<td>Cash amount actually collected</td>
+</tr>
+<tr>
+<td>recipientName</td>
+<td>Name of recipient</td>
+</tr>
+</tbody></table>
+
+<h2 id="partially-delivered">Partially Delivered</h2>
+
+<blockquote>
+<p>Partial Delivery - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIALLYDELIVERED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIALDELIVERYNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer not accepting"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentCrateMappingList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is partially delivered by a delivery boy to customer.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>statusCd</td>
+<td>PARTIALLYDELIVERED</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>PARTIALDELIVERYNOTIFICATION</td>
+</tr>
+<tr>
+<td>customerComments</td>
+<td>Customer comments</td>
+</tr>
+<tr>
+<td>customerRating</td>
+<td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>Reason for the order being partially delivered</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>Reason code</td>
+</tr>
+<tr>
+<td>cashAmount</td>
+<td>Cash amount to be collected</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>Transaction id</td>
+</tr>
+<tr>
+<td>actualCashAmount</td>
+<td>Cash amount actually collected</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>recipientName</td>
+<td>Name of recipient</td>
+</tr>
+</tbody></table>
+
+<h2 id="not-delivered">Not Delivered</h2>
+
+<blockquote>
+<p>Not Delivered - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product damaged in transit"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:12:49"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecipientName"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is not delivered by a delivery boy.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>NOTDELIVEREDNOTIFICATION</td>
+</tr>
+<tr>
+<td>customerComments</td>
+<td>Customer comments</td>
+</tr>
+<tr>
+<td>customerRating</td>
+<td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>Reason for the order not delivered</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>Reason code</td>
+</tr>
+<tr>
+<td>deliveryTime</td>
+<td>Undelivered timestamp</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>Delivery location</td>
+</tr>
+<tr>
+<td>recipientName</td>
+<td>Name of recipient</td>
+</tr>
+</tbody></table>
+
+<h2 id="pickedup">Pickedup</h2>
+
+<blockquote>
+<p>Order pickup - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.283528</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">76.921535</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pickedUpTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:10:56"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKEDUPNOTIFICATION"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is picked up by a delivery boy.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Latitude where order was pickedup</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Longitude where order was pickedup</td>
+</tr>
+<tr>
+<td>pickedUpTime</td>
+<td>Pickup order timestamp</td>
+</tr>
+<tr>
+<td>status</td>
+<td>PICKEDUPNOTIFICATION</td>
+</tr>
+</tbody></table>
+
+<h2 id="not-pickedup">Not Pickedup</h2>
+
+<blockquote>
+<p>Order not pickup - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTPICKEDUPNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer name"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product damaged in transit"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when an order is picked up by a delivery boy.</p>
+
+<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>NOTPICKEDUPNOTIFICATION</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>Order leg</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>Airway Bill Number</td>
+</tr>
+<tr>
+<td>customerComments</td>
+<td>Customer comments</td>
+</tr>
+<tr>
+<td>customerRating</td>
+<td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Phone no of delivery medium</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>State of the order</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>Name of customer</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>Reason for order not pickedup</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>Reason code</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
