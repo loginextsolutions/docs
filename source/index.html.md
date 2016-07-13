@@ -418,7 +418,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
     		"rentStartDate":null,
     		"rentEndDate":null,
     		"deviceId":{
-        		"barcode":""
+        		"barcode”:”LN12345678”
     		}
     }
 ]  
@@ -454,6 +454,35 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+vehicleNumber | String | Mandatory | Vehicle Number.
+vehicleMake | String | Optional | Make of the vehicle.
+vehicleModel | String |Optional | Model of the vehicle.
+typeOfBody | String |Optional | Type of Body.
+unladdenWeight | Integer |Optional | Unladen weight of the vehicle.
+capacityInWeight | Integer |Optional | Capacity of vehicle in (Kgs).
+capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
+capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
+chasisNumber | String |Optional | Chasis number.
+engineNumber | String |Optional | Engine number.
+markerName | String |Optional | 
+registrationNumber | String |Optional | Registration Number of the vehicle.
+pucValidity | Date |Optional | PUC Validity Date
+insuranceValidity | Date |Optional | Insurance Validity Date
+vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
+ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
+ownerName | String |Optional | Name of the owner of the vehicle.
+transporter | String |Optional |
+financer | String |Optional |
+accidentHistory | String |Optional | Previous accident history associated with the vehicle.
+rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
+rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
+deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ## Vehicle Read (Single)
 
@@ -516,7 +545,7 @@ This endpoint returns the vehicle details for the client with the given Referenc
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/{reference_id}`
+`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
 
 ### HTTP Request Headers
 
@@ -525,6 +554,13 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+reference_id | String | Mandatory | Reference Id associated with the vehicle.
+
 
 ## Vehicle Read
 
@@ -751,6 +787,36 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+reference_id | String | Mandatory | Reference Id associated with the vehicle.
+vehicleNumber | String | Mandatory | Vehicle Number.
+vehicleMake | String | Optional | Make of the vehicle.
+vehicleModel | String |Optional | Model of the vehicle.
+typeOfBody | String |Optional | Type of Body.
+unladdenWeight | Integer |Optional | Unladen weight of the vehicle.
+capacityInWeight | Integer |Optional | Capacity of vehicle in (Kgs).
+capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
+capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
+chasisNumber | String |Optional | Chasis number.
+engineNumber | String |Optional | Engine number.
+markerName | String |Optional | 
+registrationNumber | String |Optional | Registration Number of the vehicle.
+pucValidity | Date |Optional | PUC Validity Date
+insuranceValidity | Date |Optional | Insurance Validity Date
+vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
+ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
+ownerName | String |Optional | Name of the owner of the vehicle.
+transporter | String |Optional |
+financer | String |Optional |
+accidentHistory | String |Optional | Previous accident history associated with the vehicle.
+rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
+rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
+deviceId.barcode | String |Optional | Barcode of the tracker.
+
+
 ## Vehicle Delete
 
 > Vehicle Delete - Sample Request
@@ -785,6 +851,11 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+reference_ids | List (String) | Mandatory | Reference Id associated with the vehicle.
 
 
 ## Driver Create
