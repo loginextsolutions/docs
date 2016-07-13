@@ -16,19 +16,21 @@ search: true
 
 # Introduction
 
-Welcome to the Loginext API
+Loginext welcomes to the world of organised logistics. 
+
+This API documentation will help you, intergrate your software platform with loginext's for end to end logistics management. 
 
 # Authentication
 
 ##Authenticate
 
-This endpoint authenticates a user.
+Loginext uses Basic Authentication to provide authorized access to its API.
+
+Use the following URL endpoint to authenticate userself as a user of this API.
 
 ### HTTP Request
 
 `POST http://endpoint.loginextsolutions.com/LoginApp/login/authenticate`
-
-LogiNext uses tokens to allow access to the API. You can register a new LogiNext token using our auth api. 
 
 ### HTTP Request Headers
 
@@ -148,6 +150,81 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
+## Cancel Order
+
+> Cancel Order - Sample Request
+
+```json
+["e0eaebdd84ac4c40af72d827ab610090"]
+```
+
+> Cancel Order - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": "No of orders cancelled:1",
+  "hasError": false
+}
+
+```
+
+This endpoint cancels an order.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+## Get Status of Order
+
+> Get Status - Sample Request
+
+```json
+["c8714df4347911e6829f000d3aa04450"]
+```
+
+> Get Status - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": null,
+  "data": [
+    {
+      "state": "FORWARD",
+      "status": "NOTDISPATCHED",
+      "referenceId": "c8714528347911e6829f000d3aa04450"
+    }
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint gets an order status.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+
 ## Add Crates
 
 > Add Crates - Sample Request
@@ -219,85 +296,9 @@ WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication t
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 
-## Cancel Order
+## Start Trip 
 
-> Cancel Order - Sample Request
-
-```json
-["e0eaebdd84ac4c40af72d827ab610090"]
-```
-
-> Cancel Order - Sample Response
-
-```json
-{
-  "status": 200,
-  "message": "success",
-  "data": "No of orders cancelled:1",
-  "hasError": false
-}
-
-```
-
-This endpoint cancels an order.
-
-### HTTP Request
-
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-## Get Status
-
-> Get Status - Sample Request
-
-```json
-["c8714df4347911e6829f000d3aa04450"]
-```
-
-> Get Status - Sample Response
-
-```json
-{
-  "status": 200,
-  "message": null,
-  "data": [
-    {
-      "state": "FORWARD",
-      "status": "NOTDISPATCHED",
-      "referenceId": "c8714528347911e6829f000d3aa04450"
-    }
-  ],
-  "hasError": false
-}
-
-```
-
-This endpoint gets an order status.
-
-### HTTP Request
-
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-
-
-## Trip Start
-
-> Trip Start - Sample Request
+> Start Trip - Sample Request
 
 ```json
 [
@@ -305,7 +306,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Trip Start - Sample Response
+> Start Trip - Sample Response
 
 ```json
 {
@@ -331,9 +332,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
-## Trip Stop
+## Stop Trip 
 
-> Trip Stop - Sample Request
+> Stop Trip - Sample Request
 
 ```json
 [{
@@ -344,7 +345,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 ]
 ```
 
-> Trip Stop - Sample Response
+> Stop Trip - Sample Response
 
 ```json
 {
