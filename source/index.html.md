@@ -20,11 +20,9 @@ Welcome to the Loginext API
 
 # Authentication
 
+##Authenticate
+
 This endpoint authenticates a user.
-
-## Authenticate
-
-This endpoint authenticates a user. 
 
 ### HTTP Request
 
@@ -79,7 +77,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 # OnDemand 2.0
 
 
-# Mile
+# Mile 2.0
 
 ## Create Order
 
@@ -429,7 +427,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 
 
-# Haul
+# Haul 2.0
 
 ## Vehicle Create
 
