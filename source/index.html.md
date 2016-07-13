@@ -384,6 +384,61 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
+## Track Last Location
+
+> Track Last Location - Sample Request
+
+```json
+http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+```
+
+> Track Last Location - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "Latest Location found successfully",
+  "data": [
+    {
+      "lat": 19.1119794,
+      "lng": 72.9094968,
+      "shipmentReference": "21b538edf7f047028334480036179c70"
+    },
+    {
+      "lat": 19.0668898,
+      "lng": 72.8320575,
+      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
+    },
+    {
+      "lat": 19.0741246,
+      "lng": 72.824772,
+      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
+    },
+    {
+      "lat": 19.1200864,
+      "lng": 72.9010175,
+      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
+    }
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint fetches the latest location for the requested shipments
+
+### HTTP Request
+
+`GET http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+  
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
+
 
 
 # Haul
@@ -849,9 +904,9 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ### HTTP Request Parameters
 
-Param | DataType |  isMandatory | Brief Info
+Param | DataType |  Required | Brief Info
 --------- | ------- | ---------- | ------------ 
-driverEmployeeId | String | Yes | Driver EmployeeID
+driverEmployeeId | String | Mandatory | Driver EmployeeID
 
 
 ## Driver Read
@@ -983,54 +1038,78 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-  ## Trip Create
+## Trip Create
 
-  > Trip Create - Sample Request
+> Trip Create - Sample Request
 
-  ```json
-  {
-    "shipmentType": "Bag",
-    "lrNumber":"LR123",
-    "originAddr": "CNND",
-    "destinationAddr": "NAGD",
-    "name": "CNN-NAG-12221",
-    "packageWeight": 6,
-    "packageValue": 8,
-    "packageVolume": 10,
-    "vehicleReportingDate": "2016-02-27T18:30:00.000Z",
-    "vehicleReportingTime": "1970-02-01T07:30:00.000Z",
-    "modeOfTransport": "ROAD",
-    "vehicleNumber": "MH40AK0175",
-    "barcode": "LN00590915",
-    "startNow":false
-  }
-  ```
+```json
+{
+  "shipmentType": "Bag",
+  sealNumber:"SN-123",
+  "lrNumber":"LR123",
+  "originAddr": "CNND",
+  "destinationAddr": "NAGD",
+  "name": "CNN-NAG-12221",
+  "packageWeight": 6,
+  "packageValue": 8,
+  "packageVolume": 10,
+  "vehicleReportingDate": "2016-02-27T18:30:00.000Z",
+  "vehicleReportingTime": "1970-02-01T07:30:00.000Z",
+  "modeOfTransport": "ROAD",
+  "vehicleNumber": "MH40AK0175",
+  "barcode": "LN00590915",
+  "startNow":false
+}
+```
 
-  > Trip Create - Sample Response
+> Trip Create - Sample Response
 
-  ```json
-  {
-    "status": 200,
-    "message": "Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f",
-    "data": null,
-    "hasError": false
-  }
+```json
+{
+  "status": 200,
+  "message": "Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f",
+  "data": null,
+  "hasError": false
+}
 
-  ```
+```
 
-  This endpoint creates a new trip.
+This endpoint creates a new trip.
 
-  ### HTTP Request
+### HTTP Request
 
-  `POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create`
+`POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
-  ### HTTP Request Headers
+### HTTP Request Headers
 
-  Header | Sample Value | Brief Info
-  --------- | ------- | -------------
-  Content-Type | application/json | Json request
-  WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
-  CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+shipmentType | String | Mandatory | Type of the Shipment being created.Examples:"Bag","Package","Manifest"
+originAddr | String |Mandatory | Origin point of the trip.Examples:-AMDD,BLRX
+destinationAddr | String |Mandatory | Destination point of the trip.Examples:-CNND,BOMX
+name | String |Mandatory | Name of the trip.Has to be unique.Example:-CNND-BOMX-123_456
+packageWeight | Integer |Optional | Capacity of the shipment in terms of Kgs
+packageValue | Integer |Optional | Capacity of the shipment in terms of the number of units present in it
+packageVolume | Integer |Optional | Capacity of the shipment in terms of cc
+vehicleReportingDate | Date |Mandatory | Reporting date of the vehicle at the origin hub
+vehicleReportingTime | Date |Mandatory | Reporting time of the vehicle at the origin hub
+modeOfTransport | String |Mandatory | Mode of transit for the trip.Examples:-ROAD,AIR,RAIL
+lrNumber | String | Mandatory(Conditional) | Lorry Receipt Number if modeOfTransport selected as ROAD.
+flightNum| String |Mandatory(Conditional) | Flight Number if modeOfTransport selected as AIR.
+trainNum| String |Mandatory(Conditional) | Rail Number if modeOfTransport selected as RAIL.
+driverName | String |Optional | Name of the driver
+vehicleNumber | String |Optional | Vehicle Number.
+barcode | String |Mandatory | Barcode of the tracker used for attaching to vehicle during trip
+
+
 
 ## Trip Start
 
@@ -1120,6 +1199,60 @@ aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token witho
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 tripname | TestTripName| Trip name 
 
+## Track Last Location
+
+> Track Last Location - Sample Request
+
+```json
+http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+```
+
+> Track Last Location - Sample Response
+
+```json
+{
+  "status": 200,
+  "message": "Latest Location found successfully",
+  "data": [
+    {
+      "lat": 19.1119794,
+      "lng": 72.9094968,
+      "shipmentReference": "21b538edf7f047028334480036179c70"
+    },
+    {
+      "lat": 19.0668898,
+      "lng": 72.8320575,
+      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
+    },
+    {
+      "lat": 19.0741246,
+      "lng": 72.824772,
+      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
+    },
+    {
+      "lat": 19.1200864,
+      "lng": 72.9010175,
+      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
+    }
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint fetches the latest location for the requested shipments
+
+### HTTP Request
+
+`GET http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+  
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
 # Webhooks
 
