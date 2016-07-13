@@ -20,50 +20,8 @@ Welcome to the Loginext API
 
 # Authentication
 
-## Authenticate
+This endpoint authenticates a user.
 
-This endpoint authenticates a user. 
-
-### HTTP Request
-
-`POST http://endpoint.loginextsolutions.com/LoginApp/login/authenticate`
-
-LogiNext uses tokens to allow access to the API. You can register a new LogiNext token using our auth api. 
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-
-### HTTP Request Body
-
-Header | Sample Value 
---------- | ------- 
-Content-Type | application/x-www-form-urlencoded
-
-### HTTP Request Parameters
-
-Param Name | Value 
---------- | ------- 
-username | your username
-password | your password 
-
-### HTTP Response Headers
-
-Header | Sample Value 
---------- | ------- 
-WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
-CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
-
-##Invalidate
-
-This endpoint invalidates a user. 
-
-### HTTP Request
-
-`GET http://endpoint.loginextsolutions.com/LoginApp/token/refresh`
-=======
 ## Authenticate
 
 This endpoint authenticates a user. 
