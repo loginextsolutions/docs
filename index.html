@@ -688,7 +688,7 @@
             </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
-                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+                </span><span class="err">"barcode”:”LN12345678”</span><span class="w">
             </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">  
@@ -740,6 +740,156 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Vehicle Number.</td>
+</tr>
+<tr>
+<td>vehicleMake</td>
+<td>String</td>
+<td>Optional</td>
+<td>Make of the vehicle.</td>
+</tr>
+<tr>
+<td>vehicleModel</td>
+<td>String</td>
+<td>Optional</td>
+<td>Model of the vehicle.</td>
+</tr>
+<tr>
+<td>typeOfBody</td>
+<td>String</td>
+<td>Optional</td>
+<td>Type of Body.</td>
+</tr>
+<tr>
+<td>unladdenWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Unladen weight of the vehicle.</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Kgs).</td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Units).</td>
+</tr>
+<tr>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Cc).</td>
+</tr>
+<tr>
+<td>chasisNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Chasis number.</td>
+</tr>
+<tr>
+<td>engineNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Engine number.</td>
+</tr>
+<tr>
+<td>markerName</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Registration Number of the vehicle.</td>
+</tr>
+<tr>
+<td>pucValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>PUC Validity Date</td>
+</tr>
+<tr>
+<td>insuranceValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Insurance Validity Date</td>
+</tr>
+<tr>
+<td>vehiclePermit</td>
+<td>String</td>
+<td>Optional</td>
+<td>Comma separated list of states within which vehicle is permitted to travel.</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle owned by. Possible values (company OR vendor)</td>
+</tr>
+<tr>
+<td>ownerName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Name of the owner of the vehicle.</td>
+</tr>
+<tr>
+<td>transporter</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>financer</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>accidentHistory</td>
+<td>String</td>
+<td>Optional</td>
+<td>Previous accident history associated with the vehicle.</td>
+</tr>
+<tr>
+<td>rentStartDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>rentEndDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>deviceId.barcode</td>
+<td>String</td>
+<td>Optional</td>
+<td>Barcode of the tracker.</td>
 </tr>
 </tbody></table>
 
@@ -803,7 +953,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/{reference_id}</code></p>
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -828,6 +978,24 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_id</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the vehicle.</td>
 </tr>
 </tbody></table>
 
@@ -1091,6 +1259,162 @@
 </tr>
 </tbody></table>
 
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_id</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the vehicle.</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Vehicle Number.</td>
+</tr>
+<tr>
+<td>vehicleMake</td>
+<td>String</td>
+<td>Optional</td>
+<td>Make of the vehicle.</td>
+</tr>
+<tr>
+<td>vehicleModel</td>
+<td>String</td>
+<td>Optional</td>
+<td>Model of the vehicle.</td>
+</tr>
+<tr>
+<td>typeOfBody</td>
+<td>String</td>
+<td>Optional</td>
+<td>Type of Body.</td>
+</tr>
+<tr>
+<td>unladdenWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Unladen weight of the vehicle.</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Kgs).</td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Units).</td>
+</tr>
+<tr>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in (Cc).</td>
+</tr>
+<tr>
+<td>chasisNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Chasis number.</td>
+</tr>
+<tr>
+<td>engineNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Engine number.</td>
+</tr>
+<tr>
+<td>markerName</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Registration Number of the vehicle.</td>
+</tr>
+<tr>
+<td>pucValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>PUC Validity Date</td>
+</tr>
+<tr>
+<td>insuranceValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Insurance Validity Date</td>
+</tr>
+<tr>
+<td>vehiclePermit</td>
+<td>String</td>
+<td>Optional</td>
+<td>Comma separated list of states within which vehicle is permitted to travel.</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle owned by. Possible values (company OR vendor)</td>
+</tr>
+<tr>
+<td>ownerName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Name of the owner of the vehicle.</td>
+</tr>
+<tr>
+<td>transporter</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>financer</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>accidentHistory</td>
+<td>String</td>
+<td>Optional</td>
+<td>Previous accident history associated with the vehicle.</td>
+</tr>
+<tr>
+<td>rentStartDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>rentEndDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>deviceId.barcode</td>
+<td>String</td>
+<td>Optional</td>
+<td>Barcode of the tracker.</td>
+</tr>
+</tbody></table>
+
 <h2 id="vehicle-delete">Vehicle Delete</h2>
 
 <blockquote>
@@ -1143,6 +1467,24 @@
 </tr>
 </tbody></table>
 
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List (String)</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the vehicle.</td>
+</tr>
+</tbody></table>
+
 <h2 id="driver-create">Driver Create</h2>
 
 <blockquote>
@@ -1161,11 +1503,11 @@
                                 </span><span class="nt">"country"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
                                 </span><span class="nt">"state"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
                                 </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-                                 </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
+                                </span><span class="nt">"guid"</span><span class="p">:</span><span class="s2">"bd53"</span><span class="w">
 
                         </span><span class="p">}],</span><span class="w">
         </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
-                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"shiftStartTime"</span><span class="w"> </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
                             </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
                             </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
                             </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
@@ -1218,6 +1560,24 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$LQEqG3s.LF2jBt7Baq</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>isMandatory</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>driverEmployeeId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Driver EmployeeID</td>
 </tr>
 </tbody></table>
 
@@ -1632,7 +1992,7 @@
 
 <p>This notification is sent when an order is accepted by a delivery boy.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1683,7 +2043,7 @@
 
 <p>This notification is sent when an order is rejected by a delivery boy.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1737,7 +2097,7 @@
 
 <p>This notification is sent when an order is delivered by a delivery boy to customer.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1819,7 +2179,7 @@
 
 <p>This notification is sent when an order is partially delivered by a delivery boy to customer.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1898,7 +2258,7 @@
 
 <p>This notification is sent when an order is not delivered by a delivery boy.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1961,7 +2321,7 @@
 
 <p>This notification is sent when an order is picked up by a delivery boy.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2015,7 +2375,7 @@
 
 <p>This notification is sent when an order is picked up by a delivery boy.</p>
 
-<h3 id="http-response-json-keys">HTTP Response JSON Keys</h3>
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
 
 <table><thead>
 <tr>
