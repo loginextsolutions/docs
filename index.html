@@ -205,7 +205,91 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></p>
+<h1 id="get-http-endpoint-loginextsolutions-com-loginapp-token-refresh"><code class="prettyprint">GET http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></h1>
+
+<h2 id="authenticate">Authenticate</h2>
+
+<p>This endpoint authenticates a user. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/LoginApp/login/authenticate</code></p>
+
+<p>LogiNext uses tokens to allow access to the API. You can register a new LogiNext token using our auth api. </p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-body">HTTP Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>your username</td>
+</tr>
+<tr>
+<td>password</td>
+<td>your password</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-response-headers">HTTP Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
+</tr>
+</tbody></table>
+
+<h2 id="invalidate">Invalidate</h2>
+
+<p>This endpoint invalidates a user. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -226,18 +310,6 @@
 </tbody></table>
 
 <aside class="success">Response headers will contain new session token and authentication key.</aside>
-
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
 
 <h1 id="ondemand-2-0">OnDemand 2.0</h1>
 
@@ -629,6 +701,79 @@
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG</td>
+<td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h2 id="track-last-location">Track Last Location</h2>
+
+<blockquote>
+<p>Track Last Location - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">http://endpoint.loginextsolutions.com/TrackingApp/mile/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Track Last Location - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Latest Location found successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119794</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094968</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21b538edf7f047028334480036179c70"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0668898</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.8320575</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25a565a9c9d540cd9e6c02fae890cb67"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0741246</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.824772</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27121903f4f047bcb378a6457bee2fec"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1200864</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9010175</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7afc8b1b97b48468c3417aa425eff81"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint fetches the latest location for the requested shipments</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1569,14 +1714,14 @@
 <tr>
 <th>Param</th>
 <th>DataType</th>
-<th>isMandatory</th>
+<th>Required</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>driverEmployeeId</td>
 <td>String</td>
-<td>Yes</td>
+<td>Mandatory</td>
 <td>Driver EmployeeID</td>
 </tr>
 </tbody></table>
@@ -1711,6 +1856,8 @@
 </tr>
 </tbody></table>
 
+<p>=======</p>
+
 <h2 id="driver-delete">Driver Delete</h2>
 
 <blockquote>
@@ -1763,48 +1910,49 @@
 </tr>
 </tbody></table>
 
-<p>## Trip Create</p>
+<h2 id="trip-create">Trip Create</h2>
 
 <blockquote>
 <p>Trip Create - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
+  </span><span class="err">sealNumber</span><span class="p">:</span><span class="s2">"SN-123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleReportingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-27T18:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-01T07:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
 <p>Trip Create - Sample Response</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully.Reference Id for future access:1880d6906e9d426995b815a83aa3927f"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
 <p>This endpoint creates a new trip.</p>
 
-<p>### HTTP Request</p>
+<h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
 
-<p>### HTTP Request Headers</p>
+<h3 id="http-request-headers">HTTP Request Headers</h3>
 
 <table><thead>
 <tr>
@@ -1827,6 +1975,114 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentType</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Type of the Shipment being created.Examples:&ldquo;Bag&rdquo;,&ldquo;Package&rdquo;,&ldquo;Manifest&rdquo;</td>
+</tr>
+<tr>
+<td>originAddr</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Origin point of the trip.Examples:-AMDD,BLRX</td>
+</tr>
+<tr>
+<td>destinationAddr</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Destination point of the trip.Examples:-CNND,BOMX</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Name of the trip.Has to be unique.Example:-CNND-BOMX-123_456</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of the shipment in terms of Kgs</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of the shipment in terms of the number of units present in it</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of the shipment in terms of cc</td>
+</tr>
+<tr>
+<td>vehicleReportingDate</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Reporting date of the vehicle at the origin hub</td>
+</tr>
+<tr>
+<td>vehicleReportingTime</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Reporting time of the vehicle at the origin hub</td>
+</tr>
+<tr>
+<td>modeOfTransport</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Mode of transit for the trip.Examples:-ROAD,AIR,RAIL</td>
+</tr>
+<tr>
+<td>lrNumber</td>
+<td>String</td>
+<td>Mandatory(Conditional)</td>
+<td>Lorry Receipt Number if modeOfTransport selected as ROAD.</td>
+</tr>
+<tr>
+<td>flightNum</td>
+<td>String</td>
+<td>Mandatory(Conditional)</td>
+<td>Flight Number if modeOfTransport selected as AIR.</td>
+</tr>
+<tr>
+<td>trainNum</td>
+<td>String</td>
+<td>Mandatory(Conditional)</td>
+<td>Rail Number if modeOfTransport selected as RAIL.</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Name of the driver</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle Number.</td>
+</tr>
+<tr>
+<td>barcode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Barcode of the tracker used for attaching to vehicle during trip</td>
 </tr>
 </tbody></table>
 
@@ -1969,6 +2225,79 @@
 <td>tripname</td>
 <td>TestTripName</td>
 <td>Trip name</td>
+</tr>
+</tbody></table>
+
+<h2 id="track-last-location">Track Last Location</h2>
+
+<blockquote>
+<p>Track Last Location - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">http://endpoint.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Track Last Location - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Latest Location found successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119794</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094968</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21b538edf7f047028334480036179c70"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0668898</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.8320575</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25a565a9c9d540cd9e6c02fae890cb67"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0741246</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.824772</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27121903f4f047bcb378a6457bee2fec"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1200864</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9010175</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7afc8b1b97b48468c3417aa425eff81"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint fetches the latest location for the requested shipments</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
+
+<h3 id="http-request-headers">HTTP Request Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+<td>Json request</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0</td>
+<td>Authentication token</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG</td>
+<td>Authentication key</td>
 </tr>
 </tbody></table>
 
