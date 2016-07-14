@@ -482,7 +482,9 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ```
 
-This endpoint creates a new Vehicle.
+Create a new vehicle by passing form data through json. 
+
+The acknowledgement will provide the vehicle number and reference ID.
 
 ### HTTP Request
 
@@ -582,7 +584,8 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ```
 
-This endpoint returns the vehicle details for the client with the given Reference ID.
+Use this API to read all data for a particular vehicle using its reference ID.
+
 
 ### HTTP Request
 
@@ -679,70 +682,6 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
         "speed": null,
         "branchName": null,
         "referenceId": "538649a7b9fc45be8d75b5932cc8ab60"
-      },
-      {
-        "createdOnDt": null,
-        "updatedOnDt": null,
-        "createdByUserId": null,
-        "updatedByUserId": null,
-        "isDeleteFl": null,
-        "isActiveFl": true,
-        "vehicleId": 1170,
-        "vehicleName": null,
-        "guid": null,
-        "vehicleNumber": "Mh04HD1531",
-        "vehicleMake": null,
-        "vehicleModel": null,
-        "vehicleType": null,
-        "typeOfBody": "",
-        "previousVehiclenumber": null,
-        "unladdenWeight": null,
-        "capacityInUnits": 7500,
-        "capacityInVolume": null,
-        "capacityInWeight": null,
-        "chasisNumber": null,
-        "engineNumber": null,
-        "markerName": null,
-        "batteryPercentage": null,
-        "registrationNumber": null,
-        "mediaList": null,
-        "pucValidity": null,
-        "insuranceValidity": null,
-        "vehiclePermit": null,
-        "ownerName": null,
-        "clientBranchId": null,
-        "rentEndDate": null,
-        "rentStartDate": null,
-        "transporter": null,
-        "financer": null,
-        "status": "Available",
-        "permit": null,
-        "ownership": null,
-        "lat": null,
-        "lng": null,
-        "accidentHistory": null,
-        "lastTrackingDate": null,
-        "vendorName": null,
-        "removedRegistrationMediaId": null,
-        "removedInsuranceMediaId": null,
-        "removedPucMediaId": null,
-        "deviceId": {
-          "deviceId": 3182,
-          "barcode": "LN00700416",
-          "statusCd": null,
-          "trackeeId": "358899057353677"
-        },
-        "clientId": null,
-        "tripDetail": null,
-        "insuranceAlertWindow": null,
-        "pucAlertWindow": null,
-        "lastInsuranceAlertSentDt": null,
-        "lastPUCAlertSentDt": null,
-        "client_Id": null,
-        "gpsStatus": null,
-        "speed": null,
-        "branchName": null,
-        "referenceId": "f9d77411a3f94f58910e241019a0ee4e"
       }
     ]
   },
@@ -751,7 +690,7 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 ```
 
-This endpoint lists an existing Vehicles for the client.
+This API is used to list all existing vehicles in the system. All vehicle related data values will be returned.
 
 ### HTTP Request
 
@@ -813,8 +752,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 }
 
 ```
-
-This endpoint updates the vehicle details with given reference id.
+This API is used to update a particular vehicle based on its reference ID.
 
 ### HTTP Request
 
@@ -878,7 +816,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ```
 
-This endpoint deletes the Vehicle with given list of reference IDs.
+This API is used to delete a particular vehicle based on its reference ID.
 
 ### HTTP Request
 
@@ -975,7 +913,9 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 
 ```
 
-This endpoint creates a new driver.
+Create a new driver by passing form data through json. 
+
+The acknowledgement will provide the driver reference ID.
 
 ### HTTP Request
 
@@ -988,8 +928,6 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
 
 ### HTTP Request Parameters
 
@@ -1162,7 +1100,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ```
 
-This endpoint lists an existing driver.
+Use this API to read all data for a particular driver using its reference ID.
 
 ### HTTP Request
 
@@ -1248,7 +1186,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ```
 
-This endpoint updates an existing driver.
+This API is used to update a particular driver based on its reference ID.
 
 ### HTTP Request
 
@@ -1322,7 +1260,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ```
 
-This endpoint deletes an existing driver.
+This API is used to delete a particular driver based on its reference ID.
 
 ### HTTP Request
 
@@ -1373,7 +1311,9 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ```
 
-This endpoint creates a new trip.
+Create a new trip using this API. Form data is passed through json. 
+
+The acknowledgement will contain the trip reference ID.
 
 ### HTTP Request
 
@@ -1432,7 +1372,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 
 ```
 
-This endpoint starts a trip.
+This API is used to start a trip using its reference ID.
 
 ### HTTP Request
 
@@ -1468,7 +1408,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 
 ```
 
-This endpoint stops a trip.
+This API is used to end an in-transit trip using its reference ID.
 
 ### HTTP Request
 
@@ -1484,7 +1424,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 
 ## Trip iFrame
 
-This endpoint is to get iFrame view of a trip.
+The iFrame displays the last tracking for a trip, including current location and trip history, based on the trip name.
 
 ### HTTP Request
 
@@ -1539,7 +1479,7 @@ http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipment
 
 ```
 
-This endpoint fetches the latest location for the requested shipments
+Track API fetches the latest location (latitude / longitude) for a trip based on its reference ID.
 
 ### HTTP Request
 
