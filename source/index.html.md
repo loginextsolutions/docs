@@ -24,6 +24,28 @@ This API documentation will help you, intergrate your software platform with log
 
 ##Authenticate
 
+> Defination
+
+```json
+http://api.loginextsolutions.com/LoginApp/login/authenticate
+```
+
+> Request Body
+
+```json
+{
+  "username": "shirish",
+  "password": "pass"
+}
+
+```
+
+> Response
+
+```json
+
+```
+
 Loginext uses Basic Authentication to provide authorized access to its API.
 
 Use the following URL endpoint to authenticate userself as a user of this API.
@@ -60,6 +82,23 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ##Invalidate
 
+> Defination
+
+```json
+http://api.loginextsolutions.com/LoginApp/token/refresh
+```
+
+> Request Body
+
+```json
+No Request params
+```
+
+> Response
+
+```json
+```
+
 This endpoint invalidates a user. 
 
 ### HTTP Request
@@ -81,14 +120,19 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ## Create Order
 
-> Create Order - Sample Request
-
-```json
-
-```
 > Defination
 
-> Create Order - Sample Response
+```json
+http://api.loginextsolutions.com/LoginApp/token/refresh
+```
+
+> Request Body
+
+```json
+```
+
+
+> Response
 
 ```json
 {
@@ -117,13 +161,19 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Create Return Order
 
-> Create Return Order - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
+```
+
+> Request Body
 
 ```json
 ["863fe69239bc4f738ca275a809c3b2e2"]
 ```
 
-> Create Return Order - Sample Response
+> Response
 
 ```json
 {
@@ -151,13 +201,19 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Cancel Order
 
-> Cancel Order - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
+```
+
+> Request Body
 
 ```json
 ["e0eaebdd84ac4c40af72d827ab610090"]
 ```
 
-> Cancel Order - Sample Response
+> Response
 
 ```json
 {
@@ -185,13 +241,19 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Get Status of Order
 
-> Get Status - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/mile/v1/status
+```
+
+> Request Body
 
 ```json
 ["c8714df4347911e6829f000d3aa04450"]
 ```
 
-> Get Status - Sample Response
+> Response
 
 ```json
 {
@@ -226,7 +288,13 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Add Crates
 
-> Add Crates - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
+```
+
+> Request Body
 
 ```json
 [
@@ -268,7 +336,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Add Crates - Sample Response
+> Response
 
 ```json
 {
@@ -297,7 +365,13 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Start Trip 
 
-> Start Trip - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TripApp/mile/v1/trip/start
+```
+
+> Request Body
 
 ```json
 [
@@ -305,7 +379,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Start Trip - Sample Response
+> Response
 
 ```json
 {
@@ -333,18 +407,23 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Stop Trip 
 
-> Stop Trip - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
+```
+
+> Request Body
 
 ```json
 [{
     "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
     "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
     "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
-}
-]
+}]
 ```
 
-> Stop Trip - Sample Response
+> Response
 
 ```json
 {
@@ -372,13 +451,20 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Track Last Location
 
-> Track Last Location - Sample Request
+> Defination
 
 ```json
 http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
-> Track Last Location - Sample Response
+> Request Body
+
+```json
+No Request Body
+```
+
+
+> Response
 
 ```json
 {
@@ -431,7 +517,14 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Create Vehicle 
 
-> Create Vehicle - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
+```
+
+
+> Request Body
 
 ```json
 [
@@ -465,7 +558,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 ]  
 ```
 
-> Create Vehicle - Sample Response
+> Response
 
 ```json
 {
@@ -529,8 +622,19 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ## Read Vehicle (Single)
 
+> Defination
 
-> Read Vehicle - Sample Response
+```json
+http://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
+```
+
+> Request Body
+
+```json
+No Request body
+```
+
+> Response
 
 ```json
 {
@@ -608,8 +712,19 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 ## Read Vehicle 
 
+> Defination
 
-> Read Vehicle - Sample Response
+```json
+http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+```
+
+> Request Body
+
+```json
+No Request body
+```
+
+> Response
 
 ```json
 {
@@ -706,7 +821,13 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Vehicle
 
-> Update Vehicle - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+```
+
+> Request Body
 
 ```json
 [
@@ -741,7 +862,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Update Vehicle - Sample Response
+> Response
 
 ```json
 {
@@ -798,13 +919,19 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ## Delete Vehicle
 
-> Delete Vehicle - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+```
+
+> Request Body
 
 ```json
 ["a9be39b9347911e6829f000d3aa04450"]
 ```
 
-> Delete Vehicle - Sample Response
+> Response
 
 ```json
 {
@@ -838,8 +965,13 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 
 
 ## Create Driver
+> Defination
 
-> Create Driver - Sample Request
+```json
+http://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
+```
+
+> Request Body
 
 ```json
 [
@@ -899,7 +1031,7 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 ]
 ```
 
->  Create Driver - Sample Response
+>  Response
 
 ```json
 {
@@ -973,13 +1105,19 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ## Read Driver
 
-> Read Driver - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
+```
+
+> Request Body
 
 ```json
 ["1c3a551f47534b98a29d916b0405fd6d"]
 ```
 
-> Read Driver - Sample Response
+> Response
 
 ```json
 {
@@ -1116,7 +1254,13 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Driver
 
-> Update Driver - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
+```
+
+> Request Body
 
 ```json
 {
@@ -1174,7 +1318,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
     }    
 ```
 
-> Update Driver - Sample Response
+> Response
 
 ```json
 {
@@ -1242,13 +1386,19 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ## Delete Driver
 
-> Delete Driver - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
+```
+
+> Request Body
 
 ```json
 ["e0eaebdd84ac4c40af72d827ab610090"]
 ```
 
-> Delete Driver - Sample Response
+> Response
 
 ```json
 {
@@ -1277,7 +1427,13 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Create Trip
 
-> Create Trip - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TripApp/haul/v1/trip/create
+```
+
+> Request Body
 
 ```json
 {
@@ -1299,7 +1455,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 }
 ```
 
-> Create Trip - Sample Response
+> Response
 
 ```json
 {
@@ -1352,7 +1508,13 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 
 ## Start Trip
 
-> Start Trip - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TripApp/haul/v1/trip/start
+```
+
+> Request Body
 
 ```json
 [
@@ -1360,7 +1522,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 ]
 ```
 
-> Start Trip - Sample Response
+> Response
 
 ```json
 {
@@ -1388,7 +1550,13 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 
 ## Stop Trip
 
-> Stop Trip - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
+```
+
+> Request Body
 
 ```json
 [
@@ -1396,7 +1564,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 ]
 ```
 
-> Stop Trip - Sample Response
+> Response
 
 ```json
 {
@@ -1440,13 +1608,19 @@ tripname | TestTripName| Trip name
 
 ## Track Last Location
 
-> Track Last Location - Sample Request
+> Defination
+
+```json
+http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
+```
+
+> Request Body
 
 ```json
 http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
-> Track Last Location - Sample Response
+> Response
 
 ```json
 {
@@ -1497,7 +1671,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Accept Order
 
-> Accept Order - Sample Response
+> Response
 
 ```json
 {
@@ -1528,7 +1702,7 @@ updatedOn | Accept order timestamp
 
 ## Reject Order
 
-> Reject Order - Sample Response
+> Response
 
 ```json
 {
@@ -1557,7 +1731,7 @@ reasonOfRejection | Reason provided by Delivery medium while rejecting the order
 
 ## Delivered
 
-> Delivery - Sample Response
+> Response
 
 ```json
 {
@@ -1601,7 +1775,7 @@ recipientName | Name of recipient
 
 ## Partially Delivered
 
-> Partial Delivery - Sample Response
+> Response
 
 ```json
 {
@@ -1644,7 +1818,7 @@ recipientName | Name of recipient
 
 ## Not Delivered
 
-> Not Delivered - Sample Response
+> Response
 
 ```json
 {
@@ -1681,7 +1855,7 @@ recipientName | Name of recipient
 
 ## Pickedup
 
-> Pickup Order - Sample Response
+> Response
 
 ```json
 {
@@ -1710,7 +1884,7 @@ status | PICKEDUPNOTIFICATION
 
 ## Not Pickedup
 
-> Order not pickup - Sample Response
+> Response
 
 ```json
 {

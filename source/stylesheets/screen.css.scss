@@ -65,7 +65,7 @@ html, body {
   top: 0;
   left: 0;
   bottom: 0;
-  width: $nav-width;
+  width: 220px;//$nav-width;
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
@@ -272,7 +272,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    width: $examples-width;
+    width: 47%;//$examples-width;
     background-color:#1e272c;//$examples-bg;
     position: absolute;
     right: 0;
@@ -283,12 +283,12 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid #1e272c;//$lang-select-active-bg;
   }
 }
 
 .lang-selector {
-  background-color: $lang-select-bg;
+  background-color: #121c22;//$lang-select-bg;
   width: 100%;
   font-weight: bold;
   a {
@@ -306,7 +306,7 @@ html, body {
     }
 
     &.active {
-      background-color: $lang-select-active-bg;
+      background-color: #1e272c;//$lang-select-active-bg;
       color: $lang-select-active-text;
     }
   }
@@ -336,7 +336,7 @@ html, body {
   }
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-    margin-right: $examples-width;
+    margin-right: 48%;//$examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
@@ -411,6 +411,8 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+    //border-radius: 50px;
+    //border-color:gray;
     th,td {
       text-align: left;
       vertical-align: top;
@@ -532,18 +534,35 @@ html, body {
 
 .content {
   pre, blockquote {
-    background-color: #1e272c;
+    //background-color:#121c22;//#1e272c;//
+    // color: #fff;
+    //
+    // padding: 2em $main-padding;
+    // margin: 0;
+    // width: 45%;//$examples-width;
+    //
+    // float:right;
+    // clear:right;
+    //
+    // font-size: 15px;
+    //
+    // box-sizing: border-box;
+    // text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+    // border-radius: 30px;
+
+
     color: #fff;
-
-    padding: 2em $main-padding;
-    margin: 0;
-    width: $examples-width;
-
-    float:right;
-    clear:right;
-
+    padding: 2em 36px 2em 38px;
+    margin: -19px -27px 0px 0px;
+    width: 45%;
+    float: right;
+    clear: right;
+    font-size: 15px;
     box-sizing: border-box;
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    margin-right: 10px;
+
 
     @extend %right-col;
 
@@ -562,12 +581,14 @@ html, body {
 
   blockquote {
     &>p {
-      background-color: #121c22;//$code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      //background-color: #1e272c;//#121c22;//$code-annotation-bg;
+      //border-radius: 5px;
+      //padding: $code-annotation-padding;
+      //color: #ccc;
+      //border-top: 1px solid #000;
+      //border-bottom: 1px solid #404040;
+      margin-left: -35px;
+      margin-bottom: -5px;
     }
   }
 }
@@ -628,10 +649,17 @@ html, body {
   }
 }
 
+.highlight {
+  .err{
+    color:#90a959;
+    background-color:#121c22;
+  }
+}
+
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
   color: #909090;
 }
 
 .highlight, .highlight .w {
-  background-color: #1e272c;//$code-bg;
+  background-color: #121c22;//#1e272c;//$code-bg;
 }
