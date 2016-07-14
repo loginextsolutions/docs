@@ -907,29 +907,57 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 ```json
 [
     {
-        "driverEmployeeId":"D0011",
-        "licenseNumber":"LN110090",
         
-        "driverName":"Test001",
-        "phoneNumber":1234567890,
+        "driverName":"Test_Driver",
+        "phoneNumber":1234565632,
+        "emailId":"test@testing.com",
+        "dateOfBirth":"2016-06-13",
+        "languageList":[{"name":"English"},{"name":"Hindi"}],
+        "salary":"10000",
+        "maritalStatus":"married",
+        "gender":"male",
+        "experience":10,
+        
+        "licenseValidity":"2020-06-13",
+        "licenseNumber":"LIC_104",
+        "licenseType":"4 wheeler",
+        "licenseIssueBy":"Maharashtra Govt.",
+    
         "addressList":[ {
-                                "apartment":"Loginext",
+                                "apartment":"A-901",
+                                "streetName": "Hiranandani Street",
+                                "landmark":"DMart",
+                                "countryShortCode":"IND",
+                                "stateShortCode":"MH",
                                 "city":"Mumbai",
-                                "country":10,
-                                "state":20,
-                                "isCurrentAddress":true,
-                                "guid":"bd53"
-                                
+                                "pincode":400076,
+                                "isCurrentAddress":true
+                        },
+                        {
+                                "apartment":"A-902",
+                                "streetName": "LBS Marg",
+                                "landmark":"SBI",
+                                "countryShortCode":"IND",
+                                "stateShortCode":"MH",
+                                "city":"Mumbai",
+                                "pincode":400092,
+                                "isCurrentAddress":false
                         }],
+                        
+        
+        "driverEmployeeId":"D23",
         "shiftList":[{
-                            "shiftStartTime" :"07:03pm",
+                            "shiftStartTime"  :"07:03pm",
                             "shiftEndTime":"07:10am",
                             "startTime":"2016-06-13",
                             "endTime":"2016-06-15"
-                            
-        }]
+
+        }],
         
-        
+        "previousCompanyName":"ABC",
+        "reportingManager":"Rahul",
+        "managerPhoneNumber":1234567890,
+        "managerEmailId":"test@test.com"
     }    
 ]
 ```
@@ -938,9 +966,11 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 
 ```json
 {
-  "status": 200,
+  "status": 201,
   "message": "success",
-  "data": null,
+  "data": [
+    "122e948ce6cc40fb85492c4c5a600816"
+  ],
   "hasError": false
 }
 
@@ -950,7 +980,7 @@ This endpoint creates a new driver.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/create`
+`POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/create`
 
 ### HTTP Request Headers
 
@@ -962,9 +992,46 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ### HTTP Request Parameters
 
+### HTTP Request Parameters
+
 Param | DataType |  Required | Brief Info
 --------- | ------- | ---------- | ------------ 
-driverEmployeeId | String | Mandatory | Driver EmployeeID
+driverName | String | Mandatory |  Driver's full name
+phoneNumber | String | Mandatory | Phone No
+emailId | String | Optional | EmailId
+dateOfBirth | String | Optional | Date of Birth
+languageList | List of Objects | Optional | Language(s) known to the driver
+languageList.name | String | Optional | Name of language
+salary | String | Optional | Current salary of Driver
+maritalStatus | String | Optional | Marital Status. Ex: married, unmarried.
+gender | String | Optional | Gender. Ex - male,female.
+experience | Integer | Optional | No of yrs. of driving experience
+licenseValidity | String | Optional | License validity date
+licenseNumber | String | Mandatory | License No
+licenseType | String | Optional | License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy | String | Optional | License Issuing Authority Name
+addressList.apartment | String | Mandatory | Apartment name/no
+addressList.streetName | String | Mandatory | Society/Street name
+addressList.landmark | String | Mandatory | Landmark
+addressList.areaName | String | Optional | Locality/Area name
+addressList.countryShortCode | String | Mandatory | Country short code
+addressList.stateShortCode | String | Mandatory | State short code
+addressList.city | String | Mandatory | City
+addressList.pincode | Integer | Mandatory | Pincode
+addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId | String | Optional | EmployeeId 
+shiftList.startTime | String | Mandatory | Shift start date
+shiftList.endTime | String | Mandatory | Shift end date
+shiftList.shiftStartTime | String | Mandatory | Shift start time
+shiftList.shiftEndTime | String | Mandatory | Shift end time
+previousCompanyName | String | Optional | Driver's last company name
+reportingManager | String | Optional | Driver's last company's reporting manager's name
+managerPhoneNumber | String | Optional | Driver's last company'smanager's phone no
+managerEmailId | String | Optional | Driver's last company's manager's email id
+
+
+
+
 
 
 ## Driver Read
@@ -972,7 +1039,7 @@ driverEmployeeId | String | Mandatory | Driver EmployeeID
 > Driver Read - Sample Request
 
 ```json
-["863fe69239bc4f738ca275a809c3b2e2"]
+["1c3a551f47534b98a29d916b0405fd6d"]
 ```
 
 > Driver Read - Sample Response
@@ -981,7 +1048,116 @@ driverEmployeeId | String | Mandatory | Driver EmployeeID
 {
   "status": 200,
   "message": "success",
-  "data": null,
+  "data": [
+    {
+      "createdOnDt": null,
+      "updatedOnDt": null,
+      "createdByUserId": null,
+      "updatedByUserId": null,
+      "isDeleteFl": null,
+      "isActiveFl": true,
+      "driverId": 772,
+      "driverName": "Test_Driver",
+      "clientId": null,
+      "phoneNumber": "1234565632",
+      "emailId": "test@testing.com",
+      "idProof": null,
+      "licenseNumber": "LIC_104",
+      "licenseValidity": 1591986600000,
+      "license": null,
+      "salary": 10000,
+      "capacity": null,
+      "addressLine1": null,
+      "addressLine2": null,
+      "city": null,
+      "state": null,
+      "pinCode": null,
+      "licenseType": "4 wheeler",
+      "clientBranchId": 1402,
+      "defaultVehicle": null,
+      "vehicleNumber": null,
+      "licenseAlertWindow": null,
+      "mediaLocation": null,
+      "fileName": null,
+      "mediaPurposeCode": null,
+      "entity": null,
+      "attendance": null,
+      "workHour": null,
+      "status": null,
+      "dateOfBirth": 1465776000000,
+      "experience": "11",
+      "maritalStatus": "married",
+      "gender": "female",
+      "languageList": [
+        {
+          "createdOnDt": null,
+          "updatedOnDt": null,
+          "createdByUserId": null,
+          "updatedByUserId": null,
+          "isDeleteFl": null,
+          "isActiveFl": true,
+          "id": 90,
+          "guid": null,
+          "name": "English",
+          "code": null,
+          "driverId": null,
+          "deliveryMediumMasterId": null
+        },
+        {
+          "createdOnDt": null,
+          "updatedOnDt": null,
+          "createdByUserId": null,
+          "updatedByUserId": null,
+          "isDeleteFl": null,
+          "isActiveFl": true,
+          "id": 91,
+          "guid": null,
+          "name": "Hindi",
+          "code": null,
+          "driverId": null,
+          "deliveryMediumMasterId": null
+        }
+      ],
+      "licenseIssueBy": "Maharashtra Govt.",
+      "tripName": null,
+      "previousCompanyName": "ABC",
+      "driverEmployeeId": "D23",
+      "reportingManager": "Rahul",
+      "managerPhoneNumber": "1234567890",
+      "managerEmailId": "test@test.com",
+      "deviceId": null,
+      "trackingDate": null,
+      "deviceBarcode": null,
+      "shiftList": [
+        {
+          "shiftStartTime": "01, Jan 1970 07:03 PM",
+          "shiftEndTime": "01, Jan 1970 07:10 AM",
+          "driverId": 772,
+          "createdByUserId": null,
+          "startTime": null,
+          "endTime": null,
+          "deliveryMediumMasterId": null
+        }
+      ],
+      "addressList": [],
+      "tripId": null,
+      "lat": null,
+      "lng": null,
+      "isPresent": null,
+      "tripStatus": null,
+      "batteryPerc": null,
+      "mediaList": null,
+      "addressProofId": null,
+      "removeAddressProofId": null,
+      "removeLicenseProof": null,
+      "lastLicenseAlertSentDt": null,
+      "clientBranchName": null,
+      "previousPhoneNumber": null,
+      "referenceId": "1c3a551f47534b98a29d916b0405fd6d",
+      "guid": null,
+      "licenseProof": null
+    }
+  ],
   "hasError": false
 }
 
@@ -991,7 +1167,7 @@ This endpoint lists an existing driver.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/list`
+`POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
 ### HTTP Request Headers
 
@@ -1006,33 +1182,59 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Driver Update - Sample Request
 
 ```json
-[
-    {
-        "driverEmployeeId":"D0011",
-        "licenseNumber":"LN110090",
-        "referenceId": "863fe69239bc4f738ca275a809c3b2e2",
-        "driverName":"test_shiv",
-        "phoneNumber":1234567890,
+{
+        "referenceId":"1c3a551f47534b98a29d916b0405fd6d",
+        "driverName":"Test_Driver",
+        "phoneNumber":"1234565632",
+        "emailId":"test@testing.com",
+        "dateOfBirth":"2016-06-13",
+        "languageList":[{"name":"English"},{"name":"Hindi"}],
+        "salary":"10000",
+        "maritalStatus":"married",
+        "gender":"female",
+        "experience":11,
+        
+        "licenseValidity":"2020-06-13",
+        "licenseNumber":"LIC_104",
+        "licenseType":"4 wheeler",
+        "licenseIssueBy":"Maharashtra Govt.",
+    
         "addressList":[ {
-                                "apartment":"Loginext",
+                                "apartment":"A-901",
+                                "streetName": "Hiranandani Street",
+                                "landmark":"DMart",
+                                "countryShortCode":"IND",
+                                "stateShortCode":"MH",
                                 "city":"Mumbai",
-                                "country":10,
-                                "state":20,
-                                "isCurrentAddress":true,
-                                 "guid":"bd53"
-                                
+                                "pincode":400076,
+                                "isCurrentAddress":true
+                        },
+                        {
+                                "apartment":"A-902",
+                                "streetName": "LBS Marg",
+                                "landmark":"SBI",
+                                "countryShortCode":"IND",
+                                "stateShortCode":"MH",
+                                "city":"Mumbai",
+                                "pincode":400092,
+                                "isCurrentAddress":false
                         }],
+                        
+        
+        "driverEmployeeId":"D23",
         "shiftList":[{
                             "shiftStartTime"  :"07:03pm",
                             "shiftEndTime":"07:10am",
                             "startTime":"2016-06-13",
                             "endTime":"2016-06-15"
-                            
-        }]
+
+        }],
         
-        
+        "previousCompanyName":"ABC",
+        "reportingManager":"Rahul",
+        "managerPhoneNumber":"1234567890",
+        "managerEmailId":"test@test.com"
     }    
-]
 ```
 
 > Driver Update - Sample Response
@@ -1051,7 +1253,7 @@ This endpoint updates an existing driver.
 
 ### HTTP Request
 
-`PUT http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/update`
+`PUT http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/update`
 
 ### HTTP Request Headers
 
@@ -1060,6 +1262,44 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### HTTP Request Parameters
+
+Param | DataType |  Required | Brief Info
+--------- | ------- | ---------- | ------------ 
+referenceId | String | Mandatory |  ReferenceId of the record
+driverName | String | Mandatory |  Driver's full name
+phoneNumber | String | Mandatory | Phone No
+emailId | String | Optional | EmailId
+dateOfBirth | String | Optional | Date of Birth
+languageList | List of Objects | Optional | Language(s) known to the driver
+languageList.name | String | Optional | Name of language
+salary | String | Optional | Current salary of Driver
+maritalStatus | String | Optional | Marital Status. Ex: married, unmarried.
+gender | String | Optional | Gender. Ex - male,female.
+experience | Integer | Optional | No of yrs. of driving experience
+licenseValidity | String | Optional | License validity date
+licenseNumber | String | Mandatory | License No
+licenseType | String | Optional | License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy | String | Optional | License Issuing Authority Name
+addressList.apartment | String | Mandatory | Apartment name/no
+addressList.streetName | String | Mandatory | Society/Street name
+addressList.landmark | String | Mandatory | Landmark
+addressList.areaName | String | Optional | Locality/Area name
+addressList.countryShortCode | String | Mandatory | Country short code
+addressList.stateShortCode | String | Mandatory | State short code
+addressList.city | String | Mandatory | City
+addressList.pincode | Integer | Mandatory | Pincode
+addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId | String | Optional | EmployeeId 
+shiftList.startTime | String | Mandatory | Shift start date
+shiftList.endTime | String | Mandatory | Shift end date
+shiftList.shiftStartTime | String | Mandatory | Shift start time
+shiftList.shiftEndTime | String | Mandatory | Shift end time
+previousCompanyName | String | Optional | Driver's last company name
+reportingManager | String | Optional | Driver's last company's reporting manager's name
+managerPhoneNumber | String | Optional | Driver's last company'smanager's phone no
+managerEmailId | String | Optional | Driver's last company's manager's email id
 
 =======
 
@@ -1087,7 +1327,7 @@ This endpoint deletes an existing driver.
 
 ### HTTP Request
 
-`DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/driver/v1/delete`
+`DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
 ### HTTP Request Headers
 
@@ -1096,6 +1336,7 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
 
 ## Trip Create
 
