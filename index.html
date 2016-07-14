@@ -233,7 +233,7 @@
 <blockquote>
 <p>Defination</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/token/refresh</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/token/refresh</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -243,15 +243,22 @@
 </span></code></pre>
 
 <blockquote>
-<p>Response</p>
+<p>Response
+<code class="prettyprint">json
+{
+  &quot;status&quot;: 200,
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;data&quot;: null,
+  &quot;hasError&quot;: false
+}
+</code></p>
 </blockquote>
-<pre class="highlight json"><code></code></pre>
 
 <p>This endpoint invalidates a user. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/LoginApp/token/refresh</code></p>
+<p><code class="prettyprint">GET https://api.loginextsolutions.com/LoginApp/login/token/refresh</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
