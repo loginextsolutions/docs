@@ -16,7 +16,7 @@ search: true
 
 # Introduction
 
-Loginext welcomes to the world of organised logistics. 
+Loginext welcomes you to the world of organised logistics. 
 
 This API documentation will help you, intergrate your software platform with loginext's for end to end logistics management. 
 
@@ -30,7 +30,7 @@ Use the following URL endpoint to authenticate userself as a user of this API.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/LoginApp/login/authenticate`
+`POST http://api.loginextsolutions.com/LoginApp/login/authenticate`
 
 ### HTTP Request Headers
 
@@ -64,7 +64,7 @@ This endpoint invalidates a user.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/LoginApp/token/refresh`
+`POST http://api.loginextsolutions.com/LoginApp/token/refresh`
 
 
 ### HTTP Request Headers
@@ -76,8 +76,6 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 <aside class="success">Response headers will contain new session token and authentication key.</aside>
 
-# OnDemand 2.0
-
 
 # Mile 2.0
 
@@ -88,6 +86,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 ```json
 
 ```
+> Defination
 
 > Create Order - Sample Response
 
@@ -105,7 +104,7 @@ This endpoint creates a new order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create`
+`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
 
 ### HTTP Request Headers
 
@@ -140,7 +139,7 @@ This endpoint creates a return order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
+`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
 
 ### HTTP Request Headers
 
@@ -174,7 +173,7 @@ This endpoint cancels an order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
 
 ### HTTP Request Headers
 
@@ -214,7 +213,7 @@ This endpoint gets an order status.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status`
+`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
 
 ### HTTP Request Headers
 
@@ -285,7 +284,7 @@ This endpoint adds crates to an existing order.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/crate`
+`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
 
 ### HTTP Request Headers
 
@@ -322,7 +321,7 @@ This endpoint starts a trip.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/start`
+`POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
 
 ### HTTP Request Headers
 
@@ -361,7 +360,7 @@ This endpoint stops a trip.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+`POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
   
 ### HTTP Request Headers
 
@@ -376,7 +375,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 > Track Last Location - Sample Request
 
 ```json
-http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
 > Track Last Location - Sample Response
@@ -416,7 +415,7 @@ This endpoint fetches the latest location for the requested shipments
 
 ### HTTP Request
 
-`GET http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+`GET http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
   
 ### HTTP Request Headers
 
@@ -430,9 +429,9 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 # Haul 2.0
 
-## Vehicle Create
+## Create Vehicle 
 
-> Vehicle Create - Sample Request
+> Create Vehicle - Sample Request
 
 ```json
 [
@@ -466,7 +465,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 ]  
 ```
 
-> Vehicle Create - Sample Response
+> Create Vehicle - Sample Response
 
 ```json
 {
@@ -487,7 +486,7 @@ This endpoint creates a new Vehicle.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/create`
+`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
 
 ### HTTP Request Headers
 
@@ -526,10 +525,10 @@ rentStartDate | Date |Optional | If ownership is “vendor” then only this fie
 rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
 deviceId.barcode | String |Optional | Barcode of the tracker.
 
-## Vehicle Read (Single)
+## Read Vehicle (Single)
 
 
-> Vehicle Read - Sample Response
+> Read Vehicle - Sample Response
 
 ```json
 {
@@ -587,7 +586,7 @@ This endpoint returns the vehicle details for the client with the given Referenc
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
+`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
 
 ### HTTP Request Headers
 
@@ -604,10 +603,10 @@ Parameter | Type |  Required | Description
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 
-## Vehicle Read
+## Read Vehicle 
 
 
-> Vehicle Read - Sample Response
+> Read Vehicle - Sample Response
 
 ```json
 {
@@ -756,7 +755,7 @@ This endpoint lists an existing Vehicles for the client.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -766,9 +765,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-## Vehicle Update
+## Update Vehicle
 
-> Vehicle Update - Sample Request
+> Update Vehicle - Sample Request
 
 ```json
 [
@@ -803,7 +802,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 ]
 ```
 
-> Vehicle Update - Sample Response
+> Update Vehicle - Sample Response
 
 ```json
 {
@@ -819,7 +818,7 @@ This endpoint updates the vehicle details with given reference id.
 
 ### HTTP Request
 
-`PUT http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+`PUT http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -859,15 +858,15 @@ rentEndDate  | Date |Optional | If ownership is “vendor” then only this fiel
 deviceId.barcode | String |Optional | Barcode of the tracker.
 
 
-## Vehicle Delete
+## Delete Vehicle
 
-> Vehicle Delete - Sample Request
+> Delete Vehicle - Sample Request
 
 ```json
 ["a9be39b9347911e6829f000d3aa04450"]
 ```
 
-> Vehicle Delete - Sample Response
+> Delete Vehicle - Sample Response
 
 ```json
 {
@@ -883,7 +882,7 @@ This endpoint deletes the Vehicle with given list of reference IDs.
 
 ### HTTP Request
 
-`DELETE http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle`
+`DELETE http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -900,9 +899,9 @@ Parameter | Type |  Required | Description
 reference_ids | List (String) | Mandatory | Reference Id associated with the vehicle.
 
 
-## Driver Create
+## Create Driver
 
-> Driver Create - Sample Request
+> Create Driver - Sample Request
 
 ```json
 [
@@ -962,7 +961,7 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 ]
 ```
 
-> Driver Create - Sample Response
+>  Create Driver - Sample Response
 
 ```json
 {
@@ -980,7 +979,7 @@ This endpoint creates a new driver.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/create`
+`POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
 
 ### HTTP Request Headers
 
@@ -1034,15 +1033,15 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 
 
-## Driver Read
+## Read Driver
 
-> Driver Read - Sample Request
+> Read Driver - Sample Request
 
 ```json
 ["1c3a551f47534b98a29d916b0405fd6d"]
 ```
 
-> Driver Read - Sample Response
+> Read Driver - Sample Response
 
 ```json
 {
@@ -1167,7 +1166,7 @@ This endpoint lists an existing driver.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/list`
+`POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
 ### HTTP Request Headers
 
@@ -1177,9 +1176,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-## Driver Update
+## Update Driver
 
-> Driver Update - Sample Request
+> Update Driver - Sample Request
 
 ```json
 {
@@ -1237,7 +1236,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
     }    
 ```
 
-> Driver Update - Sample Response
+> Update Driver - Sample Response
 
 ```json
 {
@@ -1253,7 +1252,7 @@ This endpoint updates an existing driver.
 
 ### HTTP Request
 
-`PUT http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/update`
+`PUT http://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
 
 ### HTTP Request Headers
 
@@ -1303,15 +1302,15 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 =======
 
-## Driver Delete
+## Delete Driver
 
-> Driver Delete - Sample Request
+> Delete Driver - Sample Request
 
 ```json
 ["e0eaebdd84ac4c40af72d827ab610090"]
 ```
 
-> Driver Delete - Sample Response
+> Delete Driver - Sample Response
 
 ```json
 {
@@ -1327,7 +1326,7 @@ This endpoint deletes an existing driver.
 
 ### HTTP Request
 
-`DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
+`DELETE http://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
 ### HTTP Request Headers
 
@@ -1338,9 +1337,9 @@ WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication t
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 
-## Trip Create
+## Create Trip
 
-> Trip Create - Sample Request
+> Create Trip - Sample Request
 
 ```json
 {
@@ -1362,7 +1361,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 }
 ```
 
-> Trip Create - Sample Response
+> Create Trip - Sample Response
 
 ```json
 {
@@ -1378,7 +1377,7 @@ This endpoint creates a new trip.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create`
+`POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
 ### HTTP Request Headers
 
@@ -1411,9 +1410,9 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 
 
 
-## Trip Start
+## Start Trip
 
-> Trip Start - Sample Request
+> Start Trip - Sample Request
 
 ```json
 [
@@ -1421,7 +1420,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 ]
 ```
 
-> Trip Start - Sample Response
+> Start Trip - Sample Response
 
 ```json
 {
@@ -1437,7 +1436,7 @@ This endpoint starts a trip.
 
 ### HTTP Request
 
-`PUT http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start`
+`PUT http://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
 ### HTTP Request Headers
 
@@ -1447,9 +1446,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-## Trip Stop
+## Stop Trip
 
-> Trip Stop - Sample Request
+> Stop Trip - Sample Request
 
 ```json
 [
@@ -1457,7 +1456,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 ]
 ```
 
-> Trip Stop - Sample Response
+> Stop Trip - Sample Response
 
 ```json
 {
@@ -1473,7 +1472,7 @@ This endpoint stops a trip.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/stop`
+`POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
 
 ### HTTP Request Headers
 
@@ -1489,7 +1488,7 @@ This endpoint is to get iFrame view of a trip.
 
 ### HTTP Request
 
-`GET https://endpoint.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
+`GET https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
 
 ### HTTP Request Parameters
 
@@ -1504,7 +1503,7 @@ tripname | TestTripName| Trip name
 > Track Last Location - Sample Request
 
 ```json
-http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
 > Track Last Location - Sample Response
@@ -1544,7 +1543,7 @@ This endpoint fetches the latest location for the requested shipments
 
 ### HTTP Request
 
-`GET http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+`GET http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
   
 ### HTTP Request Headers
 
@@ -1742,7 +1741,7 @@ recipientName | Name of recipient
 
 ## Pickedup
 
-> Order pickup - Sample Response
+> Pickup Order - Sample Response
 
 ```json
 {
