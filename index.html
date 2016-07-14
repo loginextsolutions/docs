@@ -774,7 +774,9 @@
 
 </span></code></pre>
 
-<p>This endpoint creates a new Vehicle.</p>
+<p>Create a new vehicle by passing form data through json. </p>
+
+<p>The acknowledgement will provide the vehicle number and reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1012,7 +1014,7 @@
 
 </span></code></pre>
 
-<p>This endpoint returns the vehicle details for the client with the given Reference ID.</p>
+<p>Use this API to read all data for a particular vehicle using its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1137,70 +1139,6 @@
         </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"538649a7b9fc45be8d75b5932cc8ab60"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1170</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mh04HD1531"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"previousVehiclenumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">7500</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"batteryPercentage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mediaList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"permit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lastTrackingDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vendorName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedRegistrationMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedInsuranceMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedPucMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3182</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00700416"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358899057353677"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"tripDetail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"insuranceAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pucAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lastInsuranceAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lastPUCAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"client_Id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f9d77411a3f94f58910e241019a0ee4e"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -1209,7 +1147,7 @@
 
 </span></code></pre>
 
-<p>This endpoint lists an existing Vehicles for the client.</p>
+<p>This API is used to list all existing vehicles in the system. All vehicle related data values will be returned.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1290,7 +1228,7 @@
 
 </span></code></pre>
 
-<p>This endpoint updates the vehicle details with given reference id.</p>
+<p>This API is used to update a particular vehicle based on its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1498,7 +1436,7 @@
 
 </span></code></pre>
 
-<p>This endpoint deletes the Vehicle with given list of reference IDs.</p>
+<p>This API is used to delete a particular vehicle based on its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1624,7 +1562,9 @@
 
 </span></code></pre>
 
-<p>This endpoint creates a new driver.</p>
+<p>Create a new driver by passing form data through json. </p>
+
+<p>The acknowledgement will provide the driver reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1991,7 +1931,7 @@
 
 </span></code></pre>
 
-<p>This endpoint lists an existing driver.</p>
+<p>Use this API to read all data for a particular driver using its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2095,7 +2035,7 @@
 
 </span></code></pre>
 
-<p>This endpoint updates an existing driver.</p>
+<p>This API is used to update a particular driver based on its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2359,7 +2299,7 @@
 
 </span></code></pre>
 
-<p>This endpoint deletes an existing driver.</p>
+<p>This API is used to delete a particular driver based on its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2427,7 +2367,9 @@
 
 </span></code></pre>
 
-<p>This endpoint creates a new trip.</p>
+<p>Create a new trip using this API. Form data is passed through json. </p>
+
+<p>The acknowledgement will contain the trip reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2589,7 +2531,7 @@
 
 </span></code></pre>
 
-<p>This endpoint starts a trip.</p>
+<p>This API is used to start a trip using its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2643,7 +2585,7 @@
 
 </span></code></pre>
 
-<p>This endpoint stops a trip.</p>
+<p>This API is used to end an in-transit trip using its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2677,7 +2619,7 @@
 
 <h2 id="trip-iframe">Trip iFrame</h2>
 
-<p>This endpoint is to get iFrame view of a trip.</p>
+<p>The iFrame displays the last tracking for a trip, including current location and trip history, based on the trip name.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2750,7 +2692,7 @@
 
 </span></code></pre>
 
-<p>This endpoint fetches the latest location for the requested shipments</p>
+<p>Track API fetches the latest location (latitude / longitude) for a trip based on its reference ID.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
