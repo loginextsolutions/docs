@@ -27,7 +27,7 @@ This API documentation will help you, intergrate your software platform with log
 > Defination
 
 ```json
-http://api.loginextsolutions.com/LoginApp/login/authenticate
+https://api.loginextsolutions.com/LoginApp/login/authenticate
 ```
 
 > Request Body
@@ -52,7 +52,7 @@ Use the following URL endpoint to authenticate userself as a user of this API.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/LoginApp/login/authenticate`
+`POST https://api.loginextsolutions.com/LoginApp/login/authenticate`
 
 ### HTTP Request Headers
 
@@ -85,7 +85,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 > Defination
 
 ```json
-http://api.loginextsolutions.com/LoginApp/token/refresh
+https://api.loginextsolutions.com/LoginApp/token/refresh
 ```
 
 > Request Body
@@ -103,7 +103,7 @@ This endpoint invalidates a user.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/LoginApp/token/refresh`
+`POST https://api.loginextsolutions.com/LoginApp/token/refresh`
 
 
 ### HTTP Request Headers
@@ -123,7 +123,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 > Defination
 
 ```json
-http://api.loginextsolutions.com/LoginApp/token/refresh
+https://api.loginextsolutions.com/LoginApp/token/refresh
 ```
 
 > Request Body
@@ -148,7 +148,7 @@ This endpoint creates a new order.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
 
 ### HTTP Request Headers
 
@@ -164,7 +164,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
 ```
 
 > Request Body
@@ -189,7 +189,7 @@ This endpoint creates a return order.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
 
 ### HTTP Request Headers
 
@@ -204,7 +204,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 ```
 
 > Request Body
@@ -229,7 +229,7 @@ This endpoint cancels an order.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
 
 ### HTTP Request Headers
 
@@ -244,7 +244,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/mile/v1/status
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
 ```
 
 > Request Body
@@ -275,7 +275,7 @@ This endpoint gets an order status.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
 
 ### HTTP Request Headers
 
@@ -291,7 +291,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
 ```
 
 > Request Body
@@ -352,7 +352,7 @@ This endpoint adds crates to an existing order.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
 
 ### HTTP Request Headers
 
@@ -368,7 +368,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TripApp/mile/v1/trip/start
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 ```
 
 > Request Body
@@ -395,7 +395,7 @@ This endpoint starts a trip.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
 
 ### HTTP Request Headers
 
@@ -410,7 +410,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
 ```
 
 > Request Body
@@ -439,7 +439,7 @@ This endpoint stops a trip.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
   
 ### HTTP Request Headers
 
@@ -454,7 +454,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
 > Request Body
@@ -501,7 +501,7 @@ This endpoint fetches the latest location for the requested shipments
 
 ### HTTP Request
 
-`GET http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+`GET https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
   
 ### HTTP Request Headers
 
@@ -520,7 +520,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 > Defination
 
 ```json
-http://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
+https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
 ```
 
 
@@ -581,7 +581,7 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
+`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
 
 ### HTTP Request Headers
 
@@ -625,7 +625,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 > Defination
 
 ```json
-http://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
+https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
 ```
 
 > Request Body
@@ -693,7 +693,7 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
+`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
 
 ### HTTP Request Headers
 
@@ -715,7 +715,7 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 > Defination
 
 ```json
-http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 ```
 
 > Request Body
@@ -809,7 +809,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -824,7 +824,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 ```
 
 > Request Body
@@ -877,7 +877,7 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### HTTP Request
 
-`PUT http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+`PUT https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -922,7 +922,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 > Defination
 
 ```json
-http://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 ```
 
 > Request Body
@@ -947,7 +947,7 @@ This API is used to delete a particular vehicle based on its reference ID.
 
 ### HTTP Request
 
-`DELETE http://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+`DELETE https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 ### HTTP Request Headers
 
@@ -968,7 +968,7 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 > Defination
 
 ```json
-http://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
+https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
 ```
 
 > Request Body
@@ -1051,7 +1051,7 @@ The acknowledgement will provide the driver reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
+`POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
 
 ### HTTP Request Headers
 
@@ -1108,7 +1108,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 > Defination
 
 ```json
-http://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
+https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
 ```
 
 > Request Body
@@ -1242,7 +1242,7 @@ Use this API to read all data for a particular driver using its reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
+`POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
 ### HTTP Request Headers
 
@@ -1257,7 +1257,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
+https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
 ```
 
 > Request Body
@@ -1334,7 +1334,7 @@ This API is used to update a particular driver based on its reference ID.
 
 ### HTTP Request
 
-`PUT http://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
+`PUT https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
 
 ### HTTP Request Headers
 
@@ -1389,7 +1389,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 > Defination
 
 ```json
-http://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
+https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
 ```
 
 > Request Body
@@ -1414,7 +1414,7 @@ This API is used to delete a particular driver based on its reference ID.
 
 ### HTTP Request
 
-`DELETE http://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
+`DELETE https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
 ### HTTP Request Headers
 
@@ -1430,7 +1430,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TripApp/haul/v1/trip/create
+https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
 ```
 
 > Request Body
@@ -1473,7 +1473,7 @@ The acknowledgement will contain the trip reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
+`POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
 ### HTTP Request Headers
 
@@ -1511,7 +1511,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TripApp/haul/v1/trip/start
+https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 ```
 
 > Request Body
@@ -1538,7 +1538,7 @@ This API is used to start a trip using its reference ID.
 
 ### HTTP Request
 
-`PUT http://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
+`PUT https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
 ### HTTP Request Headers
 
@@ -1553,7 +1553,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
+https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 ```
 
 > Request Body
@@ -1580,7 +1580,7 @@ This API is used to end an in-transit trip using its reference ID.
 
 ### HTTP Request
 
-`POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
+`POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
 
 ### HTTP Request Headers
 
@@ -1611,13 +1611,13 @@ tripname | TestTripName| Trip name
 > Defination
 
 ```json
-http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
+https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
 ```
 
 > Request Body
 
 ```json
-http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
 > Response
@@ -1657,7 +1657,7 @@ Track API fetches the latest location (latitude / longitude) for a trip based on
 
 ### HTTP Request
 
-`GET http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+`GET https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
   
 ### HTTP Request Headers
 
