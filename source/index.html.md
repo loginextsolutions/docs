@@ -512,6 +512,109 @@ WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication t
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
 
+## Create Delivery Medium
+
+> Create Delivery Medium - Sample Request
+
+```json
+[
+  {
+    "employeeId": "Emp001",
+    "clientBranchId": 1403,
+    "distributionCenter": 1403,
+    "userGroupId": 23,
+    "deliveryMediumMasterName": "TestDM",
+    "phoneNumber": 1234567891,
+    "imei": 990000852471854,
+    "emailId": "test@testdm.com",
+    "userName": "testdm",
+    "password": "Passw0rd",
+    "capacityInUnits": 100,
+    "capacityInVolume": 10,
+    "capacityInWeight": 10,
+    "dob": "1980-10-29",
+    "gender": "Male",
+    "deliveryMediumMasterTypeCd": "Delivery Boy",
+    "isOwnVehicleFl": "Company",
+    "weeklyOffList": [
+      "Monday"
+    ],
+    "maxDistance": 10,
+    "licenseValidity": "2016-07-23",
+    "deliveryMediumMapList": [
+      {
+        "name": "ENGLISH"
+      },
+      {
+        "name": "HINDI"
+      }
+    ],
+    "shiftList": [
+      {
+        "shiftStartTime": "10:00",
+        "shiftEndTime": "17:00"
+      }
+    ]
+  }
+]
+```
+
+> Create Delivery Medium - Sample Response
+
+```json
+{
+  "status": 201,
+  "message": "success",
+  "data": [
+    "d7b0f3f8e1174742bd6a8ae451866cb1"
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint creates a new delivery medium.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+employeeId | String | Mandatory | Employee Id
+clientBranchId | Integer | Mandatory | Client branch id
+distributionCenter | Integer | Mandatory | Distribution center id
+userGroupId | Integer | Mandatory | User group id
+deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
+phoneNumber | String | Mandatory | Mobile no
+imei | String |Optional | IMEI no
+emailId | String | Optional | Email id
+userName | String | Mandatory | Username
+password | String | Mandatory | Password
+capacityInUnits | Integer | Mandatory | Capacity of Delivery medium in units
+capacityInVolume | Integer | Optional | Capacity of Delivery medium in volume
+capacityInWeight | Integer |Optional | Capacity of Delivery medium in weight
+dob | String | Optional | Date of birth
+gender | String |Optional | Gender. Ex - Male,Female
+deliveryMediumMasterTypeCd | String |Optional | Delivery medium type. Ex - Truck, Delivery Boy
+isOwnVehicleFl | String |Optional | Owner of vehicle. Ex - Owned, Company
+weeklyOffList  | String |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
+maxDistance | Integer |Optional | Max. allowed distance
+licenseValidity | String |Optional | License validity date
+deliveryMediumMapList.name | String | Optional | Name of language
+shiftList.shiftStartTime  | String |Optional | Shift start time
+shiftList.shiftEndTime  | String |Optional | Shift end time
+
 
 # Haul 2.0
 
@@ -572,7 +675,6 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
 	   ],
   "hasError": false
 }
-
 ```
 
 Create a new vehicle by passing form data through json. 
@@ -1666,6 +1768,49 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
+
+
+## Create Tracking Record
+
+> Create Tracking Record - Sample Request
+
+```json
+{
+  "trackerId": "4568088900",
+  "latitude": 12.9003884,
+  "longitude": 14.9889999,
+  "time": "2016-07-14T09:11:56Z",
+  "batteryPerc": 70.5,
+  "speed": 40.4,
+  "messageType": "REG",
+  "temperature": 30.5
+}
+```
+
+This endpoint adds tracking record.
+
+### HTTP Request
+
+`POST http://endpoint.loginextsolutions.com/TrackingApp/track/put`
+  
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+Content-Type | application/json | Json request
+
+### HTTP Request Parameters
+
+Param | DataType |  Required | Brief Info
+--------- | ------- | ---------- | ------------ 
+trackerId | String | Mandatory |  Device's unique ID
+latitude | Double | Mandatory | Latitude location
+longitude | Double | Mandatory | Longitude location
+time | Date | Mandatory | Tracking time
+batteryPerc | Double | Mandatory | Battery Percentage of device
+speed | Double | Mandatory | Speed with which consignment is moving
+messageType | String | Mandatory | Message type. Ex: REG
+temperature | Double | Mandatory | Consignment's temperature
 
 # Webhooks
 
