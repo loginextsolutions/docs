@@ -119,7 +119,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Loginext welcomes to the world of organised logistics. </p>
+<p>Loginext welcomes you to the world of organised logistics. </p>
 
 <p>This API documentation will help you, intergrate your software platform with loginext&rsquo;s for end to end logistics management. </p>
 
@@ -133,7 +133,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/LoginApp/login/authenticate</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -207,7 +207,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/LoginApp/token/refresh</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/LoginApp/token/refresh</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -229,8 +229,6 @@
 
 <aside class="success">Response headers will contain new session token and authentication key.</aside>
 
-<h1 id="ondemand-2-0">OnDemand 2.0</h1>
-
 <h1 id="mile-2-0">Mile 2.0</h1>
 
 <h2 id="create-order">Create Order</h2>
@@ -242,6 +240,8 @@
 </span></code></pre>
 
 <blockquote>
+<p>Defination</p>
+
 <p>Create Order - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -257,7 +257,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -309,7 +309,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -361,7 +361,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -419,7 +419,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -507,7 +507,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -561,7 +561,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/start</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/start</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -618,7 +618,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -651,7 +651,7 @@
 <blockquote>
 <p>Track Last Location - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://endpoint.loginextsolutions.com/TrackingApp/mile/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
+<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/TrackingApp/mile/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -691,7 +691,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
+<p><code class="prettyprint">GET http://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -721,10 +721,10 @@
 
 <h1 id="haul-2-0">Haul 2.0</h1>
 
-<h2 id="vehicle-create">Vehicle Create</h2>
+<h2 id="create-vehicle">Create Vehicle</h2>
 
 <blockquote>
-<p>Vehicle Create - Sample Request</p>
+<p>Create Vehicle - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -758,7 +758,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Vehicle Create - Sample Response</p>
+<p>Create Vehicle - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -778,7 +778,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/create</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -956,10 +956,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="vehicle-read-single">Vehicle Read (Single)</h2>
+<h2 id="read-vehicle-single">Read Vehicle (Single)</h2>
 
 <blockquote>
-<p>Vehicle Read - Sample Response</p>
+<p>Read Vehicle - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1016,7 +1016,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1062,10 +1062,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="vehicle-read">Vehicle Read</h2>
+<h2 id="read-vehicle">Read Vehicle</h2>
 
 <blockquote>
-<p>Vehicle Read - Sample Response</p>
+<p>Read Vehicle - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1213,7 +1213,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1241,10 +1241,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="vehicle-update">Vehicle Update</h2>
+<h2 id="update-vehicle">Update Vehicle</h2>
 
 <blockquote>
-<p>Vehicle Update - Sample Request</p>
+<p>Update Vehicle - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1279,7 +1279,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Vehicle Update - Sample Response</p>
+<p>Update Vehicle - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1294,7 +1294,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><code class="prettyprint">PUT http://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1478,16 +1478,16 @@
 </tr>
 </tbody></table>
 
-<h2 id="vehicle-delete">Vehicle Delete</h2>
+<h2 id="delete-vehicle">Delete Vehicle</h2>
 
 <blockquote>
-<p>Vehicle Delete - Sample Request</p>
+<p>Delete Vehicle - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Vehicle Delete - Sample Response</p>
+<p>Delete Vehicle - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1502,7 +1502,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://endpoint.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><code class="prettyprint">DELETE http://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1548,10 +1548,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="driver-create">Driver Create</h2>
+<h2 id="create-driver">Create Driver</h2>
 
 <blockquote>
-<p>Driver Create - Sample Request</p>
+<p>Create Driver - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1611,7 +1611,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Driver Create - Sample Response</p>
+<p>Create Driver - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
@@ -1628,7 +1628,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/create</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -1862,16 +1862,16 @@
 </tr>
 </tbody></table>
 
-<h2 id="driver-read">Driver Read</h2>
+<h2 id="read-driver">Read Driver</h2>
 
 <blockquote>
-<p>Driver Read - Sample Request</p>
+<p>Read Driver - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Driver Read - Sample Response</p>
+<p>Read Driver - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -1995,7 +1995,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/list</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/DriverApp/haul/v1/driver/list</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2023,10 +2023,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="driver-update">Driver Update</h2>
+<h2 id="update-driver">Update Driver</h2>
 
 <blockquote>
-<p>Driver Update - Sample Request</p>
+<p>Update Driver - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
@@ -2084,7 +2084,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Driver Update - Sample Response</p>
+<p>Update Driver - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2099,7 +2099,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/update</code></p>
+<p><code class="prettyprint">PUT http://api.loginextsolutions.com/DriverApp/haul/v1/driver/update</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2339,16 +2339,16 @@
 
 <p>=======</p>
 
-<h2 id="driver-delete">Driver Delete</h2>
+<h2 id="delete-driver">Delete Driver</h2>
 
 <blockquote>
-<p>Driver Delete - Sample Request</p>
+<p>Delete Driver - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Driver Delete - Sample Response</p>
+<p>Delete Driver - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2363,7 +2363,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://endpoint.loginextsolutions.com/DriverApp/haul/v1/driver/delete</code></p>
+<p><code class="prettyprint">DELETE http://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2391,10 +2391,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="trip-create">Trip Create</h2>
+<h2 id="create-trip">Create Trip</h2>
 
 <blockquote>
-<p>Trip Create - Sample Request</p>
+<p>Create Trip - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
@@ -2416,7 +2416,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Trip Create - Sample Response</p>
+<p>Create Trip - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2431,7 +2431,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2567,10 +2567,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="trip-start">Trip Start</h2>
+<h2 id="start-trip">Start Trip</h2>
 
 <blockquote>
-<p>Trip Start - Sample Request</p>
+<p>Start Trip - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
@@ -2578,7 +2578,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Trip Start - Sample Response</p>
+<p>Start Trip - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2593,7 +2593,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
+<p><code class="prettyprint">PUT http://api.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2621,10 +2621,10 @@
 </tr>
 </tbody></table>
 
-<h2 id="trip-stop">Trip Stop</h2>
+<h2 id="stop-trip">Stop Trip</h2>
 
 <blockquote>
-<p>Trip Stop - Sample Request</p>
+<p>Stop Trip - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
     </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
@@ -2632,7 +2632,7 @@
 </span></code></pre>
 
 <blockquote>
-<p>Trip Stop - Sample Response</p>
+<p>Stop Trip - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2647,7 +2647,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://endpoint.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
+<p><code class="prettyprint">POST http://api.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -2681,7 +2681,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://endpoint.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
+<p><code class="prettyprint">GET https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
 
 <h3 id="http-request-parameters">HTTP Request Parameters</h3>
 
@@ -2714,7 +2714,7 @@
 <blockquote>
 <p>Track Last Location - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://endpoint.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
+<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2754,7 +2754,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://endpoint.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
+<p><code class="prettyprint">GET http://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -3117,7 +3117,7 @@
 <h2 id="pickedup">Pickedup</h2>
 
 <blockquote>
-<p>Order pickup - Sample Response</p>
+<p>Pickup Order - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
