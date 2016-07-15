@@ -24,7 +24,7 @@ This API documentation will help you, intergrate your software platform with log
 
 ##Authenticate
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/LoginApp/login/authenticate
@@ -87,7 +87,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ##Invalidate
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/LoginApp/login/token/refresh
@@ -131,10 +131,9 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ## Create Order
 
-> Defination
+> Definition
 
 ```json
-https://api.loginextsolutions.com/LoginApp/token/refresh
 ```
 
 > Request Body
@@ -171,7 +170,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Create Return Order
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
@@ -210,7 +209,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Cancel Order
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
@@ -249,7 +248,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Get Status of Order
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
@@ -292,10 +291,35 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
+## Download EPOD
+
+This endpoint downloads the EPODs for given order, delivery dates and status of order.
+
+### HTTP Request
+
+`GET http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+
+### HTTP Request Headers
+
+Header | Sample Value | Brief Info
+--------- | ------- | -------------
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+orderstartdt | String | Mandatory | Order start date
+orderenddt | String | Mandatory | Order end date
+deliverystartdt | String | Mandatory | Delivery start date
+deliveryenddt | String | Mandatory | Delivery end date
+status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+
 
 ## Add Crates
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
@@ -371,7 +395,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Start Trip 
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
@@ -412,7 +436,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Stop Trip 
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
@@ -455,7 +479,7 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 ## Track Last Location
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
@@ -580,7 +604,7 @@ This endpoint creates a new delivery medium.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+`POST http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
 
 ### HTTP Request Headers
 
@@ -623,7 +647,7 @@ shiftList.shiftEndTime  | String |Optional | Shift end time
 
 ## Create Vehicle 
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
@@ -727,7 +751,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ## Read Vehicle (Single)
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
@@ -817,7 +841,7 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 ## Read Vehicle 
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle
@@ -926,7 +950,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Vehicle
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle
@@ -1024,7 +1048,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 
 ## Delete Vehicle
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle
@@ -1070,7 +1094,7 @@ reference_ids | List (String) | Mandatory | Reference Id associated with the veh
 
 
 ## Create Driver
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
@@ -1210,7 +1234,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ## Read Driver
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
@@ -1359,7 +1383,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Driver
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
@@ -1491,7 +1515,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 ## Delete Driver
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
@@ -1532,7 +1556,7 @@ CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Create Trip
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
@@ -1613,7 +1637,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 
 ## Start Trip
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
@@ -1655,7 +1679,7 @@ CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6
 
 ## Stop Trip
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
@@ -1713,7 +1737,7 @@ tripname | TestTripName| Trip name
 
 ## Track Last Location
 
-> Defination
+> Definition
 
 ```json
 https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
@@ -1794,7 +1818,7 @@ This endpoint adds tracking record.
 
 ### HTTP Request
 
-`POST http://endpoint.loginextsolutions.com/TrackingApp/track/put`
+`POST http://api.loginextsolutions.com/TrackingApp/track/put`
   
 ### HTTP Request Headers
 
