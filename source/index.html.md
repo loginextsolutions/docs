@@ -131,6 +131,12 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ## Create Order (Delivery)
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+```
+
 > Request Body
 
 ```json
@@ -250,10 +256,16 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item we
 
 ## Create Order (Pickup)
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+```
+
 > Request Body
 
 ```json
-[[
+[
   {
     "orderNo": "DummyOrderNo",
     "awbNumber": "AWB001",
