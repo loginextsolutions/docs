@@ -43,7 +43,12 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate
 > Response
 
 ```json
-
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
 ```
 
 Loginext uses Basic Authentication to provide authorized access to its API.
@@ -85,7 +90,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 > Defination
 
 ```json
-https://api.loginextsolutions.com/LoginApp/token/refresh
+https://api.loginextsolutions.com/LoginApp/login/token/refresh
 ```
 
 > Request Body
@@ -97,13 +102,19 @@ No Request params
 > Response
 
 ```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
 ```
 
 This endpoint invalidates a user. 
 
 ### HTTP Request
 
-`POST https://api.loginextsolutions.com/LoginApp/token/refresh`
+`GET https://api.loginextsolutions.com/LoginApp/login/token/refresh`
 
 
 ### HTTP Request Headers
@@ -143,8 +154,7 @@ https://api.loginextsolutions.com/LoginApp/token/refresh
 }
 
 ```
-
-This endpoint creates a new order.
+Place a new order with this API.
 
 ### HTTP Request
 
@@ -184,8 +194,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
 }
 
 ```
-
-This endpoint creates a return order.
+Place a new return order with this API.
 
 ### HTTP Request
 
@@ -224,8 +233,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 }
 
 ```
-
-This endpoint cancels an order.
+Use this API to cancel an order.
 
 ### HTTP Request
 
@@ -270,8 +278,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
 }
 
 ```
-
-This endpoint gets an order status.
+Know the status of an order using this API.
 
 ### HTTP Request
 
@@ -347,8 +354,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
 }
 
 ```
-
-This endpoint adds crates to an existing order.
+Add crates and line items to an existing order, using this API.
 
 ### HTTP Request
 
@@ -390,8 +396,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 }
 
 ```
-
-This endpoint starts a trip.
+Start the trip for a delivery medium using this API.
 
 ### HTTP Request
 
@@ -434,8 +439,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
 }
 
 ```
-
-This endpoint stops a trip.
+Stop the trip for a delivery medium using this API.
 
 ### HTTP Request
 
@@ -496,8 +500,7 @@ No Request Body
 }
 
 ```
-
-This endpoint fetches the latest location for the requested shipments
+Use this to find out last tracked location for any order/ delivery medium.
 
 ### HTTP Request
 
