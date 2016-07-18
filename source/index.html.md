@@ -419,13 +419,18 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
 
 ```json
 {
-  "status": 200,
+  "status": 201,
   "message": "success",
-  "data": null,
-  "hasError": false
-}
+  "referenceId": [
+    "d7b0f3f8e1174742bd6a8ae451866cb1"
+  ],
+  "data":null,
+  "hasError": false,
 
+}
 ```
+
+
 Place a new return order with this API.
 
 ### HTTP Request
@@ -460,11 +465,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 {
   "status": 200,
   "message": "success",
-  "data": "No of orders cancelled:1",
+  "data": null,
   "hasError": false
 }
-
 ```
+
 Use this API to cancel an order.
 
 ### HTTP Request
@@ -2066,9 +2071,9 @@ Content-Type | application/json | Json request
 Param | DataType |  Required | Brief Info
 --------- | ------- | ---------- | ------------ 
 trackerId | String | Mandatory |  Device's unique ID
-latitude | Double | Mandatory | Latitude location
-longitude | Double | Mandatory | Longitude location
-time | Date | Mandatory | Tracking time
+latitude | Double | Mandatory | Latitude
+longitude | Double | Mandatory | Longitude
+time | Date | Mandatory | Tracking time in UTC
 batteryPerc | Double | Mandatory | Battery Percentage of device
 speed | Double | Mandatory | Speed with which consignment is moving
 messageType | String | Mandatory | Message type. Ex: REG
