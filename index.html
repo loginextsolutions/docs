@@ -1007,12 +1007,15 @@
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
 
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <p>Place a new return order with this API.</p>
@@ -1067,10 +1070,9 @@
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No of orders cancelled:1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p>Use this API to cancel an order.</p>
@@ -1345,9 +1347,9 @@
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="w">    
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -1394,13 +1396,7 @@
 </tr>
 </tbody></table>
 
-<h2 id="stop-trip">Stop Trip</h2>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
-</span></code></pre>
+<h2 id="trip-stop">Trip Stop</h2>
 
 <blockquote>
 <p>Request Body</p>
@@ -3648,9 +3644,9 @@
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -3697,20 +3693,16 @@
 </tr>
 </tbody></table>
 
-<h2 id="stop-trip">Stop Trip</h2>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
+<h2 id="trip-stop">Trip Stop</h2>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
 </span></code></pre>
 
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1880d6906e9d426995b815a83aa3927f"</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -3754,6 +3746,24 @@
 <td>CLIENT_SECRET_KEY</td>
 <td>$2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6</td>
 <td>Authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>List of Strings</td>
+<td>Mandatory</td>
+<td>Reference Ids of the trip</td>
 </tr>
 </tbody></table>
 
@@ -3929,19 +3939,19 @@
 <td>latitude</td>
 <td>Double</td>
 <td>Mandatory</td>
-<td>Latitude location</td>
+<td>Latitude</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>Double</td>
 <td>Mandatory</td>
-<td>Longitude location</td>
+<td>Longitude</td>
 </tr>
 <tr>
 <td>time</td>
 <td>Date</td>
 <td>Mandatory</td>
-<td>Tracking time</td>
+<td>Tracking time in UTC</td>
 </tr>
 <tr>
 <td>batteryPerc</td>
