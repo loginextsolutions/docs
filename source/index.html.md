@@ -637,9 +637,9 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 > Request Body
 
 ```json
-[
-    "a9be39b9347911e6829f000d3aa04450"    
-]
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
 ```
 
 > Response
@@ -667,13 +667,9 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
-## Stop Trip 
 
-> Definition
 
-```json
-https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop
-```
+## Trip Stop
 
 > Request Body
 
@@ -1879,9 +1875,9 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 > Request Body
 
 ```json
-[
-    "1880d6906e9d426995b815a83aa3927f"
-]
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
 ```
 
 > Response
@@ -1910,9 +1906,8 @@ Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-## Stop Trip
+## Trip Stop
 
-> Definition
 
 ```json
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
@@ -1921,9 +1916,9 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 > Request Body
 
 ```json
-[
-    "1880d6906e9d426995b815a83aa3927f"
-]
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
 ```
 
 > Response
@@ -1951,6 +1946,13 @@ Header | Sample Value | Brief Info
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
 CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
+
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 ## Trip iFrame
 
