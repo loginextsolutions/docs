@@ -16,7 +16,7 @@ search: true
 
 # Introduction
 
-Loginext welcomes you to the world of organised logistics. 
+LogiNext welcomes you to the world of organised logistics. 
 
 This API documentation will help you, intergrate your software platform with loginext's for end to end logistics management. 
 
