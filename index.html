@@ -130,17 +130,7 @@
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shirish"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pass"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&amp;password=password</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -160,7 +150,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
+<p><code class="prettyprint">POST https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&amp;password=password</code></p>
 
 <h3 id="http-request-headers">HTTP Request Headers</h3>
 
@@ -3981,6 +3971,130 @@
 
 <h1 id="webhooks">Webhooks</h1>
 
+<h2 id="create-order">Create Order</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERCREATIONNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"billNumber"</span><span class="p">:</span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"billType"</span><span class="p">:</span><span class="s2">"RETURN"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-07-01 03:05:08"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when an order is created.</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>ORDERCREATIONNOTIFICATION</td>
+</tr>
+<tr>
+<td>billNumber</td>
+<td>String</td>
+<td>Will contain order no.</td>
+</tr>
+<tr>
+<td>billType</td>
+<td>String</td>
+<td>Bill Type. RETURN for PICKUP order leg, SALES for DELIVER order leg</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Order creation timestamp</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-order">Update Order</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERUPDATENOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"TestDeliveryMedium"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="s2">"2016-07-01 00:09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="s2">"2016-07-01 00:09:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when an order is updated.</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>ORDERUPDATENOTIFICATION</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>startTimeWindow</td>
+<td>String</td>
+<td>Order&rsquo;s start time window</td>
+</tr>
+<tr>
+<td>endTimeWindow</td>
+<td>String</td>
+<td>Order&rsquo;s end time window</td>
+</tr>
+</tbody></table>
+
 <h2 id="accept-order">Accept Order</h2>
 
 <blockquote>
@@ -4003,32 +4117,39 @@
 
 <table><thead>
 <tr>
-<th>Key</th>
+<th>Param</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>status</td>
+<td>String</td>
 <td>Status of the order</td>
 </tr>
 <tr>
 <td>deliveryMediumName</td>
-<td>Name of delivery medium who accepted the order</td>
+<td>String</td>
+<td>Name of delivery medium</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
-<td>Phone no. of delivery medium</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>tripName</td>
+<td>String</td>
 <td>Trip name</td>
 </tr>
 <tr>
 <td>updatedOn</td>
+<td>String</td>
 <td>Accept order timestamp</td>
 </tr>
 </tbody></table>
@@ -4054,29 +4175,221 @@
 
 <table><thead>
 <tr>
-<th>Key</th>
+<th>Param</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>status</td>
+<td>String</td>
 <td>Status of the order</td>
 </tr>
 <tr>
 <td>tripName</td>
+<td>String</td>
 <td>Trip name</td>
 </tr>
 <tr>
 <td>updatedOn</td>
-<td>Accept order timestamp</td>
+<td>String</td>
+<td>Reject order timestamp</td>
 </tr>
 <tr>
 <td>reasonOfRejection</td>
+<td>String</td>
 <td>Reason provided by Delivery medium while rejecting the order</td>
+</tr>
+</tbody></table>
+
+<h2 id="load-items">Load Items</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">  
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADITEMNOTIFICATION"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateQuantity"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="s2">"StatusCd"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when crates are loaded onto an order.</p>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>LOADITEMNOTIFICATION</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.crateCd</td>
+<td>String</td>
+<td>Crate code</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.crateType</td>
+<td>String</td>
+<td>Crate type</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.statusCd</td>
+<td>String</td>
+<td>Crate Status. It will be LOADED.</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.crateAmount</td>
+<td>Double</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.crateQuantity</td>
+<td>Integer</td>
+<td>No of loaded units</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.shipmentlineitems.statusCd</td>
+<td>String</td>
+<td>Item status. It will be LOADED.</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>Name of item</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMapping.shipmentlineitems.itemQuantity</td>
+<td>Integer</td>
+<td>Item quantity</td>
+</tr>
+</tbody></table>
+
+<h2 id="load-complete">Load Complete</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"TestDeliveryMedium"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-07-01 09:13:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH 03992"</span><span class="w">
+  </span><span class="s2">"revisedEta"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"2016-07-01 10:13:00"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADINGDONENOTIFICATION"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when crates are loaded onto an order.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Date</td>
+<td>Time when loading is completed.</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Driver&rsquo;s name</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Vehicle no.</td>
+</tr>
+<tr>
+<td>revisedEta</td>
+<td>Date</td>
+<td>Revised ETA</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>LOADINGDONENOTIFICATION</td>
 </tr>
 </tbody></table>
 
@@ -4109,55 +4422,68 @@
 <table><thead>
 <tr>
 <th>Key</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>latitude</td>
+<td>Double</td>
 <td>Latitude where order was delivered</td>
 </tr>
 <tr>
 <td>longitude</td>
+<td>Double</td>
 <td>Longitude where order was delivered</td>
 </tr>
 <tr>
 <td>notificationType</td>
+<td>String</td>
 <td>DELIVEREDNOTIFICATION</td>
 </tr>
 <tr>
 <td>customerComment</td>
+<td>String</td>
 <td>Customer comments</td>
 </tr>
 <tr>
 <td>customerRating</td>
+<td>Integer</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
 <td>deliveryTime</td>
+<td>String</td>
 <td>Delivery timestamp</td>
 </tr>
 <tr>
 <td>cashAmount</td>
+<td>Double</td>
 <td>Cash amount to collect</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
+<td>String</td>
 <td>Delivery Location</td>
 </tr>
 <tr>
 <td>transactionId</td>
+<td>String</td>
 <td>Transaction id</td>
 </tr>
 <tr>
 <td>actualCashAmount</td>
+<td>Double</td>
 <td>Cash amount actually collected</td>
 </tr>
 <tr>
 <td>recipientName</td>
+<td>String</td>
 <td>Name of recipient</td>
 </tr>
 </tbody></table>
@@ -4191,55 +4517,68 @@
 <table><thead>
 <tr>
 <th>Key</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>statusCd</td>
+<td>String</td>
 <td>PARTIALLYDELIVERED</td>
 </tr>
 <tr>
 <td>notificationType</td>
+<td>String</td>
 <td>PARTIALDELIVERYNOTIFICATION</td>
 </tr>
 <tr>
 <td>customerComments</td>
+<td>String</td>
 <td>Customer comments</td>
 </tr>
 <tr>
 <td>customerRating</td>
+<td>Integer</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
 <td>reason</td>
+<td>String</td>
 <td>Reason for the order being partially delivered</td>
 </tr>
 <tr>
 <td>reasonCd</td>
+<td>String</td>
 <td>Reason code</td>
 </tr>
 <tr>
 <td>cashAmount</td>
+<td>Double</td>
 <td>Cash amount to be collected</td>
 </tr>
 <tr>
 <td>transactionId</td>
+<td>String</td>
 <td>Transaction id</td>
 </tr>
 <tr>
 <td>actualCashAmount</td>
+<td>Double</td>
 <td>Cash amount actually collected</td>
 </tr>
 <tr>
 <td>shipmentCrateMappingList</td>
+<td>Array of Objects</td>
 <td>Shipment crates</td>
 </tr>
 <tr>
 <td>recipientName</td>
+<td>String</td>
 <td>Name of recipient</td>
 </tr>
 </tbody></table>
@@ -4270,43 +4609,53 @@
 <table><thead>
 <tr>
 <th>Key</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>notificationType</td>
+<td>String</td>
 <td>NOTDELIVEREDNOTIFICATION</td>
 </tr>
 <tr>
 <td>customerComments</td>
+<td>String</td>
 <td>Customer comments</td>
 </tr>
 <tr>
 <td>customerRating</td>
+<td>Integer</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
 <td>reason</td>
+<td>String</td>
 <td>Reason for the order not delivered</td>
 </tr>
 <tr>
 <td>reasonCd</td>
+<td>String</td>
 <td>Reason code</td>
 </tr>
 <tr>
 <td>deliveryTime</td>
+<td>String</td>
 <td>Undelivered timestamp</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
+<td>String</td>
 <td>Delivery location</td>
 </tr>
 <tr>
 <td>recipientName</td>
+<td>String</td>
 <td>Name of recipient</td>
 </tr>
 </tbody></table>
@@ -4333,27 +4682,33 @@
 <table><thead>
 <tr>
 <th>Key</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>latitude</td>
+<td>Double</td>
 <td>Latitude where order was pickedup</td>
 </tr>
 <tr>
 <td>longitude</td>
+<td>Double</td>
 <td>Longitude where order was pickedup</td>
 </tr>
 <tr>
 <td>pickedUpTime</td>
+<td>String</td>
 <td>Pickup order timestamp</td>
 </tr>
 <tr>
 <td>status</td>
+<td>String</td>
 <td>PICKEDUPNOTIFICATION</td>
 </tr>
 </tbody></table>
@@ -4387,56 +4742,412 @@
 <table><thead>
 <tr>
 <th>Key</th>
+<th>DataType</th>
 <th>Brief Info</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>clientShipmentId</td>
+<td>String</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>notificationType</td>
+<td>String</td>
 <td>NOTPICKEDUPNOTIFICATION</td>
 </tr>
 <tr>
 <td>orderLeg</td>
+<td>String</td>
 <td>Order leg</td>
 </tr>
 <tr>
 <td>awbNumber</td>
+<td>String</td>
 <td>Airway Bill Number</td>
 </tr>
 <tr>
 <td>customerComments</td>
+<td>String</td>
 <td>Customer comments</td>
 </tr>
 <tr>
 <td>customerRating</td>
+<td>Integer</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
 <td>deliveryMediumName</td>
+<td>String</td>
 <td>Name of delivery medium</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
+<td>Long</td>
 <td>Phone no of delivery medium</td>
 </tr>
 <tr>
 <td>orderState</td>
+<td>String</td>
 <td>State of the order</td>
 </tr>
 <tr>
 <td>customerName</td>
+<td>String</td>
 <td>Name of customer</td>
 </tr>
 <tr>
 <td>reason</td>
+<td>String</td>
 <td>Reason for order not pickedup</td>
 </tr>
 <tr>
 <td>reasonCd</td>
+<td>String</td>
 <td>Reason code</td>
+</tr>
+</tbody></table>
+
+<h2 id="route-planning">Route Planning</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.1111232</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">72.12334221</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">  
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYPLANNING"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when orders are assigned to delivery boy for a particular window of time.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentId</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Name of driver</td>
+</tr>
+<tr>
+<td>vehicle</td>
+<td>String</td>
+<td>Vehicle no.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>deliveryOrder</td>
+<td>Integer</td>
+<td>Delivery order</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Phone no of delivery medium</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>DELIVERYPLANNING</td>
+</tr>
+<tr>
+<td>startTimeWindow</td>
+<td>String</td>
+<td>Estimated start time of trip</td>
+</tr>
+<tr>
+<td>endTimeWindow</td>
+<td>String</td>
+<td>Estimated end time of trip</td>
+</tr>
+</tbody></table>
+
+<h2 id="start-trip">Start Trip</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"TestOrder1"</span><span class="p">,</span><span class="s2">"TestOrder2"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STARTTRIP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">  
+  </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a trip is started.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentIds</td>
+<td>List<String></td>
+<td>Order nos.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>STARTTRIP</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Vehicle no.</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Name of driver</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Phone no.</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>Trip start time</td>
+</tr>
+</tbody></table>
+
+<h2 id="stop-trip">Stop Trip</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"TestOrder1"</span><span class="p">,</span><span class="s2">"TestOrder2"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a trip is ended.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientShipmentIds</td>
+<td>List<String></td>
+<td>Order nos.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>DELIVEREDNOTIFICATION</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Trip name</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Vehicle no.</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Name of driver</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>Trip end time</td>
+</tr>
+</tbody></table>
+
+<h2 id="hub-in">Hub In</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"endpoint url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?&gt;\n
+          &lt;geofencePushNotificationDTO&gt;\n    
+            &lt;hubName&gt;HubName&lt;/hubName&gt;\n    
+            &lt;latitude&gt;13.018617777777777&lt;/latitude&gt;\n    
+            &lt;longitude&gt;80.01128&lt;/longitude&gt;\n    
+            &lt;sightingDate&gt;201603091412&lt;/sightingDate&gt;\n    
+            &lt;status&gt;HUB IN&lt;/status&gt;\n    
+            &lt;tripId&gt;TripName&lt;/tripId&gt;\n
+          &lt;/geofencePushNotificationDTO&gt;\n"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB IN"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-09 07:09:10"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a vehicle enters inside a hub.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>Endpoint URL</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>Data in XML format</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>HUB IN</td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td>String</td>
+<td>Timestamp</td>
+</tr>
+</tbody></table>
+
+<h2 id="hub-out">Hub Out</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"endpoint url"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?&gt;\n
+          &lt;geofencePushNotificationDTO&gt;\n    
+            &lt;hubName&gt;HubName&lt;/hubName&gt;\n    
+            &lt;latitude&gt;13.018617777777777&lt;/latitude&gt;\n    
+            &lt;longitude&gt;80.01128&lt;/longitude&gt;\n    
+            &lt;sightingDate&gt;201603091412&lt;/sightingDate&gt;\n    
+            &lt;status&gt;HUB OUT&lt;/status&gt;\n    
+            &lt;tripId&gt;TripName&lt;/tripId&gt;\n
+          &lt;/geofencePushNotificationDTO&gt;\n"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"HUB OUT"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-09 07:09:10"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a vehicle enters inside a hub.</p>
+
+<h3 id="http-response-parameters">HTTP Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Brief Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>Endpoint URL</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>Data in XML format</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>HUB IN</td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td>String</td>
+<td>Timestamp</td>
 </tr>
 </tbody></table>
 
