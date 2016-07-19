@@ -27,17 +27,7 @@ This API documentation will help you, intergrate your software platform with log
 > Definition
 
 ```json
-https://api.loginextsolutions.com/LoginApp/login/authenticate
-```
-
-> Request Body
-
-```json
-{
-  "username": "shirish",
-  "password": "pass"
-}
-
+https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&password=password
 ```
 
 > Response
@@ -57,7 +47,7 @@ Use the following URL endpoint to authenticate userself as a user of this API.
 
 ### HTTP Request
 
-`POST https://api.loginextsolutions.com/LoginApp/login/authenticate`
+`POST https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&password=password`
 
 ### HTTP Request Headers
 
@@ -2081,6 +2071,65 @@ temperature | Double | Mandatory | Consignment's temperature
 
 # Webhooks
 
+
+## Create Order
+
+> Response
+
+```json
+{
+  "clientShipmentId": "TestOrderNo",
+  "orderState":"FORWARD",
+  "orderLeg":"PICKUP",
+  "awbNumber":"AWB001",
+  "notificationType": "ORDERCREATIONNOTIFICATION",
+  "billNumber":"TestOrderNo",
+  "billType":"RETURN",
+  "timestamp":"2016-07-01 03:05:08"
+}
+```
+
+
+This notification is sent when an order is created.
+
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
+notificationType | String | ORDERCREATIONNOTIFICATION
+billNumber | String | Will contain order no.
+billType | String | Bill Type. RETURN for PICKUP order leg, SALES for DELIVER order leg
+timestamp | String | Order creation timestamp
+
+## Update Order
+
+> Response
+
+```json
+{
+  "clientShipmentId": "TestOrderNo",
+  "notificationType": "ORDERUPDATENOTIFICATION",
+  "deliveryMediumName":"TestDeliveryMedium",
+  "phoneNumber":1234567890,
+  "startTimeWindow":"2016-07-01 00:09:00",
+  "endTimeWindow":"2016-07-01 00:09:00"
+}
+```
+
+
+This notification is sent when an order is updated.
+
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+notificationType | String | ORDERUPDATENOTIFICATION
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+startTimeWindow | String | Order's start time window
+endTimeWindow | String  | Order's end time window
+
 ## Accept Order
 
 > Response
@@ -2103,14 +2152,15 @@ This notification is sent when an order is accepted by a delivery boy.
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-status | Status of the order
-deliveryMediumName | Name of delivery medium who accepted the order
-phoneNumber | Phone no. of delivery medium
-tripName | Trip name
-updatedOn | Accept order timestamp
+
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+status | String | Status of the order
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+tripName | String | Trip name
+updatedOn | String | Accept order timestamp
 
 ## Reject Order
 
@@ -2129,17 +2179,100 @@ updatedOn | Accept order timestamp
 
 This notification is sent when an order is rejected by a delivery boy.
 
+### HTTP Response Parameters
 
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+status | String | Status of the order
+tripName | String | Trip name
+updatedOn | String | Reject order timestamp
+reasonOfRejection | String | Reason provided by Delivery medium while rejecting the order
+
+
+## Load Items
+
+```json
+{
+  "clientShipmentId": "TestOrderNo",  
+  "orderState":"FORWARD",
+  "orderLeg":"PICKUP",
+  "awbNumber":"AWB001",
+  "notificationType": "LOADITEMNOTIFICATION",
+   "shipmentCrateMapping": [
+      {
+        "crateCd": "CRATE001",
+        "crateType": "CRATE001",
+        "statusCd": "CRATE001",
+        "crateAmount": 100.30,
+        "crateQuantity":3,
+        "shipmentlineitems": [
+          {
+            "itemCd": "CODE001",
+            "statusCd":"StatusCd",
+            "itemName": "ITEM1",
+            "itemPrice": 100,
+            "itemQuantity": 1
+          }
+        ]
+      }
+    ]
+}
+```
+
+
+This notification is sent when crates are loaded onto an order.
+
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
+notificationType | String | LOADITEMNOTIFICATION
+shipmentCrateMapping.crateCd | String | Crate code
+shipmentCrateMapping.crateType | String | Crate type
+shipmentCrateMapping.statusCd | String | Crate Status. It will be LOADED.
+shipmentCrateMapping.crateAmount | Double | Crate amount
+shipmentCrateMapping.crateQuantity | Integer | No of loaded units
+shipmentCrateMapping.shipmentlineitems.itemCd | String | Item code
+shipmentCrateMapping.shipmentlineitems.statusCd | String | Item status. It will be LOADED.
+shipmentCrateMapping.shipmentlineitems.itemName | String | Name of item
+shipmentCrateMapping.shipmentlineitems.itemPrice | Double | Item price
+shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
+
+## Load Complete
+
+```json
+{
+  "clientShipmentId": "TestOrderNo", 
+  "deliveryMediumName":"TestDeliveryMedium",
+  "tripName":"TestTrip",
+  "startTime":"2016-07-01 09:13:00",
+  "phoneNumber":1234567890,
+  "driverName":"TestDriverName",
+  "vehicleNumber":"MH 03992"
+  "revisedEta" : "2016-07-01 10:13:00", 
+  "notificationType": "LOADINGDONENOTIFICATION"
+}
+```
+
+
+This notification is sent when crates are loaded onto an order.
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-status | Status of the order
-tripName | Trip name
-updatedOn | Accept order timestamp
-reasonOfRejection | Reason provided by Delivery medium while rejecting the order
+Param | DataType | Brief Info
+--------- | ------- | ---------- 
+clientShipmentId | String | Order no.
+deliveryMediumName | String | Name of delivery medium
+tripName | String | Trip name
+startTime | Date | Time when loading is completed.
+phoneNumber | Long | Delivery medium's phone no.
+driverName | String | Driver's name
+vehicleNumber | String | Vehicle no.
+revisedEta | Date | Revised ETA
+notificationType | String | LOADINGDONENOTIFICATION
 
 ## Delivered
 
@@ -2169,20 +2302,20 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-latitude | Latitude where order was delivered
-longitude | Longitude where order was delivered
-notificationType | DELIVEREDNOTIFICATION
-customerComment | Customer comments 
-customerRating | Rating provided by customer
-deliveryTime | Delivery timestamp
-cashAmount | Cash amount to collect
-deliveryLocationType | Delivery Location
-transactionId | Transaction id
-actualCashAmount | Cash amount actually collected
-recipientName | Name of recipient
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentId | String | Order no.
+latitude | Double | Latitude where order was delivered
+longitude | Double | Longitude where order was delivered
+notificationType | String | DELIVEREDNOTIFICATION
+customerComment | String | Customer comments 
+customerRating | Integer | Rating provided by customer
+deliveryTime | String | Delivery timestamp
+cashAmount | Double | Cash amount to collect
+deliveryLocationType | String | Delivery Location
+transactionId | String | Transaction id
+actualCashAmount | Double | Cash amount actually collected
+recipientName | String | Name of recipient
 
 
 ## Partially Delivered
@@ -2213,20 +2346,20 @@ This notification is sent when an order is partially delivered by a delivery boy
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-statusCd | PARTIALLYDELIVERED
-notificationType | PARTIALDELIVERYNOTIFICATION
-customerComments | Customer comments 
-customerRating | Rating provided by customer
-reason | Reason for the order being partially delivered
-reasonCd | Reason code
-cashAmount | Cash amount to be collected
-transactionId | Transaction id
-actualCashAmount | Cash amount actually collected
-shipmentCrateMappingList | Shipment crates
-recipientName | Name of recipient
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentId | String | Order no.
+statusCd | String | PARTIALLYDELIVERED
+notificationType | String | PARTIALDELIVERYNOTIFICATION
+customerComments | String |Customer comments 
+customerRating | Integer | Rating provided by customer
+reason | String | Reason for the order being partially delivered
+reasonCd | String | Reason code
+cashAmount | Double | Cash amount to be collected
+transactionId | String | Transaction id
+actualCashAmount | Double | Cash amount actually collected
+shipmentCrateMappingList | Array of Objects | Shipment crates
+recipientName | String | Name of recipient
 
 ## Not Delivered
 
@@ -2253,17 +2386,17 @@ This notification is sent when an order is not delivered by a delivery boy.
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-notificationType | NOTDELIVEREDNOTIFICATION
-customerComments | Customer comments 
-customerRating | Rating provided by customer
-reason | Reason for the order not delivered
-reasonCd | Reason code
-deliveryTime | Undelivered timestamp
-deliveryLocationType | Delivery location
-recipientName | Name of recipient
+Key | DataType | Brief Info
+--------- | ------- | -------
+clientShipmentId | String | Order no.
+notificationType | String | NOTDELIVEREDNOTIFICATION
+customerComments | String | Customer comments 
+customerRating | Integer | Rating provided by customer
+reason | String | Reason for the order not delivered
+reasonCd | String | Reason code
+deliveryTime | String | Undelivered timestamp
+deliveryLocationType | String | Delivery location
+recipientName | String | Name of recipient
 
 ## Pickedup
 
@@ -2286,13 +2419,13 @@ This notification is sent when an order is picked up by a delivery boy.
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-latitude | Latitude where order was pickedup
-longitude | Longitude where order was pickedup
-pickedUpTime | Pickup order timestamp
-status | PICKEDUPNOTIFICATION
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentId | String | Order no.
+latitude | Double | Latitude where order was pickedup
+longitude | Double | Longitude where order was pickedup
+pickedUpTime | String | Pickup order timestamp
+status | String | PICKEDUPNOTIFICATION
 
 ## Not Pickedup
 
@@ -2322,18 +2455,198 @@ This notification is sent when an order is picked up by a delivery boy.
 
 ### HTTP Response Parameters
 
-Key | Brief Info
---------- | -------
-clientShipmentId | Order no.
-notificationType | NOTPICKEDUPNOTIFICATION
-orderLeg | Order leg
-awbNumber | Airway Bill Number
-customerComments | Customer comments
-customerRating | Rating provided by customer
-deliveryMediumName | Name of delivery medium
-phoneNumber | Phone no of delivery medium
-orderState | State of the order
-customerName | Name of customer
-reason | Reason for order not pickedup
-reasonCd | Reason code
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentId | String |  Order no.
+notificationType | String |  NOTPICKEDUPNOTIFICATION
+orderLeg | String |  Order leg
+awbNumber | String | Airway Bill Number
+customerComments | String |  Customer comments
+customerRating | Integer | Rating provided by customer
+deliveryMediumName | String |  Name of delivery medium
+phoneNumber | Long | Phone no of delivery medium
+orderState | String | State of the order
+customerName | String | Name of customer
+reason | String | Reason for order not pickedup
+reasonCd | String | Reason code
 
+## Route Planning
+
+> Response
+
+```json
+{
+  "clientShipmentId": "TestOrder",
+  "deliveryMediumName": "TestDM",
+  "tripName": "TestTripName",
+  "driverName":"TestDriverName",
+  "vehicle":"MH01-1223",
+  "latitude":19.1111232,
+  "longitude":72.12334221,
+  "deliveryOrder":1,
+  "phoneNumber": 1234567890,  
+  "notificationType": "DELIVERYPLANNING",
+  "startTimeWindow":"2014-01-01 13:12:00",
+  "endTimeWindow":"2014-01-01 13:12:00"
+}
+
+```
+
+This notification is sent when orders are assigned to delivery boy for a particular window of time.
+
+
+
+### HTTP Response Parameters
+
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentId | String |  Order no.
+deliveryMediumName | String |  Name of delivery medium
+tripName | String |  Trip name
+driverName | String |  Name of driver
+vehicle | String |  Vehicle no.
+latitude | Double |  Latitude
+longitude | Double | Longitude
+deliveryOrder | Integer |  Delivery order
+phoneNumber | Long | Phone no of delivery medium
+notificationType | String |  DELIVERYPLANNING
+startTimeWindow | String |  Estimated start time of trip
+endTimeWindow | String |  Estimated end time of trip
+
+## Start Trip
+
+> Response
+
+```json
+{
+  "clientShipmentIds": ["TestOrder1","TestOrder2"],
+  "notificationType": "STARTTRIP",
+  "tripName": "TestTripName",
+  "vehicleNumber":"MH01-1223",
+  "driverName":"TestDriverName",
+  "deliveryMediumName": "TestDM",
+  "phoneNumber": 1234567890,  
+  "startTime":"2014-01-01 13:12:00"
+}
+
+```
+
+This notification is sent when a trip is started.
+
+### HTTP Response Parameters
+
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentIds | List<String> |  Order nos.
+notificationType | String |  STARTTRIP
+tripName | String |  Trip name
+vehicleNumber | String |  Vehicle no.
+driverName | String |  Name of driver
+deliveryMediumName | String |  Name of delivery medium
+phoneNumber | Long | Phone no.
+startTime | String |  Trip start time
+
+
+## Stop Trip
+
+> Response
+
+```json
+{
+  "clientShipmentIds": ["TestOrder1","TestOrder2"],
+  "notificationType": "DELIVEREDNOTIFICATION",
+  "tripName": "TestTripName",
+  "vehicleNumber":"MH01-1223",
+  "driverName":"TestDriverName",
+  "deliveryMediumName": "TestDM",
+  "endTime":"2014-01-01 13:12:00"
+}
+
+```
+
+This notification is sent when a trip is ended.
+
+### HTTP Response Parameters
+
+Key | DataType | Brief Info
+--------- | ------- |-------
+clientShipmentIds | List<String> |  Order nos.
+notificationType | String |  DELIVEREDNOTIFICATION
+tripName | String |  Trip name
+vehicleNumber | String |  Vehicle no.
+driverName | String |  Name of driver
+deliveryMediumName | String |  Name of delivery medium
+startTime | String |  Trip end time
+
+## Hub In
+
+> Response
+
+```json
+{
+  
+  "url" : "endpoint url",
+  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
+          <geofencePushNotificationDTO>\n    
+            <hubName>HubName</hubName>\n    
+            <latitude>13.018617777777777</latitude>\n    
+            <longitude>80.01128</longitude>\n    
+            <sightingDate>201603091412</sightingDate>\n    
+            <status>HUB IN</status>\n    
+            <tripId>TripName</tripId>\n
+          </geofencePushNotificationDTO>\n",
+  "notificationType" : "HUB IN",
+  "updatedDate" : "2016-03-09 07:09:10"
+}
+
+```
+
+This notification is sent when a vehicle enters inside a hub.
+
+
+
+### HTTP Response Parameters
+
+Key | DataType | Brief Info
+--------- | ------- |-------
+url | String |  Endpoint URL
+data | String |  Data in XML format
+notificationType | String |  HUB IN
+updatedDate | String | Timestamp
+
+
+## Hub Out
+
+> Response
+
+```json
+{
+  
+  "url" : "endpoint url",
+  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
+          <geofencePushNotificationDTO>\n    
+            <hubName>HubName</hubName>\n    
+            <latitude>13.018617777777777</latitude>\n    
+            <longitude>80.01128</longitude>\n    
+            <sightingDate>201603091412</sightingDate>\n    
+            <status>HUB OUT</status>\n    
+            <tripId>TripName</tripId>\n
+          </geofencePushNotificationDTO>\n",
+  "notificationType" : "HUB OUT",
+  "updatedDate" : "2016-03-09 07:09:10"
+}
+
+```
+
+This notification is sent when a vehicle enters inside a hub.
+
+
+
+### HTTP Response Parameters
+
+Key | DataType | Brief Info
+--------- | ------- |-------
+url | String |  Endpoint URL
+data | String |  Data in XML format
+notificationType | String |  HUB IN
+updatedDate | String | Timestamp
