@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: LogiNext API 
 
 language_tabs:
   - json
@@ -8,17 +8,97 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - errors
-
 search: true
 ---
 
 # Introduction
 
-LogiNext welcomes you to the world of organised logistics. 
+LogiNext welcomes you to the world of organised logistics.
 
-This API documentation will help you, intergrate your software platform with loginext's for end to end logistics management. 
+Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create  seamless experience for your operations and executive team.
+
+The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.
+
+Please see below the flow of events which you can follow while using the LogiNext API - 
+
+Resources - 
+
+1. For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a "Reference Id" which you need to store for future updates related to that vehicle and driver. 
+
+2. For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to. 
+
+Haul - 
+
+
+1. Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
+Please check with our assigned CSAs on the address format based on the model type configured for you as either the Pin Code or Hub to Hub.
+
+2. Further you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.
+
+3. Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.
+
+Mile - 
+
+
+Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
+
+Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation. 
+
+Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).
+
+
+1. Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.
+
+2. Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the order reference ID.
+
+3. Finally you can track your pick-up / delivery executive in transit through the Track Last Location API. In this case also you need to pass the Trip Reference Id.
+
+4. You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.
+
+5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
+
+# Requests
+
+The base URL for all requests to the LogiNext API is:
+
+https://developer.loginextsolutions.com/
+
+Our API is REST-based. This means:
+
+1. It make use of standard HTTP verbs like GET, POST, DELETE. 
+
+2. The API uses standard HTTP error responses to describe errors. 
+
+3. Authentication is specified with HTTP Basic Authentication. 
+
+
+### Request Headers
+
+Header | Sample Value | Description
+--------- | ------- | -------------
+Content-Type | application/json | JSON request
+WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
+
+### Versioning
+
+Versioning allows us to provide developers a consistent experience. All endpoints are prefixed with a version such as /v1. This version refers to the overall layout of the endpoints and response standards.
+
+# Responses
+
+The LogiNext API uses HTTP status codes to indicate the status of your requests. This includes Success and Error codes.
+
+Code | Description
+---------- | -------
+200 | Success -- Your request is successfully processed.
+400 | Bad Request -- Your request is incorrect.
+401 | Unauthorized -- Your API key is wrong.
+404 | Not Found -- The specified resource could not be found.
+405 | Method Not Allowed -- You tried to access a resource with an invalid method.
+409 | Conflict -- Your request could not be completed due to a conflict with the current state of the target resource.
+429 | Too Many Requests -- You're requesting too many resources.
+500 | Internal Server Error -- We had a problem with our server. Try again later.
+503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
 
 # Authentication
 
@@ -27,7 +107,7 @@ This API documentation will help you, intergrate your software platform with log
 > Definition
 
 ```json
-https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&password=password
+https://api.loginextsolutions.com/LoginApp/login/authenticate
 ```
 
 > Response
@@ -41,34 +121,29 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&
 }
 ```
 
-Loginext uses Basic Authentication to provide authorized access to its API.
+LogiNext uses Basic Authentication to provide authorized access to its API.
 
 Use the following URL endpoint to authenticate userself as a user of this API.
 
-### HTTP Request
+### Request
 
-`POST https://api.loginextsolutions.com/LoginApp/login/authenticate?username=username&password=password`
+`POST https://api.loginextsolutions.com/LoginApp/login/authenticate`
 
-### HTTP Request Headers
+### Request Headers
 
-Header | Sample Value | Brief Info
+Header | Sample Value | Description
 --------- | ------- | -------------
-Content-Type | application/json | Json request
+Content-Type | application/json | JSON request
 
-### HTTP Request Body
+### Request Body
 
 Header | Sample Value 
 --------- | ------- 
 Content-Type | application/x-www-form-urlencoded
+username | Username provided by LogiNext
+password | Password provided by LogiNext
 
-### HTTP Request Parameters
-
-Param Name | Value 
---------- | ------- 
-username | your username
-password | your password 
-
-### HTTP Response Headers
+### Response Headers
 
 Header | Sample Value 
 --------- | ------- 
@@ -102,12 +177,12 @@ No Request params
 
 This endpoint invalidates a user. 
 
-### HTTP Request
+### Request
 
 `GET https://api.loginextsolutions.com/LoginApp/login/token/refresh`
 
 
-### HTTP Request Headers
+### Request Headers
 
 Header | Sample Value 
 --------- | ------- | -------------
@@ -117,757 +192,7 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 <aside class="success">Response headers will contain new session token and authentication key.</aside>
 
 
-# Mile 2.0
-
-## Create Order (Delivery)
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
-```
-
-> Request Body
-
-```json
-[
-  {
-    "orderNo": "DummyOrderNo",
-    "awbNumber": "AWB001",
-    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "deliveryType": "DLBOY",
-    "packageVolume": "4500",
-    "paymentType": "Prepaid",
-    "packageValue": "5000",
-    "ServiceTime": "20",
-    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
-    "isPartialDeliveryAllowedFl": "Y",
-    "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "Y",
-    "numberOfItems": "10",
-    "deliverServiceTime": "20",
-    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
-    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "shipmentOrderTypeCd": "DELIVER",
-    "orderState": "FORWARD",
-    "returnBranch": "Gurgaon",
-    "distributionCenter": "Gurgaon",
-    "deliverBranch": "Gurgaon",
-    "deliverAccountCode": "Customer001",
-    "deliverAccountName": "TestUser",
-    "deliverApartment": "123",
-    "deliverStreetName": "Powai",
-    "deliverLandmark": "Dmart",
-    "deliverLocality": "Hiranandani",
-    "deliverCity": "Mumbai",
-    "deliverState": "Maharashtra",
-    "deliverCountry": "INDIA",
-    "deliverPinCode": "400076",
-    "shipmentCrateMappings": []
-  }
-]
-```
-
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Order created successfully",
-  "referenceId": [
-    "dcd883efcccc4d2299da962a72b01f23"
-  ],
-  "data": null,
-  "hasError": false
-}
-
-```
-Place a new delivery leg order with this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
-
-Param | DataType |  Required | Brief Info
---------- | ------- | ---------- | ------------ 
-orderNo | String | Mandatory |  Order no
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderDt | Date | Mandatory | Order Date
-deliveryType | String | Optional | Order delivery type. Ex: TRK,VAN,DLBOY
-packageVolume | String | Optional | Volume of package in CC
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-packageValue | String | Optional | Cost of Package
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
-isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-numberOfItems | String | Optional | Number of crates
-pickupServiceTime | String | Optional | Pickup service time
-pickupStartTimeWindow | Date | Optional | Pickup start time window
-pickupEndTimeWindow | Date | Optional | Pickup end time window
-shipmentOrderTypeCd | String | Mandatory | Order type code. PICKUP for pickup order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-pickupBranch | String | Mandatory | Name of pickup branch
-distributionCenter | String | Mandatory | Distribution center's name
-pickupAccountCode | String | Mandatory | Pickup account code
-pickupAccountName | String | Mandatory | Pickup account name
-pickupApartment | String | Mandatory | Apartment
-pickupStreetName | String | Mandatory | Street name
-pickupLandmark | String | Optional | Landmark
-pickupLocality | String | Mandatory | Locality
-pickupCity | String | Mandatory | City
-pickupState| String | Mandatory | State
-pickupCountry | String | Mandatory | Country
-pickupPinCode | String | Mandatory | Pincode
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
-
-
-## Create Order (Pickup)
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
-```
-
-> Request Body
-
-```json
-[
-  {
-    "orderNo": "DummyOrderNo",
-    "awbNumber": "AWB001",
-    "shipmentOrderDt": "2016-07-15T14:20:00.000Z",
-    "deliveryType": "DLBOY",
-    "packageVolume": "500",
-    "paymentType": "Cash On Delivery",
-    "packageValue": "1000",
-    "ServiceTime": "50",
-    "StartTimeWindow": "2016-07-16T14:24:00.000Z",
-    "EndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "isPartialDeliveryAllowedFl": "Y",
-    "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "Y",
-    "numberOfItems": "1",
-    "pickupServiceTime": "50",
-    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
-    "shipmentOrderTypeCd": "PICKUP",
-    "orderState": "FORWARD",
-    "pickupBranch": "Washola Hub",
-    "distributionCenter": "Washola Hub",
-    "pickupAccountCode": "Customer123",
-    "pickupAccountName": "Customer001",
-    "pickupApartment": "123",
-    "pickupStreetName": "Supreme Business Park",
-    "pickupLandmark": "DMart",
-    "pickupLocality": "Hiranandani",
-    "pickupCity": "Mumbai",
-    "pickupState": "Maharashtra",
-    "pickupCountry": "INDIA",
-    "pickupPinCode": "400076",
-    "shipmentCrateMappings": [
-      {
-        "crateCd": "CRATE001",
-        "shipmentlineitems": [
-          {
-            "itemCd": "CODE001",
-            "itemName": "ITEM1",
-            "itemPrice": 100,
-            "itemQuantity": 2,
-            "itemType": "TYPE1",
-            "itemWeight": 10
-          },
-          {
-            "itemCd": "CODE002",
-            "itemName": "ITEM2",
-            "itemPrice": 50,
-            "itemQuantity": 3,
-            "itemType": "TYPE2",
-            "itemWeight": 10
-          }
-        ]
-        
-      }
-    ]
-  }
-]
-```
-
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Order created successfully",
-  "referenceId": [
-    "dcd883efcccc4d2299da962a72b01f23"
-  ],
-  "data": null,
-  "hasError": false
-}
-
-```
-Place a new pickup leg order with this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
-
-Param | DataType |  Required | Brief Info
---------- | ------- | ---------- | ------------ 
-orderNo | String | Mandatory |  Order no
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderDt | Date | Mandatory | Order Date
-deliveryType | String | Optional | Order delivery type. Ex: TRK,VAN,DLBOY
-packageVolume | String | Optional | Volume of package in CC
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-packageValue | String | Optional | Cost of Package
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
-isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-numberOfItems | String | Optional | Number of crates
-pickupServiceTime | String | Optional | Pickup service time
-pickupStartTimeWindow | Date | Optional | Pickup start time window
-pickupEndTimeWindow | Date | Optional | Pickup end time window
-shipmentOrderTypeCd | String | Mandatory | Order type code. PICKUP for pickup order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-pickupBranch | String | Mandatory | Name of pickup branch
-distributionCenter | String | Mandatory | Distribution center's name
-pickupAccountCode | String | Mandatory | Pickup account code
-pickupAccountName | String | Mandatory | Pickup account name
-pickupApartment | String | Mandatory | Apartment
-pickupStreetName | String | Mandatory | Street name
-pickupLandmark | String | Optional | Landmark
-pickupLocality | String | Mandatory | Locality
-pickupCity | String | Mandatory | City
-pickupState| String | Mandatory | State
-pickupCountry | String | Mandatory | Country
-pickupPinCode | String | Mandatory | Pincode
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
-
-
-## Create Return Order
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
-```
-
-> Request Body
-
-```json
-["863fe69239bc4f738ca275a809c3b2e2"]
-```
-
-> Response
-
-```json
-{
-  "status": 201,
-  "message": "success",
-  "referenceId": [
-    "d7b0f3f8e1174742bd6a8ae451866cb1"
-  ],
-  "data":null,
-  "hasError": false,
-
-}
-```
-
-
-Place a new return order with this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-## Cancel Order
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
-```
-
-> Request Body
-
-```json
-["e0eaebdd84ac4c40af72d827ab610090"]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "success",
-  "data": null,
-  "hasError": false
-}
-```
-
-Use this API to cancel an order.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-## Get Status of Order
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
-```
-
-> Request Body
-
-```json
-["c8714df4347911e6829f000d3aa04450"]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": null,
-  "data": [
-    {
-      "state": "FORWARD",
-      "status": "NOTDISPATCHED",
-      "referenceId": "c8714528347911e6829f000d3aa04450"
-    }
-  ],
-  "hasError": false
-}
-
-```
-Know the status of an order using this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-## Download EPOD
-
-This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file.
-
-### HTTP Request
-
-`GET http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
-
-Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
-orderstartdt | String | Mandatory | Order start date
-orderenddt | String | Mandatory | Order end date
-deliverystartdt | String | Mandatory | Delivery start date
-deliveryenddt | String | Mandatory | Delivery end date
-status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
-
-
-## Add Crates
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
-```
-
-> Request Body
-
-```json
-[
-  {
-    "shipmentCrates": [
-      {
-        "crateCd": "Crate1",
-        "shipmentlineitems": [
-          {
-            "itemCd": "Item1",
-            "itemName": "",
-            "itemPrice": 33,
-            "itemQuantity": 10,
-            "itemType": "",
-            "itemWeight": 0,
-            "isDeleteFl": "N"
-          }
-        ],
-        "isDeleteFl": "N"
-      },
-      {
-        "crateCd": "Crate2",
-        "shipmentlineitems": [
-          {
-            "itemCd": "Item2",
-            "itemName": "",
-            "itemPrice": 33,
-            "itemQuantity": 10,
-            "itemType": "",
-            "itemWeight": 0,
-            "isDeleteFl": "N"
-          }
-        ],
-        "isDeleteFl": "N"
-      }
-    ],
-    "referenceId": "c8714df4347911e6829f000d3aa04450"
-  }
-]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "success",
-  "data": null,
-  "hasError": false
-}
-
-```
-Add crates and line items to an existing order, using this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-
-## Start Trip 
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
-```
-
-> Request Body
-
-```json
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "1 trip(s) started",
-  "data": true,
-  "hasError": false
-}
-
-```
-Start the trip for a delivery medium using this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-
-
-## Trip Stop
-
-> Request Body
-
-```json
-[{
-    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
-    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
-    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
-}]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Trips ended successfully",
-  "data": true,
-  "hasError": false
-}
-
-```
-Stop the trip for a delivery medium using this API.
-
-### HTTP Request
-
-`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
-  
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-## Track Last Location
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
-```
-
-> Request Body
-
-```json
-No Request Body
-```
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Latest Location found successfully",
-  "data": [
-    {
-      "lat": 19.1119794,
-      "lng": 72.9094968,
-      "shipmentReference": "21b538edf7f047028334480036179c70"
-    },
-    {
-      "lat": 19.0668898,
-      "lng": 72.8320575,
-      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
-    },
-    {
-      "lat": 19.0741246,
-      "lng": 72.824772,
-      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
-    },
-    {
-      "lat": 19.1200864,
-      "lng": 72.9010175,
-      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
-    }
-  ],
-  "hasError": false
-}
-
-```
-Use this to find out last tracked location for any order/ delivery medium.
-
-### HTTP Request
-
-`GET https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
-  
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-
-## Create Delivery Medium
-
-> Create Delivery Medium - Sample Request
-
-```json
-[
-  {
-    "employeeId": "Emp001",
-    "clientBranchId": 1403,
-    "distributionCenter": 1403,
-    "userGroupId": 23,
-    "deliveryMediumMasterName": "TestDM",
-    "phoneNumber": 1234567891,
-    "imei": 990000852471854,
-    "emailId": "test@testdm.com",
-    "userName": "testdm",
-    "password": "Passw0rd",
-    "capacityInUnits": 100,
-    "capacityInVolume": 10,
-    "capacityInWeight": 10,
-    "dob": "1980-10-29",
-    "gender": "Male",
-    "deliveryMediumMasterTypeCd": "Delivery Boy",
-    "isOwnVehicleFl": "Company",
-    "weeklyOffList": [
-      "Monday"
-    ],
-    "maxDistance": 10,
-    "licenseValidity": "2016-07-23",
-    "deliveryMediumMapList": [
-      {
-        "name": "ENGLISH"
-      },
-      {
-        "name": "HINDI"
-      }
-    ],
-    "shiftList": [
-      {
-        "shiftStartTime": "10:00",
-        "shiftEndTime": "17:00"
-      }
-    ]
-  }
-]
-```
-
-> Create Delivery Medium - Sample Response
-
-```json
-{
-  "status": 201,
-  "message": "success",
-  "data": [
-    "d7b0f3f8e1174742bd6a8ae451866cb1"
-  ],
-  "hasError": false
-}
-
-```
-
-This endpoint creates a new delivery medium.
-
-### HTTP Request
-
-`POST http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
-
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
-
-Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
-employeeId | String | Mandatory | Employee Id
-clientBranchId | Integer | Mandatory | Client branch id
-distributionCenter | Integer | Mandatory | Distribution center id
-userGroupId | Integer | Mandatory | User group id
-deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
-phoneNumber | String | Mandatory | Mobile no
-imei | String |Optional | IMEI no
-emailId | String | Optional | Email id
-userName | String | Mandatory | Username
-password | String | Mandatory | Password
-capacityInUnits | Integer | Mandatory | Capacity of Delivery medium in units
-capacityInVolume | Integer | Optional | Capacity of Delivery medium in volume
-capacityInWeight | Integer |Optional | Capacity of Delivery medium in weight
-dob | String | Optional | Date of birth
-gender | String |Optional | Gender. Ex - Male,Female
-deliveryMediumMasterTypeCd | String |Optional | Delivery medium type. Ex - Truck, Delivery Boy
-isOwnVehicleFl | String |Optional | Owner of vehicle. Ex - Owned, Company
-weeklyOffList  | String |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
-maxDistance | Integer |Optional | Max. allowed distance
-licenseValidity | String |Optional | License validity date
-deliveryMediumMapList.name | String | Optional | Name of language
-shiftList.shiftStartTime  | String |Optional | Shift start time
-shiftList.shiftEndTime  | String |Optional | Shift end time
-
-
-# Haul 2.0
+# Haul
 
 ## Create Vehicle 
 
@@ -932,20 +257,12 @@ Create a new vehicle by passing form data through json.
 
 The acknowledgement will provide the vehicle number and reference ID.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
@@ -973,7 +290,7 @@ rentStartDate | Date |Optional | If ownership is “vendor” then only this fie
 rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
 deviceId.barcode | String |Optional | Barcode of the tracker.
 
-## Read Vehicle (Single)
+## Get Vehicle (Single)
 
 > Definition
 
@@ -1044,26 +361,19 @@ No Request body
 Use this API to read all data for a particular vehicle using its reference ID.
 
 
-### HTTP Request
+### Request
 
-`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
+`GET https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 
-## Read Vehicle 
+## Get Vehicle 
 
 > Definition
 
@@ -1160,17 +470,10 @@ No Request body
 
 This API is used to list all existing vehicles in the system. All vehicle related data values will be returned.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Vehicle
 
@@ -1228,19 +531,12 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 ```
 This API is used to update a particular vehicle based on its reference ID.
 
-### HTTP Request
+### Request
 
 `PUT https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
-
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
@@ -1298,19 +594,13 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 
 This API is used to delete a particular vehicle based on its reference ID.
 
-### HTTP Request
+### Request
 
 `DELETE https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
@@ -1402,21 +692,15 @@ Create a new driver by passing form data through json.
 
 The acknowledgement will provide the driver reference ID.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-### HTTP Request Parameters
+### Request Parameters
 
-Param | DataType |  Required | Brief Info
+Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------ 
 driverName | String | Mandatory |  Driver's full name
 phoneNumber | String | Mandatory | Phone No
@@ -1456,7 +740,7 @@ managerEmailId | String | Optional | Driver's last company's manager's email id
 
 
 
-## Read Driver
+## Get Driver
 
 > Definition
 
@@ -1593,17 +877,11 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
 
 Use this API to read all data for a particular driver using its reference ID.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ## Update Driver
 
@@ -1685,21 +963,15 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
 
 This API is used to update a particular driver based on its reference ID.
 
-### HTTP Request
+### Request
 
 `PUT https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
-### HTTP Request Parameters
+### Request Parameters
 
-Param | DataType |  Required | Brief Info
+Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------ 
 referenceId | String | Mandatory |  ReferenceId of the record
 driverName | String | Mandatory |  Driver's full name
@@ -1765,17 +1037,11 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
 
 This API is used to delete a particular driver based on its reference ID.
 
-### HTTP Request
+### Request
 
 `DELETE https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 
 ## Create Trip
@@ -1824,19 +1090,13 @@ Create a new trip using this API. Form data is passed through json.
 
 The acknowledgement will contain the trip reference ID.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
@@ -1889,19 +1149,13 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 
 This API is used to start a trip using its reference ID.
 
-### HTTP Request
+### Request
 
 `PUT https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
 
-## Trip Stop
+## Stop Trip
 
 
 ```json
@@ -1930,20 +1184,12 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 
 This API is used to end an in-transit trip using its reference ID.
 
-### HTTP Request
+### Request
 
 `POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
 
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC f522631c-490c-46fd-9f79-ca8d14a704d7 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$V4u/aPJrPq/AxqQM6myUYON/gdLw4KfnRPBPZvvHAyW37UGiwakX6| Authentication key
-
-
-### HTTP Request Parameters
+### Request Parameters
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ---------- 
@@ -1953,13 +1199,13 @@ tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 The iFrame displays the last tracking for a trip, including current location and trip history, based on the trip name.
 
-### HTTP Request
+### Request
 
 `GET https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
 
-### HTTP Request Parameters
+### Request Parameters
 
-Parameter | Sample Value | Brief Info
+Parameter | Sample Value | Description
 --------- | ------- | -------------
 aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
@@ -2014,19 +1260,10 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmen
 
 Track API fetches the latest location (latitude / longitude) for a trip based on its reference ID.
 
-### HTTP Request
+### Request
 
 `GET https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
   
-### HTTP Request Headers
-
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
-WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
-
-
 ## Create Tracking Record
 
 > Create Tracking Record - Sample Request
@@ -2046,19 +1283,14 @@ CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG
 
 This endpoint adds tracking record.
 
-### HTTP Request
+### Request
 
 `POST http://api.loginextsolutions.com/TrackingApp/track/put`
   
-### HTTP Request Headers
 
-Header | Sample Value | Brief Info
---------- | ------- | -------------
-Content-Type | application/json | Json request
+### Request Parameters
 
-### HTTP Request Parameters
-
-Param | DataType |  Required | Brief Info
+Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------ 
 trackerId | String | Mandatory |  Device's unique ID
 latitude | Double | Mandatory | Latitude
@@ -2068,6 +1300,676 @@ batteryPerc | Double | Mandatory | Battery Percentage of device
 speed | Double | Mandatory | Speed with which consignment is moving
 messageType | String | Mandatory | Message type. Ex: REG
 temperature | Double | Mandatory | Consignment's temperature
+
+# Mile
+
+## Create Order (Delivery)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+```
+
+> Request Body
+
+```json
+[
+  {
+    "orderNo": "DummyOrderNo",
+    "awbNumber": "AWB001",
+    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+    "deliveryType": "DLBOY",
+    "packageVolume": "4500",
+    "paymentType": "Prepaid",
+    "packageValue": "5000",
+    "ServiceTime": "20",
+    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "isPartialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "Y",
+    "cancellationAllowedFl": "Y",
+    "numberOfItems": "10",
+    "deliverServiceTime": "20",
+    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "shipmentOrderTypeCd": "DELIVER",
+    "orderState": "FORWARD",
+    "returnBranch": "Gurgaon",
+    "distributionCenter": "Gurgaon",
+    "deliverBranch": "Gurgaon",
+    "deliverAccountCode": "Customer001",
+    "deliverAccountName": "TestUser",
+    "deliverApartment": "123",
+    "deliverStreetName": "Powai",
+    "deliverLandmark": "Dmart",
+    "deliverLocality": "Hiranandani",
+    "deliverCity": "Mumbai",
+    "deliverState": "Maharashtra",
+    "deliverCountry": "INDIA",
+    "deliverPinCode": "400076",
+    "shipmentCrateMappings": []
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Order created successfully",
+  "referenceId": [
+    "dcd883efcccc4d2299da962a72b01f23"
+  ],
+  "data": null,
+  "hasError": false
+}
+
+```
+Place a new delivery leg order with this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------ 
+orderNo | String | Mandatory |  Order No.
+awbNumber | String | Optional | Airway Bill No.
+shipmentOrderDt | Date | Mandatory | Order Date
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+packageVolume | String | Optional | Volume of package in CC
+paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+packageValue | String | Optional | Cost of Package
+ServiceTime | String | Optional | Service time in mins.
+StartTimeWindow | Date | Mandatory | Start time window of order
+EndTimeWindow | Date | Mandatory | End time window of order
+isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+numberOfItems | String | Optional | Number of crates
+pickupServiceTime | String | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date | Optional | Pickup start time window
+pickupEndTimeWindow | Date | Optional | Pickup end time window
+shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String | Mandatory | State of order. Ex: FORWARD
+returnBranch | String | Mandatory | Name of return branch
+distributionCenter | String | Mandatory | Distribution center's name
+deliverBranch | String | Mandatory | Name of delivery branch
+deliverAccountCode | String | Mandatory | Deliver account code
+deliverAccountName | String | Mandatory | Deliver account name
+deliverApartment | String | Mandatory | Apartment
+deliverStreetName | String | Mandatory | Street name
+deliverLandmark | String | Optional | Landmark
+deliverLocality | String | Mandatory | Locality
+deliverCity | String | Mandatory | City
+deliverState| String | Mandatory | State
+deliverCountry | String | Mandatory | Country
+deliverPinCode | String | Mandatory | Pincode
+
+
+### Request Parameters (Crates)
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------ 
+shipmentCrateMappings | Array of objects | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
+shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+
+## Create Order (Pickup)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+```
+
+> Request Body
+
+```json
+[
+  {
+    "orderNo": "DummyOrderNo",
+    "awbNumber": "AWB001",
+    "shipmentOrderDt": "2016-07-15T14:20:00.000Z",
+    "deliveryType": "DLBOY",
+    "packageVolume": "500",
+    "paymentType": "Cash On Delivery",
+    "packageValue": "1000",
+    "ServiceTime": "50",
+    "StartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "EndTimeWindow": "2016-07-17T14:24:00.000Z",
+    "isPartialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "Y",
+    "cancellationAllowedFl": "Y",
+    "numberOfItems": "1",
+    "pickupServiceTime": "50",
+    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
+    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "shipmentOrderTypeCd": "PICKUP",
+    "orderState": "FORWARD",
+    "pickupBranch": "Washola Hub",
+    "distributionCenter": "Washola Hub",
+    "pickupAccountCode": "Customer123",
+    "pickupAccountName": "Customer001",
+    "pickupApartment": "123",
+    "pickupStreetName": "Supreme Business Park",
+    "pickupLandmark": "DMart",
+    "pickupLocality": "Hiranandani",
+    "pickupCity": "Mumbai",
+    "pickupState": "Maharashtra",
+    "pickupCountry": "INDIA",
+    "pickupPinCode": "400076",
+    "shipmentCrateMappings": [
+      {
+        "crateCd": "CRATE001",
+        "shipmentlineitems": [
+          {
+            "itemCd": "CODE001",
+            "itemName": "ITEM1",
+            "itemPrice": 100,
+            "itemQuantity": 2,
+            "itemType": "TYPE1",
+            "itemWeight": 10
+          },
+          {
+            "itemCd": "CODE002",
+            "itemName": "ITEM2",
+            "itemPrice": 50,
+            "itemQuantity": 3,
+            "itemType": "TYPE2",
+            "itemWeight": 10
+          }
+        ]
+        
+      }
+    ]
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Order created successfully",
+  "referenceId": [
+    "dcd883efcccc4d2299da962a72b01f23"
+  ],
+  "data": null,
+  "hasError": false
+}
+
+```
+Place a new pickup leg order with this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------ 
+orderNo | String | Mandatory |  Order No.
+awbNumber | String | Optional | Airway Bill No.
+shipmentOrderDt | Date | Mandatory | Order Date
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+packageVolume | String | Optional | Volume of package in CC
+paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+packageValue | String | Optional | Cost of Package
+ServiceTime | String | Optional | Service time in mins.
+StartTimeWindow | Date | Mandatory | Start time window of order
+EndTimeWindow | Date | Mandatory | End time window of order
+isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+numberOfItems | String | Optional | Number of crates
+pickupServiceTime | String | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date | Optional | Pickup start time window
+pickupEndTimeWindow | Date | Optional | Pickup end time window
+shipmentOrderTypeCd | String | Mandatory | Order type code. PICKUP for pickup leg order
+orderState | String | Mandatory | State of order. Ex: FORWARD
+pickupBranch | String | Mandatory | Name of pickup branch
+distributionCenter | String | Mandatory | Distribution center's name
+pickupAccountCode | String | Mandatory | Pickup account code
+pickupAccountName | String | Mandatory | Pickup account name
+pickupApartment | String | Mandatory | Apartment
+pickupStreetName | String | Mandatory | Street name
+pickupLandmark | String | Optional | Landmark
+pickupLocality | String | Mandatory | Locality
+pickupCity | String | Mandatory | City
+pickupState| String | Mandatory | State
+pickupCountry | String | Mandatory | Country
+pickupPinCode | String | Mandatory | Pincode
+
+### Request Parameters (Crates)
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------ 
+shipmentCrateMappings | Array of objects | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
+shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+
+## Create Return Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
+```
+
+> Request Body
+
+```json
+["863fe69239bc4f738ca275a809c3b2e2"]
+```
+
+> Response
+
+```json
+{
+  "status": 201,
+  "message": "success",
+  "referenceId": [
+    "d7b0f3f8e1174742bd6a8ae451866cb1"
+  ],
+  "data":null,
+  "hasError": false,
+
+}
+```
+
+
+Place a new return order with this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
+
+## Cancel Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
+```
+
+> Request Body
+
+```json
+["e0eaebdd84ac4c40af72d827ab610090"]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+```
+
+Use this API to cancel an order.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+
+## Get Status of Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
+```
+
+> Request Body
+
+```json
+["c8714df4347911e6829f000d3aa04450"]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": null,
+  "data": [
+    {
+      "state": "FORWARD",
+      "status": "NOTDISPATCHED",
+      "referenceId": "c8714528347911e6829f000d3aa04450"
+    }
+  ],
+  "hasError": false
+}
+
+```
+Know the status of an order using this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
+
+## Download EPOD
+
+This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file.
+
+### Request
+
+`GET http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+
+### Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+orderstartdt | String | Mandatory | Order start date
+orderenddt | String | Mandatory | Order end date
+deliverystartdt | String | Mandatory | Delivery start date
+deliveryenddt | String | Mandatory | Delivery end date
+status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+
+
+## Add Crates
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
+```
+
+> Request Body
+
+```json
+[
+  {
+    "shipmentCrates": [
+      {
+        "crateCd": "Crate1",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item1",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      },
+      {
+        "crateCd": "Crate2",
+        "shipmentlineitems": [
+          {
+            "itemCd": "Item2",
+            "itemName": "",
+            "itemPrice": 33,
+            "itemQuantity": 10,
+            "itemType": "",
+            "itemWeight": 0,
+            "isDeleteFl": "N"
+          }
+        ],
+        "isDeleteFl": "N"
+      }
+    ],
+    "referenceId": "c8714df4347911e6829f000d3aa04450"
+  }
+]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+```
+Add crates and line items to an existing order, using this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
+
+## Start Trip 
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
+```
+
+> Request Body
+
+```json
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "1 trip(s) started",
+  "data": true,
+  "hasError": false
+}
+
+```
+Start the trip for a delivery medium using this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+
+## Stop Trip
+
+> Request Body
+
+```json
+[{
+    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
+    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
+    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
+}]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Trips ended successfully",
+  "data": true,
+  "hasError": false
+}
+
+```
+Stop the trip for a delivery medium using this API.
+
+### Request
+
+`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+  
+## Track Last Location
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+```
+
+> Request Body
+
+```json
+No Request Body
+```
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Latest Location found successfully",
+  "data": [
+    {
+      "lat": 19.1119794,
+      "lng": 72.9094968,
+      "shipmentReference": "21b538edf7f047028334480036179c70"
+    },
+    {
+      "lat": 19.0668898,
+      "lng": 72.8320575,
+      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
+    },
+    {
+      "lat": 19.0741246,
+      "lng": 72.824772,
+      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
+    },
+    {
+      "lat": 19.1200864,
+      "lng": 72.9010175,
+      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
+    }
+  ],
+  "hasError": false
+}
+
+```
+Use this to find out last tracked location for any order/ delivery medium.
+
+### Request
+
+`GET https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+  
+## Create Delivery Medium
+
+> Create Delivery Medium - Sample Request
+
+```json
+[
+  {
+    "employeeId": "Emp001",
+    "clientBranchId": 1403,
+    "distributionCenter": 1403,
+    "userGroupId": 23,
+    "deliveryMediumMasterName": "TestDM",
+    "phoneNumber": 1234567891,
+    "imei": 990000852471854,
+    "emailId": "test@testdm.com",
+    "userName": "testdm",
+    "password": "Passw0rd",
+    "capacityInUnits": 100,
+    "capacityInVolume": 10,
+    "capacityInWeight": 10,
+    "dob": "1980-10-29",
+    "gender": "Male",
+    "deliveryMediumMasterTypeCd": "Delivery Boy",
+    "isOwnVehicleFl": "Company",
+    "weeklyOffList": [
+      "Monday"
+    ],
+    "maxDistance": 10,
+    "licenseValidity": "2016-07-23",
+    "deliveryMediumMapList": [
+      {
+        "name": "ENGLISH"
+      },
+      {
+        "name": "HINDI"
+      }
+    ],
+    "shiftList": [
+      {
+        "shiftStartTime": "10:00",
+        "shiftEndTime": "17:00"
+      }
+    ]
+  }
+]
+```
+
+> Create Delivery Medium - Sample Response
+
+```json
+{
+  "status": 201,
+  "message": "success",
+  "data": [
+    "d7b0f3f8e1174742bd6a8ae451866cb1"
+  ],
+  "hasError": false
+}
+
+```
+
+This endpoint creates a new delivery medium.
+
+### Request
+
+`POST http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+
+
+### Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+employeeId | String | Mandatory | Employee Id
+clientBranchId | Integer | Mandatory | Client branch id
+distributionCenter | Integer | Mandatory | Distribution center id
+userGroupId | Integer | Mandatory | User group id
+deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
+phoneNumber | String | Mandatory | Mobile no
+imei | String |Optional | IMEI no
+emailId | String | Optional | Email id
+userName | String | Mandatory | Username
+password | String | Mandatory | Password
+capacityInUnits | Integer | Mandatory | Capacity of Delivery medium in units
+capacityInVolume | Integer | Optional | Capacity of Delivery medium in volume
+capacityInWeight | Integer |Optional | Capacity of Delivery medium in weight
+dob | String | Optional | Date of birth
+gender | String |Optional | Gender. Ex - Male,Female
+deliveryMediumMasterTypeCd | String |Optional | Delivery medium type. Ex - Truck, Delivery Boy
+isOwnVehicleFl | String |Optional | Owner of vehicle. Ex - Owned, Company
+weeklyOffList  | String |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
+maxDistance | Integer |Optional | Max. allowed distance
+licenseValidity | String |Optional | License validity date
+deliveryMediumMapList.name | String | Optional | Name of language
+shiftList.shiftStartTime  | String |Optional | Shift start time
+shiftList.shiftEndTime  | String |Optional | Shift end time
+
 
 # Webhooks
 
@@ -2092,9 +1994,9 @@ temperature | Double | Mandatory | Consignment's temperature
 
 This notification is sent when an order is created.
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
 awbNumber | String | AWB Number for the order
@@ -2121,9 +2023,9 @@ timestamp | String | Order creation timestamp
 
 This notification is sent when an order is updated.
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 notificationType | String | ORDERUPDATENOTIFICATION
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
@@ -2150,12 +2052,12 @@ This notification is sent when an order is accepted by a delivery boy.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 status | String | Status of the order
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
@@ -2179,11 +2081,11 @@ updatedOn | String | Accept order timestamp
 
 This notification is sent when an order is rejected by a delivery boy.
 
-### HTTP Response Parameters
+### Response Parameters
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 status | String | Status of the order
 tripName | String | Trip name
 updatedOn | String | Reject order timestamp
@@ -2223,9 +2125,9 @@ reasonOfRejection | String | Reason provided by Delivery medium while rejecting 
 
 This notification is sent when crates are loaded onto an order.
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
 awbNumber | String | AWB Number for the order
@@ -2260,11 +2162,11 @@ shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
 
 This notification is sent when crates are loaded onto an order.
 
-### HTTP Response Parameters
+### Response Parameters
 
-Param | DataType | Brief Info
+Param | DataType | Description
 --------- | ------- | ---------- 
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 deliveryMediumName | String | Name of delivery medium
 tripName | String | Trip name
 startTime | Date | Time when loading is completed.
@@ -2300,11 +2202,11 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
@@ -2344,11 +2246,11 @@ This notification is sent when an order is partially delivered by a delivery boy
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 statusCd | String | PARTIALLYDELIVERED
 notificationType | String | PARTIALDELIVERYNOTIFICATION
 customerComments | String |Customer comments 
@@ -2384,11 +2286,11 @@ This notification is sent when an order is not delivered by a delivery boy.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- | -------
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 notificationType | String | NOTDELIVEREDNOTIFICATION
 customerComments | String | Customer comments 
 customerRating | Integer | Rating provided by customer
@@ -2417,11 +2319,11 @@ This notification is sent when an order is picked up by a delivery boy.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order no.
+clientShipmentId | String | Order No..
 latitude | Double | Latitude where order was pickedup
 longitude | Double | Longitude where order was pickedup
 pickedUpTime | String | Pickup order timestamp
@@ -2453,11 +2355,11 @@ This notification is sent when an order is picked up by a delivery boy.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String |  Order no.
+clientShipmentId | String |  Order No..
 notificationType | String |  NOTPICKEDUPNOTIFICATION
 orderLeg | String |  Order leg
 awbNumber | String | Airway Bill Number
@@ -2496,11 +2398,11 @@ This notification is sent when orders are assigned to delivery boy for a particu
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String |  Order no.
+clientShipmentId | String |  Order No..
 deliveryMediumName | String |  Name of delivery medium
 tripName | String |  Trip name
 driverName | String |  Name of driver
@@ -2533,11 +2435,11 @@ endTimeWindow | String |  Estimated end time of trip
 
 This notification is sent when a trip is started.
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentIds | List<String> |  Order nos.
+clientShipmentIds | List<String> |  Order No.s.
 notificationType | String |  STARTTRIP
 tripName | String |  Trip name
 vehicleNumber | String |  Vehicle no.
@@ -2566,11 +2468,11 @@ startTime | String |  Trip start time
 
 This notification is sent when a trip is ended.
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
-clientShipmentIds | List<String> |  Order nos.
+clientShipmentIds | List<String> |  Order No.s.
 notificationType | String |  DELIVEREDNOTIFICATION
 tripName | String |  Trip name
 vehicleNumber | String |  Vehicle no.
@@ -2605,9 +2507,9 @@ This notification is sent when a vehicle enters inside a hub.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
 url | String |  Endpoint URL
 data | String |  Data in XML format
@@ -2642,9 +2544,9 @@ This notification is sent when a vehicle enters inside a hub.
 
 
 
-### HTTP Response Parameters
+### Response Parameters
 
-Key | DataType | Brief Info
+Key | DataType | Description
 --------- | ------- |-------
 url | String |  Endpoint URL
 data | String |  Data in XML format
