@@ -1,5 +1,5 @@
 ---
-title: LogiNext API 
+title: LogiNext API
 
 language_tabs:
   - json
@@ -19,30 +19,22 @@ Using the LogiNext API, you can integrate all the segments of your delivery logi
 
 The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.
 
-Please see below the flow of events which you can follow while using the LogiNext API - 
+Please see below the flow of events which you can follow while using the LogiNext API -
 
-Resources - 
+Resources -
 
-1. For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a "Reference Id" which you need to store for future updates related to that vehicle and driver. 
+1. For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a "Reference Id" which you need to store for future updates related to that vehicle and driver.
 
-2. For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to. 
-
-Haul - 
+2. For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to.
 
 
-1. Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
-Please check with our assigned CSAs on the address format based on the model type configured for you as either the Pin Code or Hub to Hub.
 
-2. Further you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.
-
-3. Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.
-
-Mile - 
+Mile -
 
 
 Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
 
-Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation. 
+Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation.
 
 Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).
 
@@ -65,11 +57,11 @@ https://developer.loginextsolutions.com/
 
 Our API is REST-based. This means:
 
-1. It make use of standard HTTP verbs like GET, POST, DELETE. 
+1. It make use of standard HTTP verbs like GET, POST, DELETE.
 
-2. The API uses standard HTTP error responses to describe errors. 
+2. The API uses standard HTTP error responses to describe errors.
 
-3. Authentication is specified with HTTP Basic Authentication. 
+3. Authentication is specified with HTTP Basic Authentication.
 
 
 ### Request Headers
@@ -127,7 +119,7 @@ Use the following URL endpoint to authenticate userself as a user of this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/LoginApp/login/authenticate`
+<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate`
 
 ### Request Headers
 
@@ -137,16 +129,16 @@ Content-Type | application/json | JSON request
 
 ### Request Body
 
-Header | Sample Value 
---------- | ------- 
+Header | Sample Value
+--------- | -------
 Content-Type | application/x-www-form-urlencoded
 username | Username provided by LogiNext
 password | Password provided by LogiNext
 
 ### Response Headers
 
-Header | Sample Value 
---------- | ------- 
+Header | Sample Value
+--------- | -------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
@@ -175,16 +167,16 @@ No Request params
 }
 ```
 
-This endpoint invalidates a user. 
+This endpoint invalidates a user.
 
 ### Request
 
-`GET https://api.loginextsolutions.com/LoginApp/login/token/refresh`
+<span class="post">GET</span>`https://api.loginextsolutions.com/LoginApp/login/token/refresh`
 
 
 ### Request Headers
 
-Header | Sample Value 
+Header | Sample Value
 --------- | ------- | -------------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
@@ -193,6 +185,16 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
 # Haul
+
+Haul -
+
+
+1. Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
+Please check with our assigned CSAs on the address format based on the model type configured for you as either the Pin Code or Hub to Hub.
+
+2. Further you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.
+
+3. Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.
 
 ## Create Vehicle 
 
@@ -253,19 +255,19 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
 }
 ```
 
-Create a new vehicle by passing form data through json. 
+Create a new vehicle by passing form data through json.
 
 The acknowledgement will provide the vehicle number and reference ID.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 vehicleNumber | String | Mandatory | Vehicle Number.
 vehicleMake | String | Optional | Make of the vehicle.
 vehicleModel | String |Optional | Model of the vehicle.
@@ -276,7 +278,7 @@ capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
 capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
 chasisNumber | String |Optional | Chasis number.
 engineNumber | String |Optional | Engine number.
-markerName | String |Optional | 
+markerName | String |Optional |
 registrationNumber | String |Optional | Registration Number of the vehicle.
 pucValidity | Date |Optional | PUC Validity Date
 insuranceValidity | Date |Optional | Insurance Validity Date
@@ -363,17 +365,17 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### Request
 
-`GET https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
+<span class="post">GET</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 
-## Get Vehicle 
+## Get Vehicle
 
 > Definition
 
@@ -472,7 +474,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ### Request
 
-`POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 
 ## Update Vehicle
@@ -533,13 +535,13 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### Request
 
-`PUT https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
 vehicleNumber | String | Mandatory | Vehicle Number.
 vehicleMake | String | Optional | Make of the vehicle.
@@ -551,7 +553,7 @@ capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
 capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
 chasisNumber | String |Optional | Chasis number.
 engineNumber | String |Optional | Engine number.
-markerName | String |Optional | 
+markerName | String |Optional |
 registrationNumber | String |Optional | Registration Number of the vehicle.
 pucValidity | Date |Optional | PUC Validity Date
 insuranceValidity | Date |Optional | Insurance Validity Date
@@ -596,14 +598,14 @@ This API is used to delete a particular vehicle based on its reference ID.
 
 ### Request
 
-`DELETE https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
 
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 reference_ids | List (String) | Mandatory | Reference Id associated with the vehicle.
 
 
@@ -619,7 +621,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
 ```json
 [
     {
-        
+
         "driverName":"Test_Driver",
         "phoneNumber":1234565632,
         "emailId":"test@testing.com",
@@ -629,12 +631,12 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
         "maritalStatus":"married",
         "gender":"male",
         "experience":10,
-        
+
         "licenseValidity":"2020-06-13",
         "licenseNumber":"LIC_104",
         "licenseType":"4 wheeler",
         "licenseIssueBy":"Maharashtra Govt.",
-    
+
         "addressList":[ {
                                 "apartment":"A-901",
                                 "streetName": "Hiranandani Street",
@@ -655,8 +657,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
                                 "pincode":400092,
                                 "isCurrentAddress":false
                         }],
-                        
-        
+
+
         "driverEmployeeId":"D23",
         "shiftList":[{
                             "shiftStartTime"  :"07:03pm",
@@ -665,7 +667,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
                             "endTime":"2016-06-15"
 
         }],
-        
+
         "previousCompanyName":"ABC",
         "reportingManager":"Rahul",
         "managerPhoneNumber":1234567890,
@@ -688,20 +690,20 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
 
 ```
 
-Create a new driver by passing form data through json. 
+Create a new driver by passing form data through json.
 
 The acknowledgement will provide the driver reference ID.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
+<span class="post">POST</span> `https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create`
 
 
 
 ### Request Parameters
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 driverName | String | Mandatory |  Driver's full name
 phoneNumber | String | Mandatory | Phone No
 emailId | String | Optional | EmailId
@@ -725,7 +727,7 @@ addressList.stateShortCode | String | Mandatory | State short code
 addressList.city | String | Mandatory | City
 addressList.pincode | Integer | Mandatory | Pincode
 addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
-driverEmployeeId | String | Optional | EmployeeId 
+driverEmployeeId | String | Optional | EmployeeId
 shiftList.startTime | String | Mandatory | Shift start date
 shiftList.endTime | String | Mandatory | Shift end date
 shiftList.shiftStartTime | String | Mandatory | Shift start time
@@ -879,7 +881,7 @@ Use this API to read all data for a particular driver using its reference ID.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
+<span class="post">POST</span>` https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
 
 
@@ -905,12 +907,12 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
         "maritalStatus":"married",
         "gender":"female",
         "experience":11,
-        
+
         "licenseValidity":"2020-06-13",
         "licenseNumber":"LIC_104",
         "licenseType":"4 wheeler",
         "licenseIssueBy":"Maharashtra Govt.",
-    
+
         "addressList":[ {
                                 "apartment":"A-901",
                                 "streetName": "Hiranandani Street",
@@ -931,8 +933,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
                                 "pincode":400092,
                                 "isCurrentAddress":false
                         }],
-                        
-        
+
+
         "driverEmployeeId":"D23",
         "shiftList":[{
                             "shiftStartTime"  :"07:03pm",
@@ -941,7 +943,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
                             "endTime":"2016-06-15"
 
         }],
-        
+
         "previousCompanyName":"ABC",
         "reportingManager":"Rahul",
         "managerPhoneNumber":"1234567890",
@@ -965,14 +967,14 @@ This API is used to update a particular driver based on its reference ID.
 
 ### Request
 
-`PUT https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
 
 
 
 ### Request Parameters
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 referenceId | String | Mandatory |  ReferenceId of the record
 driverName | String | Mandatory |  Driver's full name
 phoneNumber | String | Mandatory | Phone No
@@ -997,7 +999,7 @@ addressList.stateShortCode | String | Mandatory | State short code
 addressList.city | String | Mandatory | City
 addressList.pincode | Integer | Mandatory | Pincode
 addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
-driverEmployeeId | String | Optional | EmployeeId 
+driverEmployeeId | String | Optional | EmployeeId
 shiftList.startTime | String | Mandatory | Shift start date
 shiftList.endTime | String | Mandatory | Shift end date
 shiftList.shiftStartTime | String | Mandatory | Shift start time
@@ -1039,7 +1041,7 @@ This API is used to delete a particular driver based on its reference ID.
 
 ### Request
 
-`DELETE https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
 
 
@@ -1086,20 +1088,20 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
 
 ```
 
-Create a new trip using this API. Form data is passed through json. 
+Create a new trip using this API. Form data is passed through json.
 
 The acknowledgement will contain the trip reference ID.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/create`
 
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 shipmentType | String | Mandatory | Type of the Shipment being created.Examples:"Bag","Package","Manifest"
 originAddr | String |Mandatory | Origin point of the trip.Examples:-AMDD,BLRX
 destinationAddr | String |Mandatory | Destination point of the trip.Examples:-CNND,BOMX
@@ -1151,7 +1153,7 @@ This API is used to start a trip using its reference ID.
 
 ### Request
 
-`PUT https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
 
 
@@ -1186,13 +1188,13 @@ This API is used to end an in-transit trip using its reference ID.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 ## Trip iFrame
@@ -1201,7 +1203,7 @@ The iFrame displays the last tracking for a trip, including current location and
 
 ### Request
 
-`GET https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
+<span class="post">GET</span>` https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
 
 ### Request Parameters
 
@@ -1209,7 +1211,7 @@ Parameter | Sample Value | Description
 --------- | ------- | -------------
 aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
-tripname | TestTripName| Trip name 
+tripname | TestTripName| Trip name
 
 ## Track Last Location
 
@@ -1262,8 +1264,8 @@ Track API fetches the latest location (latitude / longitude) for a trip based on
 
 ### Request
 
-`GET https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
-  
+<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+
 ## Create Tracking Record
 
 > Create Tracking Record - Sample Request
@@ -1285,13 +1287,13 @@ This endpoint adds tracking record.
 
 ### Request
 
-`POST http://api.loginextsolutions.com/TrackingApp/track/put`
-  
+<span class="post">POST</span>`http://api.loginextsolutions.com/TrackingApp/track/put`
+
 
 ### Request Parameters
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 trackerId | String | Mandatory |  Device's unique ID
 latitude | Double | Mandatory | Latitude
 longitude | Double | Mandatory | Longitude
@@ -1373,12 +1375,12 @@ Place a new delivery leg order with this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
 
 ### Request Parameters
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 orderNo | String | Mandatory |  Order No.
 awbNumber | String | Optional | Airway Bill No.
 shipmentOrderDt | Date | Mandatory | Order Date
@@ -1416,7 +1418,7 @@ deliverPinCode | String | Mandatory | Pincode
 ### Request Parameters (Crates)
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 shipmentCrateMappings | Array of objects | Optional | Shipment crates
 shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
 shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
@@ -1491,7 +1493,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
             "itemWeight": 10
           }
         ]
-        
+
       }
     ]
   }
@@ -1518,12 +1520,12 @@ Place a new pickup leg order with this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
 
 ### Request Parameters
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 orderNo | String | Mandatory |  Order No.
 awbNumber | String | Optional | Airway Bill No.
 shipmentOrderDt | Date | Mandatory | Order Date
@@ -1559,7 +1561,7 @@ pickupPinCode | String | Mandatory | Pincode
 ### Request Parameters (Crates)
 
 Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------ 
+--------- | ------- | ---------- | ------------
 shipmentCrateMappings | Array of objects | Optional | Shipment crates
 shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
 shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
@@ -1603,7 +1605,7 @@ Place a new return order with this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
 
 ## Cancel Order
 
@@ -1634,7 +1636,7 @@ Use this API to cancel an order.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
 
 ## Get Status of Order
 
@@ -1671,7 +1673,7 @@ Know the status of an order using this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
 
 ## Download EPOD
 
@@ -1679,12 +1681,12 @@ This endpoint downloads the EPODs for given order, delivery dates and status of 
 
 ### Request
 
-`GET http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+<span class="post">GET</span>`http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 orderstartdt | String | Mandatory | Order start date
 orderenddt | String | Mandatory | Order end date
 deliverystartdt | String | Mandatory | Delivery start date
@@ -1757,9 +1759,9 @@ Add crates and line items to an existing order, using this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
 
-## Start Trip 
+## Start Trip
 
 > Definition
 
@@ -1790,7 +1792,7 @@ Start the trip for a delivery medium using this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
 
 ## Stop Trip
 
@@ -1819,8 +1821,8 @@ Stop the trip for a delivery medium using this API.
 
 ### Request
 
-`POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
-  
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+
 ## Track Last Location
 
 > Definition
@@ -1872,8 +1874,8 @@ Use this to find out last tracked location for any order/ delivery medium.
 
 ### Request
 
-`GET https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
-  
+<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+
 ## Create Delivery Medium
 
 > Create Delivery Medium - Sample Request
@@ -1939,13 +1941,13 @@ This endpoint creates a new delivery medium.
 
 ### Request
 
-`POST http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
 
 
 ### Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 employeeId | String | Mandatory | Employee Id
 clientBranchId | Integer | Mandatory | Client branch id
 distributionCenter | Integer | Mandatory | Distribution center id
@@ -1995,7 +1997,7 @@ shiftList.shiftEndTime  | String |Optional | Shift end time
 This notification is sent when an order is created.
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
@@ -2024,7 +2026,7 @@ timestamp | String | Order creation timestamp
 This notification is sent when an order is updated.
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 notificationType | String | ORDERUPDATENOTIFICATION
 deliveryMediumName | String | Name of delivery medium
@@ -2056,7 +2058,7 @@ This notification is sent when an order is accepted by a delivery boy.
 
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 status | String | Status of the order
 deliveryMediumName | String | Name of delivery medium
@@ -2084,7 +2086,7 @@ This notification is sent when an order is rejected by a delivery boy.
 ### Response Parameters
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 status | String | Status of the order
 tripName | String | Trip name
@@ -2126,7 +2128,7 @@ reasonOfRejection | String | Reason provided by Delivery medium while rejecting 
 This notification is sent when crates are loaded onto an order.
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
@@ -2147,14 +2149,14 @@ shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
 
 ```json
 {
-  "clientShipmentId": "TestOrderNo", 
+  "clientShipmentId": "TestOrderNo",
   "deliveryMediumName":"TestDeliveryMedium",
   "tripName":"TestTrip",
   "startTime":"2016-07-01 09:13:00",
   "phoneNumber":1234567890,
   "driverName":"TestDriverName",
   "vehicleNumber":"MH 03992"
-  "revisedEta" : "2016-07-01 10:13:00", 
+  "revisedEta" : "2016-07-01 10:13:00",
   "notificationType": "LOADINGDONENOTIFICATION"
 }
 ```
@@ -2165,7 +2167,7 @@ This notification is sent when crates are loaded onto an order.
 ### Response Parameters
 
 Param | DataType | Description
---------- | ------- | ---------- 
+--------- | ------- | ----------
 clientShipmentId | String | Order No..
 deliveryMediumName | String | Name of delivery medium
 tripName | String | Trip name
@@ -2210,7 +2212,7 @@ clientShipmentId | String | Order No..
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
-customerComment | String | Customer comments 
+customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to collect
@@ -2253,7 +2255,7 @@ Key | DataType | Description
 clientShipmentId | String | Order No..
 statusCd | String | PARTIALLYDELIVERED
 notificationType | String | PARTIALDELIVERYNOTIFICATION
-customerComments | String |Customer comments 
+customerComments | String |Customer comments
 customerRating | Integer | Rating provided by customer
 reason | String | Reason for the order being partially delivered
 reasonCd | String | Reason code
@@ -2292,7 +2294,7 @@ Key | DataType | Description
 --------- | ------- | -------
 clientShipmentId | String | Order No..
 notificationType | String | NOTDELIVEREDNOTIFICATION
-customerComments | String | Customer comments 
+customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
 reason | String | Reason for the order not delivered
 reasonCd | String | Reason code
@@ -2486,7 +2488,7 @@ startTime | String |  Trip end time
 
 ```json
 {
-  
+
   "url" : "endpoint url",
   "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
           <geofencePushNotificationDTO>\n    
@@ -2523,7 +2525,7 @@ updatedDate | String | Timestamp
 
 ```json
 {
-  
+
   "url" : "endpoint url",
   "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
           <geofencePushNotificationDTO>\n    

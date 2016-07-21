@@ -27,6 +27,9 @@ html, body {
   color: $main-text;
   padding: 0;
   margin: 0;
+  font-family: "Trebuchet MS";
+  font-size: 14px;
+  text-align: justify;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @extend %default-font;
@@ -153,6 +156,9 @@ html, body {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .tocify-item:hover{
+    color:#1bc6cb;
+  }
 
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
@@ -175,7 +181,7 @@ html, body {
   .tocify-focus {
     box-shadow: 0px 1px 0px $nav-active-shadow;
     background-color: $nav-active-bg;
-    color: $nav-active-text;
+    color: #1bc6cb;
   }
 
   // Subheaders are the submenus that slide open
@@ -374,7 +380,7 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 20px;
     margin-top: 4em;
     margin-bottom: 0;
@@ -396,6 +402,12 @@ html, body {
     font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
+    color:#808080;
+  }
+  h3{
+    font-size: 18px;
+    font-weight: 600;
+
   }
 
   h4, h5, h6 {
@@ -467,8 +479,8 @@ html, body {
   }
 
   code {
-    background-color: #ececec;
-    padding: 3px;
+    background-color: #E3F9FA;
+    padding: 7px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
@@ -662,4 +674,13 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: #121c22;//#1e272c;//$code-bg;
+}
+.post{
+  border: solid rgba(0, 128, 0, 0.59) 2px;
+  background-color: white;
+  padding: 3px;
+}
+.tocify{
+  font-family: "myriad-pro",Helvetica "Neue",Helvetica,Arial,sans-serif;
+  background-color: #f7f7f7;
 }
