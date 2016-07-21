@@ -125,29 +125,20 @@
 
 <p>The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.</p>
 
-<p>Please see below the flow of events which you can follow while using the LogiNext API - </p>
+<p>Please see below the flow of events which you can follow while using the LogiNext API -</p>
 
-<p>Resources - </p>
-
-<ol>
-<li><p>For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a &ldquo;Reference Id&rdquo; which you need to store for future updates related to that vehicle and driver. </p></li>
-<li><p>For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to. </p></li>
-</ol>
-
-<p>Haul - </p>
+<p>Resources -</p>
 
 <ol>
-<li><p>Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
-Please check with our assigned CSAs on the address format based on the model type configured for you as either the Pin Code or Hub to Hub.</p></li>
-<li><p>Further you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.</p></li>
-<li><p>Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.</p></li>
+<li><p>For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a &ldquo;Reference Id&rdquo; which you need to store for future updates related to that vehicle and driver.</p></li>
+<li><p>For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to.</p></li>
 </ol>
 
-<p>Mile - </p>
+<p>Mile -</p>
 
 <p>Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  </p>
 
-<p>Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation. </p>
+<p>Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation.</p>
 
 <p>Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).</p>
 
@@ -168,9 +159,9 @@ Please check with our assigned CSAs on the address format based on the model typ
 <p>Our API is REST-based. This means:</p>
 
 <ol>
-<li><p>It make use of standard HTTP verbs like GET, POST, DELETE. </p></li>
-<li><p>The API uses standard HTTP error responses to describe errors. </p></li>
-<li><p>Authentication is specified with HTTP Basic Authentication. </p></li>
+<li><p>It make use of standard HTTP verbs like GET, POST, DELETE.</p></li>
+<li><p>The API uses standard HTTP error responses to describe errors.</p></li>
+<li><p>Authentication is specified with HTTP Basic Authentication.</p></li>
 </ol>
 
 <h3 id="request-headers">Request Headers</h3>
@@ -278,7 +269,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
 
 <h3 id="request-headers">Request Headers</h3>
 
@@ -361,11 +352,11 @@ Please check with our assigned CSAs on the address format based on the model typ
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint invalidates a user. </p>
+<p>This endpoint invalidates a user.</p>
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET https://api.loginextsolutions.com/LoginApp/login/token/refresh</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/token/refresh</code></p>
 
 <h3 id="request-headers">Request Headers</h3>
 
@@ -388,6 +379,15 @@ Please check with our assigned CSAs on the address format based on the model typ
 <aside class="success">Response headers will contain new session token and authentication key.</aside>
 
 <h1 id="haul">Haul</h1>
+
+<p>Haul -</p>
+
+<ol>
+<li><p>Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
+Please check with our assigned CSAs on the address format based on the model type configured for you as either the Pin Code or Hub to Hub.</p></li>
+<li><p>Further you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.</p></li>
+<li><p>Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.</p></li>
+</ol>
 
 <h2 id="create-vehicle">Create Vehicle</h2>
 
@@ -447,13 +447,13 @@ Please check with our assigned CSAs on the address format based on the model typ
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Create a new vehicle by passing form data through json. </p>
+<p>Create a new vehicle by passing form data through json.</p>
 
 <p>The acknowledgement will provide the vehicle number and reference ID.</p>
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -677,7 +677,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -796,7 +796,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h2 id="update-vehicle">Update Vehicle</h2>
 
@@ -857,7 +857,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">PUT https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -1045,7 +1045,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">DELETE https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
+<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -1147,13 +1147,13 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 </span></code></pre>
 
-<p>Create a new driver by passing form data through json. </p>
+<p>Create a new driver by passing form data through json.</p>
 
 <p>The acknowledgement will provide the driver reference ID.</p>
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create</code></p>
+<p><span class="post">POST</span> <code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -1498,7 +1498,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list</code></p>
 
 <h2 id="update-driver">Update Driver</h2>
 
@@ -1582,7 +1582,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">PUT https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -1826,7 +1826,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">DELETE https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete</code></p>
+<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete</code></p>
 
 <h2 id="create-trip">Create Trip</h2>
 
@@ -1870,13 +1870,13 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 </span></code></pre>
 
-<p>Create a new trip using this API. Form data is passed through json. </p>
+<p>Create a new trip using this API. Form data is passed through json.</p>
 
 <p>The acknowledgement will contain the trip reference ID.</p>
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2018,7 +2018,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">PUT https://api.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
 
 <h2 id="stop-trip">Stop Trip</h2>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
@@ -2048,7 +2048,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2074,7 +2074,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2153,7 +2153,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
 
 <h2 id="create-tracking-record">Create Tracking Record</h2>
 
@@ -2176,7 +2176,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST http://api.loginextsolutions.com/TrackingApp/track/put</code></p>
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/TrackingApp/track/put</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2309,7 +2309,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2666,7 +2666,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2959,7 +2959,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
 
 <h2 id="cancel-order">Cancel Order</h2>
 
@@ -2990,7 +2990,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
 
 <h2 id="get-status-of-order">Get Status of Order</h2>
 
@@ -3028,7 +3028,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
 
 <h2 id="download-epod">Download EPOD</h2>
 
@@ -3036,7 +3036,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&amp;orderenddt=2016-06-16 00:30:00&amp;deliverystartdt=2015-06-15 00:00:00&amp;deliveryenddt=2016-06-15 00:00:00&amp;status=NOTDISPATCHED</code></p>
+<p><span class="post">GET</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&amp;orderenddt=2016-06-16 00:30:00&amp;deliverystartdt=2015-06-15 00:00:00&amp;deliveryenddt=2016-06-15 00:00:00&amp;status=NOTDISPATCHED</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -3146,7 +3146,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
 
 <h2 id="start-trip">Start Trip</h2>
 
@@ -3180,7 +3180,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/start</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/start</code></p>
 
 <h2 id="stop-trip">Stop Trip</h2>
 
@@ -3210,7 +3210,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
 
 <h2 id="track-last-location">Track Last Location</h2>
 
@@ -3263,7 +3263,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">GET https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
 
 <h2 id="create-delivery-medium">Create Delivery Medium</h2>
 
@@ -3330,7 +3330,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><code class="prettyprint">POST http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -3836,14 +3836,14 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h2 id="load-complete">Load Complete</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"TestDeliveryMedium"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-07-01 09:13:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
   </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH 03992"</span><span class="w">
-  </span><span class="s2">"revisedEta"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"2016-07-01 10:13:00"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"revisedEta"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"2016-07-01 10:13:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADINGDONENOTIFICATION"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
