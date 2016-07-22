@@ -19,41 +19,11 @@ Using the LogiNext API, you can integrate all the segments of your delivery logi
 
 The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.
 
-Please see below the flow of events which you can follow while using the LogiNext API -
-
-Resources -
-
-1. For Haul and Mile products, you can create and maintain details of the vehicles and drivers in the LogiNext system using Create Vehicle and Create Driver API. This API takes in vehicle’s and driver’s primary information and returns a "Reference Id" which you need to store for future updates related to that vehicle and driver.
-
-2. For Mile product, you can create a delivery medium and map it to a vehicle. A delivery medium is anyone who can carry your order. You will need to pass the user group shared by our CSAs to which this delivery medium needs to be assigned to.
-
-
-
-Mile -
-
-
-Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
-
-Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation.
-
-Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).
-
-
-1. Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.
-
-2. Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the order reference ID.
-
-3. Finally you can track your pick-up / delivery executive in transit through the Track Last Location API. In this case also you need to pass the Trip Reference Id.
-
-4. You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.
-
-5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
-
 # Requests
 
 The base URL for all requests to the LogiNext API is:
 
-https://developer.loginextsolutions.com/
+https://api.loginextsolutions.com/
 
 Our API is REST-based. This means:
 
@@ -83,11 +53,13 @@ The LogiNext API uses HTTP status codes to indicate the status of your requests.
 Code | Description
 ---------- | -------
 200 | Success -- Your request is successfully processed.
+201 | Created -- Your requested resource got successfully created.
 400 | Bad Request -- Your request is incorrect.
 401 | Unauthorized -- Your API key is wrong.
 404 | Not Found -- The specified resource could not be found.
 405 | Method Not Allowed -- You tried to access a resource with an invalid method.
 409 | Conflict -- Your request could not be completed due to a conflict with the current state of the target resource.
+415 | Unsupported Media Type -- Your request is not in the format accepted by this method of target resource.
 429 | Too Many Requests -- You're requesting too many resources.
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
@@ -185,8 +157,6 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
 # Haul
-
-Haul -
 
 
 1. Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
@@ -1213,7 +1183,7 @@ aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token witho
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 tripname | TestTripName| Trip name
 
-## Track Last Location
+## Get Location
 
 > Definition
 
@@ -1299,11 +1269,28 @@ latitude | Double | Mandatory | Latitude
 longitude | Double | Mandatory | Longitude
 time | Date | Mandatory | Tracking time in UTC
 batteryPerc | Double | Mandatory | Battery Percentage of device
-speed | Double | Mandatory | Speed with which consignment is moving
+speed | Double | Optional | Speed with which consignment is moving
 messageType | String | Mandatory | Message type. Ex: REG
-temperature | Double | Mandatory | Consignment's temperature
+temperature | Double | Optional | Consignment's temperature
 
 # Mile
+
+Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
+
+Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation.
+
+Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).
+
+
+1. Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.
+
+2. Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the order reference ID.
+
+3. Finally you can track your pick-up / delivery executive in transit through the Track Last Location API. In this case also you need to pass the Trip Reference Id.
+
+4. You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.
+
+5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
 
 ## Create Order (Delivery)
 
