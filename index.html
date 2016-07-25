@@ -121,9 +121,9 @@
 
 <p>LogiNext welcomes you to the world of organised logistics.</p>
 
-<p>Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create  seamless experience for your operations and executive team.</p>
+<p>Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.</p>
 
-<p>The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.</p>
+<p>The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is delivered at the desired location.</p>
 
 <h1 id="requests">Requests</h1>
 
@@ -229,6 +229,13 @@
 
 <h2 id="authenticate">Authenticate</h2>
 
+<p>LogiNext API uses Basic Authentication to provide you an authorized access. Please use the the below URL Endpoint to authenticate yourself as a user of this API.</p>
+
+<p>You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
+
+<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. The validity of this session token is 1 day (24 hours).
+Please ensure that you add the token and secret key as part of every Loginext API call.</p>
+
 <blockquote>
 <p>Definition</p>
 </blockquote>
@@ -312,16 +319,12 @@
 
 <h2 id="invalidate">Invalidate</h2>
 
+<p>You can fetch a fresh session token and a key by calling the below API. This call will invalidate the existing token and key and then you will be provided with a new token and a key which you will have to pass everytime in every other API call.</p>
+
 <blockquote>
 <p>Definition</p>
 </blockquote>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/token/refresh</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">No</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">params</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -359,7 +362,23 @@
 </tr>
 </tbody></table>
 
-<aside class="success">Response headers will contain new session token and authentication key.</aside>
+<h3 id="response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Sample Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WWW-Authenticate</td>
+<td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
+</tr>
+<tr>
+<td>CLIENT_SECRET_KEY</td>
+<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
+</tr>
+</tbody></table>
 
 <h1 id="haul">Haul</h1>
 
@@ -371,6 +390,8 @@ Please check with our assigned CSAs on the address format based on the model typ
 </ol>
 
 <h2 id="create-vehicle">Create Vehicle</h2>
+
+<p>For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a &ldquo;Reference Id&rdquo; which you need to store in order to update the vehicle information in future. </p>
 
 <blockquote>
 <p>Definition</p>
@@ -385,7 +406,7 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="p">{</span><span class="w">
             </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
             </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -450,141 +471,48 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>vehicleNumber</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Vehicle Number.</td>
+<td>Unique name to identify the vehicle</td>
 </tr>
 <tr>
 <td>vehicleMake</td>
 <td>String</td>
 <td>Optional</td>
-<td>Make of the vehicle.</td>
+<td>Make of the vehicle like Mazda, Volvo, etc.</td>
 </tr>
 <tr>
 <td>vehicleModel</td>
 <td>String</td>
 <td>Optional</td>
-<td>Model of the vehicle.</td>
+<td>Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.</td>
 </tr>
 <tr>
 <td>typeOfBody</td>
 <td>String</td>
 <td>Optional</td>
-<td>Type of Body.</td>
-</tr>
-<tr>
-<td>unladdenWeight</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>Unladen weight of the vehicle.</td>
-</tr>
-<tr>
-<td>capacityInWeight</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>Capacity of vehicle in (Kgs).</td>
-</tr>
-<tr>
-<td>capacityInUnits</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>Capacity of vehicle in (Units).</td>
-</tr>
-<tr>
-<td>capacityInVolume</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>Capacity of vehicle in (Cc).</td>
-</tr>
-<tr>
-<td>chasisNumber</td>
-<td>String</td>
-<td>Optional</td>
-<td>Chasis number.</td>
-</tr>
-<tr>
-<td>engineNumber</td>
-<td>String</td>
-<td>Optional</td>
-<td>Engine number.</td>
-</tr>
-<tr>
-<td>markerName</td>
-<td>String</td>
-<td>Optional</td>
-<td></td>
-</tr>
-<tr>
-<td>registrationNumber</td>
-<td>String</td>
-<td>Optional</td>
-<td>Registration Number of the vehicle.</td>
-</tr>
-<tr>
-<td>pucValidity</td>
-<td>Date</td>
-<td>Optional</td>
-<td>PUC Validity Date</td>
-</tr>
-<tr>
-<td>insuranceValidity</td>
-<td>Date</td>
-<td>Optional</td>
-<td>Insurance Validity Date</td>
-</tr>
-<tr>
-<td>vehiclePermit</td>
-<td>String</td>
-<td>Optional</td>
-<td>Comma separated list of states within which vehicle is permitted to travel.</td>
-</tr>
-<tr>
-<td>ownership</td>
-<td>String</td>
-<td>Optional</td>
-<td>Vehicle owned by. Possible values (company OR vendor)</td>
-</tr>
-<tr>
-<td>ownerName</td>
-<td>String</td>
-<td>Optional</td>
-<td>Name of the owner of the vehicle.</td>
-</tr>
-<tr>
-<td>transporter</td>
-<td>String</td>
-<td>Optional</td>
-<td></td>
-</tr>
-<tr>
-<td>financer</td>
-<td>String</td>
-<td>Optional</td>
-<td></td>
-</tr>
-<tr>
-<td>accidentHistory</td>
-<td>String</td>
-<td>Optional</td>
-<td>Previous accident history associated with the vehicle.</td>
-</tr>
-<tr>
-<td>rentStartDate</td>
-<td>Date</td>
-<td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
-</tr>
-<tr>
-<td>rentEndDate</td>
-<td>Date</td>
-<td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
-</tr>
-<tr>
-<td>deviceId.barcode</td>
-<td>String</td>
-<td>Optional</td>
-<td>Barcode of the tracker.</td>
+<td>Body Type of the vehicle. This is static field and can have only one of the below values -</td>
 </tr>
 </tbody></table>
+
+<p>4 wheeler, 2 wheeler,24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
+unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
+capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
+capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
+capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
+chasisNumber | String |Optional | Chassis / VIN number of the vehicle
+engineNumber | String |Optional | E Engine Number of the vehicle
+markerName | String |Optional |
+registrationNumber | String |Optional | Registered Number provided by the local transportation authority
+pucValidity | Date |Optional | Date till which PUC certificate is valid
+insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid
+vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
+ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
+ownerName | String |Optional | Name of the owner of the vehicle.
+transporter | String |Optional |
+financer | String |Optional |
+accidentHistory | String |Optional | Previous accident history associated with the vehicle.
+rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
+rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
+deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 
 <h2 id="get-vehicle-single">Get Vehicle (Single)</h2>
 
@@ -592,12 +520,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <p>Definition</p>
 </blockquote>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/v</span><span class="mi">1</span><span class="err">/vehicle/:reference_id</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">No</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">body</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -684,12 +606,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <p>Definition</p>
 </blockquote>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/v</span><span class="mi">1</span><span class="err">/vehicle</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">No</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">body</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2597,9 +2513,6 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Washola Hub"</span><span class="p">,</span><span class="w">
@@ -2614,6 +2527,8 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+
+
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
@@ -2855,6 +2770,397 @@ Please check with our assigned CSAs on the address format based on the model typ
 </tr>
 <tr>
 <td>pickupPinCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pincode</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td>Optional</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>CRATE001</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td>Mandatory</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>Mandatory</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Item weight</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-order-pickup-amp-delivery">Create Order (Pickup &amp; Delivery)</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo13"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"StartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"EndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestUser"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Powai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dmart"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hiranandani"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supreme Business Park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMart"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hiranandani"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shiv.n@loginextsolutions.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjlkd CHS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljsdl Road"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skjdlk Nagar"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kldlk West"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400104"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order created successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Place a new delivery leg order with this API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Order No.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Airway Bill No.</td>
+</tr>
+<tr>
+<td>shipmentOrderDt</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Order Date</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>String</td>
+<td>Optional</td>
+<td>Volume of package in CC</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>String</td>
+<td>Optional</td>
+<td>Cost of Package</td>
+</tr>
+<tr>
+<td>ServiceTime</td>
+<td>String</td>
+<td>Optional</td>
+<td>Service time in mins.</td>
+</tr>
+<tr>
+<td>StartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Start time window of order</td>
+</tr>
+<tr>
+<td>EndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>End time window of order</td>
+</tr>
+<tr>
+<td>isPartialDeliveryAllowedFl</td>
+<td>String</td>
+<td>Optional</td>
+<td>Is Partial Delivery allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>returnAllowedFl</td>
+<td>String</td>
+<td>Optional</td>
+<td>Is Return allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>cancellationAllowedFl</td>
+<td>String</td>
+<td>Optional</td>
+<td>Is Cancellation allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>String</td>
+<td>Optional</td>
+<td>Number of crates</td>
+</tr>
+<tr>
+<td>pickupServiceTime</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup service time in mins.</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Pickup start time window</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Pickup end time window</td>
+</tr>
+<tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Order type code. DELIVER for delivery leg order</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>State of order. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>returnBranch</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Name of return branch</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>deliverBranch</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Name of delivery branch</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver account code</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver account name</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Apartment</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>Landmark</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Locality</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>City</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>State</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Country</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pincode</td>
@@ -3216,12 +3522,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 </span></code></pre>
 
 <blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">No</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">Body</span><span class="w">
-</span></code></pre>
-
-<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -3265,14 +3565,13 @@ Please check with our assigned CSAs on the address format based on the model typ
 <blockquote>
 <p>Create Delivery Medium - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
+<pre class="highlight json"><code><span class="p">[[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emp001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1403</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1403</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userGroupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"GrocerMax"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567891</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123457891</span><span class="p">,</span><span class="w">
     </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="mi">990000852471854</span><span class="p">,</span><span class="w">
     </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@testdm.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testdm"</span><span class="p">,</span><span class="w">
@@ -3344,22 +3643,16 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Employee Id</td>
 </tr>
 <tr>
-<td>clientBranchId</td>
-<td>Integer</td>
+<td>branchName</td>
+<td>String</td>
 <td>Mandatory</td>
-<td>Client branch id</td>
+<td>Client branch name</td>
 </tr>
 <tr>
-<td>distributionCenter</td>
-<td>Integer</td>
+<td>userGroupName</td>
+<td>String</td>
 <td>Mandatory</td>
-<td>Distribution center id</td>
-</tr>
-<tr>
-<td>userGroupId</td>
-<td>Integer</td>
-<td>Mandatory</td>
-<td>User group id</td>
+<td>User group name</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterName</td>
