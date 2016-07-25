@@ -15,9 +15,9 @@ search: true
 
 LogiNext welcomes you to the world of organised logistics.
 
-Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create  seamless experience for your operations and executive team.
+Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.
 
-The LogiNext API is designed to allow our client partners to create resources, shipments, plan a route, start the trip, track and follow updates till the trip is completed and shipment is delivered at the desired location.
+The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is delivered at the desired location.
 
 # Requests
 
@@ -68,6 +68,13 @@ Code | Description
 
 ##Authenticate
 
+LogiNext API uses Basic Authentication to provide you an authorized access. Please use the the below URL Endpoint to authenticate yourself as a user of this API.
+
+You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).
+
+The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. The validity of this session token is 1 day (24 hours).
+Please ensure that you add the token and secret key as part of every Loginext API call.
+
 > Definition
 
 ```json
@@ -116,16 +123,12 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 ##Invalidate
 
+You can fetch a fresh session token and a key by calling the below API. This call will invalidate the existing token and key and then you will be provided with a new token and a key which you will have to pass everytime in every other API call.
+
 > Definition
 
 ```json
 https://api.loginextsolutions.com/LoginApp/login/token/refresh
-```
-
-> Request Body
-
-```json
-No Request params
 ```
 
 > Response
@@ -153,7 +156,12 @@ Header | Sample Value
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
-<aside class="success">Response headers will contain new session token and authentication key.</aside>
+### Response Headers
+
+Header | Sample Value
+--------- | -------
+WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
+CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
 # Haul
@@ -166,7 +174,9 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 3. Finally you can track your vehicle in transit through the Track Last Location API. in this case also you need to pass the Trip Reference ID.
 
-## Create Vehicle 
+## Create Vehicle
+
+For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a "Reference Id" which you need to store in order to update the vehicle information in future. 
 
 > Definition
 
@@ -182,7 +192,7 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
 	{
     		"vehicleNumber":"MH-111",
     		"vehicleMake":"2015",
-   		"vehicleModel":"OMNI",
+   		  "vehicleModel":"OMNI",
     		"typeOfBody":"Flat Bed",
     		"unladdenWeight":10,
     		"capacityInWeight":10,
@@ -238,20 +248,21 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 Parameter | Type |  Required | Description
 -----------|-------|------- | ----------
-vehicleNumber | String | Mandatory | Vehicle Number.
-vehicleMake | String | Optional | Make of the vehicle.
-vehicleModel | String |Optional | Model of the vehicle.
-typeOfBody | String |Optional | Type of Body.
-unladdenWeight | Integer |Optional | Unladen weight of the vehicle.
-capacityInWeight | Integer |Optional | Capacity of vehicle in (Kgs).
-capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
-capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
-chasisNumber | String |Optional | Chasis number.
-engineNumber | String |Optional | Engine number.
+vehicleNumber | String | Mandatory | Unique name to identify the vehicle
+vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
+typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 
+4 wheeler, 2 wheeler,24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
+unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
+capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
+capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
+capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
+chasisNumber | String |Optional | Chassis / VIN number of the vehicle
+engineNumber | String |Optional | E Engine Number of the vehicle
 markerName | String |Optional |
-registrationNumber | String |Optional | Registration Number of the vehicle.
-pucValidity | Date |Optional | PUC Validity Date
-insuranceValidity | Date |Optional | Insurance Validity Date
+registrationNumber | String |Optional | Registered Number provided by the local transportation authority
+pucValidity | Date |Optional | Date till which PUC certificate is valid
+insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid
 vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
 ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
 ownerName | String |Optional | Name of the owner of the vehicle.
@@ -270,11 +281,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
 ```
 
-> Request Body
 
-```json
-No Request body
-```
 
 > Response
 
@@ -351,12 +358,6 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
 ```json
 https://api.loginextsolutions.com/VehicleApp/v1/vehicle
-```
-
-> Request Body
-
-```json
-No Request body
 ```
 
 > Response
@@ -1442,9 +1443,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "Y",
     "numberOfItems": "1",
-    "pickupServiceTime": "50",
-    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "pickupBranch": "Washola Hub",
@@ -1459,6 +1457,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupState": "Maharashtra",
     "pickupCountry": "INDIA",
     "pickupPinCode": "400076",
+
+
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -1544,6 +1544,185 @@ pickupCity | String | Mandatory | City
 pickupState| String | Mandatory | State
 pickupCountry | String | Mandatory | Country
 pickupPinCode | String | Mandatory | Pincode
+
+### Request Parameters (Crates)
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
+shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+
+## Create Order (Pickup & Delivery)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+```
+
+> Request Body
+
+```json
+[
+  {
+    "orderNo": "DummyOrderNo13",
+    "awbNumber": "AWB001",
+    "shipmentOrderTypeCd": "BOTH",
+    "orderState": "FORWARD",
+    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+    "distributionCenter": "Gurgaon",
+    "packageWeight":"10",
+    "packageVolume": "4500",
+    "paymentType": "Prepaid",
+    "packageValue": "5000",
+    "numberOfItems": "10",
+    "ServiceTime": "20",
+    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "partialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "Y",
+    "cancellationAllowedFl": "N",    
+    "deliverBranch": "Gurgaon",
+    "deliverServiceTime": "20",
+    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "deliveryType": "DLBOY",
+    "deliveryLocationType":"PUP",
+    "deliverAccountCode": "Customer001",
+    "deliverAccountName": "TestUser",
+    "deliverApartment": "123",
+    "deliverStreetName": "Powai",
+    "deliverLandmark": "Dmart",
+    "deliverLocality": "Hiranandani",
+    "deliverCity": "Mumbai",
+    "deliverState": "MH",
+    "deliverCountry": "IND",
+    "deliverPinCode": "400076",    
+    "pickupBranch":"Gurgaon",
+    "pickupServiceTime": "50",
+    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
+    "pickupAccountCode": "Customer123",
+    "pickupAccountName": "Customer001",
+    "pickupApartment": "123",
+    "pickupStreetName": "Supreme Business Park",
+    "pickupLandmark": "DMart",
+    "pickupLocality": "Hiranandani",
+    "pickupCity": "Mumbai",
+    "pickupState": "MH",
+    "pickupCountry": "IND",
+    "pickupPinCode": "400076",    
+    "returnBranch": "Gurgaon",
+    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
+    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
+    "returnAccountCode": "retAcc123",
+    "returnAccountName": "retAcc1234",
+    "returnEmail": "shiv.n@loginextsolutions.com",
+    "returnPhoneNumber": "9090909090",
+    "returnApartment": "sjlkd CHS",
+    "returnStreetName": "kljsdl Road",
+    "returnLandmark": "skjdlk Nagar",
+    "returnLocality": "kldlk West",
+    "returnCity": "Mumbai",
+    "returnState": "MH",
+    "returnCountry": "IND",
+    "returnPinCode": "400104",
+    "shipmentCrateMappings": [
+      {
+        "crateCd": "CRATE001",
+        "crateAmount":100.65,
+        "crateType":"case",
+        "noOfUnits":10,
+        "shipmentlineitems": [
+          {
+            "itemCd": "CODE001",
+            "itemName": "ITEM1",
+            "itemPrice": 100,
+            "itemQuantity": 2,
+            "itemType": "TYPE1",
+            "itemWeight": 10
+          },
+          {
+            "itemCd": "CODE002",
+            "itemName": "ITEM2",
+            "itemPrice": 50,
+            "itemQuantity": 3,
+            "itemType": "TYPE2",
+            "itemWeight": 10
+          }
+        ]
+
+      }
+    ]
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Order created successfully",
+  "referenceId": [
+    "dcd883efcccc4d2299da962a72b01f23"
+  ],
+  "data": null,
+  "hasError": false
+}
+
+```
+Place a new delivery leg order with this API.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+orderNo | String | Mandatory |  Order No.
+awbNumber | String | Optional | Airway Bill No.
+shipmentOrderDt | Date | Mandatory | Order Date
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+packageVolume | String | Optional | Volume of package in CC
+paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+packageValue | String | Optional | Cost of Package
+ServiceTime | String | Optional | Service time in mins.
+StartTimeWindow | Date | Mandatory | Start time window of order
+EndTimeWindow | Date | Mandatory | End time window of order
+isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+numberOfItems | String | Optional | Number of crates
+pickupServiceTime | String | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date | Optional | Pickup start time window
+pickupEndTimeWindow | Date | Optional | Pickup end time window
+shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String | Mandatory | State of order. Ex: FORWARD
+returnBranch | String | Mandatory | Name of return branch
+distributionCenter | String | Mandatory | Distribution center's name
+deliverBranch | String | Mandatory | Name of delivery branch
+deliverAccountCode | String | Mandatory | Deliver account code
+deliverAccountName | String | Mandatory | Deliver account name
+deliverApartment | String | Mandatory | Apartment
+deliverStreetName | String | Mandatory | Street name
+deliverLandmark | String | Optional | Landmark
+deliverLocality | String | Mandatory | Locality
+deliverCity | String | Mandatory | City
+deliverState| String | Mandatory | State
+deliverCountry | String | Mandatory | Country
+deliverPinCode | String | Mandatory | Pincode
+
 
 ### Request Parameters (Crates)
 
@@ -1818,11 +1997,6 @@ Stop the trip for a delivery medium using this API.
 https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
 ```
 
-> Request Body
-
-```json
-No Request Body
-```
 
 
 > Response
@@ -1868,14 +2042,13 @@ Use this to find out last tracked location for any order/ delivery medium.
 > Create Delivery Medium - Sample Request
 
 ```json
-[
+[[
   {
     "employeeId": "Emp001",
-    "clientBranchId": 1403,
-    "distributionCenter": 1403,
-    "userGroupId": 23,
+    "branchName":"Gurgaon",
+    "userGroupName":"GrocerMax",
     "deliveryMediumMasterName": "TestDM",
-    "phoneNumber": 1234567891,
+    "phoneNumber": 123457891,
     "imei": 990000852471854,
     "emailId": "test@testdm.com",
     "userName": "testdm",
@@ -1936,9 +2109,8 @@ This endpoint creates a new delivery medium.
 Parameter | Type |  Required | Description
 -----------|-------|------- | ----------
 employeeId | String | Mandatory | Employee Id
-clientBranchId | Integer | Mandatory | Client branch id
-distributionCenter | Integer | Mandatory | Distribution center id
-userGroupId | Integer | Mandatory | User group id
+branchName | String | Mandatory | Client branch name
+userGroupName | String | Mandatory | User group name
 deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
 phoneNumber | String | Mandatory | Mobile no
 imei | String |Optional | IMEI no
