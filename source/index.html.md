@@ -1461,9 +1461,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 ```json
 [
   {
-    "orderNo": "DummyOrderNo14",
+    "orderNo": "DummyOrderNo",
     "awbNumber": "AWB001",
-    "shipmentOrderTypeCd": "DELIVER",
+    "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Gurgaon",
@@ -1495,7 +1495,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupState": "MH",
     "pickupCountry": "IND",
     "pickupPinCode": "400076",
-    
     "returnBranch": "Gurgaon",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
@@ -1511,7 +1510,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnState": "MH",
     "returnCountry": "IND",
     "returnPinCode": "400104",
-
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -2189,6 +2187,7 @@ Use this to find out last tracked location for any order/ delivery medium.
     "gender": "Male",
     "deliveryMediumMasterTypeCd": "Delivery Boy",
     "isOwnVehicleFl": "Company",
+    "vehicleNumber":"MH-1234"
     "weeklyOffList": [
       "Monday"
     ],
@@ -2230,7 +2229,7 @@ This endpoint creates a new delivery medium.
 
 ### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create`
+<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create`
 
 
 ### Request Parameters
@@ -2253,6 +2252,7 @@ dob | String | Optional | Date of birth
 gender | String |Optional | Gender. Ex - Male,Female
 deliveryMediumMasterTypeCd | String |Optional | Delivery medium type. Ex - Truck, Delivery Boy
 isOwnVehicleFl | String |Optional | Owner of vehicle. Ex - Owned, Company
+vehicleNumber | String | Optional | Vehicle number to be assigned to the delivery medium
 weeklyOffList  | String |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
 maxDistance | Integer |Optional | Max. allowed distance
 licenseValidity | String |Optional | License validity date
