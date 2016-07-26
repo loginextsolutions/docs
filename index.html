@@ -255,11 +255,11 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 
 <p>LogiNext uses Basic Authentication to provide authorized access to its API.</p>
 
-<p>Use the following URL endpoint to authenticate userself as a user of this API.</p>
+<p>Use the following URL endpoint to authenticate yourself as a user of this API.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;usernm&gt;&amp;password=&lt;password&gt;</code></p>
 
 <h3 id="request-headers">Request Headers</h3>
 
@@ -277,24 +277,26 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 </tr>
 </tbody></table>
 
-<h3 id="request-body">Request Body</h3>
+<h3 id="request-parameters">Request Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Header</th>
-<th>Sample Value</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Content-Type</td>
-<td>application/x-www-form-urlencoded</td>
-</tr>
-<tr>
 <td>username</td>
+<td>String</td>
+<td>Mandatory</td>
 <td>Username provided by LogiNext</td>
 </tr>
 <tr>
 <td>password</td>
+<td>String</td>
+<td>Mandatory</td>
 <td>Password provided by LogiNext</td>
 </tr>
 </tbody></table>
@@ -2581,7 +2583,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shiv.n@loginextsolutions.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supreme Business Park"</span><span class="p">,</span><span class="w">
@@ -2596,7 +2598,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shiv.n@loginextsolutions.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjlkd CHS"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljsdl Road"</span><span class="p">,</span><span class="w">
@@ -3353,7 +3355,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shiv.n@loginextsolutions.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjlkd CHS"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljsdl Road"</span><span class="p">,</span><span class="w">
@@ -4017,7 +4019,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 <blockquote>
 <p>Create Delivery Medium - Sample Request</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[[</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emp001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
