@@ -2557,9 +2557,9 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo14"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
@@ -2591,7 +2591,6 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
-
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
@@ -2607,7 +2606,6 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"returnState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400104"</span><span class="p">,</span><span class="w">
-
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
@@ -4037,7 +4035,8 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
     </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Boy"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-1234"</span><span class="w">
+    </span><span class="s2">"weeklyOffList"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"Monday"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -4078,7 +4077,7 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/deliverymedium/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -4185,6 +4184,12 @@ deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 <td>String</td>
 <td>Optional</td>
 <td>Owner of vehicle. Ex - Owned, Company</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle number to be assigned to the delivery medium</td>
 </tr>
 <tr>
 <td>weeklyOffList</td>
