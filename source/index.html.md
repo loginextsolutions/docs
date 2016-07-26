@@ -94,11 +94,11 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate
 
 LogiNext uses Basic Authentication to provide authorized access to its API.
 
-Use the following URL endpoint to authenticate userself as a user of this API.
+Use the following URL endpoint to authenticate yourself as a user of this API.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate`
+<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<usernm>&password=<password>`
 
 ### Request Headers
 
@@ -106,13 +106,13 @@ Header | Sample Value | Description
 --------- | ------- | -------------
 Content-Type | application/json | JSON request
 
-### Request Body
+### Request Parameters
 
-Header | Sample Value
---------- | -------
-Content-Type | application/x-www-form-urlencoded
-username | Username provided by LogiNext
-password | Password provided by LogiNext
+Parameter | Type |  Required | Description
+-----------|-------|------- | ----------
+username | String | Mandatory | Username provided by LogiNext
+password | String | Mandatory | Password provided by LogiNext
+
 
 ### Response Headers
 
@@ -1485,7 +1485,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
     "pickupAccountCode": "Customer123",
     "pickupAccountName": "Customer001",
-    "pickupEmail": "shiv.n@loginextsolutions.com",
+    "pickupEmail": "test@test.com",
     "pickupPhoneNumber": "9090909090",
     "pickupApartment": "123",
     "pickupStreetName": "Supreme Business Park",
@@ -1500,7 +1500,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
     "returnAccountCode": "retAcc123",
     "returnAccountName": "retAcc1234",
-    "returnEmail": "shiv.n@loginextsolutions.com",
+    "returnEmail": "test@test.com",
     "returnPhoneNumber": "9090909090",
     "returnApartment": "sjlkd CHS",
     "returnStreetName": "kljsdl Road",
@@ -1750,7 +1750,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
     "returnAccountCode": "retAcc123",
     "returnAccountName": "retAcc1234",
-    "returnEmail": "shiv.n@loginextsolutions.com",
+    "returnEmail": "test@test.com",
     "returnPhoneNumber": "9090909090",
     "returnApartment": "sjlkd CHS",
     "returnStreetName": "kljsdl Road",
@@ -2169,7 +2169,7 @@ Use this to find out last tracked location for any order/ delivery medium.
 > Create Delivery Medium - Sample Request
 
 ```json
-[[
+[
   {
     "employeeId": "Emp001",
     "branchName":"Gurgaon",
