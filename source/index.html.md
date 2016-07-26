@@ -1308,26 +1308,27 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
   {
     "orderNo": "DummyOrderNo",
     "awbNumber": "AWB001",
+    "shipmentOrderTypeCd": "DELIVER",
+    "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "deliveryType": "DLBOY",
+    "distributionCenter": "Gurgaon",
+    "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
     "packageValue": "5000",
+    "numberOfItems": "10",
     "ServiceTime": "20",
     "StartTimeWindow": "2016-07-16T10:31:00.000Z",
     "EndTimeWindow": "2016-07-18T10:31:00.000Z",
-    "isPartialDeliveryAllowedFl": "Y",
+    "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "Y",
-    "numberOfItems": "10",
+    "cancellationAllowedFl": "N",    
+    "deliverBranch": "Gurgaon",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "shipmentOrderTypeCd": "DELIVER",
-    "orderState": "FORWARD",
-    "returnBranch": "Gurgaon",
-    "distributionCenter": "Gurgaon",
-    "deliverBranch": "Gurgaon",
+    "deliveryType": "DLBOY",
+    "deliveryLocationType":"PUP",
     "deliverAccountCode": "Customer001",
     "deliverAccountName": "TestUser",
     "deliverApartment": "123",
@@ -1335,10 +1336,37 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliverLandmark": "Dmart",
     "deliverLocality": "Hiranandani",
     "deliverCity": "Mumbai",
-    "deliverState": "Maharashtra",
-    "deliverCountry": "INDIA",
-    "deliverPinCode": "400076",
-    "shipmentCrateMappings": []
+    "deliverState": "MH",
+    "deliverCountry": "IND",
+    "deliverPinCode": "400076",    
+    "returnBranch": "Gurgaon",
+    "shipmentCrateMappings": [
+      {
+        "crateCd": "CRATE001",
+        "crateAmount":100.65,
+        "crateType":"case",
+        "noOfUnits":10,
+        "shipmentlineitems": [
+          {
+            "itemCd": "CODE001",
+            "itemName": "ITEM1",
+            "itemPrice": 100,
+            "itemQuantity": 2,
+            "itemType": "TYPE1",
+            "itemWeight": 10
+          },
+          {
+            "itemCd": "CODE002",
+            "itemName": "ITEM2",
+            "itemPrice": 50,
+            "itemQuantity": 3,
+            "itemType": "TYPE2",
+            "itemWeight": 10
+          }
+        ]
+
+      }
+    ]
   }
 ]
 ```
@@ -1371,26 +1399,27 @@ Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
 orderNo | String | Mandatory |  Order No.
 awbNumber | String | Optional | Airway Bill No.
+shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String | Mandatory | State of order. Ex: FORWARD
 shipmentOrderDt | Date | Mandatory | Order Date
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-packageVolume | String | Optional | Volume of package in CC
+distributionCenter | String | Mandatory | Distribution center's name
+packageWeight | Double | Optional | Weight of package in Kg.
+packageVolume | Double | Optional | Volume of package in CC
+packageValue | Double | Optional | Value of package
+numberOfItems | Integer | Optional | Number of crates
 paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-packageValue | String | Optional | Cost of Package
 ServiceTime | String | Optional | Service time in mins.
 StartTimeWindow | Date | Mandatory | Start time window of order
 EndTimeWindow | Date | Mandatory | End time window of order
-isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-numberOfItems | String | Optional | Number of crates
-pickupServiceTime | String | Optional | Pickup service time in mins.
-pickupStartTimeWindow | Date | Optional | Pickup start time window
-pickupEndTimeWindow | Date | Optional | Pickup end time window
-shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-returnBranch | String | Mandatory | Name of return branch
-distributionCenter | String | Mandatory | Distribution center's name
 deliverBranch | String | Mandatory | Name of delivery branch
+deliverServiceTime | Integer | Mandatory | Deliver service time in mins.
+deliverStartTimeWindow | Date | Mandatory | Deliver start time window
+deliverEndTimeWindow | Date | Mandatory | Deliver end time window
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+deliveryLocationType | String | Optional | ??
 deliverAccountCode | String | Mandatory | Deliver account code
 deliverAccountName | String | Mandatory | Deliver account name
 deliverApartment | String | Mandatory | Apartment
@@ -1401,14 +1430,17 @@ deliverCity | String | Mandatory | City
 deliverState| String | Mandatory | State
 deliverCountry | String | Mandatory | Country
 deliverPinCode | String | Mandatory | Pincode
-
-
+returnBranch | String | Mandatory | Name of return branch
+  
 ### Request Parameters (Crates)
 
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
 shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
+shipmentCrateMappings.crateCd | String | Mandatory | Crate code
+shipmentCrateMappings.crateAmount | Double | Mandatory | Crate amount
+shipmentCrateMappings.crateType | String | Mandatory | Crate type. Ex - ??
+shipmentCrateMappings.noOfUnits | Integer | Mandatory | No. of items in crate
 shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
 shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
 shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
@@ -1429,39 +1461,63 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 ```json
 [
   {
-    "orderNo": "DummyOrderNo",
+    "orderNo": "DummyOrderNo14",
     "awbNumber": "AWB001",
-    "shipmentOrderDt": "2016-07-15T14:20:00.000Z",
-    "deliveryType": "DLBOY",
-    "packageVolume": "500",
-    "paymentType": "Cash On Delivery",
-    "packageValue": "1000",
-    "ServiceTime": "50",
-    "StartTimeWindow": "2016-07-16T14:24:00.000Z",
-    "EndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "isPartialDeliveryAllowedFl": "Y",
-    "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "Y",
-    "numberOfItems": "1",
-    "shipmentOrderTypeCd": "PICKUP",
+    "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
-    "pickupBranch": "Washola Hub",
-    "distributionCenter": "Washola Hub",
+    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+    "distributionCenter": "Gurgaon",
+    "packageWeight":"10",
+    "packageVolume": "4500",
+    "packageValue": "5000",
+    "paymentType": "Prepaid",
+    "numberOfItems": "10",
+    "ServiceTime": "20",
+    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "deliveryLocationType":"PUP",
+    "partialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "Y",
+    "cancellationAllowedFl": "N",
+    "pickupBranch":"Gurgaon",
+    "pickupServiceTime": "50",
+    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
     "pickupAccountCode": "Customer123",
     "pickupAccountName": "Customer001",
+    "pickupEmail": "shiv.n@loginextsolutions.com",
+    "pickupPhoneNumber": "9090909090",
     "pickupApartment": "123",
     "pickupStreetName": "Supreme Business Park",
     "pickupLandmark": "DMart",
     "pickupLocality": "Hiranandani",
     "pickupCity": "Mumbai",
-    "pickupState": "Maharashtra",
-    "pickupCountry": "INDIA",
+    "pickupState": "MH",
+    "pickupCountry": "IND",
     "pickupPinCode": "400076",
-
+    
+    "returnBranch": "Gurgaon",
+    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
+    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
+    "returnAccountCode": "retAcc123",
+    "returnAccountName": "retAcc1234",
+    "returnEmail": "shiv.n@loginextsolutions.com",
+    "returnPhoneNumber": "9090909090",
+    "returnApartment": "sjlkd CHS",
+    "returnStreetName": "kljsdl Road",
+    "returnLandmark": "skjdlk Nagar",
+    "returnLocality": "kldlk West",
+    "returnCity": "Mumbai",
+    "returnState": "MH",
+    "returnCountry": "IND",
+    "returnPinCode": "400104",
 
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
+        "crateAmount":100.65,
+        "crateType":"case",
+        "noOfUnits":10,
         "shipmentlineitems": [
           {
             "itemCd": "CODE001",
@@ -1508,6 +1564,79 @@ Place a new pickup leg order with this API.
 ### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+
+
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+orderNo | String | Mandatory |  Order No.
+awbNumber | String | Optional | Airway Bill No.
+shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String | Mandatory | State of order. Ex: FORWARD
+shipmentOrderDt | Date | Mandatory | Order Date
+distributionCenter | String | Mandatory | Distribution center's name
+packageWeight | Double | Optional | Weight of package in Kg.
+packageVolume | Double | Optional | Volume of package in CC
+packageValue | Double | Optional | Value of package
+numberOfItems | Integer | Optional | Number of crates
+paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+ServiceTime | String | Optional | Service time in mins.
+StartTimeWindow | Date | Mandatory | Start time window of order
+EndTimeWindow | Date | Mandatory | End time window of order
+deliveryLocationType | String | Optional | ??
+partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+pickupBranch | String | Mandatory | Name of pickup branch
+pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
+pickupStartTimeWindow | Date | Mandatory | Pickup start time window
+pickupEndTimeWindow | Date | Mandatory | Pickup end time window
+pickupAccountCode | String | Mandatory | Pickup account code
+pickupAccountName | String | Mandatory | Pickup account name
+pickupApartment | String | Mandatory | Pickup Apartment
+pickupStreetName | String | Mandatory | Pickup Street name
+pickupLandmark | String | Optional | Pickup Landmark
+pickupLocality | String | Mandatory | Pickup Locality
+pickupCity | String | Mandatory | Pickup City
+pickupState| String | Mandatory | Pickup State
+pickupCountry | String | Mandatory | Pickup Country
+pickupPinCode | String | Mandatory | Pickup Pincode
+returnBranch | String | Mandatory | Name of return branch
+returnStartTimeWindow | Date | Mandatory | Return start time window
+returnEndTimeWindow | Date | Mandatory | Return end time window
+returnAccountCode | String | Mandatory | Return account code
+returnAccountName | String | Mandatory | Return account name
+returnEmail | String | Mandatory | Return account code
+returnPhoneNumber | String | Mandatory | Return account name
+returnApartment | String | Mandatory | Return Apartment
+returnStreetName | String | Mandatory | Return Street name
+returnLandmark | String | Optional | Return Landmark
+returnLocality | String | Mandatory | Return Locality
+returnCity | String | Mandatory | Return City
+returnState| String | Mandatory | Return State
+returnCountry | String | Mandatory | Return Country
+returnPinCode | String | Mandatory | Return Pincode
+  
+### Request Parameters (Crates)
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | Mandatory | Crate code
+shipmentCrateMappings.crateAmount | Double | Mandatory | Crate amount
+shipmentCrateMappings.crateType | String | Mandatory | Crate type. Ex - ??
+shipmentCrateMappings.noOfUnits | Integer | Mandatory | No. of items in crate
+shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+
+
+
 
 ### Request Parameters
 
