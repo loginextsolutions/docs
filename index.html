@@ -491,30 +491,123 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>typeOfBody</td>
 <td>String</td>
 <td>Optional</td>
-<td>Body Type of the vehicle. This is static field and can have only one of the below values -</td>
+<td>Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK</td>
+</tr>
+<tr>
+<td>unladdenWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Unladen weight of the vehicle in Kg.</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of vehicle in Kg.</td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of the vehicle in Units</td>
+</tr>
+<tr>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Capacity of the vehicle on cubic centimeters</td>
+</tr>
+<tr>
+<td>chasisNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Chassis / VIN number of the vehicle</td>
+</tr>
+<tr>
+<td>engineNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>E Engine Number of the vehicle</td>
+</tr>
+<tr>
+<td>markerName</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Registered Number provided by the local transportation authority</td>
+</tr>
+<tr>
+<td>pucValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Date till which PUC certificate is valid</td>
+</tr>
+<tr>
+<td>insuranceValidity</td>
+<td>Date</td>
+<td>Optional</td>
+<td>Date till which insurance of the vehicle is valid</td>
+</tr>
+<tr>
+<td>vehiclePermit</td>
+<td>String</td>
+<td>Optional</td>
+<td>Comma separated list of states within which vehicle is permitted to travel.</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle owned by. Possible values (company OR vendor)</td>
+</tr>
+<tr>
+<td>ownerName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Name of the owner of the vehicle.</td>
+</tr>
+<tr>
+<td>transporter</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>financer</td>
+<td>String</td>
+<td>Optional</td>
+<td></td>
+</tr>
+<tr>
+<td>accidentHistory</td>
+<td>String</td>
+<td>Optional</td>
+<td>Previous accident history associated with the vehicle.</td>
+</tr>
+<tr>
+<td>rentStartDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>rentEndDate</td>
+<td>Date</td>
+<td>Optional</td>
+<td>If ownership is “vendor” then only this field is valid.</td>
+</tr>
+<tr>
+<td>deviceId.barcode</td>
+<td>String</td>
+<td>Optional</td>
+<td>Barcode of the tracker.</td>
 </tr>
 </tbody></table>
-
-<p>4 wheeler, 2 wheeler,24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
-unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
-capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
-capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
-capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
-chasisNumber | String |Optional | Chassis / VIN number of the vehicle
-engineNumber | String |Optional | E Engine Number of the vehicle
-markerName | String |Optional |
-registrationNumber | String |Optional | Registered Number provided by the local transportation authority
-pucValidity | Date |Optional | Date till which PUC certificate is valid
-insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid
-vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
-ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
-ownerName | String |Optional | Name of the owner of the vehicle.
-transporter | String |Optional |
-financer | String |Optional |
-accidentHistory | String |Optional | Previous accident history associated with the vehicle.
-rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
-rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
-deviceId.barcode | String |Optional | Barcode of the tracker.</p>
 
 <h2 id="get-vehicle-single">Get Vehicle (Single)</h2>
 
