@@ -1985,74 +1985,6 @@ deliverystartdt | String | Mandatory | Delivery start date
 deliveryenddt | String | Mandatory | Delivery end date
 status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
 
-
-## Add Crates
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate
-```
-
-> Request Body
-
-```json
-[
-  {
-    "shipmentCrates": [
-      {
-        "crateCd": "Crate1",
-        "shipmentlineitems": [
-          {
-            "itemCd": "Item1",
-            "itemName": "",
-            "itemPrice": 33,
-            "itemQuantity": 10,
-            "itemType": "",
-            "itemWeight": 0,
-            "isDeleteFl": "N"
-          }
-        ],
-        "isDeleteFl": "N"
-      },
-      {
-        "crateCd": "Crate2",
-        "shipmentlineitems": [
-          {
-            "itemCd": "Item2",
-            "itemName": "",
-            "itemPrice": 33,
-            "itemQuantity": 10,
-            "itemType": "",
-            "itemWeight": 0,
-            "isDeleteFl": "N"
-          }
-        ],
-        "isDeleteFl": "N"
-      }
-    ],
-    "referenceId": "c8714df4347911e6829f000d3aa04450"
-  }
-]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "success",
-  "data": null,
-  "hasError": false
-}
-
-```
-Add crates and line items to an existing order, using this API.
-
-### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate`
-
 ## Start Trip
 
 > Definition
@@ -2259,6 +2191,209 @@ deliveryMediumMapList.name | String | Optional | Name of language
 shiftList.shiftStartTime  | String |Optional | Shift start time
 shiftList.shiftEndTime  | String |Optional | Shift end time
 
+# OnDemand
+
+OnDemand Product refers to the ...
+
+
+
+## Create Order (Fixed Pickup)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
+```
+
+> Request Body
+
+```json
+[
+  {
+    "cashOnDelivery" : 1000,
+    "cashOnPickup" : 1000,
+    "customerName" : "TestName2",
+    "locality" : "Andheri East",
+    "subLocality" : "JVLR",
+    "address" : "JVLR Powai",
+    "deliverPhoneNumber" : "8888889999",
+    "orderNo" : "35629171418620161809",
+    "distributionCenter" : "Mumbai",
+    "paymentType" : "COD"
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "referenceId": [
+    "80ecfaccd4544980805aedeefc9325d3"
+  ],
+  "data": null,
+  "hasError": false
+}
+
+
+```
+Place a new delivery leg order with this API.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create`
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+orderNo | String | Mandatory |  Order No.
+distributionCenter | String | Mandatory | Distribution center's name
+paymentType | String | Mandatory | Payment mode. Ex: COD, Prepaid
+cashOnDelivery | Double | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
+cashOnPickup | Double | Optional | Cash to be given on pickup
+locality | String | Mandatory | Locality name
+subLocality | String | Mandatory | Sub-locality name
+address | String | Optional | Address where delivery should be done
+deliverPhoneNumber | String | Mandatory | End customer contact number
+customerName | String | Mandatory | End customer name
+
+
+
+## Create Order (Variable Pickup)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
+```
+
+> Request Body
+
+```json
+[
+  {
+    "cashOnDelivery" : 1000.0,
+    "cashOnPickup" : 1000.0,
+    "pickupAccountCode" : "1234",
+    "pickupAccountName" : "Name1",
+    "pickupEmail" : "demo1@ymail.com",
+    "pickupPhoneNumber" : "8888990000",
+    "pickupApartment" : "Apartment1",
+    "pickupStreetName" : "SC1",
+    "pickupLandmark" : "LM1",
+    "pickupLocality" : "AN1",
+    "pickupCountry" : "INDIA",
+    "pickupState" : "Maharashtra",
+    "pickupCity" : "Mumbai",
+    "pickupPinCode" : "400076",
+    "pickupStartTimeWindow": "2016-07-15T08:00:00.000Z",
+    "pickupEndTimeWindow": "2016-07-15T08:45:00.000Z",
+    "pickupLatitude" : 19.1239285,
+    "pickupLongitude" : 72.9094407,
+    "pickupNotes" : "",
+    "deliverAccountCode" : "5678",
+    "deliverAccountName" : "Name2",
+    "deliverEmail" : "demo2@ymail.com",
+    "deliverPhoneNumber" : "7788888899",
+    "deliverApartment" : "Apartment2",
+    "deliverStreetName" : "SC2",
+    "deliverLandmark" : "LM2",
+    "deliverLocality" : "AN2",
+    "deliverCountry" : "INDIA",
+    "deliverState" : "Maharashtra",
+    "deliverCity" : "Mumbai",
+    "deliverPinCode" : "400077",
+    "deliverNotes" : "",
+    "deliverStartTimeWindow": "2016-07-16T08:00:00.000Z",
+    "deliverEndTimeWindow": "2016-07-16T10:00:00.000Z",
+    "deliverLatitude" : 19.0778737,
+    "deliverLongitude" : 72.9055627,
+    "orderNo" : "TestOrder",
+    "paymentType" : "COD",
+    "distributionCenter":"Mumbai",
+    "isPartialDeliveryAllowedFl" : "N",
+    "shipmentOrderDt" : "2016-07-15T08:00:00.000Z",
+    "deliverCapacityInVolume":123.32,
+    "deliverCapacityInWeight":15.2
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "referenceId": [
+    "80ecfaccd4544980805aedeefc9325d3"
+  ],
+  "data": null,
+  "hasError": false
+}
+
+
+```
+Place a new delivery leg order with this API.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create`
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+orderNo | String | Mandatory |  Order No.
+distributionCenter | String | Mandatory | Distribution center's name
+shipmentOrderDt | Double | Mandatory | Order Date
+deliverCapacityInVolume | Double | Optional | Weight of package in Kg.
+deliverCapacityInUnits | Double | Optional | Volume of package in CC
+paymentType | String | Optional | Payment mode. Ex: COD, Prepaid
+cashOnDelivery | Double | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
+cashOnPickup | Double | Optional | Cash to be given on pickup
+isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+pickupAccountCode | String | Mandatory | Pickup customer-id
+pickupAccountName | String | Mandatory | Pickup customer name
+pickupEmail | String | Optional | Pickup customer email-id
+pickupPhoneNumber | String | Mandatory | Pickup customer contact number
+pickupApartment | String | Mandatory | Pickup customer apartment
+pickupStreetName | String | Mandatory | Pickup customer street name
+pickupLandmark | String | Optional | Pickup customer landmark
+pickupLocality | String | Mandatory | Pickup area name
+pickupCountry | String | Mandatory | Pickup country
+pickupState | String | Mandatory | Pickup state
+pickupCity | String | Mandatory | Pickup city
+pickupPincode | String | Mandatory | Pickup pincode
+pickupStartTimeWindow | Date | Mandatory | Pickup Start time window of order
+pickupEndTimeWindow | Date | Mandatory | Pickup End time window of order
+pickupLatitude | Double | Optional | Latitude of pickup location
+pickupLongitude | Double | Optional | Longitude of pickup location
+pickupNotes | String | Optional | Pickup notes
+deliverAccountCode | String | Mandatory | Deliver customer-id
+deliverAccountName | String | Mandatory | Deliver customer name
+deliverEmail | String | Optional | Deliver customer email-id
+deliverPhoneNumber | String | Mandatory | Deliver customer contact number
+deliverApartment | String | Mandatory | Deliver customer apartment
+deliverStreetName | String | Mandatory | Deliver customer street name
+deliverLandmark | String | Optional | Deliver customer landmark
+deliverLocality | String | Mandatory | Deliver area name
+deliverCountry | String | Mandatory | Deliver country
+deliverState | String | Mandatory | Deliver state
+deliverCity | String | Mandatory | Deliver city
+deliverPincode | String | Mandatory | Deliver pincode
+deliverStartTimeWindow | Date | Mandatory | Deliver Start time window of order
+deliverEndTimeWindow | Date | Mandatory | Deliver End time window of order
+deliverLatitude | Double | Optional | Latitude of deliver location
+deliverLongitude | Double | Optional | Longitude of deliver location
+deliverNotes | String | Optional | Deliver notes
 
 # Webhooks
 
@@ -2841,3 +2976,4 @@ url | String |  Endpoint URL
 data | String |  Data in XML format
 notificationType | String |  HUB IN
 updatedDate | String | Timestamp
+
