@@ -2491,7 +2491,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>deliveryLocationType</td>
 <td>String</td>
 <td>Optional</td>
-<td>??</td>
+<td>Type of delivery location. Ex: CUSTOMER, PUP</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
@@ -2851,7 +2851,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>deliveryLocationType</td>
 <td>String</td>
 <td>Optional</td>
-<td>??</td>
+<td>Type of delivery location. Ex: CUSTOMER, PUP etc.</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
@@ -3067,25 +3067,25 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>shipmentCrateMappings.crateCd</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Crate code</td>
+<td>CRATE001</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
 <td>Double</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Crate amount</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateType</td>
 <td>String</td>
-<td>Mandatory</td>
-<td>Crate type. Ex - ??</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.noOfUnits</td>
 <td>Integer</td>
-<td>Mandatory</td>
-<td>No. of items in crate</td>
+<td>Optional</td>
+<td>No. of crate units</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
@@ -3346,6 +3346,24 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>CRATE001</td>
 </tr>
 <tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>No. of crate units</td>
+</tr>
+<tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
 <td>String</td>
 <td>Mandatory</td>
@@ -3533,34 +3551,58 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Airway Bill No.</td>
 </tr>
 <tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Order type code. BOTH for pickup &amp; delivery leg order</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>State of order. Ex: FORWARD</td>
+</tr>
+<tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
 <td>Mandatory</td>
 <td>Order Date</td>
 </tr>
 <tr>
-<td>deliveryType</td>
+<td>distributionCenter</td>
 <td>String</td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
 <td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+<td>Weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
-<td>String</td>
+<td>Double</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Value of package</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>packageValue</td>
-<td>String</td>
-<td>Optional</td>
-<td>Cost of Package</td>
 </tr>
 <tr>
 <td>ServiceTime</td>
@@ -3581,7 +3623,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>End time window of order</td>
 </tr>
 <tr>
-<td>isPartialDeliveryAllowedFl</td>
+<td>partialDeliveryAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N</td>
@@ -3599,58 +3641,40 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Is Cancellation allowed. Ex: Y/N</td>
 </tr>
 <tr>
-<td>numberOfItems</td>
-<td>String</td>
-<td>Optional</td>
-<td>Number of crates</td>
-</tr>
-<tr>
-<td>pickupServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Pickup service time in mins.</td>
-</tr>
-<tr>
-<td>pickupStartTimeWindow</td>
-<td>Date</td>
-<td>Optional</td>
-<td>Pickup start time window</td>
-</tr>
-<tr>
-<td>pickupEndTimeWindow</td>
-<td>Date</td>
-<td>Optional</td>
-<td>Pickup end time window</td>
-</tr>
-<tr>
-<td>shipmentOrderTypeCd</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Order type code. DELIVER for delivery leg order</td>
-</tr>
-<tr>
-<td>orderState</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>State of order. Ex: FORWARD</td>
-</tr>
-<tr>
-<td>returnBranch</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Name of return branch</td>
-</tr>
-<tr>
-<td>distributionCenter</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
-</tr>
-<tr>
 <td>deliverBranch</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Name of delivery branch</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>Mandatory</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Deliver start time window</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Deliver end time window</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Type of delivery location. Ex: CUSTOMER, PUP</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
@@ -3712,6 +3736,180 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Mandatory</td>
 <td>Pincode</td>
 </tr>
+<tr>
+<td>pickupBranch</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Name of pickup branch</td>
+</tr>
+<tr>
+<td>pickupServiceTime</td>
+<td>Integer</td>
+<td>Mandatory</td>
+<td>Pickup service time in mins.</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Pickup start time window</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Pickup end time window</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup account code</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup account name</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup Apartment</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup Street name</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup Landmark</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup Locality</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup City</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup State</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup Country</td>
+</tr>
+<tr>
+<td>pickupPinCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup Pincode</td>
+</tr>
+<tr>
+<td>returnBranch</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Name of return branch</td>
+</tr>
+<tr>
+<td>returnStartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Return start time window</td>
+</tr>
+<tr>
+<td>returnEndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Return end time window</td>
+</tr>
+<tr>
+<td>returnAccountCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return account code</td>
+</tr>
+<tr>
+<td>returnAccountName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return account name</td>
+</tr>
+<tr>
+<td>returnEmail</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return account code</td>
+</tr>
+<tr>
+<td>returnPhoneNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return account name</td>
+</tr>
+<tr>
+<td>returnApartment</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return Apartment</td>
+</tr>
+<tr>
+<td>returnStreetName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return Street name</td>
+</tr>
+<tr>
+<td>returnLandmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>Return Landmark</td>
+</tr>
+<tr>
+<td>returnLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return Locality</td>
+</tr>
+<tr>
+<td>returnCity</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return City</td>
+</tr>
+<tr>
+<td>returnState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return State</td>
+</tr>
+<tr>
+<td>returnCountry</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return Country</td>
+</tr>
+<tr>
+<td>returnPinCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Return Pincode</td>
+</tr>
 </tbody></table>
 
 <h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
@@ -3735,6 +3933,24 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>String</td>
 <td>Mandatory</td>
 <td>CRATE001</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>No. of crate units</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
@@ -4275,7 +4491,7 @@ Please check with our assigned CSAs on the address format based on the model typ
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestName2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestName"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andheri East"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai"</span><span class="p">,</span><span class="w">
