@@ -3928,74 +3928,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 </tr>
 </tbody></table>
 
-<h2 id="add-crates">Add Crates</h2>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/crate</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"shipmentCrates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate1"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate2"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8714df4347911e6829f000d3aa04450"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>Add crates and line items to an existing order, using this API.</p>
-
-<h3 id="request">Request</h3>
-
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/crate</code></p>
-
 <h2 id="start-trip">Start Trip</h2>
 
 <blockquote>
@@ -4321,6 +4253,483 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>String</td>
 <td>Optional</td>
 <td>Shift end time</td>
+</tr>
+</tbody></table>
+
+<h1 id="ondemand">OnDemand</h1>
+
+<p>OnDemand Product refers to the &hellip;</p>
+
+<h2 id="create-order-fixed-pickup">Create Order (Fixed Pickup)</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestName2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andheri East"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8888889999"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"35629171418620161809"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"80ecfaccd4544980805aedeefc9325d3"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Place a new delivery leg order with this API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Order No.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Payment mode. Ex: COD, Prepaid</td>
+</tr>
+<tr>
+<td>cashOnDelivery</td>
+<td>Double</td>
+<td>Mandatory(if paymentType is Delivery)</td>
+<td>Cash to be collected on delivery</td>
+</tr>
+<tr>
+<td>cashOnPickup</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Cash to be given on pickup</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Locality name</td>
+</tr>
+<tr>
+<td>subLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Sub-locality name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Optional</td>
+<td>Address where delivery should be done</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>End customer contact number</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>End customer name</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-order-variable-pickup">Create Order (Variable Pickup)</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEmail"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"demo1@ymail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8888990000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupApartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStreetName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SC1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLandmark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LM1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AN1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCountry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPinCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:45:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">19.1239285</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094407</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEmail"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"demo2@ymail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"7788888899"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SC2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLandmark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LM2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AN2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCountry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPinCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"400077"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T08:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">19.0778737</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">72.9055627</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isPartialDeliveryAllowedFl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderDt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCapacityInVolume"</span><span class="p">:</span><span class="mf">123.32</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCapacityInWeight"</span><span class="p">:</span><span class="mf">15.2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"80ecfaccd4544980805aedeefc9325d3"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Place a new delivery leg order with this API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Order No.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>shipmentOrderDt</td>
+<td>Double</td>
+<td>Mandatory</td>
+<td>Order Date</td>
+</tr>
+<tr>
+<td>deliverCapacityInVolume</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Weight of package in Kg.</td>
+</tr>
+<tr>
+<td>deliverCapacityInUnits</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Volume of package in CC</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>Optional</td>
+<td>Payment mode. Ex: COD, Prepaid</td>
+</tr>
+<tr>
+<td>cashOnDelivery</td>
+<td>Double</td>
+<td>Mandatory(if paymentType is Delivery)</td>
+<td>Cash to be collected on delivery</td>
+</tr>
+<tr>
+<td>cashOnPickup</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Cash to be given on pickup</td>
+</tr>
+<tr>
+<td>isPartialDeliveryAllowedFl</td>
+<td>String</td>
+<td>Optional</td>
+<td>Is Partial Delivery allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup customer-id</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup customer name</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup customer email-id</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup customer contact number</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup customer apartment</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup customer street name</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup customer landmark</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup area name</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup country</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup state</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup city</td>
+</tr>
+<tr>
+<td>pickupPincode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Pickup pincode</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Pickup Start time window of order</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Pickup End time window of order</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Latitude of pickup location</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Longitude of pickup location</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup notes</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver customer-id</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver customer name</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>Optional</td>
+<td>Deliver customer email-id</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver customer contact number</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver customer apartment</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver customer street name</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>Deliver customer landmark</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver area name</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver country</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver state</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver city</td>
+</tr>
+<tr>
+<td>deliverPincode</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Deliver pincode</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Deliver Start time window of order</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Deliver End time window of order</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Latitude of deliver location</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Longitude of deliver location</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Deliver notes</td>
 </tr>
 </tbody></table>
 
