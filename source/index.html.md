@@ -251,8 +251,7 @@ Parameter | Type |  Required | Description
 vehicleNumber | String | Mandatory | Unique name to identify the vehicle
 vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
 vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
-typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 
-4 wheeler, 2 wheeler,24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
+typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
 unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
 capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
 capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
