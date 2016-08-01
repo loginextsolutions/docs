@@ -239,7 +239,7 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;username&gt;&amp;password=&lt;password&gt;</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -259,7 +259,7 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;usernm&gt;&amp;password=&lt;password&gt;</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;username&gt;&amp;password=&lt;password&gt;</code></p>
 
 <h3 id="request-headers">Request Headers</h3>
 
@@ -408,7 +408,7 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="p">{</span><span class="w">
             </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
             </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -429,7 +429,7 @@ Please check with our assigned CSAs on the address format based on the model typ
             </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
-                </span><span class="err">"barcode”:”LN12345678”</span><span class="w">
+                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">"LN12345678"</span><span class="w">
             </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">  
@@ -527,13 +527,13 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>engineNumber</td>
 <td>String</td>
 <td>Optional</td>
-<td>E Engine Number of the vehicle</td>
+<td>Engine Number of the vehicle</td>
 </tr>
 <tr>
 <td>markerName</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>Name of the Sub-ordinate who is driving along with the driver</td>
 </tr>
 <tr>
 <td>registrationNumber</td>
@@ -545,67 +545,67 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>pucValidity</td>
 <td>Date</td>
 <td>Optional</td>
-<td>Date till which PUC certificate is valid</td>
+<td>Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>insuranceValidity</td>
 <td>Date</td>
 <td>Optional</td>
-<td>Date till which insurance of the vehicle is valid</td>
+<td>Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>vehiclePermit</td>
 <td>String</td>
 <td>Optional</td>
-<td>Comma separated list of states within which vehicle is permitted to travel.</td>
+<td>Full name of the states of India in which the vehicle is permitted to travel</td>
 </tr>
 <tr>
 <td>ownership</td>
 <td>String</td>
 <td>Optional</td>
-<td>Vehicle owned by. Possible values (company OR vendor)</td>
+<td>Entity that owns the vehicle. This field can have only below two values - Company , Vendor</td>
 </tr>
 <tr>
 <td>ownerName</td>
 <td>String</td>
 <td>Optional</td>
-<td>Name of the owner of the vehicle.</td>
+<td>Name of the Company / Vendor who owns the vehicle</td>
 </tr>
 <tr>
 <td>transporter</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>Name of the transporter / carrier / 3PL provider responsible for the delivery.</td>
 </tr>
 <tr>
 <td>financer</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>If the vehicle is on loan, then name of the financer</td>
 </tr>
 <tr>
 <td>accidentHistory</td>
 <td>String</td>
 <td>Optional</td>
-<td>Previous accident history associated with the vehicle.</td>
+<td>If vehicle has any accident records against it, then please document the details through this field</td>
 </tr>
 <tr>
 <td>rentStartDate</td>
 <td>Date</td>
 <td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.</td>
 </tr>
 <tr>
 <td>rentEndDate</td>
 <td>Date</td>
 <td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.</td>
 </tr>
 <tr>
 <td>deviceId.barcode</td>
 <td>String</td>
 <td>Optional</td>
-<td>Barcode of the tracker.</td>
+<td>This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.</td>
 </tr>
 </tbody></table>
 
@@ -714,15 +714,7 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"otherCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1182</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VH-00-1122"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -743,7 +735,6 @@ Please check with our assigned CSAs on the address format based on the model typ
         </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -756,22 +747,17 @@ Please check with our assigned CSAs on the address format based on the model typ
         </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"lastTrackingDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendorName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedRegistrationMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedInsuranceMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"removedPucMediaId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Assigned"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+
         </span><span class="nt">"tripDetail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"insuranceAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"pucAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"lastInsuranceAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"lastPUCAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"client_Id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -792,6 +778,11 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h2 id="update-vehicle">Update Vehicle</h2>
 
+<p>You can update the data for any of the vehicle mapped to your account by using this API. 
+You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.</p>
+
+<p>Note that you will be able to update the information of only those vehicles which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be updated and in this case you will get error message - 400 - Bad Request</p>
+
 <blockquote>
 <p>Definition</p>
 </blockquote>
@@ -806,7 +797,7 @@ Please check with our assigned CSAs on the address format based on the model typ
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">        
             </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
             </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
@@ -867,137 +858,155 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Mandatory</td>
 <td>Reference Id associated with the vehicle.</td>
 </tr>
+</tbody></table>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Vehicle Number.</td>
+<td>Unique name to identify the vehicle</td>
 </tr>
 <tr>
 <td>vehicleMake</td>
 <td>String</td>
 <td>Optional</td>
-<td>Make of the vehicle.</td>
+<td>Make of the vehicle like Mazda, Volvo, etc.</td>
 </tr>
 <tr>
 <td>vehicleModel</td>
 <td>String</td>
 <td>Optional</td>
-<td>Model of the vehicle.</td>
+<td>Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.</td>
 </tr>
 <tr>
 <td>typeOfBody</td>
 <td>String</td>
 <td>Optional</td>
-<td>Type of Body.</td>
+<td>Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK</td>
 </tr>
 <tr>
 <td>unladdenWeight</td>
 <td>Integer</td>
 <td>Optional</td>
-<td>Unladen weight of the vehicle.</td>
+<td>Unladen weight of the vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
 <td>Optional</td>
-<td>Capacity of vehicle in (Kgs).</td>
+<td>Capacity of vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
 <td>Optional</td>
-<td>Capacity of vehicle in (Units).</td>
+<td>Capacity of the vehicle in Units</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
 <td>Optional</td>
-<td>Capacity of vehicle in (Cc).</td>
+<td>Capacity of the vehicle on cubic centimeters</td>
 </tr>
 <tr>
 <td>chasisNumber</td>
 <td>String</td>
 <td>Optional</td>
-<td>Chasis number.</td>
+<td>Chassis / VIN number of the vehicle</td>
 </tr>
 <tr>
 <td>engineNumber</td>
 <td>String</td>
 <td>Optional</td>
-<td>Engine number.</td>
+<td>Engine Number of the vehicle</td>
 </tr>
 <tr>
 <td>markerName</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>Name of the Sub-ordinate who is driving along with the driver</td>
 </tr>
 <tr>
 <td>registrationNumber</td>
 <td>String</td>
 <td>Optional</td>
-<td>Registration Number of the vehicle.</td>
+<td>Registered Number provided by the local transportation authority</td>
 </tr>
 <tr>
 <td>pucValidity</td>
 <td>Date</td>
 <td>Optional</td>
-<td>PUC Validity Date</td>
+<td>Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>insuranceValidity</td>
 <td>Date</td>
 <td>Optional</td>
-<td>Insurance Validity Date</td>
+<td>Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>vehiclePermit</td>
 <td>String</td>
 <td>Optional</td>
-<td>Comma separated list of states within which vehicle is permitted to travel.</td>
+<td>Full name of the states of India in which the vehicle is permitted to travel</td>
 </tr>
 <tr>
 <td>ownership</td>
 <td>String</td>
 <td>Optional</td>
-<td>Vehicle owned by. Possible values (company OR vendor)</td>
+<td>Entity that owns the vehicle. This field can have only below two values - Company , Vendor</td>
 </tr>
 <tr>
 <td>ownerName</td>
 <td>String</td>
 <td>Optional</td>
-<td>Name of the owner of the vehicle.</td>
+<td>Name of the Company / Vendor who owns the vehicle</td>
 </tr>
 <tr>
 <td>transporter</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>Name of the transporter / carrier / 3PL provider responsible for the delivery.</td>
 </tr>
 <tr>
 <td>financer</td>
 <td>String</td>
 <td>Optional</td>
-<td></td>
+<td>If the vehicle is on loan, then name of the financer</td>
 </tr>
 <tr>
 <td>accidentHistory</td>
 <td>String</td>
 <td>Optional</td>
-<td>Previous accident history associated with the vehicle.</td>
+<td>If vehicle has any accident records against it, then please document the details through this field</td>
 </tr>
 <tr>
 <td>rentStartDate</td>
 <td>Date</td>
 <td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.</td>
 </tr>
 <tr>
 <td>rentEndDate</td>
 <td>Date</td>
 <td>Optional</td>
-<td>If ownership is “vendor” then only this field is valid.</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.</td>
+</tr>
+<tr>
+<td>deviceId.barcode</td>
+<td>String</td>
+<td>Optional</td>
+<td>This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.</td>
 </tr>
 <tr>
 <td>deviceId.barcode</td>
@@ -1008,6 +1017,15 @@ Please check with our assigned CSAs on the address format based on the model typ
 </tbody></table>
 
 <h2 id="delete-vehicle">Delete Vehicle</h2>
+
+<p>Using this API, you can delete any of the vehicles listed against your account name.
+You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.</p>
+
+<p>You can delete multiple vehicles, by passing multiple reference IDs in the Request body.</p>
+
+<p>Note that you will be able to delete only which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be deleted. You will get error message - 400- Bad Request</p>
+
+<p>Also, note that if a tracker is mapped to the vehicles that is deleted, then that tracker will be unmapped from that vehicle.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -1373,18 +1391,10 @@ Please check with our assigned CSAs on the address format based on the model typ
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driverId"</span><span class="p">:</span><span class="w"> </span><span class="mi">772</span><span class="p">,</span><span class="w">
+
       </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test_Driver"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234565632"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@testing.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"idProof"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1591986600000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1396,14 +1406,9 @@ Please check with our assigned CSAs on the address format based on the model typ
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pinCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1402</span><span class="p">,</span><span class="w">
       </span><span class="nt">"defaultVehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"licenseAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mediaLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mediaPurposeCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"entity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"attendance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"workHour"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1413,33 +1418,12 @@ Please check with our assigned CSAs on the address format based on the model typ
       </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"driverId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"deliveryMediumMasterId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="err">}</span><span class="p">,</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hindi"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"driverId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"deliveryMediumMasterId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="err">}</span><span class="w">
+
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra Govt."</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1455,30 +1439,20 @@ Please check with our assigned CSAs on the address format based on the model typ
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01, Jan 1970 07:03 PM"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01, Jan 1970 07:10 AM"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"driverId"</span><span class="p">:</span><span class="w"> </span><span class="mi">772</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"deliveryMediumMasterId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"isPresent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mediaList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"addressProofId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"removeAddressProofId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"removeLicenseProof"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastLicenseAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"previousPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"licenseProof"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -2270,9 +2244,6 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"StartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"EndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -2420,24 +2391,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>ServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Service time in mins.</td>
-</tr>
-<tr>
-<td>StartTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Start time window of order</td>
-</tr>
-<tr>
-<td>EndTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>End time window of order</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
@@ -2663,9 +2616,6 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"StartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"EndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -2828,24 +2778,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>ServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Service time in mins.</td>
-</tr>
-<tr>
-<td>StartTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Start time window of order</td>
-</tr>
-<tr>
-<td>EndTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>End time window of order</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
@@ -3178,24 +3110,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>Cost of Package</td>
 </tr>
 <tr>
-<td>ServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Service time in mins.</td>
-</tr>
-<tr>
-<td>StartTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Start time window of order</td>
-</tr>
-<tr>
-<td>EndTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>End time window of order</td>
-</tr>
-<tr>
 <td>isPartialDeliveryAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
@@ -3425,9 +3339,6 @@ Please check with our assigned CSAs on the address format based on the model typ
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"StartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"EndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -3603,24 +3514,6 @@ Please check with our assigned CSAs on the address format based on the model typ
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>ServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Service time in mins.</td>
-</tr>
-<tr>
-<td>StartTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Start time window of order</td>
-</tr>
-<tr>
-<td>EndTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>End time window of order</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
