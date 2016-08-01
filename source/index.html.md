@@ -78,7 +78,7 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 > Definition
 
 ```json
-https://api.loginextsolutions.com/LoginApp/login/authenticate
+https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username>&password=<password>
 ```
 
 > Response
@@ -98,7 +98,7 @@ Use the following URL endpoint to authenticate yourself as a user of this API.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<usernm>&password=<password>`
+<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username>&password=<password>`
 
 ### Request Headers
 
@@ -192,7 +192,7 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
 	{
     		"vehicleNumber":"MH-111",
     		"vehicleMake":"2015",
-   		  "vehicleModel":"OMNI",
+   		    "vehicleModel":"OMNI",
     		"typeOfBody":"Flat Bed",
     		"unladdenWeight":10,
     		"capacityInWeight":10,
@@ -213,7 +213,7 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
     		"rentStartDate":null,
     		"rentEndDate":null,
     		"deviceId":{
-        		"barcode”:”LN12345678”
+        		"barcode":"LN12345678"
     		}
     }
 ]  
@@ -257,20 +257,20 @@ capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
 capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
 capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
 chasisNumber | String |Optional | Chassis / VIN number of the vehicle
-engineNumber | String |Optional | E Engine Number of the vehicle
-markerName | String |Optional |
+engineNumber | String |Optional | Engine Number of the vehicle
+markerName | String |Optional | Name of the Sub-ordinate who is driving along with the driver
 registrationNumber | String |Optional | Registered Number provided by the local transportation authority
-pucValidity | Date |Optional | Date till which PUC certificate is valid
-insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid
-vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
-ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
-ownerName | String |Optional | Name of the owner of the vehicle.
-transporter | String |Optional |
-financer | String |Optional |
-accidentHistory | String |Optional | Previous accident history associated with the vehicle.
-rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
-rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
-deviceId.barcode | String |Optional | Barcode of the tracker.
+pucValidity | Date |Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
+insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
+vehiclePermit | String |Optional | Full name of the states of India in which the vehicle is permitted to travel
+ownership | String |Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
+ownerName | String |Optional | Name of the Company / Vendor who owns the vehicle
+transporter | String |Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
+financer | String |Optional | If the vehicle is on loan, then name of the financer
+accidentHistory | String |Optional | If vehicle has any accident records against it, then please document the details through this field
+rentStartDate | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
+rentEndDate  | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
+deviceId.barcode | String |Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
 
 ## Get Vehicle (Single)
 
@@ -370,15 +370,7 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
     "otherCount": 0,
     "results": [
       {
-        "createdOnDt": null,
-        "updatedOnDt": null,
-        "createdByUserId": null,
-        "updatedByUserId": null,
-        "isDeleteFl": null,
-        "isActiveFl": true,
-        "vehicleId": 1182,
         "vehicleName": null,
-        "guid": null,
         "vehicleNumber": "VH-00-1122",
         "vehicleMake": null,
         "vehicleModel": null,
@@ -399,7 +391,6 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
         "insuranceValidity": null,
         "vehiclePermit": null,
         "ownerName": null,
-        "clientBranchId": null,
         "rentEndDate": null,
         "rentStartDate": null,
         "transporter": null,
@@ -412,22 +403,17 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
         "accidentHistory": null,
         "lastTrackingDate": null,
         "vendorName": null,
-        "removedRegistrationMediaId": null,
-        "removedInsuranceMediaId": null,
-        "removedPucMediaId": null,
         "deviceId": {
-          "deviceId": null,
           "barcode": "Not Assigned",
           "statusCd": null,
           "trackeeId": null
         },
-        "clientId": null,
+  
         "tripDetail": null,
         "insuranceAlertWindow": null,
         "pucAlertWindow": null,
         "lastInsuranceAlertSentDt": null,
         "lastPUCAlertSentDt": null,
-        "client_Id": null,
         "gpsStatus": null,
         "speed": null,
         "branchName": null,
@@ -449,6 +435,11 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ## Update Vehicle
 
+You can update the data for any of the vehicle mapped to your account by using this API. 
+You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.
+
+Note that you will be able to update the information of only those vehicles which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be updated and in this case you will get error message - 400 - Bad Request
+
 > Definition
 
 ```json
@@ -463,7 +454,7 @@ https://api.loginextsolutions.com/VehicleApp/v1/vehicle
 		"referenceId":"a9be39b9347911e6829f000d3aa04450",        
     		"vehicleNumber":"MH-111",
     		"vehicleMake":"2015",
-   		"vehicleModel":"OMNI",
+   		    "vehicleModel":"OMNI",
     		"typeOfBody":"Flat Bed",
     		"unladdenWeight":1099,
     		"capacityInWeight":1099,
@@ -513,32 +504,46 @@ This API is used to update a particular vehicle based on its reference ID.
 Parameter | Type |  Required | Description
 -----------|-------|------- | ----------
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
-vehicleNumber | String | Mandatory | Vehicle Number.
-vehicleMake | String | Optional | Make of the vehicle.
-vehicleModel | String |Optional | Model of the vehicle.
-typeOfBody | String |Optional | Type of Body.
-unladdenWeight | Integer |Optional | Unladen weight of the vehicle.
-capacityInWeight | Integer |Optional | Capacity of vehicle in (Kgs).
-capacityInUnits | Integer |Optional | Capacity of vehicle in (Units).
-capacityInVolume | Integer |Optional | Capacity of vehicle in (Cc).
-chasisNumber | String |Optional | Chasis number.
-engineNumber | String |Optional | Engine number.
-markerName | String |Optional |
-registrationNumber | String |Optional | Registration Number of the vehicle.
-pucValidity | Date |Optional | PUC Validity Date
-insuranceValidity | Date |Optional | Insurance Validity Date
-vehiclePermit | String |Optional | Comma separated list of states within which vehicle is permitted to travel.
-ownership | String |Optional | Vehicle owned by. Possible values (company OR vendor)
-ownerName | String |Optional | Name of the owner of the vehicle.
-transporter | String |Optional |
-financer | String |Optional |
-accidentHistory | String |Optional | Previous accident history associated with the vehicle.
-rentStartDate | Date |Optional | If ownership is “vendor” then only this field is valid.
-rentEndDate  | Date |Optional | If ownership is “vendor” then only this field is valid.
+### Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ----------
+vehicleNumber | String | Mandatory | Unique name to identify the vehicle
+vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
+typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
+unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
+capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
+capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
+capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
+chasisNumber | String |Optional | Chassis / VIN number of the vehicle
+engineNumber | String |Optional | Engine Number of the vehicle
+markerName | String |Optional | Name of the Sub-ordinate who is driving along with the driver
+registrationNumber | String |Optional | Registered Number provided by the local transportation authority
+pucValidity | Date |Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
+insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
+vehiclePermit | String |Optional | Full name of the states of India in which the vehicle is permitted to travel
+ownership | String |Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
+ownerName | String |Optional | Name of the Company / Vendor who owns the vehicle
+transporter | String |Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
+financer | String |Optional | If the vehicle is on loan, then name of the financer
+accidentHistory | String |Optional | If vehicle has any accident records against it, then please document the details through this field
+rentStartDate | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
+rentEndDate  | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
+deviceId.barcode | String |Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
 deviceId.barcode | String |Optional | Barcode of the tracker.
 
 
 ## Delete Vehicle
+
+Using this API, you can delete any of the vehicles listed against your account name.
+You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.
+
+You can delete multiple vehicles, by passing multiple reference IDs in the Request body.
+
+Note that you will be able to delete only which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be deleted. You will get error message - 400- Bad Request
+
+Also, note that if a tracker is mapped to the vehicles that is deleted, then that tracker will be unmapped from that vehicle.
 
 > Definition
 
@@ -734,18 +739,10 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
   "message": "success",
   "data": [
     {
-      "createdOnDt": null,
-      "updatedOnDt": null,
-      "createdByUserId": null,
-      "updatedByUserId": null,
-      "isDeleteFl": null,
-      "isActiveFl": true,
-      "driverId": 772,
+  
       "driverName": "Test_Driver",
-      "clientId": null,
       "phoneNumber": "1234565632",
       "emailId": "test@testing.com",
-      "idProof": null,
       "licenseNumber": "LIC_104",
       "licenseValidity": 1591986600000,
       "license": null,
@@ -757,14 +754,9 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
       "state": null,
       "pinCode": null,
       "licenseType": "4 wheeler",
-      "clientBranchId": 1402,
       "defaultVehicle": null,
       "vehicleNumber": null,
       "licenseAlertWindow": null,
-      "mediaLocation": null,
-      "fileName": null,
-      "mediaPurposeCode": null,
-      "entity": null,
       "attendance": null,
       "workHour": null,
       "status": null,
@@ -774,33 +766,12 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
       "gender": "female",
       "languageList": [
         {
-          "createdOnDt": null,
-          "updatedOnDt": null,
-          "createdByUserId": null,
-          "updatedByUserId": null,
-          "isDeleteFl": null,
-          "isActiveFl": true,
-          "id": 90,
-          "guid": null,
           "name": "English",
-          "code": null,
-          "driverId": null,
-          "deliveryMediumMasterId": null
         },
         {
-          "createdOnDt": null,
-          "updatedOnDt": null,
-          "createdByUserId": null,
-          "updatedByUserId": null,
-          "isDeleteFl": null,
-          "isActiveFl": true,
-          "id": 91,
-          "guid": null,
           "name": "Hindi",
-          "code": null,
-          "driverId": null,
-          "deliveryMediumMasterId": null
         }
+        
       ],
       "licenseIssueBy": "Maharashtra Govt.",
       "tripName": null,
@@ -816,30 +787,20 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
         {
           "shiftStartTime": "01, Jan 1970 07:03 PM",
           "shiftEndTime": "01, Jan 1970 07:10 AM",
-          "driverId": 772,
-          "createdByUserId": null,
           "startTime": null,
-          "endTime": null,
-          "deliveryMediumMasterId": null
+          "endTime": null
         }
       ],
       "addressList": [],
-      "tripId": null,
       "lat": null,
       "lng": null,
       "isPresent": null,
       "tripStatus": null,
       "batteryPerc": null,
-      "mediaList": null,
-      "addressProofId": null,
-      "removeAddressProofId": null,
-      "removeLicenseProof": null,
       "lastLicenseAlertSentDt": null,
       "clientBranchName": null,
       "previousPhoneNumber": null,
-      "referenceId": "1c3a551f47534b98a29d916b0405fd6d",
-      "guid": null,
-      "licenseProof": null
+      "referenceId": "1c3a551f47534b98a29d916b0405fd6d"
     }
   ],
   "hasError": false
@@ -1316,9 +1277,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": "10",
-    "ServiceTime": "20",
-    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
@@ -1407,9 +1365,6 @@ packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
 paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
@@ -1471,9 +1426,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "packageValue": "5000",
     "paymentType": "Prepaid",
     "numberOfItems": "10",
-    "ServiceTime": "20",
-    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliveryLocationType":"PUP",
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
@@ -1579,9 +1531,6 @@ packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
 paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
 deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP etc.
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
@@ -1646,9 +1595,6 @@ deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - V
 packageVolume | String | Optional | Volume of package in CC
 paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
 packageValue | String | Optional | Cost of Package
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
 isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
@@ -1711,9 +1657,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": "10",
-    "ServiceTime": "20",
-    "StartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "EndTimeWindow": "2016-07-18T10:31:00.000Z",
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
@@ -1831,9 +1774,6 @@ packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
 paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
-ServiceTime | String | Optional | Service time in mins.
-StartTimeWindow | Date | Mandatory | Start time window of order
-EndTimeWindow | Date | Mandatory | End time window of order
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
