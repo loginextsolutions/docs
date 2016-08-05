@@ -1364,7 +1364,7 @@ packageWeight | Double | Optional | Weight of package in Kg.
 packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
@@ -1530,7 +1530,7 @@ packageWeight | Double | Optional | Weight of package in Kg.
 packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
 deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP etc.
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
@@ -1593,7 +1593,7 @@ awbNumber | String | Optional | Airway Bill No.
 shipmentOrderDt | Date | Mandatory | Order Date
 deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
 packageVolume | String | Optional | Volume of package in CC
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
 packageValue | String | Optional | Cost of Package
 isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
@@ -1773,7 +1773,7 @@ packageWeight | Double | Optional | Weight of package in Kg.
 packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
 partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
 cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
