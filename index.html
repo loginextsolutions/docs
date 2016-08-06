@@ -4367,8 +4367,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h1 id="ondemand">OnDemand</h1>
 
-<p>OnDemand Product refers to the &hellip;</p>
-
 <h2 id="create-order-fixed-pickup">Create Order (Fixed Pickup)</h2>
 
 <blockquote>
@@ -4447,9 +4445,15 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Payment mode. Ex: COD, Prepaid</td>
 </tr>
 <tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Package Value (This will be used when paymentType is Prepaid)</td>
+</tr>
+<tr>
 <td>cashOnDelivery</td>
 <td>Double</td>
-<td>Mandatory(if paymentType is Delivery)</td>
+<td>Mandatory(if paymentType is COD)</td>
 <td>Cash to be collected on delivery</td>
 </tr>
 <tr>
@@ -4617,6 +4621,12 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: COD, Prepaid</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Package Value (This will be used when paymentType is Prepaid)</td>
 </tr>
 <tr>
 <td>cashOnDelivery</td>
