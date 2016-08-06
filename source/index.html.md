@@ -2171,9 +2171,6 @@ shiftList.shiftEndTime  | String |Optional | Shift end time
 
 # OnDemand
 
-OnDemand Product refers to the ...
-
-
 
 ## Create Order (Fixed Pickup)
 
@@ -2232,7 +2229,8 @@ Param | DataType |  Required | Description
 orderNo | String | Mandatory |  Order No.
 distributionCenter | String | Mandatory | Distribution center's name
 paymentType | String | Mandatory | Payment mode. Ex: COD, Prepaid
-cashOnDelivery | Double | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
+packageValue | Double | Optional | Package Value (This will be used when paymentType is Prepaid)
+cashOnDelivery | Double | Mandatory(if paymentType is COD) | Cash to be collected on delivery
 cashOnPickup | Double | Optional | Cash to be given on pickup
 locality | String | Mandatory | Locality name
 subLocality | String | Mandatory | Sub-locality name
@@ -2335,6 +2333,7 @@ shipmentOrderDt | Double | Mandatory | Order Date
 deliverCapacityInVolume | Double | Optional | Weight of package in Kg.
 deliverCapacityInUnits | Double | Optional | Volume of package in CC
 paymentType | String | Optional | Payment mode. Ex: COD, Prepaid
+packageValue | Double | Optional | Package Value (This will be used when paymentType is Prepaid)
 cashOnDelivery | Double | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
 cashOnPickup | Double | Optional | Cash to be given on pickup
 isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
