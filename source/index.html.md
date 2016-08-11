@@ -33,6 +33,7 @@ Our API is REST-based. This means:
 
 3. Authentication is specified with HTTP Basic Authentication.
 
+Also,the input dates like 2016-07-01T11:18:00.000Z are accepted in Coordinated Universal Time (UTC) format.
 
 ### Request Headers
 
@@ -108,7 +109,7 @@ Content-Type | application/json | JSON request
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 username | String | Mandatory | Username provided by LogiNext
 password | String | Mandatory | Password provided by LogiNext
@@ -246,7 +247,7 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 vehicleNumber | String | Mandatory | Unique name to identify the vehicle
 vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
@@ -346,7 +347,7 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_id | String | Mandatory | Reference Id associated with the vehicle.
 
@@ -501,12 +502,7 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
------------|-------|------- | ----------
-reference_id | String | Mandatory | Reference Id associated with the vehicle.
-### Request Parameters
-
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 vehicleNumber | String | Mandatory | Unique name to identify the vehicle
 vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
@@ -577,11 +573,11 @@ This API is used to delete a particular vehicle based on its reference ID.
 
 
 
-### Request Parameters
+### Request Body
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-reference_ids | List (String) | Mandatory | Reference Id associated with the vehicle.
+reference_ids | List | Mandatory | Reference Id associated with the vehicle.
 
 
 ## Create Driver
@@ -814,6 +810,11 @@ Use this API to read all data for a particular driver using its reference ID.
 
 <span class="post">POST</span>` https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
 
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the driver.
 
 
 ## Update Driver
@@ -974,7 +975,11 @@ This API is used to delete a particular driver based on its reference ID.
 
 <span class="post">DELETE</span>`https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
 
+### Request Body
 
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the driver.
 
 
 ## Create Trip
@@ -1031,7 +1036,7 @@ The acknowledgement will contain the trip reference ID.
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 shipmentType | String | Mandatory | Type of the Shipment being created.Examples:"Bag","Package","Manifest"
 originAddr | String |Mandatory | Origin point of the trip.Examples:-AMDD,BLRX
@@ -1086,7 +1091,11 @@ This API is used to start a trip using its reference ID.
 
 <span class="post">PUT</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
 
+### Request Body
 
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
 
 ## Stop Trip
 
@@ -1121,12 +1130,11 @@ This API is used to end an in-transit trip using its reference ID.
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop`
 
+### Request Body
 
-### Request Parameters
-
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
+tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
 
 ## Trip iFrame
 
@@ -1149,13 +1157,7 @@ tripname | TestTripName| Trip name
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
-```
-
-> Request Body
-
-```json
-https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81
 ```
 
 > Response
@@ -1195,7 +1197,15 @@ Track API fetches the latest location (latitude / longitude) for a trip based on
 
 ### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67`
+
+
+### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+shipmentReferences | List | Mandatory | Reference Id associated with the shipment.
+
 
 ## Create Tracking Record
 
@@ -1877,6 +1887,12 @@ Place a new return order with this API.
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return`
 
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the order.
+
 ## Cancel Order
 
 > Definition
@@ -1907,6 +1923,12 @@ Use this API to cancel an order.
 ### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List  | Mandatory | Reference Id associated with the order.
 
 ## Get Status of Order
 
@@ -1945,6 +1967,12 @@ Know the status of an order using this API.
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/status`
 
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the order.
+
 ## Download EPOD
 
 This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file.
@@ -1955,7 +1983,7 @@ This endpoint downloads the EPODs for given order, delivery dates and status of 
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 orderstartdt | String | Mandatory | Order start date
 orderenddt | String | Mandatory | Order end date
@@ -1996,6 +2024,12 @@ Start the trip for a delivery medium using this API.
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
 
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
+
 ## Stop Trip
 
 > Request Body
@@ -2024,6 +2058,14 @@ Stop the trip for a delivery medium using this API.
 ### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+tripReferenceIds | String  | Mandatory | Reference Id associated with the trip.
+notDispatchedOrders | List  | Mandatory | Reference Id associated with the non-dispatched order.
+deliveredOrders | List | Mandatory | Reference Id associated with the delivered order.
 
 ## Track Last Location
 
@@ -2143,7 +2185,7 @@ This endpoint creates a new delivery medium.
 
 ### Request Parameters
 
-Parameter | Type |  Required | Description
+Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 employeeId | String | Mandatory | Employee Id
 branchName | String | Mandatory | Client branch name
