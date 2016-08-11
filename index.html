@@ -139,6 +139,8 @@
 <li><p>Authentication is specified with HTTP Basic Authentication.</p></li>
 </ol>
 
+<p>Also,the input dates like 2016-07-01T11:18:00.000Z are accepted in Coordinated Universal Time (UTC) format.</p>
+
 <h3 id="request-headers">Request Headers</h3>
 
 <table><thead>
@@ -282,7 +284,7 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -464,7 +466,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -682,7 +684,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -847,25 +849,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>reference_id</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Reference Id associated with the vehicle.</td>
-</tr>
-</tbody></table>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -1057,19 +1041,19 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/v1/vehicle</code></p>
 
-<h3 id="request-parameters">Request Parameters</h3>
+<h3 id="request-body">Request Body</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>reference_ids</td>
-<td>List (String)</td>
+<td>List</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the vehicle.</td>
 </tr>
@@ -1466,6 +1450,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the driver.</td>
+</tr>
+</tbody></table>
+
 <h2 id="update-driver">Update Driver</h2>
 
 <blockquote>
@@ -1794,6 +1796,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the driver.</td>
+</tr>
+</tbody></table>
+
 <h2 id="create-trip">Create Trip</h2>
 
 <blockquote>
@@ -1849,7 +1869,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -1986,6 +2006,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/start</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the trip.</td>
+</tr>
+</tbody></table>
+
 <h2 id="stop-trip">Stop Trip</h2>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
 </span></code></pre>
@@ -2016,21 +2054,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop</code></p>
 
-<h3 id="request-parameters">Request Parameters</h3>
+<h3 id="request-body">Request Body</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>tripReferenceIds</td>
-<td>List of Strings</td>
+<td>List</td>
 <td>Mandatory</td>
-<td>Reference Ids of the trip</td>
+<td>Reference Id associated with the trip.</td>
 </tr>
 </tbody></table>
 
@@ -2073,13 +2111,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="err">,</span><span class="mi">27121903</span><span class="err">f</span><span class="mi">4</span><span class="err">f</span><span class="mi">047</span><span class="err">bcb</span><span class="mi">378</span><span class="err">a</span><span class="mi">6457</span><span class="err">bee</span><span class="mi">2</span><span class="err">fec,</span><span class="mi">21</span><span class="err">b</span><span class="mi">538</span><span class="err">edf</span><span class="mi">7</span><span class="err">f</span><span class="mi">047028334480036179</span><span class="err">c</span><span class="mi">70</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2119,7 +2151,25 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentReferences</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the shipment.</td>
+</tr>
+</tbody></table>
 
 <h2 id="create-tracking-record">Create Tracking Record</h2>
 
@@ -3918,6 +3968,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
 <h2 id="cancel-order">Cancel Order</h2>
 
 <blockquote>
@@ -3948,6 +4016,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <h3 id="request">Request</h3>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-status-of-order">Get Status of Order</h2>
 
@@ -3987,6 +4073,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/status</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
 <h2 id="download-epod">Download EPOD</h2>
 
 <p>This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file.</p>
@@ -4000,7 +4104,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -4071,6 +4175,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/start</code></p>
 
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the trip.</td>
+</tr>
+</tbody></table>
+
 <h2 id="stop-trip">Stop Trip</h2>
 
 <blockquote>
@@ -4100,6 +4222,36 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <h3 id="request">Request</h3>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the trip.</td>
+</tr>
+<tr>
+<td>notDispatchedOrders</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the non-dispatched order.</td>
+</tr>
+<tr>
+<td>deliveredOrders</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the delivered order.</td>
+</tr>
+</tbody></table>
 
 <h2 id="track-last-location">Track Last Location</h2>
 
@@ -4220,7 +4372,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
+<th>DataType</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
