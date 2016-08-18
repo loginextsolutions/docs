@@ -2122,7 +2122,7 @@ Use this to find out last tracked location for any order/ delivery medium.
   {
     "employeeId": "Test001",
     "userGroupName":"Washola",
-    "deliveryMediumMasterName": "Testing",
+    "deliveryMediumMasterName": "DummyDM",
     "phoneNumber": 1234566432,
     "imei": 990000852473864,
     "emailId": "test@test.com",
