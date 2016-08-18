@@ -1975,7 +1975,7 @@ reference_ids | List | Mandatory | Reference Id associated with the order.
 
 ## Download EPOD
 
-This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file.
+This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
 
 ### Request
 
@@ -2002,9 +2002,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 > Request Body
 
 ```json
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
+["a9be39b9347911e6829f000d3aa04450"]
 ```
 
 > Response
@@ -2028,7 +2026,7 @@ Start the trip for a delivery medium using this API.
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
+reference_ids | List | Mandatory | Reference Id associated with the trip.
 
 ## Stop Trip
 
@@ -2046,7 +2044,7 @@ tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
 
 ```json
 {
-  "status": 200,
+  "status": 200,  
   "message": "Trips ended successfully",
   "data": true,
   "hasError": false
@@ -2063,7 +2061,7 @@ Stop the trip for a delivery medium using this API.
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-tripReferenceIds | String  | Mandatory | Reference Id associated with the trip.
+tripReferenceId | String  | Mandatory | Reference Id associated with the trip.
 notDispatchedOrders | List  | Mandatory | Reference Id associated with the non-dispatched order.
 deliveredOrders | List | Mandatory | Reference Id associated with the delivered order.
 
@@ -2122,40 +2120,39 @@ Use this to find out last tracked location for any order/ delivery medium.
 ```json
 [
   {
-    "employeeId": "Emp001",
-    "branchName":"Gurgaon",
-    "userGroupName":"GrocerMax",
-    "deliveryMediumMasterName": "TestDM",
-    "phoneNumber": 123457891,
-    "imei": 990000852471854,
-    "emailId": "test@testdm.com",
-    "userName": "testdm",
-    "password": "Passw0rd",
-    "capacityInUnits": 100,
+    "employeeId": "Test001",
+    "userGroupName":"Washola",
+    "deliveryMediumMasterName": "Testing",
+    "phoneNumber": 1234566432,
+    "imei": 990000852473864,
+    "emailId": "test@test.com",
+    "userName": "test001",
+    "password": "admin",
+    "capacityInUnits": 10,
     "capacityInVolume": 10,
     "capacityInWeight": 10,
-    "dob": "1980-10-29",
-    "gender": "Male",
-    "deliveryMediumMasterTypeCd": "Delivery Boy",
+    "dob": "2016-08-18",
+    "gender": "Female",
+    "deliveryMediumMasterTypeCd": "Truck",
     "isOwnVehicleFl": "Company",
-    "vehicleNumber":"MH-1234"
+    "vehicleNumber": "MH-12345",
     "weeklyOffList": [
-      "Monday"
+      "Friday"
     ],
     "maxDistance": 10,
-    "licenseValidity": "2016-07-23",
+    "licenseValidity": "2018-06-09",
     "deliveryMediumMapList": [
       {
         "name": "ENGLISH"
       },
       {
-        "name": "HINDI"
+        "name": "GUJARATI"
       }
     ],
     "shiftList": [
       {
-        "shiftStartTime": "10:00",
-        "shiftEndTime": "17:00"
+        "shiftStartTime": "2016-08-18T12:30:00Z",
+        "shiftEndTime": "2016-08-18T15:30:00Z"
       }
     ]
   }
