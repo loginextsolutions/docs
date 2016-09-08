@@ -1922,7 +1922,7 @@ Use this API to cancel an order.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
 
 ### Request Body
 
