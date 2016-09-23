@@ -1298,6 +1298,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliveryLocationType":"PUP",
     "deliverAccountCode": "Customer001",
     "deliverAccountName": "TestUser",
+    "deliverEmail":"test@test.com",
+    "deliverPhoneNumber":"1234567890",
     "deliverApartment": "123",
     "deliverStreetName": "Powai",
     "deliverLandmark": "Dmart",
@@ -1386,6 +1388,8 @@ deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - V
 deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | Mandatory | Deliver account code
 deliverAccountName | String | Mandatory | Deliver account name
+deliverEmail | String | Optional | Deliver email
+deliverPhoneNumber | String | Optional | Deliver phone number
 deliverApartment | String | Mandatory | Apartment
 deliverStreetName | String | Mandatory | Street name
 deliverLandmark | String | Optional | Landmark
