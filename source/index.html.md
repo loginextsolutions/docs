@@ -2212,6 +2212,64 @@ deliveryMediumMapList.name | String | Optional | Name of language
 shiftList.shiftStartTime  | String |Optional | Shift start time
 shiftList.shiftEndTime  | String |Optional | Shift end time
 
+## Get Location Coordinates
+
+> Get Location Coordinates - Sample Request
+
+```json
+{
+  "apartment": "summerset building",
+  "streetName": "powai",
+  "landmark": "dmart",
+  "locality": "hirananddanin",
+  "city": "mumbai",
+  "country": "India",
+  "state": "Maharashtra",
+  "pincode": "400076"
+}
+```
+
+> Get Location Coordinates - Sample Response
+
+```json
+{
+ "status": 200,
+ "message": "Geocodes Fetched Successfully",
+ "referenceId": null,
+ "data": [
+   {
+     "lat": 19.11736939999999,
+     "lng": 72.9103214,
+     "shipmentReference": null,
+     "geocodingSource": "GOOGLE_PLACES"
+   }
+ ],
+ "hasError": false
+}
+
+```
+
+This API gets coordinates for a given location.
+
+### Request
+
+<span class="post">POST</span>`http://api.loginextsolutions.com/CommonApp/v1/mobile/common/geocode`
+
+
+### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+apartment | String | Optional | Apartment 
+streetName | String | Optional | Street name
+landmark | String | Optional | Landmark
+locality | String | Optional | Locality
+city | String | Optional | City
+country | String | Optional | Country
+state | String |Optional | State
+pincode | String | Mandatory | Pincode
+
+
 # OnDemand
 
 
