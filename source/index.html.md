@@ -2212,9 +2212,9 @@ deliveryMediumMapList.name | String | Optional | Name of language
 shiftList.shiftStartTime  | String |Optional | Shift start time
 shiftList.shiftEndTime  | String |Optional | Shift end time
 
-## Get Location Coordinates
+## Get Geocode
 
-> Get Location Coordinates - Sample Request
+> Get Geocode - Sample Request
 
 ```json
 {
@@ -2229,7 +2229,7 @@ shiftList.shiftEndTime  | String |Optional | Shift end time
 }
 ```
 
-> Get Location Coordinates - Sample Response
+> Get Geocode - Sample Response
 
 ```json
 {
