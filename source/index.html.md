@@ -2735,6 +2735,7 @@ recipientName | String | Name of recipient
   "customerRating": 4,
   "reason": "Customer not accepting",
   "reasonCd": "",
+  "deliveryTime": "2016-06-30 19:12:49",
   "cashAmount": 1,
   "transactionId": "",
   "actualCashAmount": 100,
@@ -2759,6 +2760,7 @@ customerComments | String |Customer comments
 customerRating | Integer | Rating provided by customer
 reason | String | Reason for the order being partially delivered
 reasonCd | String | Reason code
+deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to be collected
 transactionId | String | Transaction id
 actualCashAmount | Double | Cash amount actually collected
