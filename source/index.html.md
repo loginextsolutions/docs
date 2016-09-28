@@ -2253,7 +2253,7 @@ This API gets coordinates for a given location.
 
 ### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/CommonApp/v1/mobile/common/geocode`
+<span class="post">POST</span>`http://api.loginextsolutions.com/CommonApp/mile/v1/geocode`
 
 
 ### Request Parameters
