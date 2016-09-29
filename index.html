@@ -2447,26 +2447,26 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>paymentType</td>
 <td>String</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N</td>
+<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Return allowed. Ex: Y/N</td>
+<td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N</td>
+<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
@@ -2675,22 +2675,22 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"testbranch"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
@@ -2706,21 +2706,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjlkd CHS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kljsdl Road"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skjdlk Nagar"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kldlk West"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400104"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
@@ -2838,40 +2823,40 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Value of package</td>
 </tr>
 <tr>
-<td>numberOfItems</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>Number of crates</td>
-</tr>
-<tr>
 <td>paymentType</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Payment mode. Ex: Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
-<td>deliveryLocationType</td>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Number of crates</td>
+</tr>
+<tr>
+<td>deliveryType</td>
 <td>String</td>
 <td>Optional</td>
-<td>Type of delivery location. Ex: CUSTOMER, PUP etc.</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N</td>
+<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Return allowed. Ex: Y/N</td>
+<td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N</td>
+<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
@@ -2908,6 +2893,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup account name</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>Optional</td>
+<td>Pickup email id</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>Optional</td>
+<td>Mandatory</td>
+<td>Pickup phone no</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
@@ -2956,96 +2953,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup Pincode</td>
-</tr>
-<tr>
-<td>returnBranch</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Name of return branch</td>
-</tr>
-<tr>
-<td>returnStartTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Return start time window</td>
-</tr>
-<tr>
-<td>returnEndTimeWindow</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Return end time window</td>
-</tr>
-<tr>
-<td>returnAccountCode</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return account code</td>
-</tr>
-<tr>
-<td>returnAccountName</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return account name</td>
-</tr>
-<tr>
-<td>returnEmail</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return account code</td>
-</tr>
-<tr>
-<td>returnPhoneNumber</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return account name</td>
-</tr>
-<tr>
-<td>returnApartment</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return Apartment</td>
-</tr>
-<tr>
-<td>returnStreetName</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return Street name</td>
-</tr>
-<tr>
-<td>returnLandmark</td>
-<td>String</td>
-<td>Optional</td>
-<td>Return Landmark</td>
-</tr>
-<tr>
-<td>returnLocality</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return Locality</td>
-</tr>
-<tr>
-<td>returnCity</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return City</td>
-</tr>
-<tr>
-<td>returnState</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return State</td>
-</tr>
-<tr>
-<td>returnCountry</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return Country</td>
-</tr>
-<tr>
-<td>returnPinCode</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Return Pincode</td>
 </tr>
 </tbody></table>
 
@@ -3403,7 +3310,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
@@ -3412,7 +3319,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
@@ -3442,7 +3349,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
