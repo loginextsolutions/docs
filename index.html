@@ -2074,11 +2074,17 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h2 id="trip-iframe">Trip iFrame</h2>
 
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/track/#/order?tripname=Trip</span><span class="mi">-123</span><span class="err">&amp;aid=</span><span class="mi">4</span><span class="err">b</span><span class="mi">41</span><span class="err">a</span><span class="mi">94</span><span class="err">b</span><span class="mi">-521</span><span class="err">b</span><span class="mi">-4986-920</span><span class="err">d</span><span class="mi">-6</span><span class="err">e</span><span class="mi">4</span><span class="err">c</span><span class="mi">1</span><span class="err">cf</span><span class="mi">15</span><span class="err">fd</span><span class="mi">0</span><span class="err">b</span><span class="mi">6</span><span class="err">&amp;key=$</span><span class="mi">2</span><span class="err">a$</span><span class="mi">08</span><span class="err">$dfVg</span><span class="mi">6</span><span class="err">jJLhrHEsqOUfD</span><span class="mi">1</span><span class="err">EJHyuelHeIgcUyvgTfGaeRmnzN</span><span class="mi">5</span><span class="err">jGVi</span><span class="mi">86</span><span class="err">k</span><span class="w">
+</span></code></pre>
+
 <p>The iFrame displays the last tracking for a trip, including current location and trip history, based on the trip name.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&amp;key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&amp;tripname=TestTripName</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/track/#/order?tripname=&lt;tripname&gt;&amp;aid=&lt;aid&gt;&amp;key=&lt;key&gt;</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -4628,6 +4634,46 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Mandatory</td>
 <td>Pincode</td>
+</tr>
+</tbody></table>
+
+<h2 id="iframe">iFrame</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/track/#/order?ordno=</span><span class="mi">1234</span><span class="err">&amp;aid=</span><span class="mi">4</span><span class="err">b</span><span class="mi">41</span><span class="err">a</span><span class="mi">94</span><span class="err">b</span><span class="mi">-521</span><span class="err">b</span><span class="mi">-4986-920</span><span class="err">d</span><span class="mi">-6</span><span class="err">e</span><span class="mi">4</span><span class="err">c</span><span class="mi">1</span><span class="err">cf</span><span class="mi">15</span><span class="err">fd</span><span class="mi">0</span><span class="err">b</span><span class="mi">6</span><span class="err">&amp;key=$</span><span class="mi">2</span><span class="err">a$</span><span class="mi">08</span><span class="err">$dfVg</span><span class="mi">6</span><span class="err">jJLhrHEsqOUfD</span><span class="mi">1</span><span class="err">EJHyuelHeIgcUyvgTfGaeRmnzN</span><span class="mi">5</span><span class="err">jGVi</span><span class="mi">86</span><span class="err">k</span><span class="w">
+</span></code></pre>
+
+<p>The iFrame displays the last tracking for an order, including current location, based on the order no.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/track/#/order?ordno=&lt;ordno&gt;&amp;aid=&lt;aid&gt;&amp;key=&lt;key&gt;</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Sample Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>aid</td>
+<td>f522631c-490c-46fd-9f79-ca8d14a704d7</td>
+<td>Value of authentication token without &#39;BASIC&rsquo; keyword</td>
+</tr>
+<tr>
+<td>key</td>
+<td>$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT</td>
+<td>Client Secret Key</td>
+</tr>
+<tr>
+<td>ordno</td>
+<td>1234</td>
+<td>Order no</td>
 </tr>
 </tbody></table>
 
