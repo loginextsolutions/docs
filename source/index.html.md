@@ -1383,10 +1383,10 @@ packageWeight | Double | Optional | Weight of package in Kg.
 packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
 numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+paymentType | String | Optional | Payment mode. Ex: Cash On Delivery, Prepaid
+partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
 deliverBranch | String | Mandatory | Name of delivery branch
 deliverServiceTime | Integer | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date | Mandatory | Deliver start time window
@@ -1436,22 +1436,22 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 ```json
 [
   {
-    "orderNo": "DummyOrderNo",
+    "orderNo": "DummyOrderNo1",
     "awbNumber": "AWB001",
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "Gurgaon",
+    "distributionCenter": "test",
     "packageWeight":"10",
     "packageVolume": "4500",
     "packageValue": "5000",
     "paymentType": "Prepaid",
-    "numberOfItems": "10",
-    "deliveryLocationType":"PUP",
+    "numberOfItems": "1",
+    "deliveryType":"DLBOY",
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",
-    "pickupBranch":"Gurgaon",
+    "pickupBranch":"testbranch",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
     "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
@@ -1467,21 +1467,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupState": "MH",
     "pickupCountry": "IND",
     "pickupPinCode": "400076",
-    "returnBranch": "Gurgaon",
-    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
-    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
-    "returnAccountCode": "retAcc123",
-    "returnAccountName": "retAcc1234",
-    "returnEmail": "test@test.com",
-    "returnPhoneNumber": "9090909090",
-    "returnApartment": "sjlkd CHS",
-    "returnStreetName": "kljsdl Road",
-    "returnLandmark": "skjdlk Nagar",
-    "returnLocality": "kldlk West",
-    "returnCity": "Mumbai",
-    "returnState": "MH",
-    "returnCountry": "IND",
-    "returnPinCode": "400104",
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -1550,18 +1535,20 @@ distributionCenter | String | Mandatory | Distribution center's name
 packageWeight | Double | Optional | Weight of package in Kg.
 packageVolume | Double | Optional | Volume of package in CC
 packageValue | Double | Optional | Value of package
-numberOfItems | Integer | Optional | Number of crates
 paymentType | String | Mandatory | Payment mode. Ex: Cash On Delivery, Prepaid
-deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP etc.
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+numberOfItems | Integer | Optional | Number of crates
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
 pickupBranch | String | Mandatory | Name of pickup branch
 pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
 pickupStartTimeWindow | Date | Mandatory | Pickup start time window
 pickupEndTimeWindow | Date | Mandatory | Pickup end time window
 pickupAccountCode | String | Mandatory | Pickup account code
 pickupAccountName | String | Mandatory | Pickup account name
+pickupEmail | String | Optional | Pickup email id
+pickupPhoneNumber | Optional | Mandatory | Pickup phone no
 pickupApartment | String | Mandatory | Pickup Apartment
 pickupStreetName | String | Mandatory | Pickup Street name
 pickupLandmark | String | Optional | Pickup Landmark
@@ -1570,21 +1557,7 @@ pickupCity | String | Mandatory | Pickup City
 pickupState| String | Mandatory | Pickup State
 pickupCountry | String | Mandatory | Pickup Country
 pickupPinCode | String | Mandatory | Pickup Pincode
-returnBranch | String | Mandatory | Name of return branch
-returnStartTimeWindow | Date | Mandatory | Return start time window
-returnEndTimeWindow | Date | Mandatory | Return end time window
-returnAccountCode | String | Mandatory | Return account code
-returnAccountName | String | Mandatory | Return account name
-returnEmail | String | Mandatory | Return account code
-returnPhoneNumber | String | Mandatory | Return account name
-returnApartment | String | Mandatory | Return Apartment
-returnStreetName | String | Mandatory | Return Street name
-returnLandmark | String | Optional | Return Landmark
-returnLocality | String | Mandatory | Return Locality
-returnCity | String | Mandatory | Return City
-returnState| String | Mandatory | Return State
-returnCountry | String | Mandatory | Return Country
-returnPinCode | String | Mandatory | Return Pincode
+
   
 ### Request Parameters (Crates)
 
@@ -1672,7 +1645,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "Gurgaon",
+    "distributionCenter": "test",
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
@@ -1681,7 +1654,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
-    "deliverBranch": "Gurgaon",
+    "deliverBranch": "test",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
@@ -1711,7 +1684,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupState": "MH",
     "pickupCountry": "IND",
     "pickupPinCode": "400076",    
-    "returnBranch": "Gurgaon",
+    "returnBranch": "test",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
     "returnAccountCode": "retAcc123",
