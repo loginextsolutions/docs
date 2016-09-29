@@ -1138,11 +1138,18 @@ tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
 
 ## Trip iFrame
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/track/#/order?tripname=Trip-123&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6&key=$2a$08$dfVg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzN5jGVi86k
+```
+
 The iFrame displays the last tracking for a trip, including current location and trip history, based on the trip name.
 
 ### Request
 
-<span class="post">GET</span>` https://api.loginextsolutions.com/haul/track/#/?aid=f522631c-490c-46fd-9f79-ca8d14a704d7&key=$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzNr5jGVi86k3&tripname=TestTripName`
+
+<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?tripname=<tripname>&aid=<aid>&key=<key>`
 
 ### Request Parameters
 
@@ -2269,6 +2276,28 @@ country | String | Optional | Country
 state | String |Optional | State
 pincode | String | Mandatory | Pincode
 
+## iFrame
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6&key=$2a$08$dfVg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzN5jGVi86k
+```
+
+The iFrame displays the last tracking for an order, including current location, based on the order no.
+
+### Request
+
+
+<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?ordno=<ordno>&aid=<aid>&key=<key>`
+
+### Request Parameters
+
+Parameter | Sample Value | Description
+--------- | ------- | -------------
+aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
+key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
+ordno | 1234| Order no
 
 # OnDemand
 
