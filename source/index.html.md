@@ -1164,7 +1164,13 @@ tripname | TestTripName| Trip name
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81
+https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
+```
+
+> Request Body
+
+```json
+["TestTripName"]
 ```
 
 > Response
@@ -1175,43 +1181,30 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmen
   "message": "Latest Location found successfully",
   "data": [
     {
-      "lat": 19.1119794,
-      "lng": 72.9094968,
-      "shipmentReference": "21b538edf7f047028334480036179c70"
-    },
-    {
-      "lat": 19.0668898,
-      "lng": 72.8320575,
-      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
-    },
-    {
-      "lat": 19.0741246,
-      "lng": 72.824772,
-      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
-    },
-    {
-      "lat": 19.1200864,
-      "lng": 72.9010175,
-      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
+      "lat": 10.394535555555555,
+      "lng": 77.96088,
+      "shipmentReference": "aefe22d9ba934908a7a2aeb790964814",
+      "geocodingSource": null,
+      "types": null,
+      "eta": "2016-08-18 06:43:00"
     }
   ],
   "hasError": false
 }
-
 ```
 
-Track API fetches the latest location (latitude / longitude) for a trip based on its reference ID.
+Track API fetches the latest location (latitude / longitude) for a trip based on its name.
 
 ### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67`
+<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
 
 
-### Request Parameters
+### Request Body
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-shipmentReferences | List | Mandatory | Reference Id associated with the shipment.
+tripnames | List | Mandatory | Trip names
 
 
 ## Create Tracking Record
