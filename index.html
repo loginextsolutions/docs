@@ -2117,7 +2117,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?shipmentReferences=</span><span class="mi">25</span><span class="err">a</span><span class="mi">565</span><span class="err">a</span><span class="mi">9</span><span class="err">c</span><span class="mi">9</span><span class="err">d</span><span class="mi">540</span><span class="err">cd</span><span class="mi">9</span><span class="err">e</span><span class="mi">6</span><span class="err">c</span><span class="mi">02</span><span class="err">fae</span><span class="mi">890</span><span class="err">cb</span><span class="mi">67</span><span class="err">,c</span><span class="mi">7</span><span class="err">afc</span><span class="mi">8</span><span class="err">b</span><span class="mi">1</span><span class="err">b</span><span class="mi">97</span><span class="err">b</span><span class="mi">48468</span><span class="err">c</span><span class="mi">3417</span><span class="err">aa</span><span class="mi">425</span><span class="err">eff</span><span class="mi">81</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"TestTripName"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2128,38 +2134,25 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Latest Location found successfully"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119794</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094968</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21b538edf7f047028334480036179c70"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0668898</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.8320575</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25a565a9c9d540cd9e6c02fae890cb67"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0741246</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.824772</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27121903f4f047bcb378a6457bee2fec"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1200864</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9010175</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c7afc8b1b97b48468c3417aa425eff81"</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.394535555555555</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.96088</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aefe22d9ba934908a7a2aeb790964814"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18 06:43:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
-<p>Track API fetches the latest location (latitude / longitude) for a trip based on its reference ID.</p>
+<p>Track API fetches the latest location (latitude / longitude) for a trip based on its name.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
 
-<h3 id="request-parameters">Request Parameters</h3>
+<h3 id="request-body">Request Body</h3>
 
 <table><thead>
 <tr>
@@ -2170,10 +2163,10 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </thead><tbody>
 <tr>
-<td>shipmentReferences</td>
+<td>tripnames</td>
 <td>List</td>
 <td>Mandatory</td>
-<td>Reference Id associated with the shipment.</td>
+<td>Trip names</td>
 </tr>
 </tbody></table>
 
