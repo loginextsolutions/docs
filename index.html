@@ -5915,23 +5915,32 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.1111232</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">72.12334221</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">  
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYPLANNING"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+  </span><span class="nt">"notificationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-46"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ramesh"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d1c196e8bf384c40ae7f7ca0fd1a3d58"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9876543213"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDriver1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH-13213"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrder345"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-13 11:18:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-13 17:45:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1239285</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.90944069999999</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>This notification is sent when orders are assigned to delivery boy for a particular window of time.</p>
+<p>This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.</p>
 
 <h3 id="response-parameters">Response Parameters</h3>
 
@@ -5943,14 +5952,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>notificationType</td>
 <td>String</td>
-<td>Order No..</td>
+<td>DELIVERYPLANNING</td>
 </tr>
 <tr>
-<td>deliveryMediumName</td>
-<td>String</td>
-<td>Name of delivery medium</td>
+<td>notificationDetails</td>
+<td>List</td>
+<td>Notification details</td>
 </tr>
 <tr>
 <td>tripName</td>
@@ -5958,24 +5967,49 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Trip name</td>
 </tr>
 <tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>Phone no of delivery medium</td>
+</tr>
+<tr>
 <td>driverName</td>
 <td>String</td>
 <td>Name of driver</td>
 </tr>
 <tr>
-<td>vehicle</td>
+<td>vehicleNumber</td>
 <td>String</td>
 <td>Vehicle no.</td>
 </tr>
 <tr>
-<td>latitude</td>
-<td>Double</td>
-<td>Latitude</td>
+<td>orderDetails</td>
+<td>List</td>
+<td>List of orders present in the trip</td>
 </tr>
 <tr>
-<td>longitude</td>
-<td>Double</td>
-<td>Longitude</td>
+<td>orderNo</td>
+<td>String</td>
+<td>Order no.</td>
+</tr>
+<tr>
+<td>startTimeWindow</td>
+<td>String</td>
+<td>Estimated start time of order</td>
+</tr>
+<tr>
+<td>endTimeWindow</td>
+<td>String</td>
+<td>Estimated end time of order</td>
 </tr>
 <tr>
 <td>deliveryOrder</td>
@@ -5983,24 +6017,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Delivery order</td>
 </tr>
 <tr>
-<td>phoneNumber</td>
-<td>Long</td>
-<td>Phone no of delivery medium</td>
+<td>latitude</td>
+<td>Double</td>
+<td>Order Latitude</td>
 </tr>
 <tr>
-<td>notificationType</td>
-<td>String</td>
-<td>DELIVERYPLANNING</td>
-</tr>
-<tr>
-<td>startTimeWindow</td>
-<td>String</td>
-<td>Estimated start time of trip</td>
-</tr>
-<tr>
-<td>endTimeWindow</td>
-<td>String</td>
-<td>Estimated end time of trip</td>
+<td>longitude</td>
+<td>Double</td>
+<td>Order Longitude</td>
 </tr>
 </tbody></table>
 
