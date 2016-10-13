@@ -2877,23 +2877,32 @@ reasonCd | String | Reason code
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
-  "deliveryMediumName": "TestDM",
-  "tripName": "TestTripName",
-  "driverName":"TestDriverName",
-  "vehicle":"MH01-1223",
-  "latitude":19.1111232,
-  "longitude":72.12334221,
-  "deliveryOrder":1,
-  "phoneNumber": 1234567890,  
   "notificationType": "DELIVERYPLANNING",
-  "startTimeWindow":"2014-01-01 13:12:00",
-  "endTimeWindow":"2014-01-01 13:12:00"
+  "notificationDetails": [
+    {
+      "tripName": "TRIP-46",
+      "deliveryMediumName": "Ramesh",
+      "referenceId": "d1c196e8bf384c40ae7f7ca0fd1a3d58",
+      "phoneNumber": "9876543213",
+      "driverName": "TestDriver1",
+      "vehicleNumber": "MH-13213",
+      "orderDetails": [
+        {
+          "orderNo": "DummyOrder345",
+          "startTimeWindow": "2016-10-13 11:18:00",
+          "endTimeWindow": "2016-10-13 17:45:00",
+          "deliveryOrder":1,
+          "latitude": 19.1239285,
+          "longitude": 72.90944069999999
+        }
+      ]
+    }
+  ]
 }
 
 ```
 
-This notification is sent when orders are assigned to delivery boy for a particular window of time.
+This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.
 
 
 
@@ -2901,18 +2910,21 @@ This notification is sent when orders are assigned to delivery boy for a particu
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String |  Order No..
-deliveryMediumName | String |  Name of delivery medium
-tripName | String |  Trip name
-driverName | String |  Name of driver
-vehicle | String |  Vehicle no.
-latitude | Double |  Latitude
-longitude | Double | Longitude
-deliveryOrder | Integer |  Delivery order
-phoneNumber | Long | Phone no of delivery medium
 notificationType | String |  DELIVERYPLANNING
-startTimeWindow | String |  Estimated start time of trip
-endTimeWindow | String |  Estimated end time of trip
+notificationDetails | List | Notification details
+tripName | String |  Trip name
+deliveryMediumName | String |  Name of delivery medium
+referenceId | String | Reference id of the trip
+phoneNumber | String | Phone no of delivery medium
+driverName | String |  Name of driver
+vehicleNumber | String |  Vehicle no.
+orderDetails | List | List of orders present in the trip
+orderNo | String |  Order no.
+startTimeWindow | String |  Estimated start time of order
+endTimeWindow | String |  Estimated end time of order
+deliveryOrder | Integer |  Delivery order
+latitude | Double | Order Latitude 
+longitude | Double | Order Longitude
 
 ## Start Trip
 
