@@ -1244,6 +1244,7 @@ speed | Double | Optional | Speed with which consignment is moving
 messageType | String | Mandatory | Message type. Ex: REG
 temperature | Double | Optional | Consignment's temperature
 
+
 # Mile
 
 Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
@@ -1870,6 +1871,184 @@ Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_ids | List | Mandatory | Reference Id associated with the order.
 
+
+## Update Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
+```
+
+> Request Body
+
+```json
+[
+  {
+    "referenceId":"04c1c0c283a34769a5baca01c987b51a",
+    "orderNo": "DummyOrderNo13",
+    "awbNumber": "AWB001",
+    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+    "packageWeight":"10",
+    "packageVolume": "4500",
+    "paymentType": "Prepaid",
+    "packageValue": "5000",
+    "numberOfItems": "10",
+    "partialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "Y",
+    "cancellationAllowedFl": "N",    
+    "deliverBranch": "test",
+    "deliverServiceTime": "20",
+    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "deliveryType": "DLBOY",
+    "deliveryLocationType":"PUP",
+    "deliverAccountCode": "Customer001",
+    "deliverAccountName": "TestUser",
+    "deliverApartment": "123",
+    "deliverStreetName": "Powai",
+    "deliverLandmark": "Dmart",
+    "deliverLocality": "Hiranandani",
+    "deliverCity": "Mumbai",
+    "deliverState": "MH",
+    "deliverCountry": "IND",
+    "deliverPinCode": "400076",    
+    "pickupBranch":"Gurgaon",
+    "pickupServiceTime": "50",
+    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
+    "pickupAccountCode": "Customer123",
+    "pickupAccountName": "Customer001",
+    "pickupApartment": "123",
+    "pickupStreetName": "Supreme Business Park",
+    "pickupLandmark": "DMart",
+    "pickupLocality": "Hiranandani",
+    "pickupCity": "Mumbai",
+    "pickupState": "MH",
+    "pickupCountry": "IND",
+    "pickupPinCode": "400076",    
+    "returnBranch": "test",
+    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
+    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
+    "returnAccountCode": "retAcc123",
+    "returnAccountName": "retAcc1234",
+    "returnEmail": "test@test.com",
+    "returnPhoneNumber": "9090909090",
+    "returnApartment": "sjlkd CHS",
+    "returnStreetName": "kljsdl Road",
+    "returnLandmark": "skjdlk Nagar",
+    "returnLocality": "kldlk West",
+    "returnCity": "Mumbai",
+    "returnState": "MH",
+    "returnCountry": "IND",
+    "returnPinCode": "400104"
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "referenceId": null,
+  "data": null,
+  "hasError": false
+}
+
+```
+With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+You can pass multiple order reference IDs and can update one or more parameters.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update`
+
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+referenceId | String | Mandatory |  Order Reference id 
+orderNo | String | Optional |  Order No.
+awbNumber | String | Optional | Airway Bill No.
+shipmentOrderDt | Date | Optional | Order Date
+packageWeight | Double | Optional | Weight of package in Kg.
+packageVolume | Double | Optional | Volume of package in CC
+packageValue | Double | Optional | Value of package
+numberOfItems | Integer | Optional | Number of crates
+paymentType | String | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid
+partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
+deliverBranch | String | Optional | Name of delivery branch
+deliverServiceTime | Integer | Optional | Deliver service time in mins.
+deliverStartTimeWindow | Date | Optional | Deliver start time window
+deliverEndTimeWindow | Date | Optional | Deliver end time window
+deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP
+deliverAccountCode | String | Optional | Deliver account code
+deliverAccountName | String | Optional | Deliver account name
+deliverApartment | String | Optional | Apartment
+deliverStreetName | String | Optional | Street name
+deliverLandmark | String | Optional | Landmark
+deliverLocality | String | Optional | Locality
+deliverCity | String | Optional | City
+deliverState| String | Optional | State
+deliverCountry | String | Optional | Country
+deliverPinCode | String | Optional | Pincode
+pickupBranch | String | Optional | Name of pickup branch
+pickupServiceTime | Integer | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date | Optional | Pickup start time window
+pickupEndTimeWindow | Date | Optional | Pickup end time window
+pickupAccountCode | String | Optional | Pickup account code
+pickupAccountName | String | Optional | Pickup account name
+pickupApartment | String | Optional | Pickup Apartment
+pickupStreetName | String | Optional | Pickup Street name
+pickupLandmark | String | Optional | Pickup Landmark
+pickupLocality | String | Optional | Pickup Locality
+pickupCity | String | Optional | Pickup City
+pickupState| String | Optional | Pickup State
+pickupCountry | String | Optional | Pickup Country
+pickupPinCode | String | Optional | Pickup Pincode
+returnBranch | String | Optional | Name of return branch
+returnStartTimeWindow | Date | Optional | Return start time window
+returnEndTimeWindow | Date | Optional | Return end time window
+returnAccountCode | String | Optional | Return account code
+returnAccountName | String | Optional | Return account name
+returnEmail | String | Optional | Return account code
+returnPhoneNumber | String | Optional | Return account name
+returnApartment | String | Optional | Return Apartment
+returnStreetName | String | Optional | Return Street name
+returnLandmark | String | Optional | Return Landmark
+returnLocality | String | Optional | Return Locality
+returnCity | String | Optional | Return City
+returnState| String | Optional | Return State
+returnCountry | String | Optional | Return Country
+returnPinCode | String | Optional | Return Pincode
+
+
+
+### Request Parameters (Crates)
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
+shipmentCrateMappings.crateAmount | Double | Optional | Crate amount
+shipmentCrateMappings.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | Optional | No. of crate units
+shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+
+
 ## Cancel Order
 
 > Definition
@@ -2264,6 +2443,114 @@ Parameter | Sample Value | Description
 aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 ordno | 1234| Order no
+
+## Route Planning
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
+```
+
+> Request Body
+
+```json
+{
+  "routeName":"fas",
+  "startLocation": {
+    "latitude": 19.1164057,
+    "longitude": 72.9047021
+  },
+  "vehicles":[{
+    "name" : "cc",
+    "capacity" : {
+      "units" : 10,
+      "weight" : 100,
+      "volume" : 100
+    },
+    "type":["a","b","c"]
+  }],
+  "shipments":[{
+    "name" :"s1",
+    "location" : {
+      "latitude": 19.1172561,
+      "longitude": 72.8925094
+    },
+    "start" : "2016-10-27T16:00:00Z",
+    "end" : "2016-10-27T18:00:00Z",
+    "serviceTime" : 10,
+    "weight" : 10,
+    "volume" : 10,
+    "type":["a","b","c"]
+  }]
+}
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": null,
+    "referenceId": null,
+    "data": {
+        "routeName": "abcd",
+        "routes": [
+            {
+                "vehicle": "a1",
+                "shipments": [
+                    {
+                        "name": "s1",
+                        "start": "2016-10-27T11:28:21Z",
+                        "end": "2016-10-27T15:59:21Z",
+                        "shipmentType": "PICKUP"
+                    },
+                    {
+                        "name": "s1",
+                        "start": "2016-10-27T16:09:21Z",
+                        "end": "2016-10-27T16:09:21Z",
+                        "shipmentType": "DELIVER"
+                    }
+                ],
+                "start": "2016-10-27T11:18:21Z",
+                "end": "2016-10-27T16:09:21Z"
+            }
+        ],
+        "unassigned": []
+    },
+    "hasError": false
+}
+```
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan`
+
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+routeName | String | Mandatory | Route name
+startLocation.latitude | Double | Mandatory | Latitude of start location
+startLocation.longitude | Double | Mandatory | Longitude of start location
+vehicles | List | Mandatory | List of vehicles
+vehicles.name | String | Mandatory | Vehicle number
+vehicles.capacity.weight | Integer | Optional | Weight of vehicle in Kg.
+vehicles.capacity.volume | Integer | Optional | Volume of vehicle in cc.
+vehicles.type | List | Optional | Type of vehicles
+shipments | List | Mandatory | List of orders
+shipments.name | String | Mandatory | Order no.
+shipments.location.latitude | Double | Mandatory | Order Latitude
+shipments.location.longitude | Double | Mandatory | Order Longitude
+shipments.start | String | Mandatory | Order start time window
+shipments.end | String | Mandatory | Order end time window
+shipments.serviceTime | Integer | Optional | Order service time in mins.
+shipments.weight | Integer | Optional | Weight of order in Kg.
+shipments.volume | Integer | Optional | Volume of order in cc.
+shipments.type | List | Optional | Type of vehicles
+
+
 
 # OnDemand
 
