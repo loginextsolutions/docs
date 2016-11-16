@@ -2757,6 +2757,15 @@ deliverNotes | String | Optional | Deliver notes
 
 # Webhooks
 
+Webhooks allow you to build or set up integrations which subscribe to certain events like Order Creation, Route Planning, Trip Start, etc. on LogiNext System. When one of those events is triggered, we'll send a HTTP POST request to the webhook's configured URL (end point).
+
+Note -
+
+1. LogiNext Webhooks are sent via HTTP REST protocol.
+2. The default content type for all the LogiNext Webhooks is "application/ json".
+3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.
+4. All the dates and timestamps that are represented in the Webhooks are in the Client timezones.
+5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
 
 ## Create Order
 
