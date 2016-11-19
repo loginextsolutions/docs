@@ -1397,7 +1397,7 @@ deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Mandatory | Locality
 deliverCity | String | Mandatory | City 
 deliverState| String | Mandatory | State code
-deliverCountry | String | Mandatory | <a href="http://localhost:4567/#country-codes">Country code</a>
+deliverCountry | String | Mandatory | Country code
 deliverPinCode | String | Mandatory | Pincode
 returnBranch | String | Mandatory | Name of return branch
   
@@ -1601,8 +1601,8 @@ pickupStreetName | String | Mandatory | Street name
 pickupLandmark | String | Optional | Landmark
 pickupLocality | String | Mandatory | Locality
 pickupCity | String | Mandatory | City
-pickupState| String | Mandatory | State
-pickupCountry | String | Mandatory | Country
+pickupState| String | Mandatory | State code
+pickupCountry | String | Mandatory | Country code
 pickupPinCode | String | Mandatory | Pincode
 
 ### Request Parameters (Crates)
@@ -1778,8 +1778,8 @@ deliverStreetName | String | Mandatory | Street name
 deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Mandatory | Locality
 deliverCity | String | Mandatory | City
-deliverState| String | Mandatory | State
-deliverCountry | String | Mandatory | Country
+deliverState| String | Mandatory | State code
+deliverCountry | String | Mandatory | Country code
 deliverPinCode | String | Mandatory | Pincode
 pickupBranch | String | Mandatory | Name of pickup branch
 pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
@@ -1792,8 +1792,8 @@ pickupStreetName | String | Mandatory | Pickup Street name
 pickupLandmark | String | Optional | Pickup Landmark
 pickupLocality | String | Mandatory | Pickup Locality
 pickupCity | String | Mandatory | Pickup City
-pickupState| String | Mandatory | Pickup State
-pickupCountry | String | Mandatory | Pickup Country
+pickupState| String | Mandatory | Pickup State code
+pickupCountry | String | Mandatory | Pickup Country code
 pickupPinCode | String | Mandatory | Pickup Pincode
 returnBranch | String | Mandatory | Name of return branch
 returnStartTimeWindow | Date | Mandatory | Return start time window
@@ -1807,8 +1807,8 @@ returnStreetName | String | Mandatory | Return Street name
 returnLandmark | String | Optional | Return Landmark
 returnLocality | String | Mandatory | Return Locality
 returnCity | String | Mandatory | Return City
-returnState| String | Mandatory | Return State
-returnCountry | String | Mandatory | Return Country
+returnState| String | Mandatory | Return State code
+returnCountry | String | Mandatory | Return Country code
 returnPinCode | String | Mandatory | Return Pincode
 
 
@@ -1997,8 +1997,8 @@ deliverStreetName | String | Optional | Street name
 deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Optional | Locality
 deliverCity | String | Optional | City
-deliverState| String | Optional | State
-deliverCountry | String | Optional | Country
+deliverState| String | Optional | State code
+deliverCountry | String | Optional | Country code
 deliverPinCode | String | Optional | Pincode
 pickupBranch | String | Optional | Name of pickup branch
 pickupServiceTime | Integer | Optional | Pickup service time in mins.
@@ -2011,8 +2011,8 @@ pickupStreetName | String | Optional | Pickup Street name
 pickupLandmark | String | Optional | Pickup Landmark
 pickupLocality | String | Optional | Pickup Locality
 pickupCity | String | Optional | Pickup City
-pickupState| String | Optional | Pickup State
-pickupCountry | String | Optional | Pickup Country
+pickupState| String | Optional | Pickup State code
+pickupCountry | String | Optional | Pickup Country code
 pickupPinCode | String | Optional | Pickup Pincode
 returnBranch | String | Optional | Name of return branch
 returnStartTimeWindow | Date | Optional | Return start time window
@@ -2026,8 +2026,8 @@ returnStreetName | String | Optional | Return Street name
 returnLandmark | String | Optional | Return Landmark
 returnLocality | String | Optional | Return Locality
 returnCity | String | Optional | Return City
-returnState| String | Optional | Return State
-returnCountry | String | Optional | Return Country
+returnState| String | Optional | Return State code
+returnCountry | String | Optional | Return Country code
 returnPinCode | String | Optional | Return Pincode
 
 
@@ -2417,8 +2417,8 @@ streetName | String | Optional | Street name
 landmark | String | Optional | Landmark
 locality | String | Optional | Locality
 city | String | Optional | City
-country | String | Optional | Country
-state | String |Optional | State
+country | String | Optional | Country code
+state | String |Optional | State code
 pincode | String | Mandatory | Pincode
 
 ## iFrame
@@ -2728,8 +2728,8 @@ pickupApartment | String | Mandatory | Pickup customer apartment
 pickupStreetName | String | Mandatory | Pickup customer street name
 pickupLandmark | String | Optional | Pickup customer landmark
 pickupLocality | String | Mandatory | Pickup area name
-pickupCountry | String | Mandatory | Pickup country
-pickupState | String | Mandatory | Pickup state
+pickupCountry | String | Mandatory | Pickup country code
+pickupState | String | Mandatory | Pickup state code
 pickupCity | String | Mandatory | Pickup city
 pickupPincode | String | Mandatory | Pickup pincode
 pickupStartTimeWindow | Date | Mandatory | Pickup Start time window of order
@@ -2745,8 +2745,8 @@ deliverApartment | String | Mandatory | Deliver customer apartment
 deliverStreetName | String | Mandatory | Deliver customer street name
 deliverLandmark | String | Optional | Deliver customer landmark
 deliverLocality | String | Mandatory | Deliver area name
-deliverCountry | String | Mandatory | Deliver country
-deliverState | String | Mandatory | Deliver state
+deliverCountry | String | Mandatory | Deliver country code
+deliverState | String | Mandatory | Deliver state code
 deliverCity | String | Mandatory | Deliver city
 deliverPincode | String | Mandatory | Deliver pincode
 deliverStartTimeWindow | Date | Mandatory | Deliver Start time window of order
