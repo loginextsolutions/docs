@@ -2555,13 +2555,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverState</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>State</td>
+<td>State code</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Country</td>
+<td><a href="http://localhost:4567/#country-codes">Country code</a></td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
@@ -5812,13 +5812,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERCREATIONNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"billNumber"</span><span class="p">:</span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"billType"</span><span class="p">:</span><span class="s2">"RETURN"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-07-01 03:05:08"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5833,9 +5831,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -5858,16 +5856,6 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>ORDERCREATIONNOTIFICATION</td>
 </tr>
 <tr>
-<td>billNumber</td>
-<td>String</td>
-<td>Will contain order no.</td>
-</tr>
-<tr>
-<td>billType</td>
-<td>String</td>
-<td>Bill Type. RETURN for PICKUP order leg, SALES for DELIVER order leg</td>
-</tr>
-<tr>
 <td>timestamp</td>
 <td>String</td>
 <td>Order creation timestamp</td>
@@ -5880,12 +5868,12 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERUPDATENOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"TestDeliveryMedium"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="s2">"2016-07-01 00:09:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="s2">"2016-07-01 00:09:00"</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-20 05:08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21 05:08:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -5899,9 +5887,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>notificationType</td>
@@ -5941,7 +5929,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="w">
+  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -5960,7 +5950,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>clientShipmentId</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -5987,6 +5977,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>Accept order timestamp</td>
 </tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
 </tbody></table>
 
 <h2 id="reject-order">Reject Order</h2>
@@ -6001,7 +6001,6 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 20:47:20"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reasonOfRejection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot reach on ETA"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p>This notification is sent when an order is rejected by a delivery boy.</p>
@@ -6044,7 +6043,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h2 id="load-items">Load Items</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">  
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">  
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
@@ -6080,9 +6079,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -6158,7 +6157,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h2 id="load-complete">Load Complete</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"TestOrder1"</span><span class="p">,</span><span class="s2">"TestOrder2"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"TestDeliveryMedium"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-07-01 09:13:00"</span><span class="p">,</span><span class="w">
@@ -6182,9 +6181,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>clientShipmentIds</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order Nos.</td>
 </tr>
 <tr>
 <td>deliveryMediumName</td>
@@ -6234,18 +6233,25 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.283528</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">76.921535</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118589</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095639</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:12:49"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecipientName"</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:11:27"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREPAID"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -6262,9 +6268,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>latitude</td>
@@ -6282,6 +6288,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>DELIVEREDNOTIFICATION</td>
 </tr>
 <tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
 <td>customerComment</td>
 <td>String</td>
 <td>Customer comments</td>
@@ -6290,6 +6306,26 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>customerRating</td>
 <td>Integer</td>
 <td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Customer name</td>
 </tr>
 <tr>
 <td>deliveryTime</td>
@@ -6329,19 +6365,46 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145129097"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIALLYDELIVERED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIALDELIVERYNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer not accepting"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:12:49"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">8447608650</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23768"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product damaged in transit"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PDL001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:14:34"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shipmentCrateMappingList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John2"</span><span class="w">
+  </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">532.55</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentCrateMappingList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipmentLineItemsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="s2">"Type1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="s2">"StatusCd"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"actualItemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -6358,9 +6421,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>statusCd</td>
@@ -6373,6 +6436,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>PARTIALDELIVERYNOTIFICATION</td>
 </tr>
 <tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
 <td>customerComments</td>
 <td>String</td>
 <td>Customer comments</td>
@@ -6381,6 +6454,26 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>customerRating</td>
 <td>Integer</td>
 <td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Customer name</td>
 </tr>
 <tr>
 <td>reason</td>
@@ -6403,9 +6496,19 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Cash amount to be collected</td>
 </tr>
 <tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>Delivery Location</td>
+</tr>
+<tr>
 <td>transactionId</td>
 <td>String</td>
 <td>Transaction id</td>
+</tr>
+<tr>
+<td>paymentMode</td>
+<td>String</td>
+<td>Mode of order payment</td>
 </tr>
 <tr>
 <td>actualCashAmount</td>
@@ -6418,9 +6521,69 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Shipment crates</td>
 </tr>
 <tr>
-<td>recipientName</td>
+<td>shipmentCrateMappingList.crateCd</td>
 <td>String</td>
-<td>Name of recipient</td>
+<td>Crate code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.crateType</td>
+<td>String</td>
+<td>Crate type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.statusCd</td>
+<td>String</td>
+<td>Crate Status. It will be LOADED.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.crateAmount</td>
+<td>Double</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.noOfUnits</td>
+<td>Integer</td>
+<td>No of units</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.statusCd</td>
+<td>String</td>
+<td>Item status. It will be LOADED.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>Name of item</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemQuantity</td>
+<td>Integer</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.itemWeight</td>
+<td>Integer</td>
+<td>Item weight</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.actualItemQuantity</td>
+<td>Integer</td>
+<td>Unloaded Item quantity</td>
 </tr>
 </tbody></table>
 
@@ -6430,15 +6593,21 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test comments"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product damaged in transit"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:12:49"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecipientName"</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567876</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NDL001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No customer at delivery location"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:10:32"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -6455,14 +6624,24 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>notificationType</td>
 <td>String</td>
 <td>NOTDELIVEREDNOTIFICATION</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
 </tr>
 <tr>
 <td>customerComments</td>
@@ -6473,6 +6652,26 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>customerRating</td>
 <td>Integer</td>
 <td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Customer name</td>
 </tr>
 <tr>
 <td>reason</td>
@@ -6507,12 +6706,21 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.283528</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">76.921535</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"pickedUpTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:10:56"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKEDUPNOTIFICATION"</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119015</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095815</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pickedUpTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:33:48"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKEDUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKEDUPNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDB"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234565435</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 
 </span></code></pre>
 
@@ -6528,9 +6736,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>latitude</td>
@@ -6550,7 +6758,47 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>status</td>
 <td>String</td>
+<td>PICKEDUP</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
 <td>PICKEDUPNOTIFICATION</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
+<td>customerComments</td>
+<td>String</td>
+<td>Customer comments</td>
+</tr>
+<tr>
+<td>customerRating</td>
+<td>Integer</td>
+<td>Rating provided by customer</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
 </tr>
 </tbody></table>
 
@@ -6560,11 +6808,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTPICKEDUPNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
@@ -6588,9 +6836,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>notificationType</td>
@@ -6608,7 +6856,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Airway Bill Number</td>
 </tr>
 <tr>
-<td>customerComments</td>
+<td>customerComment</td>
 <td>String</td>
 <td>Customer comments</td>
 </tr>
@@ -6774,14 +7022,17 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"TestOrder1"</span><span class="p">,</span><span class="s2">"TestOrder2"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STARTTRIP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">  
-  </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567546</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:42:44"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-84"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH084819"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Order002"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -6845,15 +7096,17 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"TestOrder1"</span><span class="p">,</span><span class="s2">"TestOrder2"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTripName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH01-1223"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2014-01-01 13:12:00"</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rajesh"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:45:10"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-95"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH014841"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Order002"</span><span class="w">
+   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p>This notification is sent when a trip is ended.</p>
@@ -6870,7 +7123,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>clientShipmentIds</td>
 <td>List<String></td>
-<td>Order No.s.</td>
+<td>Order Nos.</td>
 </tr>
 <tr>
 <td>notificationType</td>
@@ -6898,7 +7151,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Name of delivery medium</td>
 </tr>
 <tr>
-<td>startTime</td>
+<td>endTime</td>
 <td>String</td>
 <td>Trip end time</td>
 </tr>
@@ -7013,6 +7266,1496 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>updatedDate</td>
 <td>String</td>
 <td>Timestamp</td>
+</tr>
+</tbody></table>
+
+<h1 id="country-codes">Country Codes</h1>
+
+<table><thead>
+<tr>
+<th>Country</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ALBANIA</td>
+<td>AFG</td>
+</tr>
+<tr>
+<td>ALGERIA</td>
+<td>ALB</td>
+</tr>
+<tr>
+<td>AMERICAN SAMOA</td>
+<td>ASM</td>
+</tr>
+<tr>
+<td>ANDORRA</td>
+<td>AND</td>
+</tr>
+<tr>
+<td>ANGOLA</td>
+<td>AGO</td>
+</tr>
+<tr>
+<td>ANGUILLA</td>
+<td>AIA</td>
+</tr>
+<tr>
+<td>ANTARCTICA</td>
+<td>ATA</td>
+</tr>
+<tr>
+<td>ANTIGUA AND BARBUDA</td>
+<td>ATG</td>
+</tr>
+<tr>
+<td>ARGENTINA</td>
+<td>ARG</td>
+</tr>
+<tr>
+<td>ARMENIA</td>
+<td>ARM</td>
+</tr>
+<tr>
+<td>ARUBA</td>
+<td>ABW</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>AUS</td>
+</tr>
+<tr>
+<td>AUSTRIA</td>
+<td>AUT</td>
+</tr>
+<tr>
+<td>AZERBAIJAN</td>
+<td>AZE</td>
+</tr>
+<tr>
+<td>BAHAMAS</td>
+<td>BHS</td>
+</tr>
+<tr>
+<td>BAHRAIN</td>
+<td>BHR</td>
+</tr>
+<tr>
+<td>BANGLADESH</td>
+<td>BGD</td>
+</tr>
+<tr>
+<td>BARBADOS</td>
+<td>BRB</td>
+</tr>
+<tr>
+<td>BELARUS</td>
+<td>BLR</td>
+</tr>
+<tr>
+<td>BELGIUM</td>
+<td>BEL</td>
+</tr>
+<tr>
+<td>BELIZE</td>
+<td>BLZ</td>
+</tr>
+<tr>
+<td>BENIN</td>
+<td>BEN</td>
+</tr>
+<tr>
+<td>BERMUDA</td>
+<td>BMU</td>
+</tr>
+<tr>
+<td>BHUTAN</td>
+<td>BTN</td>
+</tr>
+<tr>
+<td>BOLIVIA</td>
+<td>BOL</td>
+</tr>
+<tr>
+<td>BOSNIA AND HERZEGOWINA</td>
+<td>BIH</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>BWA</td>
+</tr>
+<tr>
+<td>BOUVET ISLAND</td>
+<td>BVT</td>
+</tr>
+<tr>
+<td>BRAZIL</td>
+<td>BRA</td>
+</tr>
+<tr>
+<td>BRITISH INDIAN OCEAN TERRITORY</td>
+<td>IOT</td>
+</tr>
+<tr>
+<td>BRUNEI DARUSSALAM</td>
+<td>BRN</td>
+</tr>
+<tr>
+<td>BULGARIA</td>
+<td>BGR</td>
+</tr>
+<tr>
+<td>BURKINA FASO</td>
+<td>BFA</td>
+</tr>
+<tr>
+<td>BURUNDI</td>
+<td>BDI</td>
+</tr>
+<tr>
+<td>CAMBODIA</td>
+<td>KHM</td>
+</tr>
+<tr>
+<td>CAMEROON</td>
+<td>CMR</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>CAN</td>
+</tr>
+<tr>
+<td>CAPE VERDE</td>
+<td>CPV</td>
+</tr>
+<tr>
+<td>CAYMAN ISLANDS</td>
+<td>CYM</td>
+</tr>
+<tr>
+<td>CENTRAL AFRICAN REPUBLIC</td>
+<td>CAF</td>
+</tr>
+<tr>
+<td>CHAD</td>
+<td>TCD</td>
+</tr>
+<tr>
+<td>CHILE</td>
+<td>CHL</td>
+</tr>
+<tr>
+<td>CHINA</td>
+<td>CHN</td>
+</tr>
+<tr>
+<td>CHRISTMAS ISLAND</td>
+<td>CXR</td>
+</tr>
+<tr>
+<td>COCOS (KEELING) ISLANDS</td>
+<td>CCK</td>
+</tr>
+<tr>
+<td>COLOMBIA</td>
+<td>COL</td>
+</tr>
+<tr>
+<td>COMOROS</td>
+<td>COM</td>
+</tr>
+<tr>
+<td>CONGO</td>
+<td>COG</td>
+</tr>
+<tr>
+<td>CONGO, THE DRC</td>
+<td>COD</td>
+</tr>
+<tr>
+<td>COOK ISLANDS</td>
+<td>COK</td>
+</tr>
+<tr>
+<td>COSTA RICA</td>
+<td>CRI</td>
+</tr>
+<tr>
+<td>COTE D.IVOIRE</td>
+<td>CIV</td>
+</tr>
+<tr>
+<td>CROATIA</td>
+<td>HRV</td>
+</tr>
+<tr>
+<td>CUBA</td>
+<td>CUB</td>
+</tr>
+<tr>
+<td>CYPRUS</td>
+<td>CYP</td>
+</tr>
+<tr>
+<td>CZECH REPUBLIC</td>
+<td>CZE</td>
+</tr>
+<tr>
+<td>DENMARK</td>
+<td>DNK</td>
+</tr>
+<tr>
+<td>DJIBOUTI</td>
+<td>DJI</td>
+</tr>
+<tr>
+<td>DOMINICA</td>
+<td>DMA</td>
+</tr>
+<tr>
+<td>DOMINICAN REPUBLIC</td>
+<td>DOM</td>
+</tr>
+<tr>
+<td>EAST TIMOR</td>
+<td>TMP</td>
+</tr>
+<tr>
+<td>ECUADOR</td>
+<td>ECU</td>
+</tr>
+<tr>
+<td>EGYPT</td>
+<td>EGY</td>
+</tr>
+<tr>
+<td>EL SALVADOR</td>
+<td>SLV</td>
+</tr>
+<tr>
+<td>EQUATORIAL GUINEA</td>
+<td>GNQ</td>
+</tr>
+<tr>
+<td>ERITREA</td>
+<td>ERI</td>
+</tr>
+<tr>
+<td>ESTONIA</td>
+<td>EST</td>
+</tr>
+<tr>
+<td>ETHIOPIA</td>
+<td>ETHÃƒÆ’Ã†â€™Ãƒâ€ Ã¢</td>
+</tr>
+<tr>
+<td>FALKLAND ISLANDS (MALVINAS)</td>
+<td>FLK</td>
+</tr>
+<tr>
+<td>FAROE ISLANDS</td>
+<td>FRO</td>
+</tr>
+<tr>
+<td>FIJI</td>
+<td>FJI</td>
+</tr>
+<tr>
+<td>FINLAND</td>
+<td>FIN</td>
+</tr>
+<tr>
+<td>FRANCE</td>
+<td>FRA</td>
+</tr>
+<tr>
+<td>FRANCE, METROPOLITAN</td>
+<td>FXX</td>
+</tr>
+<tr>
+<td>FRENCH GUIANA</td>
+<td>GUF</td>
+</tr>
+<tr>
+<td>FRENCH POLYNESIA</td>
+<td>PYF</td>
+</tr>
+<tr>
+<td>FRENCH SOUTHERN TERRITORIES</td>
+<td>ATF</td>
+</tr>
+<tr>
+<td>GABON</td>
+<td>GAB</td>
+</tr>
+<tr>
+<td>GAMBIA</td>
+<td>GMB</td>
+</tr>
+<tr>
+<td>GEORGIA</td>
+<td>GEO</td>
+</tr>
+<tr>
+<td>GERMANY</td>
+<td>DEU</td>
+</tr>
+<tr>
+<td>GHANA</td>
+<td>GHA</td>
+</tr>
+<tr>
+<td>GIBRALTAR</td>
+<td>GIB</td>
+</tr>
+<tr>
+<td>GREECE</td>
+<td>GRC</td>
+</tr>
+<tr>
+<td>GREENLAND</td>
+<td>GRL</td>
+</tr>
+<tr>
+<td>GRENADA</td>
+<td>GRD</td>
+</tr>
+<tr>
+<td>GUADELOUPE</td>
+<td>GLP</td>
+</tr>
+<tr>
+<td>GUAM</td>
+<td>GUM</td>
+</tr>
+<tr>
+<td>GUATEMALA</td>
+<td>GTM</td>
+</tr>
+<tr>
+<td>GUINEA</td>
+<td>GIN</td>
+</tr>
+<tr>
+<td>GUINEA-BISSAU</td>
+<td>GNB</td>
+</tr>
+<tr>
+<td>GUYANA</td>
+<td>GUY</td>
+</tr>
+<tr>
+<td>HAITI</td>
+<td>HTI</td>
+</tr>
+<tr>
+<td>HEARD AND MC DONALD ISLANDS</td>
+<td>HMD</td>
+</tr>
+<tr>
+<td>HOLY SEE (VATICAN CITY STATE)</td>
+<td>VAT</td>
+</tr>
+<tr>
+<td>HONDURAS</td>
+<td>HND</td>
+</tr>
+<tr>
+<td>HONG KONG</td>
+<td>HKG</td>
+</tr>
+<tr>
+<td>HUNGARY</td>
+<td>HUN</td>
+</tr>
+<tr>
+<td>ICELAND</td>
+<td>ISL</td>
+</tr>
+<tr>
+<td>INDIA</td>
+<td>IND</td>
+</tr>
+<tr>
+<td>INDONESIA</td>
+<td>IDN</td>
+</tr>
+<tr>
+<td>IRAN (ISLAMIC REPUBLIC OF)</td>
+<td>IRN</td>
+</tr>
+<tr>
+<td>IRAQ</td>
+<td>IRQ</td>
+</tr>
+<tr>
+<td>IRELAND</td>
+<td>IRL</td>
+</tr>
+<tr>
+<td>ISRAEL</td>
+<td>ISR</td>
+</tr>
+<tr>
+<td>ITALY</td>
+<td>ITA</td>
+</tr>
+<tr>
+<td>JAMAICA</td>
+<td>JAM</td>
+</tr>
+<tr>
+<td>JAPAN</td>
+<td>JPN</td>
+</tr>
+<tr>
+<td>JORDAN</td>
+<td>JOR</td>
+</tr>
+<tr>
+<td>KAZAKHSTAN</td>
+<td>KAZ</td>
+</tr>
+<tr>
+<td>KENYA</td>
+<td>KEN</td>
+</tr>
+<tr>
+<td>KIRIBATI</td>
+<td>KIR</td>
+</tr>
+<tr>
+<td>KOREA, D.P.R.O.</td>
+<td>PRK</td>
+</tr>
+<tr>
+<td>KOREA, REPUBLIC OF</td>
+<td>KOR</td>
+</tr>
+<tr>
+<td>KUWAIT</td>
+<td>KWT</td>
+</tr>
+<tr>
+<td>KYRGYZSTAN</td>
+<td>KGZ</td>
+</tr>
+<tr>
+<td>LAOS</td>
+<td>LAO</td>
+</tr>
+<tr>
+<td>LATVIA</td>
+<td>LVA</td>
+</tr>
+<tr>
+<td>LEBANON</td>
+<td>LBN</td>
+</tr>
+<tr>
+<td>LESOTHO</td>
+<td>LSO</td>
+</tr>
+<tr>
+<td>LIBERIA</td>
+<td>LBR</td>
+</tr>
+<tr>
+<td>LIBYAN ARAB JAMAHIRIYA</td>
+<td>LBY</td>
+</tr>
+<tr>
+<td>LIECHTENSTEIN</td>
+<td>LIE</td>
+</tr>
+<tr>
+<td>LITHUANIA</td>
+<td>LTU</td>
+</tr>
+<tr>
+<td>LUXEMBOURG</td>
+<td>LUX</td>
+</tr>
+<tr>
+<td>MACAU</td>
+<td>MAC</td>
+</tr>
+<tr>
+<td>MACEDONIA</td>
+<td>MKD</td>
+</tr>
+<tr>
+<td>MADAGASCAR</td>
+<td>MDG</td>
+</tr>
+<tr>
+<td>MALAWI</td>
+<td>MWI</td>
+</tr>
+<tr>
+<td>MALAYSIA</td>
+<td>MYS</td>
+</tr>
+<tr>
+<td>MALDIVES</td>
+<td>MDV</td>
+</tr>
+<tr>
+<td>MALI</td>
+<td>MLI</td>
+</tr>
+<tr>
+<td>MALTA</td>
+<td>MLT</td>
+</tr>
+<tr>
+<td>MARSHALL ISLANDS</td>
+<td>MHL</td>
+</tr>
+<tr>
+<td>MARTINIQUE</td>
+<td>MTQ</td>
+</tr>
+<tr>
+<td>MAURITANIA</td>
+<td>MRT</td>
+</tr>
+<tr>
+<td>MAURITIUS</td>
+<td>MUS</td>
+</tr>
+<tr>
+<td>MAYOTTE</td>
+<td>MYT</td>
+</tr>
+<tr>
+<td>MEXICO</td>
+<td>MEX</td>
+</tr>
+<tr>
+<td>MICRONESIA, FEDERATED STATES OF</td>
+<td>FSM</td>
+</tr>
+<tr>
+<td>MOLDOVA, REPUBLIC OF</td>
+<td>MDA</td>
+</tr>
+<tr>
+<td>MONACO</td>
+<td>MCO</td>
+</tr>
+<tr>
+<td>MONGOLIA</td>
+<td>MNG</td>
+</tr>
+<tr>
+<td>MONTENEGRO</td>
+<td>MNE</td>
+</tr>
+<tr>
+<td>MONTSERRAT</td>
+<td>MSR</td>
+</tr>
+<tr>
+<td>MOROCCO</td>
+<td>MAR</td>
+</tr>
+<tr>
+<td>MOZAMBIQUE</td>
+<td>MOZ</td>
+</tr>
+<tr>
+<td>MYANMAR (Burma)</td>
+<td>MMR</td>
+</tr>
+<tr>
+<td>NAMIBIA</td>
+<td>NAM</td>
+</tr>
+<tr>
+<td>NAURU</td>
+<td>NRU</td>
+</tr>
+<tr>
+<td>NEPAL</td>
+<td>NPL</td>
+</tr>
+<tr>
+<td>NETHERLANDS</td>
+<td>NLD</td>
+</tr>
+<tr>
+<td>NETHERLANDS ANTILLES</td>
+<td>ANT</td>
+</tr>
+<tr>
+<td>NEW CALEDONIA</td>
+<td>NCL</td>
+</tr>
+<tr>
+<td>NEW ZEALAND</td>
+<td>NZL</td>
+</tr>
+<tr>
+<td>NICARAGUA</td>
+<td>NIC</td>
+</tr>
+<tr>
+<td>NIGER</td>
+<td>NER</td>
+</tr>
+<tr>
+<td>NIGERIA</td>
+<td>NGA</td>
+</tr>
+<tr>
+<td>NIUE</td>
+<td>NIU</td>
+</tr>
+<tr>
+<td>NORFOLK ISLAND</td>
+<td>NFK</td>
+</tr>
+<tr>
+<td>NORTHERN MARIANA ISLANDS</td>
+<td>MNP</td>
+</tr>
+<tr>
+<td>NORWAY</td>
+<td>NOR</td>
+</tr>
+<tr>
+<td>OMAN</td>
+<td>OMN</td>
+</tr>
+<tr>
+<td>PAKISTAN</td>
+<td>PAK</td>
+</tr>
+<tr>
+<td>PALAU</td>
+<td>PLW</td>
+</tr>
+<tr>
+<td>PANAMA</td>
+<td>PAN</td>
+</tr>
+<tr>
+<td>PAPUA NEW GUINEA</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>PARAGUAY</td>
+<td>PRY</td>
+</tr>
+<tr>
+<td>PERU</td>
+<td>PER</td>
+</tr>
+<tr>
+<td>PHILIPPINES</td>
+<td>PHL</td>
+</tr>
+<tr>
+<td>PITCAIRN</td>
+<td>PCN</td>
+</tr>
+<tr>
+<td>POLAND</td>
+<td>POL</td>
+</tr>
+<tr>
+<td>PORTUGAL</td>
+<td>PRT</td>
+</tr>
+<tr>
+<td>PUERTO RICO</td>
+<td>PRI</td>
+</tr>
+<tr>
+<td>QATAR</td>
+<td>QAT</td>
+</tr>
+<tr>
+<td>REUNION</td>
+<td>REU</td>
+</tr>
+<tr>
+<td>ROMANIA</td>
+<td>ROM</td>
+</tr>
+<tr>
+<td>RUSSIAN FEDERATION</td>
+<td>RUS</td>
+</tr>
+<tr>
+<td>RWANDA</td>
+<td>RWA</td>
+</tr>
+<tr>
+<td>SAINT KITTS AND NEVIS</td>
+<td>KNA</td>
+</tr>
+<tr>
+<td>SAINT LUCIA</td>
+<td>LCA</td>
+</tr>
+<tr>
+<td>SAINT VINCENT AND THE GRENADINES</td>
+<td>VCT</td>
+</tr>
+<tr>
+<td>SAMOA</td>
+<td>WSM</td>
+</tr>
+<tr>
+<td>SAN MARINO</td>
+<td>SMR</td>
+</tr>
+<tr>
+<td>SAO TOME AND PRINCIPE</td>
+<td>STP</td>
+</tr>
+<tr>
+<td>SAUDI ARABIA</td>
+<td>SAU</td>
+</tr>
+<tr>
+<td>SENEGAL</td>
+<td>SEN</td>
+</tr>
+<tr>
+<td>SERBIA</td>
+<td>SRB</td>
+</tr>
+<tr>
+<td>SEYCHELLES</td>
+<td>SYC</td>
+</tr>
+<tr>
+<td>SIERRA LEONE</td>
+<td>SLE</td>
+</tr>
+<tr>
+<td>SINGAPORE</td>
+<td>SGP</td>
+</tr>
+<tr>
+<td>SLOVAKIA (Slovak Republic)</td>
+<td>SVK</td>
+</tr>
+<tr>
+<td>SLOVENIA</td>
+<td>SVN</td>
+</tr>
+<tr>
+<td>SOLOMON ISLANDS</td>
+<td>SLB</td>
+</tr>
+<tr>
+<td>SOMALIA</td>
+<td>SOM</td>
+</tr>
+<tr>
+<td>SOUTH AFRICA</td>
+<td>ZAF</td>
+</tr>
+<tr>
+<td>SOUTH SUDAN</td>
+<td>SSD</td>
+</tr>
+<tr>
+<td>SOUTH GEORGIA AND SOUTH S.S.</td>
+<td>SGS</td>
+</tr>
+<tr>
+<td>SPAIN</td>
+<td>ESP</td>
+</tr>
+<tr>
+<td>SRI LANKA</td>
+<td>LKA</td>
+</tr>
+<tr>
+<td>ST. HELENA</td>
+<td>SHN</td>
+</tr>
+<tr>
+<td>ST. PIERRE AND MIQUELON</td>
+<td>SPM</td>
+</tr>
+<tr>
+<td>SUDAN</td>
+<td>SDN</td>
+</tr>
+<tr>
+<td>SURINAME</td>
+<td>SUR</td>
+</tr>
+<tr>
+<td>SVALBARD AND JAN MAYEN ISLANDS</td>
+<td>SJM</td>
+</tr>
+<tr>
+<td>SWAZILAND</td>
+<td>SWZ</td>
+</tr>
+<tr>
+<td>SWEDEN</td>
+<td>SWE</td>
+</tr>
+<tr>
+<td>SWITZERLAND</td>
+<td>CHE</td>
+</tr>
+<tr>
+<td>SYRIAN ARAB REPUBLIC</td>
+<td>SYR</td>
+</tr>
+<tr>
+<td>TAIWAN, PROVINCE OF CHINA</td>
+<td>TWN</td>
+</tr>
+<tr>
+<td>TAJIKISTAN</td>
+<td>TJK</td>
+</tr>
+<tr>
+<td>TANZANIA</td>
+<td>TZA</td>
+</tr>
+<tr>
+<td>THAILAND</td>
+<td>THA</td>
+</tr>
+<tr>
+<td>TOGO</td>
+<td>TGO</td>
+</tr>
+<tr>
+<td>TOKELAU</td>
+<td>TKL</td>
+</tr>
+<tr>
+<td>TONGA</td>
+<td>TON</td>
+</tr>
+<tr>
+<td>TRINIDAD AND TOBAGO</td>
+<td>TTO</td>
+</tr>
+<tr>
+<td>TUNISIA</td>
+<td>TUN</td>
+</tr>
+<tr>
+<td>TURKEY</td>
+<td>TUR</td>
+</tr>
+<tr>
+<td>TURKMENISTAN</td>
+<td>TKM</td>
+</tr>
+<tr>
+<td>TURKS AND CAICOS ISLANDS</td>
+<td>TCA</td>
+</tr>
+<tr>
+<td>TUVALU</td>
+<td>TUV</td>
+</tr>
+<tr>
+<td>UGANDA</td>
+<td>UGA</td>
+</tr>
+<tr>
+<td>UKRAINE</td>
+<td>UKR</td>
+</tr>
+<tr>
+<td>UNITED ARAB EMIRATES</td>
+<td>AE</td>
+</tr>
+<tr>
+<td>UNITED KINGDOM</td>
+<td>GBR</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>U.S. MINOR ISLANDS</td>
+<td>UMI</td>
+</tr>
+<tr>
+<td>URUGUAY</td>
+<td>URY</td>
+</tr>
+<tr>
+<td>UZBEKISTAN</td>
+<td>UZB</td>
+</tr>
+<tr>
+<td>VANUATU</td>
+<td>VUT</td>
+</tr>
+<tr>
+<td>VENEZUELA</td>
+<td>VEN</td>
+</tr>
+<tr>
+<td>VIET NAM</td>
+<td>VNM</td>
+</tr>
+<tr>
+<td>VIRGIN ISLANDS (BRITISH)</td>
+<td>VGB</td>
+</tr>
+<tr>
+<td>VIRGIN ISLANDS (U.S.)</td>
+<td>VIR</td>
+</tr>
+<tr>
+<td>WALLIS AND FUTUNA ISLANDS</td>
+<td>WLF</td>
+</tr>
+<tr>
+<td>WESTERN SAHARA</td>
+<td>ESH</td>
+</tr>
+<tr>
+<td>YEMEN</td>
+<td>YEM</td>
+</tr>
+<tr>
+<td>ZAMBIA</td>
+<td>ZMB</td>
+</tr>
+<tr>
+<td>ZIMBABWE</td>
+<td>ZWE</td>
+</tr>
+</tbody></table>
+
+<h1 id="state-codes">State Codes</h1>
+
+<h2 id="india">India</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Delhi</td>
+<td>DL</td>
+</tr>
+<tr>
+<td>Andhra Pradesh</td>
+<td>AP</td>
+</tr>
+<tr>
+<td>Goa</td>
+<td>GA</td>
+</tr>
+<tr>
+<td>Jharkhand</td>
+<td>JH</td>
+</tr>
+<tr>
+<td>Manipur</td>
+<td>MN</td>
+</tr>
+<tr>
+<td>Punjab</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Uttar Pradesh</td>
+<td>UP</td>
+</tr>
+<tr>
+<td>Arunachal Pradesh</td>
+<td>AR</td>
+</tr>
+<tr>
+<td>Gujarat</td>
+<td>GJ</td>
+</tr>
+<tr>
+<td>Karnataka</td>
+<td>KA</td>
+</tr>
+<tr>
+<td>Meghalaya</td>
+<td>ML</td>
+</tr>
+<tr>
+<td>Rajasthan</td>
+<td>RJ</td>
+</tr>
+<tr>
+<td>Uttaranchal</td>
+<td>UT</td>
+</tr>
+<tr>
+<td>Assam</td>
+<td>AS</td>
+</tr>
+<tr>
+<td>Haryana</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>Kerala</td>
+<td>KL</td>
+</tr>
+<tr>
+<td>Mizoram</td>
+<td>MZ</td>
+</tr>
+<tr>
+<td>Sikkim</td>
+<td>SK</td>
+</tr>
+<tr>
+<td>West Bengal</td>
+<td>WB</td>
+</tr>
+<tr>
+<td>Bihar</td>
+<td>BR</td>
+</tr>
+<tr>
+<td>Himachal Pradesh</td>
+<td>HP</td>
+</tr>
+<tr>
+<td>Madhya Pradesh</td>
+<td>MP</td>
+</tr>
+<tr>
+<td>Nagaland</td>
+<td>NL</td>
+</tr>
+<tr>
+<td>Tamil Nadu</td>
+<td>TN</td>
+</tr>
+<tr>
+<td>Chhattisgarh</td>
+<td>CH</td>
+</tr>
+<tr>
+<td>Jammu and Kashmir</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Maharashtra</td>
+<td>MH</td>
+</tr>
+<tr>
+<td>Orissa</td>
+<td>OR</td>
+</tr>
+<tr>
+<td>Tripura</td>
+<td>TR</td>
+</tr>
+<tr>
+<td>Telangana</td>
+<td>TA</td>
+</tr>
+<tr>
+<td>Andaman and Nicobar Islands</td>
+<td>AN</td>
+</tr>
+<tr>
+<td>Chandigarh</td>
+<td>CD</td>
+</tr>
+<tr>
+<td>Dadra and Nagar Haveli</td>
+<td>DN</td>
+</tr>
+<tr>
+<td>Daman and Diu</td>
+<td>DD</td>
+</tr>
+<tr>
+<td>Lakshadweep</td>
+<td>LD</td>
+</tr>
+<tr>
+<td>Puducherry</td>
+<td>PC</td>
+</tr>
+</tbody></table>
+
+<h2 id="australia">Australia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>New South Wales</td>
+<td>New South</td>
+</tr>
+<tr>
+<td>Victoria</td>
+<td>Victoria</td>
+</tr>
+<tr>
+<td>Queensland</td>
+<td>Queensland</td>
+</tr>
+<tr>
+<td>South Australia</td>
+<td>South Aust</td>
+</tr>
+<tr>
+<td>Tasmania</td>
+<td>Tasmania</td>
+</tr>
+</tbody></table>
+
+<h2 id="canada">Canada</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Alberta</td>
+<td>Alberta</td>
+</tr>
+<tr>
+<td>British Columbia</td>
+<td>British Co</td>
+</tr>
+<tr>
+<td>Manitoba</td>
+<td>Manitoba</td>
+</tr>
+<tr>
+<td>New Brunswick</td>
+<td>New Brunsw</td>
+</tr>
+<tr>
+<td>Newfoundland and Labrador</td>
+<td>Newfoundla</td>
+</tr>
+<tr>
+<td>Nova Scotia</td>
+<td>Nova Scoti</td>
+</tr>
+<tr>
+<td>Northwest Territory</td>
+<td>Northwest</td>
+</tr>
+<tr>
+<td>Nunavut Territory</td>
+<td>Nunavut Te</td>
+</tr>
+<tr>
+<td>Ontario</td>
+<td>Ontario</td>
+</tr>
+<tr>
+<td>Prince Edward Island</td>
+<td>Prince Edw</td>
+</tr>
+<tr>
+<td>Quebec</td>
+<td>Quebec</td>
+</tr>
+<tr>
+<td>Saskatchewan</td>
+<td>Saskatchew</td>
+</tr>
+<tr>
+<td>Yukon</td>
+<td>Yukon</td>
+</tr>
+</tbody></table>
+
+<h2 id="mexico">Mexico</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Aguascalientes</td>
+<td>AGU</td>
+</tr>
+<tr>
+<td>Baja California</td>
+<td>BCN</td>
+</tr>
+<tr>
+<td>Baja California Sur</td>
+<td>BCS</td>
+</tr>
+<tr>
+<td>Campeche</td>
+<td>CAM</td>
+</tr>
+<tr>
+<td>Colima</td>
+<td>CHH</td>
+</tr>
+<tr>
+<td>Coahuila De Zaragoza</td>
+<td>CHP</td>
+</tr>
+<tr>
+<td>Chiapas</td>
+<td>COA</td>
+</tr>
+<tr>
+<td>Chihuahua</td>
+<td>COL</td>
+</tr>
+<tr>
+<td>Distrito Federal</td>
+<td>DIF</td>
+</tr>
+<tr>
+<td>Durango</td>
+<td>DUR</td>
+</tr>
+<tr>
+<td>Guerrero</td>
+<td>GRO</td>
+</tr>
+<tr>
+<td>Guanajuato</td>
+<td>GUA</td>
+</tr>
+<tr>
+<td>Hidalgo</td>
+<td>HID</td>
+</tr>
+<tr>
+<td>Jalisco</td>
+<td>JAL</td>
+</tr>
+<tr>
+<td>Mexico</td>
+<td>MEX</td>
+</tr>
+<tr>
+<td>Michoacan De Ocampo</td>
+<td>MIC</td>
+</tr>
+<tr>
+<td>Morelos</td>
+<td>MOR</td>
+</tr>
+<tr>
+<td>Nayarit</td>
+<td>NAY</td>
+</tr>
+<tr>
+<td>Nuevo Leon</td>
+<td>NLE</td>
+</tr>
+<tr>
+<td>Oaxaca</td>
+<td>OAX</td>
+</tr>
+<tr>
+<td>Puebla</td>
+<td>PUE</td>
+</tr>
+<tr>
+<td>Queretaro De Arteaga</td>
+<td>QUE</td>
+</tr>
+<tr>
+<td>Quintana Roo</td>
+<td>ROO</td>
+</tr>
+<tr>
+<td>Sinaloa</td>
+<td>SIN</td>
+</tr>
+<tr>
+<td>San Luis Potosi</td>
+<td>SLP</td>
+</tr>
+<tr>
+<td>Sonora</td>
+<td>SON</td>
+</tr>
+<tr>
+<td>Tabasco</td>
+<td>TAB</td>
+</tr>
+<tr>
+<td>Tamaulipas</td>
+<td>TAM</td>
+</tr>
+<tr>
+<td>Tlaxcala</td>
+<td>TLA</td>
+</tr>
+<tr>
+<td>Veracruz Llave</td>
+<td>VER</td>
+</tr>
+<tr>
+<td>Yucatan</td>
+<td>YUC</td>
+</tr>
+<tr>
+<td>Zacatecas</td>
+<td>ZAC</td>
+</tr>
+</tbody></table>
+
+<h2 id="saudi-arabia">Saudi Arabia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Ha&#39;il</td>
+<td>Ha&#39;il</td>
+</tr>
+<tr>
+<td>Qassim</td>
+<td>Qassim</td>
+</tr>
+<tr>
+<td>Riyadh</td>
+<td>Riyadh</td>
+</tr>
+<tr>
+<td>Tabuk</td>
+<td>Tabuk</td>
+</tr>
+<tr>
+<td>Madinah</td>
+<td>Madinah</td>
+</tr>
+<tr>
+<td>Makkah</td>
+<td>Makkah</td>
+</tr>
+<tr>
+<td>Bahah</td>
+<td>Bahah</td>
+</tr>
+<tr>
+<td>Northern Borders</td>
+<td>Northern B</td>
+</tr>
+<tr>
+<td>Jawf</td>
+<td>Jawf</td>
+</tr>
+<tr>
+<td>Jizan</td>
+<td>Jizan</td>
+</tr>
+<tr>
+<td>Asir</td>
+<td>Asir</td>
+</tr>
+<tr>
+<td>Najran</td>
+<td>Najran</td>
+</tr>
+<tr>
+<td>Eastern Province</td>
+<td>Eastern Pr</td>
+</tr>
+</tbody></table>
+
+<h2 id="tanzania">Tanzania</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Dar es salaam Tz</td>
+<td>Dar es sal</td>
+</tr>
+<tr>
+<td>Arusha Tz</td>
+<td>Arusha Tz</td>
+</tr>
+<tr>
+<td>Mbeya Tz</td>
+<td>Mbeya Tz</td>
+</tr>
+<tr>
+<td>Mtwara Tz</td>
+<td>Mtwara Tz</td>
+</tr>
+<tr>
+<td>Dodoma Tz</td>
+<td>Dodoma Tz</td>
+</tr>
+<tr>
+<td>Other States Tz</td>
+<td>Other Stat</td>
+</tr>
+</tbody></table>
+
+<h2 id="united-arab-emirates">United Arab Emirates</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Abu Dhabi</td>
+<td>AZ</td>
+</tr>
+<tr>
+<td>Dubai</td>
+<td>DU</td>
+</tr>
+<tr>
+<td>Sharjah</td>
+<td>SH</td>
+</tr>
+<tr>
+<td>Ajman</td>
+<td>AJ</td>
+</tr>
+<tr>
+<td>Umm Al Quwain</td>
+<td>UQ</td>
+</tr>
+<tr>
+<td>Ras Al Khaimah</td>
+<td>RK</td>
+</tr>
+<tr>
+<td>Fujairah</td>
+<td>FU</td>
 </tr>
 </tbody></table>
 
