@@ -1395,9 +1395,9 @@ deliverApartment | String | Mandatory | Apartment
 deliverStreetName | String | Mandatory | Street name
 deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Mandatory | Locality
-deliverCity | String | Mandatory | City
-deliverState| String | Mandatory | State
-deliverCountry | String | Mandatory | Country
+deliverCity | String | Mandatory | City 
+deliverState| String | Mandatory | State code
+deliverCountry | String | Mandatory | <a href="http://localhost:4567/#country-codes">Country code</a>
 deliverPinCode | String | Mandatory | Pincode
 returnBranch | String | Mandatory | Name of return branch
   
@@ -2773,29 +2773,24 @@ Note -
 
 ```json
 {
-  "clientShipmentId": "TestOrderNo",
+  "orderNo": "TestOrder",
   "orderState":"FORWARD",
   "orderLeg":"PICKUP",
   "awbNumber":"AWB001",
   "notificationType": "ORDERCREATIONNOTIFICATION",
-  "billNumber":"TestOrderNo",
-  "billType":"RETURN",
   "timestamp":"2016-07-01 03:05:08"
 }
 ```
-
 
 This notification is sent when an order is created.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
 awbNumber | String | AWB Number for the order
 notificationType | String | ORDERCREATIONNOTIFICATION
-billNumber | String | Will contain order no.
-billType | String | Bill Type. RETURN for PICKUP order leg, SALES for DELIVER order leg
 timestamp | String | Order creation timestamp
 
 ## Update Order
@@ -2804,12 +2799,12 @@ timestamp | String | Order creation timestamp
 
 ```json
 {
-  "clientShipmentId": "TestOrderNo",
+  "orderNo": "TestOrder",
   "notificationType": "ORDERUPDATENOTIFICATION",
-  "deliveryMediumName":"TestDeliveryMedium",
-  "phoneNumber":1234567890,
-  "startTimeWindow":"2016-07-01 00:09:00",
-  "endTimeWindow":"2016-07-01 00:09:00"
+  "deliveryMediumName": "Sandeep",
+  "phoneNumber": 1234567890,
+  "startTimeWindow": "2016-11-20 05:08:00",
+  "endTimeWindow": "2016-11-21 05:08:00"
 }
 ```
 
@@ -2818,7 +2813,7 @@ This notification is sent when an order is updated.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 notificationType | String | ORDERUPDATENOTIFICATION
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
@@ -2836,7 +2831,9 @@ endTimeWindow | String  | Order's end time window
   "deliveryMediumName": "TestDM",
   "phoneNumber": 1234567890,
   "tripName": "TestTrip",
-  "updatedOn": "2016-06-30 19:43:07"
+  "updatedOn": "2016-06-30 19:43:07",
+  "deliveryMediumName": "Sandeep",
+  "phoneNumber": 1234567890
 }
 
 ```
@@ -2847,15 +2844,17 @@ This notification is sent when an order is accepted by a delivery boy.
 
 ### Response Parameters
 
-
+  
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+clientShipmentId | String | Order No.
 status | String | Status of the order
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
 
 ## Reject Order
 
@@ -2869,7 +2868,6 @@ updatedOn | String | Accept order timestamp
   "updatedOn": "2016-06-30 20:47:20",
   "reasonOfRejection": "Cannot reach on ETA"
 }
-
 ```
 
 This notification is sent when an order is rejected by a delivery boy.
@@ -2889,7 +2887,7 @@ reasonOfRejection | String | Reason provided by Delivery medium while rejecting 
 
 ```json
 {
-  "clientShipmentId": "TestOrderNo",  
+  "orderNo": "TestOrderNo",  
   "orderState":"FORWARD",
   "orderLeg":"PICKUP",
   "awbNumber":"AWB001",
@@ -2920,7 +2918,7 @@ This notification is sent when crates are loaded onto an order.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
 awbNumber | String | AWB Number for the order
@@ -2940,7 +2938,7 @@ shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
 
 ```json
 {
-  "clientShipmentId": "TestOrderNo",
+  "clientShipmentIds": ["TestOrder1","TestOrder2"],
   "deliveryMediumName":"TestDeliveryMedium",
   "tripName":"TestTrip",
   "startTime":"2016-07-01 09:13:00",
@@ -2959,7 +2957,7 @@ This notification is sent when crates are loaded onto an order.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+clientShipmentIds | String | Order Nos.
 deliveryMediumName | String | Name of delivery medium
 tripName | String | Trip name
 startTime | Date | Time when loading is completed.
@@ -2975,18 +2973,25 @@ notificationType | String | LOADINGDONENOTIFICATION
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
-  "latitude": 28.283528,
-  "longitude": 76.921535,
+  "orderNo": "Order001",
+  "latitude": 19.1118589,
+  "longitude": 72.9095639,
   "notificationType": "DELIVEREDNOTIFICATION",
-  "customerComment": "Test comments",
+  "orderLeg": "DELIVER",
+  "awbNumber": "AWB001",
+  "customerComment": "Test user comments",
   "customerRating": 5,
-  "deliveryTime": "2016-06-30 19:12:49",
-  "cashAmount": 100,
-  "deliveryLocationType": "Customer",
-  "transactionId": "0",
-  "actualCashAmount": 100,
-  "recipientName": "RecipientName"
+  "deliveryMediumName": "Suresh",
+  "phoneNumber": 1234567864,
+  "orderState": "FORWARD",
+  "customerName": "Customer123",
+  "deliveryTime": "2016-11-19 06:11:27",
+  "cashAmount": 0,
+  "deliveryLocationType": "",
+  "transactionId": "12456",
+  "paymentMode": "PREPAID",
+  "actualCashAmount": 120,
+  "recipientName": "Rahul"
 }
 
 ```
@@ -2999,12 +3004,18 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
 customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+customerName | String | Customer name
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to collect
 deliveryLocationType | String | Delivery Location
@@ -3019,19 +3030,46 @@ recipientName | String | Name of recipient
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
+  "orderNo": "145129097",
   "statusCd": "PARTIALLYDELIVERED",
   "notificationType": "PARTIALDELIVERYNOTIFICATION",
-  "customerComments": "",
-  "customerRating": 4,
-  "reason": "Customer not accepting",
-  "reasonCd": "",
-  "deliveryTime": "2016-06-30 19:12:49",
-  "cashAmount": 1,
+  "orderLeg": "DELIVER",
+  "awbNumber": "AWB001",
+  "customerComment": "Test user comments",
+  "customerRating": 0,
+  "deliveryMediumName": "Suresh",
+  "phoneNumber": 8447608650,
+  "orderState": "FORWARD",
+  "customerName": "23768",
+  "reason": "Product damaged in transit",
+  "reasonCd": "PDL001",
+  "deliveryTime": "2016-11-19 06:14:34",
+  "cashAmount": 0,
+  "deliveryLocationType": "",
   "transactionId": "",
-  "actualCashAmount": 100,
-  "shipmentCrateMappingList": [],
-  "recipientName": "John2"
+  "paymentMode": "COD",
+  "actualCashAmount": 532.55,
+  "shipmentCrateMappingList": [
+    {
+        "crateCd": "CRATE001",
+        "crateType": "CRATE001",
+        "statusCd": "CRATE001",
+        "crateAmount": 100.30,
+        "noOfUnits":3,
+        "shipmentLineItemsList": [
+          {
+            "itemCd": "CODE001",
+            "itemType":"Type1",
+            "statusCd":"StatusCd",
+            "itemName": "ITEM1",
+            "itemPrice": 100,
+            "itemQuantity": 1,
+            "itemWeight": 100,
+            "actualItemQuantity": 5
+          }
+        ]
+      }
+  ]
 }
 
 ```
@@ -3044,19 +3082,40 @@ This notification is sent when an order is partially delivered by a delivery boy
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 statusCd | String | PARTIALLYDELIVERED
 notificationType | String | PARTIALDELIVERYNOTIFICATION
-customerComments | String |Customer comments
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
+customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+customerName | String | Customer name
 reason | String | Reason for the order being partially delivered
 reasonCd | String | Reason code
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to be collected
+deliveryLocationType | String | Delivery Location
 transactionId | String | Transaction id
+paymentMode | String | Mode of order payment
 actualCashAmount | Double | Cash amount actually collected
 shipmentCrateMappingList | Array of Objects | Shipment crates
-recipientName | String | Name of recipient
+shipmentCrateMappingList.crateCd | String | Crate code
+shipmentCrateMappingList.crateType | String | Crate type
+shipmentCrateMappingList.statusCd | String | Crate Status. It will be LOADED.
+shipmentCrateMappingList.crateAmount | Double | Crate amount
+shipmentCrateMappingList.noOfUnits | Integer | No of units
+shipmentCrateMappingList.shipmentlineitems.itemCd | String | Item code
+shipmentCrateMappingList.shipmentlineitems.itemType | String | Item type
+shipmentCrateMappingList.shipmentlineitems.statusCd | String | Item status. It will be LOADED.
+shipmentCrateMappingList.shipmentlineitems.itemName | String | Name of item
+shipmentCrateMappingList.shipmentlineitems.itemPrice | Double | Item price
+shipmentCrateMappingList.shipmentlineitems.itemQuantity | Integer | Item quantity
+shipmentCrateMappingList.shipmentlineitems.itemWeight | Integer | Item weight
+shipmentCrateMappingList.shipmentlineitems.actualItemQuantity | Integer | Unloaded Item quantity
+
 
 ## Not Delivered
 
@@ -3064,15 +3123,21 @@ recipientName | String | Name of recipient
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
+  "orderNo": "Order001",
   "notificationType": "NOTDELIVEREDNOTIFICATION",
-  "customerComments": "Test comments",
-  "customerRating": 5,
-  "reason": "Product damaged in transit",
-  "reasonCd": "",
-  "deliveryTime": "2016-06-30 19:12:49",
-  "deliveryLocationType": "Customer",
-  "recipientName": "RecipientName"
+  "orderLeg": "DELIVER",
+  "awbNumber": "AWB001",
+  "customerComment": "Test user comments",
+  "customerRating": 0,
+  "deliveryMediumName": "Suresh",
+  "phoneNumber": 1234567876,
+  "orderState": "FORWARD",
+  "customerName": "Rahul",
+  "reasonCd": "NDL001",
+  "reason": "No customer at delivery location",
+  "deliveryTime": "2016-11-19 06:10:32",
+  "deliveryLocationType": "",
+  "recipientName": ""
 }
 
 ```
@@ -3085,10 +3150,16 @@ This notification is sent when an order is not delivered by a delivery boy.
 
 Key | DataType | Description
 --------- | ------- | -------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 notificationType | String | NOTDELIVEREDNOTIFICATION
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+customerName | String | Customer name
 reason | String | Reason for the order not delivered
 reasonCd | String | Reason code
 deliveryTime | String | Undelivered timestamp
@@ -3101,12 +3172,21 @@ recipientName | String | Name of recipient
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
-  "latitude": 28.283528,
-  "longitude": 76.921535,
-  "pickedUpTime": "2016-06-30 19:10:56",
-  "status": "PICKEDUPNOTIFICATION"
+  "orderNo": "Order001",
+  "latitude": 19.1119015,
+  "longitude": 72.9095815,
+  "pickedUpTime": "2016-11-19 06:33:48",
+  "status": "PICKEDUP",
+  "notificationType": "PICKEDUPNOTIFICATION",
+  "orderLeg": "PICKUP",
+  "awbNumber": "AWB001",
+  "customerComment": "Test user comments",
+  "customerRating": 0,
+  "deliveryMediumName": "TestDB",
+  "phoneNumber": 1234565435,
+  "orderState": "FORWARD"
 }
+
 
 ```
 
@@ -3118,11 +3198,20 @@ This notification is sent when an order is picked up by a delivery boy.
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order No..
+orderNo | String | Order No.
 latitude | Double | Latitude where order was pickedup
 longitude | Double | Longitude where order was pickedup
 pickedUpTime | String | Pickup order timestamp
-status | String | PICKEDUPNOTIFICATION
+status | String | PICKEDUP
+notificationType | String | PICKEDUPNOTIFICATION
+orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+awbNumber | String | AWB Number for the order
+customerComments | String | Customer comments
+customerRating | Integer | Rating provided by customer
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+
 
 ## Not Pickedup
 
@@ -3130,11 +3219,11 @@ status | String | PICKEDUPNOTIFICATION
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
+  "orderNo": "Order001",
   "notificationType": "NOTPICKEDUPNOTIFICATION",
   "orderLeg": "DELIVER",
-  "awbNumber": "",
-  "customerComments": "",
+  "awbNumber": "AWB001",
+  "customerComment": "Test user comments",
   "customerRating": 0,
   "deliveryMediumName": "TestDM",
   "phoneNumber": 1234567890,
@@ -3154,11 +3243,11 @@ This notification is sent when an order is picked up by a delivery boy.
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String |  Order No..
+orderNo | String |  Order No.
 notificationType | String |  NOTPICKEDUPNOTIFICATION
 orderLeg | String |  Order leg
 awbNumber | String | Airway Bill Number
-customerComments | String |  Customer comments
+customerComment | String |  Customer comments
 customerRating | Integer | Rating provided by customer
 deliveryMediumName | String |  Name of delivery medium
 phoneNumber | Long | Phone no of delivery medium
@@ -3228,14 +3317,17 @@ longitude | Double | Order Longitude
 
 ```json
 {
-  "clientShipmentIds": ["TestOrder1","TestOrder2"],
   "notificationType": "STARTTRIP",
-  "tripName": "TestTripName",
-  "vehicleNumber":"MH01-1223",
-  "driverName":"TestDriverName",
   "deliveryMediumName": "TestDM",
-  "phoneNumber": 1234567890,  
-  "startTime":"2014-01-01 13:12:00"
+  "phoneNumber": 1234567546,
+  "startTime": "2016-11-19 06:42:44",
+  "tripName": "TRIP-84",
+  "vehicleNumber":"MH084819",
+  "driverName":"Rahul",
+  "clientShipmentIds": [
+    "Order001",
+    "Order002"
+  ]
 }
 
 ```
@@ -3262,15 +3354,17 @@ startTime | String |  Trip start time
 
 ```json
 {
-  "clientShipmentIds": ["TestOrder1","TestOrder2"],
   "notificationType": "DELIVEREDNOTIFICATION",
-  "tripName": "TestTripName",
-  "vehicleNumber":"MH01-1223",
-  "driverName":"TestDriverName",
-  "deliveryMediumName": "TestDM",
-  "endTime":"2014-01-01 13:12:00"
+  "deliveryMediumName": "Rajesh",
+  "endTime": "2016-11-19 06:45:10",
+  "tripName": "TRIP-95",
+  "vehicleNumber": "MH014841",
+  "driverName": "",
+  "clientShipmentIds": [
+    "Order001",
+    "Order002"
+   ]
 }
-
 ```
 
 This notification is sent when a trip is ended.
@@ -3279,13 +3373,13 @@ This notification is sent when a trip is ended.
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentIds | List<String> |  Order No.s.
+clientShipmentIds | List<String> |  Order Nos.
 notificationType | String |  DELIVEREDNOTIFICATION
 tripName | String |  Trip name
 vehicleNumber | String |  Vehicle no.
 driverName | String |  Name of driver
 deliveryMediumName | String |  Name of delivery medium
-startTime | String |  Trip end time
+endTime | String |  Trip end time
 
 ## Hub In
 
@@ -3360,3 +3454,401 @@ data | String |  Data in XML format
 notificationType | String |  HUB IN
 updatedDate | String | Timestamp
 
+# Country Codes
+
+Country |  Code 
+--------- | ---------  
+ALBANIA|AFG
+ALGERIA|ALB
+AMERICAN SAMOA|ASM
+ANDORRA|AND
+ANGOLA|AGO
+ANGUILLA|AIA
+ANTARCTICA|ATA
+ANTIGUA AND BARBUDA|ATG
+ARGENTINA|ARG
+ARMENIA|ARM
+ARUBA|ABW
+AUSTRALIA|AUS
+AUSTRIA|AUT
+AZERBAIJAN|AZE
+BAHAMAS|BHS
+BAHRAIN|BHR
+BANGLADESH|BGD
+BARBADOS|BRB
+BELARUS|BLR
+BELGIUM|BEL
+BELIZE|BLZ
+BENIN|BEN
+BERMUDA|BMU
+BHUTAN|BTN
+BOLIVIA|BOL
+BOSNIA AND HERZEGOWINA|BIH
+BOTSWANA|BWA
+BOUVET ISLAND|BVT
+BRAZIL|BRA
+BRITISH INDIAN OCEAN TERRITORY|IOT
+BRUNEI DARUSSALAM|BRN
+BULGARIA|BGR
+BURKINA FASO|BFA
+BURUNDI|BDI
+CAMBODIA|KHM
+CAMEROON|CMR
+CANADA|CAN
+CAPE VERDE|CPV
+CAYMAN ISLANDS|CYM
+CENTRAL AFRICAN REPUBLIC|CAF
+CHAD|TCD
+CHILE|CHL
+CHINA|CHN
+CHRISTMAS ISLAND|CXR
+COCOS (KEELING) ISLANDS|CCK
+COLOMBIA|COL
+COMOROS|COM
+CONGO|COG
+CONGO, THE DRC|COD
+COOK ISLANDS|COK
+COSTA RICA|CRI
+COTE D.IVOIRE|CIV
+CROATIA|HRV
+CUBA|CUB
+CYPRUS|CYP
+CZECH REPUBLIC|CZE
+DENMARK|DNK
+DJIBOUTI|DJI
+DOMINICA|DMA
+DOMINICAN REPUBLIC|DOM
+EAST TIMOR|TMP
+ECUADOR|ECU
+EGYPT|EGY
+EL SALVADOR|SLV
+EQUATORIAL GUINEA|GNQ
+ERITREA|ERI
+ESTONIA|EST
+ETHIOPIA|ETHÃƒÆ’Ã†â€™Ãƒâ€ Ã¢
+FALKLAND ISLANDS (MALVINAS)|FLK
+FAROE ISLANDS|FRO
+FIJI|FJI
+FINLAND|FIN
+FRANCE|FRA
+FRANCE, METROPOLITAN|FXX
+FRENCH GUIANA|GUF
+FRENCH POLYNESIA|PYF
+FRENCH SOUTHERN TERRITORIES|ATF
+GABON|GAB
+GAMBIA|GMB
+GEORGIA|GEO
+GERMANY|DEU
+GHANA|GHA
+GIBRALTAR|GIB
+GREECE|GRC
+GREENLAND|GRL
+GRENADA|GRD
+GUADELOUPE|GLP
+GUAM|GUM
+GUATEMALA|GTM
+GUINEA|GIN
+GUINEA-BISSAU|GNB
+GUYANA|GUY
+HAITI|HTI
+HEARD AND MC DONALD ISLANDS|HMD
+HOLY SEE (VATICAN CITY STATE)|VAT
+HONDURAS|HND
+HONG KONG|HKG
+HUNGARY|HUN
+ICELAND|ISL
+INDIA|IND
+INDONESIA|IDN
+IRAN (ISLAMIC REPUBLIC OF)|IRN
+IRAQ|IRQ
+IRELAND|IRL
+ISRAEL|ISR
+ITALY|ITA
+JAMAICA|JAM
+JAPAN|JPN
+JORDAN|JOR
+KAZAKHSTAN|KAZ
+KENYA|KEN
+KIRIBATI|KIR
+KOREA, D.P.R.O.|PRK
+KOREA, REPUBLIC OF|KOR
+KUWAIT|KWT
+KYRGYZSTAN|KGZ
+LAOS|LAO
+LATVIA|LVA
+LEBANON|LBN
+LESOTHO|LSO
+LIBERIA|LBR
+LIBYAN ARAB JAMAHIRIYA|LBY
+LIECHTENSTEIN|LIE
+LITHUANIA|LTU
+LUXEMBOURG|LUX
+MACAU|MAC
+MACEDONIA|MKD
+MADAGASCAR|MDG
+MALAWI|MWI
+MALAYSIA|MYS
+MALDIVES|MDV
+MALI|MLI
+MALTA|MLT
+MARSHALL ISLANDS|MHL
+MARTINIQUE|MTQ
+MAURITANIA|MRT
+MAURITIUS|MUS
+MAYOTTE|MYT
+MEXICO|MEX
+MICRONESIA, FEDERATED STATES OF|FSM
+MOLDOVA, REPUBLIC OF|MDA
+MONACO|MCO
+MONGOLIA|MNG
+MONTENEGRO|MNE
+MONTSERRAT|MSR
+MOROCCO|MAR
+MOZAMBIQUE|MOZ
+MYANMAR (Burma)|MMR
+NAMIBIA|NAM
+NAURU|NRU
+NEPAL|NPL
+NETHERLANDS|NLD
+NETHERLANDS ANTILLES|ANT
+NEW CALEDONIA|NCL
+NEW ZEALAND|NZL
+NICARAGUA|NIC
+NIGER|NER
+NIGERIA|NGA
+NIUE|NIU
+NORFOLK ISLAND|NFK
+NORTHERN MARIANA ISLANDS|MNP
+NORWAY|NOR
+OMAN|OMN
+PAKISTAN|PAK
+PALAU|PLW
+PANAMA|PAN
+PAPUA NEW GUINEA|PNG
+PARAGUAY|PRY
+PERU|PER
+PHILIPPINES|PHL
+PITCAIRN|PCN
+POLAND|POL
+PORTUGAL|PRT
+PUERTO RICO|PRI
+QATAR|QAT
+REUNION|REU
+ROMANIA|ROM
+RUSSIAN FEDERATION|RUS
+RWANDA|RWA
+SAINT KITTS AND NEVIS|KNA
+SAINT LUCIA|LCA
+SAINT VINCENT AND THE GRENADINES|VCT
+SAMOA|WSM
+SAN MARINO|SMR
+SAO TOME AND PRINCIPE|STP
+SAUDI ARABIA|SAU
+SENEGAL|SEN
+SERBIA|SRB
+SEYCHELLES|SYC
+SIERRA LEONE|SLE
+SINGAPORE|SGP
+SLOVAKIA (Slovak Republic)|SVK
+SLOVENIA|SVN
+SOLOMON ISLANDS|SLB
+SOMALIA|SOM
+SOUTH AFRICA|ZAF
+SOUTH SUDAN|SSD
+SOUTH GEORGIA AND SOUTH S.S.|SGS
+SPAIN|ESP
+SRI LANKA|LKA
+ST. HELENA|SHN
+ST. PIERRE AND MIQUELON|SPM
+SUDAN|SDN
+SURINAME|SUR
+SVALBARD AND JAN MAYEN ISLANDS|SJM
+SWAZILAND|SWZ
+SWEDEN|SWE
+SWITZERLAND|CHE
+SYRIAN ARAB REPUBLIC|SYR
+TAIWAN, PROVINCE OF CHINA|TWN
+TAJIKISTAN|TJK
+TANZANIA|TZA
+THAILAND|THA
+TOGO|TGO
+TOKELAU|TKL
+TONGA|TON
+TRINIDAD AND TOBAGO|TTO
+TUNISIA|TUN
+TURKEY|TUR
+TURKMENISTAN|TKM
+TURKS AND CAICOS ISLANDS|TCA
+TUVALU|TUV
+UGANDA|UGA
+UKRAINE|UKR
+UNITED ARAB EMIRATES|AE
+UNITED KINGDOM|GBR
+UNITED STATES|USA
+U.S. MINOR ISLANDS|UMI
+URUGUAY|URY
+UZBEKISTAN|UZB
+VANUATU|VUT
+VENEZUELA|VEN
+VIET NAM|VNM
+VIRGIN ISLANDS (BRITISH)|VGB
+VIRGIN ISLANDS (U.S.)|VIR
+WALLIS AND FUTUNA ISLANDS|WLF
+WESTERN SAHARA|ESH
+YEMEN|YEM
+ZAMBIA|ZMB
+ZIMBABWE|ZWE
+
+# State Codes
+
+## India
+
+State | Code 
+--------- | ---------
+Delhi|DL
+Andhra Pradesh|AP
+Goa|GA
+Jharkhand|JH
+Manipur|MN
+Punjab|PB
+Uttar Pradesh|UP
+Arunachal Pradesh|AR
+Gujarat|GJ
+Karnataka|KA
+Meghalaya|ML
+Rajasthan|RJ
+Uttaranchal|UT
+Assam|AS
+Haryana|HR
+Kerala|KL
+Mizoram|MZ
+Sikkim|SK
+West Bengal|WB
+Bihar|BR
+Himachal Pradesh|HP
+Madhya Pradesh|MP
+Nagaland|NL
+Tamil Nadu|TN
+Chhattisgarh|CH
+Jammu and Kashmir|JK
+Maharashtra|MH
+Orissa|OR
+Tripura|TR
+Telangana|TA
+Andaman and Nicobar Islands|AN
+Chandigarh|CD
+Dadra and Nagar Haveli|DN
+Daman and Diu|DD
+Lakshadweep|LD
+Puducherry|PC
+
+## Australia
+
+State | Code 
+--------- | ---------
+New South Wales|New South 
+Victoria|Victoria
+Queensland|Queensland
+South Australia|South Aust
+Tasmania|Tasmania
+
+## Canada
+
+State | Code 
+--------- | ---------
+Alberta|Alberta
+British Columbia|British Co
+Manitoba|Manitoba
+New Brunswick|New Brunsw
+Newfoundland and Labrador|Newfoundla
+Nova Scotia|Nova Scoti
+Northwest Territory|Northwest 
+Nunavut Territory|Nunavut Te
+Ontario|Ontario
+Prince Edward Island|Prince Edw
+Quebec|Quebec
+Saskatchewan|Saskatchew
+Yukon|Yukon
+
+
+## Mexico
+
+State | Code 
+--------- | ---------
+Aguascalientes|AGU
+Baja California|BCN
+Baja California Sur|BCS
+Campeche|CAM
+Colima|CHH
+Coahuila De Zaragoza|CHP
+Chiapas|COA
+Chihuahua|COL
+Distrito Federal|DIF
+Durango|DUR
+Guerrero|GRO
+Guanajuato|GUA
+Hidalgo|HID
+Jalisco|JAL
+Mexico|MEX
+Michoacan De Ocampo|MIC
+Morelos|MOR
+Nayarit|NAY
+Nuevo Leon|NLE
+Oaxaca|OAX
+Puebla|PUE
+Queretaro De Arteaga|QUE
+Quintana Roo|ROO
+Sinaloa|SIN
+San Luis Potosi|SLP
+Sonora|SON
+Tabasco|TAB
+Tamaulipas|TAM
+Tlaxcala|TLA
+Veracruz Llave|VER
+Yucatan|YUC
+Zacatecas|ZAC
+
+
+## Saudi Arabia
+
+State | Code 
+--------- | ---------
+Ha'il|Ha'il
+Qassim|Qassim
+Riyadh|Riyadh
+Tabuk|Tabuk
+Madinah|Madinah
+Makkah|Makkah
+Bahah|Bahah
+Northern Borders|Northern B
+Jawf|Jawf
+Jizan|Jizan
+Asir|Asir
+Najran|Najran
+Eastern Province|Eastern Pr
+
+
+## Tanzania
+
+State | Code 
+--------- | ---------
+Dar es salaam Tz|Dar es sal
+Arusha Tz|Arusha Tz
+Mbeya Tz|Mbeya Tz
+Mtwara Tz|Mtwara Tz
+Dodoma Tz|Dodoma Tz
+Other States Tz|Other Stat
+
+## United Arab Emirates
+
+State | Code 
+--------- | ---------
+Abu Dhabi|AZ
+Dubai|DU
+Sharjah|SH
+Ajman|AJ
+Umm Al Quwain|UQ
+Ras Al Khaimah|RK
+Fujairah|FU
+
+ 
