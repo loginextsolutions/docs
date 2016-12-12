@@ -182,7 +182,7 @@ For Haul and Mile products, you can create and maintain details of the vehicles 
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create
+https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/create
 ```
 
 
@@ -242,7 +242,7 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/create`
 
 
 ### Request Parameters
@@ -278,7 +278,7 @@ deviceId.barcode | String |Optional | This input should be the barcode of the tr
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id
+https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/:reference_id
 ```
 
 
@@ -342,7 +342,7 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle/:reference_id`
+<span class="post">GET</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/:reference_id`
 
 
 ### Request Parameters
@@ -357,7 +357,7 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
 ```
 
 > Response
@@ -431,7 +431,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
 
 
 ## Update Vehicle
@@ -444,7 +444,7 @@ Note that you will be able to update the information of only those vehicles whic
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
 ```
 
 > Request Body
@@ -497,7 +497,7 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### Request
 
-<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
 
 
 ### Request Parameters
@@ -544,7 +544,7 @@ Also, note that if a tracker is mapped to the vehicles that is deleted, then tha
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
 ```
 
 > Request Body
@@ -569,7 +569,7 @@ This API is used to delete a particular vehicle based on its reference ID.
 
 ### Request
 
-<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/v1/vehicle`
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
 
 
 
@@ -1068,9 +1068,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 > Request Body
 
 ```json
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
+["ca7fbf96a133461aadce8f94678084ee"]
 ```
 
 > Response
@@ -1095,7 +1093,7 @@ This API is used to start a trip using its reference ID.
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
+referenceIds | List | Mandatory | Reference Ids associated with trips
 
 ## Stop Trip
 
@@ -1107,9 +1105,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 > Request Body
 
 ```json
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
+["ca7fbf96a133461aadce8f94678084ee"]
 ```
 
 > Response
@@ -1134,7 +1130,7 @@ This API is used to end an in-transit trip using its reference ID.
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-tripReferenceIds | List | Mandatory | Reference Id associated with the trip.
+referenceIds | List | Mandatory | Reference Ids associated with trips
 
 ## Trip iFrame
 
