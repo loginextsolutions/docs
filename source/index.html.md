@@ -1197,7 +1197,7 @@ Track API fetches the latest location (latitude / longitude) for a trip based on
 
 ### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
 
 
 ### Request Body
