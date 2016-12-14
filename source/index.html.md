@@ -2543,11 +2543,11 @@ Parameter | DataType |  Required | Description
 routeName | String | Mandatory | Route name
 startLocation.latitude | Double | Mandatory | Latitude of start location
 startLocation.longitude | Double | Mandatory | Longitude of start location
-vehicles | List | Mandatory | List of vehicles
-vehicles.name | String | Mandatory | Vehicle number
-vehicles.capacity.weight | Integer | Optional | Weight of vehicle in Kg.
-vehicles.capacity.volume | Integer | Optional | Volume of vehicle in cc.
-vehicles.type | List | Optional | Type of vehicles
+vehicles | List | Mandatory | List of delivery medium
+vehicles.name | String | Mandatory | Delivery medium name
+vehicles.capacity.weight | Integer | Optional | Capacity of delivery medium
+vehicles.capacity.volume | Integer | Optional | Volume of delivery medium
+vehicles.type | List | Optional | Type of delivery medium
 shipments | List | Mandatory | List of orders
 shipments.name | String | Mandatory | Order no.
 shipments.location.latitude | Double | Mandatory | Order Latitude
@@ -2557,7 +2557,7 @@ shipments.end | String | Mandatory | Order end time window
 shipments.serviceTime | Integer | Optional | Order service time in mins.
 shipments.weight | Integer | Optional | Weight of order in Kg.
 shipments.volume | Integer | Optional | Volume of order in cc.
-shipments.type | List | Optional | Type of vehicles
+shipments.type | List | Optional | Type of orders
 
 
 
