@@ -2279,41 +2279,46 @@ Use this to find out last tracked location for any order/ delivery medium.
 ```json
 [
   {
-    "employeeId": "Test001",
-    "userGroupName":"Washola",
-    "deliveryMediumMasterName": "DummyDM",
-    "phoneNumber": 1234566432,
-    "imei": 990000852473864,
+    "employeeId": "1001",
+    "userGroupName": "lastmile",
+    "branchName": "LMDMumbai",
+    "deliveryMediumMasterName": "Amit",
+    "phoneNumber": "63865471261",
+    "imei": "123456789012645",
     "emailId": "test@test.com",
-    "userName": "test001",
+    "userName": "test003",
     "password": "admin",
     "capacityInUnits": 10,
-    "capacityInVolume": 10,
-    "capacityInWeight": 10,
-    "dob": "2016-08-18",
-    "gender": "Female",
-    "deliveryMediumMasterTypeCd": "Truck",
+    "capacityInVolume": 0,
+    "capacityInWeight": 0,
+    "dob": "2016-12-12",
+    "gender": "Male",
+    "deliveryMediumMasterTypeCd": "Delivery Boy",
     "isOwnVehicleFl": "Company",
-    "vehicleNumber": "MH-12345",
+    "vehicleNumber": "MH034506",
     "weeklyOffList": [
-      "Friday"
+      "Thursday",
+      "Monday"
     ],
-    "maxDistance": 10,
-    "licenseValidity": "2018-06-09",
+    "maxDistance": 100,
+    "licenseValidity": "2016-12-13",
     "deliveryMediumMapList": [
       {
-        "name": "ENGLISH"
+        "name": "HINDI"
+        
       },
       {
-        "name": "GUJARATI"
+        "name": "ENGLISH"
+        
       }
     ],
     "shiftList": [
       {
-        "shiftStartTime": "2016-08-18T12:30:00Z",
-        "shiftEndTime": "2016-08-18T15:30:00Z"
+        "shiftStartTime": "2016-12-12T13:30:00Z",
+        "shiftEndTime": "2016-12-12T14:30:00Z"
       }
-    ]
+    ],
+    "dmPreference": "400001"
   }
 ]
 ```
@@ -2344,8 +2349,8 @@ This endpoint creates a new delivery medium.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 employeeId | String | Mandatory | Employee Id
-branchName | String | Mandatory | Client branch name
 userGroupName | String | Mandatory | User group name
+branchName | String | Mandatory | Client branch name
 deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
 phoneNumber | String | Mandatory | Mobile no
 imei | String |Optional | IMEI no
@@ -2366,6 +2371,7 @@ licenseValidity | String |Optional | License validity date
 deliveryMediumMapList.name | String | Optional | Name of language
 shiftList.shiftStartTime  | String |Optional | Shift start time
 shiftList.shiftEndTime  | String |Optional | Shift end time
+dmPreference  | String | Optional | Preferred Pincode of Delivery medium
 
 ## Get Geocode
 
