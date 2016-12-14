@@ -2,7 +2,7 @@
 title: LogiNext API
 
 language_tabs:
-  - json
+  - Sample Requests and Responses
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -15,9 +15,17 @@ search: true
 
 LogiNext welcomes you to the world of organised logistics.
 
-Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.
+Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.
 
-The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is delivered at the desired location.
+The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location. 
+
+Below are few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.
+
+<b><u>Step 1</u></b> –  Please read carefully the Request, Responses and Authentication section so that you can configure things on your end to integrate with LogiNext APIs.
+
+<b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate)
+
+<b><u>Step 3</u></b> – (Optional) If you are planning to consume any of the LogiNext notifications, you will need to share the end-point URL on your system to consume the Webhook.
 
 # Requests
 
@@ -29,7 +37,7 @@ Our API is REST-based. This means:
 
 1. It make use of standard HTTP verbs like GET, POST, DELETE.
 
-2. The API uses standard HTTP error responses to describe errors.
+2. The API uses standard HTTP error responses(status codes) to indicate status of your requests – success and error codes.
 
 3. Authentication is specified with HTTP Basic Authentication.
 
@@ -73,7 +81,10 @@ LogiNext API uses Basic Authentication to provide you an authorized access. Plea
 
 You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).
 
-The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. The validity of this session token is 1 day (24 hours).
+The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. 
+
+<b><u>The validity of this session token is 1 day (24 hours).</u></b>
+
 Please ensure that you add the token and secret key as part of every Loginext API call.
 
 > Definition
@@ -92,10 +103,6 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username
   "hasError": false
 }
 ```
-
-LogiNext uses Basic Authentication to provide authorized access to its API.
-
-Use the following URL endpoint to authenticate yourself as a user of this API.
 
 ### Request
 
@@ -995,7 +1002,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
 ```json
 {
   "shipmentType": "Bag",
-  sealNumber:"SN-123",
+  "sealNumber":"SN-123",
   "lrNumber":"LR123",
   "originAddr": "CNND",
   "destinationAddr": "NAGD",
@@ -2784,7 +2791,7 @@ Param | DataType | Description
 --------- | ------- | ----------
 orderNo | String | Order No.
 orderState | String | State of order. Ex: FORWARD, REVERSE
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 notificationType | String | ORDERCREATIONNOTIFICATION
 timestamp | String | Order creation timestamp
@@ -2872,12 +2879,54 @@ This notification is sent when an order is rejected by a delivery boy.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No..
+clientShipmentId | String | Order No.
 status | String | Status of the order
 tripName | String | Trip name
 updatedOn | String | Reject order timestamp
 reasonOfRejection | String | Reason provided by Delivery medium while rejecting the order
 
+
+## Cancel Order
+
+> Response
+
+```json
+{
+  "orderNo": "Order001",
+  "notificationType": "CANCELLEDNOTIFICATION",
+  "orderLeg": "DELIVER",
+  "awbNumber": "AWB001",
+  "deliveryMediumName": "Abhi.P",
+  "phoneNumber": "9922904337",
+  "orderState": "FORWARD",
+  "customerName": "Name",
+  "reason": "Customer Unavailable",
+  "reasonCd": "Customer Unavailable Cd",
+  "tripName": "TRIP-809",
+  "customerCode": "TestCId",
+  "cancellationTime": "2016-12-05 12:59:16",
+  "cancelledBy": "Last Mile Demo User"
+}
+```
+
+This notification is sent when an order is cancelled.
+
+### Response Parameters
+
+Param | DataType | Description
+--------- | ------- | ----------
+orderNo | String | Order No.
+notificationType | String | CANCELLEDNOTIFICATION
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
+awbNumber | String | AWB Number for the order
+deliveryMediumName | String | Name of delivery medium
+phoneNumber | Long | Delivery medium's phone no.
+orderState | String | State of order. Ex: FORWARD, REVERSE
+customerName | String | Name of customer
+reason | String | Reason for the order being cancelled
+reasonCd | String | Reason code
+cancellationTime | String | Cancellation timestamp
+cancelledBy | String | Cancelled by user name
 
 ## Load Items
 
@@ -2916,7 +2965,7 @@ Param | DataType | Description
 --------- | ------- | ----------
 orderNo | String | Order No.
 orderState | String | State of order. Ex: FORWARD, REVERSE
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 notificationType | String | LOADITEMNOTIFICATION
 shipmentCrateMapping.crateCd | String | Crate code
@@ -3004,7 +3053,7 @@ orderNo | String | Order No.
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
@@ -3081,7 +3130,7 @@ Key | DataType | Description
 orderNo | String | Order No.
 statusCd | String | PARTIALLYDELIVERED
 notificationType | String | PARTIALDELIVERYNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
@@ -3148,7 +3197,7 @@ Key | DataType | Description
 --------- | ------- | -------
 orderNo | String | Order No.
 notificationType | String | NOTDELIVEREDNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
@@ -3200,7 +3249,7 @@ longitude | Double | Longitude where order was pickedup
 pickedUpTime | String | Pickup order timestamp
 status | String | PICKEDUP
 notificationType | String | PICKEDUPNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER, SALES, RETURN
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
