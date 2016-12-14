@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;json&quot;]">
+  <body class="index" data-languages="[&quot;Sample Requests and Responses&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,7 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="json">json</a>
+              <a href="#" data-language-name="Sample Requests and Responses">Sample Requests and Responses</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -121,9 +121,17 @@
 
 <p>LogiNext welcomes you to the world of organised logistics.</p>
 
-<p>Using the LogiNext API, you can integrate all the segments of your delivery logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.</p>
+<p>Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.</p>
 
-<p>The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is delivered at the desired location.</p>
+<p>The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location. </p>
+
+<p>Below are few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.</p>
+
+<p><b><u>Step 1</u></b> –  Please read carefully the Request, Responses and Authentication section so that you can configure things on your end to integrate with LogiNext APIs.</p>
+
+<p><b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate)</p>
+
+<p><b><u>Step 3</u></b> – (Optional) If you are planning to consume any of the LogiNext notifications, you will need to share the end-point URL on your system to consume the Webhook.</p>
 
 <h1 id="requests">Requests</h1>
 
@@ -135,7 +143,7 @@
 
 <ol>
 <li><p>It make use of standard HTTP verbs like GET, POST, DELETE.</p></li>
-<li><p>The API uses standard HTTP error responses to describe errors.</p></li>
+<li><p>The API uses standard HTTP error responses(status codes) to indicate status of your requests – success and error codes.</p></li>
 <li><p>Authentication is specified with HTTP Basic Authentication.</p></li>
 </ol>
 
@@ -235,8 +243,11 @@
 
 <p>You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
 
-<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. The validity of this session token is 1 day (24 hours).
-Please ensure that you add the token and secret key as part of every Loginext API call.</p>
+<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. </p>
+
+<p><b><u>The validity of this session token is 1 day (24 hours).</u></b></p>
+
+<p>Please ensure that you add the token and secret key as part of every Loginext API call.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -254,10 +265,6 @@ Please ensure that you add the token and secret key as part of every Loginext AP
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<p>LogiNext uses Basic Authentication to provide authorized access to its API.</p>
-
-<p>Use the following URL endpoint to authenticate yourself as a user of this API.</p>
 
 <h3 id="request">Request</h3>
 
@@ -1827,7 +1834,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bag"</span><span class="p">,</span><span class="w">
-  </span><span class="err">sealNumber</span><span class="p">:</span><span class="s2">"SN-123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="s2">"SN-123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
@@ -5839,7 +5846,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -6013,7 +6020,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>clientShipmentId</td>
 <td>String</td>
-<td>Order No..</td>
+<td>Order No.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -6034,6 +6041,102 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>reasonOfRejection</td>
 <td>String</td>
 <td>Reason provided by Delivery medium while rejecting the order</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancel-order">Cancel Order</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELLEDNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhi.P"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9922904337"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Unavailable"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Unavailable Cd"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-809"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestCId"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cancellationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05 12:59:16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cancelledBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Mile Demo User"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when an order is cancelled.</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String</td>
+<td>Order No.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>CANCELLEDNOTIFICATION</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB Number for the order</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of delivery medium</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>Long</td>
+<td>Delivery medium&rsquo;s phone no.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Name of customer</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>String</td>
+<td>Reason for the order being cancelled</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>Reason code</td>
+</tr>
+<tr>
+<td>cancellationTime</td>
+<td>String</td>
+<td>Cancellation timestamp</td>
+</tr>
+<tr>
+<td>cancelledBy</td>
+<td>String</td>
+<td>Cancelled by user name</td>
 </tr>
 </tbody></table>
 
@@ -6087,7 +6190,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -6286,7 +6389,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -6434,7 +6537,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -6632,7 +6735,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -6764,7 +6867,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>orderLeg</td>
 <td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER, SALES, RETURN</td>
+<td>Order leg Ex: PICKUP, DELIVER</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -8758,7 +8861,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="json">json</a>
+                <a href="#" data-language-name="Sample Requests and Responses">Sample Requests and Responses</a>
           </div>
       </div>
     </div>
