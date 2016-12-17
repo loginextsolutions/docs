@@ -1189,7 +1189,8 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
       "shipmentReference": "aefe22d9ba934908a7a2aeb790964814",
       "geocodingSource": null,
       "types": null,
-      "eta": "2016-08-18 06:43:00"
+      "eta": "2016-08-18 06:43:00",
+      "lastTrackedAt": "2016-08-17 16:26:01"
     }
   ],
   "hasError": false
