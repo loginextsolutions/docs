@@ -172,7 +172,7 @@ WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
-# Haul
+# LogiNext Haul <sup>TM</sup>
 
 
 1. Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
@@ -1249,7 +1249,7 @@ messageType | String | Mandatory | Message type. Ex: REG
 temperature | Double | Optional | Consignment's temperature
 
 
-# Mile
+# LogiNext Mile <sup>TM</sup>
 
 Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
 
@@ -2562,7 +2562,7 @@ shipments.type | List | Optional | Type of orders
 
 
 
-# OnDemand
+# LogiNext OnDemand <sup>TM</sup>
 
 
 ## Create Order (Fixed Pickup)
@@ -3903,4 +3903,38 @@ Umm Al Quwain|UQ
 Ras Al Khaimah|RK
 Fujairah|FU
 
- 
+
+<style>
+.sup{
+  padding-right:4px !important;
+  display:inline;
+}
+</style> 
+<script>
+  setTimeout(function() {
+    jQuery(".tocify-wrapper .tocify ul li a").filter(
+    function(){   
+       if(jQuery(this).text() == "LogiNext Haul TM"){
+            jQuery(this).text("LogiNext Haul");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+        if(jQuery(this).text() == "LogiNext Mile TM"){
+            jQuery(this).text("LogiNext Mile");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+        if(jQuery(this).text() == "LogiNext OnDemand TM"){
+            jQuery(this).text("LogiNext OnDemand");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+    });
+  }, 50);
+</script>
