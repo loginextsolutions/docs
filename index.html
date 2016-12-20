@@ -391,7 +391,7 @@
 </tr>
 </tbody></table>
 
-<h1 id="haul">Haul</h1>
+<h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
 <ol>
 <li><p>Once the resources are created, then you can create trips by calling Create Trips API. You need to provide the Unique trip name along with the Origin and Destination Address details and the Journey date. The acknowledgement consists of the Reference ID for each of the trips created which needs to be stored in your system for future references.
@@ -2257,7 +2257,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
-<h1 id="mile">Mile</h1>
+<h1 id="loginext-mile-tm">LogiNext Mile <sup>TM</sup></h1>
 
 <p>Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  </p>
 
@@ -5320,7 +5320,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </tbody></table>
 
-<h1 id="ondemand">OnDemand</h1>
+<h1 id="loginext-ondemand-tm">LogiNext OnDemand <sup>TM</sup></h1>
 
 <h2 id="create-order-fixed-pickup">Create Order (Fixed Pickup)</h2>
 
@@ -8869,6 +8869,42 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>FU</td>
 </tr>
 </tbody></table>
+
+<style>
+.sup{
+  padding-right:4px !important;
+  display:inline;
+}
+</style> 
+
+<script>
+  setTimeout(function() {
+    jQuery(".tocify-wrapper .tocify ul li a").filter(
+    function(){   
+       if(jQuery(this).text() == "LogiNext Haul TM"){
+            jQuery(this).text("LogiNext Haul");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+        if(jQuery(this).text() == "LogiNext Mile TM"){
+            jQuery(this).text("LogiNext Mile");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+        if(jQuery(this).text() == "LogiNext OnDemand TM"){
+            jQuery(this).text("LogiNext OnDemand");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+    });
+  }, 50);
+</script>
 
       </div>
       <div class="dark-box">
