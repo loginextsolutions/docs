@@ -90,7 +90,15 @@ Please ensure that you add the token and secret key as part of every Loginext AP
 > Definition
 
 ```json
-https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username>&password=<password>
+https://api.loginextsolutions.com/LoginApp/login/authenticate
+```
+> Request Body
+
+```json
+{
+        "userName":"demouser",
+        "password":"Admin#1!"
+}  
 ```
 
 > Response
@@ -106,7 +114,7 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate?username=<username>&password=<password>`
+<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/authenticate`
 
 ### Request Headers
 
@@ -118,7 +126,7 @@ Content-Type | application/json | JSON request
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-username | String | Mandatory | Username provided by LogiNext
+userName | String | Mandatory | Username provided by LogiNext
 password | String | Mandatory | Password provided by LogiNext
 
 
@@ -189,7 +197,7 @@ For Haul and Mile products, you can create and maintain details of the vehicles 
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/create
+https://api.loginextsolutions.com/VehicleApp/haul/v1/create
 ```
 
 
@@ -249,7 +257,7 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/create`
 
 
 ### Request Parameters
@@ -285,7 +293,7 @@ deviceId.barcode | String |Optional | This input should be the barcode of the tr
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/:reference_id
+https://api.loginextsolutions.com/VehicleApp/haul/v1/:reference_id
 ```
 
 
@@ -349,7 +357,7 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/:reference_id`
+<span class="post">GET</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/:reference_id`
 
 
 ### Request Parameters
@@ -364,7 +372,7 @@ reference_id | String | Mandatory | Reference Id associated with the vehicle.
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1
 ```
 
 > Response
@@ -438,7 +446,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
 
 
 ## Update Vehicle
@@ -451,7 +459,7 @@ Note that you will be able to update the information of only those vehicles whic
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1
 ```
 
 > Request Body
@@ -504,7 +512,7 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### Request
 
-<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
 
 
 ### Request Parameters
@@ -551,7 +559,7 @@ Also, note that if a tracker is mapped to the vehicles that is deleted, then tha
 > Definition
 
 ```json
-https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle
+https://api.loginextsolutions.com/VehicleApp/haul/v1
 ```
 
 > Request Body
@@ -576,7 +584,7 @@ This API is used to delete a particular vehicle based on its reference ID.
 
 ### Request
 
-<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle`
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
 
 
 

@@ -163,4 +163,17 @@ under the License.
       activateLanguage(getLanguageFromQueryString());
     };
   });
+
+setTimeout(function() {
+    jQuery(".tocify-wrapper .tocify ul li a").filter(
+    function(){   
+       if(jQuery(this).text() == "LogiNext Haul TM"){
+            jQuery(this).text("LogiNext Haul");
+            jQuery(this).css("display","inline");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+    });
+}, 100);
+
+
 })(window);
