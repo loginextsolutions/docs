@@ -252,7 +252,16 @@
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;username&gt;&amp;password=&lt;password&gt;</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/LoginApp/login/authenticate</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+        </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"demouser"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"Admin#1!"</span><span class="w">
+</span><span class="p">}</span><span class="w">  
 </span></code></pre>
 
 <blockquote>
@@ -268,7 +277,7 @@
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate?username=&lt;username&gt;&amp;password=&lt;password&gt;</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/LoginApp/login/authenticate</code></p>
 
 <h3 id="request-headers">Request Headers</h3>
 
@@ -297,7 +306,7 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
+<td>userName</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Username provided by LogiNext</td>
@@ -407,7 +416,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/vehicle/create</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -466,7 +475,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -623,7 +632,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/vehicle/:reference_id</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/:reference_id</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -684,7 +693,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle/:reference_id</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/:reference_id</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -709,7 +718,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/vehicle</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -783,7 +792,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1</code></p>
 
 <h2 id="update-vehicle">Update Vehicle</h2>
 
@@ -795,7 +804,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/vehicle</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -849,7 +858,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -1021,7 +1030,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="err">/vehicle</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/haul/v</span><span class="mi">1</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -1046,7 +1055,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1/vehicle</code></p>
+<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1</code></p>
 
 <h3 id="request-body">Request Body</h3>
 
