@@ -169,8 +169,9 @@ This endpoint invalidates a user.
 
 Header | Sample Value
 --------- | ------- | -------------
-WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
-CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
+Content-Type | application/json | Json request
+WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
+CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
 ### Response Headers
 
@@ -1077,6 +1078,7 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 > Definition
 
 ```json
+<<<<<<< Updated upstream
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 ```
 
@@ -1084,6 +1086,11 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 
 ```json
 ["ca7fbf96a133461aadce8f94678084ee"]
+=======
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
+>>>>>>> Stashed changes
 ```
 
 > Response
@@ -1110,10 +1117,23 @@ Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 referenceIds | List | Mandatory | Reference Ids associated with trips
 
+<<<<<<< Updated upstream
 ## Stop Trip
+=======
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
+
+
+## Trip Stop
+>>>>>>> Stashed changes
 
 
 ```json
+<<<<<<< Updated upstream
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 ```
 
@@ -1121,6 +1141,11 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 
 ```json
 ["ca7fbf96a133461aadce8f94678084ee"]
+=======
+{
+    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
+}
+>>>>>>> Stashed changes
 ```
 
 > Response
@@ -1146,6 +1171,13 @@ This API is used to end an in-transit trip using its reference ID.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 referenceIds | List | Mandatory | Reference Ids associated with trips
+
+
+### HTTP Request Parameters
+
+Parameter | Type |  Required | Description
+-----------|-------|------- | ---------- 
+tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 ## Trip iFrame
 
@@ -2042,7 +2074,78 @@ returnState| String | Optional | Return State code
 returnCountry | String | Optional | Return Country code
 returnPinCode | String | Optional | Return Pincode
 
+## Update Crates and Line Items in Order
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates
+```
+
+> Request Body
+
+```json
+{
+  "referenceId": "ae9a2eed3fc54784905345f9c71b9e5f",
+  "shipmentCrates": [
+    {
+      "crateCd": "00009595951000000492",
+      "shipmentlineitems": [
+        {
+          "itemCd": "1_120000256",
+          "itemName": "Bourbon",
+          "itemPrice": 12,
+          "itemQuantity": 12,
+          "itemType": "Biscuit",
+          "itemWeight": 50
+        }
+      ]
+    },
+    {
+      "crateCd": "00009595951000000490",
+      "shipmentlineitems": [
+        {
+          "itemCd": "1_120000244",
+          "itemName": "Noodles Chicken 50 Gm",
+          "itemPrice": 12,
+          "itemQuantity": 3,
+          "itemType": "Soup",
+          "itemWeight": 30
+        },
+        {
+          "itemCd": "1_120000243",
+          "itemName": "Silk Chocolate",
+          "itemPrice": 12,
+          "itemQuantity": 5,
+          "itemType": "Chocolate",
+          "itemWeight": 25
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "referenceId": null,
+  "data": null,
+  "hasError": false
+}
+
+```
+With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+You can pass multiple order reference IDs and can update one or more parameters.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates`
 
 ### Request Parameters (Crates)
 
