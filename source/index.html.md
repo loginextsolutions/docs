@@ -2140,8 +2140,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates
 }
 
 ```
-With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
-You can pass multiple order reference IDs and can update one or more parameters.
+With this API, you will be able to update the crate and line items information for one order at a time until that order is not dispatched and not associated with any Trip.
+You can pass multiple crate and line items.
 
 ### Request
 
@@ -2151,17 +2151,17 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.crateAmount | Double | Optional | Crate amount
-shipmentCrateMappings.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
-shipmentCrateMappings.noOfUnits | Integer | Optional | No. of crate units
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+shipmentCrates | Array of objects | Optional | Shipment crates
+shipmentCrates.crateCd | String | Mandatory | Crate Code
+shipmentCrates.crateAmount | Double | Optional | Crate amount
+shipmentCrates.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrates.noOfUnits | Integer | Optional | No. of crate units
+shipmentCrates.shipmentlineitems.itemCd | String | Mandatory | Item code
+shipmentCrates.shipmentlineitems.itemName | String | Optional | Item name
+shipmentCrates.shipmentlineitems.itemPrice | Double | Mandatory | Item price
+shipmentCrates.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
+shipmentCrates.shipmentlineitems.itemType | String | Optional | Item type
+shipmentCrates.shipmentlineitems.itemWeight | Double | Optional | Item weight
 
 
 ## Cancel Order
