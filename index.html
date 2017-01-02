@@ -373,12 +373,16 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
 <td>WWW-Authenticate</td>
-<td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
+<td>BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0</td>
 </tr>
 <tr>
 <td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
+<td>$2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG</td>
 </tr>
 </tbody></table>
 
@@ -1993,13 +1997,19 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/start</span><span class="w">
+<pre class="highlight json"><code><span class="err">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="w"> </span><span class="err">Updated</span><span class="w"> </span><span class="err">upstream</span><span class="w">
+</span><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/start</span><span class="w">
 </span></code></pre>
 
 <blockquote>
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="err">=======</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="w"> </span><span class="err">Stashed</span><span class="w"> </span><span class="err">changes</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2038,14 +2048,60 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</p>
+
 <h2 id="stop-trip">Stop Trip</h2>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
+
+<p>=======</p>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>List of Strings</td>
+<td>Mandatory</td>
+<td>Reference Ids of the trip</td>
+</tr>
+</tbody></table>
+
+<h2 id="trip-stop">Trip Stop</h2>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Stashed changes</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre class="highlight json"><code><span class="err">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="w"> </span><span class="err">Updated</span><span class="w"> </span><span class="err">upstream</span><span class="w">
+</span><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
 </span></code></pre>
 
 <blockquote>
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="err">=======</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="w"> </span><span class="err">Stashed</span><span class="w"> </span><span class="err">changes</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2081,6 +2137,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>List</td>
 <td>Mandatory</td>
 <td>Reference Ids associated with trips</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request-parameters">HTTP Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceIds</td>
+<td>List of Strings</td>
+<td>Mandatory</td>
+<td>Reference Ids of the trip</td>
 </tr>
 </tbody></table>
 
@@ -4366,6 +4440,78 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Return Pincode</td>
 </tr>
 </tbody></table>
+
+<h2 id="update-crates-and-line-items-in-order">Update Crates and Line Items in Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/updateCrates</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae9a2eed3fc54784905345f9c71b9e5f"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentCrates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00009595951000000492"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_120000256"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bourbon"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Biscuit"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00009595951000000490"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_120000244"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Noodles Chicken 50 Gm"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soup"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_120000243"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Silk Chocolate"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chocolate"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API, you will be able to update the crate and line items information for one order at a time until that order is not dispatched and not associated with any Trip.
+You can pass multiple crate and line items.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates</code></p>
 
 <h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
 
