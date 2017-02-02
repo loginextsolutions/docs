@@ -17,7 +17,7 @@ LogiNext welcomes you to the world of organised logistics.
 
 Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.
 
-The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location. 
+The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location.
 
 Below are few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.
 
@@ -81,7 +81,7 @@ LogiNext API uses Basic Authentication to provide you an authorized access. Plea
 
 You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).
 
-The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. 
+The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.
 
 <b><u>The validity of this session token is 1 day (24 hours).</u></b>
 
@@ -193,7 +193,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 ## Create Vehicle
 
-For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a "Reference Id" which you need to store in order to update the vehicle information in future. 
+For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a "Reference Id" which you need to store in order to update the vehicle information in future.
 
 > Definition
 
@@ -206,32 +206,32 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
 
 ```json
 [
-	{
-    		"vehicleNumber":"MH-111",
-    		"vehicleMake":"2015",
-   		    "vehicleModel":"OMNI",
-    		"typeOfBody":"Flat Bed",
-    		"unladdenWeight":10,
-    		"capacityInWeight":10,
-    		"capacityInUnits":10,
-    		"capacityInVolume":10,
-    		"chasisNumber":"CHASIS-123",
-    		"engineNumber":"A-12353-D1234",
-    		"markerName":"Marker-1",
-    		"registrationNumber":"",
-    		"pucValidity":"2016-07-01T11:18:00.000Z",
-    		"insuranceValidity":"2016-07-01T11:18:00.000Z",
-    		"vehiclePermit":"Andhra Pradesh,Delhi",
-    		"ownership":"company",
-    		"ownerName":"ABC",
-    		"transporter":"",
-    		"financer":"",
-    		"accidentHistory":"",
-    		"rentStartDate":null,
-    		"rentEndDate":null,
-    		"deviceId":{
-        		"barcode":"LN12345678"
-    		}
+  {
+        "vehicleNumber":"MH-111",
+        "vehicleMake":"2015",
+          "vehicleModel":"OMNI",
+        "typeOfBody":"Flat Bed",
+        "unladdenWeight":10,
+        "capacityInWeight":10,
+        "capacityInUnits":10,
+        "capacityInVolume":10,
+        "chasisNumber":"CHASIS-123",
+        "engineNumber":"A-12353-D1234",
+        "markerName":"Marker-1",
+        "registrationNumber":"",
+        "pucValidity":"2016-07-01T11:18:00.000Z",
+        "insuranceValidity":"2016-07-01T11:18:00.000Z",
+        "vehiclePermit":"Andhra Pradesh,Delhi",
+        "ownership":"company",
+        "ownerName":"ABC",
+        "transporter":"",
+        "financer":"",
+        "accidentHistory":"",
+        "rentStartDate":null,
+        "rentEndDate":null,
+        "deviceId":{
+            "barcode":"LN12345678"
+        }
     }
 ]  
 ```
@@ -243,11 +243,11 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
   "status": 200,
   "message": "success",
   "data": [
-			{
-				"vehicleNumber":"MH-111",
-				"referenceId":"a9be39b9347911e6829f000d3aa04450"
-			}
-	   ],
+      {
+        "vehicleNumber":"MH-111",
+        "referenceId":"a9be39b9347911e6829f000d3aa04450"
+      }
+     ],
   "hasError": false
 }
 ```
@@ -268,7 +268,7 @@ Parameter | DataType |  Required | Description
 vehicleNumber | String | Mandatory | Unique name to identify the vehicle
 vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
 vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
-typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
+typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
 unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
 capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
 capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
@@ -425,7 +425,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
           "statusCd": null,
           "trackeeId": null
         },
-  
+
         "tripDetail": null,
         "insuranceAlertWindow": null,
         "pucAlertWindow": null,
@@ -452,7 +452,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ## Update Vehicle
 
-You can update the data for any of the vehicle mapped to your account by using this API. 
+You can update the data for any of the vehicle mapped to your account by using this API.
 You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.
 
 Note that you will be able to update the information of only those vehicles which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be updated and in this case you will get error message - 400 - Bad Request
@@ -467,33 +467,33 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
 
 ```json
 [
-	{
-		"referenceId":"a9be39b9347911e6829f000d3aa04450",        
-    		"vehicleNumber":"MH-111",
-    		"vehicleMake":"2015",
-   		    "vehicleModel":"OMNI",
-    		"typeOfBody":"Flat Bed",
-    		"unladdenWeight":1099,
-    		"capacityInWeight":1099,
-    		"capacityInUnits":1099,
-    		"capacityInVolume":1099,
-    		"chasisNumber":"CHASIS-123",
-    		"engineNumber":"A-12353-D1234",
-    		"markerName":"Marker-1",
-    		"registrationNumber":"",
-    		"pucValidity":"2016-07-01T11:18:00.000Z",
-    		"insuranceValidity":"2016-07-01T11:18:00.000Z",
-    		"vehiclePermit":"Andhra Pradesh,Delhi",
-    		"ownership":"company",
-    		"ownerName":"ABC",
-    		"transporter":"",
-    		"financer":"",
-    		"accidentHistory":"",
-    		"rentStartDate":null,
-    		"rentEndDate":null,
-    		"deviceId":{
-        		"barcode":""
-    		}
+  {
+    "referenceId":"a9be39b9347911e6829f000d3aa04450",        
+        "vehicleNumber":"MH-111",
+        "vehicleMake":"2015",
+          "vehicleModel":"OMNI",
+        "typeOfBody":"Flat Bed",
+        "unladdenWeight":1099,
+        "capacityInWeight":1099,
+        "capacityInUnits":1099,
+        "capacityInVolume":1099,
+        "chasisNumber":"CHASIS-123",
+        "engineNumber":"A-12353-D1234",
+        "markerName":"Marker-1",
+        "registrationNumber":"",
+        "pucValidity":"2016-07-01T11:18:00.000Z",
+        "insuranceValidity":"2016-07-01T11:18:00.000Z",
+        "vehiclePermit":"Andhra Pradesh,Delhi",
+        "ownership":"company",
+        "ownerName":"ABC",
+        "transporter":"",
+        "financer":"",
+        "accidentHistory":"",
+        "rentStartDate":null,
+        "rentEndDate":null,
+        "deviceId":{
+            "barcode":""
+        }
     }
 ]
 ```
@@ -523,7 +523,7 @@ Parameter | DataType |  Required | Description
 vehicleNumber | String | Mandatory | Unique name to identify the vehicle
 vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
 vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
-typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
+typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
 unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
 capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
 capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
@@ -751,7 +751,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
   "message": "success",
   "data": [
     {
-  
+
       "driverName": "Test_Driver",
       "phoneNumber": "1234565632",
       "emailId": "test@testing.com",
@@ -783,7 +783,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
         {
           "name": "Hindi",
         }
-        
+
       ],
       "licenseIssueBy": "Maharashtra Govt.",
       "tripName": null,
@@ -1124,7 +1124,7 @@ referenceIds | List | Mandatory | Reference Ids associated with trips
 ### HTTP Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 
@@ -1176,7 +1176,7 @@ referenceIds | List | Mandatory | Reference Ids associated with trips
 ### HTTP Request Parameters
 
 Parameter | Type |  Required | Description
------------|-------|------- | ---------- 
+-----------|-------|------- | ----------
 tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 ## Trip iFrame
@@ -1287,6 +1287,212 @@ batteryPerc | Double | Mandatory | Battery Percentage of device
 speed | Double | Optional | Speed with which consignment is moving
 messageType | String | Mandatory | Message type. Ex: REG
 temperature | Double | Optional | Consignment's temperature
+
+
+## Get Tracker (List)
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DeviceApp/device/v1/haul
+```
+
+> Response
+
+
+```json
+{
+  "status": 200,
+  "message": null,
+  "referenceId": null,
+  "data": [
+    {
+      "clientName": null,
+      "deviceId": 1255,
+      "productId": null,
+      "supplierId": null,
+      "barcode": "LN02510915",
+      "suppliedDt": null,
+      "standardPriceAmt": null,
+      "discountPct": null,
+      "createdByUserId": null,
+      "createdOnDt": null,
+      "supplierName": null,
+      "phoneNumber": null,
+      "simId": null,
+      "lookupDesc": null,
+      "supplierDesc": null,
+      "updatedByUserId": null,
+      "updatedOnDt": null,
+      "isAvailableFl": "\u0000",
+      "batteryPerc": 100,
+      "status": "Intransit",
+      "lastTrackedDt": 1469510397000,
+      "lastTrackedDate":2016-07-26'T'05:19:57,
+      "lastTrackLocation": null,
+      "clientBranchId": null,
+      "deviceType": null,
+      "deviceTypeId": null,
+      "speed": 67.78,
+      "extraField1": "13141",
+      "extraField2": null,
+      "extraField3": null,
+      "extraField4": null,
+      "extraField5": null,
+      "isActiveFl": "Y",
+      "isActive": true,
+      "lat": 16.646592,
+      "lng": 74.275329,
+      "simNumber": null,
+      "serviceProvider": null,
+      "serviceProviderId": null,
+      "planType": null,
+      "planTypeId": null,
+      "cost": null,
+      "gpsStatus": "Offline",
+      "clientBranchName": "Mahindra Logistics Ltd",
+      "temperature": null,
+      "odometer": null,
+      "direction": null,
+      "fuel": null,
+      "ignition": null,
+      "vehicleNum": "MH12LT2092",
+      "tripName": "ATQD-BOMZ-test",
+      "originAddr": null,
+      "destinationAddr": null,
+      "driverName": null,
+      "vehicleName": null,
+      "imei": null
+    },
+    {
+      "clientName": null,
+      "deviceId": 1128,
+      "productId": null,
+      "supplierId": null,
+      "barcode": "LN01240915",
+      "suppliedDt": null,
+      "standardPriceAmt": null,
+      "discountPct": null,
+      "createdByUserId": null,
+      "createdOnDt": null,
+      "supplierName": null,
+      "phoneNumber": null,
+      "simId": null,
+      "lookupDesc": null,
+      "supplierDesc": null,
+      "updatedByUserId": null,
+      "updatedOnDt": null,
+      "isAvailableFl": "\u0000",
+      "batteryPerc": 100,
+      "status": "Available",
+      "lastTrackedDt": 1467372218000,
+      "lastTrackedDate":2016-07-01'T'11:23:38,
+      "lastTrackLocation": null,
+      "clientBranchId": null,
+      "deviceType": null,
+      "deviceTypeId": null,
+      "speed": 0,
+      "extraField1": "13006",
+      "extraField2": null,
+      "extraField3": null,
+      "extraField4": null,
+      "extraField5": null,
+      "isActiveFl": "Y",
+      "isActive": true,
+      "lat": 26.90774,
+      "lng": 75.846686,
+      "simNumber": null,
+      "serviceProvider": null,
+      "serviceProviderId": null,
+      "planType": null,
+      "planTypeId": null,
+      "cost": null,
+      "gpsStatus": "Offline",
+      "clientBranchName": "Mahindra Logistics Ltd",
+      "temperature": null,
+      "odometer": null,
+      "direction": null,
+      "fuel": null,
+      "ignition": null,
+      "vehicleNum": null,
+      "tripName": null,
+      "originAddr": null,
+      "destinationAddr": null,
+      "driverName": null,
+      "vehicleName": null,
+      "imei": null
+    },
+    {
+      "clientName": null,
+      "deviceId": 2491,
+      "productId": null,
+      "supplierId": null,
+      "barcode": "LN01470915",
+      "suppliedDt": null,
+      "standardPriceAmt": null,
+      "discountPct": null,
+      "createdByUserId": null,
+      "createdOnDt": null,
+      "supplierName": null,
+      "phoneNumber": null,
+      "simId": null,
+      "lookupDesc": null,
+      "supplierDesc": null,
+      "updatedByUserId": null,
+      "updatedOnDt": null,
+      "isAvailableFl": "\u0000",
+      "batteryPerc": 100,
+      "status": "Available",
+      "lastTrackedDt": 1469513910000,
+      "lastTrackedDate":2016-07-26'T'06:18:30,
+      "lastTrackLocation": null,
+      "clientBranchId": null,
+      "deviceType": null,
+      "deviceTypeId": null,
+      "speed": 53.12,
+      "extraField1": "13030",
+      "extraField2": null,
+      "extraField3": null,
+      "extraField4": null,
+      "extraField5": null,
+      "isActiveFl": "Y",
+      "isActive": true,
+      "lat": 13.964397,
+      "lng": 77.679164,
+      "simNumber": null,
+      "serviceProvider": null,
+      "serviceProviderId": null,
+      "planType": null,
+      "planTypeId": null,
+      "cost": null,
+      "gpsStatus": "Offline",
+      "clientBranchName": "Mahindra Logistics Ltd",
+      "temperature": null,
+      "odometer": null,
+      "direction": null,
+      "fuel": null,
+      "ignition": null,
+      "vehicleNum": null,
+      "tripName": null,
+      "originAddr": null,
+      "destinationAddr": null,
+      "driverName": null,
+      "vehicleName": null,
+      "imei": null
+    }
+  ]
+}
+```
+
+Tracker API fetches the details of all the trackers of the client.
+
+### Request
+
+<span class="post">GET</span>`https://api.loginextsolutions.com/DeviceApp/device/v1/haul`
+
+
+
+
 
 
 # LogiNext Mile <sup>TM</sup>
@@ -1439,12 +1645,12 @@ deliverApartment | String | Mandatory | Apartment
 deliverStreetName | String | Mandatory | Street name
 deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Mandatory | Locality
-deliverCity | String | Mandatory | City 
+deliverCity | String | Mandatory | City
 deliverState| String | Mandatory | State code
 deliverCountry | String | Mandatory | Country code
 deliverPinCode | String | Mandatory | Pincode
 returnBranch | String | Mandatory | Name of return branch
-  
+
 ### Request Parameters (Crates)
 
 Param | DataType |  Required | Description
@@ -1596,7 +1802,7 @@ pickupState| String | Mandatory | Pickup State
 pickupCountry | String | Mandatory | Pickup Country
 pickupPinCode | String | Mandatory | Pickup Pincode
 
-  
+
 ### Request Parameters (Crates)
 
 Param | DataType |  Required | Description
@@ -1723,8 +1929,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupCountry": "IND",
     "pickupPinCode": "400076",    
     "returnBranch": "test",
-    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
-    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
+    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
+    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
     "returnAccountCode": "retAcc123",
     "returnAccountName": "retAcc1234",
     "returnEmail": "test@test.com",
@@ -1972,8 +2178,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "pickupCountry": "IND",
     "pickupPinCode": "400076",    
     "returnBranch": "test",
-    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z", 
-    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z", 
+    "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
+    "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
     "returnAccountCode": "retAcc123",
     "returnAccountName": "retAcc1234",
     "returnEmail": "test@test.com",
@@ -2016,7 +2222,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
-referenceId | String | Mandatory |  Order Reference id 
+referenceId | String | Mandatory |  Order Reference id
 orderNo | String | Optional |  Order No.
 awbNumber | String | Optional | Airway Bill No.
 shipmentOrderDt | Date | Optional | Order Date
@@ -2417,11 +2623,11 @@ Use this to find out last tracked location for any order/ delivery medium.
     "deliveryMediumMapList": [
       {
         "name": "HINDI"
-        
+
       },
       {
         "name": "ENGLISH"
-        
+
       }
     ],
     "shiftList": [
@@ -2533,7 +2739,7 @@ This API gets coordinates for a given location.
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-apartment | String | Optional | Apartment 
+apartment | String | Optional | Apartment
 streetName | String | Optional | Street name
 landmark | String | Optional | Landmark
 locality | String | Optional | Locality
@@ -2965,7 +3171,7 @@ This notification is sent when an order is accepted by a delivery boy.
 
 ### Response Parameters
 
-  
+
 Param | DataType | Description
 --------- | ------- | ----------
 clientShipmentId | String | Order No.
@@ -3471,7 +3677,7 @@ orderNo | String |  Order no.
 startTimeWindow | String |  Estimated start time of order
 endTimeWindow | String |  Estimated end time of order
 deliveryOrder | Integer |  Delivery order
-latitude | Double | Order Latitude 
+latitude | Double | Order Latitude
 longitude | Double | Order Longitude
 
 ## Start Trip
@@ -3619,7 +3825,7 @@ updatedDate | String | Timestamp
 
 # Country Codes
 
-Country |  Code 
+Country |  Code
 --------- | ---------  
 ALBANIA|AFG
 ALGERIA|ALB
@@ -3866,7 +4072,7 @@ ZIMBABWE|ZWE
 
 ## India
 
-State | Code 
+State | Code
 --------- | ---------
 Delhi|DL
 Andhra Pradesh|AP
@@ -3907,9 +4113,9 @@ Puducherry|PC
 
 ## Australia
 
-State | Code 
+State | Code
 --------- | ---------
-New South Wales|New South 
+New South Wales|New South
 Victoria|Victoria
 Queensland|Queensland
 South Australia|South Aust
@@ -3917,7 +4123,7 @@ Tasmania|Tasmania
 
 ## Canada
 
-State | Code 
+State | Code
 --------- | ---------
 Alberta|Alberta
 British Columbia|British Co
@@ -3925,7 +4131,7 @@ Manitoba|Manitoba
 New Brunswick|New Brunsw
 Newfoundland and Labrador|Newfoundla
 Nova Scotia|Nova Scoti
-Northwest Territory|Northwest 
+Northwest Territory|Northwest
 Nunavut Territory|Nunavut Te
 Ontario|Ontario
 Prince Edward Island|Prince Edw
@@ -3936,7 +4142,7 @@ Yukon|Yukon
 
 ## Mexico
 
-State | Code 
+State | Code
 --------- | ---------
 Aguascalientes|AGU
 Baja California|BCN
@@ -3974,7 +4180,7 @@ Zacatecas|ZAC
 
 ## Saudi Arabia
 
-State | Code 
+State | Code
 --------- | ---------
 Ha'il|Ha'il
 Qassim|Qassim
@@ -3993,7 +4199,7 @@ Eastern Province|Eastern Pr
 
 ## Tanzania
 
-State | Code 
+State | Code
 --------- | ---------
 Dar es salaam Tz|Dar es sal
 Arusha Tz|Arusha Tz
@@ -4004,7 +4210,7 @@ Other States Tz|Other Stat
 
 ## United Arab Emirates
 
-State | Code 
+State | Code
 --------- | ---------
 Abu Dhabi|AZ
 Dubai|DU
@@ -4020,7 +4226,7 @@ Fujairah|FU
   padding-right:4px !important;
   display:inline;
 }
-</style> 
+</style>
 <script>
   setTimeout(function() {
     jQuery(".tocify-wrapper .tocify ul li a").filter(
