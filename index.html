@@ -123,7 +123,7 @@
 
 <p>Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.</p>
 
-<p>The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location. </p>
+<p>The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location.</p>
 
 <p>Below are few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.</p>
 
@@ -243,7 +243,7 @@
 
 <p>You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
 
-<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer. </p>
+<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.</p>
 
 <p><b><u>The validity of this session token is 1 day (24 hours).</u></b></p>
 
@@ -415,7 +415,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h2 id="create-vehicle">Create Vehicle</h2>
 
-<p>For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a &ldquo;Reference Id&rdquo; which you need to store in order to update the vehicle information in future. </p>
+<p>For Haul and Mile products, you can create and maintain details of the vehicles in the LogiNext system using Create Vehicle API. This API requires vehicle’s primary information (mandatory - Vehicle Number) and returns a &ldquo;Reference Id&rdquo; which you need to store in order to update the vehicle information in future.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -427,32 +427,32 @@ Please check with our assigned CSAs on the address format based on the model typ
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
-                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">"LN12345678"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">"LN12345678"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">  
 </span></code></pre>
@@ -464,11 +464,11 @@ Please check with our assigned CSAs on the address format based on the model typ
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-       </span><span class="p">],</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+     </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -800,7 +800,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h2 id="update-vehicle">Update Vehicle</h2>
 
-<p>You can update the data for any of the vehicle mapped to your account by using this API. 
+<p>You can update the data for any of the vehicle mapped to your account by using this API.
 You will have to pass the reference Id of the vehicle whose information needs to be updated.This reference Id is supplied to you as a response when the vehicle is created.</p>
 
 <p>Note that you will be able to update the information of only those vehicles which are available. If the status of the vehicle is “In Transit”, then that vehicle cannot be updated and in this case you will get error message - 400 - Bad Request</p>
@@ -815,33 +815,33 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">        
-            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
-                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">""</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">        
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="s2">"Andhra Pradesh,Delhi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2340,6 +2340,206 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="get-tracker-list">Get Tracker (List)</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DeviceApp/device/v</span><span class="mi">1</span><span class="err">/haul</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1255</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN02510915"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"suppliedDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"standardPriceAmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"discountPct"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lookupDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isAvailableFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Intransit"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1469510397000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDate"</span><span class="p">:</span><span class="mi">2016-07-26</span><span class="err">'T'</span><span class="mi">05</span><span class="err">:</span><span class="mi">19</span><span class="err">:</span><span class="mi">57</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">67.78</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13141"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.646592</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.275329</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProviderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offline"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mahindra Logistics Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"odometer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"direction"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fuel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ignition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH12LT2092"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATQD-BOMZ-test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1128</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN01240915"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"suppliedDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"standardPriceAmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"discountPct"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lookupDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isAvailableFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1467372218000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDate"</span><span class="p">:</span><span class="mi">2016-07-01</span><span class="err">'T'</span><span class="mi">11</span><span class="err">:</span><span class="mi">23</span><span class="err">:</span><span class="mi">38</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13006"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">26.90774</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">75.846686</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProviderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offline"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mahindra Logistics Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"odometer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"direction"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fuel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ignition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2491</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN01470915"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"suppliedDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"standardPriceAmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"discountPct"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lookupDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supplierDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isAvailableFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\u0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1469513910000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedDate"</span><span class="p">:</span><span class="mi">2016-07-26</span><span class="err">'T'</span><span class="mi">06</span><span class="err">:</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deviceTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13030"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"extraField5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.964397</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.679164</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"simNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceProviderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"planTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gpsStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offline"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mahindra Logistics Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"odometer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"direction"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fuel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ignition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Tracker API fetches the details of all the trackers of the client.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/DeviceApp/device/v1/haul</code></p>
+
 <h1 id="loginext-mile-tm">LogiNext Mile <sup>TM</sup></h1>
 
 <p>Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  </p>
@@ -3430,8 +3630,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
@@ -4049,8 +4249,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
@@ -9030,7 +9230,7 @@ You can pass multiple crate and line items.</p>
   padding-right:4px !important;
   display:inline;
 }
-</style> 
+</style>
 
 <script>
   setTimeout(function() {
