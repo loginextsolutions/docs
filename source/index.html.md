@@ -1078,7 +1078,6 @@ barcode | String |Mandatory | Barcode of the tracker used for attaching to vehic
 > Definition
 
 ```json
-<<<<<<< Updated upstream
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 ```
 
@@ -1086,11 +1085,9 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 
 ```json
 ["ca7fbf96a133461aadce8f94678084ee"]
-=======
 {
     "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
 }
->>>>>>> Stashed changes
 ```
 
 > Response
@@ -1117,9 +1114,7 @@ Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 referenceIds | List | Mandatory | Reference Ids associated with trips
 
-<<<<<<< Updated upstream
 ## Stop Trip
-=======
 
 ### HTTP Request Parameters
 
@@ -1129,11 +1124,9 @@ tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 
 ## Trip Stop
->>>>>>> Stashed changes
 
 
 ```json
-<<<<<<< Updated upstream
 https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 ```
 
@@ -1141,11 +1134,9 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 
 ```json
 ["ca7fbf96a133461aadce8f94678084ee"]
-=======
 {
     "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
 }
->>>>>>> Stashed changes
 ```
 
 > Response
