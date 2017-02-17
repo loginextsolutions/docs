@@ -1193,12 +1193,12 @@ aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token witho
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 tripname | TestTripName| Trip name
 
-## Get Location
+## Get Location()
 
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
+https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=true
 ```
 
 > Request Body
@@ -1221,18 +1221,19 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation
       "geocodingSource": null,
       "types": null,
       "eta": "2016-08-18 06:43:00",
-      "lastTrackedAt": "2016-08-17 16:26:01"
+      "lastTrackedAt": "2016-08-17 16:26:01",
+      "address": "Varanasi - Kanyakumari, Anna, Dindigul district, Tamil Nadu, India"
     }
   ],
   "hasError": false
 }
 ```
 
-Track API fetches the latest location (latitude / longitude) for a trip based on its name.
+This API fetches the latest location (latitude / longitude) and reverse geocoded address for a trip based on its name.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=true`
 
 
 ### Request Body
@@ -1241,6 +1242,12 @@ Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 tripnames | List | Mandatory | Trip names
 
+
+### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+address | Boolean | Optional | Indicates whether to reverse Geocode the coordinates
 
 ## Create Tracking Record
 
