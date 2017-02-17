@@ -2172,12 +2172,12 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
-<h2 id="get-location">Get Location</h2>
+<h2 id="get-location">Get Location()</h2>
 
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TrackingApp/haul/v</span><span class="mi">1</span><span class="err">/track/lastlocation?address=</span><span class="kc">true</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2200,18 +2200,19 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18 06:43:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-17 16:26:01"</span><span class="w">
+      </span><span class="nt">"lastTrackedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-17 16:26:01"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varanasi - Kanyakumari, Anna, Dindigul district, Tamil Nadu, India"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Track API fetches the latest location (latitude / longitude) for a trip based on its name.</p>
+<p>This API fetches the latest location (latitude / longitude) and reverse geocoded address for a trip based on its name.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=true</code></p>
 
 <h3 id="request-body">Request Body</h3>
 
@@ -2228,6 +2229,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>List</td>
 <td>Mandatory</td>
 <td>Trip names</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>Boolean</td>
+<td>Optional</td>
+<td>Indicates whether to reverse Geocode the coordinates</td>
 </tr>
 </tbody></table>
 
