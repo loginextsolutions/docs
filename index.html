@@ -2593,7 +2593,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -2850,6 +2852,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Pincode</td>
 </tr>
 <tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Delivery address Latitude</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Delivery address Longitude</td>
+</tr>
+<tr>
 <td>returnBranch</td>
 <td>String</td>
 <td>Mandatory</td>
@@ -2979,6 +2993,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
@@ -3227,263 +3243,17 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Mandatory</td>
 <td>Pickup Pincode</td>
 </tr>
-</tbody></table>
-
-<h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
-
-<table><thead>
 <tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>shipmentCrateMappings</td>
-<td>Array of objects</td>
-<td>Optional</td>
-<td>Shipment crates</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.crateCd</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>CRATE001</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.crateAmount</td>
+<td>pickupLatitude</td>
 <td>Double</td>
 <td>Optional</td>
-<td>Crate amount</td>
+<td>Pickup address Latitude</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.crateType</td>
-<td>String</td>
-<td>Optional</td>
-<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.noOfUnits</td>
-<td>Integer</td>
-<td>Optional</td>
-<td>No. of crate units</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Item code</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
-<td>String</td>
-<td>Optional</td>
-<td>Item name</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
-<td>Double</td>
-<td>Mandatory</td>
-<td>Item price</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
-<td>Double</td>
-<td>Mandatory</td>
-<td>Item quantity</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
-<td>String</td>
-<td>Optional</td>
-<td>Item type</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>pickupLongitude</td>
 <td>Double</td>
 <td>Optional</td>
-<td>Item weight</td>
-</tr>
-</tbody></table>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderNo</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Order No.</td>
-</tr>
-<tr>
-<td>awbNumber</td>
-<td>String</td>
-<td>Optional</td>
-<td>Airway Bill No.</td>
-</tr>
-<tr>
-<td>shipmentOrderDt</td>
-<td>Date</td>
-<td>Mandatory</td>
-<td>Order Date</td>
-</tr>
-<tr>
-<td>deliveryType</td>
-<td>String</td>
-<td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
-</tr>
-<tr>
-<td>packageVolume</td>
-<td>String</td>
-<td>Optional</td>
-<td>Volume of package in CC</td>
-</tr>
-<tr>
-<td>paymentType</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>packageValue</td>
-<td>String</td>
-<td>Optional</td>
-<td>Cost of Package</td>
-</tr>
-<tr>
-<td>isPartialDeliveryAllowedFl</td>
-<td>String</td>
-<td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N</td>
-</tr>
-<tr>
-<td>returnAllowedFl</td>
-<td>String</td>
-<td>Optional</td>
-<td>Is Return allowed. Ex: Y/N</td>
-</tr>
-<tr>
-<td>cancellationAllowedFl</td>
-<td>String</td>
-<td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N</td>
-</tr>
-<tr>
-<td>numberOfItems</td>
-<td>String</td>
-<td>Optional</td>
-<td>Number of crates</td>
-</tr>
-<tr>
-<td>pickupServiceTime</td>
-<td>String</td>
-<td>Optional</td>
-<td>Pickup service time in mins.</td>
-</tr>
-<tr>
-<td>pickupStartTimeWindow</td>
-<td>Date</td>
-<td>Optional</td>
-<td>Pickup start time window</td>
-</tr>
-<tr>
-<td>pickupEndTimeWindow</td>
-<td>Date</td>
-<td>Optional</td>
-<td>Pickup end time window</td>
-</tr>
-<tr>
-<td>shipmentOrderTypeCd</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Order type code. PICKUP for pickup leg order</td>
-</tr>
-<tr>
-<td>orderState</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>State of order. Ex: FORWARD</td>
-</tr>
-<tr>
-<td>pickupBranch</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Name of pickup branch</td>
-</tr>
-<tr>
-<td>distributionCenter</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
-</tr>
-<tr>
-<td>pickupAccountCode</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Pickup account code</td>
-</tr>
-<tr>
-<td>pickupAccountName</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Pickup account name</td>
-</tr>
-<tr>
-<td>pickupApartment</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Apartment</td>
-</tr>
-<tr>
-<td>pickupStreetName</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Street name</td>
-</tr>
-<tr>
-<td>pickupLandmark</td>
-<td>String</td>
-<td>Optional</td>
-<td>Landmark</td>
-</tr>
-<tr>
-<td>pickupLocality</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Locality</td>
-</tr>
-<tr>
-<td>pickupCity</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>City</td>
-</tr>
-<tr>
-<td>pickupState</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>State code</td>
-</tr>
-<tr>
-<td>pickupCountry</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Country code</td>
-</tr>
-<tr>
-<td>pickupPinCode</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Pincode</td>
+<td>Pickup address Longitude</td>
 </tr>
 </tbody></table>
 
@@ -3607,7 +3377,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.125497"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.836675"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
@@ -3621,7 +3393,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">   
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
@@ -3880,6 +3654,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Pincode</td>
 </tr>
 <tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Delivery address Latitude</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Delivery address Longitude</td>
+</tr>
+<tr>
 <td>pickupBranch</td>
 <td>String</td>
 <td>Mandatory</td>
@@ -3962,6 +3748,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup Pincode</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Pickup address Latitude</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td>Optional</td>
+<td>Pickup address Longitude</td>
 </tr>
 <tr>
 <td>returnBranch</td>
