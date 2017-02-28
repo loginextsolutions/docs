@@ -1556,7 +1556,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliverCity": "Mumbai",
     "deliverState": "MH",
     "deliverCountry": "IND",
-    "deliverPinCode": "400076",    
+    "deliverPinCode": "400076",
+    "deliverLatitude":"19.124497",
+    "deliverLongitude":"72.893675",    
     "returnBranch": "Gurgaon",
     "shipmentCrateMappings": [
       {
@@ -1647,6 +1649,8 @@ deliverCity | String | Mandatory | City
 deliverState| String | Mandatory | State code
 deliverCountry | String | Mandatory | Country code
 deliverPinCode | String | Mandatory | Pincode
+deliverLatitude | Double | Optional | Delivery address Latitude
+deliverLongitude | Double | Optional | Delivery address Longitude
 returnBranch | String | Mandatory | Name of return branch
 
 ### Request Parameters (Crates)
@@ -1709,6 +1713,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupState": "MH",
     "pickupCountry": "IND",
     "pickupPinCode": "400076",
+    "pickupLatitude":"19.116854",
+    "pickupLongitude":"72.910455",
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -1799,6 +1805,8 @@ pickupCity | String | Mandatory | Pickup City
 pickupState| String | Mandatory | Pickup State
 pickupCountry | String | Mandatory | Pickup Country
 pickupPinCode | String | Mandatory | Pickup Pincode
+pickupLatitude | Double | Optional | Pickup address Latitude
+pickupLongitude | Double | Optional | Pickup address Longitude
 
 
 ### Request Parameters (Crates)
@@ -1820,54 +1828,6 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item we
 
 
 
-### Request Parameters
-
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderDt | Date | Mandatory | Order Date
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-packageVolume | String | Optional | Volume of package in CC
-paymentType | String | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
-packageValue | String | Optional | Cost of Package
-isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-numberOfItems | String | Optional | Number of crates
-pickupServiceTime | String | Optional | Pickup service time in mins.
-pickupStartTimeWindow | Date | Optional | Pickup start time window
-pickupEndTimeWindow | Date | Optional | Pickup end time window
-shipmentOrderTypeCd | String | Mandatory | Order type code. PICKUP for pickup leg order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-pickupBranch | String | Mandatory | Name of pickup branch
-distributionCenter | String | Mandatory | Distribution center's name
-pickupAccountCode | String | Mandatory | Pickup account code
-pickupAccountName | String | Mandatory | Pickup account name
-pickupApartment | String | Mandatory | Apartment
-pickupStreetName | String | Mandatory | Street name
-pickupLandmark | String | Optional | Landmark
-pickupLocality | String | Mandatory | Locality
-pickupCity | String | Mandatory | City
-pickupState| String | Mandatory | State code
-pickupCountry | String | Mandatory | Country code
-pickupPinCode | String | Mandatory | Pincode
-
-### Request Parameters (Crates)
-
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.crateAmount | Double | Optional | Crate amount
-shipmentCrateMappings.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
-shipmentCrateMappings.noOfUnits | Integer | Optional | No. of crate units
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
 
 ## Create Order (Pickup & Delivery)
 
@@ -1911,7 +1871,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliverCity": "Mumbai",
     "deliverState": "MH",
     "deliverCountry": "IND",
-    "deliverPinCode": "400076",    
+    "deliverPinCode": "400076",
+    "deliverLatitude":"19.125497",
+    "deliverLongitude":"72.836675",    
     "pickupBranch":"Gurgaon",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
@@ -1925,7 +1887,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupCity": "Mumbai",
     "pickupState": "MH",
     "pickupCountry": "IND",
-    "pickupPinCode": "400076",    
+    "pickupPinCode": "400076", 
+    "pickupLatitude":"19.116854",
+    "pickupLongitude":"72.910455",   
     "returnBranch": "test",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
@@ -2029,6 +1993,8 @@ deliverCity | String | Mandatory | City
 deliverState| String | Mandatory | State code
 deliverCountry | String | Mandatory | Country code
 deliverPinCode | String | Mandatory | Pincode
+deliverLatitude | Double | Optional | Delivery address Latitude
+deliverLongitude | Double | Optional | Delivery address Longitude
 pickupBranch | String | Mandatory | Name of pickup branch
 pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
 pickupStartTimeWindow | Date | Mandatory | Pickup start time window
@@ -2043,6 +2009,8 @@ pickupCity | String | Mandatory | Pickup City
 pickupState| String | Mandatory | Pickup State code
 pickupCountry | String | Mandatory | Pickup Country code
 pickupPinCode | String | Mandatory | Pickup Pincode
+pickupLatitude | Double | Optional | Pickup address Latitude
+pickupLongitude | Double | Optional | Pickup address Longitude
 returnBranch | String | Mandatory | Name of return branch
 returnStartTimeWindow | Date | Mandatory | Return start time window
 returnEndTimeWindow | Date | Mandatory | Return end time window
