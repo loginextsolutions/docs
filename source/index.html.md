@@ -3057,7 +3057,7 @@ Note -
 1. LogiNext Webhooks are sent via HTTP REST protocol.
 2. The default content type for all the LogiNext Webhooks is "application/ json".
 3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.
-4. All the dates and timestamps that are represented in the Webhooks are in the UTC Client timezones.
+4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.
 5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
 
 ## Create Order
