@@ -4186,6 +4186,27 @@ Umm Al Quwain|UQ
 Ras Al Khaimah|RK
 Fujairah|FU
 
+## Malaysia
+
+State | Code
+--------- | ---------
+Johor|JHR
+Kedah|KDH
+Kelantan|KTN
+Kuala Lumpur|KUL
+Labuan|LBN
+Melaka|MLK
+Negeri Sembilan|NSN
+Pahang|PHG
+Perak|PRK
+Perlis|PLS
+Pulau Pinang|PNG
+Putrajaya|PJY
+Sabah|SBH
+Sarawak|SWK
+Selangor|SGR
+Terengganu|TRG
+
 
 <style>
 .sup{
