@@ -59,6 +59,8 @@ Versioning allows us to provide developers a consistent experience. All endpoint
 
 The LogiNext API uses HTTP status codes to indicate the status of your requests. This includes Success and Error codes.
 
+Dates in API responses like 2016-07-01T11:18:00.000Z are sent in Coordinated Universal Time (UTC) format.
+
 Code | Description
 ---------- | -------
 200 | Success -- Your request is successfully processed.
