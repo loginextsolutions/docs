@@ -1195,7 +1195,7 @@ aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token witho
 key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 tripname | TestTripName| Trip name
 
-## Get Location()
+## Get Location
 
 > Definition
 
@@ -1206,7 +1206,7 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
 > Request Body
 
 ```json
-["TestTripName"]
+["112-EastZone-115-WestZone","123-NorthSector-132-EastHub"]
 ```
 
 > Response
@@ -1219,37 +1219,47 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
     {
       "lat": 10.394535555555555,
       "lng": 77.96088,
-      "shipmentReference": "aefe22d9ba934908a7a2aeb790964814",
-      "geocodingSource": null,
-      "types": null,
       "eta": "2016-08-18 06:43:00",
       "lastTrackedAt": "2016-08-17 16:26:01",
-      "address": "Varanasi - Kanyakumari, Anna, Dindigul district, Tamil Nadu, India"
+    },
+    {
+      "lat": 23.484535,
+      "lng": 79.460987,
+      "eta": "2016-08-18 06:43:00",
+      "lastTrackedAt": "2016-08-17 16:26:01",
     }
   ],
   "hasError": false
 }
 ```
 
-This API fetches the latest location (latitude / longitude) and reverse geocoded address for a trip based on its name.
+This API fetches the latest location and the reverse geocoded address for a trip.
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=true`
-
-
-### Request Body
-
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-tripnames | List | Mandatory | Trip names
-
+<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=false`
 
 ### Request Parameters
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-address | Boolean | Optional | Indicates whether to reverse Geocode the coordinates
+address | Boolean | Optional | To be passed as "true" if reverse geocoded address is needed,else "false"
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+- | List of Strings | Mandatory | List of Trip names
+
+### Response Body
+
+Parameter | DataType | Description
+-----------|-------| ----------
+lat | Double | Specifies the latitude of the last tracked location
+lng | Double | Specifies the longitude of the last tracked location
+eta | Date   | Estimated time of arrival at the destination
+lastTrackedAt | Date | The last tracked date and time in UTC of the GPS device
+address | String | The reverse geocoded address will be fetched if the "address" parameter is passed as true
 
 ## Create Tracking Record
 
@@ -2088,6 +2098,211 @@ Place a new return order with this API.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_ids | List | Mandatory | Reference Id associated with the order.
+
+
+## Get Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=TEST_ORDER
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "SUCCESS",
+  "referenceId": null,
+  "data": [
+  {
+      "referenceId": "f40cf4493a5949199775499b5750a272",
+      "orderNo": "TEST_ORDER1",
+      "awbNumber": "12345",
+      "clientName": "Asia Commerce Logistics SDN BHD",
+      "branchName": "ACL_CENTER_WHSE",
+      "origin": "ACL_CENTER_WHSE",
+      "destination": "Mid Valley Megamall,Lingkaran Syed Putra, Mid Valley City,Kuala Lumpur",
+      "shipmentOrderTypeCd": "DELIVER",
+      "orderState": "FORWARD",
+      "deliveryType": "TRK",
+      "deliveryLocationType": "PUP",
+      "shipmentOrderDt": 1485153536000,
+      "startTimeWindow": 1485174600000,
+      "endTimeWindow": 1485181800000,
+      "paymentType": "COD",
+      "notes": "Order recieved successfully.Thanks",
+      "packageValue": 0,
+      "recalculatedValue": 0,
+      "status": "DELIVERED",
+      "plannedServiceTime": 5,
+      "serviceTime": 2,
+      "deliveryMediumName": "5T-ACOM2",
+      "assignedThrough": "Manually",
+      "tripName": "TRIP-3",
+      "eta": 1485155640000,
+      "actualStartDt": 1485154380000,
+      "actualEndDt": 1485155021000,
+      "plannedDistance": 16.708,
+      "actualDistance": 6430.184,
+      "distanceFromHub": null,
+      "plannedStartDt": 1485154380000,
+      "plannedEndDt": 1485155640000,
+      "timeTakenDifferenceInMins": 10,
+      "pickupCheckInTime": 1485154765000,
+      "pickupCheckOutTime": 1485154887000,
+      "pickupCheckInLatitude": 19.1117636,
+      "pickupCheckInLongitude": 72.9093743,
+      "pickupCheckOutLatitude": 19.1117636,
+      "pickupCheckOutLongitude": 72.9093743,
+      "deliverCheckInTime": 1485154905000,
+      "deliverCheckOutTime": 1485155021000,
+      "deliverCheckInLatitude": 19.1117636,
+      "deliverCheckInLongitude": 72.9093743,
+      "deliverCheckOutLatitude": 19.1117548,
+      "deliverCheckOutLongitude": 72.909282,
+      "orderSequence": 5,
+      "customerCode": "CST_ACL1",
+      "customerName": "Sg",
+      "amountCollected": 200,
+      "podCount": 2,
+      "noOfCrates": 1,
+      "packageWeight": 0,
+      "packageVolume": 0,
+      "customerComments": "",
+      "deliveryNotes": "Order delivered successfully",
+      "customerRatings": 5,
+      "noOfAttempts": 1,
+      "deliveryGeofenceEnterTime": 1484727378000,
+      "deliveryGeofenceExitTime": 1484727387000,
+      "isDelayed": false,
+      "delayedBy": null,
+      "shipmentCrateMappings": [
+        {
+          "crateCd": "Crate1",
+          "statusCd": "UNLOADED",
+          "crateType": "CRATE",
+          "crateAmount": 0,
+          "shipmentlineitems": [],
+          "noOfUnits": 1,
+          "loadedUnits": 1,
+          "unloadedUnits": 1,
+          "orderNo": "TEST_ACL1",
+          "crateQuantity": 0,
+          "amountToCollect": 0,
+        }
+      ]
+    },
+    {
+      "referenceId": "bf5b17d7f4a449a7a4612754899615a0",
+      "orderNo": "TEST_ORDER2",
+      "awbNumber": "",
+      "clientName": "Asia Commerce Logistics SDN BHD",
+      "branchName": "ACL_CENTER_WHSE",
+      "origin": "No. 1,Jalan Taylors,,,,Subang Jaya,47500",
+      "destination": "SubangJaya_Mile",
+      "shipmentOrderTypeCd": "PICKUP",
+      "orderState": "FORWARD",
+      "deliveryType": "TRK",
+      "deliveryLocationType": null,
+      "shipmentOrderDt": 1484618400000,
+      "startTimeWindow": 1484791200000,
+      "endTimeWindow": 1484827200000,
+      "paymentType": "COD",
+      "notes": "Order recieved successfully.Thanks",
+      "packageValue": 0,
+      "recalculatedValue": 0,
+      "status": "DELIVERED",
+      "plannedServiceTime": 0,
+      "serviceTime": 0,
+      "deliveryMediumName": "5T-ACOM2",
+      "assignedThrough": "Manually",
+      "tripName": "TRIP-8",
+      "eta": 1484727307000,
+      "actualStartDt": 1484727307000,
+      "actualEndDt": 1484727397000,
+      "plannedDistance": 7.55,
+      "actualDistance": 6429.382,
+      "distanceFromHub": 7.054,
+      "plannedStartDt": 1484728567000,
+      "plannedEndDt": 1484727307000,
+      "timeTakenDifferenceInMins": 1,
+      "pickupCheckInTime": 1484727378000,
+      "pickupCheckOutTime": 1484727387000,
+      "pickupCheckInLatitude": 19.1118447,
+      "pickupCheckInLongitude": 72.909282,
+      "pickupCheckOutLatitude": 19.1118447,
+      "pickupCheckOutLongitude": 72.909282,
+      "deliverCheckInTime": null,
+      "deliverCheckOutTime": 1484727378000,
+      "deliverCheckInLatitude": null,
+      "deliverCheckInLongitude": null,
+      "deliverCheckOutLatitude": 19.1118447,
+      "deliverCheckOutLongitude": 72.909282,
+      "orderSequence": 1,
+      "customerCode": "Cha1",
+      "customerName": "Jacob",
+      "amountCollected": null,
+      "podCount": null,
+      "noOfCrates": 1,
+      "packageWeight": 0,
+      "packageVolume": 0,
+      "customerComments": "",
+      "deliveryNotes": "",
+      "customerRatings": 5,
+      "noOfAttempts": 1,
+      "deliveryGeofenceEnterTime": 1484727378000,
+      "deliveryGeofenceExitTime": 1484727378000,
+      "isDelayed": false,
+      "delayedBy": null,
+      "shipmentCrateMappings": [
+        {
+          "crateCd": "Crate1",
+          "statusCd": "UNLOADED",
+          "crateType": "CRATE",
+          "crateAmount": 0,
+          "shipmentlineitems": [],
+          "noOfUnits": 1,
+          "loadedUnits": 1,
+          "unloadedUnits": 1,
+          "orderNo": "ODT012",
+          "crateQuantity": null,
+          "amountToCollect": 0,
+        }
+      ]
+    }
+  ],
+  "hasError": false
+}
+
+```
+With this API you can can fetch the list of your orders and the associated order information. 
+
+### Request
+
+<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment`
+
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+start_date | Date | Mandatory |  Range of date from which orders can be searched
+end_date | Date | Mandatory |  Range of date upto which orders can be searched
+status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED,DELETED
+order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
+
+Status | Filter applied on orders 
+--------- | -------
+NOTDISPATCHED | Orders will be fetched for which either the Planned Delivery Start Date & Time or the Planned Delivery End Date & Time lies within the range specified.
+INTRANSIT | Orders will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
+COMPLETED/NOTCOMPLETED | Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
+CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified. 
+DELETED | Orders will be fetched for which the Deletion Date & Time lies within the range specified. 
+ALL | Superset of all the filters mentioned for the above statuses will be considered.
 
 
 ## Update Order
