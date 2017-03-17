@@ -2174,7 +2174,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
-<h2 id="get-location">Get Location()</h2>
+<h2 id="get-location">Get Location</h2>
 
 <blockquote>
 <p>Definition</p>
@@ -2185,7 +2185,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"TestTripName"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"112-EastZone-115-WestZone"</span><span class="p">,</span><span class="s2">"123-NorthSector-132-EastHub"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2198,41 +2198,25 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.394535555555555</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.96088</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aefe22d9ba934908a7a2aeb790964814"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18 06:43:00"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-17 16:26:01"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Varanasi - Kanyakumari, Anna, Dindigul district, Tamil Nadu, India"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="err">}</span><span class="p">,</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.484535</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.460987</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18 06:43:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-17 16:26:01"</span><span class="p">,</span><span class="w">
+    </span><span class="err">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This API fetches the latest location (latitude / longitude) and reverse geocoded address for a trip based on its name.</p>
+<p>This API fetches the latest location and the reverse geocoded address for a trip.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=true</code></p>
-
-<h3 id="request-body">Request Body</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tripnames</td>
-<td>List</td>
-<td>Mandatory</td>
-<td>Trip names</td>
-</tr>
-</tbody></table>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address=false</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -2248,7 +2232,61 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>address</td>
 <td>Boolean</td>
 <td>Optional</td>
-<td>Indicates whether to reverse Geocode the coordinates</td>
+<td>To be passed as &ldquo;true&rdquo; if reverse geocoded address is needed,else &ldquo;false&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>List of Strings</td>
+<td>Mandatory</td>
+<td>List of Trip names</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-body">Response Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lat</td>
+<td>Double</td>
+<td>Specifies the latitude of the last tracked location</td>
+</tr>
+<tr>
+<td>lng</td>
+<td>Double</td>
+<td>Specifies the longitude of the last tracked location</td>
+</tr>
+<tr>
+<td>eta</td>
+<td>Date</td>
+<td>Estimated time of arrival at the destination</td>
+</tr>
+<tr>
+<td>lastTrackedAt</td>
+<td>Date</td>
+<td>The last tracked date and time in UTC of the GPS device</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The reverse geocoded address will be fetched if the &ldquo;address&rdquo; parameter is passed as true</td>
 </tr>
 </tbody></table>
 
@@ -3983,6 +4021,258 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>List</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-order">Get Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=TEST_ORDER</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ORDER1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia Commerce Logistics SDN BHD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mid Valley Megamall,Lingkaran Syed Putra, Mid Valley City,Kuala Lumpur"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485153536000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485174600000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485181800000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order recieved successfully.Thanks"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"recalculatedValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5T-ACOM2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"assignedThrough"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manually"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155640000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154380000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155021000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.708</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">6430.184</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distanceFromHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154380000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155640000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timeTakenDifferenceInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154765000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154887000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154905000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155021000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117548</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909282</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CST_ACL1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"podCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"noOfCrates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order delivered successfully"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerRatings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryGeofenceEnterTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryGeofenceExitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727387000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"delayedBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLOADED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ACL1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"amountToCollect"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="err">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf5b17d7f4a449a7a4612754899615a0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ORDER2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia Commerce Logistics SDN BHD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No. 1,Jalan Taylors,,,,Subang Jaya,47500"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SubangJaya_Mile"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484618400000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484791200000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484827200000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order recieved successfully.Thanks"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"recalculatedValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5T-ACOM2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"assignedThrough"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manually"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-8"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727307000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727307000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727397000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.55</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">6429.382</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distanceFromHub"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.054</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484728567000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727307000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timeTakenDifferenceInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727387000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118447</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909282</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118447</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909282</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118447</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909282</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cha1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacob"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"podCount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"noOfCrates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerRatings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryGeofenceEnterTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryGeofenceExitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"delayedBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLOADED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ODT012"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateQuantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"amountToCollect"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="err">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API you can can fetch the list of your orders and the associated order information. </p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Range of date from which orders can be searched</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>Date</td>
+<td>Mandatory</td>
+<td>Range of date upto which orders can be searched</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Optional</td>
+<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED,DELETED</td>
+</tr>
+<tr>
+<td>order_no</td>
+<td>String</td>
+<td>Optional</td>
+<td>Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Filter applied on orders</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NOTDISPATCHED</td>
+<td>Orders will be fetched for which either the Planned Delivery Start Date &amp; Time or the Planned Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>INTRANSIT</td>
+<td>Orders will be fetched for which the Actual Delivery Start Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>COMPLETED/NOTCOMPLETED</td>
+<td>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>CANCELLED</td>
+<td>Orders will be fetched for which the Cancellation Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>DELETED</td>
+<td>Orders will be fetched for which the Deletion Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>ALL</td>
+<td>Superset of all the filters mentioned for the above statuses will be considered.</td>
 </tr>
 </tbody></table>
 
