@@ -2279,7 +2279,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
 }
 
 ```
-With this API you can can fetch the list of your orders and the associated order information. 
+With this API you can fetch the list of your orders and the associated order information. 
 
 ### Request
 
@@ -2290,18 +2290,18 @@ With this API you can can fetch the list of your orders and the associated order
 
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
-start_date | Date | Mandatory |  Range of date from which orders can be searched
-end_date | Date | Mandatory |  Range of date upto which orders can be searched
-status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED,DELETED
+start_date | Date | Mandatory |  Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+end_date | Date | Mandatory |  Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
 
 Status | Filter applied on orders 
 --------- | -------
-NOTDISPATCHED | Orders will be fetched for which either the Planned Delivery Start Date & Time or the Planned Delivery End Date & Time lies within the range specified.
+NOTDISPATCHED | Orders will be fetched for which either the Order Start Date & Time Window or the Order End Date & Time Window lies within the range specified.
 INTRANSIT | Orders will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
-COMPLETED/NOTCOMPLETED | Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
+COMPLETED | For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
+NOTCOMPLETED | For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
 CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified. 
-DELETED | Orders will be fetched for which the Deletion Date & Time lies within the range specified. 
 ALL | Superset of all the filters mentioned for the above statuses will be considered.
 
 
