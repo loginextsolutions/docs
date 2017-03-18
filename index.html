@@ -4202,7 +4202,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>With this API you can can fetch the list of your orders and the associated order information. </p>
+<p>With this API you can fetch the list of your orders and the associated order information. </p>
 
 <h3 id="request">Request</h3>
 
@@ -4222,19 +4222,19 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>start_date</td>
 <td>Date</td>
 <td>Mandatory</td>
-<td>Range of date from which orders can be searched</td>
+<td>Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>end_date</td>
 <td>Date</td>
 <td>Mandatory</td>
-<td>Range of date upto which orders can be searched</td>
+<td>Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
 <td>Optional</td>
-<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED,DELETED</td>
+<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
 </tr>
 <tr>
 <td>order_no</td>
@@ -4252,23 +4252,23 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </thead><tbody>
 <tr>
 <td>NOTDISPATCHED</td>
-<td>Orders will be fetched for which either the Planned Delivery Start Date &amp; Time or the Planned Delivery End Date &amp; Time lies within the range specified.</td>
+<td>Orders will be fetched for which either the Order Start Date &amp; Time Window or the Order End Date &amp; Time Window lies within the range specified.</td>
 </tr>
 <tr>
 <td>INTRANSIT</td>
 <td>Orders will be fetched for which the Actual Delivery Start Date &amp; Time lies within the range specified.</td>
 </tr>
 <tr>
-<td>COMPLETED/NOTCOMPLETED</td>
-<td>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+<td>COMPLETED</td>
+<td>For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>NOTCOMPLETED</td>
+<td>For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
 </tr>
 <tr>
 <td>CANCELLED</td>
 <td>Orders will be fetched for which the Cancellation Date &amp; Time lies within the range specified.</td>
-</tr>
-<tr>
-<td>DELETED</td>
-<td>Orders will be fetched for which the Deletion Date &amp; Time lies within the range specified.</td>
 </tr>
 <tr>
 <td>ALL</td>
