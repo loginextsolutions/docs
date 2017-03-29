@@ -188,52 +188,64 @@
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Message</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
-<td>Success &ndash; Your request is successfully processed.</td>
+<td>Success</td>
+<td>This message means that the request is successfully processed.</td>
 </tr>
 <tr>
 <td>201</td>
-<td>Created &ndash; Your requested resource got successfully created.</td>
+<td>Created</td>
+<td>This message means that the resource is successfully created.</td>
 </tr>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is incorrect.</td>
+<td>Bad Request</td>
+<td>This message means that the request is syntactically incorrect.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong.</td>
+<td>Invalid username or password</td>
+<td>This message means that invalid credentials are passed.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified resource could not be found.</td>
+<td>Not Found</td>
+<td>This message means that the resource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a resource with an invalid method.</td>
+<td>Method Not Allowed</td>
+<td>This message means that the method used to access the resource is invalid.</td>
 </tr>
 <tr>
 <td>409</td>
-<td>Conflict &ndash; Your request could not be completed due to a conflict with the current state of the target resource.</td>
+<td>Conflict</td>
+<td>This message means that the request could not be completed due to a conflict with the current state of the target resource.</td>
 </tr>
 <tr>
 <td>415</td>
-<td>Unsupported Media Type &ndash; Your request is not in the format accepted by this method of target resource.</td>
+<td>Unsupported Media Type</td>
+<td>This message means that the request is not in the format accepted by this method of target resource.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many resources.</td>
+<td>Too Many Requests</td>
+<td>This message means that too many resources are requested.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>Internal Server Error</td>
+<td>This message means that there is an issue with the LogiNext server.Please try accessing the request later.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>Service Unavailable</td>
+<td>This message means that the LogiNext applications are down for scheduled maintanance. Please try accessing the request later.</td>
 </tr>
 </tbody></table>
 
@@ -4097,6 +4109,10 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"customerComments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order delivered successfully"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerRatings"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9988776655"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="s2">"9977776644"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH 02 T 123"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryGeofenceEnterTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryGeofenceExitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727387000</span><span class="p">,</span><span class="w">
@@ -4167,6 +4183,10 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cha1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacob"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9988776665"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="s2">"9977775544"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH 02 T 153"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"podCount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"noOfCrates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -4221,20 +4241,20 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>start_date</td>
 <td>Date</td>
-<td>Mandatory</td>
-<td>Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+<td>Conditional Mandatory</td>
+<td>If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>end_date</td>
 <td>Date</td>
-<td>Mandatory</td>
-<td>Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+<td>Conditional Mandatory</td>
+<td>If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
 <td>Optional</td>
-<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
+<td>If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
 </tr>
 <tr>
 <td>order_no</td>
