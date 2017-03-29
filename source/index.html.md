@@ -61,19 +61,19 @@ The LogiNext API uses HTTP status codes to indicate the status of your requests.
 
 Dates in API responses like 2016-07-01T11:18:00.000Z are sent in Coordinated Universal Time (UTC) format.
 
-Code | Description
----------- | -------
-200 | Success -- Your request is successfully processed.
-201 | Created -- Your requested resource got successfully created.
-400 | Bad Request -- Your request is incorrect.
-401 | Unauthorized -- Your API key is wrong.
-404 | Not Found -- The specified resource could not be found.
-405 | Method Not Allowed -- You tried to access a resource with an invalid method.
-409 | Conflict -- Your request could not be completed due to a conflict with the current state of the target resource.
-415 | Unsupported Media Type -- Your request is not in the format accepted by this method of target resource.
-429 | Too Many Requests -- You're requesting too many resources.
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+Code | Message | Description
+---------- | ------- | -------
+200 | Success | This message means that the request is successfully processed.
+201 | Created  | This message means that the resource is successfully created.
+400 | Bad Request  | This message means that the request is syntactically incorrect.
+401 | Invalid username or password  | This message means that invalid credentials are passed.
+404 | Not Found  | This message means that the resource could not be found.
+405 | Method Not Allowed  | This message means that the method used to access the resource is invalid.
+409 | Conflict  | This message means that the request could not be completed due to a conflict with the current state of the target resource.
+415 | Unsupported Media Type  |  This message means that the request is not in the format accepted by this method of target resource.
+429 | Too Many Requests  |  This message means that too many resources are requested.
+500 | Internal Server Error  | This message means that there is an issue with the LogiNext server.Please try accessing the request later.
+503 | Service Unavailable  | This message means that the LogiNext applications are down for scheduled maintanance. Please try accessing the request later.
 
 # Authentication
 
@@ -2175,6 +2175,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "customerComments": "",
       "deliveryNotes": "Order delivered successfully",
       "customerRatings": 5,
+      "customerPhoneNumber": "9988776655",
+      "deliveryMediumPhoneNumber":"9977776644",
+      "reason": null,
+      "vehicleNumber": "MH 02 T 123",
       "noOfAttempts": 1,
       "deliveryGeofenceEnterTime": 1484727378000,
       "deliveryGeofenceExitTime": 1484727387000,
@@ -2245,6 +2249,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "orderSequence": 1,
       "customerCode": "Cha1",
       "customerName": "Jacob",
+      "customerPhoneNumber": "9988776665",
+      "deliveryMediumPhoneNumber":"9977775544",
+      "reason": null,
+      "vehicleNumber": "MH 02 T 153",
       "amountCollected": null,
       "podCount": null,
       "noOfCrates": 1,
@@ -2290,9 +2298,9 @@ With this API you can fetch the list of your orders and the associated order inf
 
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
-start_date | Date | Mandatory |  Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-end_date | Date | Mandatory |  Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
+start_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+end_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+status | String | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
 
 Status | Filter applied on orders 
