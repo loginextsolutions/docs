@@ -1917,6 +1917,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnState": "MH",
     "returnCountry": "IND",
     "returnPinCode": "400104",
+    "deliverEmail":"z@z.zzz",
+    "deliverPhoneNumber":"9876543210",
+    "pickupEmail":"z@z.zzz",
+    "pickupPhoneNumber":"9876543210",
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
