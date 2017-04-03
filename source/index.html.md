@@ -1022,7 +1022,6 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
   "packageValue": 8,
   "packageVolume": 10,
   "vehicleReportingDate": "2016-02-27T18:30:00.000Z",
-  "vehicleReportingTime": "1970-02-01T07:30:00.000Z",
   "modeOfTransport": "ROAD",
   "vehicleNumber": "MH40AK0175",
   "barcode": "LN00590915",
@@ -1064,7 +1063,6 @@ packageWeight | Integer |Optional | Capacity of the shipment in terms of Kgs
 packageValue | Integer |Optional | Capacity of the shipment in terms of the number of units present in it
 packageVolume | Integer |Optional | Capacity of the shipment in terms of cc
 vehicleReportingDate | Date |Mandatory | Reporting date of the vehicle at the origin hub
-vehicleReportingTime | Date |Mandatory | Reporting time of the vehicle at the origin hub
 modeOfTransport | String |Mandatory | Mode of transit for the trip.Examples:-ROAD,AIR,RAIL
 lrNumber | String | Mandatory(Conditional) | Lorry Receipt Number if modeOfTransport selected as ROAD.
 flightNum| String |Mandatory(Conditional) | Flight Number if modeOfTransport selected as AIR.
