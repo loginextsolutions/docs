@@ -131,8 +131,12 @@ Parameter | DataType |  Required | Description
 userName | String | Mandatory | Username provided by LogiNext
 password | String | Mandatory | Password provided by LogiNext
 
+### Response
+The response will consist of parameters as mentioned in the "Responses" section based on the request parameters passed.For example,the response can contain 200 - Success or 401 - Invalid username or password, etc.
 
 ### Response Headers
+
+The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.
 
 Header | Sample Value
 --------- | -------
@@ -711,8 +715,8 @@ addressList.apartment | String | Mandatory | Apartment name/no
 addressList.streetName | String | Mandatory | Society/Street name
 addressList.landmark | String | Mandatory | Landmark
 addressList.areaName | String | Optional | Locality/Area name
-addressList.countryShortCode | String | Mandatory | Country short code
-addressList.stateShortCode | String | Mandatory | State short code
+addressList.countryShortCode | String | Mandatory | Country code.Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.stateShortCode | String | Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
 addressList.city | String | Mandatory | City
 addressList.pincode | Integer | Mandatory | Pincode
 addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
@@ -944,8 +948,8 @@ addressList.apartment | String | Mandatory | Apartment name/no
 addressList.streetName | String | Mandatory | Society/Street name
 addressList.landmark | String | Mandatory | Landmark
 addressList.areaName | String | Optional | Locality/Area name
-addressList.countryShortCode | String | Mandatory | Country short code
-addressList.stateShortCode | String | Mandatory | State short code
+addressList.countryShortCode | String | Mandatory | Country short code.Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.stateShortCode | String | Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
 addressList.city | String | Mandatory | City
 addressList.pincode | Integer | Mandatory | Pincode
 addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
@@ -1115,15 +1119,6 @@ Parameter | DataType |  Required | Description
 referenceIds | List | Mandatory | Reference Ids associated with trips
 
 ## Stop Trip
-
-### HTTP Request Parameters
-
-Parameter | Type |  Required | Description
------------|-------|------- | ----------
-tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
-
-
-## Trip Stop
 
 
 ```json
@@ -1570,6 +1565,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliverLatitude":"19.124497",
     "deliverLongitude":"72.893675",    
     "returnBranch": "Gurgaon",
+    "pickupNotes": "PickedUp",
+    "deliverNotes": "Delivered"
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -1656,12 +1653,14 @@ deliverStreetName | String | Mandatory | Street name
 deliverLandmark | String | Optional | Landmark
 deliverLocality | String | Mandatory | Locality
 deliverCity | String | Mandatory | City
-deliverState| String | Mandatory | State code
-deliverCountry | String | Mandatory | Country code
+deliverState| String | Mandatory | State code. Please refer to the list of state codes provided in the "State Codes" section.
+deliverCountry | String | Mandatory | Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 deliverPinCode | String | Mandatory | Pincode
 deliverLatitude | Double | Optional | Delivery address Latitude
 deliverLongitude | Double | Optional | Delivery address Longitude
 returnBranch | String | Mandatory | Name of return branch
+pickupNotes | String | Optional | Additional pickup comments associated with the order
+deliverNotes | String | Optional | Additional delivery comments associated with the order
 
 ### Request Parameters (Crates)
 
@@ -1725,6 +1724,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupPinCode": "400076",
     "pickupLatitude":"19.116854",
     "pickupLongitude":"72.910455",
+    "pickupNotes": "PickedUp",
+    "deliverNotes": "Delivered"
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -1812,11 +1813,13 @@ pickupStreetName | String | Mandatory | Pickup Street name
 pickupLandmark | String | Optional | Pickup Landmark
 pickupLocality | String | Mandatory | Pickup Locality
 pickupCity | String | Mandatory | Pickup City
-pickupState| String | Mandatory | Pickup State
-pickupCountry | String | Mandatory | Pickup Country
+pickupState| String | Mandatory | Pickup State. Please refer to the list of state codes provided in the "State Codes" section.
+pickupCountry | String | Mandatory | Pickup Country. Please refer to the list of country codes provided in the "Country Codes" section.
 pickupPinCode | String | Mandatory | Pickup Pincode
 pickupLatitude | Double | Optional | Pickup address Latitude
 pickupLongitude | Double | Optional | Pickup address Longitude
+pickupNotes | String | Optional | Additional pickup comments associated with the order
+deliverNotes | String | Optional | Additional delivery comments associated with the order
 
 
 ### Request Parameters (Crates)
@@ -1919,6 +1922,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "deliverPhoneNumber":"9876543210",
     "pickupEmail":"z@z.zzz",
     "pickupPhoneNumber":"9876543210",
+    "pickupNotes": "PickedUp",
+    "deliverNotes": "Delivered"
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
@@ -2037,9 +2042,15 @@ returnStreetName | String | Mandatory | Return Street name
 returnLandmark | String | Optional | Return Landmark
 returnLocality | String | Mandatory | Return Locality
 returnCity | String | Mandatory | Return City
-returnState| String | Mandatory | Return State code
-returnCountry | String | Mandatory | Return Country code
+returnState| String | Mandatory | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
+returnCountry | String | Mandatory | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 returnPinCode | String | Mandatory | Return Pincode
+deliverEmail| String | Optional | Email of the customer
+deliverPhoneNumber| String | Optional | Phone number of the customer
+pickupEmail| String | Optional | Email of the merchant
+pickupPhoneNumber| String | Optional | Phone number of the merchant
+pickupNotes | String | Optional | Additional pickup comments associated with the order
+deliverNotes | String | Optional | Additional delivery comments associated with the order
 
 
 
@@ -2454,8 +2465,8 @@ pickupStreetName | String | Optional | Pickup Street name
 pickupLandmark | String | Optional | Pickup Landmark
 pickupLocality | String | Optional | Pickup Locality
 pickupCity | String | Optional | Pickup City
-pickupState| String | Optional | Pickup State code
-pickupCountry | String | Optional | Pickup Country code
+pickupState| String | Optional | Pickup State code. Please refer to the list of state codes provided in the "State Codes" section.
+pickupCountry | String | Optional | Pickup Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 pickupPinCode | String | Optional | Pickup Pincode
 returnBranch | String | Optional | Name of return branch
 returnStartTimeWindow | Date | Optional | Return start time window
@@ -2469,8 +2480,8 @@ returnStreetName | String | Optional | Return Street name
 returnLandmark | String | Optional | Return Landmark
 returnLocality | String | Optional | Return Locality
 returnCity | String | Optional | Return City
-returnState| String | Optional | Return State code
-returnCountry | String | Optional | Return Country code
+returnState| String | Optional | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
+returnCountry | String | Optional | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 returnPinCode | String | Optional | Return Pincode
 
 ## Update Crates and Line Items in Order
@@ -2937,8 +2948,8 @@ streetName | String | Optional | Street name
 landmark | String | Optional | Landmark
 locality | String | Optional | Locality
 city | String | Optional | City
-country | String | Optional | Country code
-state | String |Optional | State code
+country | String | Optional | Country
+state | String |Optional | State
 pincode | String | Mandatory | Pincode
 
 ## iFrame
@@ -4433,6 +4444,44 @@ Sabah|SBH
 Sarawak|SWK
 Selangor|SGR
 Terengganu|TRG
+
+## Indonesia
+
+State | Code
+--------- | ---------
+Jawa Barat|JB
+Jakarta Raya|JK
+Jawa Timur|JI
+Jawa Tengah|JT
+Sumatera Utara|SU
+Yogyakarta|YO
+Kalimantan Timur|KI
+Sumatera Barat|SB
+Banten|BT
+Lampung|LA
+Kalimantan Selatan|KS
+Sulawesi Utara|SA
+Bali|BA
+Kalimantan Barat|KB
+Jambi|JA
+Nusa Tenggara Timur|NT
+Nusa Tenggara Barat|NB
+Aceh|AC
+Sulawesi Tengah|ST
+Bengkulu|BE
+Sulawesi Tenggara|SG
+Kalimantan Tengah|KT
+Papua|PA
+Riau|RI
+Sulawesi Barat|SR
+Maluku|MA
+Irian Jaya Barat|PB
+Sumatera Selatan|SS
+Gorontalo|GO
+Sulawesi Selatan|SN
+Maluku Utara|MU
+Kepulauan Riau|KR
+Kepulauan Bangka Belitung|BB
 
 
 <style>
