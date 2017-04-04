@@ -333,7 +333,13 @@
 </tr>
 </tbody></table>
 
+<h3 id="response">Response</h3>
+
+<p>The response will consist of parameters as mentioned in the &ldquo;Responses&rdquo; section based on the request parameters passed.For example,the response can contain 200 - Success or 401 - Invalid username or password, etc.</p>
+
 <h3 id="response-headers">Response Headers</h3>
+
+<p>The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.</p>
 
 <table><thead>
 <tr>
@@ -1305,13 +1311,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>addressList.countryShortCode</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Country short code</td>
+<td>Country code.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.stateShortCode</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>State short code</td>
+<td>State short code.Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.city</td>
@@ -1714,13 +1720,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>addressList.countryShortCode</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Country short code</td>
+<td>Country short code.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.stateShortCode</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>State short code</td>
+<td>State short code.Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.city</td>
@@ -2053,26 +2059,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tbody></table>
 
 <h2 id="stop-trip">Stop Trip</h2>
-
-<h3 id="http-request-parameters">HTTP Request Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tripReferenceIds</td>
-<td>List of Strings</td>
-<td>Mandatory</td>
-<td>Reference Ids of the trip</td>
-</tr>
-</tbody></table>
-
-<h2 id="trip-stop">Trip Stop</h2>
 <pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/stop</span><span class="w">
 </span></code></pre>
 
@@ -2642,7 +2628,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
+    </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
@@ -2882,13 +2870,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverState</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>State code</td>
+<td>State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Country code</td>
+<td>Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
@@ -2913,6 +2901,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Mandatory</td>
 <td>Name of return branch</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
 </tr>
 </tbody></table>
 
@@ -3040,7 +3040,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
+    </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
@@ -3274,13 +3276,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>pickupState</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Pickup State</td>
+<td>Pickup State. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Pickup Country</td>
+<td>Pickup Country. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
@@ -3299,6 +3301,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Double</td>
 <td>Optional</td>
 <td>Pickup address Longitude</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
 </tr>
 </tbody></table>
 
@@ -3460,7 +3474,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9876543210"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"z@z.zzz"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="s2">"9876543210"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
+    </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
@@ -3886,19 +3902,55 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>returnState</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Return State code</td>
+<td>Return State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>Return Country code</td>
+<td>Return Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Return Pincode</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>Optional</td>
+<td>Email of the customer</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Phone number of the customer</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>Optional</td>
+<td>Email of the merchant</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Phone number of the merchant</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
 </tr>
 </tbody></table>
 
@@ -4635,13 +4687,13 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>pickupState</td>
 <td>String</td>
 <td>Optional</td>
-<td>Pickup State code</td>
+<td>Pickup State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>Optional</td>
-<td>Pickup Country code</td>
+<td>Pickup Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
@@ -4725,13 +4777,13 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>returnState</td>
 <td>String</td>
 <td>Optional</td>
-<td>Return State code</td>
+<td>Return State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
 <td>Optional</td>
-<td>Return Country code</td>
+<td>Return Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
@@ -5517,13 +5569,13 @@ You can pass multiple crate and line items.</p>
 <td>country</td>
 <td>String</td>
 <td>Optional</td>
-<td>Country code</td>
+<td>Country</td>
 </tr>
 <tr>
 <td>state</td>
 <td>String</td>
 <td>Optional</td>
-<td>State code</td>
+<td>State</td>
 </tr>
 <tr>
 <td>pincode</td>
@@ -9396,6 +9448,148 @@ You can pass multiple crate and line items.</p>
 <tr>
 <td>Terengganu</td>
 <td>TRG</td>
+</tr>
+</tbody></table>
+
+<h2 id="indonesia">Indonesia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Jawa Barat</td>
+<td>JB</td>
+</tr>
+<tr>
+<td>Jakarta Raya</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Jawa Timur</td>
+<td>JI</td>
+</tr>
+<tr>
+<td>Jawa Tengah</td>
+<td>JT</td>
+</tr>
+<tr>
+<td>Sumatera Utara</td>
+<td>SU</td>
+</tr>
+<tr>
+<td>Yogyakarta</td>
+<td>YO</td>
+</tr>
+<tr>
+<td>Kalimantan Timur</td>
+<td>KI</td>
+</tr>
+<tr>
+<td>Sumatera Barat</td>
+<td>SB</td>
+</tr>
+<tr>
+<td>Banten</td>
+<td>BT</td>
+</tr>
+<tr>
+<td>Lampung</td>
+<td>LA</td>
+</tr>
+<tr>
+<td>Kalimantan Selatan</td>
+<td>KS</td>
+</tr>
+<tr>
+<td>Sulawesi Utara</td>
+<td>SA</td>
+</tr>
+<tr>
+<td>Bali</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>Kalimantan Barat</td>
+<td>KB</td>
+</tr>
+<tr>
+<td>Jambi</td>
+<td>JA</td>
+</tr>
+<tr>
+<td>Nusa Tenggara Timur</td>
+<td>NT</td>
+</tr>
+<tr>
+<td>Nusa Tenggara Barat</td>
+<td>NB</td>
+</tr>
+<tr>
+<td>Aceh</td>
+<td>AC</td>
+</tr>
+<tr>
+<td>Sulawesi Tengah</td>
+<td>ST</td>
+</tr>
+<tr>
+<td>Bengkulu</td>
+<td>BE</td>
+</tr>
+<tr>
+<td>Sulawesi Tenggara</td>
+<td>SG</td>
+</tr>
+<tr>
+<td>Kalimantan Tengah</td>
+<td>KT</td>
+</tr>
+<tr>
+<td>Papua</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>Riau</td>
+<td>RI</td>
+</tr>
+<tr>
+<td>Sulawesi Barat</td>
+<td>SR</td>
+</tr>
+<tr>
+<td>Maluku</td>
+<td>MA</td>
+</tr>
+<tr>
+<td>Irian Jaya Barat</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Sumatera Selatan</td>
+<td>SS</td>
+</tr>
+<tr>
+<td>Gorontalo</td>
+<td>GO</td>
+</tr>
+<tr>
+<td>Sulawesi Selatan</td>
+<td>SN</td>
+</tr>
+<tr>
+<td>Maluku Utara</td>
+<td>MU</td>
+</tr>
+<tr>
+<td>Kepulauan Riau</td>
+<td>KR</td>
+</tr>
+<tr>
+<td>Kepulauan Bangka Belitung</td>
+<td>BB</td>
 </tr>
 </tbody></table>
 
