@@ -5151,6 +5151,97 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </tbody></table>
 
+<h2 id="update-order-status">Update Order Status</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/update/status</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"CANCELLED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6156ty46e324c42abb5ea1a32y45f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">"Technical Issues"</span><span class="w">
+
+  </span><span class="p">}]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment updated successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+You can pass multiple order reference IDs and can update one or more parameters.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>One status for multiple orders.The orders will be updated with this new status</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>LogiNext provided order/shipment referenceId</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>Conditional Mandatory</td>
+<td>Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED</td>
+</tr>
+<tr>
+<td>otherReason</td>
+<td>Date</td>
+<td>Conditional Mandatory</td>
+<td>Mandatory when reasonCd is OTHER</td>
+</tr>
+</tbody></table>
+
 <h2 id="update-crates-and-line-items-in-order">Update Crates and Line Items in Order</h2>
 
 <blockquote>
