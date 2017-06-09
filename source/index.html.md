@@ -2833,6 +2833,72 @@ returnState| String | Optional | Return State code. Please refer to the list of 
 returnCountry | String | Optional | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 returnPinCode | String | Optional | Return Pincode
 
+## Update Order Status
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
+```
+
+> Request Body
+
+```json
+{
+  "newStatus":"CANCELLED",
+  "orderDetails":
+  [{
+    "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
+    "reasonCd":"DBUNAVAILABLE",
+    "otherReason":""
+
+  },
+  {
+    "orderReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
+    "reasonCd":"DBUNAVAILABLE",
+    "otherReason":""
+
+  },
+  {
+    "orderReferenceId":"6156ty46e324c42abb5ea1a32y45f66",
+    "reasonCd":"OTHER",
+    "otherReason":"Technical Issues"
+
+  }]
+
+}
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "data": null,
+  "message": "Shipment updated successfully",
+  "hasError": false
+}
+
+```
+With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+You can pass multiple order reference IDs and can update one or more parameters.
+
+### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
+
+
+### Request Parameters
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+newStatus | String | Mandatory |  One status for multiple orders.The orders will be updated with this new status
+orderReferenceId | String | Mandatory |  LogiNext provided order/shipment referenceId
+reasonCd | String | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED 
+otherReason | Date | Conditional Mandatory | Mandatory when reasonCd is OTHER
+
 ## Update Crates and Line Items in Order
 
 > Definition
