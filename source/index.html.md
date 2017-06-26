@@ -3436,35 +3436,11 @@ https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
 
 ```json
 {
-    "status": 200,
-    "message": null,
-    "referenceId": null,
-    "data": {
-        "routeName": "abcd",
-        "routes": [
-            {
-                "vehicle": "a1",
-                "shipments": [
-                    {
-                        "name": "s1",
-                        "start": "2016-10-27T11:28:21Z",
-                        "end": "2016-10-27T15:59:21Z",
-                        "shipmentType": "PICKUP"
-                    },
-                    {
-                        "name": "s1",
-                        "start": "2016-10-27T16:09:21Z",
-                        "end": "2016-10-27T16:09:21Z",
-                        "shipmentType": "DELIVER"
-                    }
-                ],
-                "start": "2016-10-27T11:18:21Z",
-                "end": "2016-10-27T16:09:21Z"
-            }
-        ],
-        "unassigned": []
-    },
-    "hasError": false
+"status": 200,
+"message": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!",
+"referenceId": null,
+"data": null,
+"hasError": false
 }
 ```
 
