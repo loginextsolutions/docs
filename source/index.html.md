@@ -2249,7 +2249,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupCity": "Mumbai",
     "pickupState": "MH",
     "pickupCountry": "IND",
-    "pickupPinCode": "400076", 
+    "pickupPinCode": "400076",
     "pickupLatitude":"19.116854",
     "pickupLongitude":"72.910455",   
     "returnBranch": "test",
@@ -2649,7 +2649,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
 }
 
 ```
-With this API you can fetch the list of your orders and the associated order information. 
+With this API you can fetch the list of your orders and the associated order information.
 
 ### Request
 
@@ -2665,13 +2665,13 @@ end_date | Date | Conditional Mandatory |  If order_no is not passed in the requ
 status | String | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
 
-Status | Filter applied on orders 
+Status | Filter applied on orders
 --------- | -------
 NOTDISPATCHED | Orders will be fetched for which either the Order Start Date & Time Window or the Order End Date & Time Window lies within the range specified.
 INTRANSIT | Orders will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
 COMPLETED | For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
 NOTCOMPLETED | For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
-CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified. 
+CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified.
 ALL | Superset of all the filters mentioned for the above statuses will be considered.
 
 
@@ -2896,7 +2896,7 @@ Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
 newStatus | String | Mandatory |  One status for multiple orders.The orders will be updated with this new status
 orderReferenceId | String | Mandatory |  LogiNext provided order/shipment referenceId
-reasonCd | String | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED 
+reasonCd | String | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED
 otherReason | Date | Conditional Mandatory | Mandatory when reasonCd is OTHER
 
 ## Update Crates and Line Items in Order
@@ -3422,12 +3422,13 @@ https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
       "latitude": 19.1172561,
       "longitude": 72.8925094
     },
-    "start" : "2016-10-27T16:00:00Z",
-    "end" : "2016-10-27T18:00:00Z",
+    "start" : "2017-10-27T16:00:00Z",
+    "end" : "2017-10-27T18:00:00Z",
     "serviceTime" : 10,
     "weight" : 10,
     "volume" : 10,
-    "type":["a","b","c"]
+    "type":["a","b","c"],
+    "shipmentType" : "DELIVER"
   }]
 }
 ```
@@ -3470,7 +3471,7 @@ shipments.end | String | Mandatory | Order end time window
 shipments.serviceTime | Integer | Optional | Order service time in mins.
 shipments.weight | Integer | Optional | Weight of order in Kg.
 shipments.volume | Integer | Optional | Volume of order in cc.
-shipments.type | List | Optional | Type of orders
+shipments.type | List | Mandatory | Type of orders
 
 
 
@@ -4274,6 +4275,65 @@ endTimeWindow | String |  Estimated end time of order
 deliveryOrder | Integer |  Delivery order
 latitude | Double | Order Latitude
 longitude | Double | Order Longitude
+
+## Route Planning - API
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": null,
+    "referenceId": null,
+    "data": {
+        "routeName": "fas",
+        "routes": [
+            {
+                "vehicle": "cc",
+                "shipments": [
+                    {
+                        "name": "s1",
+                        "start": "2017-10-27T16:09:13Z",
+                        "end": "2017-10-27T16:19:13Z",
+                        "shipmentType": "DELIVER"
+                    }
+                ],
+                "start": "2017-10-27T15:59:13Z",
+                "end": "2017-10-27T16:19:13Z"
+            }
+        ],
+        "unassigned": []
+    },
+    "hasError": false
+}
+
+```
+
+This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.
+
+
+
+### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+status | String |  Http status
+message | String | Response message
+referenceId | String |  Reference id
+data | Json |  Response data
+referenceId | String | Reference id of the trip
+routeName | String | Route name
+routes | List |  List of routes
+vehicle | String |  Vehicle
+vehicle.start | String | Route start date
+vehicle.end | String |  Route end date
+shipments | List |  List of shipments
+shipments.name | String |  Shipment name
+shipments.start | String |  Delivery start date
+shipments.end | String | Delivery end date
+shipments.shipmentType | String | Shipment type. eg. DELIVER
+unassigned | List | Unassigned list
+hasError | Boolean | If response has any error
 
 ## Start Trip
 
