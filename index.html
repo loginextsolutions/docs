@@ -3810,7 +3810,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">   
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
@@ -4629,7 +4629,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>With this API you can fetch the list of your orders and the associated order information. </p>
+<p>With this API you can fetch the list of your orders and the associated order information.</p>
 
 <h3 id="request">Request</h3>
 
@@ -6106,12 +6106,13 @@ You can pass multiple crate and line items.</p>
       </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1172561</span><span class="p">,</span><span class="w">
       </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.8925094</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-27T16:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-27T18:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T18:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"serviceTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nt">"weight"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nt">"volume"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">]</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:[</span><span class="s2">"a"</span><span class="p">,</span><span class="s2">"b"</span><span class="p">,</span><span class="s2">"c"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"shipmentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="w">
   </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6247,7 +6248,7 @@ You can pass multiple crate and line items.</p>
 <tr>
 <td>shipments.type</td>
 <td>List</td>
-<td>Optional</td>
+<td>Mandatory</td>
 <td>Type of orders</td>
 </tr>
 </tbody></table>
@@ -8056,6 +8057,137 @@ You can pass multiple crate and line items.</p>
 <td>longitude</td>
 <td>Double</td>
 <td>Order Longitude</td>
+</tr>
+</tbody></table>
+
+<h2 id="route-planning-api">Route Planning - API</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fas"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s1"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:09:13Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:19:13Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T15:59:13Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:19:13Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"unassigned"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Http status</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Response message</td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>Reference id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Json</td>
+<td>Response data</td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>routeName</td>
+<td>String</td>
+<td>Route name</td>
+</tr>
+<tr>
+<td>routes</td>
+<td>List</td>
+<td>List of routes</td>
+</tr>
+<tr>
+<td>vehicle</td>
+<td>String</td>
+<td>Vehicle</td>
+</tr>
+<tr>
+<td>vehicle.start</td>
+<td>String</td>
+<td>Route start date</td>
+</tr>
+<tr>
+<td>vehicle.end</td>
+<td>String</td>
+<td>Route end date</td>
+</tr>
+<tr>
+<td>shipments</td>
+<td>List</td>
+<td>List of shipments</td>
+</tr>
+<tr>
+<td>shipments.name</td>
+<td>String</td>
+<td>Shipment name</td>
+</tr>
+<tr>
+<td>shipments.start</td>
+<td>String</td>
+<td>Delivery start date</td>
+</tr>
+<tr>
+<td>shipments.end</td>
+<td>String</td>
+<td>Delivery end date</td>
+</tr>
+<tr>
+<td>shipments.shipmentType</td>
+<td>String</td>
+<td>Shipment type. eg. DELIVER</td>
+</tr>
+<tr>
+<td>unassigned</td>
+<td>List</td>
+<td>Unassigned list</td>
+</tr>
+<tr>
+<td>hasError</td>
+<td>Boolean</td>
+<td>If response has any error</td>
 </tr>
 </tbody></table>
 
