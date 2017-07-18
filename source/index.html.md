@@ -4284,56 +4284,60 @@ longitude | Double | Order Longitude
 {
     "status": 200,
     "message": null,
-    "referenceId": null,
     "data": {
-        "routeName": "fas",
+        "routeName": "TEST_ROUTE",
         "routes": [
             {
                 "vehicle": "cc",
                 "shipments": [
                     {
-                        "name": "s1",
-                        "start": "2017-10-27T16:09:13Z",
-                        "end": "2017-10-27T16:19:13Z",
+                        "name": "Shipment 1",
+                        "start": "2017-10-27T16:00:00Z",
+                        "end": "2017-10-27T18:00:00Z",
                         "shipmentType": "DELIVER"
+                    },
+
+                    {
+                        "name": "Shipment 2",
+                        "start": "2017-10-27T16:00:00Z",
+                        "end": "2017-10-27T18:00:00Z",
+                        "shipmentType": "PICKUP"
                     }
                 ],
                 "start": "2017-10-27T15:59:13Z",
                 "end": "2017-10-27T16:19:13Z"
             }
         ],
-        "unassigned": []
+        "unassigned": ["Shipment 3", "Shipment 4", "Shipment 5"]
     },
     "hasError": false
 }
 
 ```
 
-This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.
-
+This notification is sent when the Route Planning API is called.
+You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.
 
 
 ### Response Parameters
 
 Key | DataType | Description
 --------- | ------- |-------
-status | String |  Http status
-message | String | Response message
-referenceId | String |  Reference id
-data | Json |  Response data
-referenceId | String | Reference id of the trip
-routeName | String | Route name
-routes | List |  List of routes
-vehicle | String |  Vehicle
-vehicle.start | String | Route start date
-vehicle.end | String |  Route end date
-shipments | List |  List of shipments
-shipments.name | String |  Shipment name
-shipments.start | String |  Delivery start date
-shipments.end | String | Delivery end date
-shipments.shipmentType | String | Shipment type. eg. DELIVER
-unassigned | List | Unassigned list
-hasError | Boolean | If response has any error
+status | String |  Standard HTTP Status Code
+message | String | Response message. Will be displayed in case of Error
+data | JSON |  Response JSON body
+routeName | String | Name of the Milkrun or Route
+routes | List |  List of optimised routes/ trips through which the shipments will be delivered/ picked-up
+routes.start | String | Start Date and Time of Route / Trip. This date and time will be in UTC
+routes.end | String | End Date and Time of Route / Trip. This date and time will be in UTC
+route.vehicle | String |  Vehicle No. which will service the shipments for the mentioned route / trip
+route.shipments | List |  List of shipments and their details
+route.shipments.name | String |  Shipment name
+route.shipments.start | String |  Start Date and Time slot of the shipment
+route.shipments.end | String | End Date and Time slot of the shipment
+route.shipments.shipmentType | String | Type of Shipment i.e. DELIVER, PICKUP
+unassigned | List | List of shipment IDs that are not assigned to any trip because of constraints
+hasError | Boolean | If true - There is error in processing your request. If false - The request is successfully processed
 
 ## Start Trip
 
