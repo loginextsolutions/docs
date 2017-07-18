@@ -8068,32 +8068,39 @@ You can pass multiple crate and line items.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fas"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ROUTE"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">{</span><span class="w">
-                        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s1"</span><span class="p">,</span><span class="w">
-                        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:09:13Z"</span><span class="p">,</span><span class="w">
-                        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:19:13Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment 1"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:00:00Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T18:00:00Z"</span><span class="p">,</span><span class="w">
                         </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment 2"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:00:00Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T18:00:00Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
                 </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T15:59:13Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:19:13Z"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"unassigned"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="nt">"unassigned"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Shipment 3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Shipment 4"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Shipment 5"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.</p>
+<p>This notification is sent when the Route Planning API is called.
+You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.</p>
 
 <h3 id="response-parameters">Response Parameters</h3>
 
@@ -8107,87 +8114,77 @@ You can pass multiple crate and line items.</p>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>Http status</td>
+<td>Standard HTTP Status Code</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
-<td>Response message</td>
-</tr>
-<tr>
-<td>referenceId</td>
-<td>String</td>
-<td>Reference id</td>
+<td>Response message. Will be displayed in case of Error</td>
 </tr>
 <tr>
 <td>data</td>
-<td>Json</td>
-<td>Response data</td>
-</tr>
-<tr>
-<td>referenceId</td>
-<td>String</td>
-<td>Reference id of the trip</td>
+<td>JSON</td>
+<td>Response JSON body</td>
 </tr>
 <tr>
 <td>routeName</td>
 <td>String</td>
-<td>Route name</td>
+<td>Name of the Milkrun or Route</td>
 </tr>
 <tr>
 <td>routes</td>
 <td>List</td>
-<td>List of routes</td>
+<td>List of optimised routes/ trips through which the shipments will be delivered/ picked-up</td>
 </tr>
 <tr>
-<td>vehicle</td>
+<td>routes.start</td>
 <td>String</td>
-<td>Vehicle</td>
+<td>Start Date and Time of Route / Trip. This date and time will be in UTC</td>
 </tr>
 <tr>
-<td>vehicle.start</td>
+<td>routes.end</td>
 <td>String</td>
-<td>Route start date</td>
+<td>End Date and Time of Route / Trip. This date and time will be in UTC</td>
 </tr>
 <tr>
-<td>vehicle.end</td>
+<td>route.vehicle</td>
 <td>String</td>
-<td>Route end date</td>
+<td>Vehicle No. which will service the shipments for the mentioned route / trip</td>
 </tr>
 <tr>
-<td>shipments</td>
+<td>route.shipments</td>
 <td>List</td>
-<td>List of shipments</td>
+<td>List of shipments and their details</td>
 </tr>
 <tr>
-<td>shipments.name</td>
+<td>route.shipments.name</td>
 <td>String</td>
 <td>Shipment name</td>
 </tr>
 <tr>
-<td>shipments.start</td>
+<td>route.shipments.start</td>
 <td>String</td>
-<td>Delivery start date</td>
+<td>Start Date and Time slot of the shipment</td>
 </tr>
 <tr>
-<td>shipments.end</td>
+<td>route.shipments.end</td>
 <td>String</td>
-<td>Delivery end date</td>
+<td>End Date and Time slot of the shipment</td>
 </tr>
 <tr>
-<td>shipments.shipmentType</td>
+<td>route.shipments.shipmentType</td>
 <td>String</td>
-<td>Shipment type. eg. DELIVER</td>
+<td>Type of Shipment i.e. DELIVER, PICKUP</td>
 </tr>
 <tr>
 <td>unassigned</td>
 <td>List</td>
-<td>Unassigned list</td>
+<td>List of shipment IDs that are not assigned to any trip because of constraints</td>
 </tr>
 <tr>
 <td>hasError</td>
 <td>Boolean</td>
-<td>If response has any error</td>
+<td>If true - There is error in processing your request. If false - The request is successfully processed</td>
 </tr>
 </tbody></table>
 
