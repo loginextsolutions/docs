@@ -453,7 +453,7 @@ This API is used to list all existing vehicles in the system. All vehicle relate
 
 ### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
+<span class="get">GET</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
 
 
 ## Update Vehicle
