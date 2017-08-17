@@ -816,7 +816,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1</code></p>
+<p><span class="get">GET</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/haul/v1</code></p>
 
 <h2 id="update-vehicle">Update Vehicle</h2>
 
@@ -6816,12 +6816,19 @@ You can pass multiple crate and line items.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERUPDATENOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-20 05:08:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21 05:08:00"</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RE0012"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-16 16:45:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 21:15:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03ff479b970c47dcae0439323711fce1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Avenue,m,Mumbai,400076"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capillary_Hypercity_PreProd Main Branch"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientNodeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capillary_Hypercity_PreProd Main Branch"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientNodeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capillary_Hypercity_PreProd Main Branch"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"314 - The Summit Business Bay, Opp. Cinemax Theatre, Off Andheri Kurla Road, Near Western Express Highway,Andheri East,  , ,, ,, ,, Mumbai, Maharashtra, INDIA, 400069"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -6835,24 +6842,24 @@ You can pass multiple crate and line items.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>orderNo</td>
+<td>clientShipmentId</td>
 <td>String</td>
 <td>Order No.</td>
 </tr>
 <tr>
-<td>notificationType</td>
+<td>orderState</td>
 <td>String</td>
-<td>ORDERUPDATENOTIFICATION</td>
+<td>FORWARD</td>
 </tr>
 <tr>
-<td>deliveryMediumName</td>
-<td>String</td>
-<td>Name of delivery medium</td>
+<td>shipmentCrateMapping</td>
+<td>Array</td>
+<td>Array of String of mapped crates</td>
 </tr>
 <tr>
-<td>phoneNumber</td>
-<td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>Order Reference Id</td>
 </tr>
 <tr>
 <td>startTimeWindow</td>
@@ -6863,6 +6870,41 @@ You can pass multiple crate and line items.</p>
 <td>endTimeWindow</td>
 <td>String</td>
 <td>Order&rsquo;s end time window</td>
+</tr>
+<tr>
+<td>originAddr</td>
+<td>String</td>
+<td>Origin Address</td>
+</tr>
+<tr>
+<td>destinationAddr</td>
+<td>String</td>
+<td>Destination Address</td>
+</tr>
+<tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>Order type e.g. PICKUP or DELIVER</td>
+</tr>
+<tr>
+<td>clientNodeName</td>
+<td>String</td>
+<td>Node name Mapped for the client order</td>
+</tr>
+<tr>
+<td>clientNodeCd</td>
+<td>String</td>
+<td>Code Mapped for the client order node</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Destination Address</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>Delivery type</td>
 </tr>
 </tbody></table>
 
