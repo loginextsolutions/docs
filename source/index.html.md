@@ -3722,19 +3722,12 @@ timestamp | String | Order creation timestamp
 
 ```json
 {
-  "clientShipmentId": "RE0012",
-  "orderState": "FORWARD",
-  "shipmentCrateMapping": [],
-  "startTimeWindow": "2017-08-16 16:45:00",
-  "endTimeWindow": "2017-08-18 21:15:00",
-  "orderReferenceId": "03ff479b970c47dcae0439323711fce1",
-  "originAddr": "South Avenue,m,Mumbai,400076",
-  "destinationAddr": "Capillary_Hypercity_PreProd Main Branch",
-  "shipmentOrderTypeCd": "PICKUP",
-  "clientNodeName": "Capillary_Hypercity_PreProd Main Branch",
-  "clientNodeCd": "Capillary_Hypercity_PreProd Main Branch",
-  "address": "314 - The Summit Business Bay, Opp. Cinemax Theatre, Off Andheri Kurla Road, Near Western Express Highway,Andheri East,  , ,, ,, ,, Mumbai, Maharashtra, INDIA, 400069",
-  "deliveryType": ""
+  "orderNo": "TestOrder",
+  "notificationType": "ORDERUPDATENOTIFICATION",
+  "deliveryMediumName": "Sandeep",
+  "phoneNumber": 1234567890,
+  "startTimeWindow": "2016-11-20 05:08:00",
+  "endTimeWindow": "2016-11-21 05:08:00"
 }
 ```
 
