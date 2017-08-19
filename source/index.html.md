@@ -3722,12 +3722,34 @@ timestamp | String | Order creation timestamp
 
 ```json
 {
-  "orderNo": "TestOrder",
-  "notificationType": "ORDERUPDATENOTIFICATION",
-  "deliveryMediumName": "Sandeep",
-  "phoneNumber": 1234567890,
-  "startTimeWindow": "2016-11-20 05:08:00",
-  "endTimeWindow": "2016-11-21 05:08:00"
+  "orderNo": "P_Aetos1",
+	"notificationType": "ORDERUPDATENOTIFICATION",
+  "vehicleNumber":"MH04DY69",
+	"awbNumber": "AWB001",
+	"deliveryMediumName": "kumari2",
+	"phoneNumber": "6590110114",
+	"orderState": "FORWARD",
+	"clientId": 9999,
+	"shipmentCrateMapping": [],
+	"startTimeWindow": "2017-08-17 02:00:00",
+	"endTimeWindow": "2017-08-17 03:00:00",
+	"tripReferenceId": "c1aa3beae7844b77a90bb6fe0518992c",
+	"orderReferenceId": "b7b15a79d6734297a00a93755856e8c8",
+	"numberOfItems": 1,
+	"packageWeight": 10.0,
+	"packageVolume": 4500.0,
+	"originAddr": "123,Supreme Business Park,Hiranandani,DMart,Mumbai,400076",
+	"destinationAddr": "Destinatioln Address",
+	"shipmentOrderTypeCd": "PICKUP",
+	"clientNodeName": "Client Node Name",
+	"clientNodeCd": "Client Node Code",
+	"address": "145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367",
+	"deliveryType": "DLBOY",
+	"shipmentNotes": "PickedUp",
+	"assignmentMethod": "MANUAL",
+	"calculatedStartDt": "2017-08-18 12:53:00",
+	"calculatedEndDt": "2017-08-17 02:52:00",
+	"classType": "ORDERS_PN"
 }
 ```
 
@@ -3736,19 +3758,35 @@ This notification is sent when an order is updated.
 
 Param | DataType | Description
 --------- | ------- | ----------
-clientShipmentId | String | Order No.
-orderState | String | FORWARD
-shipmentCrateMapping | Array | Array of String of mapped crates
-orderReferenceId | String | Order Reference Id
+orderNo | String | Order No.
+notificationType | String| eg. ORDERUPDATENOTIFICATION
+vehicleNumber | String | Vehicle Number
+awbNumber | String | AWB Number
+deliveryMediumName | String | Delivery boy name
+phoneNumber | Integer | Delivery boy phone number
+orderState | String | eg. FORWARD or REVERSE
+clientId | Integer | Client Id
+shipmentCrateMapping | Array | Array of String of mapped crate
 startTimeWindow | String | Order's start time window
 endTimeWindow | String  | Order's end time window
-originAddr | String  | Origin Address
-destinationAddr | String  | Destination Address
+tripReferenceId | String | Trip Reference Id
+orderReferenceId | String | Order Reference Id
+numberOfItems | Integer | No. of Orders / Items
+packageWeight | Double | Package weight
+packageVolume | Double | Package volume
+originAddr | String  | Origin address
+destinationAddr | String  | Destination address
 shipmentOrderTypeCd | String  | Order type e.g. PICKUP or DELIVER
 clientNodeName | String  | Node name Mapped for the client order
 clientNodeCd | String  |  Code Mapped for the client order node
-address | String  | Destination Address
+address | String  | Client Address
 deliveryType | String  | Delivery type
+shipmentNotes | String  | eg . PickedUp
+assignmentMethod | String  | Order assigned to the Trip. eg MANUAL
+calculatedStartDt | String  | Calculated start date
+calculatedEndDt | String  | Calculated end date
+classType | String  | eg. ORDER_PN
+
 
 ## Accept Order
 
