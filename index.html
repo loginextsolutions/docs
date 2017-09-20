@@ -6843,8 +6843,7 @@ You can pass multiple crate and line items.</p>
     </span><span class="nt">"assignmentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 12:53:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:52:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"classType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS_PN"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <p>This notification is sent when an order is updated.</p>
@@ -6990,11 +6989,6 @@ You can pass multiple crate and line items.</p>
 <td>calculatedEndDt</td>
 <td>String</td>
 <td>Calculated end date</td>
-</tr>
-<tr>
-<td>classType</td>
-<td>String</td>
-<td>eg. ORDER_PN</td>
 </tr>
 </tbody></table>
 
@@ -7409,25 +7403,22 @@ You can pass multiple crate and line items.</p>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118589</span><span class="p">,</span><span class="w">
   </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095639</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567864</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:11:27"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12456"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PREPAID"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -7444,7 +7435,7 @@ You can pass multiple crate and line items.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>orderNo</td>
+<td>clientShipmentId</td>
 <td>String</td>
 <td>Order No.</td>
 </tr>
@@ -7462,16 +7453,6 @@ You can pass multiple crate and line items.</p>
 <td>notificationType</td>
 <td>String</td>
 <td>DELIVEREDNOTIFICATION</td>
-</tr>
-<tr>
-<td>orderLeg</td>
-<td>String</td>
-<td>Order leg Ex: PICKUP, DELIVER</td>
-</tr>
-<tr>
-<td>awbNumber</td>
-<td>String</td>
-<td>AWB Number for the order</td>
 </tr>
 <tr>
 <td>customerComment</td>
@@ -7492,16 +7473,6 @@ You can pass multiple crate and line items.</p>
 <td>phoneNumber</td>
 <td>Long</td>
 <td>Delivery medium&rsquo;s phone no.</td>
-</tr>
-<tr>
-<td>orderState</td>
-<td>String</td>
-<td>State of order. Ex: FORWARD, REVERSE</td>
-</tr>
-<tr>
-<td>customerName</td>
-<td>String</td>
-<td>Customer name</td>
 </tr>
 <tr>
 <td>deliveryTime</td>
@@ -7532,6 +7503,16 @@ You can pass multiple crate and line items.</p>
 <td>recipientName</td>
 <td>String</td>
 <td>Name of recipient</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>Branch Name</td>
+</tr>
+<tr>
+<td>paymentSubType</td>
+<td>String</td>
+<td>Possible values : CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE</td>
 </tr>
 </tbody></table>
 
@@ -7567,6 +7548,8 @@ You can pass multiple crate and line items.</p>
         </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.30</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentLineItemsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
@@ -7580,7 +7563,17 @@ You can pass multiple crate and line items.</p>
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pratik"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"supreme business park"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Powai"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400078"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerEmailAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -7722,6 +7715,16 @@ You can pass multiple crate and line items.</p>
 <td>No of units</td>
 </tr>
 <tr>
+<td>shipmentCrateMappingList.loadedUnits</td>
+<td>Integer</td>
+<td>No of units loaded</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.unloadedUnits</td>
+<td>Integer</td>
+<td>No of units unloaded</td>
+</tr>
+<tr>
 <td>shipmentCrateMappingList.shipmentlineitems.itemCd</td>
 <td>String</td>
 <td>Item code</td>
@@ -7761,6 +7764,56 @@ You can pass multiple crate and line items.</p>
 <td>Integer</td>
 <td>Unloaded Item quantity</td>
 </tr>
+<tr>
+<td>recipientName</td>
+<td>String</td>
+<td>Recipients Name</td>
+</tr>
+<tr>
+<td>apartment</td>
+<td>String</td>
+<td>Recipients apartment</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>String</td>
+<td>Recipients street name</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>Recipients city</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>Recipients state</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>Recipients country</td>
+</tr>
+<tr>
+<td>pincode</td>
+<td>Integer</td>
+<td>Recipients pincode</td>
+</tr>
+<tr>
+<td>customerEmailAddress</td>
+<td>String</td>
+<td>Customer email address</td>
+</tr>
+<tr>
+<td>customerPhoneNumber</td>
+<td>String</td>
+<td>Customer phone number</td>
+</tr>
+<tr>
+<td>paymentSubType</td>
+<td>String</td>
+<td>e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE</td>
+</tr>
 </tbody></table>
 
 <h2 id="not-delivered">Not Delivered</h2>
@@ -7783,8 +7836,9 @@ You can pass multiple crate and line items.</p>
   </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No customer at delivery location"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:10:32"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MUMBAI (VISIONCARE-DW)"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
 </span></code></pre>
 
@@ -7873,6 +7927,11 @@ You can pass multiple crate and line items.</p>
 <td>recipientName</td>
 <td>String</td>
 <td>Name of recipient</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>Hub branch name</td>
 </tr>
 </tbody></table>
 
