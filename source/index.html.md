@@ -3749,7 +3749,6 @@ timestamp | String | Order creation timestamp
 	"assignmentMethod": "MANUAL",
 	"calculatedStartDt": "2017-08-18 12:53:00",
 	"calculatedEndDt": "2017-08-17 02:52:00",
-	"classType": "ORDERS_PN"
 }
 ```
 
@@ -3785,7 +3784,6 @@ shipmentNotes | String  | eg . PickedUp
 assignmentMethod | String  | Order assigned to the Trip. eg MANUAL
 calculatedStartDt | String  | Calculated start date
 calculatedEndDt | String  | Calculated end date
-classType | String  | eg. ORDER_PN
 
 
 ## Accept Order
@@ -3983,25 +3981,22 @@ notificationType | String | LOADINGDONENOTIFICATION
 
 ```json
 {
-  "orderNo": "Order001",
+  "clientShipmentId": "Order001",
   "latitude": 19.1118589,
   "longitude": 72.9095639,
   "notificationType": "DELIVEREDNOTIFICATION",
-  "orderLeg": "DELIVER",
-  "awbNumber": "AWB001",
   "customerComment": "Test user comments",
   "customerRating": 5,
   "deliveryMediumName": "Suresh",
   "phoneNumber": 1234567864,
-  "orderState": "FORWARD",
-  "customerName": "Customer123",
   "deliveryTime": "2016-11-19 06:11:27",
   "cashAmount": 0,
   "deliveryLocationType": "",
   "transactionId": "12456",
-  "paymentMode": "PREPAID",
   "actualCashAmount": 120,
-  "recipientName": "Rahul"
+  "recipientName": "Rahul",
+  "branchName": "AAA0",
+  "paymentSubType": ""
 }
 
 ```
@@ -4014,24 +4009,22 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 Key | DataType | Description
 --------- | ------- |-------
-orderNo | String | Order No.
+clientShipmentId | String | Order No.
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER
-awbNumber | String | AWB Number for the order
 customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
-orderState | String | State of order. Ex: FORWARD, REVERSE
-customerName | String | Customer name
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to collect
 deliveryLocationType | String | Delivery Location
 transactionId | String | Transaction id
 actualCashAmount | Double | Cash amount actually collected
 recipientName | String | Name of recipient
+branchName | String | Branch Name
+paymentSubType | String | Possible values : CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
 
 
 ## Partially Delivered
@@ -4066,6 +4059,8 @@ recipientName | String | Name of recipient
         "statusCd": "CRATE001",
         "crateAmount": 100.30,
         "noOfUnits":3,
+        "loadedUnits": 0,
+        "unloadedUnits": 0,
         "shipmentLineItemsList": [
           {
             "itemCd": "CODE001",
@@ -4079,7 +4074,17 @@ recipientName | String | Name of recipient
           }
         ]
       }
-  ]
+  ],
+  "recipientName": "Pratik",
+  "apartment": "supreme business park",
+  "streetName": "Powai",
+  "city": "Mumbai",
+  "state": "Maharashtra",
+  "country": "INDIA",
+  "pincode": "400078",
+  "customerEmailAddress": "",
+  "customerPhoneNumber": "",
+  "paymentSubType": "CASH"
 }
 
 ```
@@ -4117,6 +4122,8 @@ shipmentCrateMappingList.crateType | String | Crate type
 shipmentCrateMappingList.statusCd | String | Crate Status. It will be LOADED.
 shipmentCrateMappingList.crateAmount | Double | Crate amount
 shipmentCrateMappingList.noOfUnits | Integer | No of units
+shipmentCrateMappingList.loadedUnits | Integer | No of units loaded
+shipmentCrateMappingList.unloadedUnits | Integer | No of units unloaded
 shipmentCrateMappingList.shipmentlineitems.itemCd | String | Item code
 shipmentCrateMappingList.shipmentlineitems.itemType | String | Item type
 shipmentCrateMappingList.shipmentlineitems.statusCd | String | Item status. It will be LOADED.
@@ -4125,7 +4132,16 @@ shipmentCrateMappingList.shipmentlineitems.itemPrice | Double | Item price
 shipmentCrateMappingList.shipmentlineitems.itemQuantity | Integer | Item quantity
 shipmentCrateMappingList.shipmentlineitems.itemWeight | Integer | Item weight
 shipmentCrateMappingList.shipmentlineitems.actualItemQuantity | Integer | Unloaded Item quantity
-
+recipientName | String | Recipients Name
+apartment | String | Recipients apartment
+streetName | String | Recipients street name
+city | String | Recipients city
+state | String | Recipients state
+country | String | Recipients country
+pincode | Integer | Recipients pincode
+customerEmailAddress | String | Customer email address
+customerPhoneNumber | String | Customer phone number
+paymentSubType | String | e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
 
 ## Not Delivered
 
@@ -4147,7 +4163,8 @@ shipmentCrateMappingList.shipmentlineitems.actualItemQuantity | Integer | Unload
   "reason": "No customer at delivery location",
   "deliveryTime": "2016-11-19 06:10:32",
   "deliveryLocationType": "",
-  "recipientName": ""
+  "recipientName": "",
+  "branchName": "MUMBAI (VISIONCARE-DW)",
 }
 
 ```
@@ -4175,6 +4192,7 @@ reasonCd | String | Reason code
 deliveryTime | String | Undelivered timestamp
 deliveryLocationType | String | Delivery location
 recipientName | String | Name of recipient
+branchName | String | Hub branch name
 
 ## Pickedup
 
