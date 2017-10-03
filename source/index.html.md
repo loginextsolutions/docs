@@ -803,8 +803,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
       "deviceBarcode": null,
       "shiftList": [
         {
-          "shiftStartTime": "01, Jan 1970 07:03 PM",
-          "shiftEndTime": "01, Jan 1970 07:10 AM",
+          "shiftStartTime": "2017-09-12T14:00:00Z",
+          "shiftEndTime": "2017-09-12T15:00:00Z",
           "startTime": null,
           "endTime": null
         }
