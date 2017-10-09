@@ -3559,6 +3559,7 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
 ```json
 [
   {
+    "awbNumber": "AWB000001",
     "cashOnDelivery" : 1000.0,
     "cashOnPickup" : 1000.0,
     "pickupAccountCode" : "1234",
@@ -3634,6 +3635,7 @@ Place a new delivery leg order with this API.
 Param | DataType |  Required | Description
 --------- | ------- | ---------- | ------------
 orderNo | String | Mandatory |  Order No.
+awbNumber | String | Optional |  Awb No.
 distributionCenter | String | Mandatory | Distribution center's name
 shipmentOrderDt | Double | Mandatory | Order Date
 deliverCapacityInVolume | Double | Optional | Weight of package in Kg.
