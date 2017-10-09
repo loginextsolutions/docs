@@ -3680,42 +3680,6 @@ deliverLatitude | Double | Optional | Latitude of deliver location
 deliverLongitude | Double | Optional | Longitude of deliver location
 deliverNotes | String | Optional | Deliver notes
 
-## Cancel Order
-
-> Definition
-
-```json
- https://demo.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel
-```
-
-> Request Body
-
-```json
-["e0eaebdd84ac4c40af72d827ab610090","e0eaebdd84ac4c40af72d827ab699999"]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "success",
-  "data": null,
-  "hasError": false
-}
-```
-
-Use this API to cancel an order.
-
-### Request
-
-<span class="post">PUT</span>` https://demo.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel`
-
-### Request Body
-
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-reference_ids | List  | Mandatory | Reference Id associated with the order.
 
 ## Get Order
 
