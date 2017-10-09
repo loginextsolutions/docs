@@ -3787,6 +3787,43 @@ CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies w
 ALL | Superset of all the filters mentioned for the above statuses will be considered.
 
 
+## Cancel Order
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel
+```
+
+> Request Body
+
+```json
+["e0eaebdd84ac4c40af72d827ab610090","f68420e67be84b2894aab6ea9634c4f9"]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "data": "Order(s) cancelled successfully",
+  "hasError": false
+}
+```
+
+Use this API to cancel an order.
+
+### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel`
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List  | Mandatory | Reference Id associated with the order.
+
+
 # Webhooks
 
 Webhooks allow you to build or set up integrations which subscribe to certain events like Order Creation, Route Planning, Trip Start, etc. on LogiNext System. When one of those events is triggered, we'll send a HTTP POST request to the webhook's configured URL (end point).
