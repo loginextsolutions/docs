@@ -6758,7 +6758,7 @@ You can pass multiple crate and line items.</p>
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">,</span><span class="s2">"e0eaebdd84ac4c40af72d827ab699999"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -6793,6 +6793,125 @@ You can pass multiple crate and line items.</p>
 <td>List</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-order">Get Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w"> </span><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=LN</span><span class="mi">01234567</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f68420e67be84b2894aab6ea9634c4f9"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN01234567"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awbcheck"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tezz Foods"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green Leaf"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment1,SC1,AN1,LM1,Mumbai,400076"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment2,SC2,AN2,LM2,Mumbai,400077"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468569600000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468569600000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468663200000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.6</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7788888899"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API you can fetch the list of your orders and the associated order information.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/shipment?end_date=2017-03-07+18:29:59&amp;start_date=2016-02-01+18:30:00&amp;status=ALL&amp;order_no=LN01234567</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>Date</td>
+<td>Conditional Mandatory</td>
+<td>If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>Date</td>
+<td>Conditional Mandatory</td>
+<td>If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Optional</td>
+<td>If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
+</tr>
+<tr>
+<td>order_no</td>
+<td>String</td>
+<td>Optional</td>
+<td>Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Filter applied on orders</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NOTDISPATCHED</td>
+<td>Orders will be fetched for which either the Order Start Date &amp; Time Window or the Order End Date &amp; Time Window lies within the range specified.</td>
+</tr>
+<tr>
+<td>INTRANSIT</td>
+<td>Orders will be fetched for which the Actual Delivery Start Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>COMPLETED</td>
+<td>For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>NOTCOMPLETED</td>
+<td>For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>CANCELLED</td>
+<td>Orders will be fetched for which the Cancellation Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>ALL</td>
+<td>Superset of all the filters mentioned for the above statuses will be considered.</td>
 </tr>
 </tbody></table>
 
