@@ -6915,6 +6915,54 @@ You can pass multiple crate and line items.</p>
 </tr>
 </tbody></table>
 
+<h2 id="cancel-order">Cancel Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/cancel</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">,</span><span class="s2">"f68420e67be84b2894aab6ea9634c4f9"</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order(s) cancelled successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Use this API to cancel an order.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference_ids</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
 <h1 id="webhooks">Webhooks</h1>
 
 <p>Webhooks allow you to build or set up integrations which subscribe to certain events like Order Creation, Route Planning, Trip Start, etc. on LogiNext System. When one of those events is triggered, we&rsquo;ll send a HTTP POST request to the webhook&rsquo;s configured URL (end point).</p>
