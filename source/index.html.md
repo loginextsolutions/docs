@@ -3680,6 +3680,48 @@ deliverLatitude | Double | Optional | Latitude of deliver location
 deliverLongitude | Double | Optional | Longitude of deliver location
 deliverNotes | String | Optional | Deliver notes
 
+## Cancel Order
+
+ > Definition
+
+ ```json
+ https://demo.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel
+ ```
+
+ > Request Body
+
+ ```json
+ ["e0eaebdd84ac4c40af72d827ab610090"]
+ 
+ ```
+
+
+
+ > Response
+
+ ```json
+ {
+  "status": 200,
+  "message": "success",
+  "data": null,
+  "hasError": false
+}
+
+
+ ```
+ Use this API to cancel an order.
+
+ ### Request
+
+ <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+
+ ### Request Parameters
+
+ Param | DataType |  Required | Description
+ --------- | ------- | ---------- | ------------
+ reference_ids | List | Mandatory |  Reference Id associated with the order.
+
+
 # Webhooks
 
 Webhooks allow you to build or set up integrations which subscribe to certain events like Order Creation, Route Planning, Trip Start, etc. on LogiNext System. When one of those events is triggered, we'll send a HTTP POST request to the webhook's configured URL (end point).
