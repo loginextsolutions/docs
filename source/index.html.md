@@ -3691,7 +3691,7 @@ deliverNotes | String | Optional | Deliver notes
 > Request Body
 
 ```json
-["e0eaebdd84ac4c40af72d827ab610090"]
+["e0eaebdd84ac4c40af72d827ab610090","e0eaebdd84ac4c40af72d827ab699999"]
 ```
 
 > Response
@@ -3716,6 +3716,75 @@ Use this API to cancel an order.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_ids | List  | Mandatory | Reference Id associated with the order.
+
+## Get Order
+
+> Definition
+
+```json
+ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=LN01234567
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "SUCCESS",
+    "data": [
+        {
+            "referenceId": "f68420e67be84b2894aab6ea9634c4f9",
+            "orderNo": "LN01234567",
+            "awbNumber": "awbcheck",
+            "clientName": "Tezz Foods",
+            "branchName": "Green Leaf",
+            "origin": "Apartment1,SC1,AN1,LM1,Mumbai,400076",
+            "destination": "Apartment2,SC2,AN2,LM2,Mumbai,400077",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD",
+            "shipmentOrderDt": 1468569600000,
+            "startTimeWindow": 1468569600000,
+            "endTimeWindow": 1468663200000,
+            "paymentType": "COD",
+            "notes": "",
+            "packageValue": 1000,
+            "status": "NOTDISPATCHED",
+            "plannedServiceTime": 0,
+            "plannedDistance": 22.6,
+            "customerCode": "5678",
+            "customerName": "Name2",
+            "customerPhoneNumber": "7788888899",
+            "noOfAttempts": 0,
+            "isDelayed": true
+        }
+    ],
+    "hasError": false
+}
+```
+
+With this API you can fetch the list of your orders and the associated order information.
+
+### Request
+
+<span class="post">PUT</span>` https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=LN01234567`
+
+### Request Body
+
+Param | DataType |  Required | Description
+--------- | ------- | ---------- | ------------
+start_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+end_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+status | String | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
+order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
+
+Status | Filter applied on orders
+--------- | -------
+NOTDISPATCHED | Orders will be fetched for which either the Order Start Date & Time Window or the Order End Date & Time Window lies within the range specified.
+INTRANSIT | Orders will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
+COMPLETED | For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
+NOTCOMPLETED | For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
+CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified.
+ALL | Superset of all the filters mentioned for the above statuses will be considered.
 
 
 # Webhooks
