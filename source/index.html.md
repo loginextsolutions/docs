@@ -3682,44 +3682,40 @@ deliverNotes | String | Optional | Deliver notes
 
 ## Cancel Order
 
- > Definition
+> Definition
 
- ```json
+```json
  https://demo.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel
- ```
+```
 
- > Request Body
+> Request Body
 
- ```json
- ["e0eaebdd84ac4c40af72d827ab610090"]
- 
- ```
+```json
+["e0eaebdd84ac4c40af72d827ab610090"]
+```
 
+> Response
 
-
- > Response
-
- ```json
- {
+```json
+{
   "status": 200,
   "message": "success",
   "data": null,
   "hasError": false
 }
+```
 
+Use this API to cancel an order.
 
- ```
- Use this API to cancel an order.
+### Request
 
- ### Request
+<span class="post">PUT</span>` https://demo.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel`
 
- <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel`
+### Request Body
 
- ### Request Parameters
-
- Param | DataType |  Required | Description
- --------- | ------- | ---------- | ------------
- reference_ids | List | Mandatory |  Reference Id associated with the order.
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List  | Mandatory | Reference Id associated with the order.
 
 
 # Webhooks
