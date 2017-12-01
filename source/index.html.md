@@ -3474,6 +3474,63 @@ shipments.volume | Integer | Optional | Volume of order in cc.
 shipments.type | List | Mandatory | Type of orders
 
 
+## Create Manifest
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment
+```
+
+> Request Body
+
+```json
+{
+   "manifestId":"hcgsyuc334",
+   "manifestType":"ORDER",
+   "cancelledOrderAllowedFl": false,
+   "orderReferenceIds":["843d70885de84d20b46279d0d5149758","5e10b5c270ad46a5969b323d48b60c0a"]
+}
+
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Add Orders to manifest success.",
+    "data": {
+        "manifestId": "hcgsyuc334"
+    },
+    "hasError": false
+}
+```
+
+With this API you can create Manifests for your shipments.​ ​The Scan status​ ​of an order​ ​will get updated to
+"​Out-scanned"​ ​if the Manifest is created successfully.​
+
+​You will have to pass the LogiNext​ ​Order Reference ID in this API.
+LogiNext Reference ID is generated when you add order in the LogiNext system.
+If you do not store the Reference ID for orders, then you will have to fetch the same through the Get Order API.
+
+You can also manifest Cancelled Orders (by turning this flag to "true") in case you have to return (out-scan) the cancelled orders back to the merchant / origin.
+
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment`
+
+
+### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+manifestId | String | Optional | You can pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If Not​ ​passed, then LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.
+manifestType | String | Optional | Default manifestType is ORDER
+cancelledOrderAllowedFl | String | Optional | By default the value will be taken as  "false". If you would like to OutScan Cancelled orders, then please pass "true"
+orderReferenceIds | List | Mandatory | LogiNext Order Reference ID
+
 
 # LogiNext OnDemand <sup>TM</sup>
 
