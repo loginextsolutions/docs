@@ -5549,9 +5549,9 @@ You can pass multiple crate and line items.</p>
 
 <h3 id="response">Response</h3>
 
-<p>Response is a binary zip file.
-In any browser just hit the url and zip file will be automatically start downloading.
-In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;Send &amp; Download&rsquo; button which will save the zip file. </p>
+<p>Response is a binary zip file.<br>
+In any browser just hit the url and zip file download will start automatically.<br>
+In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;Send &amp; Download&rsquo; button, which will save the zip file.</p>
 
 <h2 id="start-trip">Start Trip</h2>
 
@@ -7085,8 +7085,31 @@ If you do not store the Reference ID for orders, then you will have to fetch the
     </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kumari2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6590110114"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crt A001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.65</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001001"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Basket Lemon"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PACKED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"loadedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unloadedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P_Aetos1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
     </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 03:00:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1aa3beae7844b77a90bb6fe0518992c"</span><span class="p">,</span><span class="w">
@@ -7260,14 +7283,15 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER ACCEPTED"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Watson"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9881234567</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_1227"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandeep"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+  </span><span class="nt">"trackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://goo.gl/qhZP63"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-20 10:23:20"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -7294,6 +7318,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>Status of the order</td>
 </tr>
 <tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>AWB No.</td>
+</tr>
+<tr>
 <td>deliveryMediumName</td>
 <td>String</td>
 <td>Name of delivery medium</td>
@@ -7314,14 +7343,14 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>Accept order timestamp</td>
 </tr>
 <tr>
-<td>deliveryMediumName</td>
+<td>trackUrl</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Url to track Order</td>
 </tr>
 <tr>
-<td>phoneNumber</td>
-<td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>deliveryEndDate</td>
+<td>String</td>
+<td>Delivery end date.</td>
 </tr>
 </tbody></table>
 
@@ -7331,9 +7360,9 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER REJECTED"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestTrip"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_100123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 20:47:20"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reasonOfRejection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot reach on ETA"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7383,10 +7412,10 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELLEDNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhi.P"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9922904337"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
@@ -7394,9 +7423,10 @@ If you do not store the Reference ID for orders, then you will have to fetch the
   </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Unavailable"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Unavailable Cd"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-809"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestCId"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cust122435"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cancellationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05 12:59:16"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cancelledBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Mile Demo User"</span><span class="w">
+  </span><span class="nt">"cancelledBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M. Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isCancelOccurAfterPickupFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -7471,14 +7501,19 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>String</td>
 <td>Cancelled by user name</td>
 </tr>
+<tr>
+<td>isCancelOccurAfterPickupFl</td>
+<td>Boolean</td>
+<td>whether order was cancelled after Pickup</td>
+</tr>
 </tbody></table>
 
 <h2 id="load-items">Load Items</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrderNo"</span><span class="p">,</span><span class="w">  
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_0001"</span><span class="p">,</span><span class="w">  
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADITEMNOTIFICATION"</span><span class="p">,</span><span class="w">
    </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -7487,17 +7522,21 @@ If you do not store the Reference ID for orders, then you will have to fetch the
         </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.30</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateQuantity"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="s2">"StatusCd"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -7595,8 +7634,8 @@ If you do not store the Reference ID for orders, then you will have to fetch the
   </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-07-01 09:13:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
   </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"TestDriverName"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH 03992"</span><span class="w">
-  </span><span class="s2">"revisedEta"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"2016-07-01 10:13:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH 03992"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"revisedEta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01 10:13:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADINGDONENOTIFICATION"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7665,19 +7704,24 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_1001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118589</span><span class="p">,</span><span class="w">
   </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095639</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB012345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User comments"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Watson"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:11:27"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12456"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
@@ -7697,7 +7741,7 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 </tr>
 </thead><tbody>
 <tr>
-<td>clientShipmentId</td>
+<td>orderNo</td>
 <td>String</td>
 <td>Order No.</td>
 </tr>
@@ -7715,6 +7759,16 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>notificationType</td>
 <td>String</td>
 <td>DELIVEREDNOTIFICATION</td>
+</tr>
+<tr>
+<td>orderLeg</td>
+<td>String</td>
+<td>Order leg, Possible values : DELIVER, PICKUP</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>Awb No.</td>
 </tr>
 <tr>
 <td>customerComment</td>
@@ -7737,6 +7791,16 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>Delivery medium&rsquo;s phone no.</td>
 </tr>
 <tr>
+<td>orderState</td>
+<td>String</td>
+<td>Order state, Possible values : FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>String</td>
+<td>Customer name</td>
+</tr>
+<tr>
 <td>deliveryTime</td>
 <td>String</td>
 <td>Delivery timestamp</td>
@@ -7755,6 +7819,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>transactionId</td>
 <td>String</td>
 <td>Transaction id</td>
+</tr>
+<tr>
+<td>paymentMode</td>
+<td>String</td>
+<td>Paymode mode, Possible values : PREPAID, COD</td>
 </tr>
 <tr>
 <td>actualCashAmount</td>
@@ -7821,9 +7890,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"actualItemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="nt">"actualItemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pratik"</span><span class="p">,</span><span class="w">
@@ -7987,6 +8058,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>No of units unloaded</td>
 </tr>
 <tr>
+<td>shipmentCrateMappingList.isActiveFl</td>
+<td>Boolean</td>
+<td>Crate is active</td>
+</tr>
+<tr>
 <td>shipmentCrateMappingList.shipmentlineitems.itemCd</td>
 <td>String</td>
 <td>Item code</td>
@@ -8025,6 +8101,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>shipmentCrateMappingList.shipmentlineitems.actualItemQuantity</td>
 <td>Integer</td>
 <td>Unloaded Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappingList.shipmentlineitems.isActiveFl</td>
+<td>Boolean</td>
+<td>Line item is active</td>
 </tr>
 <tr>
 <td>recipientName</td>
@@ -8215,7 +8296,8 @@ If you do not store the Reference ID for orders, then you will have to fetch the
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDB"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234565435</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1008"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -8296,6 +8378,11 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>orderState</td>
 <td>String</td>
 <td>State of order. Ex: FORWARD, REVERSE</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>-</td>
 </tr>
 </tbody></table>
 
@@ -8647,8 +8734,10 @@ You will have to consume this webhook in case your system is integrated with Log
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STARTTRIP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suraj Singh"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567546</span><span class="p">,</span><span class="w">
   </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:42:44"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-84"</span><span class="p">,</span><span class="w">
@@ -8657,7 +8746,8 @@ You will have to consume this webhook in case your system is integrated with Log
   </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Order002"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vikhroli"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
