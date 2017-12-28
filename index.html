@@ -259,7 +259,7 @@
 
 <p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.</p>
 
-<p><b><u>The validity of this session token is 1 day (24 hours).</u></b></p>
+<p><b><u>If you do not provide &lsquo;sessionExpiryTimeout&rsquo;, the validity of this session token will be 1 day (24 hours).</u></b></p>
 
 <p>Please ensure that you add the token and secret key as part of every Loginext API call.</p>
 
@@ -274,7 +274,8 @@
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
         </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"demouser"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"Admin#1!"</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"Admin#1!"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sessionExpiryTimeout"</span><span class="p">:</span><span class="mi">72</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span></code></pre>
 
@@ -330,6 +331,12 @@
 <td>String</td>
 <td>Mandatory</td>
 <td>Password provided by LogiNext</td>
+</tr>
+<tr>
+<td>sessionExpiryTimeout</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Number of hours to be specified</td>
 </tr>
 </tbody></table>
 
@@ -2509,7 +2516,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>aid</td>
 <td>f522631c-490c-46fd-9f79-ca8d14a704d7</td>
-<td>Value of authentication token without &lsquo;BASIC&rsquo; keyword</td>
+<td>Value of authentication token without &#39;BASIC&rsquo; keyword</td>
 </tr>
 <tr>
 <td>key</td>
