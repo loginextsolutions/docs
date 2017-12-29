@@ -259,6 +259,14 @@
 
 <p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.</p>
 
+<p>If you want the session to be valid for 1 Hour, then the &ldquo;sessionExpiryTimeout&rdquo; should be 1.<br>
+Similarly for - <br>
+24 Hours, it should be 24 <br>
+6 months, it should be  180* 24 = 4320<br>
+12 Months, it should be 365*24= 8760<br>
+5 Years, it should be 365*5*24 = 43800<br>
+10 Years, it should be 365*10*24= 87600<br></p>
+
 <p><b><u>If you do not provide &lsquo;sessionExpiryTimeout&rsquo;, the validity of this session token will be 1 day (24 hours).</u></b></p>
 
 <p>Please ensure that you add the token and secret key as part of every Loginext API call.</p>
@@ -336,7 +344,7 @@
 <td>sessionExpiryTimeout</td>
 <td>Integer</td>
 <td>Optional</td>
-<td>Number of hours to be specified</td>
+<td>Number of hours till which you want the session to be valid</td>
 </tr>
 </tbody></table>
 
