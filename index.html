@@ -324,6 +324,7 @@ Similarly for - <br>
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -331,18 +332,21 @@ Similarly for - <br>
 <tr>
 <td>userName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Username provided by LogiNext</td>
 </tr>
 <tr>
 <td>password</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Password provided by LogiNext</td>
 </tr>
 <tr>
 <td>sessionExpiryTimeout</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Number of hours till which you want the session to be valid</td>
 </tr>
@@ -522,6 +526,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -529,138 +534,161 @@ Please check with our assigned CSAs on the address format based on the model typ
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Unique name to identify the vehicle</td>
 </tr>
 <tr>
 <td>vehicleMake</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Make of the vehicle like Mazda, Volvo, etc.</td>
 </tr>
 <tr>
 <td>vehicleModel</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.</td>
 </tr>
 <tr>
 <td>typeOfBody</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK</td>
 </tr>
 <tr>
 <td>unladdenWeight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Unladen weight of the vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the vehicle in Units</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the vehicle on cubic centimeters</td>
 </tr>
 <tr>
 <td>chasisNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Chassis / VIN number of the vehicle</td>
 </tr>
 <tr>
 <td>engineNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Engine Number of the vehicle</td>
 </tr>
 <tr>
 <td>markerName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of the Sub-ordinate who is driving along with the driver</td>
 </tr>
 <tr>
 <td>registrationNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Registered Number provided by the local transportation authority</td>
 </tr>
 <tr>
 <td>pucValidity</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>insuranceValidity</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>vehiclePermit</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Full name of the states of India in which the vehicle is permitted to travel</td>
 </tr>
 <tr>
 <td>ownership</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Entity that owns the vehicle. This field can have only below two values - Company , Vendor</td>
 </tr>
 <tr>
 <td>ownerName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of the Company / Vendor who owns the vehicle</td>
 </tr>
 <tr>
 <td>transporter</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Name of the transporter / carrier / 3PL provider responsible for the delivery.</td>
 </tr>
 <tr>
 <td>financer</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>If the vehicle is on loan, then name of the financer</td>
 </tr>
 <tr>
 <td>accidentHistory</td>
 <td>String</td>
+<td>160</td>
 <td>Optional</td>
 <td>If vehicle has any accident records against it, then please document the details through this field</td>
 </tr>
 <tr>
 <td>rentStartDate</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.</td>
 </tr>
 <tr>
 <td>rentEndDate</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.</td>
 </tr>
 <tr>
 <td>deviceId.barcode</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.</td>
 </tr>
@@ -740,6 +768,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -747,6 +776,7 @@ Please check with our assigned CSAs on the address format based on the model typ
 <tr>
 <td>reference_id</td>
 <td>String</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the vehicle.</td>
 </tr>
@@ -905,6 +935,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -912,146 +943,163 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Unique name to identify the vehicle</td>
 </tr>
 <tr>
 <td>vehicleMake</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Make of the vehicle like Mazda, Volvo, etc.</td>
 </tr>
 <tr>
 <td>vehicleModel</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.</td>
 </tr>
 <tr>
 <td>typeOfBody</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK</td>
 </tr>
 <tr>
 <td>unladdenWeight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Unladen weight of the vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of vehicle in Kg.</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the vehicle in Units</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the vehicle on cubic centimeters</td>
 </tr>
 <tr>
 <td>chasisNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Chassis / VIN number of the vehicle</td>
 </tr>
 <tr>
 <td>engineNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Engine Number of the vehicle</td>
 </tr>
 <tr>
 <td>markerName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of the Sub-ordinate who is driving along with the driver</td>
 </tr>
 <tr>
 <td>registrationNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Registered Number provided by the local transportation authority</td>
 </tr>
 <tr>
 <td>pucValidity</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>insuranceValidity</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.</td>
 </tr>
 <tr>
 <td>vehiclePermit</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Full name of the states of India in which the vehicle is permitted to travel</td>
 </tr>
 <tr>
 <td>ownership</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Entity that owns the vehicle. This field can have only below two values - Company , Vendor</td>
 </tr>
 <tr>
 <td>ownerName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of the Company / Vendor who owns the vehicle</td>
 </tr>
 <tr>
 <td>transporter</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Name of the transporter / carrier / 3PL provider responsible for the delivery.</td>
 </tr>
 <tr>
 <td>financer</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>If the vehicle is on loan, then name of the financer</td>
 </tr>
 <tr>
 <td>accidentHistory</td>
 <td>String</td>
+<td>160</td>
 <td>Optional</td>
 <td>If vehicle has any accident records against it, then please document the details through this field</td>
 </tr>
 <tr>
 <td>rentStartDate</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.</td>
 </tr>
 <tr>
 <td>rentEndDate</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
 <td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.</td>
 </tr>
 <tr>
 <td>deviceId.barcode</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.</td>
-</tr>
-<tr>
-<td>deviceId.barcode</td>
-<td>String</td>
-<td>Optional</td>
-<td>Barcode of the tracker.</td>
 </tr>
 </tbody></table>
 
