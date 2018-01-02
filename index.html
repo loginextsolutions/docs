@@ -2518,10 +2518,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w"> </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2567,10 +2564,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nt">"tripReferenceIds"</span><span class="p">:[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w"> </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="p">]</span><span class="w">
+
 </span></code></pre>
 
 <blockquote>
@@ -2606,24 +2601,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>List</td>
 <td>Mandatory</td>
 <td>Reference Ids associated with trips</td>
-</tr>
-</tbody></table>
-
-<h3 id="http-request-parameters">HTTP Request Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tripReferenceIds</td>
-<td>List of Strings</td>
-<td>Mandatory</td>
-<td>Reference Ids of the trip</td>
 </tr>
 </tbody></table>
 
@@ -2812,6 +2789,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -2819,48 +2797,56 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>trackerId</td>
 <td>String</td>
+<td>12</td>
 <td>Mandatory</td>
 <td>Device&rsquo;s unique ID</td>
 </tr>
 <tr>
 <td>latitude</td>
 <td>Double</td>
+<td>13,10</td>
 <td>Mandatory</td>
 <td>Latitude</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>Double</td>
+<td>13,10</td>
 <td>Mandatory</td>
 <td>Longitude</td>
 </tr>
 <tr>
 <td>time</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Tracking time in UTC</td>
+<td>Tracking time in UTC. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>batteryPerc</td>
 <td>Double</td>
+<td>5,2</td>
 <td>Mandatory</td>
 <td>Battery Percentage of device</td>
 </tr>
 <tr>
 <td>speed</td>
 <td>Double</td>
+<td>5,2</td>
 <td>Optional</td>
 <td>Speed with which consignment is moving</td>
 </tr>
 <tr>
 <td>messageType</td>
 <td>String</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>Message type. Ex: REG</td>
 </tr>
 <tr>
 <td>temperature</td>
 <td>Double</td>
+<td>5,2</td>
 <td>Optional</td>
 <td>Consignment&rsquo;s temperature</td>
 </tr>
@@ -3190,6 +3176,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -3197,222 +3184,259 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>orderNo</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
+<td>1000</td>
 <td>Optional</td>
 <td>Airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Order type code. DELIVER for delivery leg order</td>
 </tr>
 <tr>
 <td>orderState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>State of order. Ex: FORWARD</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
 <td>Order Date</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Value of package</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of delivery branch</td>
 </tr>
 <tr>
 <td>deliverServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Mandatory</td>
 <td>Deliver service time in mins.</td>
 </tr>
 <tr>
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
 <td>Deliver start time window</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
 <td>Deliver end time window</td>
 </tr>
 <tr>
 <td>deliveryType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Type of delivery location. Ex: CUSTOMER, PUP</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Deliver account code</td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Deliver account name</td>
 </tr>
 <tr>
 <td>deliverEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Optional</td>
 <td>Deliver email</td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Deliver phone number</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Apartment</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Street name</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Landmark</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Locality</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>City</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Pincode</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Delivery address Latitude</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Delivery address Longitude</td>
 </tr>
 <tr>
 <td>returnBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of return branch</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Additional pickup comments associated with the order</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Additional delivery comments associated with the order</td>
 </tr>
@@ -3424,6 +3448,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -3431,66 +3456,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>shipmentCrateMappings</td>
 <td>Array of objects</td>
+<td></td>
 <td>Optional</td>
 <td>Shipment crates</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateCd</td>
 <td>String</td>
+<td>128</td>
 <td>Mandatory</td>
 <td>Crate code</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
 <td>Double</td>
+<td></td>
 <td>Mandatory</td>
 <td>Crate amount</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateType</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Crate type. Ex - ??</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.noOfUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>No. of items in crate</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
 <td>String</td>
+<td>200</td>
 <td>Mandatory</td>
 <td>Item code</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Item name</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
 <td>Double</td>
+<td></td>
 <td>Mandatory</td>
 <td>Item price</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
 <td>Double</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>Item quantity</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Item type</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Item weight</td>
 </tr>
@@ -6502,12 +6538,12 @@ If you do not store the Reference ID for orders, then you will have to fetch the
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestName"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Anuradha S."</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andheri East"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8888889999"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"35629171418620161809"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ORder_18620161809"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -6542,6 +6578,7 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -6549,66 +6586,77 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <tr>
 <td>orderNo</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Order No.</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Payment mode. Ex: COD, Prepaid</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Package Value (This will be used when paymentType is Prepaid)</td>
 </tr>
 <tr>
 <td>cashOnDelivery</td>
 <td>Double</td>
+<td>10</td>
 <td>Mandatory(if paymentType is COD)</td>
 <td>Cash to be collected on delivery</td>
 </tr>
 <tr>
 <td>cashOnPickup</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Cash to be given on pickup</td>
 </tr>
 <tr>
 <td>locality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Locality name</td>
 </tr>
 <tr>
 <td>subLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Sub-locality name</td>
 </tr>
 <tr>
 <td>address</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Address where delivery should be done</td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>End customer contact number</td>
 </tr>
 <tr>
 <td>customerName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>End customer name</td>
 </tr>
@@ -6703,6 +6751,7 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -6712,270 +6761,315 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td>String</td>
 <td>Mandatory</td>
 <td>Order No.</td>
+<td></td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>Optional</td>
 <td>Awb No.</td>
+<td></td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name</td>
+<td></td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Double</td>
 <td>Mandatory</td>
 <td>Order Date</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverCapacityInVolume</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Weight of package in Kg.</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverCapacityInUnits</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
+<td></td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>Optional</td>
 <td>Payment mode. Ex: COD, Prepaid</td>
+<td></td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Package Value (This will be used when paymentType is Prepaid)</td>
+<td></td>
 </tr>
 <tr>
 <td>cashOnDelivery</td>
 <td>Double</td>
 <td>Mandatory(if paymentType is Delivery)</td>
 <td>Cash to be collected on delivery</td>
+<td></td>
 </tr>
 <tr>
 <td>cashOnPickup</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Cash to be given on pickup</td>
+<td></td>
 </tr>
 <tr>
 <td>isPartialDeliveryAllowedFl</td>
 <td>String</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupAccountCode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup customer-id</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup customer name</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupEmail</td>
 <td>String</td>
 <td>Optional</td>
 <td>Pickup customer email-id</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupPhoneNumber</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup customer contact number</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup customer apartment</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup customer street name</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
 <td>Optional</td>
 <td>Pickup customer landmark</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup area name</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup country code</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup state code</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup city</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupPincode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Pickup pincode</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
 <td>Mandatory</td>
 <td>Pickup Start time window of order</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
 <td>Mandatory</td>
 <td>Pickup End time window of order</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Latitude of pickup location</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupLongitude</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Longitude of pickup location</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
 <td>Optional</td>
 <td>Pickup notes</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver customer-id</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver customer name</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverEmail</td>
 <td>String</td>
 <td>Optional</td>
 <td>Deliver customer email-id</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver customer contact number</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver customer apartment</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver customer street name</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
 <td>Optional</td>
 <td>Deliver customer landmark</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver area name</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver country code</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver state code</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver city</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverPincode</td>
 <td>String</td>
 <td>Mandatory</td>
 <td>Deliver pincode</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
 <td>Mandatory</td>
 <td>Deliver Start time window of order</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td>Mandatory</td>
 <td>Deliver End time window of order</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Latitude of deliver location</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
 <td>Optional</td>
 <td>Longitude of deliver location</td>
+<td></td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
 <td>Optional</td>
 <td>Deliver notes</td>
+<td></td>
 </tr>
 </tbody></table>
 
