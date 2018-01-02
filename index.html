@@ -2518,7 +2518,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w"> </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2527,7 +2531,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips started successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2564,7 +2567,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w"> </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"ca7fbf96a133461aadce8f94678084ee"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"82b9ec9025b4454c9bcb86c704f49ce3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"980053a9ee4a48876b6d3d18412d03a0c"</span><span class="w">
+</span><span class="p">]</span><span class="w">
 
 </span></code></pre>
 
@@ -2574,7 +2581,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips ended successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3158,7 +3164,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3214,7 +3219,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Order Date</td>
+<td>Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
@@ -3298,14 +3303,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Deliver start time window</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Deliver end time window</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliveryType</td>
@@ -3429,14 +3434,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
-<td>255</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional pickup comments associated with the order</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
-<td>255</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional delivery comments associated with the order</td>
 </tr>
@@ -3620,7 +3625,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3638,6 +3642,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -3645,210 +3650,245 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>orderNo</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
+<td>1000</td>
 <td>Optional</td>
 <td>Airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Order type code. DELIVER for delivery leg order</td>
 </tr>
 <tr>
 <td>orderState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>State of order. Ex: FORWARD</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Order Date</td>
+<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Value of package</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Number of crates</td>
 </tr>
 <tr>
 <td>deliveryType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of pickup branch</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Mandatory</td>
 <td>Pickup service time in mins.</td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Pickup start time window</td>
+<td>Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Pickup end time window</td>
+<td>Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Pickup account code</td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Pickup account name</td>
 </tr>
 <tr>
 <td>pickupEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Optional</td>
 <td>Pickup email id</td>
 </tr>
 <tr>
 <td>pickupPhoneNumber</td>
-<td>Optional</td>
+<td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Pickup phone no</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Apartment</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Street name</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Landmark</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Locality</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup City</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup State. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Country. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Pickup Pincode</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Pickup address Latitude</td>
 </tr>
 <tr>
 <td>pickupLongitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Pickup address Longitude</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional pickup comments associated with the order</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional delivery comments associated with the order</td>
 </tr>
@@ -3860,6 +3900,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -3867,66 +3908,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>shipmentCrateMappings</td>
 <td>Array of objects</td>
+<td></td>
 <td>Optional</td>
 <td>Shipment crates</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateCd</td>
 <td>String</td>
+<td>128</td>
 <td>Mandatory</td>
 <td>CRATE001</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Crate amount</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.noOfUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>No. of crate units</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
 <td>String</td>
+<td>200</td>
 <td>Mandatory</td>
 <td>Item code</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Item name</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
 <td>Double</td>
+<td></td>
 <td>Mandatory</td>
 <td>Item price</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
 <td>Double</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>Item quantity</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Item type</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Item weight</td>
 </tr>
@@ -4054,7 +4106,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -4072,6 +4123,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -4079,414 +4131,483 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>orderNo</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
+<td>1000</td>
 <td>Optional</td>
 <td>Airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Order type code. BOTH for pickup &amp; delivery leg order</td>
 </tr>
 <tr>
 <td>orderState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>State of order. Ex: FORWARD</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Order Date</td>
+<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Value of package</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
+<td>40</td>
 <td>Mandatory</td>
 <td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Return allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Cancellation allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of delivery branch</td>
 </tr>
 <tr>
 <td>deliverServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Mandatory</td>
 <td>Deliver service time in mins.</td>
 </tr>
 <tr>
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Deliver start time window</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Deliver end time window</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliveryType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Type of delivery location. Ex: CUSTOMER, PUP</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Deliver account code</td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Deliver account name</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Apartment</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Street name</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Landmark</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Locality</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>City</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>State code</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Country code</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Pincode</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
+<td>100</td>
 <td>Optional</td>
 <td>Delivery address Latitude</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
+<td>100</td>
 <td>Optional</td>
 <td>Delivery address Longitude</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of pickup branch</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Mandatory</td>
 <td>Pickup service time in mins.</td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Pickup start time window</td>
+<td>Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Pickup end time window</td>
+<td>Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Pickup account code</td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Pickup account name</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Apartment</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Street name</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Landmark</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Locality</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup City</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup State code</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Pickup Country code</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Pickup Pincode</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Pickup address Latitude</td>
 </tr>
 <tr>
 <td>pickupLongitude</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Pickup address Longitude</td>
 </tr>
 <tr>
 <td>returnBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of return branch</td>
 </tr>
 <tr>
 <td>returnStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Return start time window</td>
+<td>Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>returnEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Return end time window</td>
+<td>Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>returnAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Return account code</td>
 </tr>
 <tr>
 <td>returnAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Return account name</td>
 </tr>
 <tr>
 <td>returnEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Mandatory</td>
 <td>Return account code</td>
 </tr>
 <tr>
 <td>returnPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Return account name</td>
 </tr>
 <tr>
 <td>returnApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return Apartment</td>
 </tr>
 <tr>
 <td>returnStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return Street name</td>
 </tr>
 <tr>
 <td>returnLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Landmark</td>
 </tr>
 <tr>
 <td>returnLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return Locality</td>
 </tr>
 <tr>
 <td>returnCity</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return City</td>
 </tr>
 <tr>
 <td>returnState</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Return Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Return Pincode</td>
 </tr>
 <tr>
 <td>deliverEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Optional</td>
 <td>Email of the customer</td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Phone number of the customer</td>
 </tr>
 <tr>
 <td>pickupEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Optional</td>
 <td>Email of the merchant</td>
 </tr>
 <tr>
 <td>pickupPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Phone number of the merchant</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional pickup comments associated with the order</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Additional delivery comments associated with the order</td>
 </tr>
@@ -4498,6 +4619,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -4505,66 +4627,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>shipmentCrateMappings</td>
 <td>Array of objects</td>
+<td></td>
 <td>Optional</td>
 <td>Shipment crates</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateCd</td>
 <td>String</td>
+<td>128</td>
 <td>Mandatory</td>
 <td>CRATE001</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Crate amount</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.noOfUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>No. of crate units</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
 <td>String</td>
+<td>200</td>
 <td>Mandatory</td>
 <td>Item code</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Item name</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
 <td>Double</td>
+<td></td>
 <td>Mandatory</td>
 <td>Item price</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
 <td>Double</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>Item quantity</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Item type</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Item weight</td>
 </tr>
@@ -4581,7 +4714,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"863fe69239bc4f738ca275a809c3b2e2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ca275a9239bc4f738ca275a809c35fr3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"5a809c239bc4f738ca275a809c3b23e4"</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -4591,10 +4728,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
+    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"8e117a9239bc4f738ca275a809c35fr3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"3csefc239bc4f738ca275a209c38e117"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
 
 </span><span class="err">}</span><span class="w">
 </span></code></pre>
@@ -4821,6 +4959,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -4828,24 +4967,28 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>start_date</td>
 <td>Date</td>
+<td></td>
 <td>Conditional Mandatory</td>
 <td>If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>end_date</td>
 <td>Date</td>
+<td></td>
 <td>Conditional Mandatory</td>
 <td>If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
 </tr>
 <tr>
 <td>order_no</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)</td>
 </tr>
@@ -4963,8 +5106,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -4983,6 +5124,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -4990,342 +5132,399 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>referenceId</td>
 <td>String</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>Order Reference id</td>
 </tr>
 <tr>
 <td>orderNo</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
+<td>1000</td>
 <td>Optional</td>
 <td>Airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Order Date</td>
+<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Value of package</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>Is Partial Delivery allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Return allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Is Cancellation allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of delivery branch</td>
 </tr>
 <tr>
 <td>deliverServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Optional</td>
 <td>Deliver service time in mins.</td>
 </tr>
 <tr>
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Deliver start time window</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Deliver end time window</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliveryType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Type of delivery location. Ex: CUSTOMER, PUP</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Deliver account code</td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Deliver account name</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Apartment</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Street name</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Landmark</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Locality</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>City</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>State code</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Country code</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Pincode</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of pickup branch</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Optional</td>
 <td>Pickup service time in mins.</td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Pickup start time window</td>
+<td>Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Pickup end time window</td>
+<td>Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>pickupAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Pickup account code</td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Pickup account name</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Apartment</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Street name</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Landmark</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Locality</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup City</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Pickup Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Pickup Pincode</td>
 </tr>
 <tr>
 <td>returnBranch</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of return branch</td>
 </tr>
 <tr>
 <td>returnStartTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Return start time window</td>
+<td>Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>returnEndTimeWindow</td>
 <td>Date</td>
+<td></td>
 <td>Optional</td>
-<td>Return end time window</td>
+<td>Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>returnAccountCode</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Return account code</td>
 </tr>
 <tr>
 <td>returnAccountName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Return account name</td>
 </tr>
 <tr>
 <td>returnEmail</td>
 <td>String</td>
+<td>500</td>
 <td>Optional</td>
 <td>Return account code</td>
 </tr>
 <tr>
 <td>returnPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Return account name</td>
 </tr>
 <tr>
 <td>returnApartment</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Apartment</td>
 </tr>
 <tr>
 <td>returnStreetName</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Street name</td>
 </tr>
 <tr>
 <td>returnLandmark</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Landmark</td>
 </tr>
 <tr>
 <td>returnLocality</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Locality</td>
 </tr>
 <tr>
 <td>returnCity</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return City</td>
 </tr>
 <tr>
 <td>returnState</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
+<td>512</td>
 <td>Optional</td>
 <td>Return Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Return Pincode</td>
 </tr>
@@ -5347,15 +5546,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="w">
-
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="w">
-
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6156ty46e324c42abb5ea1a32y45f66"</span><span class="p">,</span><span class="w">
@@ -5372,7 +5567,6 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment updated successfully"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5392,6 +5586,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -5399,24 +5594,28 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>newStatus</td>
 <td>String</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>One status for multiple orders.The orders will be updated with this new status</td>
 </tr>
 <tr>
 <td>orderReferenceId</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>LogiNext provided order/shipment referenceId</td>
 </tr>
 <tr>
 <td>reasonCd</td>
 <td>String</td>
+<td>255</td>
 <td>Conditional Mandatory</td>
 <td>Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED</td>
 </tr>
 <tr>
 <td>otherReason</td>
 <td>Date</td>
+<td></td>
 <td>Conditional Mandatory</td>
 <td>Mandatory when reasonCd is OTHER</td>
 </tr>
@@ -5480,8 +5679,6 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -5500,6 +5697,7 @@ You can pass multiple crate and line items.</p>
 <tr>
 <th>Param</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -5507,66 +5705,77 @@ You can pass multiple crate and line items.</p>
 <tr>
 <td>shipmentCrates</td>
 <td>Array of objects</td>
+<td></td>
 <td>Optional</td>
 <td>Shipment crates</td>
 </tr>
 <tr>
 <td>shipmentCrates.crateCd</td>
 <td>String</td>
+<td>128</td>
 <td>Mandatory</td>
 <td>Crate Code</td>
 </tr>
 <tr>
 <td>shipmentCrates.crateAmount</td>
 <td>Double</td>
+<td></td>
 <td>Optional</td>
 <td>Crate amount</td>
 </tr>
 <tr>
 <td>shipmentCrates.crateType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
 </tr>
 <tr>
 <td>shipmentCrates.noOfUnits</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>No. of crate units</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemCd</td>
 <td>String</td>
+<td>200</td>
 <td>Mandatory</td>
 <td>Item code</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Item name</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemPrice</td>
 <td>Double</td>
+<td></td>
 <td>Mandatory</td>
 <td>Item price</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemQuantity</td>
 <td>Double</td>
+<td>10</td>
 <td>Mandatory</td>
 <td>Item quantity</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemType</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Item type</td>
 </tr>
 <tr>
 <td>shipmentCrates.shipmentlineitems.itemWeight</td>
 <td>Double</td>
+<td>10</td>
 <td>Optional</td>
 <td>Item weight</td>
 </tr>
@@ -5583,7 +5792,11 @@ You can pass multiple crate and line items.</p>
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+     </span><span class="s2">"c8714df4347911e6829f000d3aa044508"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"c8714df4347911e6829f654677aa04450"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"c8714df4347911e436667888d3aa04450"</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -5592,7 +5805,6 @@ You can pass multiple crate and line items.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5640,7 +5852,6 @@ You can pass multiple crate and line items.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
@@ -5691,6 +5902,7 @@ You can pass multiple crate and line items.</p>
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -5698,30 +5910,35 @@ You can pass multiple crate and line items.</p>
 <tr>
 <td>orderstartdt</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Order start date</td>
 </tr>
 <tr>
 <td>orderenddt</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Order end date</td>
 </tr>
 <tr>
 <td>deliverystartdt</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Delivery start date</td>
 </tr>
 <tr>
 <td>deliveryenddt</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Delivery end date</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED</td>
 </tr>
@@ -5744,7 +5961,10 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"a9be39b9347911e6829f07657aa04450"</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -5752,7 +5972,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 trip(s) started"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 trip(s) started"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5819,6 +6039,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -5826,18 +6047,21 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <td>tripReferenceId</td>
 <td>String</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the trip.</td>
 </tr>
 <tr>
 <td>notDispatchedOrders</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>Reference Id associated with the non-dispatched order.</td>
 </tr>
 <tr>
 <td>deliveredOrders</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>Reference Id associated with the delivered order.</td>
 </tr>
@@ -5967,6 +6191,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -5974,144 +6199,168 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <td>employeeId</td>
 <td>String</td>
+<td>50</td>
 <td>Mandatory</td>
 <td>Employee Id</td>
 </tr>
 <tr>
 <td>userGroupName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>User group name</td>
 </tr>
 <tr>
 <td>branchName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Client branch name</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Full name of Delivery medium</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Mobile no</td>
 </tr>
 <tr>
 <td>imei</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>IMEI no</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Email id</td>
 </tr>
 <tr>
 <td>userName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Username</td>
 </tr>
 <tr>
 <td>password</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Password</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Capacity of Delivery medium in units</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Capacity of Delivery medium in volume</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Capacity of Delivery medium in weight</td>
 </tr>
 <tr>
 <td>dob</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
 <td>Date of birth</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>String</td>
+<td>12</td>
 <td>Optional</td>
 <td>Gender. Ex - Male,Female</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterTypeCd</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Delivery medium type. Ex - Truck, Delivery Boy</td>
 </tr>
 <tr>
 <td>isOwnVehicleFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>Owner of vehicle. Ex - Owned, Company</td>
 </tr>
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Vehicle number to be assigned to the delivery medium</td>
 </tr>
 <tr>
 <td>weeklyOffList</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Array of week&rsquo;s off days. Ex - Monday, Tuesday etc.</td>
 </tr>
 <tr>
 <td>maxDistance</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Max. allowed distance</td>
 </tr>
 <tr>
 <td>licenseValidity</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
 <td>License validity date</td>
 </tr>
 <tr>
 <td>deliveryMediumMapList.name</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of language</td>
 </tr>
 <tr>
 <td>shiftList.shiftStartTime</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
 <td>Shift start time</td>
 </tr>
 <tr>
 <td>shiftList.shiftEndTime</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
 <td>Shift end time</td>
 </tr>
 <tr>
 <td>dmPreference</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Preferred Pincode of Delivery medium</td>
 </tr>
@@ -6140,12 +6389,10 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geocodes Fetched Successfully"</span><span class="p">,</span><span class="w">
- </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.11736939999999</span><span class="p">,</span><span class="w">
      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9103214</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"shipmentReference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
      </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE_PLACES"</span><span class="w">
    </span><span class="p">}</span><span class="w">
  </span><span class="p">],</span><span class="w">
@@ -6309,8 +6556,6 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
 </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
 </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-</span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
 </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6325,6 +6570,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -6332,108 +6578,126 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 <tr>
 <td>routeName</td>
 <td>String</td>
+<td>150</td>
 <td>Mandatory</td>
 <td>Route name</td>
 </tr>
 <tr>
 <td>startLocation.latitude</td>
 <td>Double</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Latitude of start location</td>
 </tr>
 <tr>
 <td>startLocation.longitude</td>
 <td>Double</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Longitude of start location</td>
 </tr>
 <tr>
 <td>vehicles</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>List of delivery medium</td>
 </tr>
 <tr>
 <td>vehicles.name</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Delivery medium name</td>
 </tr>
 <tr>
 <td>vehicles.capacity.weight</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Capacity of delivery medium</td>
 </tr>
 <tr>
 <td>vehicles.capacity.volume</td>
 <td>Integer</td>
+<td>20</td>
 <td>Optional</td>
 <td>Volume of delivery medium</td>
 </tr>
 <tr>
 <td>vehicles.type</td>
 <td>List</td>
+<td></td>
 <td>Optional</td>
 <td>Type of delivery medium</td>
 </tr>
 <tr>
 <td>shipments</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>List of orders</td>
 </tr>
 <tr>
 <td>shipments.name</td>
 <td>String</td>
+<td>100</td>
 <td>Mandatory</td>
 <td>Order no.</td>
 </tr>
 <tr>
 <td>shipments.location.latitude</td>
 <td>Double</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Order Latitude</td>
 </tr>
 <tr>
 <td>shipments.location.longitude</td>
 <td>Double</td>
+<td>20</td>
 <td>Mandatory</td>
 <td>Order Longitude</td>
 </tr>
 <tr>
 <td>shipments.start</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Order start time window</td>
 </tr>
 <tr>
 <td>shipments.end</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
 <td>Order end time window</td>
 </tr>
 <tr>
 <td>shipments.serviceTime</td>
 <td>Integer</td>
+<td>11</td>
 <td>Optional</td>
 <td>Order service time in mins.</td>
 </tr>
 <tr>
 <td>shipments.weight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Weight of order in Kg.</td>
 </tr>
 <tr>
 <td>shipments.volume</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Volume of order in cc.</td>
 </tr>
 <tr>
 <td>shipments.type</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>Type of orders</td>
 </tr>
@@ -6491,6 +6755,7 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -6498,24 +6763,28 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <tr>
 <td>manifestId</td>
 <td>String</td>
+<td>11</td>
 <td>Optional</td>
 <td>You can pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If Not​ ​passed, then LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.</td>
 </tr>
 <tr>
 <td>manifestType</td>
 <td>String</td>
+<td>25</td>
 <td>Optional</td>
 <td>Default manifestType is ORDER</td>
 </tr>
 <tr>
 <td>cancelledOrderAllowedFl</td>
 <td>String</td>
+<td>1</td>
 <td>Optional</td>
 <td>By default the value will be taken as  &ldquo;false&rdquo;. If you would like to OutScan Cancelled orders, then please pass &ldquo;true&rdquo;</td>
 </tr>
 <tr>
 <td>orderReferenceIds</td>
 <td>List</td>
+<td></td>
 <td>Mandatory</td>
 <td>LogiNext Order Reference ID</td>
 </tr>
