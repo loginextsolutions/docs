@@ -1256,8 +1256,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -1265,192 +1266,224 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>driverName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Driver&rsquo;s full name</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Phone No</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>EmailId</td>
 </tr>
 <tr>
 <td>dateOfBirth</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
-<td>Date of Birth</td>
+<td>Date of Birth. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>languageList</td>
 <td>List of Objects</td>
+<td></td>
 <td>Optional</td>
 <td>Language(s) known to the driver</td>
 </tr>
 <tr>
 <td>languageList.name</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Name of language</td>
 </tr>
 <tr>
 <td>salary</td>
 <td>String</td>
+<td>18</td>
 <td>Optional</td>
 <td>Current salary of Driver</td>
 </tr>
 <tr>
 <td>maritalStatus</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Marital Status. Ex: married, unmarried.</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>String</td>
+<td>12</td>
 <td>Optional</td>
 <td>Gender. Ex - male,female.</td>
 </tr>
 <tr>
 <td>experience</td>
 <td>Integer</td>
+<td>3</td>
 <td>Optional</td>
 <td>No of yrs. of driving experience</td>
 </tr>
 <tr>
 <td>licenseValidity</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
-<td>License validity date</td>
+<td>License validity date. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>licenseNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>License No</td>
 </tr>
 <tr>
 <td>licenseType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>License Type. Ex: 2 wheeler, 4 wheeler</td>
 </tr>
 <tr>
 <td>licenseIssueBy</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>License Issuing Authority Name</td>
 </tr>
 <tr>
 <td>addressList.apartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Apartment name/no</td>
 </tr>
 <tr>
 <td>addressList.streetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Society/Street name</td>
 </tr>
 <tr>
 <td>addressList.landmark</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Landmark</td>
 </tr>
 <tr>
 <td>addressList.areaName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Locality/Area name</td>
 </tr>
 <tr>
 <td>addressList.countryShortCode</td>
 <td>String</td>
+<td>3</td>
 <td>Mandatory</td>
 <td>Country code.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.stateShortCode</td>
 <td>String</td>
+<td>3</td>
 <td>Mandatory</td>
 <td>State short code.Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.city</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>City</td>
 </tr>
 <tr>
 <td>addressList.pincode</td>
 <td>Integer</td>
+<td>12</td>
 <td>Mandatory</td>
 <td>Pincode</td>
 </tr>
 <tr>
 <td>addressList.isCurrentAddress</td>
 <td>Boolean</td>
+<td></td>
 <td>Mandatory</td>
 <td>Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address</td>
 </tr>
 <tr>
 <td>driverEmployeeId</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>EmployeeId</td>
 </tr>
 <tr>
 <td>shiftList.startTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift start date</td>
+<td>Shift start date. Format - HH:MMaa e.g. : 07:00pm</td>
 </tr>
 <tr>
 <td>shiftList.endTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift end date</td>
+<td>Shift end date. Format - HH:MMaa e.g. : 17:00pm</td>
 </tr>
 <tr>
 <td>shiftList.shiftStartTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift start time</td>
+<td>Shift start time. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>shiftList.shiftEndTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift end time</td>
+<td>Shift end time. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>previousCompanyName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company name</td>
 </tr>
 <tr>
 <td>reportingManager</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&rsquo;s reporting manager&rsquo;s name</td>
 </tr>
 <tr>
 <td>managerPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&#39;smanager&rsquo;s phone no</td>
 </tr>
 <tr>
 <td>managerEmailId</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&rsquo;s manager&rsquo;s email id</td>
 </tr>
@@ -1659,8 +1692,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -1668,204 +1702,235 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>referenceId</td>
 <td>String</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>ReferenceId of the record</td>
 </tr>
 <tr>
 <td>driverName</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Driver&rsquo;s full name</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Phone No</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>EmailId</td>
 </tr>
 <tr>
 <td>dateOfBirth</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
-<td>Date of Birth</td>
+<td>Date of Birth. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>languageList</td>
 <td>List of Objects</td>
+<td></td>
 <td>Optional</td>
 <td>Language(s) known to the driver</td>
 </tr>
 <tr>
 <td>languageList.name</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Name of language</td>
 </tr>
 <tr>
 <td>salary</td>
 <td>String</td>
+<td>18</td>
 <td>Optional</td>
 <td>Current salary of Driver</td>
 </tr>
 <tr>
 <td>maritalStatus</td>
 <td>String</td>
+<td>20</td>
 <td>Optional</td>
 <td>Marital Status. Ex: married, unmarried.</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>String</td>
+<td>12</td>
 <td>Optional</td>
 <td>Gender. Ex - male,female.</td>
 </tr>
 <tr>
 <td>experience</td>
 <td>Integer</td>
+<td>3</td>
 <td>Optional</td>
 <td>No of yrs. of driving experience</td>
 </tr>
 <tr>
 <td>licenseValidity</td>
 <td>String</td>
+<td></td>
 <td>Optional</td>
-<td>License validity date</td>
+<td>License validity date. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>licenseNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>License No</td>
 </tr>
 <tr>
 <td>licenseType</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>License Type. Ex: 2 wheeler, 4 wheeler</td>
 </tr>
 <tr>
 <td>licenseIssueBy</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>License Issuing Authority Name</td>
 </tr>
 <tr>
 <td>addressList.apartment</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Apartment name/no</td>
 </tr>
 <tr>
 <td>addressList.streetName</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Society/Street name</td>
 </tr>
 <tr>
 <td>addressList.landmark</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>Landmark</td>
 </tr>
 <tr>
 <td>addressList.areaName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Locality/Area name</td>
 </tr>
 <tr>
 <td>addressList.countryShortCode</td>
 <td>String</td>
+<td>3</td>
 <td>Mandatory</td>
-<td>Country short code.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>Country code.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.stateShortCode</td>
 <td>String</td>
+<td>3</td>
 <td>Mandatory</td>
 <td>State short code.Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.city</td>
 <td>String</td>
+<td>512</td>
 <td>Mandatory</td>
 <td>City</td>
 </tr>
 <tr>
 <td>addressList.pincode</td>
 <td>Integer</td>
+<td>12</td>
 <td>Mandatory</td>
 <td>Pincode</td>
 </tr>
 <tr>
 <td>addressList.isCurrentAddress</td>
 <td>Boolean</td>
+<td></td>
 <td>Mandatory</td>
 <td>Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address</td>
 </tr>
 <tr>
 <td>driverEmployeeId</td>
 <td>String</td>
+<td>50</td>
 <td>Optional</td>
 <td>EmployeeId</td>
 </tr>
 <tr>
 <td>shiftList.startTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift start date</td>
+<td>Shift start date. Format - HH:MMaa e.g. : 07:00pm</td>
 </tr>
 <tr>
 <td>shiftList.endTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift end date</td>
+<td>Shift end date. Format - HH:MMaa e.g. : 17:00pm</td>
 </tr>
 <tr>
 <td>shiftList.shiftStartTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift start time</td>
+<td>Shift start time. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>shiftList.shiftEndTime</td>
 <td>String</td>
+<td></td>
 <td>Mandatory</td>
-<td>Shift end time</td>
+<td>Shift end time. Format - YYYY-MM-DD e.g. : 2016-07-01</td>
 </tr>
 <tr>
 <td>previousCompanyName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company name</td>
 </tr>
 <tr>
 <td>reportingManager</td>
 <td>String</td>
+<td>40</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&rsquo;s reporting manager&rsquo;s name</td>
 </tr>
 <tr>
 <td>managerPhoneNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&#39;smanager&rsquo;s phone no</td>
 </tr>
 <tr>
 <td>managerEmailId</td>
 <td>String</td>
+<td>100</td>
 <td>Optional</td>
 <td>Driver&rsquo;s last company&rsquo;s manager&rsquo;s email id</td>
 </tr>
 </tbody></table>
-
-<p>=======</p>
 
 <h2 id="delete-driver">Delete Driver</h2>
 
@@ -1972,6 +2037,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <th>Parameter</th>
 <th>DataType</th>
+<th>Length</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
@@ -1979,90 +2045,105 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>shipmentType</td>
 <td>String</td>
+<td>45</td>
 <td>Mandatory</td>
 <td>Type of the Shipment being created.Examples:&ldquo;Bag&rdquo;,&ldquo;Package&rdquo;,&ldquo;Manifest&rdquo;</td>
 </tr>
 <tr>
 <td>originAddr</td>
 <td>String</td>
+<td>1000</td>
 <td>Mandatory</td>
 <td>Origin point of the trip.Examples:-AMDD,BLRX</td>
 </tr>
 <tr>
 <td>destinationAddr</td>
 <td>String</td>
+<td>1000</td>
 <td>Mandatory</td>
 <td>Destination point of the trip.Examples:-CNND,BOMX</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory</td>
 <td>Name of the trip.Has to be unique.Example:-CNND-BOMX-123_456</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the shipment in terms of Kgs</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the shipment in terms of the number of units present in it</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Integer</td>
+<td>10</td>
 <td>Optional</td>
 <td>Capacity of the shipment in terms of cc</td>
 </tr>
 <tr>
 <td>vehicleReportingDate</td>
 <td>Date</td>
+<td></td>
 <td>Mandatory</td>
-<td>Reporting date of the vehicle at the origin hub</td>
+<td>Reporting date of the vehicle at the origin hub. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.</td>
 </tr>
 <tr>
 <td>modeOfTransport</td>
 <td>String</td>
+<td>12</td>
 <td>Mandatory</td>
 <td>Mode of transit for the trip.Examples:-ROAD,AIR,RAIL</td>
 </tr>
 <tr>
 <td>lrNumber</td>
 <td>String</td>
+<td>255</td>
 <td>Mandatory(Conditional)</td>
 <td>Lorry Receipt Number if modeOfTransport selected as ROAD.</td>
 </tr>
 <tr>
 <td>flightNum</td>
 <td>String</td>
+<td>30</td>
 <td>Mandatory(Conditional)</td>
 <td>Flight Number if modeOfTransport selected as AIR.</td>
 </tr>
 <tr>
 <td>trainNum</td>
 <td>String</td>
+<td>30</td>
 <td>Mandatory(Conditional)</td>
 <td>Rail Number if modeOfTransport selected as RAIL.</td>
 </tr>
 <tr>
 <td>driverName</td>
 <td>String</td>
+<td>255</td>
 <td>Optional</td>
 <td>Name of the driver</td>
 </tr>
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
+<td>30</td>
 <td>Optional</td>
 <td>Vehicle Number.</td>
 </tr>
 <tr>
 <td>barcode</td>
 <td>String</td>
+<td>50</td>
 <td>Mandatory</td>
 <td>Barcode of the tracker used for attaching to vehicle during trip</td>
 </tr>
