@@ -4761,6 +4761,497 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="create-order-multi-stop">Create Order Multi Stop</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">2</span><span class="err">/multidestination/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GGLPAR98761234"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"optimiseOrderSequenceFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"backToOrigin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEST1-98765123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverySequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">      
+      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.65</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">  
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add Orders to manifest success."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"manifestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API, you can add orders with Single Pickup and Multiple destination.
+This API can also be used for Single Pick-up and Single Destinaton.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>parentOrderNo</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the Order No.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>If you want a AWB no. to be associated with an order, you can pass the same here.</td>
+</tr>
+<tr>
+<td>shipmentOrderDt</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
+</tr>
+<tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>The value in this field has to be &ldquo;DELIVER&rdquo; always.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>If an order is a Forward way (Delivery to the Customer), then value here should be &ldquo;FORWARD&rdquo;<br>If an order is a Retrun way (Return from the Customer), then value here should be &ldquo;REVERSE&rdquo;</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the start date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - &ldquo;2017-07-15T11:30:00.000Z<br><br>If the you set the auto allocation flag  &quot;autoAllocateFl&rdquo; as &ldquo;Y&rdquo;, then the Pick-up start Date and Time is also taken as the  same.<br>If the you set the auto allocation flag  &ldquo;autoAllocateFl&rdquo; as &ldquo;N&rdquo;, then the Pick-up Date and Time is NOT set.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the end date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Delivery Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - &ldquo;2017-07-15T12:30:00.000Z&rdquo;<br><br>If you set the auto allocation flag  &ldquo;autoAllocateFl&rdquo; as &ldquo;Y&rdquo;, then the Pick-up end Date and Time is also taken as the  same.<br>If you set the auto allocation flag  &ldquo;autoAllocateFl&rdquo; as &ldquo;N&rdquo;, then the Pick-up Date and Time is NOT set.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+</tr>
+<tr>
+<td>shipmentBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Medium will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+</tr>
+<tr>
+<td>returnAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>If your Business process allows the customer to return the orders back to you, then you will have to mark this Flag as  &ldquo;Y&rdquo;. This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to create a return request for an order.<br>If you mark this flag as &ldquo;N&rdquo;, LogiNext system will not allow you to create a return request referencing to this order.<br><br>You will always have any option to create a new order all-together for Returns by passing &ldquo;REVERSE&rdquo; in the &ldquo;orderState&rdquo; field.<br>If you have not set this Flag, it will be defaulted to &ldquo;N&rdquo;</td>
+</tr>
+<tr>
+<td>cancellationAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>If your Business process allows the customer to cancel the orders before it is delivered to their doorstep, then you will have to mark this Flag as &ldquo;Y&rdquo;. This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to cancel an order.<br>If you mark this flag as &ldquo;N&rdquo;, LogiNext system will not allow you to cancel an order.<br><br>If you have not set this Flag, it will be defaulted to &ldquo;N&rdquo;</td>
+</tr>
+<tr>
+<td>returnBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>If the &ldquo;returnAllowedFl&rdquo; is marked as &ldquo;Y&rdquo;, then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will return the orders to. This is generally the Merchant&rsquo;s / Seller&rsquo;s Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Medium will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>You can enter instructions (if any) for the Delivery Associate while picking-up the order.</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>Pass this Flag as &ldquo;Y&rdquo;, if - If you add any order which needs to be allocated automatically to the logged-in Delivery Medium.<br>Pass this Flag as &ldquo;N&rdquo;, if - If you add any order which you want to allocate manually to the Delivery Medium OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Mediums.</td>
+</tr>
+<tr>
+<td>optimiseOrderSequenceFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>This flag is to be used only if you have Multi- Destination Orders.<br>If you set this Flag as &ldquo;N&rdquo;, system would plan the Delivery routes by keeping the sequence of the Orders same as what you have supplied.<br>If you set this Flag as &ldquo;Y&rdquo;, system would optimize the route and re-arrange the sequence in which Order needs to be delivered.</td>
+</tr>
+<tr>
+<td>backToOrigin</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as &ldquo;Y&rdquo; else set this flag as &ldquo;N&rdquo;</td>
+</tr>
+<tr>
+<td>orders</td>
+<td>List</td>
+<td></td>
+<td>Mandatory</td>
+<td>Array - This is the list of orders and its information.</td>
+</tr>
+<tr>
+<td>orders.orderNo</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>This is the Order No.<br>In case of Single Destination, this Order No. is same as the Parent Order No. It is mandatory.<br>In case of Multi -Destination, this Order No. should not be same as the Parent Order No.<br>In this case, it is order no. for each destination.<br>If you do not have a separate order for each destination, you can leave it blank.<br>LogiNext will generate Order No. with the format - Parent_Order_No_1, Parent_Order_No_2, etc.</td>
+</tr>
+<tr>
+<td>orders.deliverySequence</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>In case of Single Destination, this is to be &ldquo;1&rdquo; always.<br>In case of Multi-destination, this is the sequence that you want the order to be delivered in.</td>
+</tr>
+<tr>
+<td>orders.packageWeight</td>
+<td>String</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Medium. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.</td>
+</tr>
+<tr>
+<td>orders.packageVolume</td>
+<td>String</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Medium. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)</td>
+</tr>
+<tr>
+<td>orders.paymentType</td>
+<td>String</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be &ldquo;PREPAID&rdquo;.<br>If the customer is going to pay for the order at the doorstep, then the value here should be &ldquo;COD&rdquo;.<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext TrackNext App., you can raise integration request with your Account Manager.</td>
+</tr>
+<tr>
+<td>orders.packageValue</td>
+<td>String</td>
+<td>10</td>
+<td>Conditional Mandatory</td>
+<td>If the payment type is &ldquo;PREPAID&rdquo;, then this can be optional.<br>If the payment type is &ldquo;COD&rdquo;, then this is mandatory to be passed. This is the total amount that the Delivery Associate has to collect from the Customer.</td>
+</tr>
+<tr>
+<td>orders.numberOfItems</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>LogiNext system allows you to set your account as either of three level of Order Hierarchy - <br>1. Only Order - Single parcel, document, shipment.<br>2. Order and Crates - Single Shipment Bag and the items in that Shipment bag.<br>3. Order, Crate and Line Items - Single Shipment bag having multiple crates and each crate having multiple items.<br><br>If your account type is set to pass only orders, then this field is optional. <br>You can pass the no. of items (if any)  to let the delivery associate know as a FYI.<br>But, if your account is configured to have Order &amp;  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Crates.</td>
+</tr>
+<tr>
+<td>orders.deliverServiceTime</td>
+<td>String</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>In minutes. This is the time that the Delivery Associate is going to take at the Customer&rsquo;s doorstep to deliver the orders.</td>
+</tr>
+<tr>
+<td>orders.deliveryLocationType</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>This parameter if passed helps the Operation Managers / Delivery Associates to know if the Customer location is Residence or Office or Pick-up point, etc.</td>
+</tr>
+<tr>
+<td>orders.partialDeliveryAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you Business operations allow to deliver partial orders to the customers, then set this flag as &ldquo;Y&rdquo;. <br>This flag is applicable only when your order Hierarchy Model is either Order &amp; Crates or Oder, Crates &amp; Line items</td>
+</tr>
+<tr>
+<td>orders.deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>LogiNext system allows you to set your Customer&rsquo;s addresses with unique address Id so that you do not have to send the Address parameters with every Order.<br>Customer&rsquo;s Address ID is mandatorily required to be set though this field.</td>
+</tr>
+<tr>
+<td>orders.deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>LogiNext system allows you to set your Customer&rsquo;s addresses with unique address Id so that you do not have to send the Address parameters with every Order.<br>Customer&rsquo;s Address Name is mandatorily required to be set though this field.</td>
+</tr>
+<tr>
+<td>orders.deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer&rsquo;s email Address, please pass the Customer&rsquo;s Email address.</td>
+</tr>
+<tr>
+<td>orders.deliverPhoneNumber</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer through the SMS or you allow the delivery associate to call your customers directly, please pass the Customer Phone no.</td>
+</tr>
+<tr>
+<td>orders.deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br><br>If you are passing the value in this field, then - <br>This is Address Line 1.<br>This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center</td>
+</tr>
+<tr>
+<td>orders.deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is Address Line 2.<br>This is the name of the Street where the Customer&rsquo;s / Delivery location is present.<br>Sample Value - Walton Boulevard</td>
+</tr>
+<tr>
+<td>orders.deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Any nearby landmark to identify your Customer Address<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital<br>Orders.deliverLocality</td>
+</tr>
+<tr>
+<td>orders.deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is name of the city.<br>Sample Value - Atlanta or Kuala Lampur</td>
+</tr>
+<tr>
+<td>orders.deliverState</td>
+<td>String</td>
+<td>3</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>orders.deliverCountry</td>
+<td>String</td>
+<td>3</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br>Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>orders.deliverPinCode</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>If you have the Customer Profiling set to allow the LogiNext to select the Address based n the Account code passed, then this field is optional<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>This is the postal code / zip code of the area.<br>Sample Value - 72712 ; 400076<br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>orders.deliverLatitude</td>
+<td>String</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If you are passing the Customer Address, then this field is optional or <br>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.</td>
+</tr>
+<tr>
+<td>orders.deliverLongitude</td>
+<td>String</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If you are passing the Customer Address, then this field is optional or <br>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.</td>
+</tr>
+<tr>
+<td>orders.deliverNotes</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>You can enter instructions (if any) for the Delivery Associate while delivering the order.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td></td>
+<td>Array - <br>Note that if your account is configured to have Order &amp;  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>This is the unique Crate ID / Code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the amount / value of the items in the Crate.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This Optional Field. You can choose to leave it blank.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Conditional Mandatory</td>
+<td>If your account is configured to have  Order, Crates &amp; Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Line Items in that Crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>Array - <br>Note that if your account is configured to have  Order, Crates &amp; Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>This is the unique Item Code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the Item Name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the amount / value of the item.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Quantity of the Items</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Any description in addition to Item name that you want to pass. For e.g. - Discounted Item, etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Weight of Item</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-order">Get Order</h2>
 
 <blockquote>
@@ -6787,6 +7278,226 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 <td></td>
 <td>Mandatory</td>
 <td>LogiNext Order Reference ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-hub">Create Hub</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ClientApp/v</span><span class="mi">1</span><span class="err">/branch/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[{</span><span class="w">
+</span><span class="nt">"clientParentBranchName"</span><span class="p">:</span><span class="s2">"Reeta Foods Main Branch"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"Marque Downtown Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="nt">"division"</span><span class="p">:</span><span class="s2">"ADIV"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isOwnBranchFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isHubFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"geoFenceRadius"</span><span class="p">:</span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchDescription"</span><span class="p">:</span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"officeNumber"</span><span class="p">:</span><span class="s2">"2798678712"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"Suraj K."</span><span class="p">,</span><span class="w">
+</span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"9033977123"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"superjames@gmails.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API, you can create your hubs / branches / distribution centers in the LogiNext application.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/branch/create</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientParentBranchName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the name of the branch / hub / distribution center/ that you want to add.</td>
+</tr>
+<tr>
+<td>Address.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center</td>
+</tr>
+<tr>
+<td>Address.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard</td>
+</tr>
+<tr>
+<td>Address.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>Address.locality</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory</td>
+</tr>
+<tr>
+<td>Address.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur</td>
+</tr>
+<tr>
+<td>Address.state</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>Address.country</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>division</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Ex. ADIV</td>
+</tr>
+<tr>
+<td>isOwnBranchFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>There can be two values here -  In Mile Hardcode this to N</td>
+</tr>
+<tr>
+<td>isHubFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>There can be two values here -  In Mile Hardcode this to Y</td>
+</tr>
+<tr>
+<td>geoFenceRadius</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs</td>
+</tr>
+<tr>
+<td>branchDescription</td>
+<td>String</td>
+<td>500</td>
+<td>Optional</td>
+<td>If you would like add a brief description name for the hub, use this field.</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>500</td>
+<td>Mandatory</td>
+<td>Name of the Contact Person at this Branch / Hub</td>
+</tr>
+<tr>
+<td>officeNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Fixed Line Number of the Branch  / Hub</td>
+</tr>
+<tr>
+<td>adminContactName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of the Supervisor / Alternate Contact for this Hub</td>
+</tr>
+<tr>
+<td>mobileNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Mobile Phone No. of the contact person</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Email Address of the contact person</td>
 </tr>
 </tbody></table>
 
