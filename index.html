@@ -5173,78 +5173,104 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
 <td></td>
 <td>Array - <br>Note that if your account is configured to have Order &amp;  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.</td>
 </tr>
+</tbody></table>
+
+<h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
+
+<table><thead>
 <tr>
-<td>shipmentCrateMappings.crateCd</td>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>crateCd</td>
 <td>String</td>
 <td>128</td>
 <td>Mandatory</td>
 <td>This is the unique Crate ID / Code</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.crateAmount</td>
+<td>crateAmount</td>
 <td>Double</td>
 <td></td>
 <td>Mandatory</td>
 <td>This is the amount / value of the items in the Crate.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.crateType</td>
+<td>crateType</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
 <td>This Optional Field. You can choose to leave it blank.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.noOfUnits</td>
+<td>noOfUnits</td>
 <td>Integer</td>
 <td>10</td>
 <td>Conditional Mandatory</td>
 <td>If your account is configured to have  Order, Crates &amp; Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Line Items in that Crate.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems</td>
+<td>shipmentlineitems</td>
 <td>Array of objects</td>
 <td></td>
 <td>Optional</td>
 <td>Array - <br>Note that if your account is configured to have  Order, Crates &amp; Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.</td>
 </tr>
+</tbody></table>
+
+<h3 id="request-parameters-lineitems">Request Parameters (LineItems)</h3>
+
+<table><thead>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>itemCd</td>
 <td>String</td>
 <td>200</td>
 <td>Mandatory</td>
 <td>This is the unique Item Code</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>itemName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
 <td>This is the Item Name</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>itemPrice</td>
 <td>Double</td>
 <td></td>
 <td>Mandatory</td>
 <td>This is the amount / value of the item.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>itemQuantity</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
 <td>Quantity of the Items</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>itemType</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
 <td>Any description in addition to Item name that you want to pass. For e.g. - Discounted Item, etc.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>itemWeight</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
