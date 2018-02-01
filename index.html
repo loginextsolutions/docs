@@ -7220,7 +7220,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 </tr>
 </tbody></table>
 
-<h2 id="create-manifest">Create Manifest</h2>
+<h2 id="create-update-manifest">Create / Update Manifest</h2>
 
 <blockquote>
 <p>Definition</p>
@@ -7261,6 +7261,10 @@ LogiNext Reference ID is generated when you add order in the LogiNext system.
 If you do not store the Reference ID for orders, then you will have to fetch the same through the Get Order API.</p>
 
 <p>You can also manifest Cancelled Orders (by turning this flag to &quot;true&rdquo;) in case you have to return (out-scan) the cancelled orders back to the merchant / origin.</p>
+
+<p>If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.
+If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.
+If it does not exist, then a new manifest will be created with the provided Manifest ID.</p>
 
 <h3 id="request">Request</h3>
 
