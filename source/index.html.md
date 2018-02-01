@@ -85,7 +85,15 @@ You will have to pass the username and password which is provided to you either 
 
 The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.
 
-<b><u>The validity of this session token is 1 day (24 hours).</u></b>
+If you want session to be valid for 1 Hour, then the "sessionExpiryTimeout" should be 1.<br>
+Similarly for - <br>
+24 Hours, it should be 24 <br>
+6 months, it should be  180* 24 = 4320<br>
+12 Months, it should be 365*24= 8760<br>
+5 Years, it should be 365*5*24 = 43800<br>
+10 Years, it should be 365*10*24= 87600<br>
+
+<b><u>If you do not provide 'sessionExpiryTimeout', the validity of this session token will be 1 day (24 hours).</u></b>
 
 Please ensure that you add the token and secret key as part of every Loginext API call.
 
@@ -99,7 +107,8 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate
 ```json
 {
         "userName":"demouser",
-        "password":"Admin#1!"
+        "password":"Admin#1!",
+        "sessionExpiryTimeout":72
 }  
 ```
 
@@ -126,10 +135,11 @@ Content-Type | application/json | JSON request
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-userName | String | Mandatory | Username provided by LogiNext
-password | String | Mandatory | Password provided by LogiNext
+Parameter | DataType | Length | Required | Description
+-----------|-------|---|---------------|--------
+userName | String | 255 | Mandatory | Username provided by LogiNext
+password | String | 255 | Mandatory | Password provided by LogiNext
+sessionExpiryTimeout | Integer | 10 | Optional | Number of hours till which you want the session to be valid
 
 ### Response
 The response will consist of parameters as mentioned in the "Responses" section based on the request parameters passed.For example,the response can contain 200 - Success or 401 - Invalid username or password, etc.
@@ -269,31 +279,31 @@ The acknowledgement will provide the vehicle number and reference ID.
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-vehicleNumber | String | Mandatory | Unique name to identify the vehicle
-vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
-vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
-typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
-unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
-capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
-capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
-capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
-chasisNumber | String |Optional | Chassis / VIN number of the vehicle
-engineNumber | String |Optional | Engine Number of the vehicle
-markerName | String |Optional | Name of the Sub-ordinate who is driving along with the driver
-registrationNumber | String |Optional | Registered Number provided by the local transportation authority
-pucValidity | Date |Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
-insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
-vehiclePermit | String |Optional | Full name of the states of India in which the vehicle is permitted to travel
-ownership | String |Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
-ownerName | String |Optional | Name of the Company / Vendor who owns the vehicle
-transporter | String |Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
-financer | String |Optional | If the vehicle is on loan, then name of the financer
-accidentHistory | String |Optional | If vehicle has any accident records against it, then please document the details through this field
-rentStartDate | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
-rentEndDate  | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
-deviceId.barcode | String |Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
+Parameter | DataType |  Length | Required | Description
+-----------|-------|-------|-------------|----------
+vehicleNumber | String | 255 | Mandatory | Unique name to identify the vehicle
+vehicleMake | String | 255 | Optional | Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel | String | 40 | Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
+typeOfBody | String | 40 | Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
+unladdenWeight | Integer | 10 | Optional | Unladen weight of the vehicle in Kg.
+capacityInWeight | Integer | 10 | Optional | Capacity of vehicle in Kg.
+capacityInUnits | Integer | 10 | Optional | Capacity of the vehicle in Units
+capacityInVolume | Integer | 10 | Optional | Capacity of the vehicle on cubic centimeters
+chasisNumber | String | 255 | Optional | Chassis / VIN number of the vehicle
+engineNumber | String | 255 | Optional | Engine Number of the vehicle
+markerName | String | 255 | Optional | Name of the Sub-ordinate who is driving along with the driver
+registrationNumber | String | 255 | Optional | Registered Number provided by the local transportation authority
+pucValidity | Date |  | Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
+insuranceValidity | Date |  | Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
+vehiclePermit | String | 40 | Optional | Full name of the states of India in which the vehicle is permitted to travel
+ownership | String | 50 | Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
+ownerName | String | 255 | Optional | Name of the Company / Vendor who owns the vehicle
+transporter | String | 40 | Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
+financer | String | 40 | Optional | If the vehicle is on loan, then name of the financer
+accidentHistory | String | 160 | Optional | If vehicle has any accident records against it, then please document the details through this field
+rentStartDate | Date |  | Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
+rentEndDate  | Date |  | Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
+deviceId.barcode | String | 50 | Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
 
 ## Get Vehicle (Single)
 
@@ -369,9 +379,9 @@ Use this API to read all data for a particular vehicle using its reference ID.
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-reference_id | String | Mandatory | Reference Id associated with the vehicle.
+Parameter | DataType | Length | Required | Description
+-----------|-------|-------|------|----------
+reference_id | String | 32 | Mandatory | Reference Id associated with the vehicle.
 
 
 ## Get Vehicle
@@ -524,32 +534,31 @@ This API is used to update a particular vehicle based on its reference ID.
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-vehicleNumber | String | Mandatory | Unique name to identify the vehicle
-vehicleMake | String | Optional | Make of the vehicle like Mazda, Volvo, etc.
-vehicleModel | String |Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
-typeOfBody | String |Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
-unladdenWeight | Integer |Optional | Unladen weight of the vehicle in Kg.
-capacityInWeight | Integer |Optional | Capacity of vehicle in Kg.
-capacityInUnits | Integer |Optional | Capacity of the vehicle in Units
-capacityInVolume | Integer |Optional | Capacity of the vehicle on cubic centimeters
-chasisNumber | String |Optional | Chassis / VIN number of the vehicle
-engineNumber | String |Optional | Engine Number of the vehicle
-markerName | String |Optional | Name of the Sub-ordinate who is driving along with the driver
-registrationNumber | String |Optional | Registered Number provided by the local transportation authority
-pucValidity | Date |Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
-insuranceValidity | Date |Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
-vehiclePermit | String |Optional | Full name of the states of India in which the vehicle is permitted to travel
-ownership | String |Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
-ownerName | String |Optional | Name of the Company / Vendor who owns the vehicle
-transporter | String |Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
-financer | String |Optional | If the vehicle is on loan, then name of the financer
-accidentHistory | String |Optional | If vehicle has any accident records against it, then please document the details through this field
-rentStartDate | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
-rentEndDate  | Date |Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
-deviceId.barcode | String |Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
-deviceId.barcode | String |Optional | Barcode of the tracker.
+Parameter | DataType |  Length | Required | Description
+-----------|-------|------- | ----------|------------
+vehicleNumber | String | 255 | Mandatory | Unique name to identify the vehicle
+vehicleMake | String | 255 |Optional | Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel | String | 40 | Optional | Model of the vehicle as specified by manufacturer like FH series, MethaneDiesel, etc.
+typeOfBody | String | 40 | Optional | Body Type of the vehicle. This is static field and can have only one of the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK
+unladdenWeight | Integer | 10 | Optional | Unladen weight of the vehicle in Kg.
+capacityInWeight | Integer | 10 | Optional | Capacity of vehicle in Kg.
+capacityInUnits | Integer | 10 | Optional | Capacity of the vehicle in Units
+capacityInVolume | Integer | 10 | Optional | Capacity of the vehicle on cubic centimeters
+chasisNumber | String | 255 | Optional | Chassis / VIN number of the vehicle
+engineNumber | String | 255 | Optional | Engine Number of the vehicle
+markerName | String | 255 | Optional | Name of the Sub-ordinate who is driving along with the driver
+registrationNumber | String | 255 | Optional | Registered Number provided by the local transportation authority
+pucValidity | Date | | Optional | Date till which PUC certificate is valid.Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date.
+insuranceValidity | Date | | Optional | Date till which insurance of the vehicle is valid. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always needs to be later than the current date.
+vehiclePermit | String | 40 | Optional | Full name of the states of India in which the vehicle is permitted to travel
+ownership | String | 50 | Optional | Entity that owns the vehicle. This field can have only below two values - Company , Vendor
+ownerName | String | 255 | Optional | Name of the Company / Vendor who owns the vehicle
+transporter | String | 40 | Optional | Name of the transporter / carrier / 3PL provider responsible for the delivery.
+financer | String | 40 | Optional | If the vehicle is on loan, then name of the financer
+accidentHistory | String | 160 | Optional | If vehicle has any accident records against it, then please document the details through this field
+rentStartDate | Date | | Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent start Date should be earlier than the Rent End Date.
+rentEndDate  | Date | | Optional | This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent End Date should be later than the Rent Start Date.
+deviceId.barcode | String |  50 | Optional | This input should be the barcode of the tracker in order to map the Vehicle with the tracker.In order to get the list of tracker that you can attach to a vehicle, you will need to either access the Loginext portal with your login or contact our CSA and get the list. On LogiNext portal, you can access the tracker list - LogiNext → Resource → Tracker.
 
 
 ## Delete Vehicle
@@ -695,40 +704,40 @@ The acknowledgement will provide the driver reference ID.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-driverName | String | Mandatory |  Driver's full name
-phoneNumber | String | Mandatory | Phone No
-emailId | String | Optional | EmailId
-dateOfBirth | String | Optional | Date of Birth
-languageList | List of Objects | Optional | Language(s) known to the driver
-languageList.name | String | Optional | Name of language
-salary | String | Optional | Current salary of Driver
-maritalStatus | String | Optional | Marital Status. Ex: married, unmarried.
-gender | String | Optional | Gender. Ex - male,female.
-experience | Integer | Optional | No of yrs. of driving experience
-licenseValidity | String | Optional | License validity date
-licenseNumber | String | Mandatory | License No
-licenseType | String | Optional | License Type. Ex: 2 wheeler, 4 wheeler
-licenseIssueBy | String | Optional | License Issuing Authority Name
-addressList.apartment | String | Mandatory | Apartment name/no
-addressList.streetName | String | Mandatory | Society/Street name
-addressList.landmark | String | Mandatory | Landmark
-addressList.areaName | String | Optional | Locality/Area name
-addressList.countryShortCode | String | Mandatory | Country code.Please refer to the list of country codes provided in the "Country Codes" section.
-addressList.stateShortCode | String | Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
-addressList.city | String | Mandatory | City
-addressList.pincode | Integer | Mandatory | Pincode
-addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
-driverEmployeeId | String | Optional | EmployeeId
-shiftList.startTime | String | Mandatory | Shift start date
-shiftList.endTime | String | Mandatory | Shift end date
-shiftList.shiftStartTime | String | Mandatory | Shift start time
-shiftList.shiftEndTime | String | Mandatory | Shift end time
-previousCompanyName | String | Optional | Driver's last company name
-reportingManager | String | Optional | Driver's last company's reporting manager's name
-managerPhoneNumber | String | Optional | Driver's last company'smanager's phone no
-managerEmailId | String | Optional | Driver's last company's manager's email id
+Parameter | DataType | Length | Required | Description
+-----------|-------|-------|------|----------
+driverName | String | 255 | Mandatory |  Driver's full name
+phoneNumber | String | 255 | Mandatory | Phone No
+emailId | String | 100 | Optional | EmailId
+dateOfBirth | String | | Optional | Date of Birth. Format - YYYY-MM-DD e.g. : 2016-07-01
+languageList | List of Objects | | Optional | Language(s) known to the driver
+languageList.name | String | 40 | Optional | Name of language
+salary | String | 18 | Optional | Current salary of Driver
+maritalStatus | String | 20 | Optional | Marital Status. Ex: married, unmarried.
+gender | String | 12 | Optional | Gender. Ex - male,female.
+experience | Integer | 3 | Optional | No of yrs. of driving experience
+licenseValidity | String | | Optional | License validity date. Format - YYYY-MM-DD e.g. : 2016-07-01
+licenseNumber | String | 255 | Mandatory | License No
+licenseType | String | 40 | Optional | License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy | String | 40 | Optional | License Issuing Authority Name
+addressList.apartment | String | 512 | Mandatory | Apartment name/no
+addressList.streetName | String | 512 | Mandatory | Society/Street name
+addressList.landmark | String | 512 | Mandatory | Landmark
+addressList.areaName | String | 255 | Optional | Locality/Area name
+addressList.countryShortCode | String | 3 | Mandatory | Country code.Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.stateShortCode | String | 3 |  Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
+addressList.city | String | 512 | Mandatory | City
+addressList.pincode | Integer | 12 | Mandatory | Pincode
+addressList.isCurrentAddress | Boolean | | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId | String | 50 | Optional | EmployeeId
+shiftList.startTime | String | | Mandatory | Shift start date. Format - HH:MMaa e.g. : 07:00pm
+shiftList.endTime | String | | Mandatory | Shift end date. Format - HH:MMaa e.g. : 17:00pm
+shiftList.shiftStartTime | String |  | Mandatory | Shift start time. Format - YYYY-MM-DD e.g. : 2016-07-01
+shiftList.shiftEndTime | String |  | Mandatory | Shift end time. Format - YYYY-MM-DD e.g. : 2016-07-01
+previousCompanyName | String | 255 | Optional | Driver's last company name
+reportingManager | String | 40 | Optional | Driver's last company's reporting manager's name
+managerPhoneNumber | String | 255 | Optional | Driver's last company'smanager's phone no
+managerEmailId | String | 100 | Optional | Driver's last company's manager's email id
 
 
 
@@ -927,43 +936,41 @@ This API is used to update a particular driver based on its reference ID.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-referenceId | String | Mandatory |  ReferenceId of the record
-driverName | String | Mandatory |  Driver's full name
-phoneNumber | String | Mandatory | Phone No
-emailId | String | Optional | EmailId
-dateOfBirth | String | Optional | Date of Birth
-languageList | List of Objects | Optional | Language(s) known to the driver
-languageList.name | String | Optional | Name of language
-salary | String | Optional | Current salary of Driver
-maritalStatus | String | Optional | Marital Status. Ex: married, unmarried.
-gender | String | Optional | Gender. Ex - male,female.
-experience | Integer | Optional | No of yrs. of driving experience
-licenseValidity | String | Optional | License validity date
-licenseNumber | String | Mandatory | License No
-licenseType | String | Optional | License Type. Ex: 2 wheeler, 4 wheeler
-licenseIssueBy | String | Optional | License Issuing Authority Name
-addressList.apartment | String | Mandatory | Apartment name/no
-addressList.streetName | String | Mandatory | Society/Street name
-addressList.landmark | String | Mandatory | Landmark
-addressList.areaName | String | Optional | Locality/Area name
-addressList.countryShortCode | String | Mandatory | Country short code.Please refer to the list of country codes provided in the "Country Codes" section.
-addressList.stateShortCode | String | Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
-addressList.city | String | Mandatory | City
-addressList.pincode | Integer | Mandatory | Pincode
-addressList.isCurrentAddress | Boolean | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
-driverEmployeeId | String | Optional | EmployeeId
-shiftList.startTime | String | Mandatory | Shift start date
-shiftList.endTime | String | Mandatory | Shift end date
-shiftList.shiftStartTime | String | Mandatory | Shift start time
-shiftList.shiftEndTime | String | Mandatory | Shift end time
-previousCompanyName | String | Optional | Driver's last company name
-reportingManager | String | Optional | Driver's last company's reporting manager's name
-managerPhoneNumber | String | Optional | Driver's last company'smanager's phone no
-managerEmailId | String | Optional | Driver's last company's manager's email id
-
-=======
+Parameter | DataType | Length | Required | Description
+-----------|-------|-------|------|----------
+referenceId | String | 32 | Mandatory |  ReferenceId of the record
+driverName | String | 255 | Mandatory |  Driver's full name
+phoneNumber | String | 255 | Mandatory | Phone No
+emailId | String | 100 | Optional | EmailId
+dateOfBirth | String | | Optional | Date of Birth. Format - YYYY-MM-DD e.g. : 2016-07-01
+languageList | List of Objects | | Optional | Language(s) known to the driver
+languageList.name | String | 40 | Optional | Name of language
+salary | String | 18 | Optional | Current salary of Driver
+maritalStatus | String | 20 | Optional | Marital Status. Ex: married, unmarried.
+gender | String | 12 | Optional | Gender. Ex - male,female.
+experience | Integer | 3 | Optional | No of yrs. of driving experience
+licenseValidity | String | | Optional | License validity date. Format - YYYY-MM-DD e.g. : 2016-07-01
+licenseNumber | String | 255 | Mandatory | License No
+licenseType | String | 40 | Optional | License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy | String | 40 | Optional | License Issuing Authority Name
+addressList.apartment | String | 512 | Mandatory | Apartment name/no
+addressList.streetName | String | 512 | Mandatory | Society/Street name
+addressList.landmark | String | 512 | Mandatory | Landmark
+addressList.areaName | String | 255 | Optional | Locality/Area name
+addressList.countryShortCode | String | 3 | Mandatory | Country code.Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.stateShortCode | String | 3 |  Mandatory | State short code.Please refer to the list of state codes provided in the "State Codes" section.
+addressList.city | String | 512 | Mandatory | City
+addressList.pincode | Integer | 12 | Mandatory | Pincode
+addressList.isCurrentAddress | Boolean | | Mandatory | Indicates whether this is current address of driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId | String | 50 | Optional | EmployeeId
+shiftList.startTime | String | | Mandatory | Shift start date. Format - HH:MMaa e.g. : 07:00pm
+shiftList.endTime | String | | Mandatory | Shift end date. Format - HH:MMaa e.g. : 17:00pm
+shiftList.shiftStartTime | String |  | Mandatory | Shift start time. Format - YYYY-MM-DD e.g. : 2016-07-01
+shiftList.shiftEndTime | String |  | Mandatory | Shift end time. Format - YYYY-MM-DD e.g. : 2016-07-01
+previousCompanyName | String | 255 | Optional | Driver's last company name
+reportingManager | String | 40 | Optional | Driver's last company's reporting manager's name
+managerPhoneNumber | String | 255 | Optional | Driver's last company'smanager's phone no
+managerEmailId | String | 100 | Optional | Driver's last company's manager's email id
 
 ## Delete Driver
 
@@ -1057,23 +1064,23 @@ The acknowledgement will contain the trip reference ID.
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-shipmentType | String | Mandatory | Type of the Shipment being created.Examples:"Bag","Package","Manifest"
-originAddr | String |Mandatory | Origin point of the trip.Examples:-AMDD,BLRX
-destinationAddr | String |Mandatory | Destination point of the trip.Examples:-CNND,BOMX
-name | String |Mandatory | Name of the trip.Has to be unique.Example:-CNND-BOMX-123_456
-packageWeight | Integer |Optional | Capacity of the shipment in terms of Kgs
-packageValue | Integer |Optional | Capacity of the shipment in terms of the number of units present in it
-packageVolume | Integer |Optional | Capacity of the shipment in terms of cc
-vehicleReportingDate | Date |Mandatory | Reporting date of the vehicle at the origin hub
-modeOfTransport | String |Mandatory | Mode of transit for the trip.Examples:-ROAD,AIR,RAIL
-lrNumber | String | Mandatory(Conditional) | Lorry Receipt Number if modeOfTransport selected as ROAD.
-flightNum| String |Mandatory(Conditional) | Flight Number if modeOfTransport selected as AIR.
-trainNum| String |Mandatory(Conditional) | Rail Number if modeOfTransport selected as RAIL.
-driverName | String |Optional | Name of the driver
-vehicleNumber | String |Optional | Vehicle Number.
-barcode | String |Mandatory | Barcode of the tracker used for attaching to vehicle during trip
+Parameter | DataType |  Length | Required | Description
+-----------|-------|-------|---------|----------
+shipmentType | String | 45 | Mandatory | Type of the Shipment being created.Examples:"Bag","Package","Manifest"
+originAddr | String | 1000 |  Mandatory | Origin point of the trip.Examples:-AMDD,BLRX
+destinationAddr | String | 1000 | Mandatory | Destination point of the trip.Examples:-CNND,BOMX
+name | String | 255 | Mandatory | Name of the trip.Has to be unique.Example:-CNND-BOMX-123_456
+packageWeight | Integer | 10 | Optional | Capacity of the shipment in terms of Kgs
+packageValue | Integer | 10 | Optional | Capacity of the shipment in terms of the number of units present in it
+packageVolume | Integer | 10 | Optional | Capacity of the shipment in terms of cc
+vehicleReportingDate | Date | | Mandatory | Reporting date of the vehicle at the origin hub. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.
+modeOfTransport | String | 12 | Mandatory | Mode of transit for the trip.Examples:-ROAD,AIR,RAIL
+lrNumber | String | 255 | Mandatory(Conditional) | Lorry Receipt Number if modeOfTransport selected as ROAD.
+flightNum| String | 30 | Mandatory(Conditional) | Flight Number if modeOfTransport selected as AIR.
+trainNum| String | 30 | Mandatory(Conditional) | Rail Number if modeOfTransport selected as RAIL.
+driverName | String | 255 | Optional | Name of the driver
+vehicleNumber | String | 30 | Optional | Vehicle Number.
+barcode | String | 50 | Mandatory | Barcode of the tracker used for attaching to vehicle during trip
 
 
 ## Get Trip
@@ -1437,10 +1444,11 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 > Request Body
 
 ```json
-["ca7fbf96a133461aadce8f94678084ee"]
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
+[
+  "ca7fbf96a133461aadce8f94678084ee",
+  "82b9ec9025b4454c9bcb86c704f49ce3",
+  "980053a9ee4a48876b6d3d18412d03a0c"
+]
 ```
 
 > Response
@@ -1449,7 +1457,6 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 {
   "status": 200,
   "message": "Trips started successfully",
-  "data": null,
   "hasError": false
 }
 
@@ -1477,10 +1484,12 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 > Request Body
 
 ```json
-["ca7fbf96a133461aadce8f94678084ee"]
-{
-    "tripReferenceIds":["ca7fbf96a133461aadce8f94678084ee"]
-}
+[
+  "ca7fbf96a133461aadce8f94678084ee",
+  "82b9ec9025b4454c9bcb86c704f49ce3",
+  "980053a9ee4a48876b6d3d18412d03a0c"
+]
+
 ```
 
 > Response
@@ -1489,7 +1498,6 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 {
   "status": 200,
   "message": "Trips ended successfully",
-  "data": null,
   "hasError": false
 }
 
@@ -1508,11 +1516,6 @@ Parameter | DataType |  Required | Description
 referenceIds | List | Mandatory | Reference Ids associated with trips
 
 
-### HTTP Request Parameters
-
-Parameter | Type |  Required | Description
------------|-------|------- | ----------
-tripReferenceIds | List of Strings | Mandatory | Reference Ids of the trip
 
 ## Trip iFrame
 
@@ -1629,16 +1632,16 @@ This endpoint adds tracking record.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-trackerId | String | Mandatory |  Device's unique ID
-latitude | Double | Mandatory | Latitude
-longitude | Double | Mandatory | Longitude
-time | Date | Mandatory | Tracking time in UTC
-batteryPerc | Double | Mandatory | Battery Percentage of device
-speed | Double | Optional | Speed with which consignment is moving
-messageType | String | Mandatory | Message type. Ex: REG
-temperature | Double | Optional | Consignment's temperature
+Param | DataType |  Length | Required | Description
+--------- | ------- | -----|---------- | ------------
+trackerId | String | 12 | Mandatory |  Device's unique ID
+latitude | Double | 13,10 | Mandatory | Latitude
+longitude | Double | 13,10 | Mandatory | Longitude
+time | Date |  | Mandatory | Tracking time in UTC. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+batteryPerc | Double | 5,2 | Mandatory | Battery Percentage of device
+speed | Double | 5,2 | Optional | Speed with which consignment is moving
+messageType | String | 10 | Mandatory | Message type. Ex: REG
+temperature | Double | 5,2 | Optional | Consignment's temperature
 
 
 ## Get Tracker (List)
@@ -1958,7 +1961,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
   "referenceId": [
     "dcd883efcccc4d2299da962a72b01f23"
   ],
-  "data": null,
   "hasError": false
 }
 
@@ -1971,61 +1973,61 @@ Place a new delivery leg order with this API.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-shipmentOrderDt | Date | Mandatory | Order Date
-distributionCenter | String | Mandatory | Distribution center's name
-packageWeight | Double | Optional | Weight of package in Kg.
-packageVolume | Double | Optional | Volume of package in CC
-packageValue | Double | Optional | Value of package
-numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
-deliverBranch | String | Mandatory | Name of delivery branch
-deliverServiceTime | Integer | Mandatory | Deliver service time in mins.
-deliverStartTimeWindow | Date | Mandatory | Deliver start time window
-deliverEndTimeWindow | Date | Mandatory | Deliver end time window
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | Mandatory | Deliver account code
-deliverAccountName | String | Mandatory | Deliver account name
-deliverEmail | String | Optional | Deliver email
-deliverPhoneNumber | String | Optional | Deliver phone number
-deliverApartment | String | Mandatory | Apartment
-deliverStreetName | String | Mandatory | Street name
-deliverLandmark | String | Optional | Landmark
-deliverLocality | String | Mandatory | Locality
-deliverCity | String | Mandatory | City
-deliverState| String | Mandatory | State code. Please refer to the list of state codes provided in the "State Codes" section.
-deliverCountry | String | Mandatory | Country code. Please refer to the list of country codes provided in the "Country Codes" section.
-deliverPinCode | String | Mandatory | Pincode
-deliverLatitude | Double | Optional | Delivery address Latitude
-deliverLongitude | Double | Optional | Delivery address Longitude
-returnBranch | String | Mandatory | Name of return branch
-pickupNotes | String | Optional | Additional pickup comments associated with the order
-deliverNotes | String | Optional | Additional delivery comments associated with the order
+Param | DataType | Length |  Required | Description
+--------- | ------- | ---------- | ---------- | ------------
+orderNo | String | 100 | Mandatory |  Order No.
+awbNumber | String  | 1000 | Optional | Airway Bill No.
+shipmentOrderTypeCd | String  | 40 | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+distributionCenter | String | 255 | Mandatory | Distribution center's name
+packageWeight | Double | 10 | Optional | Weight of package in Kg.
+packageVolume | Double | 10 | Optional | Volume of package in CC
+packageValue | Double | 10 | Optional | Value of package
+numberOfItems | Integer | 20 | Optional | Number of crates
+paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid
+partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
+returnAllowedFl | String | 1 | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
+cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
+deliverBranch | String | 255 | Mandatory | Name of delivery branch
+deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
+deliverAccountCode | String | 255 | Mandatory | Deliver account code
+deliverAccountName | String | 255 | Mandatory | Deliver account name
+deliverEmail | String | 100 | Optional | Deliver email
+deliverPhoneNumber | String | 255 | Optional | Deliver phone number
+deliverApartment | String | 512 | Mandatory | Apartment
+deliverStreetName | String | 512 | Mandatory | Street name
+deliverLandmark | String | 512 | Optional | Landmark
+deliverLocality | String | 512 | Mandatory | Locality
+deliverCity | String | 512 | Mandatory | City
+deliverState| String | 512 | Mandatory | State code. Please refer to the list of state codes provided in the "State Codes" section.
+deliverCountry | String | 512 | Mandatory | Country code. Please refer to the list of country codes provided in the "Country Codes" section.
+deliverPinCode | String | 20 | Mandatory | Pincode
+deliverLatitude | Double |  | Optional | Delivery address Latitude
+deliverLongitude | Double |  | Optional | Delivery address Longitude
+returnBranch | String | 255 | Mandatory | Name of return branch
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 
 ### Request Parameters (Crates)
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | Crate code
-shipmentCrateMappings.crateAmount | Double | Mandatory | Crate amount
-shipmentCrateMappings.crateType | String | Mandatory | Crate type. Ex - ??
-shipmentCrateMappings.noOfUnits | Integer | Mandatory | No. of items in crate
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code
+shipmentCrateMappings.crateAmount | Double |  | Mandatory | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type. Ex - ??
+shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | No. of items in crate
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
 
 ## Create Order (Pickup)
 
@@ -2117,7 +2119,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
   "referenceId": [
     "dcd883efcccc4d2299da962a72b01f23"
   ],
-  "data": null,
   "hasError": false
 }
 
@@ -2132,60 +2133,60 @@ Place a new pickup leg order with this API.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderTypeCd | String | Mandatory | Order type code. DELIVER for delivery leg order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-shipmentOrderDt | Date | Mandatory | Order Date
-distributionCenter | String | Mandatory | Distribution center's name
-packageWeight | Double | Optional | Weight of package in Kg.
-packageVolume | Double | Optional | Volume of package in CC
-packageValue | Double | Optional | Value of package
-paymentType | String | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
-numberOfItems | Integer | Optional | Number of crates
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
-pickupBranch | String | Mandatory | Name of pickup branch
-pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
-pickupStartTimeWindow | Date | Mandatory | Pickup start time window
-pickupEndTimeWindow | Date | Mandatory | Pickup end time window
-pickupAccountCode | String | Mandatory | Pickup account code
-pickupAccountName | String | Mandatory | Pickup account name
-pickupEmail | String | Optional | Pickup email id
-pickupPhoneNumber | Optional | Mandatory | Pickup phone no
-pickupApartment | String | Mandatory | Pickup Apartment
-pickupStreetName | String | Mandatory | Pickup Street name
-pickupLandmark | String | Optional | Pickup Landmark
-pickupLocality | String | Mandatory | Pickup Locality
-pickupCity | String | Mandatory | Pickup City
-pickupState| String | Mandatory | Pickup State. Please refer to the list of state codes provided in the "State Codes" section.
-pickupCountry | String | Mandatory | Pickup Country. Please refer to the list of country codes provided in the "Country Codes" section.
-pickupPinCode | String | Mandatory | Pickup Pincode
-pickupLatitude | Double | Optional | Pickup address Latitude
-pickupLongitude | Double | Optional | Pickup address Longitude
-pickupNotes | String | Optional | Additional pickup comments associated with the order
-deliverNotes | String | Optional | Additional delivery comments associated with the order
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+orderNo | String | 100 | Mandatory |  Order No.
+awbNumber | String | 1000 | Optional | Airway Bill No.
+shipmentOrderTypeCd | String | 40 | Mandatory | Order type code. DELIVER for delivery leg order
+orderState | String | 512 | Mandatory | State of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+distributionCenter | String | 255 | Mandatory | Distribution center's name
+packageWeight | Double | 10 | Optional | Weight of package in Kg.
+packageVolume | Double | 10 | Optional | Volume of package in CC
+packageValue | Double | 10 | Optional | Value of package
+paymentType | String | 40 | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
+numberOfItems | Integer | 20 | Optional | Number of crates
+deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
+returnAllowedFl | String | 1 | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
+cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
+pickupBranch | String | 255 | Mandatory | Name of pickup branch
+pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
+pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Mandatory | Pickup account code
+pickupAccountName | String | 255 | Mandatory | Pickup account name
+pickupEmail | String | 100 | Optional | Pickup email id
+pickupPhoneNumber | String | 255 | Mandatory | Pickup phone no
+pickupApartment | String | 512 | Mandatory | Pickup Apartment
+pickupStreetName | String | 512 | Mandatory | Pickup Street name
+pickupLandmark | String | 512 | Optional | Pickup Landmark
+pickupLocality | String | 512 | Mandatory | Pickup Locality
+pickupCity | String | 512 | Mandatory | Pickup City
+pickupState| String | 512 | Mandatory | Pickup State. Please refer to the list of state codes provided in the "State Codes" section.
+pickupCountry | String | 512 | Mandatory | Pickup Country. Please refer to the list of country codes provided in the "Country Codes" section.
+pickupPinCode | String | 20 | Mandatory | Pickup Pincode
+pickupLatitude | Double |  | Optional | Pickup address Latitude
+pickupLongitude | Double |  | Optional | Pickup address Longitude
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 
 
 ### Request Parameters (Crates)
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.crateAmount | Double | Optional | Crate amount
-shipmentCrateMappings.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
-shipmentCrateMappings.noOfUnits | Integer | Optional | No. of crate units
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | CRATE001
+shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
 
 
 
@@ -2315,7 +2316,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
   "referenceId": [
     "dcd883efcccc4d2299da962a72b01f23"
   ],
-  "data": null,
   "hasError": false
 }
 
@@ -2329,95 +2329,95 @@ Place a new delivery leg order with this API.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderTypeCd | String | Mandatory | Order type code. BOTH for pickup & delivery leg order
-orderState | String | Mandatory | State of order. Ex: FORWARD
-shipmentOrderDt | Date | Mandatory | Order Date
-distributionCenter | String | Mandatory | Distribution center's name
-packageWeight | Double | Optional | Weight of package in Kg.
-packageVolume | Double | Optional | Volume of package in CC
-packageValue | Double | Optional | Value of package
-numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-deliverBranch | String | Mandatory | Name of delivery branch
-deliverServiceTime | Integer | Mandatory | Deliver service time in mins.
-deliverStartTimeWindow | Date | Mandatory | Deliver start time window
-deliverEndTimeWindow | Date | Mandatory | Deliver end time window
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | Mandatory | Deliver account code
-deliverAccountName | String | Mandatory | Deliver account name
-deliverApartment | String | Mandatory | Apartment
-deliverStreetName | String | Mandatory | Street name
-deliverLandmark | String | Optional | Landmark
-deliverLocality | String | Mandatory | Locality
-deliverCity | String | Mandatory | City
-deliverState| String | Mandatory | State code
-deliverCountry | String | Mandatory | Country code
-deliverPinCode | String | Mandatory | Pincode
-deliverLatitude | Double | Optional | Delivery address Latitude
-deliverLongitude | Double | Optional | Delivery address Longitude
-pickupBranch | String | Mandatory | Name of pickup branch
-pickupServiceTime | Integer | Mandatory | Pickup service time in mins.
-pickupStartTimeWindow | Date | Mandatory | Pickup start time window
-pickupEndTimeWindow | Date | Mandatory | Pickup end time window
-pickupAccountCode | String | Mandatory | Pickup account code
-pickupAccountName | String | Mandatory | Pickup account name
-pickupApartment | String | Mandatory | Pickup Apartment
-pickupStreetName | String | Mandatory | Pickup Street name
-pickupLandmark | String | Optional | Pickup Landmark
-pickupLocality | String | Mandatory | Pickup Locality
-pickupCity | String | Mandatory | Pickup City
-pickupState| String | Mandatory | Pickup State code
-pickupCountry | String | Mandatory | Pickup Country code
-pickupPinCode | String | Mandatory | Pickup Pincode
-pickupLatitude | Double | Optional | Pickup address Latitude
-pickupLongitude | Double | Optional | Pickup address Longitude
-returnBranch | String | Mandatory | Name of return branch
-returnStartTimeWindow | Date | Mandatory | Return start time window
-returnEndTimeWindow | Date | Mandatory | Return end time window
-returnAccountCode | String | Mandatory | Return account code
-returnAccountName | String | Mandatory | Return account name
-returnEmail | String | Mandatory | Return account code
-returnPhoneNumber | String | Mandatory | Return account name
-returnApartment | String | Mandatory | Return Apartment
-returnStreetName | String | Mandatory | Return Street name
-returnLandmark | String | Optional | Return Landmark
-returnLocality | String | Mandatory | Return Locality
-returnCity | String | Mandatory | Return City
-returnState| String | Mandatory | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
-returnCountry | String | Mandatory | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
-returnPinCode | String | Mandatory | Return Pincode
-deliverEmail| String | Optional | Email of the customer
-deliverPhoneNumber| String | Optional | Phone number of the customer
-pickupEmail| String | Optional | Email of the merchant
-pickupPhoneNumber| String | Optional | Phone number of the merchant
-pickupNotes | String | Optional | Additional pickup comments associated with the order
-deliverNotes | String | Optional | Additional delivery comments associated with the order
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+orderNo | String | 100 | Mandatory |  Order No.
+awbNumber | String | 1000 | Optional | Airway Bill No.
+shipmentOrderTypeCd | String | 40 | Mandatory | Order type code. BOTH for pickup & delivery leg order
+orderState | String | 512 | Mandatory | State of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+distributionCenter | String | 255 | Mandatory | Distribution center's name
+packageWeight | Double | 10 | Optional | Weight of package in Kg.
+packageVolume | Double | 10 | Optional | Volume of package in CC
+packageValue | Double | 10 | Optional | Value of package
+numberOfItems | Integer | 20 | Optional | Number of crates
+paymentType | String | 40 | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
+partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | 1 | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N
+deliverBranch | String | 255 | Mandatory | Name of delivery branch
+deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
+deliverAccountCode | String | 255 | Mandatory | Deliver account code
+deliverAccountName | String | 255 | Mandatory | Deliver account name
+deliverApartment | String | 512 | Mandatory | Apartment
+deliverStreetName | String | 512 | Mandatory | Street name
+deliverLandmark | String | 512 | Optional | Landmark
+deliverLocality | String | 512 | Mandatory | Locality
+deliverCity | String | 512 | Mandatory | City
+deliverState| String | 512 | Mandatory | State code
+deliverCountry | String | 512 | Mandatory | Country code
+deliverPinCode | String | 20 | Mandatory | Pincode
+deliverLatitude | Double | 100 | Optional | Delivery address Latitude
+deliverLongitude | Double | 100 | Optional | Delivery address Longitude
+pickupBranch | String | 255 | Mandatory | Name of pickup branch
+pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
+pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Mandatory | Pickup account code
+pickupAccountName | String | 255 | Mandatory | Pickup account name
+pickupApartment | String | 512 | Mandatory | Pickup Apartment
+pickupStreetName | String | 512 | Mandatory | Pickup Street name
+pickupLandmark | String | 512 | Optional | Pickup Landmark
+pickupLocality | String | 512 | Mandatory | Pickup Locality
+pickupCity | String | 512 | Mandatory | Pickup City
+pickupState| String | 512 | Mandatory | Pickup State code
+pickupCountry | String | 512 | Mandatory | Pickup Country code
+pickupPinCode | String | 20 | Mandatory | Pickup Pincode
+pickupLatitude | Double |  | Optional | Pickup address Latitude
+pickupLongitude | Double |  | Optional | Pickup address Longitude
+returnBranch | String | 255 | Mandatory | Name of return branch
+returnStartTimeWindow | Date |  | Mandatory | Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+returnEndTimeWindow | Date |  | Mandatory | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+returnAccountCode | String | 255 | Mandatory | Return account code
+returnAccountName | String | 255 | Mandatory | Return account name
+returnEmail | String | 100 | Mandatory | Return account code
+returnPhoneNumber | String | 255 | Mandatory | Return account name
+returnApartment | String | 512 | Mandatory | Return Apartment
+returnStreetName | String | 512 | Mandatory | Return Street name
+returnLandmark | String | 512 | Optional | Return Landmark
+returnLocality | String | 512 | Mandatory | Return Locality
+returnCity | String | 512 | Mandatory | Return City
+returnState| String | 512 | Mandatory | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
+returnCountry | String | 512 | Mandatory | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
+returnPinCode | String | 20 | Mandatory | Return Pincode
+deliverEmail| String | 100 | Optional | Email of the customer
+deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
+pickupEmail| String | 100 | Optional | Email of the merchant
+pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 
 
 
 ### Request Parameters (Crates)
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-shipmentCrateMappings | Array of objects | Optional | Shipment crates
-shipmentCrateMappings.crateCd | String | Mandatory | CRATE001
-shipmentCrateMappings.crateAmount | Double | Optional | Crate amount
-shipmentCrateMappings.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
-shipmentCrateMappings.noOfUnits | Integer | Optional | No. of crate units
-shipmentCrateMappings.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrateMappings.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrateMappings.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | Optional | Item weight
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | CRATE001
+shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
 
 ## Create Return Order
 
@@ -2430,7 +2430,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
 > Request Body
 
 ```json
-["863fe69239bc4f738ca275a809c3b2e2"]
+[
+  "863fe69239bc4f738ca275a809c3b2e2",
+  "ca275a9239bc4f738ca275a809c35fr3",
+  "5a809c239bc4f738ca275a809c3b23e4"
+]
 ```
 
 > Response
@@ -2440,10 +2444,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
   "status": 201,
   "message": "success",
   "referenceId": [
-    "d7b0f3f8e1174742bd6a8ae451866cb1"
+    "d7b0f3f8e1174742bd6a8ae451866cb1",
+    "8e117a9239bc4f738ca275a809c35fr3",
+    "3csefc239bc4f738ca275a209c38e117"
   ],
-  "data":null,
-  "hasError": false,
+ "hasError": false,
 
 }
 ```
@@ -2460,6 +2465,184 @@ Place a new return order with this API.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_ids | List | Mandatory | Reference Id associated with the order.
+
+## Create Order Multi Stop
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
+```
+
+> Request Body
+
+```json
+{
+  "parentOrderNo": "GGLPAR98761234",
+  "awbNumber": "AWB001",
+  "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+  "autoAllocateFl": "Y",
+  "shipmentOrderTypeCd": "DELIVER",
+  "orderState": "FORWARD",
+  "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+  "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+  "deliveryType": "DLBOY",
+  "shipmentBranch": "Gurgaon",
+  "returnAllowedFl": "Y",
+  "cancellationAllowedFl": "N",
+  "returnBranch": "Gurgaon",
+  "pickupNotes": "PickedUp",
+  "optimiseOrderSequenceFl": "Y",
+  "backToOrigin": "Y",
+  "orders": [
+    {
+      "orderNo": "DEST1-98765123",
+      "deliverySequence": 1,      
+      "packageWeight": "10",
+      "packageVolume": "4500",
+      "paymentType": "Prepaid",
+      "packageValue": "5000",
+      "numberOfItems": "1",
+      "deliverServiceTime": "20",
+      "deliveryLocationType": "PUP",
+      "partialDeliveryAllowedFl": "Y",
+      "deliverAccountCode": "Customer001",
+      "deliverAccountName": "Mathew Richardson",
+      "deliverEmail": "m.richardson@testmail.com",
+      "deliverPhoneNumber": "9891234567",
+      "deliverApartment": "10 Suite No. A1901",
+      "deliverStreetName": "Walton Avenue",
+      "deliverLandmark": "Opp. Chiptole",
+      "deliverLocality": "Down Towm Chicago",
+      "deliverCity": "Chicago",
+      "deliverState": "IL",
+      "deliverCountry": "USA",
+      "deliverPinCode": "72712",
+      "deliverLatitude": "19.124497",
+      "deliverLongitude": "72.893675",
+      "deliverNotes": "Delivered",
+      "shipmentCrateMappings": [
+        {
+          "crateCd": "CRATE001",
+          "crateAmount": 100.65,
+          "crateType": "case",
+          "noOfUnits": 2,
+          "shipmentlineitems": [
+            {
+              "itemCd": "CODE001",
+              "itemName": "ITEM1",
+              "itemPrice": 100,
+              "itemQuantity": 2,
+              "itemType": "TYPE1",
+              "itemWeight": 10
+            },
+            {
+              "itemCd": "CODE002",
+              "itemName": "ITEM2",
+              "itemPrice": 50,
+              "itemQuantity": 3,
+              "itemType": "TYPE2",
+              "itemWeight": 10
+            }
+          ]
+        }
+      ]
+    },  
+  ]
+}
+
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Add Orders to manifest success.",
+    "data": {
+        "manifestId": "hcgsyuc334"
+    },
+    "hasError": false
+}
+```
+
+With this API, you can add orders with Single Pickup and Multiple destination.
+This API can also be used for Single Pick-up and Single Destinaton.
+
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create`
+
+
+### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+parentOrderNo | String | 255 | Mandatory | This is the Order No.
+awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
+shipmentOrderDt | String | | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
+shipmentOrderTypeCd| String | 10 | Mandatory | The value in this field has to be "DELIVER" always.
+orderState| String | 10 | Mandatory | If an order is a Forward way (Delivery to the Customer), then value here should be "FORWARD"<br>If an order is a Retrun way (Return from the Customer), then value here should be "REVERSE"
+deliverStartTimeWindow| String | | Mandatory | This is the start date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z<br><br>If the you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up start Date and Time is also taken as the  same.<br>If the you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
+deliverEndTimeWindow| String | | Mandatory | This is the end date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Delivery Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"<br><br>If you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up end Date and Time is also taken as the  same.<br>If you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
+deliveryType| String | 40 | Mandatory | This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
+shipmentBranch| String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Medium will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager
+returnAllowedFl| String | 1 | Optional | If your Business process allows the customer to return the orders back to you, then you will have to mark this Flag as  "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to create a return request for an order.<br>If you mark this flag as "N", LogiNext system will not allow you to create a return request referencing to this order.<br><br>You will always have any option to create a new order all-together for Returns by passing "REVERSE" in the "orderState" field.<br>If you have not set this Flag, it will be defaulted to "N"
+cancellationAllowedFl| String | 1 | Optional | If your Business process allows the customer to cancel the orders before it is delivered to their doorstep, then you will have to mark this Flag as "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to cancel an order.<br>If you mark this flag as "N", LogiNext system will not allow you to cancel an order.<br><br>If you have not set this Flag, it will be defaulted to "N"
+returnBranch| String | 255 | Conditional Mandatory | If the "returnAllowedFl" is marked as "Y", then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will return the orders to. This is generally the Merchant's / Seller's Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Medium will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+pickupNotes| String | 100 | Optional | You can enter instructions (if any) for the Delivery Associate while picking-up the order.
+autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y", if - If you add any order which needs to be allocated automatically to the logged-in Delivery Medium.<br>Pass this Flag as "N", if - If you add any order which you want to allocate manually to the Delivery Medium OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Mediums.
+optimiseOrderSequenceFl| String | 1 | Mandatory | This flag is to be used only if you have Multi- Destination Orders.<br>If you set this Flag as "N", system would plan the Delivery routes by keeping the sequence of the Orders same as what you have supplied.<br>If you set this Flag as "Y", system would optimize the route and re-arrange the sequence in which Order needs to be delivered.
+backToOrigin| String | 1 | Mandatory | If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as "Y" else set this flag as "N"
+orders| List | | Mandatory | Array - This is the list of orders and its information.
+orders.orderNo| String | 255 | Conditional Mandatory | This is the Order No.<br>In case of Single Destination, this Order No. is same as the Parent Order No. It is mandatory.<br>In case of Multi -Destination, this Order No. should not be same as the Parent Order No.<br>In this case, it is order no. for each destination.<br>If you do not have a separate order for each destination, you can leave it blank.<br>LogiNext will generate Order No. with the format - Parent_Order_No_1, Parent_Order_No_2, etc.
+orders.deliverySequence| String | 1 | Mandatory | In case of Single Destination, this is to be "1" always.<br>In case of Multi-destination, this is the sequence that you want the order to be delivered in.
+orders.packageWeight| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Medium. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.
+orders.packageVolume| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Medium. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)
+orders.paymentType| String | 10 | Mandatory | If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be "PREPAID".<br>If the customer is going to pay for the order at the doorstep, then the value here should be "COD".<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext TrackNext App., you can raise integration request with your Account Manager.
+orders.packageValue| String | 10 | Conditional Mandatory | If the payment type is "PREPAID", then this can be optional.<br>If the payment type is "COD", then this is mandatory to be passed. This is the total amount that the Delivery Associate has to collect from the Customer.
+orders.numberOfItems| String | 255 | Conditional Mandatory | LogiNext system allows you to set your account as either of three level of Order Hierarchy - <br>1. Only Order - Single parcel, document, shipment.<br>2. Order and Crates - Single Shipment Bag and the items in that Shipment bag.<br>3. Order, Crate and Line Items - Single Shipment bag having multiple crates and each crate having multiple items.<br><br>If your account type is set to pass only orders, then this field is optional. <br>You can pass the no. of items (if any)  to let the delivery associate know as a FYI.<br>But, if your account is configured to have Order &  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Crates.
+orders.deliverServiceTime| String | 10 | Mandatory | In minutes. This is the time that the Delivery Associate is going to take at the Customer's doorstep to deliver the orders.
+orders.deliveryLocationType| String | 50 | Optional | This is an optional field. You can choose to leave it blank.<br>This parameter if passed helps the Operation Managers / Delivery Associates to know if the Customer location is Residence or Office or Pick-up point, etc.
+orders.partialDeliveryAllowedFl| String | 1 | Optional | This is an optional field. You can choose to leave it blank.<br>If you Business operations allow to deliver partial orders to the customers, then set this flag as "Y". <br>This flag is applicable only when your order Hierarchy Model is either Order & Crates or Oder, Crates & Line items
+orders.deliverAccountCode| String | 255 | Mandatory | LogiNext system allows you to set your Customer's addresses with unique address Id so that you do not have to send the Address parameters with every Order.<br>Customer's Address ID is mandatorily required to be set though this field.
+orders.deliverAccountName| String | 255 | Mandatory | LogiNext system allows you to set your Customer's addresses with unique address Id so that you do not have to send the Address parameters with every Order.<br>Customer's Address Name is mandatorily required to be set though this field.
+orders.deliverEmail| String | 100 | Optional | This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer's email Address, please pass the Customer's Email address.
+orders.deliverPhoneNumber| String | 100 | Optional | This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer through the SMS or you allow the delivery associate to call your customers directly, please pass the Customer Phone no.
+orders.deliverApartment| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br><br>If you are passing the value in this field, then - <br>This is Address Line 1.<br>This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center
+orders.deliverStreetName| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is Address Line 2.<br>This is the name of the Street where the Customer's / Delivery location is present.<br>Sample Value - Walton Boulevard
+orders.deliverLandmark| String | 512 | Optional | Any nearby landmark to identify your Customer Address<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital<br>Orders.deliverLocality| String | 255 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then -<br>This is area or locality in which the is Customer's address is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
+orders.deliverCity| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is name of the city.<br>Sample Value - Atlanta or Kuala Lampur
+orders.deliverState| String | 3 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+orders.deliverCountry| String | 3 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br>Please refer to the section where we have listed down country codes.
+orders.deliverPinCode| String | 255 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based n the Account code passed, then this field is optional<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>This is the postal code / zip code of the area.<br>Sample Value - 72712 ; 400076<br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+orders.deliverLatitude| String |  | Conditional Mandatory | If you are passing the Customer Address, then this field is optional or <br>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.
+orders.deliverLongitude| String |  | Conditional Mandatory | If you are passing the Customer Address, then this field is optional or <br>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.
+orders.deliverNotes| String | 255 | Optional | You can enter instructions (if any) for the Delivery Associate while delivering the order.
+shipmentCrateMappings| Array of objects | |  | Array - <br>Note that if your account is configured to have Order &  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.
+
+
+### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+crateCd | String | 128 | Mandatory | This is the unique Crate ID / Code
+crateAmount | Double |  | Mandatory | This is the amount / value of the items in the Crate.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.
+crateType | String | 100 | Optional | This Optional Field. You can choose to leave it blank.
+noOfUnits | Integer | 10 | Conditional Mandatory | If your account is configured to have  Order, Crates & Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Line Items in that Crate.
+shipmentlineitems | Array of objects |  | Optional | Array - <br>Note that if your account is configured to have  Order, Crates & Line Items Hierarchy, then it is mandatory for you pass the details of the Crates / Line Items in this field.
+
+### Request Parameters (LineItems)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+itemCd | String | 200 | Mandatory | This is the unique Item Code
+itemName | String | 255 | Mandatory | This is the Item Name
+itemPrice | Double |  | Mandatory | This is the amount / value of the item.<br>If you allow partial delivery, then this amount helps in recalculating the amount of the order.
+itemQuantity | Double | 10 | Optional | Quantity of the Items
+itemType | String | 100 | Optional | Any description in addition to Item name that you want to pass. For e.g. - Discounted Item, etc.
+itemWeight | Double | 10 | Optional | Weight of Item
 
 
 ## Get Order
@@ -2658,12 +2841,12 @@ With this API you can fetch the list of your orders and the associated order inf
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-start_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-end_date | Date | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-status | String | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
-order_no | String | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+start_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+end_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+status | String | 20 | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
+order_no | String | 100 | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
 
 Status | Filter applied on orders
 --------- | -------
@@ -2673,7 +2856,6 @@ COMPLETED | For First Mile, an order is marked COMPLETED when it is PICKEDUP and
 NOTCOMPLETED | For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
 CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified.
 ALL | Superset of all the filters mentioned for the above statuses will be considered.
-
 
 ## Update Order
 
@@ -2757,8 +2939,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 {
   "status": 200,
   "message": "success",
-  "referenceId": null,
-  "data": null,
   "hasError": false
 }
 
@@ -2773,65 +2953,65 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-referenceId | String | Mandatory |  Order Reference id
-orderNo | String | Optional |  Order No.
-awbNumber | String | Optional | Airway Bill No.
-shipmentOrderDt | Date | Optional | Order Date
-packageWeight | Double | Optional | Weight of package in Kg.
-packageVolume | Double | Optional | Volume of package in CC
-packageValue | Double | Optional | Value of package
-numberOfItems | Integer | Optional | Number of crates
-paymentType | String | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid
-partialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-returnAllowedFl | String | Optional | Is Return allowed. Ex: Y/N
-cancellationAllowedFl | String | Optional | Is Cancellation allowed. Ex: Y/N
-deliverBranch | String | Optional | Name of delivery branch
-deliverServiceTime | Integer | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date | Optional | Deliver start time window
-deliverEndTimeWindow | Date | Optional | Deliver end time window
-deliveryType | String | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-deliveryLocationType | String | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | Optional | Deliver account code
-deliverAccountName | String | Optional | Deliver account name
-deliverApartment | String | Optional | Apartment
-deliverStreetName | String | Optional | Street name
-deliverLandmark | String | Optional | Landmark
-deliverLocality | String | Optional | Locality
-deliverCity | String | Optional | City
-deliverState| String | Optional | State code
-deliverCountry | String | Optional | Country code
-deliverPinCode | String | Optional | Pincode
-pickupBranch | String | Optional | Name of pickup branch
-pickupServiceTime | Integer | Optional | Pickup service time in mins.
-pickupStartTimeWindow | Date | Optional | Pickup start time window
-pickupEndTimeWindow | Date | Optional | Pickup end time window
-pickupAccountCode | String | Optional | Pickup account code
-pickupAccountName | String | Optional | Pickup account name
-pickupApartment | String | Optional | Pickup Apartment
-pickupStreetName | String | Optional | Pickup Street name
-pickupLandmark | String | Optional | Pickup Landmark
-pickupLocality | String | Optional | Pickup Locality
-pickupCity | String | Optional | Pickup City
-pickupState| String | Optional | Pickup State code. Please refer to the list of state codes provided in the "State Codes" section.
-pickupCountry | String | Optional | Pickup Country code. Please refer to the list of country codes provided in the "Country Codes" section.
-pickupPinCode | String | Optional | Pickup Pincode
-returnBranch | String | Optional | Name of return branch
-returnStartTimeWindow | Date | Optional | Return start time window
-returnEndTimeWindow | Date | Optional | Return end time window
-returnAccountCode | String | Optional | Return account code
-returnAccountName | String | Optional | Return account name
-returnEmail | String | Optional | Return account code
-returnPhoneNumber | String | Optional | Return account name
-returnApartment | String | Optional | Return Apartment
-returnStreetName | String | Optional | Return Street name
-returnLandmark | String | Optional | Return Landmark
-returnLocality | String | Optional | Return Locality
-returnCity | String | Optional | Return City
-returnState| String | Optional | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
-returnCountry | String | Optional | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
-returnPinCode | String | Optional | Return Pincode
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+referenceId | String | 32 | Mandatory |  Order Reference id
+orderNo | String | 100 | Optional |  Order No.
+awbNumber | String | 1000 | Optional | Airway Bill No.
+shipmentOrderDt | Date | | Optional | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+packageWeight | Double | 10 | Optional | Weight of package in Kg.
+packageVolume | Double | 10 | Optional | Volume of package in CC
+packageValue | Double | 10 | Optional | Value of package
+numberOfItems | Integer | 20 | Optional | Number of crates
+paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid
+partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | 1 | Optional | Is Return allowed. Ex: Y/N
+cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N
+deliverBranch | String | 255 | Optional | Name of delivery branch
+deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
+deliverStartTimeWindow | Date | | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date | | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
+deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
+deliverAccountCode | String | 255 | Optional | Deliver account code
+deliverAccountName | String| 255  | Optional | Deliver account name
+deliverApartment | String | 512 | Optional | Apartment
+deliverStreetName | String | 512 | Optional | Street name
+deliverLandmark | String | 512 | Optional | Landmark
+deliverLocality | String | 512 | Optional | Locality
+deliverCity | String | 512 | Optional | City
+deliverState| String | 512 | Optional | State code
+deliverCountry | String | 512 | Optional | Country code
+deliverPinCode | String | 20 | Optional | Pincode
+pickupBranch | String | 255 | Optional | Name of pickup branch
+pickupServiceTime | Integer | 11 | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date | | Optional | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date | | Optional | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Optional | Pickup account code
+pickupAccountName | String | 255 | Optional | Pickup account name
+pickupApartment | String | 512 | Optional | Pickup Apartment
+pickupStreetName | String | 512 | Optional | Pickup Street name
+pickupLandmark | String | 512 | Optional | Pickup Landmark
+pickupLocality | String | 512 | Optional | Pickup Locality
+pickupCity | String | 512 | Optional | Pickup City
+pickupState| String | 512 | Optional | Pickup State code. Please refer to the list of state codes provided in the "State Codes" section.
+pickupCountry | String | 512 | Optional | Pickup Country code. Please refer to the list of country codes provided in the "Country Codes" section.
+pickupPinCode | String | 20 | Optional | Pickup Pincode
+returnBranch | String | 255 | Optional | Name of return branch
+returnStartTimeWindow | Date | | Optional | Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+returnEndTimeWindow | Date | | Optional | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+returnAccountCode | String | 255 | Optional | Return account code
+returnAccountName | String | 255 | Optional | Return account name
+returnEmail | String | 500 | Optional | Return account code
+returnPhoneNumber | String | 255 | Optional | Return account name
+returnApartment | String | 512 | Optional | Return Apartment
+returnStreetName | String | 512 | Optional | Return Street name
+returnLandmark | String | 512 | Optional | Return Landmark
+returnLocality | String | 512 | Optional | Return Locality
+returnCity | String | 512 | Optional | Return City
+returnState| String | 512 | Optional | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
+returnCountry | String | 512 | Optional | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
+returnPinCode | String | 20 | Optional | Return Pincode
 
 ## Update Order Status
 
@@ -2849,15 +3029,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
   "orderDetails":
   [{
     "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
-    "reasonCd":"DBUNAVAILABLE",
-    "otherReason":""
-
+    "reasonCd":"DBUNAVAILABLE"
   },
   {
     "orderReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
-    "reasonCd":"DBUNAVAILABLE",
-    "otherReason":""
-
+    "reasonCd":"DBUNAVAILABLE"
   },
   {
     "orderReferenceId":"6156ty46e324c42abb5ea1a32y45f66",
@@ -2876,7 +3052,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 ```json
 {
   "status": 200,
-  "data": null,
   "message": "Shipment updated successfully",
   "hasError": false
 }
@@ -2892,12 +3067,12 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-newStatus | String | Mandatory |  One status for multiple orders.The orders will be updated with this new status
-orderReferenceId | String | Mandatory |  LogiNext provided order/shipment referenceId
-reasonCd | String | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED
-otherReason | Date | Conditional Mandatory | Mandatory when reasonCd is OTHER
+Param | DataType | Length |  Required | Description
+--------- | ------- | ---------- | ---------- | ------------
+newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status
+orderReferenceId | String | 100 | Mandatory |  LogiNext provided order/shipment referenceId
+reasonCd | String | 255 | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED
+otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
 
 ## Update Crates and Line Items in Order
 
@@ -2959,8 +3134,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates
 {
   "status": 200,
   "message": "success",
-  "referenceId": null,
-  "data": null,
   "hasError": false
 }
 
@@ -2974,19 +3147,20 @@ You can pass multiple crate and line items.
 
 ### Request Parameters (Crates)
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-shipmentCrates | Array of objects | Optional | Shipment crates
-shipmentCrates.crateCd | String | Mandatory | Crate Code
-shipmentCrates.crateAmount | Double | Optional | Crate amount
-shipmentCrates.crateType | String | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
-shipmentCrates.noOfUnits | Integer | Optional | No. of crate units
-shipmentCrates.shipmentlineitems.itemCd | String | Mandatory | Item code
-shipmentCrates.shipmentlineitems.itemName | String | Optional | Item name
-shipmentCrates.shipmentlineitems.itemPrice | Double | Mandatory | Item price
-shipmentCrates.shipmentlineitems.itemQuantity | Double | Mandatory | Item quantity
-shipmentCrates.shipmentlineitems.itemType | String | Optional | Item type
-shipmentCrates.shipmentlineitems.itemWeight | Double | Optional | Item weight
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrates | Array of objects | | Optional | Shipment crates
+shipmentCrates.crateCd | String | 128 | Mandatory | Crate Code
+shipmentCrates.crateAmount | Double | | Optional | Crate amount
+shipmentCrates.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrates.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrates.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrates.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrates.shipmentlineitems.itemPrice | Double | | Mandatory | Item price
+shipmentCrates.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrates.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrates.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+
 
 
 ## Cancel Order
@@ -3000,7 +3174,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 > Request Body
 
 ```json
-["e0eaebdd84ac4c40af72d827ab610090"]
+[
+     "c8714df4347911e6829f000d3aa044508",
+     "c8714df4347911e6829f654677aa04450",
+     "c8714df4347911e436667888d3aa04450"
+]
 ```
 
 > Response
@@ -3009,7 +3187,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 {
   "status": 200,
   "message": "success",
-  "data": null,
   "hasError": false
 }
 ```
@@ -3045,7 +3222,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/status
 ```json
 {
   "status": 200,
-  "message": null,
   "data": [
     {
       "state": "FORWARD",
@@ -3079,13 +3255,19 @@ This endpoint downloads the EPODs for given order, delivery dates and status of 
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-orderstartdt | String | Mandatory | Order start date
-orderenddt | String | Mandatory | Order end date
-deliverystartdt | String | Mandatory | Delivery start date
-deliveryenddt | String | Mandatory | Delivery end date
-status | String | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+orderstartdt | String |  | Mandatory | Order start date
+orderenddt | String |  | Mandatory | Order end date
+deliverystartdt | String |  | Mandatory | Delivery start date
+deliveryenddt | String |  | Mandatory | Delivery end date
+status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+
+### Response
+
+Response is a binary zip file.<br>
+In any browser just hit the url and zip file download will start automatically.<br>
+In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
 
 ## Start Trip
 
@@ -3098,7 +3280,10 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 > Request Body
 
 ```json
-["a9be39b9347911e6829f000d3aa04450"]
+[
+    "a9be39b9347911e6829f000d3aa04450",
+    "a9be39b9347911e6829f07657aa04450"
+]
 ```
 
 > Response
@@ -3106,7 +3291,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 ```json
 {
   "status": 200,
-  "message": "1 trip(s) started",
+  "message": "2 trip(s) started",
   "data": true,
   "hasError": false
 }
@@ -3155,11 +3340,11 @@ Stop the trip for a delivery medium using this API.
 
 ### Request Body
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-tripReferenceId | String  | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  | Mandatory | Reference Id associated with the non-dispatched order.
-deliveredOrders | List | Mandatory | Reference Id associated with the delivered order.
+Parameter | DataType | Length |  Required | Description
+-----------|-------|-------|------- | ----------
+tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
+notDispatchedOrders | List  |  | Mandatory | Reference Id associated with the non-dispatched order.
+deliveredOrders | List |  | Mandatory | Reference Id associated with the delivered order.
 
 ## Track Last Location
 
@@ -3283,32 +3468,32 @@ This endpoint creates a new delivery medium.
 
 ### Request Parameters
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-employeeId | String | Mandatory | Employee Id
-userGroupName | String | Mandatory | User group name
-branchName | String | Mandatory | Client branch name
-deliveryMediumMasterName | String |Mandatory | Full name of Delivery medium
-phoneNumber | String | Mandatory | Mobile no
-imei | String |Optional | IMEI no
-emailId | String | Optional | Email id
-userName | String | Mandatory | Username
-password | String | Mandatory | Password
-capacityInUnits | Integer | Mandatory | Capacity of Delivery medium in units
-capacityInVolume | Integer | Optional | Capacity of Delivery medium in volume
-capacityInWeight | Integer |Optional | Capacity of Delivery medium in weight
-dob | String | Optional | Date of birth
-gender | String |Optional | Gender. Ex - Male,Female
-deliveryMediumMasterTypeCd | String |Optional | Delivery medium type. Ex - Truck, Delivery Boy
-isOwnVehicleFl | String |Optional | Owner of vehicle. Ex - Owned, Company
-vehicleNumber | String | Optional | Vehicle number to be assigned to the delivery medium
-weeklyOffList  | String |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
-maxDistance | Integer |Optional | Max. allowed distance
-licenseValidity | String |Optional | License validity date
-deliveryMediumMapList.name | String | Optional | Name of language
-shiftList.shiftStartTime  | String |Optional | Shift start time
-shiftList.shiftEndTime  | String |Optional | Shift end time
-dmPreference  | String | Optional | Preferred Pincode of Delivery medium
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+employeeId | String | 50 | Mandatory | Employee Id
+userGroupName | String | 255 | Mandatory | User group name
+branchName | String | 255 | Mandatory | Client branch name
+deliveryMediumMasterName | String | 255 |Mandatory | Full name of Delivery medium
+phoneNumber | String | 255 | Mandatory | Mobile no
+imei | String | 40 |Optional | IMEI no
+emailId | String | 100 | Optional | Email id
+userName | String | 255 | Mandatory | Username
+password | String | 255 | Mandatory | Password
+capacityInUnits | Integer | 20 | Mandatory | Capacity of Delivery medium in units
+capacityInVolume | Integer | 20 | Optional | Capacity of Delivery medium in volume
+capacityInWeight | Integer | 20 |Optional | Capacity of Delivery medium in weight
+dob | String |  | Optional | Date of birth
+gender | String | 12 |Optional | Gender. Ex - Male,Female
+deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery medium type. Ex - Truck, Delivery Boy
+isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
+vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery medium
+weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
+maxDistance | Integer | 20 |Optional | Max. allowed distance
+licenseValidity | String |  |Optional | License validity date
+deliveryMediumMapList.name | String | 255 | Optional | Name of language
+shiftList.shiftStartTime  | String |  |Optional | Shift start time
+shiftList.shiftEndTime  | String |  |Optional | Shift end time
+dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery medium
 
 ## Get Geocode
 
@@ -3333,12 +3518,10 @@ dmPreference  | String | Optional | Preferred Pincode of Delivery medium
 {
  "status": 200,
  "message": "Geocodes Fetched Successfully",
- "referenceId": null,
  "data": [
    {
      "lat": 19.11736939999999,
      "lng": 72.9103214,
-     "shipmentReference": null,
      "geocodingSource": "GOOGLE_PLACES"
    }
  ],
@@ -3439,8 +3622,6 @@ https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
 {
 "status": 200,
 "message": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!",
-"referenceId": null,
-"data": null,
 "hasError": false
 }
 ```
@@ -3452,29 +3633,29 @@ https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
 
 ### Request Body
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-routeName | String | Mandatory | Route name
-startLocation.latitude | Double | Mandatory | Latitude of start location
-startLocation.longitude | Double | Mandatory | Longitude of start location
-vehicles | List | Mandatory | List of delivery medium
-vehicles.name | String | Mandatory | Delivery medium name
-vehicles.capacity.weight | Integer | Optional | Capacity of delivery medium
-vehicles.capacity.volume | Integer | Optional | Volume of delivery medium
-vehicles.type | List | Optional | Type of delivery medium
-shipments | List | Mandatory | List of orders
-shipments.name | String | Mandatory | Order no.
-shipments.location.latitude | Double | Mandatory | Order Latitude
-shipments.location.longitude | Double | Mandatory | Order Longitude
-shipments.start | String | Mandatory | Order start time window
-shipments.end | String | Mandatory | Order end time window
-shipments.serviceTime | Integer | Optional | Order service time in mins.
-shipments.weight | Integer | Optional | Weight of order in Kg.
-shipments.volume | Integer | Optional | Volume of order in cc.
-shipments.type | List | Mandatory | Type of orders
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+routeName | String | 150 | Mandatory | Route name
+startLocation.latitude | Double | 20 | Mandatory | Latitude of start location
+startLocation.longitude | Double | 20 | Mandatory | Longitude of start location
+vehicles | List |  | Mandatory | List of delivery medium
+vehicles.name | String | 255 | Mandatory | Delivery medium name
+vehicles.capacity.weight | Integer | 20 | Optional | Capacity of delivery medium
+vehicles.capacity.volume | Integer | 20 | Optional | Volume of delivery medium
+vehicles.type | List |  | Optional | Type of delivery medium
+shipments | List |  | Mandatory | List of orders
+shipments.name | String | 100 | Mandatory | Order no.
+shipments.location.latitude | Double | 20 | Mandatory | Order Latitude
+shipments.location.longitude | Double | 20 | Mandatory | Order Longitude
+shipments.start | String |  | Mandatory | Order start time window
+shipments.end | String |  | Mandatory | Order end time window
+shipments.serviceTime | Integer | 11 | Optional | Order service time in mins.
+shipments.weight | Integer | 10 | Optional | Weight of order in Kg.
+shipments.volume | Integer | 10 | Optional | Volume of order in cc.
+shipments.type | List |  | Mandatory | Type of orders
 
 
-## Create Manifest
+## Create / Update Manifest
 
 > Definition
 
@@ -3516,6 +3697,10 @@ If you do not store the Reference ID for orders, then you will have to fetch the
 
 You can also manifest Cancelled Orders (by turning this flag to "true") in case you have to return (out-scan) the cancelled orders back to the merchant / origin.
 
+If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.
+If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.
+If it does not exist, then a new manifest will be created with the provided Manifest ID.
+
 
 ### Request
 
@@ -3524,12 +3709,100 @@ You can also manifest Cancelled Orders (by turning this flag to "true") in case 
 
 ### Request Body
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-manifestId | String | Optional | You can pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If Not​ ​passed, then LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.
-manifestType | String | Optional | Default manifestType is ORDER
-cancelledOrderAllowedFl | String | Optional | By default the value will be taken as  "false". If you would like to OutScan Cancelled orders, then please pass "true"
-orderReferenceIds | List | Mandatory | LogiNext Order Reference ID
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+manifestId | String | 11 | Optional | You can pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If Not​ ​passed, then LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.
+manifestType | String | 25 | Optional | Default manifestType is ORDER
+cancelledOrderAllowedFl | String | 1 | Optional | By default the value will be taken as  "false". If you would like to OutScan Cancelled orders, then please pass "true"
+orderReferenceIds | List |  | Mandatory | LogiNext Order Reference ID
+
+## Create Hub
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ClientApp/v1/branch/create
+```
+
+> Request Body
+
+```json
+
+[{
+"clientParentBranchName":"Reeta Foods Main Branch",
+"branchName":"Marque Downtown Chicago",
+"address":{
+        "apartment":"Suite No. 99, Milsons Towers",
+        "streetName":"Michigan Avenue",
+        "landmark":"Opp. Subway",
+        "locality":"Dowtown Chicago",
+        "city":"Chicago",
+        "state":"IL",
+        "country":"USA",
+        "pincode":"60606"
+},
+"division":"ADIV",
+"isOwnBranchFl":"N",
+"isHubFl":"Y",
+"geoFenceRadius":"2.0",
+"branchDescription":"desc",
+"billingContactName":"name",
+"officeNumber":"2798678712",
+"adminContactName":"Suraj K.",
+"mobileNumber":"9033977123",
+"emailAddress":"superjames@gmails.com",
+"longitude": 19.111755,
+"latitude": 72.9095327
+}]
+
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Create Hub success.",
+    "data": {
+        "referenceId": "hcgsyuc334"
+    },
+    "hasError": false
+}
+```
+
+With this API, you can create your hubs / branches / distribution centers in the LogiNext application.
+
+### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/v1/branch/create`
+
+
+### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+clientParentBranchName | String | 255 | Mandatory | This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager
+branchName | String | 255 | Mandatory | This is the name of the branch / hub / distribution center/ that you want to add.
+Address.apartment | String | 512 | Mandatory | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center
+Address.streetName | String | 512 | Mandatory | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard
+Address.landmark | String | 512 | Mandatory | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
+branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
+Address.locality | String | 512 | Mandatory | This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
+Address.city | String | 512 | Mandatory | This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur
+Address.state | String | 11 | Mandatory | This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.country | String | 11 | Mandatory | This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.
+Address.pincode | String | 20 | Mandatory | This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+division | String | 255 | Mandatory | Ex. ADIV
+isOwnBranchFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to N
+isHubFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to Y
+geoFenceRadius | String | 255 | Optional | This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs
+branchDescription | String | 500 | Optional | If you would like add a brief description name for the hub, use this field.
+billingContactName | String | 500 | Mandatory | Name of the Contact Person at this Branch / Hub
+officeNumber | String | 255 | Mandatory | Fixed Line Number of the Branch  / Hub
+adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate Contact for this Hub
+mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
+emailAddress | String | 255 | Mandatory | Email Address of the contact person
+
 
 
 # LogiNext OnDemand <sup>TM</sup>
@@ -3550,12 +3823,12 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
   {
     "cashOnDelivery" : 1000,
     "cashOnPickup" : 1000,
-    "customerName" : "TestName",
+    "customerName" : "Anuradha S.",
     "locality" : "Andheri East",
     "subLocality" : "JVLR",
     "address" : "JVLR Powai",
     "deliverPhoneNumber" : "8888889999",
-    "orderNo" : "35629171418620161809",
+    "orderNo" : "ORder_18620161809",
     "distributionCenter" : "Mumbai",
     "paymentType" : "COD"
   }
@@ -3587,19 +3860,19 @@ Place a new delivery leg order with this API.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-distributionCenter | String | Mandatory | Distribution center's name
-paymentType | String | Mandatory | Payment mode. Ex: COD, Prepaid
-packageValue | Double | Optional | Package Value (This will be used when paymentType is Prepaid)
-cashOnDelivery | Double | Mandatory(if paymentType is COD) | Cash to be collected on delivery
-cashOnPickup | Double | Optional | Cash to be given on pickup
-locality | String | Mandatory | Locality name
-subLocality | String | Mandatory | Sub-locality name
-address | String | Optional | Address where delivery should be done
-deliverPhoneNumber | String | Mandatory | End customer contact number
-customerName | String | Mandatory | End customer name
+Param | DataType |  Length | Required | Description
+--------- | ------- | -------|------- | ------------
+orderNo | String | 100 | Mandatory |  Order No.
+distributionCenter | String | 255 | Mandatory | Distribution center's name
+paymentType | String | 40 | Mandatory | Payment mode. Ex: COD, Prepaid
+packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
+cashOnDelivery | Double | 10 | Mandatory(if paymentType is COD) | Cash to be collected on delivery
+cashOnPickup | Double | 10 | Optional | Cash to be given on pickup
+locality | String | 512 | Mandatory | Locality name
+subLocality | String | 512 | Mandatory | Sub-locality name
+address | String | 512 | Optional | Address where delivery should be done
+deliverPhoneNumber | String | 255 | Mandatory | End customer contact number
+customerName | String | 255 | Mandatory | End customer name
 
 
 
@@ -3689,53 +3962,53 @@ Place a new delivery leg order with this API.
 
 ### Request Parameters
 
-Param | DataType |  Required | Description
---------- | ------- | ---------- | ------------
-orderNo | String | Mandatory |  Order No.
-awbNumber | String | Optional |  Awb No.
-distributionCenter | String | Mandatory | Distribution center's name
-shipmentOrderDt | Double | Mandatory | Order Date
-deliverCapacityInVolume | Double | Optional | Weight of package in Kg.
-deliverCapacityInUnits | Double | Optional | Volume of package in CC
-paymentType | String | Optional | Payment mode. Ex: COD, Prepaid
-packageValue | Double | Optional | Package Value (This will be used when paymentType is Prepaid)
-cashOnDelivery | Double | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
-cashOnPickup | Double | Optional | Cash to be given on pickup
-isPartialDeliveryAllowedFl | String | Optional | Is Partial Delivery allowed. Ex: Y/N
-pickupAccountCode | String | Mandatory | Pickup customer-id
-pickupAccountName | String | Mandatory | Pickup customer name
-pickupEmail | String | Optional | Pickup customer email-id
-pickupPhoneNumber | String | Mandatory | Pickup customer contact number
-pickupApartment | String | Mandatory | Pickup customer apartment
-pickupStreetName | String | Mandatory | Pickup customer street name
-pickupLandmark | String | Optional | Pickup customer landmark
-pickupLocality | String | Mandatory | Pickup area name
-pickupCountry | String | Mandatory | Pickup country code
-pickupState | String | Mandatory | Pickup state code
-pickupCity | String | Mandatory | Pickup city
-pickupPincode | String | Mandatory | Pickup pincode
-pickupStartTimeWindow | Date | Mandatory | Pickup Start time window of order
-pickupEndTimeWindow | Date | Mandatory | Pickup End time window of order
-pickupLatitude | Double | Optional | Latitude of pickup location
-pickupLongitude | Double | Optional | Longitude of pickup location
-pickupNotes | String | Optional | Pickup notes
-deliverAccountCode | String | Mandatory | Deliver customer-id
-deliverAccountName | String | Mandatory | Deliver customer name
-deliverEmail | String | Optional | Deliver customer email-id
-deliverPhoneNumber | String | Mandatory | Deliver customer contact number
-deliverApartment | String | Mandatory | Deliver customer apartment
-deliverStreetName | String | Mandatory | Deliver customer street name
-deliverLandmark | String | Optional | Deliver customer landmark
-deliverLocality | String | Mandatory | Deliver area name
-deliverCountry | String | Mandatory | Deliver country code
-deliverState | String | Mandatory | Deliver state code
-deliverCity | String | Mandatory | Deliver city
-deliverPincode | String | Mandatory | Deliver pincode
-deliverStartTimeWindow | Date | Mandatory | Deliver Start time window of order
-deliverEndTimeWindow | Date | Mandatory | Deliver End time window of order
-deliverLatitude | Double | Optional | Latitude of deliver location
-deliverLongitude | Double | Optional | Longitude of deliver location
-deliverNotes | String | Optional | Deliver notes
+Param | DataType |  Length | Required | Description
+--------- | ------- | -------|-------- | ------------
+orderNo | String | 100 | Mandatory |  Order No.
+awbNumber | String | 1000 | Optional |  Awb No.
+distributionCenter | String | 255 | Mandatory | Distribution center's name
+shipmentOrderDt | Double | | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverCapacityInVolume | 10 | Double | Optional | Weight of package in Kg.
+deliverCapacityInUnits | 10 | Double | Optional | Volume of package in CC
+paymentType | String | 40 | Optional | Payment mode. Ex: COD, Prepaid
+packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
+cashOnDelivery | Double | 10 | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
+cashOnPickup | Double | 10 | Optional | Cash to be given on pickup
+isPartialDeliveryAllowedFl | String | 1 | Optional | Is Partial Delivery allowed. Ex: Y/N
+pickupAccountCode | String | 255 | Mandatory | Pickup customer-id
+pickupAccountName | String | 255 | Mandatory | Pickup customer name
+pickupEmail | String | 100 | Optional | Pickup customer email-id
+pickupPhoneNumber | String | 255 | Mandatory | Pickup customer contact number
+pickupApartment | String | 512 | Mandatory | Pickup customer apartment
+pickupStreetName | String | 512 | Mandatory | Pickup customer street name
+pickupLandmark | String | 512 | Optional | Pickup customer landmark
+pickupLocality | String | 512 | Mandatory | Pickup area name
+pickupCountry | String | 512 | Mandatory | Pickup country code
+pickupState | String | 512 | Mandatory | Pickup state code
+pickupCity | String | 512 | Mandatory | Pickup city
+pickupPincode | String |20 | Mandatory | Pickup pincode
+pickupStartTimeWindow | Date | | Mandatory | Pickup Start time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date | | Mandatory | Pickup End time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupLatitude | Double |  | Optional | Latitude of pickup location
+pickupLongitude | Double |  | Optional | Longitude of pickup location
+pickupNotes | String | 512 | Optional | Pickup notes
+deliverAccountCode | String | 255 | Mandatory | Deliver customer-id
+deliverAccountName | String | 255 | Mandatory | Deliver customer name
+deliverEmail | String | 100 | Optional | Deliver customer email-id
+deliverPhoneNumber | String | 255 | Mandatory | Deliver customer contact number
+deliverApartment | String | 512 | Mandatory | Deliver customer apartment
+deliverStreetName | String | 512 | Mandatory | Deliver customer street name
+deliverLandmark | String | 512 | Optional | Deliver customer landmark
+deliverLocality | String | 512 | Mandatory | Deliver area name
+deliverCountry | String | 512 | Mandatory | Deliver country code
+deliverState | String | 512 | Mandatory | Deliver state code
+deliverCity | String | 512 | Mandatory | Deliver city
+deliverPincode | String | 20 | Mandatory | Deliver pincode
+deliverStartTimeWindow | Date | 100 | Mandatory | Deliver Start time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date | 100 | Mandatory | Deliver End time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverLatitude | Double | | Optional | Latitude of deliver location
+deliverLongitude | Double | | Optional | Longitude of deliver location
+deliverNotes | String | 512 | Optional | Deliver notes
 
 
 ## Get Order
@@ -3819,7 +4092,10 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel
 > Request Body
 
 ```json
-["e0eaebdd84ac4c40af72d827ab610090","f68420e67be84b2894aab6ea9634c4f9"]
+[
+  "e0eaebdd84ac4c40af72d827ab610090",
+  "f68420e67be84b2894aab6ea9634c4f9"
+]
 ```
 
 > Response
@@ -3868,7 +4144,8 @@ Note -
   "orderLeg":"PICKUP",
   "awbNumber":"AWB001",
   "notificationType": "ORDERCREATIONNOTIFICATION",
-  "timestamp":"2016-07-01 03:05:08"
+  "timestamp":"2016-07-01 03:05:08",
+  "orderReferenceId":"3daeaf418c59421319b1307e632b327da"
 }
 ```
 
@@ -3882,6 +4159,7 @@ orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 notificationType | String | ORDERCREATIONNOTIFICATION
 timestamp | String | Order creation timestamp
+orderReferenceId | String | Order reference id.
 
 ## Update Order
 
@@ -3896,8 +4174,31 @@ timestamp | String | Order creation timestamp
 	"deliveryMediumName": "kumari2",
 	"phoneNumber": "6590110114",
 	"orderState": "FORWARD",
-	"clientId": 9999,
-	"shipmentCrateMapping": [],
+	"shipmentCrateMapping":  [
+    {
+      "crateCd": "Crt A001",
+      "crateAmount": 500.65,
+      "shipmentlineitems": [
+        {
+          "itemCd": "10001001",
+          "itemName": "Fresh Basket Lemon",
+          "itemPrice": 12,
+          "itemQuantity": 1,
+          "itemType": "P",
+          "itemWeight": 0,
+          "statusCd": "PACKED",
+          "loadedQuantity": 0,
+          "unloadedQuantity": 0,
+          "isActiveFl": true
+        }
+      ],
+      "noOfUnits": 14,
+      "loadedUnits": 0,
+      "unloadedUnits": 0,
+      "orderNo": "P_Aetos1",
+      "isActiveFl": true
+    }
+  ],
 	"startTimeWindow": "2017-08-17 02:00:00",
 	"endTimeWindow": "2017-08-17 03:00:00",
 	"tripReferenceId": "c1aa3beae7844b77a90bb6fe0518992c",
@@ -3959,14 +4260,16 @@ calculatedEndDt | String  | Calculated end date
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
+  "clientShipmentId": "Order_001",
   "status": "ORDER ACCEPTED",
-  "deliveryMediumName": "TestDM",
-  "phoneNumber": 1234567890,
-  "tripName": "TestTrip",
+  "awbNumber": "AWB123456789",
+  "deliveryMediumName": "Thomas Watson",
+  "phoneNumber": 9881234567,
+  "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
-  "deliveryMediumName": "Sandeep",
-  "phoneNumber": 1234567890
+  "trackUrl": "https://goo.gl/qhZP63",
+  "deliveryEndDate": "2017-11-20 10:23:20",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
 ```
@@ -3982,12 +4285,15 @@ Param | DataType | Description
 --------- | ------- | ----------
 clientShipmentId | String | Order No.
 status | String | Status of the order
+awbNumber | String | AWB No.
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+trackUrl | String | Url to track Order
+deliveryEndDate | String | Delivery end date.
+orderReferenceId | String | Order Reference Id
+
 
 ## Reject Order
 
@@ -3995,11 +4301,12 @@ phoneNumber | Long | Delivery medium's phone no.
 
 ```json
 {
-  "clientShipmentId": "TestOrder",
+  "clientShipmentId": "Order_001",
   "status": "ORDER REJECTED",
-  "tripName": "TestTrip",
+  "tripName": "Trip_100123",
   "updatedOn": "2016-06-30 20:47:20",
-  "reasonOfRejection": "Cannot reach on ETA"
+  "reasonOfRejection": "Cannot reach on ETA",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 ```
 
@@ -4014,6 +4321,8 @@ status | String | Status of the order
 tripName | String | Trip name
 updatedOn | String | Reject order timestamp
 reasonOfRejection | String | Reason provided by Delivery medium while rejecting the order
+orderReferenceId | String | Order Reference Id
+
 
 
 ## Cancel Order
@@ -4022,10 +4331,10 @@ reasonOfRejection | String | Reason provided by Delivery medium while rejecting 
 
 ```json
 {
-  "orderNo": "Order001",
+  "orderNo": "Order_001",
   "notificationType": "CANCELLEDNOTIFICATION",
   "orderLeg": "DELIVER",
-  "awbNumber": "AWB001",
+  "awbNumber": "AWB123456789",
   "deliveryMediumName": "Abhi.P",
   "phoneNumber": "9922904337",
   "orderState": "FORWARD",
@@ -4033,9 +4342,10 @@ reasonOfRejection | String | Reason provided by Delivery medium while rejecting 
   "reason": "Customer Unavailable",
   "reasonCd": "Customer Unavailable Cd",
   "tripName": "TRIP-809",
-  "customerCode": "TestCId",
+  "customerCode": "Cust122435",
   "cancellationTime": "2016-12-05 12:59:16",
-  "cancelledBy": "Last Mile Demo User"
+  "cancelledBy": "M. Smith",
+  "isCancelOccurAfterPickupFl": false
 }
 ```
 
@@ -4057,16 +4367,19 @@ reason | String | Reason for the order being cancelled
 reasonCd | String | Reason code
 cancellationTime | String | Cancellation timestamp
 cancelledBy | String | Cancelled by user name
+isCancelOccurAfterPickupFl | Boolean | whether order was cancelled after Pickup
+
 
 ## Load Items
 
 ```json
 {
-  "orderNo": "TestOrderNo",  
+  "orderNo": "Order_0001",  
   "orderState":"FORWARD",
   "orderLeg":"PICKUP",
-  "awbNumber":"AWB001",
+  "awbNumber":"AWB123456789",
   "notificationType": "LOADITEMNOTIFICATION",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8",
    "shipmentCrateMapping": [
       {
         "crateCd": "CRATE001",
@@ -4074,17 +4387,21 @@ cancelledBy | String | Cancelled by user name
         "statusCd": "CRATE001",
         "crateAmount": 100.30,
         "crateQuantity":3,
+        "loadedUnits": 1,
+        "unloadedUnits": 0,
         "shipmentlineitems": [
           {
             "itemCd": "CODE001",
             "statusCd":"StatusCd",
             "itemName": "ITEM1",
             "itemPrice": 100,
-            "itemQuantity": 1
+            "itemQuantity": 1,
+            "isActiveFl": true
           }
         ]
       }
-    ]
+    ],
+    "isActiveFl": true
 }
 ```
 
@@ -4098,6 +4415,7 @@ orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 notificationType | String | LOADITEMNOTIFICATION
+orderReferenceId | String | Order Reference Id
 shipmentCrateMapping.crateCd | String | Crate code
 shipmentCrateMapping.crateType | String | Crate type
 shipmentCrateMapping.statusCd | String | Crate Status. It will be LOADED.
@@ -4119,7 +4437,7 @@ shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
   "startTime":"2016-07-01 09:13:00",
   "phoneNumber":1234567890,
   "driverName":"TestDriverName",
-  "vehicleNumber":"MH 03992"
+  "vehicleNumber":"MH 03992",
   "revisedEta" : "2016-07-01 10:13:00",
   "notificationType": "LOADINGDONENOTIFICATION"
 }
@@ -4148,22 +4466,28 @@ notificationType | String | LOADINGDONENOTIFICATION
 
 ```json
 {
-  "clientShipmentId": "Order001",
+  "orderNo": "Order_1001",
   "latitude": 19.1118589,
   "longitude": 72.9095639,
   "notificationType": "DELIVEREDNOTIFICATION",
-  "customerComment": "Test user comments",
+  "orderLeg": "DELIVER",
+  "awbNumber": "AWB012345678",
+  "customerComment": "User comments",
   "customerRating": 5,
   "deliveryMediumName": "Suresh",
   "phoneNumber": 1234567864,
+  "orderState": "FORWARD",
+  "customerName": "John Watson",
   "deliveryTime": "2016-11-19 06:11:27",
   "cashAmount": 0,
   "deliveryLocationType": "",
   "transactionId": "12456",
   "actualCashAmount": 120,
+  "paymentMode": "COD",
   "recipientName": "Rahul",
   "branchName": "AAA0",
-  "paymentSubType": ""
+  "paymentSubType": "",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
 ```
@@ -4176,22 +4500,28 @@ This notification is sent when an order is delivered by a delivery boy to custom
 
 Key | DataType | Description
 --------- | ------- |-------
-clientShipmentId | String | Order No.
+orderNo | String | Order No.
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
 notificationType | String | DELIVEREDNOTIFICATION
+orderLeg | String | Order leg, Possible values : DELIVER, PICKUP
+awbNumber | String | Awb No.
 customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
+orderState | String | Order state, Possible values : FORWARD, REVERSE
+customerName | String | Customer name
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to collect
 deliveryLocationType | String | Delivery Location
 transactionId | String | Transaction id
+paymentMode | String | Paymode mode, Possible values : PREPAID, COD
 actualCashAmount | Double | Cash amount actually collected
 recipientName | String | Name of recipient
 branchName | String | Branch Name
 paymentSubType | String | Possible values : CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
+orderReferenceId | String | Order Reference Id
 
 
 ## Partially Delivered
@@ -4237,9 +4567,11 @@ paymentSubType | String | Possible values : CASH, CARD_AUTO, CARD_MANUAL,MOMOE,M
             "itemPrice": 100,
             "itemQuantity": 1,
             "itemWeight": 100,
-            "actualItemQuantity": 5
+            "actualItemQuantity": 5,
+            "isActiveFl": true
           }
-        ]
+        ],
+        "isActiveFl": true
       }
   ],
   "recipientName": "Pratik",
@@ -4291,6 +4623,7 @@ shipmentCrateMappingList.crateAmount | Double | Crate amount
 shipmentCrateMappingList.noOfUnits | Integer | No of units
 shipmentCrateMappingList.loadedUnits | Integer | No of units loaded
 shipmentCrateMappingList.unloadedUnits | Integer | No of units unloaded
+shipmentCrateMappingList.isActiveFl | Boolean | Crate is active
 shipmentCrateMappingList.shipmentlineitems.itemCd | String | Item code
 shipmentCrateMappingList.shipmentlineitems.itemType | String | Item type
 shipmentCrateMappingList.shipmentlineitems.statusCd | String | Item status. It will be LOADED.
@@ -4299,6 +4632,7 @@ shipmentCrateMappingList.shipmentlineitems.itemPrice | Double | Item price
 shipmentCrateMappingList.shipmentlineitems.itemQuantity | Integer | Item quantity
 shipmentCrateMappingList.shipmentlineitems.itemWeight | Integer | Item weight
 shipmentCrateMappingList.shipmentlineitems.actualItemQuantity | Integer | Unloaded Item quantity
+shipmentCrateMappingList.shipmentlineitems.isActiveFl | Boolean | Line item is active
 recipientName | String | Recipients Name
 apartment | String | Recipients apartment
 streetName | String | Recipients street name
@@ -4332,6 +4666,7 @@ paymentSubType | String | e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
   "deliveryLocationType": "",
   "recipientName": "",
   "branchName": "MUMBAI (VISIONCARE-DW)",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
 ```
@@ -4360,6 +4695,7 @@ deliveryTime | String | Undelivered timestamp
 deliveryLocationType | String | Delivery location
 recipientName | String | Name of recipient
 branchName | String | Hub branch name
+orderReferenceId | String | Order Reference Id
 
 ## Pickedup
 
@@ -4379,7 +4715,9 @@ branchName | String | Hub branch name
   "customerRating": 0,
   "deliveryMediumName": "TestDB",
   "phoneNumber": 1234565435,
-  "orderState": "FORWARD"
+  "orderState": "FORWARD",
+  "branchName": "1008",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
 
@@ -4406,6 +4744,8 @@ customerRating | Integer | Rating provided by customer
 deliveryMediumName | String | Name of delivery medium
 phoneNumber | Long | Delivery medium's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
+branchName | String | -
+orderReferenceId | String | Order Reference Id
 
 
 ## Not Pickedup
@@ -4425,7 +4765,8 @@ orderState | String | State of order. Ex: FORWARD, REVERSE
   "orderState": "FORWARD",
   "customerName": "Customer name",
   "reason": "Product damaged in transit",
-  "reasonCd": ""
+  "reasonCd": "",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
 ```
@@ -4450,6 +4791,7 @@ orderState | String | State of the order
 customerName | String | Name of customer
 reason | String | Reason for order not pickedup
 reasonCd | String | Reason code
+orderReferenceId | String | Order Reference Id
 
 ## Route Planning
 
@@ -4575,8 +4917,10 @@ hasError | Boolean | If true - There is error in processing your request. If fal
 
 ```json
 {
+  "latitude": 0,
+  "longitude": 0,
   "notificationType": "STARTTRIP",
-  "deliveryMediumName": "TestDM",
+  "deliveryMediumName": "Suraj Singh",
   "phoneNumber": 1234567546,
   "startTime": "2016-11-19 06:42:44",
   "tripName": "TRIP-84",
@@ -4585,7 +4929,8 @@ hasError | Boolean | If true - There is error in processing your request. If fal
   "clientShipmentIds": [
     "Order001",
     "Order002"
-  ]
+  ],
+  "branchName": "Vikhroli"
 }
 
 ```
@@ -4711,6 +5056,68 @@ url | String |  Endpoint URL
 data | String |  Data in XML format
 notificationType | String |  HUB IN
 updatedDate | String | Timestamp
+
+## Allocation Engine Webhook
+
+> Response
+
+```json
+{
+  "originAddr": "Client Name Main Branch",
+  "originLatitude": 19.116858,
+  "originLongitude": 72.910157,
+  "notificationType":"ORDERALLOCATION",
+  "parentOrderNo": "Customer1_Parent_Order",
+  "orderNo": "Customer1_Parent_Order_1",
+  "orderReferenceId": "d1c196e8bf384c40ae7f7ca0fd1a3d58",
+  "allocationTimeStamp": "2017-07-15T10:30:00.000Z",
+  "deliveryMediums": [
+    {
+       "deliveryMediumMasterName": "Mathew S",
+       "employeeId": "133467",
+       "userName": "mathewsandroid",
+       "phoneNumber": "9881127443",
+       "latitude": 19.1119195,
+       "longitude": 72.9093988,
+       "pickupEta": "2016-07-15T10:47:00.000Z",
+       "distanceInKms": 0.849,
+       "timeInMin": 29,
+       "expiryTime": "2016-07-15T10:30:45.000Z",
+       "statusCd": "DISPATCHED",
+       "tripStatus": "STARTED",
+       "referenceId": "3622c618479e456b9da15f9263b28304"
+    }
+  ]
+}
+```
+
+With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Medium Allocation Engine has identified to deliver your On Demand (point to point) Orders.
+
+### Response Parameters
+
+Key | DataType | Required | Description
+--------- | ------- |-------|-----------
+originAddr | String | Mandatory | This is the Order Reference ID generated by the LN system for the order created.<br>Note that this reference Id is for the "orderNo" and not for the "parentOrderNo"
+originLatitude | String | Mandatory | Geo-location of the Pick-up location<br>Sample Value - "17.996"
+originLongitude | String | Mandatory | Geo-location of the Pick-up location<br>Sample Value - "82.34"
+parentOrderNo | String | Mandatory | In case the Order is Single Pick-up - Multiple destination, Parent order No. will be present<br>In case the Order is Single Pick-up - Single destination, Parent order No. will not be present<br>Sample Value - "1316MDO"
+orderNo | String | Mandatory | In case the Order is Single Pick-up - Multiple destination, this is the first Order No. in the sequence<br>This order no. is just used as placeholder. <br>In case the Order is Single Pick-up - Single destination, this is the Order No. created in the system<br>Sample Value - "1316MDO_1"
+orderReferenceId | String | Mandatory | This is the Order Reference ID generated by the LN system for the order created.<br>Note that this reference Id is for the "orderNo" and not for the "parentOrderNo"
+allocationTimeStamp | String | Mandatory | This is the time at which the allocation engine has identified the nearest Delivery Boy / Driver / Associate / Field Executive.<br>Note that this date and time is in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
+deliveryMediums | Array Of Object |  | Array - <br>This list would contain list of one or more nearest Delivery Boy / Driver / Associate / Field Executive identified for your order.<br>Note that if you have set your account configuration to identify only the nearest driver first, then this array would have only one value.<br>If your account configuration is set to identify X no. of drivers, then this array will have list of the X nearest drivers.
+deliveryMediums.userGroupName | String | Mandatory | This is the name of the User Group which the Driver / Delivery Medium / Field Executive belongs to in the LogiNext application.<br>Each user that is created in the LN system is associated to a user group. <br>This user groups is used to provide relevant access to the users.<br>Sample Value - "Platinum User Group"
+deliveryMediums.employeeId | String | Mandatory | This the Employee ID set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "133478"
+deliveryMediums.userName | String | Mandatory | This the Use rName set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "Joshua.Anderson"
+deliveryMediums.phoneNumber | String | Mandatory | This the Phone No. set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "9894965656"
+deliveryMediums.latitude | Double | Optional | This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - "17.897"
+deliveryMediums.longitude | Double | Optional | This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - "85.897"
+deliveryMediums.pickupEta | String | Mandatory | This the time at which the Driver / Delivery Medium / Field Executive will reach the Pick-Up Location<br>Sample Value - "2016-07-15T10:47:00.000Z"
+deliveryMediums.distanceInKms | Double | Mandatory | This the distance in KM that the Driver / Delivery Medium / Field Executive is away from the Pick-Up Location
+deliveryMediums.timeInMin | Integer | Mandatory | This the time in Minutes which the Driver / Delivery Medium / Field Executive will take to reach the Pick-up Location.
+deliveryMediums.expiryTime | String | Mandatory | This the time before which the Driver / Delivery Medium / Field Executive will have to "accept" the order  on his / her mobile app. If not accepted, the order will be removed and allocated to next available Delivery Medium.<br>Sample Value - "2016-07-15T10:30:00.000Z"<br><br>Note that the time till which you want the order to remain displayed in the Delivery Medium's app. is configurable through the Settings screen on the LogiNext application.
+deliveryMediums.statusCd | String | Mandatory | This is the current Status of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
+deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
+deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.
 
 # Country Codes
 
@@ -4940,7 +5347,7 @@ TURKS AND CAICOS ISLANDS|TCA
 TUVALU|TUV
 UGANDA|UGA
 UKRAINE|UKR
-UNITED ARAB EMIRATES|AE
+UNITED ARAB EMIRATES|UAE
 UNITED KINGDOM|GBR
 UNITED STATES|USA
 U.S. MINOR ISLANDS|UMI
