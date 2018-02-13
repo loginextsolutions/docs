@@ -3550,51 +3550,54 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB0123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago Down Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago Down Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago North"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"testbranch"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9090909090"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supreme Business Park"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMart"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hiranandani"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
-    </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please ring my Door Bell"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickuprStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
+
+
+    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"Case"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM001"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
@@ -3602,15 +3605,39 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE003"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM003"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE3"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
 
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE002"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"Case"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE008"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM011"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE11"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -3630,7 +3657,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>Place a new pickup leg order with this API.</p>
+<p>With this API you can create First Mile (Shipment Pick-up) orders.</p>
 
 <h3 id="request">Request</h3>
 
@@ -3648,39 +3675,39 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </thead><tbody>
 <tr>
-<td>orderNo</td>
+<td>orders.orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>Order No.</td>
+<td>Conditional Mandatory</td>
+<td>This is the Order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>Airway Bill No.</td>
+<td>If you want a AWB no. to be associated with an order, you can pass the same here.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Order type code. DELIVER for delivery leg order</td>
+<td>The value in this field has to be &ldquo;PICKUP&rdquo; always.</td>
 </tr>
 <tr>
 <td>orderState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>State of order. Ex: FORWARD</td>
+<td>If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be &ldquo;FORWARD&rdquo;<br>If an order is a Return way (Return from the Customer), then value here should be &ldquo;REVERSE&rdquo;</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
@@ -3729,14 +3756,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+<td>This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
 </tr>
 <tr>
-<td>partialDeliveryAllowedFl</td>
+<td>deliveryLocationType</td>
 <td>String</td>
-<td>50</td>
+<td>255</td>
 <td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
+<td>This is an optional field. You can choose to leave it blank.<br>This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
@@ -3757,28 +3784,35 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Name of pickup branch</td>
+<td>For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
 <td>Integer</td>
 <td>11</td>
 <td>Mandatory</td>
-<td>Pickup service time in mins.</td>
+<td>This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.</td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - &ldquo;2017-07-15T11:30:00.000Z</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
 <td>pickupAccountCode</td>
@@ -5298,10 +5332,10 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ORDER1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia Commerce Logistics SDN BHD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mid Valley Megamall,Lingkaran Syed Putra, Mid Valley City,Kuala Lumpur"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL Logistics"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL CENTER"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LK CENTER"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL Valley, Mid Valley City,Kuala Lumpur"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRK"</span><span class="p">,</span><span class="w">
@@ -5380,9 +5414,9 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf5b17d7f4a449a7a4612754899615a0"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ORDER2"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Asia Commerce Logistics SDN BHD"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACL_CENTER_WHSE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No. 1,Jalan Taylors,,,,Subang Jaya,47500"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL Logistics"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL CENTER"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL, Adress"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SubangJaya_Mile"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
@@ -6063,16 +6097,28 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.913214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6156ty46e324c42abb5ea1a32y45f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">"Technical Issues"</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">"Technical Issues"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910321</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
 
   </span><span class="p">}]</span><span class="w">
 
@@ -6084,7 +6130,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment updated successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status updated successfully"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -6095,7 +6141,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status</p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -6113,21 +6159,21 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>One status for multiple orders.The orders will be updated with this new status</td>
+<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values -<br>CANCELLED - When an order needs to marked as cancelled<br>PICKEDUP - When an order has been Picked-Up by the associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
 </tr>
 <tr>
 <td>orderReferenceId</td>
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>LogiNext provided order/shipment referenceId</td>
+<td>This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.</td>
 </tr>
 <tr>
 <td>reasonCd</td>
 <td>String</td>
 <td>255</td>
 <td>Conditional Mandatory</td>
-<td>Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED</td>
+<td>Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.</td>
 </tr>
 <tr>
 <td>otherReason</td>
@@ -6135,6 +6181,27 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td></td>
 <td>Conditional Mandatory</td>
 <td>Mandatory when reasonCd is OTHER</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>otherReason</td>
+<td>Date</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>Date</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.</td>
 </tr>
 </tbody></table>
 
@@ -6347,6 +6414,185 @@ You can pass multiple crate and line items.</p>
 <td>List</td>
 <td>Mandatory</td>
 <td>Reference Id associated with the order.</td>
+</tr>
+</tbody></table>
+
+<h2 id="accept-order">Accept Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"a3bee4486d9f467d72e96f4d32c5569b"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"1316MDO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderAcceptTime"</span><span class="p">:</span><span class="s2">"2017-12-27T10:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111555</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9099327</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+
+<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order&rsquo;s Reference ID. <br>Please note, if you pass the Order Reference ID in combination with the Parent Order No., then all the orders under that Parent Order No. will be updated with the ACCEPTED status.<br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No.</td>
+</tr>
+<tr>
+<td>parentOrderNo</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>If your Order is Single Pick-up - Multiple destination and if you want to update the status of the all orders under the Parent Order, then pass the Parent Order No. <br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No. <br>If your Order is Single Pick-up - Single, then you need not have to pass the Parent Order no.</td>
+</tr>
+<tr>
+<td>orderAcceptTime</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the timestamp (in UTC format) when the order was accepted. <br>This cannot be greater than the current time (time at which the API request is called). <br>If not passed, the current timestamp will be considered as the timestamp for the order acceptance.<br>Sample Value - 2017-12-27T10:00:00Z</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.</td>
+</tr>
+</tbody></table>
+
+<p>Sample Value - &ldquo;17.996&rdquo;
+longitude | Double | 15 | Optional | Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.
+Sample Value - &ldquo;17.996&rdquo;</p>
+
+<h2 id="reject-order">Reject Order</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/reject</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"a3bee2286d9f997d99e96f4d25c5569b"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"SNAP171227_x53"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderRejectReasonCd"</span><span class="p">:</span><span class="s2">"NA"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderRejectTime"</span><span class="p">:</span><span class="s2">"2017-12-27T10:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API, you can mark the Order Status as Rejected when the Delivery Medium / Associate / Driver / Fried Executive declines to accept an order.
+Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+
+<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/reject</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order&rsquo;s Reference ID.<br>Please note, if you pass the Order Reference ID in combination with the Parent Order No., then all the orders under that Parent Order No. will be updated with the Rejected status.<br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No.</td>
+</tr>
+<tr>
+<td>parentOrderNo</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>If your Order is Single Pick-up - Multiple destination and if you want to update the status of the all orders under the Parent Order, then pass the Parent Order No. <br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No. <br>If your Order is Single Pick-up - Single, then you need not have to pass the Parent Order no.</td>
+</tr>
+<tr>
+<td>orderRejectReasonCd</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>You will have to mention here the reason because of which the Delivery Associate / Driver / Field executive has rejected the order delivery.<br>If you have pre-configured the reasons for Order rejection in LogiNext application, then it is mandatory to mention one of the relevant configured reasons here. <br>If yo have not pre-configured the reasons, you can pass any.</td>
+</tr>
+<tr>
+<td>orderRejectTime</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the timestamp (in UTC format) when the order was rejected. <br>This cannot be greater than the current time (time at which the API request is called). <br>If not passed, the current timestamp will be considered as the timestamp for the order rejection.<br>Sample Value - 2017-12-27T10:00:00Z</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where Order was rejected. Note that this is not used for ETA calculation. That happens using Tracking points.<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where Order was rejected. Note that this is not used for ETA calculation. That happens using Tracking points.<br>Sample Value - &ldquo;17.996&rdquo;</td>
 </tr>
 </tbody></table>
 
@@ -7528,6 +7774,269 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <td>255</td>
 <td>Mandatory</td>
 <td>Email Address of the contact person</td>
+</tr>
+</tbody></table>
+
+<h2 id="active-inactive">Active / Inactive</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v</span><span class="mi">1</span><span class="err">/update/status</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumDetails"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="p">]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status updated successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API you can ban / un-ban i.e. activate or deactive the access of the Delivery Medium / Delivery Associate / Driver / Field Executive</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>Status should be one of the two below -<br>ACTIVE - if Delivery Medium is to be marked Active <br>INACTIVE - if Delivery Medium is to be marked Inactive<br>Note that you cannot mark the Delivery Medium as Inactive, if that Delivery Medium is on an Intransit Trip (Started trip) i.e.<br>if there is any Intransit trip (Started trip) already for a Delivery Medium.<br>You will have stop all the trips and then only you can mark that Delivery Medium as Inactive.<br>Note that you cannot mark any Delivery Medium Active if the count of the Active Delivery Mediums is equal to the no. of licenses you have purchased.<br>Note that you cannot mark any Delivery Medium Active, if the Phone No. of this Delivery Medium is already in use by some other Delivery Medium.</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails</td>
+<td>List</td>
+<td></td>
+<td></td>
+<td>This is array to mark list of delivery mediums to be active  / inactive</td>
+</tr>
+<tr>
+<td>deliveryMediumReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>When you activate / deactivate the Delivery Medium, you can mention the reason for activation / deactivation.<br>Note that you will have first configure the reason codes using the LogiNext Account configuration module.<br>Please drop a mail / talk to your Account Manager who can help you configure these reason codes.</td>
+</tr>
+</tbody></table>
+
+<h2 id="on-break">On Break</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v</span><span class="mi">1</span><span class="err">/changeStatusOnBreak?isOnBreakFl=</span><span class="kc">true</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bae83999422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.67589</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.67589</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status updated successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API, you can mark the Delivery Medium / Delivery Associate / Driver / Field Executive status as On Break / Off-Break i.e. to indicate that the Delivery Medium is Active and logged in but does not want to serve any order.</p>
+
+<p>When Delivery Medium is On-Break, he/she can still complete his existing orders, but will not be considered for allocation of new orders (Allocation engine). Similarly, orders can still be planned for the Delivery Medium, but a new Trip cannot be started.</p>
+
+<p>If On-Break, pass the isOnBreakFl = true
+If Off-Break, pass the isOnBreakFl = false</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/changeStatusOnBreak?isOnBreakFl=true</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deliveryMediumReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h2 id="esign-epod-upload">ESIGN / EPOD Upload</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"imageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image.png"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"orderLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYLOCATION"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"imageType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ESIGN"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">],</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploaded successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>You can use this API to upload the Esign / Epod for the orders.
+Please note that in the API Header, you will have to pass Content Type as multipart/form-data</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>imageName</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>This is the name with which the uploaded image will be saved. application.</td>
+</tr>
+<tr>
+<td>orderLocation</td>
+<td>Double</td>
+<td>15</td>
+<td>Mandatory</td>
+<td>Possible values: PICKUPLOCATION, DELIVERYLOCATION<br>This defines that the image being uploaded is for order Pickup location or order Delivery location</td>
+</tr>
+<tr>
+<td>imageType</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>Possible values: ESIGN, EPOD<br>This defines that the image being uploaded is of type ESIGN or EPOD</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>List</td>
+<td></td>
+<td></td>
+<td>This is the Order Reference ID generated by the LN system for the order created. At least one referenceId is mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where where EPOD/ESIGN was taken<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Geo-location where where EPOD/ESIGN was taken<br>Sample Value - &ldquo;17.996&rdquo;</td>
 </tr>
 </tbody></table>
 
@@ -10454,6 +10963,269 @@ You will have to consume this webhook in case your system is integrated with Log
 <td>String</td>
 <td>Mandatory</td>
 <td>This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.</td>
+</tr>
+</tbody></table>
+
+<h2 id="active-inactive-webhook">Active / Inactive Webhook</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"Thomas Walton"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"133456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="s2">"9881134567"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When the Delivery Medium is marked as Active / Inactive, you can consume this webhook</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>employeeId</td>
+<td>String</td>
+<td>Employee of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>Status shall be one of the two below - <br>ACTIVE - if Delivery Medium is marked Active<br>INACTIVE - if Delivery Medium is marked Inactive</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>String</td>
+<td>This is the time in UTC when the Delivery Medium was marked Active / Inactive</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-delivery-medium-webhook">Create Delivery Medium Webhook</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREATEDELIVERYMEDIUMNOTIFICATION"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amit"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63865471261"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789012645"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumLanguageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"HINDI"</span><span class="p">,</span><span class="s2">"MARATHI"</span><span class="p">,</span><span class="s2">"GUJARATI"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Delivery Boy"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH034506"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"400001"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"cashInHand"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"shiftStart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:30:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftEnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:30:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Thursday"</span><span class="p">,</span><span class="s2">"Monday"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"variableCost"</span><span class="p">:</span><span class="s2">"30"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>When the Delivery Medium is created in the system.</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>This will always be - CREATEDELIVERYMEDIUMNOTIFICATION</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>employeeId</td>
+<td>String</td>
+<td>Employee of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+</tr>
+<tr>
+<td>imei</td>
+<td>String</td>
+<td>The IMEI no. of the Phone that Delivery Medium will use. This is as per the value entered while creating the Delivery Medium</td>
+</tr>
+<tr>
+<td>emailId</td>
+<td>String</td>
+<td>This is the Email Address of the delivery Medium</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>String</td>
+<td>This is the username of the Delivery Medium as entered while creating the delivery Medium</td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>This is the capacity i.e. count of the orders that the Delivery Medium can serve in one trip</td>
+</tr>
+<tr>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>This is the capacity in volume (as per the set Unit of Measure) that the Delivery Medium can carry in one trip</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Medium can carry in one trip</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>String</td>
+<td>The Date of the Birth for the delivery Medium in &ldquo;YYYY-MM-DD&rdquo; format</td>
+</tr>
+<tr>
+<td>deliveryMediumLanguageList</td>
+<td>List</td>
+<td>This is the list of languages that the delivery Medium is known to.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>String</td>
+<td>This is the gender of the Delivery Medium</td>
+</tr>
+<tr>
+<td>deliveryMediumTypeCd</td>
+<td>String</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+</tr>
+<tr>
+<td>isOwnVehicleFl</td>
+<td>String</td>
+<td>This field indicates if the Vehicle is owned by the Delivery Medium or is it the Organization&rsquo;s Vehicle</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>The mapped Vehicle Number with the delivery Medium</td>
+</tr>
+<tr>
+<td>dmPreference</td>
+<td>String</td>
+<td>This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Mediums will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Medium</td>
+</tr>
+<tr>
+<td>cashInHand</td>
+<td>Double</td>
+<td>cash with delivery boy.</td>
+</tr>
+<tr>
+<td>shiftList</td>
+<td>List</td>
+<td>shift details.</td>
+</tr>
+<tr>
+<td>shiftList.shiftStart</td>
+<td>String</td>
+<td>shift start time</td>
+</tr>
+<tr>
+<td>shiftList.shiftEnd</td>
+<td>String</td>
+<td>shift end time</td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>Integer</td>
+<td>This is the Maximum Distance in Kms</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td>This is the expiry Date of the Driver&rsquo;s License in UTC format.</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>String</td>
+<td>This is the time in UTC when the Delivery Medium was marked Active / Inactive</td>
+</tr>
+<tr>
+<td>weeklyOffList</td>
+<td>List</td>
+<td>List of weekly off&rsquo;s</td>
+</tr>
+<tr>
+<td>fixedCost</td>
+<td>Integer</td>
+<td>fixed cost associated with delivery boy.</td>
+</tr>
+<tr>
+<td>variableCost</td>
+<td>Integer</td>
+<td>variable cost.</td>
 </tr>
 </tbody></table>
 
