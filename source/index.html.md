@@ -2042,51 +2042,54 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 ```json
 [
   {
-    "orderNo": "DummyOrderNo1",
-    "awbNumber": "AWB001",
+    "orderNo": "Order_12345",
+    "awbNumber": "AWB0123456789",
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "test",
+    "pickupStartTimeWindow": "2016-07-18T10:31:00.000Z",
+    "pickupEndTimeWindow": "2016-07-16T10:31:00.000Z",
+    "pickupServiceTime": "20",
+    "deliveryType": "DLBOY",
+    "deliveryLocationType":"PUP",
+    "pickupBranch": "Chicago Down Town",
+    "distributionCenter": "Chicago Down Town",
+    "partialDeliveryAllowedFl": "Y",
+    "cancellationAllowedFl": "N",    
+    "returnAllowedFl": "Y",
+    "returnBranch": "Chicago North",
+   "numberOfItems": "2",
     "packageWeight":"10",
     "packageVolume": "4500",
+    "paymentType": "COD",
     "packageValue": "5000",
-    "paymentType": "Prepaid",
-    "numberOfItems": "1",
-    "deliveryType":"DLBOY",
-    "partialDeliveryAllowedFl": "Y",
-    "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "N",
-    "pickupBranch":"testbranch",
-    "pickupServiceTime": "50",
-    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
-    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "pickupAccountCode": "Customer123",
-    "pickupAccountName": "Customer001",
-    "pickupEmail": "test@test.com",
-    "pickupPhoneNumber": "9090909090",
-    "pickupApartment": "123",
-    "pickupStreetName": "Supreme Business Park",
-    "pickupLandmark": "DMart",
-    "pickupLocality": "Hiranandani",
-    "pickupCity": "Mumbai",
-    "pickupState": "MH",
-    "pickupCountry": "IND",
-    "pickupPinCode": "400076",
-    "pickupLatitude":"19.116854",
-    "pickupLongitude":"72.910455",
-    "pickupNotes": "PickedUp",
-    "deliverNotes": "Delivered"
+    "pickupNotes": "Please ring my Door Bell",
+    "pickupAccountCode": "Customer001",
+    "pickupAccountName": "Mathew Richardson",
+    "pickupEmail": "m.richardson@testmail.com",
+    "pickupPhoneNumber": "9891234567",
+    "pickupApartment": "10 Suite No. A1901",
+    "pickuprStreetName": "Walton Avenue",
+    "pcikupLandmark": "Opp. Chiptole",
+    "pickupLocality": "Down Towm Chicago",
+    "pickupCity": "Chicago",
+    "pickupState": "IL",
+    "pickupCountry": "USA",
+    "pickupPinCode": "72712",
+    "pickupLatitude":"19.124497",
+    "pickupLongitude":"72.893675",    
+
+
     "shipmentCrateMappings": [
       {
         "crateCd": "CRATE001",
-        "crateAmount":100.65,
-        "crateType":"case",
-        "noOfUnits":10,
+        "crateAmount":1000,
+        "crateType":"Case",
+        "noOfUnits":3,
         "shipmentlineitems": [
           {
             "itemCd": "CODE001",
-            "itemName": "ITEM1",
+            "itemName": "ITEM001",
             "itemPrice": 100,
             "itemQuantity": 2,
             "itemType": "TYPE1",
@@ -2094,15 +2097,39 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
           },
           {
             "itemCd": "CODE002",
-            "itemName": "ITEM2",
-            "itemPrice": 50,
+            "itemName": "ITEM002",
+            "itemPrice": 500,
             "itemQuantity": 3,
             "itemType": "TYPE2",
+            "itemWeight": 10
+          },
+          {
+            "itemCd": "CODE003",
+            "itemName": "ITEM003",
+            "itemPrice": 400,
+            "itemQuantity": 1,
+            "itemType": "TYPE3",
             "itemWeight": 10
           }
         ]
 
-      }
+      },
+{
+        "crateCd": "CRATE002",
+        "crateAmount":200,
+        "crateType":"Case",
+        "noOfUnits":1,
+        "shipmentlineitems": [
+          {
+            "itemCd": "CODE008",
+            "itemName": "ITEM011",
+            "itemPrice": 200,
+            "itemQuantity": 2,
+            "itemType": "TYPE11",
+            "itemWeight": 50
+          }
+]
+}
     ]
   }
 ]
@@ -2123,7 +2150,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 }
 
 ```
-Place a new pickup leg order with this API.
+With this API you can create First Mile (Shipment Pick-up) orders.
 
 ### Request
 
@@ -2135,25 +2162,26 @@ Place a new pickup leg order with this API.
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  Order No.
-awbNumber | String | 1000 | Optional | Airway Bill No.
-shipmentOrderTypeCd | String | 40 | Mandatory | Order type code. DELIVER for delivery leg order
-orderState | String | 512 | Mandatory | State of order. Ex: FORWARD
-shipmentOrderDt | Date |  | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+orders.orderNo | String | 100 | Conditional Mandatory | This is the Order No.
+awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
+shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
+orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
+shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | Weight of package in Kg.
 packageVolume | Double | 10 | Optional | Volume of package in CC
 packageValue | Double | 10 | Optional | Value of package
 paymentType | String | 40 | Mandatory | Payment mode. Ex: COD - Cash On Delivery, Prepaid
 numberOfItems | Integer | 20 | Optional | Number of crates
-deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
+deliveryType | String | 40 | Optional | This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
+deliveryLocationType | String | 255 | Optional | This is an optional field. You can choose to leave it blank.<br>This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | Is Return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
-pickupBranch | String | 255 | Mandatory | Name of pickup branch
-pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
-pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager
+pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
+pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z
+distributionCenter |
+pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pickup account code
 pickupAccountName | String | 255 | Mandatory | Pickup account name
 pickupEmail | String | 100 | Optional | Pickup email id
@@ -3029,16 +3057,28 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
   "orderDetails":
   [{
     "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
-    "reasonCd":"DBUNAVAILABLE"
+    "reasonCd":"DBUNAVAILABLE",
+    "otherReason":"",
+    "latitude": 19.117369,
+    "longitude": 72.910214,
+    "updateTime":"2016-07-18T10:31:00.000Z"
   },
   {
     "orderReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
-    "reasonCd":"DBUNAVAILABLE"
+    "reasonCd":"DBUNAVAILABLE",
+    "otherReason":"",
+    "latitude": 19.117369,
+    "longitude": 72.913214,
+    "updateTime":"2016-07-18T10:31:00.000Z"
+
   },
   {
     "orderReferenceId":"6156ty46e324c42abb5ea1a32y45f66",
     "reasonCd":"OTHER",
-    "otherReason":"Technical Issues"
+    "otherReason":"Technical Issues",
+    "latitude": 19.117369,
+    "longitude": 72.910321,
+    "updateTime":"2016-07-18T10:31:00.000Z"
 
   }]
 
@@ -3052,7 +3092,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 ```json
 {
   "status": 200,
-  "message": "Shipment updated successfully",
+  "message": "Status updated successfully",
   "hasError": false
 }
 
@@ -3062,17 +3102,20 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 ### Request
 
-<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status`
 
 
 ### Request Parameters
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
-newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status
-orderReferenceId | String | 100 | Mandatory |  LogiNext provided order/shipment referenceId
-reasonCd | String | 255 | Conditional Mandatory | Can pass only set values or any value can be sent as OTHER.Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED
+newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values -<br>CANCELLED - When an order needs to marked as cancelled<br>PICKEDUP - When an order has been Picked-Up by the associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
+orderReferenceId | String | 100 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
+reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.
 otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
+latitude | Double | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
+otherReason | Date | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
+updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
 
 ## Update Crates and Line Items in Order
 
@@ -3199,9 +3242,111 @@ Use this API to cancel an order.
 
 ### Request Body
 
-Parameter | DataType |  Required | Description
+Parameter | DataType | Required | Description
 -----------|-------|------- | ----------
 reference_ids | List  | Mandatory | Reference Id associated with the order.
+
+## Accept Order
+
+> Definition
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
+```
+
+> Request Body
+
+```json
+{
+  "orderReferenceId":"a3bee4486d9f467d72e96f4d32c5569b",
+  "parentOrderNo":"1316MDO",
+  "orderAcceptTime":"2017-12-27T10:00:00Z",
+  "latitude": 19.111555,
+  "longitude": 72.9099327
+}
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "hasError": false
+}
+```
+
+With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+
+You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+
+### Request
+
+<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept`
+
+### Request Body
+
+Parameter | DataType | Length | Required | Description
+-----------|-------|------- | ----|----------
+orderReferenceId | String | 32 | Mandatory | This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order's Reference ID. <br>Please note, if you pass the Order Reference ID in combination with the Parent Order No., then all the orders under that Parent Order No. will be updated with the ACCEPTED status.<br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No.
+parentOrderNo | String | 100 | Optional | If your Order is Single Pick-up - Multiple destination and if you want to update the status of the all orders under the Parent Order, then pass the Parent Order No. <br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No. <br>If your Order is Single Pick-up - Single, then you need not have to pass the Parent Order no.
+orderAcceptTime | String | 32 | Optional | This is the timestamp (in UTC format) when the order was accepted. <br>This cannot be greater than the current time (time at which the API request is called). <br>If not passed, the current timestamp will be considered as the timestamp for the order acceptance.<br>Sample Value - 2017-12-27T10:00:00Z
+latitude | Double | 15 | Optional | Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.
+Sample Value - "17.996"
+longitude | Double | 15 | Optional | Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.
+Sample Value - "17.996"
+
+## Reject Order
+
+> Definition
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/reject
+```
+
+> Request Body
+
+```json
+{
+  "orderReferenceId":"a3bee2286d9f997d99e96f4d25c5569b",
+  "parentOrderNo":"SNAP171227_x53",
+  "orderRejectReasonCd":"NA",
+  "orderRejectTime":"2017-12-27T10:00:00Z",
+  "latitude": 19.111755,
+  "longitude": 72.9095327
+}
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "success",
+  "hasError": false
+}
+```
+
+With this API, you can mark the Order Status as Rejected when the Delivery Medium / Associate / Driver / Fried Executive declines to accept an order.
+Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+
+You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+
+### Request
+
+<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/reject`
+
+### Request Body
+
+Parameter | DataType | Length | Required | Description
+-----------|-------|------- | ----|----------
+orderReferenceId | String | 32 | Mandatory | This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order's Reference ID.<br>Please note, if you pass the Order Reference ID in combination with the Parent Order No., then all the orders under that Parent Order No. will be updated with the Rejected status.<br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No.
+parentOrderNo | String | 100 | Optional | If your Order is Single Pick-up - Multiple destination and if you want to update the status of the all orders under the Parent Order, then pass the Parent Order No. <br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No. <br>If your Order is Single Pick-up - Single, then you need not have to pass the Parent Order no.
+orderRejectReasonCd | String | 100 | Mandatory | You will have to mention here the reason because of which the Delivery Associate / Driver / Field executive has rejected the order delivery.<br>If you have pre-configured the reasons for Order rejection in LogiNext application, then it is mandatory to mention one of the relevant configured reasons here. <br>If yo have not pre-configured the reasons, you can pass any.
+orderRejectTime | String | 32 | Optional | This is the timestamp (in UTC format) when the order was rejected. <br>This cannot be greater than the current time (time at which the API request is called). <br>If not passed, the current timestamp will be considered as the timestamp for the order rejection.<br>Sample Value - 2017-12-27T10:00:00Z
+latitude | Double | 15 | Optional | Geo-location where Order was rejected. Note that this is not used for ETA calculation. That happens using Tracking points.<br>Sample Value - "17.996"
+longitude | Double | 15 | Optional | Geo-location where Order was rejected. Note that this is not used for ETA calculation. That happens using Tracking points.<br>Sample Value - "17.996"
 
 ## Get Status of Order
 
@@ -3803,7 +3948,166 @@ adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate
 mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Mandatory | Email Address of the contact person
 
+## Active / Inactive
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status
+```
+
+> Request Body
+
+```json
+
+{
+  "newStatus":"ACTIVE",
+  "deliveryMediumDetails":
+  [{
+    "deliveryMediumReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
+    "reasonCd":"DBUNAVAILABLE",
+  }]
+
+}
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Status updated successfully",
+  "hasError": false
+}
+
+```
+With this API you can ban / un-ban i.e. activate or deactive the access of the Delivery Medium / Delivery Associate / Driver / Field Executive
+
+### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status`
+
+
+### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | --------- | ---------- | ------------
+newStatus | String | 20 | Mandatory |  Status should be one of the two below -<br>ACTIVE - if Delivery Medium is to be marked Active <br>INACTIVE - if Delivery Medium is to be marked Inactive<br>Note that you cannot mark the Delivery Medium as Inactive, if that Delivery Medium is on an Intransit Trip (Started trip) i.e.<br>if there is any Intransit trip (Started trip) already for a Delivery Medium.<br>You will have stop all the trips and then only you can mark that Delivery Medium as Inactive.<br>Note that you cannot mark any Delivery Medium Active if the count of the Active Delivery Mediums is equal to the no. of licenses you have purchased.<br>Note that you cannot mark any Delivery Medium Active, if the Phone No. of this Delivery Medium is already in use by some other Delivery Medium.
+orderReferenceId | String | 32 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
+deliveryMediumDetails | List | | | This is array to mark list of delivery mediums to be active  / inactive
+deliveryMediumReferenceId | String | 32 | Mandatory |This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
+reasonCd | String | 255 | Optional | When you activate / deactivate the Delivery Medium, you can mention the reason for activation / deactivation.<br>Note that you will have first configure the reason codes using the LogiNext Account configuration module.<br>Please drop a mail / talk to your Account Manager who can help you configure these reason codes.
+
+## On Break
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/changeStatusOnBreak?isOnBreakFl=true
+```
+
+> Request Body
+
+```json
+[
+  {
+        "referenceId" : "bae83999422211e6860c0653055f4dfd",
+        "latitude":19.67890,
+        "longitude":78.67589
+  },
+  {
+        "referenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
+        "latitude":19.67890,
+        "longitude":78.67589
+  }
+]
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Status updated successfully",
+  "hasError": false
+}
+
+```
+With this API, you can mark the Delivery Medium / Delivery Associate / Driver / Field Executive status as On Break / Off-Break i.e. to indicate that the Delivery Medium is Active and logged in but does not want to serve any order.
+
+When Delivery Medium is On-Break, he/she can still complete his existing orders, but will not be considered for allocation of new orders (Allocation engine). Similarly, orders can still be planned for the Delivery Medium, but a new Trip cannot be started.
+
+If On-Break, pass the isOnBreakFl = true
+If Off-Break, pass the isOnBreakFl = false
+
+### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/changeStatusOnBreak?isOnBreakFl=true`
+
+
+### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | --------- | ---------- | ------------
+deliveryMediumReferenceId | String | 32 | Mandatory | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
+latitude | Double | 15 | Optional | Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - "17.996"
+longitude | Double | 15 | Optional | Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - "17.996"
+
+## ESIGN / EPOD Upload
+
+> Definition
+
+```json
+http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload
+```
+
+> Request Body
+
+```json
+{
+"imageName": "image.png",
+"orderLocation" : "DELIVERYLOCATION",
+"imageType" : "ESIGN",
+"orderReferenceIds":["a3bee2286d9f447d92e96f4d32c5569b", "a3bee2286d9f447d92e96f4d32c5569b"],
+"latitude": 19.111755,
+"longitude": 72.9095327
+}
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Uploaded successfully",
+  "hasError": false
+}
+
+```
+You can use this API to upload the Esign / Epod for the orders.
+Please note that in the API Header, you will have to pass Content Type as multipart/form-data
+
+### Request
+
+<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload`
+
+
+### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | --------- | ---------- | ------------
+imageName | String | 100 | Mandatory | This is the name with which the uploaded image will be saved. application.
+orderLocation | Double | 15 | Mandatory | Possible values: PICKUPLOCATION, DELIVERYLOCATION<br>This defines that the image being uploaded is for order Pickup location or order Delivery location
+imageType | String | 100 | Mandatory | Possible values: ESIGN, EPOD<br>This defines that the image being uploaded is of type ESIGN or EPOD
+orderReferenceId | List |  |  | This is the Order Reference ID generated by the LN system for the order created. At least one referenceId is mandatory.
+longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was taken<br>Sample Value - "17.996"
+longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was taken<br>Sample Value - "17.996"
 
 # LogiNext OnDemand <sup>TM</sup>
 
@@ -5118,6 +5422,114 @@ deliveryMediums.expiryTime | String | Mandatory | This the time before which the
 deliveryMediums.statusCd | String | Mandatory | This is the current Status of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
 deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
 deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.
+
+## Active / Inactive Webhook
+
+> Response
+
+```json
+{
+  "referenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
+  "deliveryMediumName":"Thomas Walton",
+  "employeeId":"133456",
+  "phoneNumber":"9881134567",
+  "newStatus":"ACTIVE",
+  "reasonCd":"DBUNAVAILABLE",
+  "updateTime":"2016-07-18T10:31:00.000Z"
+}
+```
+
+When the Delivery Medium is marked as Active / Inactive, you can consume this webhook
+
+### Response Parameters
+
+Key | DataType | Description
+--------- | ------- | -----------
+referenceId | String | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
+deliveryMediumName | String |  Name of the delivery Medium / Delivery Associate / Driver / Field Executive
+employeeId | String |  Employee of the delivery Medium / Delivery Associate / Driver / Field Executive
+phoneNumber | String |  Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive
+newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Delivery Medium is marked Active<br>INACTIVE - if Delivery Medium is marked Inactive
+reasonCd | String |  When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
+updateTime | String |  This is the time in UTC when the Delivery Medium was marked Active / Inactive
+
+## Create Delivery Medium Webhook
+
+> Response
+
+```json
+[
+{
+    "referenceId": "f40cf4493a5949199775499b5750a272",
+    "notificationType": "CREATEDELIVERYMEDIUMNOTIFICATION",
+    "employeeId":"1001",
+    "deliveryMediumName": "Amit",
+    "phoneNumber": "63865471261",
+    "imei": "123456789012645",
+    "emailId": "test@test.com",
+    "userName": "test003",
+    "capacityInUnits": 10,
+    "capacityInVolume": 0,
+    "capacityInWeight": 0,
+    "dob": "2016-12-12",
+    "deliveryMediumLanguageList": ["HINDI","MARATHI","GUJARATI"],
+    "gender": "Male",
+    "deliveryMediumTypeCd": ["Delivery Boy"],
+    "isOwnVehicleFl": "Company",
+    "vehicleNumber": "MH034506",
+    "dmPreference": ["400001"],
+    "cashInHand":"4000",
+    "shiftList": [
+      {
+        "shiftStart": "13:30:00",
+        "shiftEnd": "14:30:00"
+      }
+    ],
+    "maxDistance": 100,
+    "licenseValidity": "2016-12-12T13:30:00Z",    
+    "weeklyOffList": ["Thursday","Monday"],
+    "fixedCost":"500",
+    "variableCost":"30"
+}
+]
+```
+
+When the Delivery Medium is created in the system.
+
+### Response Parameters
+
+Key | DataType | Description
+--------- | ------- | -----------
+referenceId | String | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
+notificationType | String | This will always be - CREATEDELIVERYMEDIUMNOTIFICATION
+deliveryMediumName | String |  Name of the delivery Medium / Delivery Associate / Driver / Field Executive
+employeeId | String |  Employee of the delivery Medium / Delivery Associate / Driver / Field Executive
+phoneNumber | String |  Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive
+imei | String |  The IMEI no. of the Phone that Delivery Medium will use. This is as per the value entered while creating the Delivery Medium
+emailId | String |  This is the Email Address of the delivery Medium
+userName | String |  This is the username of the Delivery Medium as entered while creating the delivery Medium
+capacityInUnits | Integer |  This is the capacity i.e. count of the orders that the Delivery Medium can serve in one trip
+capacityInVolume | Integer |  This is the capacity in volume (as per the set Unit of Measure) that the Delivery Medium can carry in one trip
+capacityInWeight | Integer |  This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Medium can carry in one trip
+dob | String |  The Date of the Birth for the delivery Medium in "YYYY-MM-DD" format
+deliveryMediumLanguageList | List |  This is the list of languages that the delivery Medium is known to.
+gender | String |  This is the gender of the Delivery Medium
+deliveryMediumTypeCd | String |  In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
+isOwnVehicleFl | String |  This field indicates if the Vehicle is owned by the Delivery Medium or is it the Organization's Vehicle
+vehicleNumber | String |  The mapped Vehicle Number with the delivery Medium
+dmPreference | String |  This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Mediums will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Medium
+cashInHand | Double |  cash with delivery boy.
+shiftList | List |  shift details.
+shiftList.shiftStart | String |  shift start time
+shiftList.shiftEnd | String |  shift end time
+maxDistance | Integer |  This is the Maximum Distance in Kms
+licenseValidity | String | This is the expiry Date of the Driver's License in UTC format.
+reasonCd | String |  When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
+updateTime | String |  This is the time in UTC when the Delivery Medium was marked Active / Inactive
+weeklyOffList | List |  List of weekly off's
+fixedCost | Integer |  fixed cost associated with delivery boy.
+variableCost | Integer |  variable cost.
+
 
 # Country Codes
 
