@@ -1893,7 +1893,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": "10",
-    "partialDeliveryAllowedFl": "Y",
+    "isPartialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
     "deliverBranch": "Gurgaon",
@@ -4449,7 +4449,8 @@ Note -
   "awbNumber":"AWB001",
   "notificationType": "ORDERCREATIONNOTIFICATION",
   "timestamp":"2016-07-01 03:05:08",
-  "orderReferenceId":"3daeaf418c59421319b1307e632b327da"
+  "orderReferenceId":"3daeaf418c59421319b1307e632b327da",
+  "parentOrderNo": "NNP001"
 }
 ```
 
