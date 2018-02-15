@@ -1893,7 +1893,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": "10",
-    "isPartialDeliveryAllowedFl": "Y",
+    "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
     "deliverBranch": "Gurgaon",
