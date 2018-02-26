@@ -15,7 +15,7 @@ search: true
 
 LogiNext welcomes you to the world of organised logistics.
 
-Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create seamless experience for your operations and executive team.
+Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create a seamless experience for your operations and executive team.
 
 The LogiNext API is designed to allow our client partners to add resources, shipments, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location.
 
@@ -237,9 +237,9 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
         "registrationNumber":"",
         "pucValidity":"2016-07-01T11:18:00.000Z",
         "insuranceValidity":"2016-07-01T11:18:00.000Z",
-        "vehiclePermit":"Andhra Pradesh,Delhi",
+        "vehiclePermit":"New York, NY",
         "ownership":"company",
-        "ownerName":"ABC",
+        "ownerName":"Mathew Richardson",
         "transporter":"",
         "financer":"",
         "accidentHistory":"",
@@ -260,7 +260,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
   "message": "success",
   "data": [
       {
-        "vehicleNumber":"MH-111",
+        "vehicleNumber":"1ABC234",
         "referenceId":"a9be39b9347911e6829f000d3aa04450"
       }
      ],
@@ -325,7 +325,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/:reference_id
     "vehicleId": 1182,
     "vehicleName": null,
     "guid": "1efc418bd9f54bd99955cfdcccdc27a2",
-    "vehicleNumber": "VH-00-1122",
+    "vehicleNumber": "1ABC234",
     "vehicleMake": null,
     "vehicleModel": null,
     "vehicleType": null,
@@ -362,7 +362,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/:reference_id
     "registrationCopyExists": null,
     "insuranceCopyExists": null,
     "pucValidityExists": null,
-    "clientBranchName": "Mahindra Logistics Ltd"
+    "clientBranchName": "Jonson Logistics"
   },
   "hasError": false
 }
@@ -487,7 +487,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
     "referenceId":"a9be39b9347911e6829f000d3aa04450",        
         "vehicleNumber":"MH-111",
         "vehicleMake":"2015",
-          "vehicleModel":"OMNI",
+          "vehicleModel":"Chevy",
         "typeOfBody":"Flat Bed",
         "unladdenWeight":1099,
         "capacityInWeight":1099,
@@ -499,9 +499,9 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
         "registrationNumber":"",
         "pucValidity":"2016-07-01T11:18:00.000Z",
         "insuranceValidity":"2016-07-01T11:18:00.000Z",
-        "vehiclePermit":"Andhra Pradesh,Delhi",
+        "vehiclePermit":"New York, NY",
         "ownership":"company",
-        "ownerName":"ABC",
+        "ownerName":"Mathew Richardson",
         "transporter":"",
         "financer":"",
         "accidentHistory":"",
@@ -628,7 +628,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
         "phoneNumber":1234565632,
         "emailId":"test@testing.com",
         "dateOfBirth":"2016-06-13",
-        "languageList":[{"name":"English"},{"name":"Hindi"}],
+        "languageList":[{"name":"English"},{"name":"Spanish"}],
         "salary":"10000",
         "maritalStatus":"married",
         "gender":"male",
@@ -637,26 +637,26 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
         "licenseValidity":"2020-06-13",
         "licenseNumber":"LIC_104",
         "licenseType":"4 wheeler",
-        "licenseIssueBy":"Maharashtra Govt.",
+        "licenseIssueBy":"DMV",
 
         "addressList":[ {
-                                "apartment":"A-901",
-                                "streetName": "Hiranandani Street",
-                                "landmark":"DMart",
-                                "countryShortCode":"IND",
-                                "stateShortCode":"MH",
-                                "city":"Mumbai",
-                                "pincode":400076,
+                                "apartment":"10 Suite No. A1901",
+                                "streetName": "Walton Avenue",
+                                "landmark":"Opp. Chiptole",
+                                "countryShortCode":"USA",
+                                "stateShortCode":"IL",
+                                "city":"Chicago",
+                                "pincode":72712,
                                 "isCurrentAddress":true
                         },
                         {
                                 "apartment":"A-902",
-                                "streetName": "LBS Marg",
-                                "landmark":"SBI",
-                                "countryShortCode":"IND",
-                                "stateShortCode":"MH",
-                                "city":"Mumbai",
-                                "pincode":400092,
+                                "streetName": "50 E 78th St,
+                                "landmark":"Opp. Strand Bookstore",
+                                "countryShortCode":"USA",
+                                "stateShortCode":"NY",
+                                "city":"New York",
+                                "pincode":10075,
                                 "isCurrentAddress":false
                         }],
 
@@ -671,9 +671,9 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
         }],
 
         "previousCompanyName":"ABC",
-        "reportingManager":"Rahul",
+        "reportingManager":"Chris",
         "managerPhoneNumber":1234567890,
-        "managerEmailId":"test@test.com"
+        "managerEmailId":"chris@gologistic.com"
     }    
 ]
 ```
@@ -1887,7 +1887,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "Gurgaon",
+    "distributionCenter": "Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
@@ -1896,27 +1896,27 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
-    "deliverBranch": "Gurgaon",
+    "deliverBranch": "Boston",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
-    "deliverAccountCode": "Customer001",
-    "deliverAccountName": "TestUser",
-    "deliverEmail":"test@test.com",
-    "deliverPhoneNumber":"1234567890",
-    "deliverApartment": "123",
-    "deliverStreetName": "Powai",
-    "deliverLandmark": "Dmart",
-    "deliverLocality": "Hiranandani",
-    "deliverCity": "Mumbai",
-    "deliverState": "MH",
-    "deliverCountry": "IND",
-    "deliverPinCode": "400076",
+    "deliverAccountCode": "Matt001",
+    "deliverAccountName": "Mathew Richardson",
+    "deliverEmail":"m.richardson@testmail.com",
+    "deliverPhoneNumber":"9891234567",
+    "deliverApartment": "10 Suite No. A1901",
+    "deliverStreetName": "Walton Avenue",
+    "deliverLandmark": "Opp. Chiptole",
+    "deliverLocality": "Down Towm Chicago",
+    "deliverCity": "Chicago",
+    "deliverState": "IL",
+    "deliverCountry": "USA",
+    "deliverPinCode": "72712",
     "deliverLatitude":"19.124497",
     "deliverLongitude":"72.893675",    
-    "returnBranch": "Gurgaon",
+    "returnBranch": "Chicago",
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered"
     "shipmentCrateMappings": [
@@ -2052,30 +2052,30 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupServiceTime": "20",
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
-    "pickupBranch": "Chicago Down Town",
-    "distributionCenter": "Chicago Down Town",
+    "pickupBranch": "New York",
+    "distributionCenter": "Brooklyn",
     "partialDeliveryAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
     "returnAllowedFl": "Y",
     "returnBranch": "Chicago North",
-   "numberOfItems": "2",
+    "numberOfItems": "2",
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "COD",
     "packageValue": "5000",
     "pickupNotes": "Please ring my Door Bell",
-    "pickupAccountCode": "Customer001",
-    "pickupAccountName": "Mathew Richardson",
-    "pickupEmail": "m.richardson@testmail.com",
+    "pickupAccountCode": "jim001",
+    "pickupAccountName": "James Walker",
+    "pickupEmail": "james.w@ablogs.com",
     "pickupPhoneNumber": "9891234567",
-    "pickupApartment": "10 Suite No. A1901",
-    "pickuprStreetName": "Walton Avenue",
-    "pcikupLandmark": "Opp. Chiptole",
-    "pickupLocality": "Down Towm Chicago",
-    "pickupCity": "Chicago",
-    "pickupState": "IL",
+    "pickupApartment": "901",
+    "pickuprStreetName": "50 E 78th St",
+    "pcikupLandmark": "Opp. Strand Bookstore",
+    "pickupLocality": "Upper East Side",
+    "pickupCity": "New York",
+    "pickupState": "NY",
     "pickupCountry": "USA",
-    "pickupPinCode": "72712",
+    "pickupPinCode": "10075",
     "pickupLatitude":"19.124497",
     "pickupLongitude":"72.893675",    
 
@@ -2238,7 +2238,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "test",
+    "distributionCenter": "Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
@@ -2247,59 +2247,59 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
-    "deliverBranch": "test",
+    "deliverBranch": "Boston",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
-    "deliverAccountCode": "Customer001",
-    "deliverAccountName": "TestUser",
-    "deliverApartment": "123",
-    "deliverStreetName": "Powai",
-    "deliverLandmark": "Dmart",
-    "deliverLocality": "Hiranandani",
-    "deliverCity": "Mumbai",
-    "deliverState": "MH",
-    "deliverCountry": "IND",
-    "deliverPinCode": "400076",
+    "deliverAccountCode": "Matt001",
+    "deliverAccountName": "Mathew Richardson",
+    "deliverApartment": "10 Suite No. A1901",
+    "deliverStreetName": "Walton Avenue",
+    "deliverLandmark": "Opp. Chiptole",
+    "deliverLocality": "Down Towm Chicago",
+    "deliverCity": "Chicago",
+    "deliverState": "IL",
+    "deliverCountry": "USA",
+    "deliverPinCode": "72712",
     "deliverLatitude":"19.125497",
     "deliverLongitude":"72.836675",    
     "pickupBranch":"Gurgaon",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
     "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "pickupAccountCode": "Customer123",
-    "pickupAccountName": "Customer001",
-    "pickupApartment": "123",
-    "pickupStreetName": "Supreme Business Park",
-    "pickupLandmark": "DMart",
-    "pickupLocality": "Hiranandani",
-    "pickupCity": "Mumbai",
-    "pickupState": "MH",
-    "pickupCountry": "IND",
-    "pickupPinCode": "400076",
+    "pickupAccountCode": "jim001",
+    "pickupAccountName": "James Walker",
+    "pickupApartment": "901",
+    "pickupStreetName": "50 E 78th St",
+    "pickupLandmark": "Opp. Strand Bookstore",
+    "pickupLocality": "Upper East Side",
+    "pickupCity": "New York",
+    "pickupState": "NY",
+    "pickupCountry": "USA",
+    "pickupPinCode": "10075",
     "pickupLatitude":"19.116854",
     "pickupLongitude":"72.910455",   
     "returnBranch": "test",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
-    "returnAccountCode": "retAcc123",
-    "returnAccountName": "retAcc1234",
-    "returnEmail": "test@test.com",
-    "returnPhoneNumber": "9090909090",
-    "returnApartment": "sjlkd CHS",
-    "returnStreetName": "kljsdl Road",
-    "returnLandmark": "skjdlk Nagar",
-    "returnLocality": "kldlk West",
-    "returnCity": "Mumbai",
-    "returnState": "MH",
-    "returnCountry": "IND",
-    "returnPinCode": "400104",
-    "deliverEmail":"z@z.zzz",
-    "deliverPhoneNumber":"9876543210",
-    "pickupEmail":"z@z.zzz",
-    "pickupPhoneNumber":"9876543210",
+    "returnAccountCode": "jim001",
+    "returnAccountName": "James Walker",
+    "returnEmail": "james.w@ablogs.com",
+    "returnPhoneNumber": "9891234567",
+    "returnApartment": "901",
+    "returnStreetName": "50 E 78th St",
+    "returnLandmark": "Opp. Strand Bookstore",
+    "returnLocality": "Upper East Side",
+    "returnCity": "New York",
+    "returnState": "NY",
+    "returnCountry": "USA",
+    "returnPinCode": "10075",
+    "deliverEmail":"m.richardson@testmail.com",
+    "deliverPhoneNumber":"9891234567",
+    "pickupEmail":"james.w@ablogs.com",
+    "pickupPhoneNumber":"9891235886",
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered"
     "shipmentCrateMappings": [
@@ -2518,7 +2518,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
   "shipmentBranch": "Gurgaon",
   "returnAllowedFl": "Y",
   "cancellationAllowedFl": "N",
-  "returnBranch": "Gurgaon",
+  "returnBranch": "New York",
   "pickupNotes": "PickedUp",
   "optimiseOrderSequenceFl": "Y",
   "backToOrigin": "Y",
@@ -2534,7 +2534,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
       "deliverServiceTime": "20",
       "deliveryLocationType": "PUP",
       "partialDeliveryAllowedFl": "Y",
-      "deliverAccountCode": "Customer001",
+      "deliverAccountCode": "Matt001",
       "deliverAccountName": "Mathew Richardson",
       "deliverEmail": "m.richardson@testmail.com",
       "deliverPhoneNumber": "9891234567",
@@ -2916,45 +2916,45 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
-    "deliverAccountCode": "Customer001",
-    "deliverAccountName": "TestUser",
-    "deliverApartment": "123",
-    "deliverStreetName": "Powai",
-    "deliverLandmark": "Dmart",
-    "deliverLocality": "Hiranandani",
-    "deliverCity": "Mumbai",
-    "deliverState": "MH",
-    "deliverCountry": "IND",
-    "deliverPinCode": "400076",    
-    "pickupBranch":"Gurgaon",
+    "deliverAccountCode": "Matt001",
+    "deliverAccountName": "Mathew Richardson",
+    "deliverApartment": "10 Suite No. A1901",
+    "deliverStreetName": "Walton Avenue",
+    "deliverLandmark": "Opp. Chiptole",
+    "deliverLocality": "Down Towm Chicago",
+    "deliverCity": "Chicago",
+    "deliverState": "IL",
+    "deliverCountry": "USA",
+    "deliverPinCode": "72712",    
+    "pickupBranch":"New York",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
     "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
-    "pickupAccountCode": "Customer123",
-    "pickupAccountName": "Customer001",
-    "pickupApartment": "123",
-    "pickupStreetName": "Supreme Business Park",
-    "pickupLandmark": "DMart",
-    "pickupLocality": "Hiranandani",
-    "pickupCity": "Mumbai",
-    "pickupState": "MH",
-    "pickupCountry": "IND",
-    "pickupPinCode": "400076",    
-    "returnBranch": "test",
+    "pickupAccountCode": "jim001",
+    "pickupAccountName": "James Walker",
+    "pickupApartment": "901",
+    "pickupStreetName": "50 E 78th St",
+    "pickupLandmark": "Opp. Strand Bookstore",
+    "pickupLocality": "Upper East Side",
+    "pickupCity": "New York",
+    "pickupState": "NY",
+    "pickupCountry": "USA",
+    "pickupPinCode": "10075",    
+    "returnBranch": "New York",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
     "returnAccountCode": "retAcc123",
     "returnAccountName": "retAcc1234",
-    "returnEmail": "test@test.com",
-    "returnPhoneNumber": "9090909090",
-    "returnApartment": "sjlkd CHS",
-    "returnStreetName": "kljsdl Road",
-    "returnLandmark": "skjdlk Nagar",
-    "returnLocality": "kldlk West",
-    "returnCity": "Mumbai",
-    "returnState": "MH",
-    "returnCountry": "IND",
-    "returnPinCode": "400104"
+    "returnEmail": "james.w@ablogs.com",
+    "returnPhoneNumber": "9891235886",
+    "returnApartment": "901",
+    "returnStreetName": "50 E 78th St",
+    "returnLandmark": "Opp. Strand Bookstore",
+    "returnLocality": "Upper East Side",
+    "returnCity": "New York",
+    "returnState": "NY",
+    "returnCountry": "USA",
+    "returnPinCode": "10075"
   }
 ]
 ```
@@ -3539,21 +3539,21 @@ Use this to find out last tracked location for any order/ delivery medium.
 
 <span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
 
-## Create Delivery Medium
+## Create Delivery Associate
 
-> Create Delivery Medium - Sample Request
+> Create Delivery Associate - Sample Request
 
 ```json
 [
   {
     "employeeId": "1001",
     "userGroupName": "lastmile",
-    "branchName": "LMDMumbai",
-    "deliveryMediumMasterName": "Amit",
+    "branchName": "LMDCalifornia",
+    "deliveryMediumMasterName": "James",
     "phoneNumber": "63865471261",
     "imei": "123456789012645",
-    "emailId": "test@test.com",
-    "userName": "test003",
+    "emailId": "james@ablogistics.com",
+    "userName": "james003",
     "password": "admin",
     "capacityInUnits": 10,
     "capacityInVolume": 0,
@@ -3562,7 +3562,7 @@ Use this to find out last tracked location for any order/ delivery medium.
     "gender": "Male",
     "deliveryMediumMasterTypeCd": "Delivery Boy",
     "isOwnVehicleFl": "Company",
-    "vehicleNumber": "MH034506",
+    "vehicleNumber": "1ABC234",
     "weeklyOffList": [
       "Thursday",
       "Monday"
@@ -3571,11 +3571,11 @@ Use this to find out last tracked location for any order/ delivery medium.
     "licenseValidity": "2016-12-13",
     "deliveryMediumMapList": [
       {
-        "name": "HINDI"
+        "name": "ENGLISH"
 
       },
       {
-        "name": "ENGLISH"
+        "name": "SPANISH"
 
       }
     ],
@@ -3590,7 +3590,7 @@ Use this to find out last tracked location for any order/ delivery medium.
 ]
 ```
 
-> Create Delivery Medium - Sample Response
+> Create Delivery Associate - Sample Response
 
 ```json
 {
@@ -3604,7 +3604,7 @@ Use this to find out last tracked location for any order/ delivery medium.
 
 ```
 
-This endpoint creates a new delivery medium.
+This endpoint creates a new delivery Associate.
 
 ### Request
 
@@ -3618,27 +3618,27 @@ Parameter | DataType | Length |  Required | Description
 employeeId | String | 50 | Mandatory | Employee Id
 userGroupName | String | 255 | Mandatory | User group name
 branchName | String | 255 | Mandatory | Client branch name
-deliveryMediumMasterName | String | 255 |Mandatory | Full name of Delivery medium
+deliveryMediumMasterName | String | 255 |Mandatory | Full name of Delivery associate
 phoneNumber | String | 255 | Mandatory | Mobile no
 imei | String | 40 |Optional | IMEI no
 emailId | String | 100 | Optional | Email id
 userName | String | 255 | Mandatory | Username
 password | String | 255 | Mandatory | Password
-capacityInUnits | Integer | 20 | Mandatory | Capacity of Delivery medium in units
-capacityInVolume | Integer | 20 | Optional | Capacity of Delivery medium in volume
-capacityInWeight | Integer | 20 |Optional | Capacity of Delivery medium in weight
+capacityInUnits | Integer | 20 | Mandatory | Capacity of Delivery associate in units
+capacityInVolume | Integer | 20 | Optional | Capacity of Delivery associate in volume
+capacityInWeight | Integer | 20 |Optional | Capacity of Delivery associate in weight
 dob | String |  | Optional | Date of birth
 gender | String | 12 |Optional | Gender. Ex - Male,Female
-deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery medium type. Ex - Truck, Delivery Boy
+deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. Ex - Truck, Delivery Boy
 isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
-vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery medium
+vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery associate
 weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
 maxDistance | Integer | 20 |Optional | Max. allowed distance
 licenseValidity | String |  |Optional | License validity date
 deliveryMediumMapList.name | String | 255 | Optional | Name of language
 shiftList.shiftStartTime  | String |  |Optional | Shift start time
 shiftList.shiftEndTime  | String |  |Optional | Shift end time
-dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery medium
+dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
 
 ## Get Geocode
 
@@ -3948,114 +3948,7 @@ adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate
 mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Mandatory | Email Address of the contact person
 
-## Active / Inactive
 
-> Definition
-
-```json
-https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status
-```
-
-> Request Body
-
-```json
-
-{
-  "newStatus":"ACTIVE",
-  "deliveryMediumDetails":
-  [{
-    "deliveryMediumReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
-    "reasonCd":"DBUNAVAILABLE",
-  }]
-
-}
-```
-
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Status updated successfully",
-  "hasError": false
-}
-
-```
-With this API you can ban / un-ban i.e. activate or deactive the access of the Delivery Medium / Delivery Associate / Driver / Field Executive
-
-### Request
-
-<span class="post">PUT</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status`
-
-
-### Request Parameters
-
-Param | DataType | Length |  Required | Description
---------- | ------- | --------- | ---------- | ------------
-newStatus | String | 20 | Mandatory |  Status should be one of the two below -<br>ACTIVE - if Delivery Medium is to be marked Active <br>INACTIVE - if Delivery Medium is to be marked Inactive<br>Note that you cannot mark the Delivery Medium as Inactive, if that Delivery Medium is on an Intransit Trip (Started trip) i.e.<br>if there is any Intransit trip (Started trip) already for a Delivery Medium.<br>You will have stop all the trips and then only you can mark that Delivery Medium as Inactive.<br>Note that you cannot mark any Delivery Medium Active if the count of the Active Delivery Mediums is equal to the no. of licenses you have purchased.<br>Note that you cannot mark any Delivery Medium Active, if the Phone No. of this Delivery Medium is already in use by some other Delivery Medium.
-orderReferenceId | String | 32 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
-deliveryMediumDetails | List | | | This is array to mark list of delivery mediums to be active  / inactive
-deliveryMediumReferenceId | String | 32 | Mandatory |This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
-reasonCd | String | 255 | Optional | When you activate / deactivate the Delivery Medium, you can mention the reason for activation / deactivation.<br>Note that you will have first configure the reason codes using the LogiNext Account configuration module.<br>Please drop a mail / talk to your Account Manager who can help you configure these reason codes.
-
-## On Break
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/changeStatusOnBreak?isOnBreakFl=true
-```
-
-> Request Body
-
-```json
-[
-  {
-        "referenceId" : "bae83999422211e6860c0653055f4dfd",
-        "latitude":19.67890,
-        "longitude":78.67589
-  },
-  {
-        "referenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
-        "latitude":19.67890,
-        "longitude":78.67589
-  }
-]
-```
-
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Status updated successfully",
-  "hasError": false
-}
-
-```
-With this API, you can mark the Delivery Medium / Delivery Associate / Driver / Field Executive status as On Break / Off-Break i.e. to indicate that the Delivery Medium is Active and logged in but does not want to serve any order.
-
-When Delivery Medium is On-Break, he/she can still complete his existing orders, but will not be considered for allocation of new orders (Allocation engine). Similarly, orders can still be planned for the Delivery Medium, but a new Trip cannot be started.
-
-If On-Break, pass the isOnBreakFl = true
-If Off-Break, pass the isOnBreakFl = false
-
-### Request
-
-<span class="post">PUT</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/changeStatusOnBreak?isOnBreakFl=true`
-
-
-### Request Parameters
-
-Param | DataType | Length |  Required | Description
---------- | ------- | --------- | ---------- | ------------
-deliveryMediumReferenceId | String | 32 | Mandatory | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
-latitude | Double | 15 | Optional | Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - "17.996"
-longitude | Double | 15 | Optional | Geo-location where Delivery Medium status was updated to be on-break / off-break<br>Sample Value - "17.996"
 
 ## ESIGN / EPOD Upload
 
@@ -5362,7 +5255,7 @@ data | String |  Data in XML format
 notificationType | String |  HUB IN
 updatedDate | String | Timestamp
 
-## Allocation Engine Webhook
+## Allocation Engine
 
 > Response
 
@@ -5424,7 +5317,7 @@ deliveryMediums.statusCd | String | Mandatory | This is the current Status of th
 deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
 deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.
 
-## Active / Inactive Webhook
+## Active / Inactive
 
 > Response
 
@@ -5454,7 +5347,7 @@ newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Del
 reasonCd | String |  When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
 updateTime | String |  This is the time in UTC when the Delivery Medium was marked Active / Inactive
 
-## Create Delivery Medium Webhook
+## Create Delivery Associate 
 
 > Response
 
