@@ -3328,6 +3328,96 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="update-delivery-associate-status">Update Delivery Associate Status</h2>
+
+<blockquote>
+<p>Update Delivery Associate Status - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumDetails"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.6758</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bae83999422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.67589</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Update Delivery Associate Status - Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliverymedium break status update successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint updates the status a new delivery Associate.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>50</td>
+<td>Mandatory</td>
+<td>This will be the new status of the delivery associate . It can be &ldquo;ACTIVE&rdquo;, &ldquo;INACTIVE&rdquo;, &ldquo;ONBREAK&rdquo;, or &ldquo;OFFBREAK&rdquo;.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.referenceID</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the referenceID of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.reasonCd</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the reason  for the updated status of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.latitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.longitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the delivery associate.</td>
+</tr>
+</tbody></table>
+
 <h2 id="create-hub">Create Hub</h2>
 
 <blockquote>
@@ -3561,8 +3651,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_12345"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB0123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
@@ -3571,7 +3661,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Manhatten"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -3586,65 +3676,65 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickuprStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upper East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickuprStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10075"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">    
 
 
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR5002"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"Case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT038"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confec"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Co"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dairy"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DA"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE003"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM003"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT030"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soup"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE3"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nu"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
 
       </span><span class="p">},</span><span class="w">
 </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE002"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR002"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"Case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE008"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM011"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT008"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT011"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE11"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cr"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
           </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -3732,49 +3822,49 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Weight of package in Kg.</td>
+<td>This is the weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Volume of package in CC</td>
+<td>This is the volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Value of package</td>
+<td>This is the value of package</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Number of crates</td>
+<td>This is the number of items in the order.</td>
 </tr>
 <tr>
 <td>deliveryType</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is an optional field. You can choose to leave it blank.<br>This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl</td>
+<td>This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
@@ -3788,7 +3878,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>1</td>
 <td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
+<td>This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
@@ -3830,112 +3920,112 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Pickup account code</td>
+<td>This is the pickup account code.</td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Pickup account name</td>
+<td>This is the pickup account name.</td>
 </tr>
 <tr>
 <td>pickupEmail</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>Pickup email id</td>
+<td>This is the email ID of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupPhoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Pickup phone no</td>
+<td>This is the phone number of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Apartment</td>
+<td>This is the apartment details of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Street name</td>
+<td>This is the street name of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Pickup Landmark</td>
+<td>This field holds any landmarks near the pickup location.</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Locality</td>
+<td>This is the locality of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup City</td>
+<td>This is the city name of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup State. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>This is the state name of the pickup customer.. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Country. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>This is the country name of the pickup customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Pickup Pincode</td>
+<td>This is the pincode of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Pickup address Latitude</td>
+<td>This is the geolocation coordinate (latitude) of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupLongitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Pickup address Longitude</td>
+<td>The geolocation coordinate (longitude) of the pickup customer.</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional pickup comments associated with the order</td>
+<td>Additional pickup comments associated with the order.</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional delivery comments associated with the order</td>
+<td>Additional delivery comments associated with the order.</td>
 </tr>
 </tbody></table>
 
@@ -3962,7 +4052,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>128</td>
 <td>Mandatory</td>
-<td>CRATE001</td>
+<td>Crate code.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
@@ -4042,8 +4132,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
@@ -4065,41 +4155,41 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
     </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT031"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confec"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Co"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT32"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soup"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nu"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -4146,21 +4236,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>Order No.</td>
+<td>This is the order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>Airway Bill No.</td>
+<td>This is the airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Order type code. DELIVER for delivery leg order</td>
+<td>This is the order type code. DELIVER for delivery leg order</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -4181,56 +4271,56 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
+<td>This is the distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Weight of package in Kg.</td>
+<td>This is the weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Volume of package in CC</td>
+<td>This is the volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Value of package</td>
+<td>This is the value of package</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Number of crates</td>
+<td>This is the number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
+<td>This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
 <td>1</td>
 <td>Optional</td>
-<td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
+<td>This field specifies if the order can be returned. Ex: Y/N. Default value is Y.</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
@@ -4286,119 +4376,119 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Deliver account code</td>
+<td>This is the deliver account code.</td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Deliver account name</td>
+<td>This is the deliver account name.</td>
 </tr>
 <tr>
 <td>deliverEmail</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>Deliver email</td>
+<td>This is the email ID details of the customer.</td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Deliver phone number</td>
+<td>This is the phone number of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Apartment</td>
+<td>This is the apartment details of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Street name</td>
+<td>This is the street name of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Landmark</td>
+<td>This field holds any identifying landmark&rsquo;s around the customer&rsquo;s addess.</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Locality</td>
+<td>This is the locality of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>City</td>
+<td>This is the city name of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>This is the state code of the pickup customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>This is the country code of the pickup customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Pincode</td>
+<td>This is the pincode of the pickup customer.</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Delivery address Latitude</td>
+<td>The geolocation coordinate (latitude) of the customer.</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Delivery address Longitude</td>
+<td>The geolocation coordinate (longitude) of the customer.</td>
 </tr>
 <tr>
 <td>returnBranch</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Name of return branch</td>
+<td>Name of return branch.</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional pickup comments associated with the order</td>
+<td>Additional pickup comments associated with the order.</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional delivery comments associated with the order</td>
+<td>Additional delivery comments associated with the order.</td>
 </tr>
 </tbody></table>
 
@@ -4505,12 +4595,12 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
@@ -4525,35 +4615,39 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.125497"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.836675"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">   
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"East Manhattan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upper East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickuprStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10075"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="s2">"19.116854"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="s2">"72.910455"</span><span class="p">,</span><span class="w">   
-    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">  
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Manhatten"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
@@ -4561,17 +4655,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upper East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOpp. McDonalds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10075"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="s2">"9891235886"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
     </span><span class="s2">"shipmentCrateMappings"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4641,98 +4731,98 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>Order No.</td>
+<td>This is the order No.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>Airway Bill No.</td>
+<td>This is the airway Bill No.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Order type code. BOTH for pickup &amp; delivery leg order</td>
+<td>This is the order type code. BOTH for pickup &amp; delivery leg order</td>
 </tr>
 <tr>
 <td>orderState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>State of order. Ex: FORWARD</td>
+<td>This is the state of order. Ex: FORWARD</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
+<td>This is the distribution center&rsquo;s name</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Weight of package in Kg.</td>
+<td>This is the weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Volume of package in CC</td>
+<td>This is the volume of package in CC</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Value of package</td>
+<td>This is the value of package</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Number of crates</td>
+<td>This is the number of crates</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N</td>
+<td>This field indicates if partial Delivery allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
 <td>String</td>
 <td>1</td>
 <td>Optional</td>
-<td>Is Return allowed. Ex: Y/N</td>
+<td>This field indicates if return is allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>cancellationAllowedFl</td>
 <td>String</td>
 <td>1</td>
 <td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N</td>
+<td>This field indicates if cancellation is allowed. Ex: Y/N</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
@@ -4795,70 +4885,70 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Apartment</td>
+<td>This is the delivery customer location&rsquo;s apartment details.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Street name</td>
+<td>This is the delivery customer location&rsquo;s Street name.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Landmark</td>
+<td>This is the delivery customer location&rsquo;s Landmark.</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Locality</td>
+<td>This is the delivery customer location&rsquo;s Locality.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>City</td>
+<td>This is the delivery customer location&rsquo;s City.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>State code</td>
+<td>This is the delivery customer location&rsquo;s state code</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Country code</td>
+<td>This is the delivery customer location&rsquo;s country code</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Pincode</td>
+<td>This is the delivery customer location&rsquo;s Pincode</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
 <td>100</td>
 <td>Optional</td>
-<td>Delivery address Latitude</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
 <td>100</td>
 <td>Optional</td>
-<td>Delivery address Longitude</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
 </tr>
 <tr>
 <td>pickupBranch</td>
@@ -4907,70 +4997,70 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Apartment</td>
+<td>This is the pickup location&rsquo;s apartment.</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Street name</td>
+<td>This is the pickup location&rsquo;s street name.</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Pickup Landmark</td>
+<td>This is the pickup location&rsquo;s  Landmark.</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Locality</td>
+<td>This is the pickup location&rsquo;s locality.</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup City</td>
+<td>This is the pickup location&rsquo;s city.</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup State code</td>
+<td>This is the pickup location&rsquo;s state code.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Pickup Country code</td>
+<td>This is the pickup location&rsquo;s country code.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Pickup Pincode</td>
+<td>This is the pickup location&rsquo;s pincode</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Pickup address Latitude</td>
+<td>The geolocation coordinate (latitude) of the pickup location.</td>
 </tr>
 <tr>
 <td>pickupLongitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>Pickup address Longitude</td>
+<td>The geolocation coordinate (longitude) of the pickup location.</td>
 </tr>
 <tr>
 <td>returnBranch</td>
@@ -5026,49 +5116,49 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return Apartment</td>
+<td>This is the return location&rsquo;s Apartment.</td>
 </tr>
 <tr>
 <td>returnStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return Street name</td>
+<td>This is the pickup location&rsquo;s street name.</td>
 </tr>
 <tr>
 <td>returnLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Return Landmark</td>
+<td>This is the pickup location&rsquo;s landmark.</td>
 </tr>
 <tr>
 <td>returnLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return Locality</td>
+<td>This is the pickup location&rsquo;s locality.</td>
 </tr>
 <tr>
 <td>returnCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return City</td>
+<td>This is the pickup location&rsquo;s city.</td>
 </tr>
 <tr>
 <td>returnState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>This is the pickup location&rsquo;s state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>Return Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>This is the pickup location&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
@@ -5223,8 +5313,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GGLPAR98761234"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR184T3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685332"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
@@ -5232,7 +5322,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shipmentBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurgaon"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upper Manhattan"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
@@ -5241,7 +5331,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"backToOrigin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEST1-98765123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FT987D5123"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverySequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">      
       </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
@@ -5254,39 +5344,39 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR0122"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.65</span><span class="p">,</span><span class="w">
           </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
           </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT023"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soup"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nu"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT022"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confec"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Co"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
@@ -5710,7 +5800,7 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>Quantity of the Items</td>
+<td>Quantity of the Items.</td>
 </tr>
 <tr>
 <td>itemType</td>
@@ -5804,12 +5894,12 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_ORDER1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL Logistics"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL CENTER"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LK CENTER"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL Valley, Mid Valley City,Kuala Lumpur"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNY Logistics"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"West Brooklyn"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Madison Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRK"</span><span class="p">,</span><span class="w">
@@ -5826,7 +5916,7 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
       </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5T-ACOM2"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"assignedThrough"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manually"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T35D33"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155640000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"actualStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154380000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"actualEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155021000</span><span class="p">,</span><span class="w">
@@ -5838,16 +5928,16 @@ This API can also be used for Single Pick-up and Single Destinaton.</p>
       </span><span class="nt">"timeTakenDifferenceInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154765000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154887000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154905000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155021000</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117636</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9093743</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1117548</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909282</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-87.61939</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-87.61939</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CST_ACL1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sg"</span><span class="p">,</span><span class="w">
