@@ -18,7 +18,7 @@ LogiNext welcomes you to the world of organised logistics.
 
 ## Logistics Flow
 
-In the LogiNext flow, an order is fulfilled by a delivery assosicate.
+In the LogiNext flow, an order is fulfilled by a Delivery Assosicate.
 
 The basic workflow is to first create the Delivery Associates(resources) required that are involved in an order. Once they are created, you can create orders to be fulfilled in the LogiNext system and assign it to these resources.
 
@@ -2169,8 +2169,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
-    "pickupStartTimeWindow": "2016-07-18T10:31:00.000Z",
-    "pickupEndTimeWindow": "2016-07-16T10:31:00.000Z",
+    "pickupStartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "pickupEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "pickupServiceTime": "20",
     "deliveryType": "Groceries",
     "deliveryLocationType":"HOME",
@@ -2180,7 +2180,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "cancellationAllowedFl": "N",    
     "returnAllowedFl": "Y",
     "returnBranch": "Chicago North",
-    "numberOfItems": "2",
+    "numberOfItems": 4,
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "COD",
@@ -2213,7 +2213,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
             "itemCd": "IT038",
             "itemName": "Milk tetra pack small",
             "itemPrice": 100,
-            "itemQuantity": 2,
+            "itemQuantity": 1,
             "itemType": "dairy",
             "itemWeight": 10
           },
@@ -2221,7 +2221,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
             "itemCd": "IT043",
             "itemName": "Chicken Soup 2X200gm",
             "itemPrice": 500,
-            "itemQuantity": 3,
+            "itemQuantity": 1,
             "itemType": "soup",
             "itemWeight": 10
           },
@@ -2363,8 +2363,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
-    "packageValue": "5000",
-    "numberOfItems": "10",
+    "packageValue": "500",
+    "numberOfItems": 1,
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
@@ -2396,13 +2396,13 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
         "crateCd": "CR041",
         "crateAmount":100.65,
         "crateType":"case",
-        "noOfUnits":10,
+        "noOfUnits":2,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",
             "itemName": "Chicken Soup 2X200gm",
             "itemPrice": 500,
-            "itemQuantity": 3,
+            "itemQuantity": 1,
             "itemType": "soup",
             "itemWeight": 10
           },
@@ -2410,7 +2410,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
             "itemCd": "IT030",
             "itemName": "WholeBeanCoffee 6x1kg",
             "itemPrice": 400,
-            "itemQuantity": 1,
+            "itemQuantity": 2,
             "itemType": "coffee",
             "itemWeight": 10
           }
