@@ -3076,112 +3076,82 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <li><p>In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.</p></li>
 </ol>
 
-<h2 id="create-order-delivery">Create Order (Delivery)</h2>
+<h2 id="create-delivery-associate">Create Delivery Associate</h2>
 
 <blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
+<p>Create Delivery Associate - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastmile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63865471261"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789012645"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@ablogistics.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Boy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ABC234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Monday"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
+
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
 
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T14:30:00Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400001"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>Response</p>
+<p>Create Delivery Associate - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order created successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>Place a new delivery leg order with this API.</p>
+<p>This endpoint creates a new delivery Associate.</p>
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Parameter</th>
 <th>DataType</th>
 <th>Length</th>
 <th>Required</th>
@@ -3189,271 +3159,240 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </thead><tbody>
 <tr>
-<td>orderNo</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Order No.</td>
-</tr>
-<tr>
-<td>awbNumber</td>
-<td>String</td>
-<td>1000</td>
-<td>Optional</td>
-<td>Airway Bill No.</td>
-</tr>
-<tr>
-<td>shipmentOrderTypeCd</td>
-<td>String</td>
-<td>40</td>
-<td>Mandatory</td>
-<td>Order type code. DELIVER for delivery leg order</td>
-</tr>
-<tr>
-<td>orderState</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>State of order. Ex: FORWARD</td>
-</tr>
-<tr>
-<td>shipmentOrderDt</td>
-<td>Date</td>
-<td></td>
-<td>Mandatory</td>
-<td>Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>distributionCenter</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
-</tr>
-<tr>
-<td>packageWeight</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Weight of package in Kg.</td>
-</tr>
-<tr>
-<td>packageVolume</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Volume of package in CC</td>
-</tr>
-<tr>
-<td>packageValue</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Value of package</td>
-</tr>
-<tr>
-<td>numberOfItems</td>
-<td>Integer</td>
-<td>20</td>
-<td>Optional</td>
-<td>Number of crates</td>
-</tr>
-<tr>
-<td>paymentType</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
-</tr>
-<tr>
-<td>partialDeliveryAllowedFl</td>
+<td>employeeId</td>
 <td>String</td>
 <td>50</td>
-<td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
+<td>Mandatory</td>
+<td>Employee Id</td>
 </tr>
 <tr>
-<td>returnAllowedFl</td>
-<td>String</td>
-<td>1</td>
-<td>Optional</td>
-<td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
-</tr>
-<tr>
-<td>cancellationAllowedFl</td>
-<td>String</td>
-<td>1</td>
-<td>Optional</td>
-<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
-</tr>
-<tr>
-<td>deliverBranch</td>
+<td>userGroupName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Name of delivery branch</td>
+<td>User group name</td>
 </tr>
 <tr>
-<td>deliverServiceTime</td>
-<td>Integer</td>
-<td>11</td>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Deliver service time in mins.</td>
+<td>Client branch name</td>
 </tr>
 <tr>
-<td>deliverStartTimeWindow</td>
-<td>Date</td>
-<td></td>
+<td>deliveryMediumMasterName</td>
+<td>String</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>Full name of Delivery associate</td>
 </tr>
 <tr>
-<td>deliverEndTimeWindow</td>
-<td>Date</td>
-<td></td>
+<td>phoneNumber</td>
+<td>String</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+<td>Mobile no</td>
 </tr>
 <tr>
-<td>deliveryType</td>
+<td>imei</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+<td>IMEI no</td>
 </tr>
 <tr>
-<td>deliveryLocationType</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>Type of delivery location. Ex: CUSTOMER, PUP</td>
-</tr>
-<tr>
-<td>deliverAccountCode</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Deliver account code</td>
-</tr>
-<tr>
-<td>deliverAccountName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Deliver account name</td>
-</tr>
-<tr>
-<td>deliverEmail</td>
+<td>emailId</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>Deliver email</td>
+<td>Email id</td>
 </tr>
 <tr>
-<td>deliverPhoneNumber</td>
+<td>userName</td>
 <td>String</td>
 <td>255</td>
-<td>Optional</td>
-<td>Deliver phone number</td>
-</tr>
-<tr>
-<td>deliverApartment</td>
-<td>String</td>
-<td>512</td>
 <td>Mandatory</td>
-<td>Apartment</td>
+<td>Username</td>
 </tr>
 <tr>
-<td>deliverStreetName</td>
+<td>password</td>
 <td>String</td>
-<td>512</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Street name</td>
+<td>Password</td>
 </tr>
 <tr>
-<td>deliverLandmark</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Landmark</td>
-</tr>
-<tr>
-<td>deliverLocality</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Locality</td>
-</tr>
-<tr>
-<td>deliverCity</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>City</td>
-</tr>
-<tr>
-<td>deliverState</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
-</tr>
-<tr>
-<td>deliverCountry</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
-</tr>
-<tr>
-<td>deliverPinCode</td>
-<td>String</td>
+<td>capacityInUnits</td>
+<td>Integer</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Pincode</td>
+<td>Capacity of Delivery associate in units</td>
 </tr>
 <tr>
-<td>deliverLatitude</td>
-<td>Double</td>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Capacity of Delivery associate in volume</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Capacity of Delivery associate in weight</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Delivery address Latitude</td>
+<td>Date of birth</td>
 </tr>
 <tr>
-<td>deliverLongitude</td>
-<td>Double</td>
-<td></td>
+<td>gender</td>
+<td>String</td>
+<td>12</td>
 <td>Optional</td>
-<td>Delivery address Longitude</td>
+<td>Gender. Ex - Male,Female</td>
 </tr>
 <tr>
-<td>returnBranch</td>
+<td>deliveryMediumMasterTypeCd</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>Name of return branch</td>
+<td>Optional</td>
+<td>Delivery associate type. Ex - Truck, Delivery Boy</td>
 </tr>
 <tr>
-<td>pickupNotes</td>
+<td>isOwnVehicleFl</td>
 <td>String</td>
-<td>512</td>
+<td>1</td>
 <td>Optional</td>
-<td>Additional pickup comments associated with the order</td>
+<td>Owner of vehicle. Ex - Owned, Company</td>
 </tr>
 <tr>
-<td>deliverNotes</td>
+<td>vehicleNumber</td>
 <td>String</td>
-<td>512</td>
+<td>255</td>
 <td>Optional</td>
-<td>Additional delivery comments associated with the order</td>
+<td>Vehicle number to be assigned to the delivery associate</td>
+</tr>
+<tr>
+<td>weeklyOffList</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Array of week&rsquo;s off days. Ex - Monday, Tuesday etc.</td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Max. allowed distance</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>License validity date</td>
+</tr>
+<tr>
+<td>deliveryMediumMapList.name</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of language</td>
+</tr>
+<tr>
+<td>shiftList.shiftStartTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift start time</td>
+</tr>
+<tr>
+<td>shiftList.shiftEndTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift end time</td>
+</tr>
+<tr>
+<td>dmPreference</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Preferred Pincode of Delivery associate</td>
 </tr>
 </tbody></table>
 
-<h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
+<h2 id="create-hub">Create Hub</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ClientApp/v</span><span class="mi">1</span><span class="err">/branch/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[{</span><span class="w">
+</span><span class="nt">"clientParentBranchName"</span><span class="p">:</span><span class="s2">"Reeta Foods Main Branch"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"Marque Downtown Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="nt">"division"</span><span class="p">:</span><span class="s2">"ADIV"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isOwnBranchFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isHubFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"geoFenceRadius"</span><span class="p">:</span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchDescription"</span><span class="p">:</span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"officeNumber"</span><span class="p">:</span><span class="s2">"2798678712"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"Suraj K."</span><span class="p">,</span><span class="w">
+</span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"9033977123"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"superjames@gmails.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API, you can create your hubs / branches / distribution centers in the LogiNext application.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/branch/create</code></p>
+
+<h3 id="request-body">Request Body</h3>
 
 <table><thead>
 <tr>
-<th>Param</th>
+<th>Parameter</th>
 <th>DataType</th>
 <th>Length</th>
 <th>Required</th>
@@ -3461,81 +3400,151 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </thead><tbody>
 <tr>
-<td>shipmentCrateMappings</td>
-<td>Array of objects</td>
-<td></td>
-<td>Optional</td>
-<td>Shipment crates</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.crateCd</td>
+<td>clientParentBranchName</td>
 <td>String</td>
-<td>128</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Crate code</td>
+<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.crateAmount</td>
-<td>Double</td>
-<td></td>
-<td>Mandatory</td>
-<td>Crate amount</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.crateType</td>
+<td>branchName</td>
 <td>String</td>
-<td>100</td>
+<td>255</td>
 <td>Mandatory</td>
-<td>Crate type. Ex - ??</td>
+<td>This is the name of the branch / hub / distribution center/ that you want to add.</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.noOfUnits</td>
-<td>Integer</td>
-<td>10</td>
-<td>Mandatory</td>
-<td>No. of items in crate</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>Address.apartment</td>
 <td>String</td>
-<td>200</td>
+<td>512</td>
 <td>Mandatory</td>
-<td>Item code</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>Address.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard</td>
+</tr>
+<tr>
+<td>Address.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>branchName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Item name</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
-<td>Double</td>
-<td></td>
-<td>Mandatory</td>
-<td>Item price</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
-<td>Double</td>
-<td>10</td>
-<td>Mandatory</td>
-<td>Item quantity</td>
-</tr>
-<tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>Address.locality</td>
 <td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Item type</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory</td>
 </tr>
 <tr>
-<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
-<td>Double</td>
-<td>10</td>
+<td>Address.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur</td>
+</tr>
+<tr>
+<td>Address.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>Address.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>division</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Ex. ADIV</td>
+</tr>
+<tr>
+<td>isOwnBranchFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>There can be two values here -  In Mile Hardcode this to N</td>
+</tr>
+<tr>
+<td>isHubFl</td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>There can be two values here -  In Mile Hardcode this to Y</td>
+</tr>
+<tr>
+<td>geoFenceRadius</td>
+<td>String</td>
+<td>255</td>
 <td>Optional</td>
-<td>Item weight</td>
+<td>This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs</td>
+</tr>
+<tr>
+<td>branchDescription</td>
+<td>String</td>
+<td>500</td>
+<td>Optional</td>
+<td>If you would like add a brief description name for the hub, use this field.</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>500</td>
+<td>Mandatory</td>
+<td>Name of the Contact Person at this Branch / Hub</td>
+</tr>
+<tr>
+<td>officeNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Fixed Line Number of the Branch  / Hub</td>
+</tr>
+<tr>
+<td>adminContactName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of the Supervisor / Alternate Contact for this Hub</td>
+</tr>
+<tr>
+<td>mobileNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Mobile Phone No. of the contact person</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Email Address of the contact person</td>
 </tr>
 </tbody></table>
 
@@ -3975,6 +3984,469 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>10</td>
 <td>Optional</td>
 <td>No. of crate units</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Item weight</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-order-delivery">Create Order (Delivery)</h2>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrderNo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72712"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="s2">"19.124497"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="s2">"72.893675"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CODE002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TYPE2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order created successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"dcd883efcccc4d2299da962a72b01f23"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Place a new delivery leg order with this API.</p>
+
+<h3 id="request">Request</h3>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>Order No.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>Airway Bill No.</td>
+</tr>
+<tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>Order type code. DELIVER for delivery leg order</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>State of order. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>shipmentOrderDt</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Weight of package in Kg.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Volume of package in CC</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Value of package</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Number of crates</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+</tr>
+<tr>
+<td>partialDeliveryAllowedFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>Is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
+</tr>
+<tr>
+<td>returnAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>Is Return allowed. Ex: Y/N. Default value is Y.</td>
+</tr>
+<tr>
+<td>cancellationAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
+</tr>
+<tr>
+<td>deliverBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of delivery branch</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. Ex: CUSTOMER, PUP</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Deliver account code</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Deliver account name</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Deliver email</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Deliver phone number</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Apartment</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Landmark</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Locality</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>City</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>State code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>Pincode</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery address Latitude</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery address Longitude</td>
+</tr>
+<tr>
+<td>returnBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of return branch</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-parameters-crates">Request Parameters (Crates)</h3>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>Crate code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>Crate type. Ex - ??</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>No. of items in crate</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
@@ -6879,258 +7351,6 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
 
 <p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
 
-<h2 id="create-delivery-associate">Create Delivery Associate</h2>
-
-<blockquote>
-<p>Create Delivery Associate - Sample Request</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastmile"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63865471261"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789012645"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@ablogistics.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Boy"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ABC234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Monday"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
-
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
-
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T14:30:00Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400001"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Create Delivery Associate - Sample Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>This endpoint creates a new delivery Associate.</p>
-
-<h3 id="request">Request</h3>
-
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create</code></p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>employeeId</td>
-<td>String</td>
-<td>50</td>
-<td>Mandatory</td>
-<td>Employee Id</td>
-</tr>
-<tr>
-<td>userGroupName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>User group name</td>
-</tr>
-<tr>
-<td>branchName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Client branch name</td>
-</tr>
-<tr>
-<td>deliveryMediumMasterName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Full name of Delivery associate</td>
-</tr>
-<tr>
-<td>phoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Mobile no</td>
-</tr>
-<tr>
-<td>imei</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>IMEI no</td>
-</tr>
-<tr>
-<td>emailId</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Email id</td>
-</tr>
-<tr>
-<td>userName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Username</td>
-</tr>
-<tr>
-<td>password</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Password</td>
-</tr>
-<tr>
-<td>capacityInUnits</td>
-<td>Integer</td>
-<td>20</td>
-<td>Mandatory</td>
-<td>Capacity of Delivery associate in units</td>
-</tr>
-<tr>
-<td>capacityInVolume</td>
-<td>Integer</td>
-<td>20</td>
-<td>Optional</td>
-<td>Capacity of Delivery associate in volume</td>
-</tr>
-<tr>
-<td>capacityInWeight</td>
-<td>Integer</td>
-<td>20</td>
-<td>Optional</td>
-<td>Capacity of Delivery associate in weight</td>
-</tr>
-<tr>
-<td>dob</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>Date of birth</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>String</td>
-<td>12</td>
-<td>Optional</td>
-<td>Gender. Ex - Male,Female</td>
-</tr>
-<tr>
-<td>deliveryMediumMasterTypeCd</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Delivery associate type. Ex - Truck, Delivery Boy</td>
-</tr>
-<tr>
-<td>isOwnVehicleFl</td>
-<td>String</td>
-<td>1</td>
-<td>Optional</td>
-<td>Owner of vehicle. Ex - Owned, Company</td>
-</tr>
-<tr>
-<td>vehicleNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Vehicle number to be assigned to the delivery associate</td>
-</tr>
-<tr>
-<td>weeklyOffList</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Array of week&rsquo;s off days. Ex - Monday, Tuesday etc.</td>
-</tr>
-<tr>
-<td>maxDistance</td>
-<td>Integer</td>
-<td>20</td>
-<td>Optional</td>
-<td>Max. allowed distance</td>
-</tr>
-<tr>
-<td>licenseValidity</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>License validity date</td>
-</tr>
-<tr>
-<td>deliveryMediumMapList.name</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Name of language</td>
-</tr>
-<tr>
-<td>shiftList.shiftStartTime</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>Shift start time</td>
-</tr>
-<tr>
-<td>shiftList.shiftEndTime</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>Shift end time</td>
-</tr>
-<tr>
-<td>dmPreference</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Preferred Pincode of Delivery associate</td>
-</tr>
-</tbody></table>
-
 <h2 id="get-geocode">Get Geocode</h2>
 
 <blockquote>
@@ -7556,226 +7776,6 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <td></td>
 <td>Mandatory</td>
 <td>LogiNext Order Reference ID</td>
-</tr>
-</tbody></table>
-
-<h2 id="create-hub">Create Hub</h2>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ClientApp/v</span><span class="mi">1</span><span class="err">/branch/create</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="w">
-</span><span class="p">[{</span><span class="w">
-</span><span class="nt">"clientParentBranchName"</span><span class="p">:</span><span class="s2">"Reeta Foods Main Branch"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"Marque Downtown Chicago"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="w">
-</span><span class="p">},</span><span class="w">
-</span><span class="nt">"division"</span><span class="p">:</span><span class="s2">"ADIV"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"isOwnBranchFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"isHubFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"geoFenceRadius"</span><span class="p">:</span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"branchDescription"</span><span class="p">:</span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"name"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"officeNumber"</span><span class="p">:</span><span class="s2">"2798678712"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"Suraj K."</span><span class="p">,</span><span class="w">
-</span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"9033977123"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"superjames@gmails.com"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
-</span><span class="p">}]</span><span class="w">
-
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>With this API, you can create your hubs / branches / distribution centers in the LogiNext application.</p>
-
-<h3 id="request">Request</h3>
-
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/branch/create</code></p>
-
-<h3 id="request-body">Request Body</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>clientParentBranchName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
-</tr>
-<tr>
-<td>branchName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>This is the name of the branch / hub / distribution center/ that you want to add.</td>
-</tr>
-<tr>
-<td>Address.apartment</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center</td>
-</tr>
-<tr>
-<td>Address.streetName</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard</td>
-</tr>
-<tr>
-<td>Address.landmark</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
-</tr>
-<tr>
-<td>branchName</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
-</tr>
-<tr>
-<td>Address.locality</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory</td>
-</tr>
-<tr>
-<td>Address.city</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur</td>
-</tr>
-<tr>
-<td>Address.stateShortCode</td>
-<td>String</td>
-<td>11</td>
-<td>Mandatory</td>
-<td>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
-</tr>
-<tr>
-<td>Address.countryShortCode</td>
-<td>String</td>
-<td>11</td>
-<td>Mandatory</td>
-<td>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.</td>
-</tr>
-<tr>
-<td>Address.pincode</td>
-<td>String</td>
-<td>20</td>
-<td>Mandatory</td>
-<td>This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
-</tr>
-<tr>
-<td>division</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Ex. ADIV</td>
-</tr>
-<tr>
-<td>isOwnBranchFl</td>
-<td>String</td>
-<td>1</td>
-<td>Mandatory</td>
-<td>There can be two values here -  In Mile Hardcode this to N</td>
-</tr>
-<tr>
-<td>isHubFl</td>
-<td>String</td>
-<td>1</td>
-<td>Mandatory</td>
-<td>There can be two values here -  In Mile Hardcode this to Y</td>
-</tr>
-<tr>
-<td>geoFenceRadius</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs</td>
-</tr>
-<tr>
-<td>branchDescription</td>
-<td>String</td>
-<td>500</td>
-<td>Optional</td>
-<td>If you would like add a brief description name for the hub, use this field.</td>
-</tr>
-<tr>
-<td>billingContactName</td>
-<td>String</td>
-<td>500</td>
-<td>Mandatory</td>
-<td>Name of the Contact Person at this Branch / Hub</td>
-</tr>
-<tr>
-<td>officeNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Fixed Line Number of the Branch  / Hub</td>
-</tr>
-<tr>
-<td>adminContactName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Name of the Supervisor / Alternate Contact for this Hub</td>
-</tr>
-<tr>
-<td>mobileNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Mobile Phone No. of the contact person</td>
-</tr>
-<tr>
-<td>emailAddress</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Email Address of the contact person</td>
 </tr>
 </tbody></table>
 
