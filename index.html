@@ -3328,6 +3328,96 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="update-delivery-associate-status">Update Delivery Associate Status</h2>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumDetails"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.6758</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bae83999422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.67589</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliverymedium break status update successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Update the status of a previously created delivery associate with this API. Pass the new status of the associate in the &#39;newStatus&rsquo; field, along with an optional reason and the geocoordinates of the delivery associate.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>50</td>
+<td>Mandatory</td>
+<td>This will be the new status of the delivery associate . It can be &ldquo;ACTIVE&rdquo;, &ldquo;INACTIVE&rdquo;, &ldquo;ONBREAK&rdquo;, or &ldquo;OFFBREAK&rdquo;.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.referenceID</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the referenceID of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.reasonCd</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the reason  for the updated status of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.latitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the delivery associate.</td>
+</tr>
+<tr>
+<td>deliveryMediumDetails.longitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the delivery associate.</td>
+</tr>
+</tbody></table>
+
 <h2 id="create-hub">Create Hub</h2>
 
 <blockquote>
