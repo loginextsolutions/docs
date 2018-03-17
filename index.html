@@ -3643,7 +3643,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">2</span><span class="err">/create</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -3655,6 +3655,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB0123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
@@ -3762,7 +3763,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -3801,7 +3802,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be &ldquo;FORWARD&rdquo;<br>If an order is a Return way (Return from the Customer), then value here should be &ldquo;REVERSE&rdquo;</td>
+<td>If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be &ldquo;FORWARD&rdquo;<br>If an order is a Return way (Return from the Customer), then value here should be &ldquo;REVERSE&rdquo;.</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -4124,7 +4132,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">2</span><span class="err">/create</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -4136,6 +4144,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -4218,7 +4227,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -4258,6 +4267,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>512</td>
 <td>Mandatory</td>
 <td>State of order. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -4587,7 +4603,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">2</span><span class="err">/create</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -4599,6 +4615,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -4713,7 +4730,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h3 id="request">Request</h3>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/create</code></p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -4753,6 +4770,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>512</td>
 <td>Mandatory</td>
 <td>State of order. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
