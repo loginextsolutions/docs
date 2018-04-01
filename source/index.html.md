@@ -13,36 +13,38 @@ search: true
 
 # Introduction
 
-LogiNext welcomes you to the world of organised logistics.
-
-
-## Logistics Flow
-
-In the LogiNext flow, an order is fulfilled by a Delivery Assosicate.
-
-The basic workflow is to first create the Delivery Associates(resources) required that are involved in an order. Once they are created, you can create orders to be fulfilled in the LogiNext system and assign it to these resources.
-
-***Assigned orders can then be planned and optimized trips are created, considering individual order requirements like delivery time windows and order service times.***
-
-Orders are fulfilled as part of trips where Delivery Associates are assigned multiple orders. Trips can be started and orders can be marked delivered once fulfilled.
 
 ## LogiNext Terminology
 
-### Delivery Associates
-Delivery Associates are the field workforce. They are usually the drivers and field technicians on ground.
+LogiNext welcomes you to the world of organised logistics.
 
-### Hubs
-Hubs are the distribution centers or branches of the company. These are the locations at which packages are sorted/ loaded/ unloaded.
+In this section we'll go over the elements that make up the LogiNext system, and how you can start integrating with the LogiNext API.
+
+###Delivery Associate 
+A Delivery Associate carries out the Pick-up or Delivery of Orders. Delivery Associates can be
+maintainence men, repair men, or delivery boys.
+
+When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.
+
+###Vehicle
+Vehicles can be used to Pick-up and Deliver Orders that are part of the Trip. A Vehicle could be a bike, car, truck, van and more. 
+
+###Driver 
+Driver is responsible for driving/riding the Delivery Vehicle.
+
+Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.
 
 
 ### Orders
 
-Orders are the action items that link the LogiNext eco system. Orders connect the clients, delivery associates, and the end customers.
+An Order has details of shipment you want to pickup from your merchant or deliver to your customer. Pick Up and Delivery could be different depending on the industry you are in. For example, in the Courier Industry, Pick Up and Delivery can be for Customers.
+
+Orders can be be labeled differently, according to your industry and needs. For example, one customer has named it shipment.
 
 ### Trips
 Trips are defined as a group of orders that a delivery associate must fulfill as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.
 
-##Integration Details
+## Integration Details
 
 Using the LogiNext API, you can integrate all the segments of your logistics and supply chain network into our product platform to create a seamless experience for your operations and executive team.
 
@@ -52,9 +54,13 @@ Below are few important steps that would explain what it takes for you, as our C
 
 <b><u>Step 1</u></b> –  Please read carefully the Request, Responses and Authentication section so that you can configure things on your end to integrate with LogiNext APIs.
 
-<b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate)
+<b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).
 
 <b><u>Step 3</u></b> – (Optional) If you are planning to consume any of the LogiNext notifications, you will need to share the end-point URL on your system to consume the Webhook.
+
+<br> In case of any queries during the integration process, please reach out to us at
+<a href="mailto:support@loginextsolutions.com?Subject=Integration%20Queries" target="_top">support@loginextsolutions.com</a> 
+
 
 # Requests
 
@@ -181,6 +187,82 @@ Header | Sample Value
 --------- | -------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
+
+
+## Authenticate Delivery Associate
+
+Call the mobile authenticate API to obtain the token and key for a Delivery Associate.
+
+You will have to pass the username and password entered at the time of creating the Delivery Associate in the LogiNext system in the request body.
+
+The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.
+
+
+> Definition
+
+```json
+  https://api.loginextsolutions.com/LoginApp/login/mobile/auth
+```
+> Request Body
+
+```json
+{
+  "userName": "mi4",
+  "password": "admin",
+  "imei":"12345",
+  "latitude": 19.1114131,
+  "longitude": 72.9094666,
+  "androidId": "ce6448cf20b78483",
+  "androidTime": "2017-04-21T05:53:47Z"
+}  
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Login successfully.",
+    "hasError": false
+}
+```
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/LoginApp/login/mobile/auth`
+
+#### Request Headers
+
+Header | Sample Value | Description
+--------- | ------- | -------------
+Content-Type | application/json | JSON request
+
+
+#### Request Parameters
+
+Parameter | DataType | Length | Required | Description
+-----------|-------|---|---------------|--------
+userName | String | 255 | Mandatory | Username provided by LogiNext
+password | String | 255 | Mandatory | Password provided by LogiNext
+imei | String | 50 | Mandatory | IMEI Number of the Delivery Associate's phone
+latitude | Double | | Optional | Geolocation(latitude) coordinate of the Delivery Associate
+longitude | Double | | Optional | Geolocation(longitude) coordinate of the Delivery Associate
+androidId | String | 10 | Optional | Device ID of the Delivery Associate
+androidTime | Date | | Optional | Current Date and Time in UTC and the mentioned Format. Sample Value - 2017-12-11T07:21:39Z
+
+
+#### Response
+The response will consist of parameters as mentioned in the "Responses" section based on the request parameters passed.For example,the response can contain 200 - Success or 401 - Invalid username or password, etc.
+
+#### Response Headers
+
+The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.
+
+Header | Sample Value
+--------- | -------
+WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
+CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
+
 
 ##Invalidate
 
@@ -1612,6 +1694,55 @@ messageType | String | 10 | Mandatory | Message type. Ex: REG
 temperature | Double | 5,2 | Optional | Consignment's temperature
 
 
+### Create Tracking Record (Bulk)
+
+> Create Tracking Record - Sample Request
+
+```json
+[
+  {
+  "trackerId": "358899056518932",
+  "latitude": 12.9003884,
+  "longitude": 14.9889999,
+  "time": "2018-01-04T07:21:56Z",
+  "batteryPerc": 70.5,
+  "speed": 40.4,
+  "messageType": "REG",
+  "temperature": 30.5
+  }, {
+  "trackerId": "4209917397",
+  "latitude": 12.9003884,
+  "longitude": 14.9889999,
+  "time": "2018-01-04T07:21:56Z",
+  "batteryPerc": 70.5,
+  "speed": 40.4,
+  "messageType": "REG",
+  "temperature": 30.5
+  }
+]
+```
+
+This endpoint adds tracking record.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/haul/v1/tracking/put`
+
+
+#### Request Parameters
+
+Param | DataType |  Length | Required | Description
+--------- | ------- | -----|---------- | ------------
+trackerId | String | 12 | Mandatory |  Device's unique ID
+latitude | Double | 13,10 | Mandatory | Latitude
+longitude | Double | 13,10 | Mandatory | Longitude
+time | Date |  | Mandatory | Tracking time in UTC. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+batteryPerc | Double | 5,2 | Mandatory | Battery Percentage of device
+speed | Double | 5,2 | Optional | Speed with which consignment is moving
+messageType | String | 10 | Mandatory | Message type. Ex: REG
+temperature | Double | 5,2 | Optional | Consignment's temperature
+
+
 ### Get Tracker (List)
 
 > Definition
@@ -1911,14 +2042,14 @@ Delivery orders by loading the items for different orders from a Single Point of
 ```json
 [
   {
-    "employeeId": "1001",
-    "userGroupName": "lastmile",
-    "branchName": "LMDCalifornia",
+    "employeeId": "1501",
+    "userGroupName": "MobileUser_LMDemo",
+    "branchName": "LMDMumbai",
     "deliveryMediumMasterName": "James",
-    "phoneNumber": "63865471261",
-    "imei": "123456789012645",
+    "phoneNumber": "9920344678",
+    "imei": "123456789042645",
     "emailId": "james@ablogistics.com",
-    "userName": "james003",
+    "userName": "james009",
     "password": "admin",
     "capacityInUnits": 10,
     "capacityInVolume": 0,
@@ -1927,7 +2058,7 @@ Delivery orders by loading the items for different orders from a Single Point of
     "gender": "Male",
     "deliveryMediumMasterTypeCd": "Delivery Boy",
     "isOwnVehicleFl": "Company",
-    "vehicleNumber": "1ABC234",
+    "vehicleNumber": "MH PICK 01",
     "weeklyOffList": [
       "Thursday",
       "Monday"
@@ -1940,7 +2071,7 @@ Delivery orders by loading the items for different orders from a Single Point of
 
       },
       {
-        "name": "SPANISH"
+        "name": "HINDI"
 
       }
     ],
@@ -1950,7 +2081,34 @@ Delivery orders by loading the items for different orders from a Single Point of
         "shiftEndTime": "2016-12-12T14:30:00Z"
       }
     ],
-    "dmPreference": "400001"
+    "dmPreference": "400001",
+    "addressList": [
+     {
+       "apartment": "A-901",
+       "streetName": "Hiranandani Street",
+       "landmark": "DMart",
+       "countryShortCode": "IND",
+       "stateShortCode": "MH",
+       "city": "Mumbai",
+       "pincode": 400076,
+       "isCurrentAddress": true
+     },
+     {
+       "apartment": "A-902",
+       "streetName": "LBS Marg",
+       "landmark": "SBI",
+       "countryShortCode": "IND",
+       "stateShortCode": "MH",
+       "city": "Mumbai",
+       "pincode": 400092,
+       "isCurrentAddress": false
+     }
+   ],
+   "maritalStatus":"Married",
+   "alternateMobileNo":"3214567890",
+   "landlineNo":"20201616",
+   "licenseValidityInYears":"5",
+   "licenseIssuanceDate":"2017-12-12"
   }
 ]
 ```
@@ -2004,6 +2162,20 @@ deliveryMediumMapList.name | String | 255 | Optional | Name of language
 shiftList.shiftStartTime  | String |  |Optional | Shift start time
 shiftList.shiftEndTime  | String |  |Optional | Shift end time
 dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
+addressList | List | | Holds the address details of the Delivery Associate.
+addressList.apartment | String | Optional | 255 | Delivery Associate's Apartment number.
+addressList.streetName | String | Optional | 255 | Delivery Associate's Street Name.
+addressList.landmark | String | Optional | 255 | Delivery Associate's landmark.
+addressList.countryShortCode | String | Optional | 255 | This is the  Delivery Associate's country code. Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.city | String | Optional | 255 | Delivery Associate's city.
+addressList.pincode | String | Optional | 255 | Delivery Associate's pincode.
+addressList.isCurrentAddress | String | Optional | 255 | Identifies if this is the current or permanent address of the Delivery Associate. If set to "Y", it will select the entered address as current. If "N", it will set the entered address as permanent.
+maritalStatus | String | Optional | 255 | Delivery Associate's Marital Status.
+alternateMobileNo | String | Optional | 255 | Alternate Mobile NUmber of the Delivery Associate.
+landlineNo | String | Optional | 255 | Landline Number of the Delivery Associate.
+licenseValidity | String Optional | String | 255 | This is the expiry Date of the Driver's License in UTC format.
+licenseValidityInYears | Optional | String | 255 | License Validity in years.
+licenseIssuanceDate | Optional | 255 | String | License Issuance Date.
 
 
 ### Update Status
@@ -2151,12 +2323,16 @@ emailAddress | String | 255 | Mandatory | Email Address of the contact person
 
 ## Order
 
+Create Orders in the LogiNext system using the Orders API. Orders will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Order later.
+
+To view the Orders created in the LogiNext Web Application, select the correct date range in the date filter on the screen.
+
 ### Create Pick Up Only
 
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 ```
 
 > Request Body
@@ -2168,6 +2344,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
+    "autoAllocateFl": "Y",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "pickupStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "pickupEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -2180,7 +2357,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "cancellationAllowedFl": "N",    
     "returnAllowedFl": "Y",
     "returnBranch": "Chicago North",
-    "numberOfItems": 4,
+    "numberOfItems": 2,
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "COD",
@@ -2191,7 +2368,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "pickupEmail": "james.w@ablogs.com",
     "pickupPhoneNumber": "5163063377",
     "pickupApartment": "901",
-    "pickuprStreetName": "2142 3rd Ave",
+    "pickupStreetName": "2142 3rd Ave",
     "pcikupLandmark": "Opp. McDonalds",
     "pickupLocality": "East Harlem",
     "pickupCity": "New York",
@@ -2263,12 +2440,25 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 
 ```json
 {
-  "status": 200,
-  "message": "Order created successfully",
-  "referenceId": [
-    "dcd883efcccc4d2299da962a72b01f23"
-  ],
-  "hasError": false
+    "status": 200,
+    "message": "Order(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "orderNumber": "ww1223",
+            "shipmentOrderTypeCd": "PICKUP",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "a0108f976b3b41f1b51e438d4e8c7bf5",
+            "orderNumber": "ww1225",
+            "shipmentOrderTypeCd": "PICKUP",
+            "orderState": "FORWARD"
+        }
+    ],
+    "hasError": false
 }
 
 ```
@@ -2276,7 +2466,7 @@ Create pickup orders with this API in the LogiNext system. Orders will be create
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
 
 
 
@@ -2288,6 +2478,7 @@ orders.orderNo | String | 100 | Conditional Mandatory | This is the Order No.
 awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
+autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
 shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
@@ -2346,7 +2537,7 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | It
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 ```
 
 > Request Body
@@ -2358,6 +2549,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
+    "autoAllocateFl": "Y",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Chicago",
     "packageWeight":"10",
@@ -2428,12 +2620,25 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 
 ```json
 {
-  "status": 200,
-  "message": "Order created successfully",
-  "referenceId": [
-    "dcd883efcccc4d2299da962a72b01f23"
-  ],
-  "hasError": false
+    "status": 200,
+    "message": "Order(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "orderNumber": "ww1223",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "a0108f976b3b41f1b51e438d4e8c7bf5",
+            "orderNumber": "ww1225",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "hasError": false
 }
 
 ```
@@ -2441,7 +2646,7 @@ Create delivery orders with this API in the LogiNext system. Orders will be crea
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
 
 #### Request Parameters
 
@@ -2451,6 +2656,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String  | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
+autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
@@ -2509,7 +2715,7 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Th
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
+https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 ```
 
 > Request Body
@@ -2521,13 +2727,14 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
+    "autoAllocateFl": "Y",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
     "paymentType": "Prepaid",
     "packageValue": "5000",
-    "numberOfItems": "10",
+    "numberOfItems": 1,
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
@@ -2585,7 +2792,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
     "returnCountry": "USA",
     "returnPinCode": "10035",
     "pickupNotes": "PickedUp",
-    "deliverNotes": "Delivered"
+    "deliverNotes": "Delivered",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR121",
@@ -2623,12 +2830,25 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create
 
 ```json
 {
-  "status": 200,
-  "message": "Order created successfully",
-  "referenceId": [
-    "dcd883efcccc4d2299da962a72b01f23"
-  ],
-  "hasError": false
+    "status": 200,
+    "message": "Order(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "orderNumber": "ww1223",
+            "shipmentOrderTypeCd": "BOTH",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "a0108f976b3b41f1b51e438d4e8c7bf5",
+            "orderNumber": "ww1225",
+            "shipmentOrderTypeCd": "BOTH",
+            "orderState": "FORWARD"
+        }
+    ],
+    "hasError": false
 }
 
 ```
@@ -2636,7 +2856,7 @@ Create pickup and delivery orders with this API in the LogiNext system. Orders w
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
 
 
 #### Request Parameters
@@ -2646,6 +2866,7 @@ Param | DataType | Length |  Required | Description
 orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
+autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
@@ -2815,7 +3036,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
           ]
         }
       ]
-    },  
+    }  
   ]
 }
 
@@ -2834,9 +3055,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
 }
 ```
 
-Create single pick up and multiple destination type orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
+Create single Pick Up and multiple destination type orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
-This API can also be used for single picku p and single destinaton.
+This API can also be used for single Pick Up location and single destinaton.
 
 
 #### Request
@@ -3092,10 +3313,10 @@ start_date | Date |  | Conditional Mandatory |  If order_no is not passed in the
 end_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
 status | String | 20 | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | 100 | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
-page_no | Integer | Optional | This parameter lets you specify the page number. It is used to page through the orders. This is optional parameter and default value (if it isn't specified) will be 1. 
-page_size | Integer | Optional |  This parameter lets you specify the count of orders to return in your API call. This is optional parameter and default value (if it isn't specified) will be 50. The maximum accepted value is 100; higher values will be accepted but you will only get 100 records.
-customer_code | String | Optional | This is the Customer Address ID parameter. You can pass one customer Id at a time. The result will be list of all the orders created for the mentioned customer ID
-employee_id | String | Optional | This is the Driver National ID  parameter. You can pass one driver Id at a time. The result will be list of all the orders which were assigned to this Driver ID
+page_no | Integer | | Optional | This parameter lets you specify the page number. It is used to page through the orders. This is optional parameter and default value (if it isn't specified) will be 1. 
+page_size | Integer | |  Optional |  This parameter lets you specify the count of orders to return in your API call. This is optional parameter and default value (if it isn't specified) will be 50. The maximum accepted value is 100; higher values will be accepted but you will only get 100 records.
+customer_code | String | |  Optional | This is the Customer Address ID parameter. You can pass one customer Id at a time. The result will be list of all the orders created for the mentioned customer ID
+employee_id | String | | Optional | This is the Driver National ID  parameter. You can pass one driver Id at a time. The result will be list of all the orders which were assigned to this Driver ID
 
 
 Status | Filter applied on orders
@@ -3509,10 +3730,256 @@ Parameter | DataType | Required | Description
 -----------|-------|------- | ----------
 reference_ids | List  | Mandatory | This is the order reference Id.
 
+### Get EPOD
+
+This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
+
+#### Request
+
+<span class="post">GET</span>`http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+orderstartdt | String |  | Mandatory | Order start date
+orderenddt | String |  | Mandatory | Order end date
+deliverystartdt | String |  | Mandatory | Delivery start date
+deliveryenddt | String |  | Mandatory | Delivery end date
+status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+
+#### Response
+
+Response is a binary zip file.<br>
+In any browser just hit the url and zip file download will start automatically.<br>
+In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
+
+
+## Manifest
+
+### Create / Update
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment
+```
+
+> Request Body
+
+```json
+{
+   "manifestId":"hcgsyuc334",
+   "manifestType":"ORDER",
+   "cancelledOrderAllowedFl": false,
+   "orderReferenceIds":["843d70885de84d20b46279d0d5149758","5e10b5c270ad46a5969b323d48b60c0a"]
+}
+
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Add Orders to manifest success.",
+    "data": {
+        "manifestId": "hcgsyuc334"
+    },
+    "hasError": false
+}
+```
+
+Call this API to create Manifests for your shipments.​ ​The scan status​ ​of your order​ ​will get updated to
+"​Out-scanned"​ ​if the Manifest is created successfully.​
+
+​Pass the LogiNext​ ​Order Reference ID as a parameter to this API.The Order Reference ID is generated when an order is created in the LogiNext system.
+If you do not store the Reference ID for orders,  you will need to fetch the same through the Get Order API.
+
+You can also manifest Cancelled Orders (by turning this flag to "true") in case you have to return (out-scan) the cancelled orders back to the merchant / origin.
+
+This API will do the following when called:<br>
+If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.<br>
+If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.<br>
+If it does not exist, then a new manifest will be created with the provided Manifest ID.
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+manifestId | String | 11 | Optional | Pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If not​ ​passed, LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.
+manifestType | String | 25 | Optional | The default manifestType is 'ORDER'.
+cancelledOrderAllowedFl | String | 1 | Optional | By default the value will be taken as  "false". If you would like to OutScan Cancelled orders, then please pass "true".
+orderReferenceIds | List |  | Mandatory | This is the LogiNext Order Reference ID.
+
+
+
+
+## Trip
+
+
+### Start
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
+```
+
+> Request Body
+
+```json
+[
+    "a9be39b9347911e6829f000d3aa04450",
+    "a9be39b9347911e6829f07657aa04450"
+]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "2 trip(s) started",
+  "data": true,
+  "hasError": false
+}
+
+```
+Start the trip for a delivery medium using this API.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the trip.
+
+### Stop
+
+> Request Body
+
+```json
+[{
+    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
+    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
+    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
+}]
+```
+
+> Response
+
+```json
+{
+  "status": 200,  
+  "message": "Trips ended successfully",
+  "data": true,
+  "hasError": false
+}
+
+```
+Stop the trip for a delivery medium using this API.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|-------|------- | ----------
+tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
+notDispatchedOrders | List  |  | Mandatory | Reference Id associated with the non-dispatched order.
+deliveredOrders | List |  | Mandatory | Reference Id associated with the delivered order.
+
+
+## Tracking
+
+### Track Last Location
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
+```
+
+
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Latest Location found successfully",
+  "data": [
+    {
+      "lat": 19.1119794,
+      "lng": 72.9094968,
+      "shipmentReference": "21b538edf7f047028334480036179c70"
+    },
+    {
+      "lat": 19.0668898,
+      "lng": 72.8320575,
+      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
+    },
+    {
+      "lat": 19.0741246,
+      "lng": 72.824772,
+      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
+    },
+    {
+      "lat": 19.1200864,
+      "lng": 72.9010175,
+      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
+    }
+  ],
+  "hasError": false
+}
+
+```
+Use this to find out last tracked location for any order/ delivery medium.
+
+#### Request
+
+<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
+
+
+### iFrame
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6&key=$2a$08$dfVg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzN5jGVi86k
+```
+
+The iFrame displays the last tracking for an order, including current location, based on the order no.
+
+#### Request
+
+
+<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?ordno=<ordno>&aid=<aid>&key=<key>`
+
+#### Request Parameters
+
+Parameter | Sample Value | Description
+--------- | ------- | -------------
+aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
+key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
+ordno | 1234| Order no
+
 
 ## Mobile
 
-Push data into the LogiNext system through your field application. 
+If you have got your own order fulfillment application, use LogiNext's Mobile APIs to push data directly into LogiNext.
 
 NOTE: These APIs require the Delivery Associate's token. Please view the Authenticate Section of this page for more information on acquiring a Delivery Associate Token.
 
@@ -3723,228 +4190,6 @@ longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was tak
 longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was taken<br>Sample Value - "17.996"
 
 
-
-## Manifest
-
-### Create / Update
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment
-```
-
-> Request Body
-
-```json
-{
-   "manifestId":"hcgsyuc334",
-   "manifestType":"ORDER",
-   "cancelledOrderAllowedFl": false,
-   "orderReferenceIds":["843d70885de84d20b46279d0d5149758","5e10b5c270ad46a5969b323d48b60c0a"]
-}
-
-```
-
-> Response
-
-```json
-{
-    "status": 200,
-    "message": "Add Orders to manifest success.",
-    "data": {
-        "manifestId": "hcgsyuc334"
-    },
-    "hasError": false
-}
-```
-
-Call this API to create Manifests for your shipments.​ ​The scan status​ ​of your order​ ​will get updated to
-"​Out-scanned"​ ​if the Manifest is created successfully.​
-
-​Pass the LogiNext​ ​Order Reference ID as a parameter to this API.The Order Reference ID is generated when an order is created in the LogiNext system.
-If you do not store the Reference ID for orders,  you will need to fetch the same through the Get Order API.
-
-You can also manifest Cancelled Orders (by turning this flag to "true") in case you have to return (out-scan) the cancelled orders back to the merchant / origin.
-
-This API will do the following when called:<br>
-If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.<br>
-If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.<br>
-If it does not exist, then a new manifest will be created with the provided Manifest ID.
-
-
-#### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/scan/manifest/addshipment`
-
-
-#### Request Body
-
-Parameter | DataType | Length |  Required | Description
------------|-------| ------- |------- | ----------
-manifestId | String | 11 | Optional | Pass the Manifest ID as one of the Request parameters​ ​if your system​ ​generates such​ ​ID. If not​ ​passed, LogiNext​ ​will create the Manifest ID. This Manifest ID will also be passed as one of the response parameters. You can store the same for any future reference.
-manifestType | String | 25 | Optional | The default manifestType is 'ORDER'.
-cancelledOrderAllowedFl | String | 1 | Optional | By default the value will be taken as  "false". If you would like to OutScan Cancelled orders, then please pass "true".
-orderReferenceIds | List |  | Mandatory | This is the LogiNext Order Reference ID.
-
-
-
-
-## Trip
-
-
-### Start
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
-```
-
-> Request Body
-
-```json
-[
-    "a9be39b9347911e6829f000d3aa04450",
-    "a9be39b9347911e6829f07657aa04450"
-]
-```
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "2 trip(s) started",
-  "data": true,
-  "hasError": false
-}
-
-```
-Start the trip for a delivery medium using this API.
-
-#### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
-
-#### Request Body
-
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-reference_ids | List | Mandatory | Reference Id associated with the trip.
-
-### Stop
-
-> Request Body
-
-```json
-[{
-    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
-    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
-    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
-}]
-```
-
-> Response
-
-```json
-{
-  "status": 200,  
-  "message": "Trips ended successfully",
-  "data": true,
-  "hasError": false
-}
-
-```
-Stop the trip for a delivery medium using this API.
-
-#### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
-
-#### Request Body
-
-Parameter | DataType | Length |  Required | Description
------------|-------|-------|------- | ----------
-tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  |  | Mandatory | Reference Id associated with the non-dispatched order.
-deliveredOrders | List |  | Mandatory | Reference Id associated with the delivered order.
-
-### Track Last Location
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmentReferences=25a565a9c9d540cd9e6c02fae890cb67,c7afc8b1b97b48468c3417aa425eff81,27121903f4f047bcb378a6457bee2fec,21b538edf7f047028334480036179c70
-```
-
-
-
-> Response
-
-```json
-{
-  "status": 200,
-  "message": "Latest Location found successfully",
-  "data": [
-    {
-      "lat": 19.1119794,
-      "lng": 72.9094968,
-      "shipmentReference": "21b538edf7f047028334480036179c70"
-    },
-    {
-      "lat": 19.0668898,
-      "lng": 72.8320575,
-      "shipmentReference": "25a565a9c9d540cd9e6c02fae890cb67"
-    },
-    {
-      "lat": 19.0741246,
-      "lng": 72.824772,
-      "shipmentReference": "27121903f4f047bcb378a6457bee2fec"
-    },
-    {
-      "lat": 19.1200864,
-      "lng": 72.9010175,
-      "shipmentReference": "c7afc8b1b97b48468c3417aa425eff81"
-    }
-  ],
-  "hasError": false
-}
-
-```
-Use this to find out last tracked location for any order/ delivery medium.
-
-#### Request
-
-<span class="post">GET</span>`https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation`
-
-## Tracking
-
-### iFrame
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6&key=$2a$08$dfVg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzN5jGVi86k
-```
-
-The iFrame displays the last tracking for an order, including current location, based on the order no.
-
-#### Request
-
-
-<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?ordno=<ordno>&aid=<aid>&key=<key>`
-
-#### Request Parameters
-
-Parameter | Sample Value | Description
---------- | ------- | -------------
-aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
-key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
-ordno | 1234| Order no
-
-
-
 ## Route Planning
 
 > Definition
@@ -4080,32 +4325,6 @@ city | String | Optional | This is the address city.
 country | String | Optional | This is the address country.
 state | String |Optional | This is the address state.
 pincode | String | Mandatory | This is the address pincode.
-
-
-
-## Download EPOD
-
-This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
-
-#### Request
-
-<span class="post">GET</span>`http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
-
-#### Request Parameters
-
-Parameter | DataType | Length |  Required | Description
------------|-------|------- |------- | ----------
-orderstartdt | String |  | Mandatory | Order start date
-orderenddt | String |  | Mandatory | Order end date
-deliverystartdt | String |  | Mandatory | Delivery start date
-deliveryenddt | String |  | Mandatory | Delivery end date
-status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
-
-#### Response
-
-Response is a binary zip file.<br>
-In any browser just hit the url and zip file download will start automatically.<br>
-In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
 
 
 
@@ -4534,6 +4753,58 @@ checkInLocation | String | 32 | Mandatory | This will be 'PICKUP' in case of the
 checkinLatitude | Double | 15 | Optional | The geolocation coordinate (latitude) of the checkinLocation.
 checkinLongitude | Double | 15 | Optional | The geolocation coordinate (longitude) of the checkinLocation.
 checkinTime | Date | | Mandatory | This is the timestamp of the check in event. Input is expected in UTC format
+
+
+### Check In
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
+```
+
+> Request Body
+
+```json
+{
+  "orderReferenceIds":["6b106144208243ffb4b8c4114fd44f123d"],
+  "checkInLocation":"PICKUP",
+  "checkinLatitude":"12.11",
+  "checkinLongitude":"78.11223",
+  "checkInTime":"2018-02-08T09:30:00Z"
+}
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Check in marked successfully",
+    "hasError": false
+}
+
+```
+
+With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.
+
+Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Medium Authenticate API.
+
+#### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin`
+
+#### Request Body
+
+Parameter | DataType | Length | Required | Description
+-----------|-------|------- | ----|----------
+orderReferenceId | List | 32 | Mandatory | This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order's Reference ID.
+checkInLocation | String | 100 | Mandatory | This can be "PICKUP" or "DELIVER".
+checkinLatitude | Double | 100 | Optional | Geocoordinate(Latitude) for the Check In location.
+checkinLongitude | Double | 100 | Optional | Geocoordinate(Longitude) for the Check In location.
+checkInTime | Date | 100 | Mandatory | Check In Time in UTC format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 
 
 ### ESIGN / EPOD Upload
@@ -6193,78 +6464,28 @@ Maluku Utara|MU
 Kepulauan Riau|KR
 Kepulauan Bangka Belitung|BB
 
-## Order Status 
+# Postal Codes
 
-Status| Description
-Not Dispatch | The Order has not been .
-In Transit | The Order is currently being serviced.
-Picked Up | The Order has been collected from the Pick Up location.
-Not Picked Up| The Order has not been collected from the Pick Up location.
-Delivered | The Order has been serived and has reached the Destination location.
-Not Delivered | The Order was not Delivered at the Destination location. This could be because the customer was not there, or 
-Return | The Order does not need to be sent to the destination location, and has been assigned to be returned to the Pick Up location.
-Cancelled | The Order does not require to be serviced.
+If you are looking for a postal code/zip code list for your country, please reach out to your Account Manager to get it configured, or write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
 
+# Delivery Associate Status
 
-### Order Status Matrix
+The current Status of your Delivery Associate. The Status can be updated by calling the Update Status API for the Delivery Associate.
 
-Pick Up Orders
+Status | Code | Description
+--------- | --------- | -------------
+Active | ACTIVE | A Delivery Associate that is Active will be assigned Orders and can Sign In to their TrackNext account. 
+Inactive | INACTIVE | A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their TrackNext account.
+On Break | ONBREAK | The Delivery Associate is not currently fulfilling Orders. New Orders cannot be assigned to an On Break Delivery associate. Only Active Delivery Associates can be On Break.
+Off Break | OFFBREAK | Delivery Associate is back from Break and ready to fulfill Orders. Only Active Delivery Associates can be On Break.
 
-Current Status | New Status | Allowed | Comments
-Not Dispatched | In Transit | Y | 
-Not Dispatched | Picked Up | Y | 
-Not Dispatched | Not Picked Up | Y | 
-Not Dispatched | Delivered | N | 
-Not Dispatched | Not Delivered | N | 
-Not Dispatched | Cancelled | Y |
-Not Dispatched | Return | N | 
-
-In Transit | Not Dispatched | N |
-In Transit | Picked Up | Y |
-In Transit | Not Picked Up | Y |
-In Transit | Delivered | Y |
-In Transit | Not Delivered | Y |
-In Transit | Cancelled | Y |
-In Transit | Return | N |
-
-Completed | RTM | Y | 
-
-
-Deliver Orders
-Current Status | New Status | Allowed | Comments
-Not Dispatched | In Transit | Y | 
-Not Dispatched | Picked Up | Y | 
-Not Dispatched | Not Picked Up | Y | 
-Not Dispatched | Delivered | N | 
-Not Dispatched | Not Delivered | N | 
-Not Dispatched | Cancelled | Y | 
-
-In Transit | Not Dispatched | N |
-In Transit | Picked Up | Y |
-In Transit | Not Picked Up | Y |
-In Transit | Delivered | Y | only if picked up
-In Transit | Not Delivered | Y | only if picked up
-In Transit | Cancelled | Y | 
-In Transit | Return | N |
-
-Completed | Return | Y | 
-
-## Delivery Associate Statuses
+# Trip Status
 
 Status | Description
-Active | The Delivery associate is on duty and active 
-Inactive | The Delivery Associate is inactive
-Available | The Delivery Associate is on duty and ready to be assigned Orders and/or Trips. Only Active Delivery Associates can be Available.
-Busy | The Delivery Associate is currently fulfilling Orders. Only Active Delivery Associates can be Available.
-On Break | The Delivery Associate is not currently fulfilling Orders. New Orders cannot be assigned to an On Break Delivery associate. Only Active Delivery Associates can be On Break.
-Off Break | Delivery Associate is back from Break and ready to fulfill Orders. Only Active Delivery Associates can be On Break.
-
-## Trip Statuses
-
-Status | Description
-Not Started | Created in the system but the orders have not been dispatched.
+---------|------------
+Not Started | The Trip has been created in the LogiNext system, but the Delivery Associate has not started the Pick-up and Delivery of Orders.
 In Transit | The Orders associated with the Trip are currently being serviced.
-Ended | The Orders associated with the Trip have been serviced, and their status has been updated.
+Ended | The Orders associated with the Trip have been serviced, and their statuses have been updated.
 
 <style>
 .sup{
