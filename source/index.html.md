@@ -4956,7 +4956,7 @@ orderReferenceId | String | Order reference id.
 	"shipmentNotes": "PickedUp",
 	"assignmentMethod": "MANUAL",
 	"calculatedStartDt": "2017-08-18 12:53:00",
-	"calculatedEndDt": "2017-08-17 02:52:00",
+	"calculatedEndDt": "2017-08-17 02:52:00"
 }
 ```
 
