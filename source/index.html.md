@@ -2309,7 +2309,7 @@ Address.city | String | 512 | Mandatory | This is name of the city in which your
 Address.stateShortCode | String | 11 | Mandatory | This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
 Address.countryShortCode | String | 11 | Mandatory | This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.
 Address.pincode | String | 20 | Mandatory | This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
-division | String | 255 | Mandatory | Ex. ADIV
+division | String | 255 | Optional | Ex. ADIV
 isOwnBranchFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to N
 isHubFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to Y
 geoFenceRadius | String | 255 | Optional | This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs
@@ -2966,79 +2966,70 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
 > Request Body
 
 ```json
-{
-  "parentOrderNo": "GR184T3",
-  "awbNumber": "435-16685332",
-  "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+[{
+  "parentOrderNo":"DN987679",
+  "awbNumber": "VC7",
+  "shipmentOrderDt": "2018-01-10T10:00:00.000Z",
   "autoAllocateFl": "Y",
   "shipmentOrderTypeCd": "DELIVER",
   "orderState": "FORWARD",
-  "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
-  "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
-  "deliveryType": "Groceries",
-  "shipmentBranch": "Upper Manhattan",
+  "shipmentBranch": "East Manhattan",
   "returnAllowedFl": "Y",
   "cancellationAllowedFl": "N",
-  "returnBranch": "New York",
+  "returnBranch": "East Manhattan",
   "pickupNotes": "PickedUp",
-  "optimiseOrderSequenceFl": "Y",
-  "backToOrigin": "Y",
-  "orders": [
+  "optimiseOrderSequenceFl":"N",
+  "backToOriginFl": "N",
+  "endTimeWindow": "2018-01-17T09:20:00.000Z",
+  "startTimeWindow": "2018-01-17T06:30:00.000Z",
+  "destinations": [
     {
-      "orderNo": "FT987D5123",
-      "deliverySequence": 1,      
+      "orderNo": "DNC987679" ,
       "packageWeight": "10",
-      "packageVolume": "4500",
+      "packageVolume": "450",
       "paymentType": "Prepaid",
-      "packageValue": "5000",
+      "deliverServiceTime": "10",
+      "packageValue": "100",
       "numberOfItems": "1",
-      "deliverServiceTime": "20",
-      "deliveryLocationType": "PUP",
       "partialDeliveryAllowedFl": "Y",
-      "deliverAccountCode": "Matt001",
-      "deliverAccountName": "Mathew Richardson",
-      "deliverEmail": "m.richardson@testmail.com",
-      "deliverPhoneNumber":"3125096995",
-      "deliverApartment": "201",
-      "deliverStreetName": "E Randolph St",
-      "deliverLandmark": "Opp. Chiptole",
-      "deliverLocality": "Down Towm Chicago",
-      "deliverCity": "Chicago",
-      "deliverState": "IL",
+      "deliveryLocationType": "Groceries",
+      "deliverAccountCode": "LO0981",
+      "deliverAccountName": "Dest User 1",
+      "deliverEmail": "james.w@ablogs.com",
+      "deliverPhoneNumber": "5163063377",
+      "deliverApartment": "901",
+      "deliverStreetName": "2142 3rd Ave",
+      "deliverLandmark": "Opp. McDonalds",
+      "deliverLocality": "Downtown Manhattan",
+      "deliverCity": "New York",
+      "deliverState": "NY",
       "deliverCountry": "USA",
-      "deliverPinCode": "60602",
-      "deliverLatitude":41.882702,
-      "deliverLongitude":-87.619392,
+      "deliverPinCode": "10035",
+      "deliverLatitude": 40.760838,
+      "deliverLongitude": -73.96732299999996,
       "deliverNotes": "Delivered",
       "shipmentCrateMappings": [
         {
-          "crateCd": "CR0122",
+          "crateCd": "CRATE001",
           "crateAmount": 100.65,
           "crateType": "case",
-          "noOfUnits": 2,
+          "noOfUnits": 1,
           "shipmentlineitems": [
             {
-              "itemCd": "IT043",
-              "itemName": "Chicken Soup 2X200gm",
-              "itemPrice": 500,
-              "itemQuantity": 3,
-              "itemType": "soup",
-              "itemWeight": 10
-            },
-            {
-              "itemCd": "IT030",
-              "itemName": "WholeBeanCoffee 6x1kg",
-              "itemPrice": 400,
-              "itemQuantity": 1,
-              "itemType": "coffee",
-              "itemWeight": 10
-            }
-          ]
+            "itemCd": "1_120000256",
+            "itemName": "Bourbon 2x400gm",
+            "itemPrice": 12,
+            "itemQuantity": 12,
+            "itemType": "Biscuit",
+            "itemWeight": 50
+          }
+        ]
         }
       ]
-    }  
-  ]
+    }
+]
 }
+]
 
 ```
 
@@ -3069,6 +3060,7 @@ This API can also be used for single Pick Up location and single destinaton.
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------| ------- |------- | ----------
+clientCode | String |255 | Optional | The account for which the Order is being created.
 parentOrderNo | String | 255 | Mandatory | This is the Order No.
 awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderDt | String | | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
@@ -3085,7 +3077,7 @@ pickupNotes| String | 100 | Optional | You can enter instructions (if any) for t
 autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y", if - If you add any order which needs to be allocated automatically to the logged-in Delivery Medium.<br>Pass this Flag as "N", if - If you add any order which you want to allocate manually to the Delivery Medium OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Mediums.
 optimiseOrderSequenceFl| String | 1 | Mandatory | This flag is to be used only if you have Multi- Destination Orders.<br>If you set this Flag as "N", system would plan the Delivery routes by keeping the sequence of the Orders same as what you have supplied.<br>If you set this Flag as "Y", system would optimize the route and re-arrange the sequence in which Order needs to be delivered.
 backToOrigin| String | 1 | Mandatory | If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as "Y" else set this flag as "N"
-orders| List | | Mandatory | Array - This is the list of orders and its information.
+destinations| List | | Mandatory | Array - This is the list of orders and its information.
 orders.orderNo| String | 255 | Conditional Mandatory | This is the Order No.<br>In case of Single Destination, this Order No. is same as the Parent Order No. It is mandatory.<br>In case of Multi -Destination, this Order No. should not be same as the Parent Order No.<br>In this case, it is order no. for each destination.<br>If you do not have a separate order for each destination, you can leave it blank.<br>LogiNext will generate Order No. with the format - Parent_Order_No_1, Parent_Order_No_2, etc.
 orders.deliverySequence| String | 1 | Mandatory | In case of Single Destination, this is to be "1" always.<br>In case of Multi-destination, this is the sequence that you want the order to be delivered in.
 orders.packageWeight| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Medium. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.
