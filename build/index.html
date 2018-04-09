@@ -2932,6 +2932,109 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h3 id="create-tracking-record-bulk">Create Tracking Record (Bulk)</h3>
+
+<blockquote>
+<p>Create Tracking Record - Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"trackerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358899056518932"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9003884</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.9889999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T07:21:56Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"messageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.5</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"trackerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4209917397"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9003884</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.9889999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T07:21:56Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"messageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REG"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint adds tracking record.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/haul/v1/tracking/put</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trackerId</td>
+<td>String</td>
+<td>12</td>
+<td>Mandatory</td>
+<td>Device&rsquo;s unique ID</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>13,10</td>
+<td>Mandatory</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>13,10</td>
+<td>Mandatory</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Tracking time in UTC. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>batteryPerc</td>
+<td>Double</td>
+<td>5,2</td>
+<td>Mandatory</td>
+<td>Battery Percentage of device</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>Double</td>
+<td>5,2</td>
+<td>Optional</td>
+<td>Speed with which consignment is moving</td>
+</tr>
+<tr>
+<td>messageType</td>
+<td>String</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>Message type. Ex: REG</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td>Double</td>
+<td>5,2</td>
+<td>Optional</td>
+<td>Consignment&rsquo;s temperature</td>
+</tr>
+</tbody></table>
+
 <h3 id="get-tracker-list">Get Tracker (List)</h3>
 
 <blockquote>
@@ -3272,48 +3375,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastmile"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63865471261"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789012645"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@ablogistics.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Boy"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ABC234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Monday"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+</span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"ALL123469"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser_LMDemo"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">9892147969</span><span class="p">,</span><span class="w">
+</span><span class="nt">"imei"</span><span class="p">:</span><span class="mi">123456789012123</span><span class="p">,</span><span class="w">
+</span><span class="nt">"emailId"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
 
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
 
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T14:30:00Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400001"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="s2">"Delivery Associate"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T14:30:00Z"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"Monday"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"variableCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isPresentFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Ney York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"PERMANENT"</span><span class="w"> 
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w"> 
+</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"MUMNew YorkBAI"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"CURRENT"</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">],</span><span class="w">
+</span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="s2">"Single"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"alternateMobileNo"</span><span class="p">:</span><span class="mi">9892134489</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landlineNo"</span><span class="p">:</span><span class="mi">28215678</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseValidityInYears"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseIssuanceDate"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenceNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -3441,7 +3573,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 <tr>
 <td>gender</td>
-<td>String</td>
+<td>ISODate</td>
 <td>12</td>
 <td>Optional</td>
 <td>Gender. Ex - Male,Female</td>
@@ -3497,14 +3629,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 <tr>
 <td>shiftList.shiftStartTime</td>
-<td>String</td>
+<td>UTC Date</td>
 <td></td>
 <td>Optional</td>
 <td>Shift start time</td>
 </tr>
 <tr>
 <td>shiftList.shiftEndTime</td>
-<td>String</td>
+<td>UTC</td>
 <td></td>
 <td>Optional</td>
 <td>Shift end time</td>
@@ -3515,6 +3647,104 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>255</td>
 <td>Optional</td>
 <td>Preferred Pincode of Delivery associate</td>
+</tr>
+<tr>
+<td>addressList</td>
+<td>List</td>
+<td></td>
+<td>Holds the address details of the Delivery Associate.</td>
+<td></td>
+</tr>
+<tr>
+<td>addressList.apartment</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s Apartment number.</td>
+</tr>
+<tr>
+<td>addressList.streetName</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s Street Name.</td>
+</tr>
+<tr>
+<td>addressList.landmark</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s landmark.</td>
+</tr>
+<tr>
+<td>addressList.countryShortCode</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>This is the  Delivery Associate&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>addressList.city</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s city.</td>
+</tr>
+<tr>
+<td>addressList.pincode</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s pincode.</td>
+</tr>
+<tr>
+<td>addressList.addressType</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Identifies if this is the current or permanent address of the Delivery Associate. If set to &ldquo;CURRENT&rdquo;, it will select the entered address as current. If &ldquo;PERMANENT&rdquo;, it will set the entered address as permanent. This field does not accept any other value. You must send this field if adding an address for the Delivery Associate.</td>
+</tr>
+<tr>
+<td>maritalStatus</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Delivery Associate&rsquo;s Marital Status.</td>
+</tr>
+<tr>
+<td>alternateMobileNo</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Alternate Mobile NUmber of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>landlineNo</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>Landline Number of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td>Optional</td>
+<td>String</td>
+<td>255</td>
+</tr>
+<tr>
+<td>licenseValidityInYears</td>
+<td>Optional</td>
+<td>String</td>
+<td>255</td>
+<td>License Validity in years.</td>
+</tr>
+<tr>
+<td>licenseIssuanceDate</td>
+<td>String</td>
+<td>Optional</td>
+<td>255</td>
+<td>License Issuance Date.</td>
 </tr>
 </tbody></table>
 
@@ -3762,7 +3992,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>division</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Ex. ADIV</td>
 </tr>
 <tr>
@@ -5508,79 +5738,70 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Th
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR184T3"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685332"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"DN987679"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VC7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T10:00:00.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"shipmentBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upper Manhattan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Manhattan"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Manhattan"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"optimiseOrderSequenceFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"backToOrigin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"optimiseOrderSequenceFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"backToOriginFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-17T09:20:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-17T06:30:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FT987D5123"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverySequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">      
+      </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNC987679"</span><span class="w"> </span><span class="p">,</span><span class="w">
       </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LO0981"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dest User 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Downtown Manhattan"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR0122"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRATE001"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.65</span><span class="p">,</span><span class="w">
           </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicken Soup 2X200gm"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"soup"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT030"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WholeBeanCoffee 6x1kg"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coffee"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_120000256"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bourbon 2x400gm"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Biscuit"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">  
-  </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 
 </span></code></pre>
 
@@ -5616,6 +5837,13 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Th
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>The account for which the Order is being created.</td>
+</tr>
 <tr>
 <td>parentOrderNo</td>
 <td>String</td>
@@ -5669,8 +5897,8 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Th
 <td>deliveryType</td>
 <td>String</td>
 <td>40</td>
-<td>Mandatory</td>
-<td>This Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+<td>Optional</td>
+<td>This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
 </tr>
 <tr>
 <td>shipmentBranch</td>
@@ -5729,7 +5957,7 @@ shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Th
 <td>If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as &ldquo;Y&rdquo; else set this flag as &ldquo;N&rdquo;</td>
 </tr>
 <tr>
-<td>orders</td>
+<td>destinations</td>
 <td>List</td>
 <td></td>
 <td>Mandatory</td>
@@ -9424,7 +9652,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"assignmentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 12:53:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:52:00"</span><span class="p">,</span><span class="w">
-</span><span class="err">}</span><span class="w">
+  </span><span class="nt">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This notification is sent when an order is updated.</p>
@@ -9570,6 +9799,11 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>calculatedEndDt</td>
 <td>String</td>
 <td>Calculated end date</td>
+</tr>
+<tr>
+<td>orderStatus</td>
+<td>String</td>
+<td>The current state of the Order.</td>
 </tr>
 </tbody></table>
 
