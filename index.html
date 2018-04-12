@@ -3748,6 +3748,393 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+ </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"f0094fd13acc4d76827898bddc2ce0e3"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"ALL123469"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser_LMDemo"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">9892147969</span><span class="p">,</span><span class="w">
+</span><span class="nt">"imei"</span><span class="p">:</span><span class="mi">123456789012123</span><span class="p">,</span><span class="w">
+</span><span class="nt">"emailId"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
+
+     </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
+
+     </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="s2">"Delivery Associate"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T14:30:00Z"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"Monday"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"variableCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"isPresentFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"PERMANENT"</span><span class="w"> 
+</span><span class="p">},</span><span class="w">
+</span><span class="p">{</span><span class="w"> 
+</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"CURRENT"</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">],</span><span class="w">
+</span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="s2">"Single"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"alternateMobileNo"</span><span class="p">:</span><span class="mi">9892134489</span><span class="p">,</span><span class="w">
+</span><span class="nt">"landlineNo"</span><span class="p">:</span><span class="mi">28215678</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseValidityInYears"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseIssuanceDate"</span><span class="p">:</span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenceNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Update the details of a Delivery Associate in the LogiNext system with this API. </p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>50</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID of the Delivery Associate to be updated.</td>
+</tr>
+<tr>
+<td>employeeId</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s employee Id.</td>
+</tr>
+<tr>
+<td>userGroupName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s user group name.</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s client branch name.</td>
+</tr>
+<tr>
+<td>deliveryMediumMasterName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Full name of Delivery associate.</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s mobile number.</td>
+</tr>
+<tr>
+<td>imei</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s IMEI number.</td>
+</tr>
+<tr>
+<td>emailId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s email ID.</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s username.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the delivery associate&rsquo;s password.</td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Capacity of Delivery associate in units</td>
+</tr>
+<tr>
+<td>capacityInVolume</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Capacity of Delivery associate in volume</td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Capacity of Delivery associate in weight</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Date of birth.This field accepts values in UTC format.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>ISODate</td>
+<td>12</td>
+<td>Optional</td>
+<td>Gender. Ex - Male,Female</td>
+</tr>
+<tr>
+<td>deliveryMediumMasterTypeCd</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery associate type. Ex - Truck, Delivery Boy</td>
+</tr>
+<tr>
+<td>isOwnVehicleFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>Owner of vehicle. Ex - Owned, Company</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Vehicle number to be assigned to the delivery associate</td>
+</tr>
+<tr>
+<td>weeklyOffList</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Array of week&rsquo;s off days. Ex - Monday, Tuesday etc.</td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Max. allowed distance</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>License validity date. This field accepts values in UTC format.</td>
+</tr>
+<tr>
+<td>deliveryMediumMapList.name</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of language</td>
+</tr>
+<tr>
+<td>shiftList.shiftStartTime</td>
+<td>UTC Date</td>
+<td></td>
+<td>Optional</td>
+<td>Shift start time</td>
+</tr>
+<tr>
+<td>shiftList.shiftEndTime</td>
+<td>UTC Date</td>
+<td></td>
+<td>Optional</td>
+<td>Shift end time</td>
+</tr>
+<tr>
+<td>dmPreference</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Preferred Pincode of Delivery associate</td>
+</tr>
+<tr>
+<td>addressList</td>
+<td>List</td>
+<td></td>
+<td></td>
+<td>Holds the address details of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>addressList.apartment</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s Apartment number.</td>
+</tr>
+<tr>
+<td>addressList.streetName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s Street Name.</td>
+</tr>
+<tr>
+<td>addressList.landmark</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s landmark.</td>
+</tr>
+<tr>
+<td>addressList.countryShortCode</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the  Delivery Associate&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>addressList.city</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s city.</td>
+</tr>
+<tr>
+<td>addressList.pincode</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s pincode.</td>
+</tr>
+<tr>
+<td>addressList.addressType</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Identifies if this is the current or permanent address of the Delivery Associate. If set to &ldquo;CURRENT&rdquo;, it will select the entered address as current. If &ldquo;PERMANENT&rdquo;, it will set the entered address as permanent. This field does not accept any other value. You must send this field if adding an address for the Delivery Associate.</td>
+</tr>
+<tr>
+<td>maritalStatus</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Associate&rsquo;s Marital Status.</td>
+</tr>
+<tr>
+<td>alternateMobileNo</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Alternate Mobile NUmber of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>landlineNo</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Landline Number of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the expiry Date of the Driver&rsquo;s License in UTC format.</td>
+</tr>
+<tr>
+<td>licenseValidityInYears</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>License Validity in years.</td>
+</tr>
+<tr>
+<td>licenseIssuanceDate</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>License Issuance Date. This field accepts values in UTC format.</td>
+</tr>
+</tbody></table>
+
 <h3 id="update-status">Update Status</h3>
 
 <blockquote>
