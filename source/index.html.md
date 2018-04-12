@@ -2180,6 +2180,153 @@ licenseValidityInYears | Optional | String | 255 | License Validity in years.
 licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
 
 
+### Update
+
+> Sample Request
+
+```json
+[
+ {
+ "referenceId":"f0094fd13acc4d76827898bddc2ce0e3",
+"employeeId":"ALL123469",
+"branchName":"LMDCalifornia",
+"userGroupName":"MobileUser_LMDemo",
+"deliveryMediumMasterName":"James",
+"phoneNumber":9892147969,
+"imei":123456789012123,
+"emailId":"test@test.com",
+"userName":"james003",
+"password":"admin",
+"capacityInUnits":10,
+"capacityInVolume":10,
+"capacityInWeight":10,
+"dob":"2018-104-01T13:30:00Z",
+"deliveryMediumMapList": [
+     {
+       "name": "SPANISH"
+
+     },
+     {
+       "name": "ENGLISH"
+
+     }
+   ],
+"gender":"Male",
+"deliveryMediumMasterTypeCd":"Delivery Associate",
+"isOwnVehicleFl":"Company",
+"vehicleNumber":"1AB54F",
+"dmPreference":"10035",
+"shiftList": [
+     {
+       "shiftStartTime": "2018-104-01T13:30:00Z",
+       "shiftEndTime": "2018-04-01T14:30:00Z"
+     }
+   ],
+"weeklyOffList": [
+     "Thursday",
+     "Monday"
+   ],
+"maxDistance":10,
+"licenseValidity":"2018-104-01T13:30:00Z",
+"fixedCost":10,
+"variableCost":10,
+"isPresentFl":"Y",
+"addressList": [ { 
+"apartment":"901",
+"streetName":"2142 3rd Ave",
+"landmark":"Opp. McDonalds",
+"countryShortCode":"USA",
+"city":"New York",
+"pincode":"10035",
+"addressType":"PERMANENT" 
+},
+{ 
+"apartment":"901",
+"streetName":"2142 3rd Ave",
+"landmark":"Opp McDonalds",
+"countryShortCode":"USA",
+"city":"New York",
+"pincode":"10035",
+"addressType":"CURRENT" 
+}
+
+],
+"maritalStatus":"Single",
+"alternateMobileNo":9892134489,
+"landlineNo":28215678,
+"licenseValidityInYears":10,
+"licenseIssuanceDate":"2018-104-01T13:30:00Z",
+"licenceNumber":2123123123
+}
+]
+```
+
+> Sample Response
+
+```json
+{
+  "status": 201,
+  "message": "success",
+  "data": [
+    "d7b0f3f8e1174742bd6a8ae451866cb1"
+  ],
+  "hasError": false
+}
+
+```
+
+Update the details of a Delivery Associate in the LogiNext system with this API. 
+
+#### Request
+
+<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+referenceId | String | 50 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
+employeeId | String | 50 | Optional | This is the delivery associate's employee Id.
+userGroupName | String | 255 | Optional | This is the delivery associate's user group name.
+branchName | String | 255 | Optional | This is the delivery associate's client branch name.
+deliveryMediumMasterName | String | 255 | Optional | Full name of Delivery associate.
+phoneNumber | String | 255 | Optional | This is the delivery associate's mobile number.
+imei | String | 40 | Optional | This is the delivery associate's IMEI number.
+emailId | String | 100 | Optional | This is the delivery associate's email ID.
+userName | String | 255 | Optional | This is the delivery associate's username.
+password | String | 255 | Optional | This is the delivery associate's password.
+capacityInUnits | Integer | 20 | Optional | Capacity of Delivery associate in units
+capacityInVolume | Integer | 20 | Optional | Capacity of Delivery associate in volume
+capacityInWeight | Integer | 20 |Optional | Capacity of Delivery associate in weight
+dob | String |  | Optional | Date of birth.This field accepts values in UTC format.
+gender | ISODate | 12 |Optional | Gender. Ex - Male,Female
+deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. Ex - Truck, Delivery Boy
+isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
+vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery associate
+weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
+maxDistance | Integer | 20 |Optional | Max. allowed distance
+licenseValidity | String |  | Optional | License validity date. This field accepts values in UTC format.
+deliveryMediumMapList.name | String | 255 | Optional | Name of language
+shiftList.shiftStartTime  | UTC Date |  |Optional | Shift start time
+shiftList.shiftEndTime  | UTC Date|  |Optional | Shift end time
+dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
+addressList | List | | | Holds the address details of the Delivery Associate.
+addressList.apartment | String | 255 | Optional | Delivery Associate's Apartment number.
+addressList.streetName | String | 255 | Optional | Delivery Associate's Street Name.
+addressList.landmark | String | 255 | Optional | Delivery Associate's landmark.
+addressList.countryShortCode | String | 255 | Optional | This is the  Delivery Associate's country code. Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.city | String | 255 | Optional | Delivery Associate's city.
+addressList.pincode | String | 255 | Optional | Delivery Associate's pincode.
+addressList.addressType | String | 255 | Optional | Identifies if this is the current or permanent address of the Delivery Associate. If set to "CURRENT", it will select the entered address as current. If "PERMANENT", it will set the entered address as permanent. This field does not accept any other value. You must send this field if adding an address for the Delivery Associate.
+maritalStatus | String | 255 | Optional | Delivery Associate's Marital Status.
+alternateMobileNo | String | 255 | Optional | Alternate Mobile NUmber of the Delivery Associate.
+landlineNo | String | 255 | Optional | Landline Number of the Delivery Associate.
+licenseValidity | String | 255 | Optional | This is the expiry Date of the Driver's License in UTC format.
+licenseValidityInYears | String | 255 | Optional | License Validity in years.
+licenseIssuanceDate |String | 255 | Optional | License Issuance Date. This field accepts values in UTC format.
+
+
 
 ### Update Status
 
