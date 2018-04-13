@@ -2133,7 +2133,7 @@ Create a new Delivery Associate in the LogiNext system with this API. A delivery
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create`
 
 
 #### Request Parameters
@@ -2279,7 +2279,7 @@ Update the details of a Delivery Associate in the LogiNext system with this API.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update`
+<span class="post">POST</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update`
 
 
 #### Request Parameters
@@ -3090,7 +3090,6 @@ deliverNotes | String | 512 | Optional | Additional delivery comments associated
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-
 shipmentCrateMappings | Array of objects |  | Optional | These are the order crates.
 shipmentCrateMappings.crateCd | String | 128 | Mandatory | This is the crate code for a crate.
 shipmentCrateMappings.crateAmount | Double |  | Mandatory | This is the crate amount for a crate.

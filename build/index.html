@@ -3467,7 +3467,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -3847,7 +3847,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -6100,19 +6100,84 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>These are the order crates.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>This is the crate code for a crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the crate amount for a crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>Crate type.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>This is the Number of items in the crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>This is the crate item code.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the crate item name.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the crate item price.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>This is the crate item quantity.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This is the crate item type.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is the crate item weight.</td>
+</tr>
 </tbody></table>
-
-<p>shipmentCrateMappings | Array of objects |  | Optional | These are the order crates.
-shipmentCrateMappings.crateCd | String | 128 | Mandatory | This is the crate code for a crate.
-shipmentCrateMappings.crateAmount | Double |  | Mandatory | This is the crate amount for a crate.
-shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type.
-shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | This is the Number of items in the crate.
-shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | This is the crate item code.
-shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | This is the crate item name.
-shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This is the crate item price.
-shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
-shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
-shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.</p>
 
 <h3 id="create-order-multi-stop">Create Order Multi Stop</h3>
 
