@@ -2640,7 +2640,7 @@ deliveryType | String | 40 | Optional | In certain operations, there are differe
 deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.
-pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager
+pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z
 distributionCenter |
@@ -3217,20 +3217,20 @@ shipmentOrderTypeCd| String | 10 | Mandatory | The value in this field has to be
 orderState| String | 10 | Mandatory | If an order is a Forward way (Delivery to the Customer), then value here should be "FORWARD"<br>If an order is a Retrun way (Return from the Customer), then value here should be "REVERSE"
 deliverStartTimeWindow| String | | Mandatory | This is the start date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z<br><br>If the you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up start Date and Time is also taken as the  same.<br>If the you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
 deliverEndTimeWindow| String | | Mandatory | This is the end date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Delivery Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"<br><br>If you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up end Date and Time is also taken as the  same.<br>If you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
-deliveryType| String | 40 | Optional | This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
-shipmentBranch| String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Medium will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager
+deliveryType| String | 40 | Optional | This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
+shipmentBranch| String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Associate will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager
 returnAllowedFl| String | 1 | Optional | If your Business process allows the customer to return the orders back to you, then you will have to mark this Flag as  "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to create a return request for an order.<br>If you mark this flag as "N", LogiNext system will not allow you to create a return request referencing to this order.<br><br>You will always have any option to create a new order all-together for Returns by passing "REVERSE" in the "orderState" field.<br>If you have not set this Flag, it will be defaulted to "N"
 cancellationAllowedFl| String | 1 | Optional | If your Business process allows the customer to cancel the orders before it is delivered to their doorstep, then you will have to mark this Flag as "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to cancel an order.<br>If you mark this flag as "N", LogiNext system will not allow you to cancel an order.<br><br>If you have not set this Flag, it will be defaulted to "N"
-returnBranch| String | 255 | Conditional Mandatory | If the "returnAllowedFl" is marked as "Y", then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will return the orders to. This is generally the Merchant's / Seller's Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Medium will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+returnBranch| String | 255 | Conditional Mandatory | If the "returnAllowedFl" is marked as "Y", then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will return the orders to. This is generally the Merchant's / Seller's Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Associate will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupNotes| String | 100 | Optional | You can enter instructions (if any) for the Delivery Associate while picking-up the order.
-autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y", if - If you add any order which needs to be allocated automatically to the logged-in Delivery Medium.<br>Pass this Flag as "N", if - If you add any order which you want to allocate manually to the Delivery Medium OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Mediums.
+autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y", if - If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as "N", if - If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.
 optimiseOrderSequenceFl| String | 1 | Mandatory | This flag is to be used only if you have Multi- Destination Orders.<br>If you set this Flag as "N", system would plan the Delivery routes by keeping the sequence of the Orders same as what you have supplied.<br>If you set this Flag as "Y", system would optimize the route and re-arrange the sequence in which Order needs to be delivered.
-backToOrigin| String | 1 | Mandatory | If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as "Y" else set this flag as "N"
+backToOrigin| String | 1 | Mandatory | If you want the Pick-up Branch from where the Delivery Associate has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as "Y" else set this flag as "N"
 destinations| List | | Mandatory | Array - This is the list of orders and its information.
 orders.orderNo| String | 255 | Conditional Mandatory | This is the Order No.<br>In case of Single Destination, this Order No. is same as the Parent Order No. It is mandatory.<br>In case of Multi -Destination, this Order No. should not be same as the Parent Order No.<br>In this case, it is order no. for each destination.<br>If you do not have a separate order for each destination, you can leave it blank.<br>LogiNext will generate Order No. with the format - Parent_Order_No_1, Parent_Order_No_2, etc.
 orders.deliverySequence| String | 1 | Mandatory | In case of Single Destination, this is to be "1" always.<br>In case of Multi-destination, this is the sequence that you want the order to be delivered in.
-orders.packageWeight| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Medium. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.
-orders.packageVolume| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Medium. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)
+orders.packageWeight| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Associate. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.
+orders.packageVolume| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Associate. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)
 orders.paymentType| String | 10 | Mandatory | If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be "PREPAID".<br>If the customer is going to pay for the order at the doorstep, then the value here should be "COD".<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext TrackNext App., you can raise integration request with your Account Manager.
 orders.packageValue| String | 10 | Conditional Mandatory | If the payment type is "PREPAID", then this can be optional.<br>If the payment type is "COD", then this is mandatory to be passed. This is the total amount that the Delivery Associate has to collect from the Customer.
 orders.numberOfItems| String | 255 | Conditional Mandatory | LogiNext system allows you to set your account as either of three level of Order Hierarchy - <br>1. Only Order - Single parcel, document, shipment.<br>2. Order and Crates - Single Shipment Bag and the items in that Shipment bag.<br>3. Order, Crate and Line Items - Single Shipment bag having multiple crates and each crate having multiple items.<br><br>If your account type is set to pass only orders, then this field is optional. <br>You can pass the no. of items (if any)  to let the delivery associate know as a FYI.<br>But, if your account is configured to have Order &  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Crates.
@@ -3809,6 +3809,13 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates
 
 ```
 Call this API to update the crate and line items information for an order. Note that this can be done until that order is dispatched and not associated with any Trip.
+
+This API can be used to Add new crates and line items, or update existing ones. For eg. If you create an Order with crate A and crate B, and then call this API to to add a new crate C, you only need to pass the information for crate C. Once the API is called with a success response, the Order will now have crates A,B, and C.
+
+Alternatively, if an order has crate A and crate B, and the crate A item needs to be updated, call this API and pass crateCd 'A', and update the properties for the crate.
+
+This API will not delete existing crates.
+
 You can pass multiple crate and line items.
 
 #### Request
@@ -3993,7 +4000,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 }
 
 ```
-Start the trip for a delivery medium using this API.
+Start the trip for a Delivery Associate using this API.
 
 #### Request
 
@@ -4028,7 +4035,7 @@ reference_ids | List | Mandatory | Reference Id associated with the trip.
 }
 
 ```
-Stop the trip for a delivery medium using this API.
+Stop the trip for a Delivery Associate using this API.
 
 #### Request
 
@@ -4087,7 +4094,7 @@ https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmen
 }
 
 ```
-Use this to find out last tracked location for any order/ delivery medium.
+Use this to find out last tracked location for any order/ Delivery Associate.
 
 #### Request
 
@@ -4155,10 +4162,10 @@ http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
 }
 ```
 
-With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+With this API, you can mark the Order as Accepted by the Delivery Associate / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -4208,9 +4215,9 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 
 With this API, the delivery assosicate can check In at the pickup or delivery location
 
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -4259,9 +4266,9 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 
 With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.
 
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Associate's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -4396,11 +4403,11 @@ Parameter | DataType | Length |  Required | Description
 routeName | String | 150 | Mandatory | Route name
 startLocation.latitude | Double | 20 | Mandatory | Latitude of start location
 startLocation.longitude | Double | 20 | Mandatory | Longitude of start location
-vehicles | List |  | Mandatory | List of delivery medium
-vehicles.name | String | 255 | Mandatory | Delivery medium name
-vehicles.capacity.weight | Integer | 20 | Optional | Capacity of delivery medium
-vehicles.capacity.volume | Integer | 20 | Optional | Volume of delivery medium
-vehicles.type | List |  | Optional | Type of delivery medium
+vehicles | List |  | Mandatory | List of Delivery Associate
+vehicles.name | String | 255 | Mandatory | Delivery Associate name
+vehicles.capacity.weight | Integer | 20 | Optional | Capacity of Delivery Associate
+vehicles.capacity.volume | Integer | 20 | Optional | Volume of Delivery Associate
+vehicles.type | List |  | Optional | Type of Delivery Associate
 shipments | List |  | Mandatory | List of orders
 shipments.name | String | 100 | Mandatory | Order no.
 shipments.location.latitude | Double | 20 | Mandatory | Order Latitude
@@ -4824,10 +4831,10 @@ http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
 }
 ```
 
-With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+With this API, you can mark the Order as Accepted by the Delivery Associate / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -4877,9 +4884,9 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 
 With this API, the delivery assosicate can check In at the pickup or delivery location
 
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Medium's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -4929,9 +4936,9 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 
 With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.
 
-Please note that in headers for this API, you will have to pass the Delivery Medium's Token and Key and not the Account level Token and Key.
+Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
-You can fetch the Delivery Associate's Token and Key by calling the Delivery Medium Authenticate API.
+You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
 
 #### Request
 
@@ -5169,8 +5176,8 @@ Param | DataType | Description
 clientShipmentId | String | Order No.
 status | String | Status of the order
 awbNumber | String | AWB No.
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
 trackUrl | String | Url to track Order
@@ -5203,7 +5210,7 @@ clientShipmentId | String | Order No.
 status | String | Status of the order
 tripName | String | Trip name
 updatedOn | String | Reject order timestamp
-reasonOfRejection | String | Reason provided by Delivery medium while rejecting the order
+reasonOfRejection | String | Reason provided by Delivery Associate while rejecting the order
 orderReferenceId | String | Order Reference Id
 
 
@@ -5242,8 +5249,8 @@ orderNo | String | Order No.
 notificationType | String | CANCELLEDNOTIFICATION
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 customerName | String | Name of customer
 reason | String | Reason for the order being cancelled
@@ -5375,10 +5382,10 @@ This notification is sent when crates are loaded onto an order.
 Param | DataType | Description
 --------- | ------- | ----------
 clientShipmentIds | String | Order Nos.
-deliveryMediumName | String | Name of delivery medium
+deliveryMediumName | String | Name of Delivery Associate
 tripName | String | Trip name
 startTime | Date | Time when loading is completed.
-phoneNumber | Long | Delivery medium's phone no.
+phoneNumber | Long | Delivery Associate's phone no.
 driverName | String | Driver's name
 vehicleNumber | String | Vehicle no.
 revisedEta | Date | Revised ETA
@@ -5432,8 +5439,8 @@ orderLeg | String | Order leg, Possible values : DELIVER, PICKUP
 awbNumber | String | Awb No.
 customerComment | String | Customer comments
 customerRating | Integer | Rating provided by customer
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | Order state, Possible values : FORWARD, REVERSE
 customerName | String | Customer name
 deliveryTime | String | Delivery timestamp
@@ -5527,8 +5534,8 @@ orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 customerName | String | Customer name
 reason | String | Reason for the order being partially delivered
@@ -5609,8 +5616,8 @@ orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 customerName | String | Customer name
 reason | String | Reason for the order not delivered
@@ -5665,8 +5672,8 @@ orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
 customerRating | Integer | Rating provided by customer
-deliveryMediumName | String | Name of delivery medium
-phoneNumber | Long | Delivery medium's phone no.
+deliveryMediumName | String | Name of Delivery Associate
+phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 branchName | String | -
 orderReferenceId | String | Order Reference Id
@@ -5709,8 +5716,8 @@ orderLeg | String |  Order leg
 awbNumber | String | Airway Bill Number
 customerComment | String |  Customer comments
 customerRating | Integer | Rating provided by customer
-deliveryMediumName | String |  Name of delivery medium
-phoneNumber | Long | Phone no of delivery medium
+deliveryMediumName | String |  Name of Delivery Associate
+phoneNumber | Long | Phone no of Delivery Associate
 orderState | String | State of the order
 customerName | String | Name of customer
 reason | String | Reason for order not pickedup
@@ -5759,9 +5766,9 @@ Key | DataType | Description
 notificationType | String |  DELIVERYPLANNING
 notificationDetails | List | Notification details
 tripName | String |  Trip name
-deliveryMediumName | String |  Name of delivery medium
+deliveryMediumName | String |  Name of Delivery Associate
 referenceId | String | Reference id of the trip
-phoneNumber | String | Phone no of delivery medium
+phoneNumber | String | Phone no of Delivery Associate
 driverName | String |  Name of driver
 vehicleNumber | String |  Vehicle no.
 orderDetails | List | List of orders present in the trip
@@ -5870,7 +5877,7 @@ notificationType | String |  STARTTRIP
 tripName | String |  Trip name
 vehicleNumber | String |  Vehicle no.
 driverName | String |  Name of driver
-deliveryMediumName | String |  Name of delivery medium
+deliveryMediumName | String |  Name of Delivery Associate
 phoneNumber | Long | Phone no.
 startTime | String |  Trip start time
 
@@ -5905,7 +5912,7 @@ notificationType | String |  DELIVEREDNOTIFICATION
 tripName | String |  Trip name
 vehicleNumber | String |  Vehicle no.
 driverName | String |  Name of driver
-deliveryMediumName | String |  Name of delivery medium
+deliveryMediumName | String |  Name of Delivery Associate
 endTime | String |  Trip end time
 
 ## Hub In
@@ -6015,7 +6022,7 @@ updatedDate | String | Timestamp
 }
 ```
 
-With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Medium Allocation Engine has identified to deliver your On Demand (point to point) Orders.
+With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.
 
 #### Response Parameters
 
@@ -6029,19 +6036,19 @@ orderNo | String | Mandatory | In case the Order is Single Pick-up - Multiple de
 orderReferenceId | String | Mandatory | This is the Order Reference ID generated by the LN system for the order created.<br>Note that this reference Id is for the "orderNo" and not for the "parentOrderNo"
 allocationTimeStamp | String | Mandatory | This is the time at which the allocation engine has identified the nearest Delivery Boy / Driver / Associate / Field Executive.<br>Note that this date and time is in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
 deliveryMediums | Array Of Object |  | Array - <br>This list would contain list of one or more nearest Delivery Boy / Driver / Associate / Field Executive identified for your order.<br>Note that if you have set your account configuration to identify only the nearest driver first, then this array would have only one value.<br>If your account configuration is set to identify X no. of drivers, then this array will have list of the X nearest drivers.
-deliveryMediums.userGroupName | String | Mandatory | This is the name of the User Group which the Driver / Delivery Medium / Field Executive belongs to in the LogiNext application.<br>Each user that is created in the LN system is associated to a user group. <br>This user groups is used to provide relevant access to the users.<br>Sample Value - "Platinum User Group"
-deliveryMediums.employeeId | String | Mandatory | This the Employee ID set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "133478"
-deliveryMediums.userName | String | Mandatory | This the Use rName set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "Joshua.Anderson"
-deliveryMediums.phoneNumber | String | Mandatory | This the Phone No. set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - "9894965656"
-deliveryMediums.latitude | Double | Optional | This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - "17.897"
-deliveryMediums.longitude | Double | Optional | This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - "85.897"
-deliveryMediums.pickupEta | String | Mandatory | This the time at which the Driver / Delivery Medium / Field Executive will reach the Pick-Up Location<br>Sample Value - "2016-07-15T10:47:00.000Z"
-deliveryMediums.distanceInKms | Double | Mandatory | This the distance in KM that the Driver / Delivery Medium / Field Executive is away from the Pick-Up Location
-deliveryMediums.timeInMin | Integer | Mandatory | This the time in Minutes which the Driver / Delivery Medium / Field Executive will take to reach the Pick-up Location.
-deliveryMediums.expiryTime | String | Mandatory | This the time before which the Driver / Delivery Medium / Field Executive will have to "accept" the order  on his / her mobile app. If not accepted, the order will be removed and allocated to next available Delivery Medium.<br>Sample Value - "2016-07-15T10:30:00.000Z"<br><br>Note that the time till which you want the order to remain displayed in the Delivery Medium's app. is configurable through the Settings screen on the LogiNext application.
-deliveryMediums.statusCd | String | Mandatory | This is the current Status of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
-deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
-deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.
+deliveryMediums.userGroupName | String | Mandatory | This is the name of the User Group which the Driver / Delivery Associate / Field Executive belongs to in the LogiNext application.<br>Each user that is created in the LN system is associated to a user group. <br>This user groups is used to provide relevant access to the users.<br>Sample Value - "Platinum User Group"
+deliveryMediums.employeeId | String | Mandatory | This the Employee ID set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - "133478"
+deliveryMediums.userName | String | Mandatory | This the Use rName set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - "Joshua.Anderson"
+deliveryMediums.phoneNumber | String | Mandatory | This the Phone No. set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - "9894965656"
+deliveryMediums.latitude | Double | Optional | This the current geo-location of the Driver / Delivery Associate / Field Executive.<br>Sample Value - "17.897"
+deliveryMediums.longitude | Double | Optional | This the current geo-location of the Driver / Delivery Associate / Field Executive.<br>Sample Value - "85.897"
+deliveryMediums.pickupEta | String | Mandatory | This the time at which the Driver / Delivery Associate / Field Executive will reach the Pick-Up Location<br>Sample Value - "2016-07-15T10:47:00.000Z"
+deliveryMediums.distanceInKms | Double | Mandatory | This the distance in KM that the Driver / Delivery Associate / Field Executive is away from the Pick-Up Location
+deliveryMediums.timeInMin | Integer | Mandatory | This the time in Minutes which the Driver / Delivery Associate / Field Executive will take to reach the Pick-up Location.
+deliveryMediums.expiryTime | String | Mandatory | This the time before which the Driver / Delivery Associate / Field Executive will have to "accept" the order  on his / her mobile app. If not accepted, the order will be removed and allocated to next available Delivery Associate.<br>Sample Value - "2016-07-15T10:30:00.000Z"<br><br>Note that the time till which you want the order to remain displayed in the Delivery Associate's app. is configurable through the Settings screen on the LogiNext application.
+deliveryMediums.statusCd | String | Mandatory | This is the current Status of the Delivery Associate.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Associate to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Associate to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
+deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Associate.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Associate to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Associate to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
+deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Associate / Driver / Field Executive.
 
 ## Active / Inactive
 
@@ -6059,19 +6066,19 @@ deliveryMediums.referenceId | String | Mandatory | This is the LogiNext referenc
 }
 ```
 
-When the Delivery Medium is marked as Active / Inactive, you can consume this webhook
+When the Delivery Associate is marked as Active / Inactive, you can consume this webhook
 
 #### Response Parameters
 
 Key | DataType | Description
 --------- | ------- | -----------
-referenceId | String | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
-deliveryMediumName | String |  Name of the delivery Medium / Delivery Associate / Driver / Field Executive
-employeeId | String |  Employee of the delivery Medium / Delivery Associate / Driver / Field Executive
-phoneNumber | String |  Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive
-newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Delivery Medium is marked Active<br>INACTIVE - if Delivery Medium is marked Inactive
-reasonCd | String |  When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
-updateTime | String |  This is the time in UTC when the Delivery Medium was marked Active / Inactive
+referenceId | String | This is the LogiNext Reference ID for the Delivery Associate<br>This is generated when the Delivery Associate is added in the LogiNext application.
+deliveryMediumName | String |  Name of the Delivery Associate / Delivery Associate / Driver / Field Executive
+employeeId | String |  Employee of the Delivery Associate / Delivery Associate / Driver / Field Executive
+phoneNumber | String |  Phone No. of the Delivery Associate / Delivery Associate / Driver / Field Executive
+newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Delivery Associate is marked Active<br>INACTIVE - if Delivery Associate is marked Inactive
+reasonCd | String |  When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
+updateTime | String |  This is the time in UTC when the Delivery Associate was marked Active / Inactive
 
 ## Create Delivery Associate 
 
@@ -6114,38 +6121,38 @@ updateTime | String |  This is the time in UTC when the Delivery Medium was mark
 ]
 ```
 
-When the Delivery Medium is created in the system.
+When the Delivery Associate is created in the system.
 
 #### Response Parameters
 
 Key | DataType | Description
 --------- | ------- | -----------
-referenceId | String | This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.
+referenceId | String | This is the LogiNext Reference ID for the Delivery Associate<br>This is generated when the Delivery Associate is added in the LogiNext application.
 notificationType | String | This will always be - CREATEDELIVERYMEDIUMNOTIFICATION
-deliveryMediumName | String |  Name of the delivery Medium / Delivery Associate / Driver / Field Executive
-employeeId | String |  Employee of the delivery Medium / Delivery Associate / Driver / Field Executive
-phoneNumber | String |  Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive
-imei | String |  The IMEI no. of the Phone that Delivery Medium will use. This is as per the value entered while creating the Delivery Medium
-emailId | String |  This is the Email Address of the delivery Medium
-userName | String |  This is the username of the Delivery Medium as entered while creating the delivery Medium
-capacityInUnits | Integer |  This is the capacity i.e. count of the orders that the Delivery Medium can serve in one trip
-capacityInVolume | Integer |  This is the capacity in volume (as per the set Unit of Measure) that the Delivery Medium can carry in one trip
-capacityInWeight | Integer |  This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Medium can carry in one trip
-dob | String |  The Date of the Birth for the delivery Medium in "YYYY-MM-DD" format
-deliveryMediumLanguageList | List |  This is the list of languages that the delivery Medium is known to.
-gender | String |  This is the gender of the Delivery Medium
-deliveryMediumTypeCd | String |  In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
-isOwnVehicleFl | String |  This field indicates if the Vehicle is owned by the Delivery Medium or is it the Organization's Vehicle
-vehicleNumber | String |  The mapped Vehicle Number with the delivery Medium
-dmPreference | String |  This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Mediums will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Medium
+deliveryMediumName | String |  Name of the Delivery Associate / Delivery Associate / Driver / Field Executive
+employeeId | String |  Employee of the Delivery Associate / Delivery Associate / Driver / Field Executive
+phoneNumber | String |  Phone No. of the Delivery Associate / Delivery Associate / Driver / Field Executive
+imei | String |  The IMEI no. of the Phone that Delivery Associate will use. This is as per the value entered while creating the Delivery Associate
+emailId | String |  This is the Email Address of the Delivery Associate
+userName | String |  This is the username of the Delivery Associate as entered while creating the Delivery Associate
+capacityInUnits | Integer |  This is the capacity i.e. count of the orders that the Delivery Associate can serve in one trip
+capacityInVolume | Integer |  This is the capacity in volume (as per the set Unit of Measure) that the Delivery Associate can carry in one trip
+capacityInWeight | Integer |  This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Associate can carry in one trip
+dob | String |  The Date of the Birth for the Delivery Associate in "YYYY-MM-DD" format
+deliveryMediumLanguageList | List |  This is the list of languages that the Delivery Associate is known to.
+gender | String |  This is the gender of the Delivery Associate
+deliveryMediumTypeCd | String |  In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
+isOwnVehicleFl | String |  This field indicates if the Vehicle is owned by the Delivery Associate or is it the Organization's Vehicle
+vehicleNumber | String |  The mapped Vehicle Number with the Delivery Associate
+dmPreference | String |  This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Associates will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Associate
 cashInHand | Double |  cash with delivery boy.
 shiftList | List |  shift details.
 shiftList.shiftStart | String |  shift start time
 shiftList.shiftEnd | String |  shift end time
 maxDistance | Integer |  This is the Maximum Distance in Kms
 licenseValidity | String | This is the expiry Date of the Driver's License in UTC format.
-reasonCd | String |  When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
-updateTime | String |  This is the time in UTC when the Delivery Medium was marked Active / Inactive
+reasonCd | String |  When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
+updateTime | String |  This is the time in UTC when the Delivery Associate was marked Active / Inactive
 weeklyOffList | List |  List of weekly off's
 fixedCost | Integer |  fixed cost associated with delivery boy.
 variableCost | Integer |  variable cost.
