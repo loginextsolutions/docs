@@ -4721,7 +4721,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager</td>
+<td>For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
@@ -6350,14 +6350,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+<td>This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
 </tr>
 <tr>
 <td>shipmentBranch</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Medium will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+<td>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Associate will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
@@ -6378,7 +6378,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Conditional Mandatory</td>
-<td>If the &ldquo;returnAllowedFl&rdquo; is marked as &ldquo;Y&rdquo;, then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Medium will return the orders to. This is generally the Merchant&rsquo;s / Seller&rsquo;s Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Medium will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+<td>If the &ldquo;returnAllowedFl&rdquo; is marked as &ldquo;Y&rdquo;, then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will return the orders to. This is generally the Merchant&rsquo;s / Seller&rsquo;s Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Associate will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
 <td>pickupNotes</td>
@@ -6392,7 +6392,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>1</td>
 <td>Mandatory</td>
-<td>Pass this Flag as &ldquo;Y&rdquo;, if - If you add any order which needs to be allocated automatically to the logged-in Delivery Medium.<br>Pass this Flag as &ldquo;N&rdquo;, if - If you add any order which you want to allocate manually to the Delivery Medium OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Mediums.</td>
+<td>Pass this Flag as &ldquo;Y&rdquo;, if - If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as &ldquo;N&rdquo;, if - If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.</td>
 </tr>
 <tr>
 <td>optimiseOrderSequenceFl</td>
@@ -6406,7 +6406,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>1</td>
 <td>Mandatory</td>
-<td>If you want the Pick-up Branch from where the Delivery Medium has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as &ldquo;Y&rdquo; else set this flag as &ldquo;N&rdquo;</td>
+<td>If you want the Pick-up Branch from where the Delivery Associate has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as &ldquo;Y&rdquo; else set this flag as &ldquo;N&rdquo;</td>
 </tr>
 <tr>
 <td>destinations</td>
@@ -6434,14 +6434,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>10</td>
 <td>Optional</td>
-<td>This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Medium. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Associate. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.</td>
 </tr>
 <tr>
 <td>orders.packageVolume</td>
 <td>String</td>
 <td>10</td>
 <td>Optional</td>
-<td>This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Medium. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)</td>
+<td>This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Associate. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)</td>
 </tr>
 <tr>
 <td>orders.paymentType</td>
@@ -7716,8 +7716,15 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 </span></code></pre>
 
-<p>Call this API to update the crate and line items information for an order. Note that this can be done until that order is dispatched and not associated with any Trip.
-You can pass multiple crate and line items.</p>
+<p>Call this API to update the crate and line items information for an order. Note that this can be done until that order is dispatched and not associated with any Trip.</p>
+
+<p>This API can be used to Add new crates and line items, or update existing ones. For eg. If you create an Order with crate A and crate B, and then call this API to to add a new crate C, you only need to pass the information for crate C. Once the API is called with a success response, the Order will now have crates A,B, and C.</p>
+
+<p>Alternatively, if an order has crate A and crate B, and the crate A item needs to be updated, call this API and pass crateCd &#39;A&rsquo;, and update the properties for the crate.</p>
+
+<p>This API will not delete existing crates.</p>
+
+<p>You can pass multiple crate and line items.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8051,7 +8058,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Start the trip for a delivery medium using this API.</p>
+<p>Start the trip for a Delivery Associate using this API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8099,7 +8106,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Stop the trip for a delivery medium using this API.</p>
+<p>Stop the trip for a Delivery Associate using this API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8182,7 +8189,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Use this to find out last tracked location for any order/ delivery medium.</p>
+<p>Use this to find out last tracked location for any order/ Delivery Associate.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8264,10 +8271,10 @@ If it does not exist, then a new manifest will be created with the provided Mani
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
-Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>With this API, you can mark the Order as Accepted by the Delivery Associate / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8350,9 +8357,9 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>With this API, the delivery assosicate can check In at the pickup or delivery location</p>
 
-<p>Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8439,9 +8446,9 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.</p>
 
-<p>Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -8683,35 +8690,35 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>List</td>
 <td></td>
 <td>Mandatory</td>
-<td>List of delivery medium</td>
+<td>List of Delivery Associate</td>
 </tr>
 <tr>
 <td>vehicles.name</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Delivery medium name</td>
+<td>Delivery Associate name</td>
 </tr>
 <tr>
 <td>vehicles.capacity.weight</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of delivery medium</td>
+<td>Capacity of Delivery Associate</td>
 </tr>
 <tr>
 <td>vehicles.capacity.volume</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Volume of delivery medium</td>
+<td>Volume of Delivery Associate</td>
 </tr>
 <tr>
 <td>vehicles.type</td>
 <td>List</td>
 <td></td>
 <td>Optional</td>
-<td>Type of delivery medium</td>
+<td>Type of Delivery Associate</td>
 </tr>
 <tr>
 <td>shipments</td>
@@ -9646,10 +9653,10 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>With this API, you can mark the Order as Accepted by the Delivery Medium / Associate / Driver / Fried Executive.
-Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>With this API, you can mark the Order as Accepted by the Delivery Associate / Associate / Driver / Fried Executive.
+Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -9732,9 +9739,9 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>With this API, the delivery assosicate can check In at the pickup or delivery location</p>
 
-<p>Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Medium&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -9821,9 +9828,9 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.</p>
 
-<p>Please note that in headers for this API, you will have to pass the Delivery Medium&rsquo;s Token and Key and not the Account level Token and Key.</p>
+<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
-<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Medium Authenticate API.</p>
+<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -10308,12 +10315,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>tripName</td>
@@ -10391,7 +10398,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>reasonOfRejection</td>
 <td>String</td>
-<td>Reason provided by Delivery medium while rejecting the order</td>
+<td>Reason provided by Delivery Associate while rejecting the order</td>
 </tr>
 <tr>
 <td>orderReferenceId</td>
@@ -10458,12 +10465,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -10748,7 +10755,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>tripName</td>
@@ -10763,7 +10770,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>driverName</td>
@@ -10873,12 +10880,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -11055,12 +11062,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -11325,12 +11332,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -11469,12 +11476,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Delivery medium&rsquo;s phone no.</td>
+<td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -11560,12 +11567,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Long</td>
-<td>Phone no of delivery medium</td>
+<td>Phone no of Delivery Associate</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -11654,7 +11661,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>referenceId</td>
@@ -11664,7 +11671,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
-<td>Phone no of delivery medium</td>
+<td>Phone no of Delivery Associate</td>
 </tr>
 <tr>
 <td>driverName</td>
@@ -11904,7 +11911,7 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
@@ -11976,7 +11983,7 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of delivery medium</td>
+<td>Name of Delivery Associate</td>
 </tr>
 <tr>
 <td>endTime</td>
@@ -12131,7 +12138,7 @@ You will have to consume this webhook in case your system is integrated with Log
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Medium Allocation Engine has identified to deliver your On Demand (point to point) Orders.</p>
+<p>With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -12195,79 +12202,79 @@ You will have to consume this webhook in case your system is integrated with Log
 <td>deliveryMediums.userGroupName</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This is the name of the User Group which the Driver / Delivery Medium / Field Executive belongs to in the LogiNext application.<br>Each user that is created in the LN system is associated to a user group. <br>This user groups is used to provide relevant access to the users.<br>Sample Value - &ldquo;Platinum User Group&rdquo;</td>
+<td>This is the name of the User Group which the Driver / Delivery Associate / Field Executive belongs to in the LogiNext application.<br>Each user that is created in the LN system is associated to a user group. <br>This user groups is used to provide relevant access to the users.<br>Sample Value - &ldquo;Platinum User Group&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.employeeId</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This the Employee ID set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;133478&rdquo;</td>
+<td>This the Employee ID set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;133478&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.userName</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This the Use rName set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;Joshua.Anderson&rdquo;</td>
+<td>This the Use rName set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;Joshua.Anderson&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.phoneNumber</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This the Phone No. set for the Driver / Delivery Medium / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;9894965656&rdquo;</td>
+<td>This the Phone No. set for the Driver / Delivery Associate / Field Executive in the LogiNext application.<br>Sample Value - &ldquo;9894965656&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.latitude</td>
 <td>Double</td>
 <td>Optional</td>
-<td>This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - &ldquo;17.897&rdquo;</td>
+<td>This the current geo-location of the Driver / Delivery Associate / Field Executive.<br>Sample Value - &ldquo;17.897&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.longitude</td>
 <td>Double</td>
 <td>Optional</td>
-<td>This the current geo-location of the Driver / Delivery Medium / Field Executive.<br>Sample Value - &ldquo;85.897&rdquo;</td>
+<td>This the current geo-location of the Driver / Delivery Associate / Field Executive.<br>Sample Value - &ldquo;85.897&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.pickupEta</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This the time at which the Driver / Delivery Medium / Field Executive will reach the Pick-Up Location<br>Sample Value - &ldquo;2016-07-15T10:47:00.000Z&rdquo;</td>
+<td>This the time at which the Driver / Delivery Associate / Field Executive will reach the Pick-Up Location<br>Sample Value - &ldquo;2016-07-15T10:47:00.000Z&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums.distanceInKms</td>
 <td>Double</td>
 <td>Mandatory</td>
-<td>This the distance in KM that the Driver / Delivery Medium / Field Executive is away from the Pick-Up Location</td>
+<td>This the distance in KM that the Driver / Delivery Associate / Field Executive is away from the Pick-Up Location</td>
 </tr>
 <tr>
 <td>deliveryMediums.timeInMin</td>
 <td>Integer</td>
 <td>Mandatory</td>
-<td>This the time in Minutes which the Driver / Delivery Medium / Field Executive will take to reach the Pick-up Location.</td>
+<td>This the time in Minutes which the Driver / Delivery Associate / Field Executive will take to reach the Pick-up Location.</td>
 </tr>
 <tr>
 <td>deliveryMediums.expiryTime</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This the time before which the Driver / Delivery Medium / Field Executive will have to &ldquo;accept&rdquo; the order  on his / her mobile app. If not accepted, the order will be removed and allocated to next available Delivery Medium.<br>Sample Value - &ldquo;2016-07-15T10:30:00.000Z&rdquo;<br><br>Note that the time till which you want the order to remain displayed in the Delivery Medium&rsquo;s app. is configurable through the Settings screen on the LogiNext application.</td>
+<td>This the time before which the Driver / Delivery Associate / Field Executive will have to &ldquo;accept&rdquo; the order  on his / her mobile app. If not accepted, the order will be removed and allocated to next available Delivery Associate.<br>Sample Value - &ldquo;2016-07-15T10:30:00.000Z&rdquo;<br><br>Note that the time till which you want the order to remain displayed in the Delivery Associate&rsquo;s app. is configurable through the Settings screen on the LogiNext application.</td>
 </tr>
 <tr>
 <td>deliveryMediums.statusCd</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This is the current Status of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.</td>
+<td>This is the current Status of the Delivery Associate.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Associate to cater to only one order at a time, then this Status code will be AVAILABLE.<br>If you want an order to be allocated to the Delivery Associate to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.</td>
 </tr>
 <tr>
 <td>deliveryMediums.tripStatus</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This is the current Status of the Trip of the Delivery Medium.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Medium to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Medium to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.</td>
+<td>This is the current Status of the Trip of the Delivery Associate.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Associate to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Associate to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.</td>
 </tr>
 <tr>
 <td>deliveryMediums.referenceId</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This is the LogiNext reference ID of the Delivery Medium / Driver / Field Executive.</td>
+<td>This is the LogiNext reference ID of the Delivery Associate / Driver / Field Executive.</td>
 </tr>
 </tbody></table>
 
@@ -12287,7 +12294,7 @@ You will have to consume this webhook in case your system is integrated with Log
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>When the Delivery Medium is marked as Active / Inactive, you can consume this webhook</p>
+<p>When the Delivery Associate is marked as Active / Inactive, you can consume this webhook</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -12301,37 +12308,37 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>referenceId</td>
 <td>String</td>
-<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+<td>This is the LogiNext Reference ID for the Delivery Associate<br>This is generated when the Delivery Associate is added in the LogiNext application.</td>
 </tr>
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Name of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>employeeId</td>
 <td>String</td>
-<td>Employee of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Employee of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
-<td>Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Phone No. of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>newStatus</td>
 <td>String</td>
-<td>Status shall be one of the two below - <br>ACTIVE - if Delivery Medium is marked Active<br>INACTIVE - if Delivery Medium is marked Inactive</td>
+<td>Status shall be one of the two below - <br>ACTIVE - if Delivery Associate is marked Active<br>INACTIVE - if Delivery Associate is marked Inactive</td>
 </tr>
 <tr>
 <td>reasonCd</td>
 <td>String</td>
-<td>When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
+<td>When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
 </tr>
 <tr>
 <td>updateTime</td>
 <td>String</td>
-<td>This is the time in UTC when the Delivery Medium was marked Active / Inactive</td>
+<td>This is the time in UTC when the Delivery Associate was marked Active / Inactive</td>
 </tr>
 </tbody></table>
 
@@ -12376,7 +12383,7 @@ You will have to consume this webhook in case your system is integrated with Log
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>When the Delivery Medium is created in the system.</p>
+<p>When the Delivery Associate is created in the system.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -12390,7 +12397,7 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>referenceId</td>
 <td>String</td>
-<td>This is the LogiNext Reference ID for the Delivery Medium<br>This is generated when the Delivery Medium is added in the LogiNext application.</td>
+<td>This is the LogiNext Reference ID for the Delivery Associate<br>This is generated when the Delivery Associate is added in the LogiNext application.</td>
 </tr>
 <tr>
 <td>notificationType</td>
@@ -12400,82 +12407,82 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Name of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>employeeId</td>
 <td>String</td>
-<td>Employee of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Employee of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
-<td>Phone No. of the delivery Medium / Delivery Associate / Driver / Field Executive</td>
+<td>Phone No. of the Delivery Associate / Delivery Associate / Driver / Field Executive</td>
 </tr>
 <tr>
 <td>imei</td>
 <td>String</td>
-<td>The IMEI no. of the Phone that Delivery Medium will use. This is as per the value entered while creating the Delivery Medium</td>
+<td>The IMEI no. of the Phone that Delivery Associate will use. This is as per the value entered while creating the Delivery Associate</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
-<td>This is the Email Address of the delivery Medium</td>
+<td>This is the Email Address of the Delivery Associate</td>
 </tr>
 <tr>
 <td>userName</td>
 <td>String</td>
-<td>This is the username of the Delivery Medium as entered while creating the delivery Medium</td>
+<td>This is the username of the Delivery Associate as entered while creating the Delivery Associate</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
-<td>This is the capacity i.e. count of the orders that the Delivery Medium can serve in one trip</td>
+<td>This is the capacity i.e. count of the orders that the Delivery Associate can serve in one trip</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
-<td>This is the capacity in volume (as per the set Unit of Measure) that the Delivery Medium can carry in one trip</td>
+<td>This is the capacity in volume (as per the set Unit of Measure) that the Delivery Associate can carry in one trip</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
-<td>This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Medium can carry in one trip</td>
+<td>This is the capacity in WEIGHT (as per the set Unit of Measure) that the Delivery Associate can carry in one trip</td>
 </tr>
 <tr>
 <td>dob</td>
 <td>String</td>
-<td>The Date of the Birth for the delivery Medium in &ldquo;YYYY-MM-DD&rdquo; format</td>
+<td>The Date of the Birth for the Delivery Associate in &ldquo;YYYY-MM-DD&rdquo; format</td>
 </tr>
 <tr>
 <td>deliveryMediumLanguageList</td>
 <td>List</td>
-<td>This is the list of languages that the delivery Medium is known to.</td>
+<td>This is the list of languages that the Delivery Associate is known to.</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>String</td>
-<td>This is the gender of the Delivery Medium</td>
+<td>This is the gender of the Delivery Associate</td>
 </tr>
 <tr>
 <td>deliveryMediumTypeCd</td>
 <td>String</td>
-<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Mediums who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
 </tr>
 <tr>
 <td>isOwnVehicleFl</td>
 <td>String</td>
-<td>This field indicates if the Vehicle is owned by the Delivery Medium or is it the Organization&rsquo;s Vehicle</td>
+<td>This field indicates if the Vehicle is owned by the Delivery Associate or is it the Organization&rsquo;s Vehicle</td>
 </tr>
 <tr>
 <td>vehicleNumber</td>
 <td>String</td>
-<td>The mapped Vehicle Number with the delivery Medium</td>
+<td>The mapped Vehicle Number with the Delivery Associate</td>
 </tr>
 <tr>
 <td>dmPreference</td>
 <td>String</td>
-<td>This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Mediums will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Medium</td>
+<td>This is the preferred Pin Codes i.e. that areas / zones in which the Delivery Associates will deliver the orders.<br>Orders out these preferred pin-codes / zones will not be assigned Delivery Associate</td>
 </tr>
 <tr>
 <td>cashInHand</td>
@@ -12510,12 +12517,12 @@ You will have to consume this webhook in case your system is integrated with Log
 <tr>
 <td>reasonCd</td>
 <td>String</td>
-<td>When you activate / deactivate the Delivery Medium, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
+<td>When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here</td>
 </tr>
 <tr>
 <td>updateTime</td>
 <td>String</td>
-<td>This is the time in UTC when the Delivery Medium was marked Active / Inactive</td>
+<td>This is the time in UTC when the Delivery Associate was marked Active / Inactive</td>
 </tr>
 <tr>
 <td>weeklyOffList</td>
