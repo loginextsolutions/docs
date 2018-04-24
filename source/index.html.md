@@ -5158,6 +5158,7 @@ orderStatus | String | The current state of the Order.
   "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
   "trackUrl": "https://goo.gl/qhZP63",
+  "pickupEndDate": "2017-11-20 10:23:20",
   "deliveryEndDate": "2017-11-20 10:23:20",
   "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
@@ -5182,6 +5183,7 @@ tripName | String | Trip name
 updatedOn | String | Accept order timestamp
 trackUrl | String | Url to track Order
 deliveryEndDate | String | Delivery end date.
+pickupEndDate | String | Planned ETA for the Delivery Associate to complete the Pick-up activity.
 orderReferenceId | String | Order Reference Id
 
 
