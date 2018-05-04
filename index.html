@@ -625,6 +625,14 @@ Similarly for - <br>
 </tr>
 </tbody></table>
 
+<h1 id="rate-limits">Rate Limits</h1>
+
+<p>You can call the LogiNext API with a call rate of 1 request/second for your set of Authenication key.</p>
+
+<p>The LogiNext API accept upto 20 items per request, this means that if you are calling the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
+
+<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
+
 <h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
 <ol>
@@ -3748,6 +3756,93 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="s2">"d7f173453bab40cf83dc79bb86ea2edb"</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Retrieve a List of all the Delivery Associates using this API. Pass the Reference IDs for the Delivery Associates you want to search for in the Request Body. </p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>List</td>
+<td>50</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID of the Delivery Associate to be updated.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"otherCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1098</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Available"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NBVA114"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"weeklyOff"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-20"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000-12-01"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9215697602"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robin123456"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snappbox_UAT Main Branch"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snappbox_UAT Mob"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@d.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"HINDI"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"ENGLISH"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400010"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isOnBreakFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"deliveryMediumLoginDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTLOGEDIN"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin New 3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"cashPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"cashCollected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"cashBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/list</code></p>
+
 <h3 id="update">Update</h3>
 
 <blockquote>
@@ -5282,49 +5377,49 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the locality of the pickup customer.</td>
+<td>This is the locality of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the city name of the pickup customer.</td>
+<td>This is the city name of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the state code of the pickup customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>This is the state code of the delivery customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the country code of the pickup customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>This is the country code of the delivery customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>This is the pincode of the pickup customer.</td>
+<td>This is the pincode of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>The geolocation coordinate (latitude) of the customer.</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>The geolocation coordinate (longitude) of the customer.</td>
+<td>The geolocation coordinate (longitude) of the delivery customer.</td>
 </tr>
 <tr>
 <td>returnBranch</td>
@@ -7541,7 +7636,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"CANCELLED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
@@ -7607,7 +7702,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values -<br>CANCELLED - When an order needs to marked as cancelled<br>PICKEDUP - When an order has been Picked-Up by the associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
+<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
 </tr>
 <tr>
 <td>orderReferenceId</td>
@@ -9990,6 +10085,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.</li>
 <li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.</li>
 <li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.</li>
+<li>Loginext Webhooks do not support authentication parameters. In order to add authentication to the webhook, we recommend you to write a wrapper at your end to add the authentication parameters after consuming it at the URL end point provided.</li>
 </ol>
 
 <h2 id="create-order">Create Order</h2>
@@ -10063,6 +10159,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P_Aetos1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERUPDATENOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93780c3292ba4ee4809ad125ef97"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH04DY69"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kumari2"</span><span class="p">,</span><span class="w">
@@ -10826,8 +10923,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7b15a79d6734297a00a93755856e8c8"</span><span class="w">
+  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -11609,6 +11705,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h2 id="route-planning">Route Planning</h2>
 
+<p>This API accepts the resources and orders required to perform Route Planning for a set of Orders. </p>
+
+<p>The API does not save the resources passed in the request body in LogiNext. It only performs the Route Planning for that set of resources, and returns the result of the operation in the Route Planning webhook.</p>
+
+<p>You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.</p>
+
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -11620,13 +11722,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
       </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ramesh"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d1c196e8bf384c40ae7f7ca0fd1a3d58"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9876543213"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestDriver1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH-13213"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DummyOrder345"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-13 11:18:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-13 17:45:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GRU453D"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 11:18:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 17:45:00"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1239285</span><span class="p">,</span><span class="w">
           </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.90944069999999</span><span class="w">
@@ -11637,8 +11739,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-
-<p>This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -11765,8 +11865,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when the Route Planning API is called.
-You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.</p>
+<p>This notification is sent when the Route Planning API is called.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -12353,8 +12452,7 @@ You will have to consume this webhook in case your system is integrated with Log
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-</span><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREATEDELIVERYMEDIUMNOTIFICATION"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
@@ -12386,7 +12484,6 @@ You will have to consume this webhook in case your system is integrated with Log
     </span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="s2">"500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"variableCost"</span><span class="p">:</span><span class="s2">"30"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <p>When the Delivery Associate is created in the system.</p>
