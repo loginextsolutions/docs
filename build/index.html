@@ -625,11 +625,17 @@ Similarly for - <br>
 </tr>
 </tbody></table>
 
-<h1 id="rate-limits">Rate Limits</h1>
+<h1 id="limits">Limits</h1>
 
-<p>You can call the LogiNext API with a call rate of 1 request/second for your set of Authenication key.</p>
+<p>You can call the LogiNext API with a call rate of 1 request/second.</p>
 
-<p>The LogiNext API accept upto 20 items per request, this means that if you are calling the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
+<p>The LogiNext API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
+
+<p>This means - </p>
+
+<p>1n 1 second you can create 20 Orders in LogiNext.
+In 1 minute you can create - 20*60 = 1200 Orders in LogiNext
+In 1 hour you can create - 20*60*60 = 7200 Orders in LogiNext</p>
 
 <p>Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
 
@@ -11704,12 +11710,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </tbody></table>
 
 <h2 id="route-planning">Route Planning</h2>
-
-<p>This API accepts the resources and orders required to perform Route Planning for a set of Orders. </p>
-
-<p>The API does not save the resources passed in the request body in LogiNext. It only performs the Route Planning for that set of resources, and returns the result of the operation in the Route Planning webhook.</p>
-
-<p>You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.</p>
 
 <blockquote>
 <p>Response</p>
