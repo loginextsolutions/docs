@@ -307,6 +307,23 @@ Header | Sample Value
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
+# Limits
+
+You can call the LogiNext API with a call rate of 1 request/second.
+
+The LogiNext API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.
+
+
+This means - 
+
+1n 1 second you can create 20 Orders in LogiNext.
+In 1 minute you can create - 20*60 = 1200 Orders in LogiNext
+In 1 hour you can create - 20*60*60 = 7200 Orders in LogiNext
+
+
+Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
+
+
 
 # LogiNext Haul <sup>TM</sup>
 
@@ -2179,6 +2196,82 @@ licenseValidity | String | Optional | String | 255 | This is the expiry Date of 
 licenseValidityInYears | Optional | String | 255 | License Validity in years.
 licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
 
+### Get 
+
+
+> Sample Request
+
+```json
+
+["d7f173453bab40cf83dc79bb86ea2edb"]
+```
+
+Retrieve a List of all the Delivery Associates using this API. Pass the Reference IDs for the Delivery Associates you want to search for in the Request Body. 
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+referenceId | List | 50 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
+
+
+> Sample Response
+
+```json
+{
+    "status": 200,
+    "data": {
+        "totalCount": 1,
+        "otherCount": 0,
+        "clientBranchId": 0,
+        "results": [
+            {
+                "isActiveFl": true,
+                "capacityInUnits": 10,
+                "capacityInVolume": 100,
+                "capacityInWeight": 1098,
+                "deliveryMediumMasterTypeCd": "Truck",
+                "imei": "",
+                "statusCd": "Available",
+                "employeeId": "NBVA114",
+                "weeklyOff": "Monday",
+                "maxDistance": 100,
+                "licenseValidity": "2018-12-20",
+                "dob": "2000-12-01",
+                "gender": "Male",
+                "phoneNumber": "9215697602",
+                "userName": "robin123456",
+                "shiftList": [],
+                "branchName": "Snappbox_UAT Main Branch",
+                "userGroupName": "Snappbox_UAT Mob",
+                "emailId": "abc@d.com",
+                "languageList": [
+                    "HINDI",
+                    "ENGLISH"
+                ],
+                "dmPreference": "400010",
+                "isOnBreakFl": "N",
+                "deliveryMediumLoginDetails": {
+                    "type": "NOTLOGEDIN"
+                },
+                "deliveryMediumName": "Robin New 3",
+                "cashPaid": 0,
+                "cashCollected": 0,
+                "cashBalance": 0,
+                "referenceId": "fa7716b25fe5432a96d1a709a28bd6d8"
+            }
+        ]
+    },
+    "hasError": false
+}
+
+```
+
+
+#### Request
+
+<span class="post">POST</span>` https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/list`
+
 
 ### Update
 
@@ -2830,13 +2923,13 @@ deliverPhoneNumber | String | 255 | Optional | This is the phone number of the p
 deliverApartment | String | 512 | Mandatory | This is the apartment details of the pickup customer.
 deliverStreetName | String | 512 | Mandatory | This is the street name of the pickup customer.
 deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's addess.
-deliverLocality | String | 512 | Mandatory | This is the locality of the pickup customer.
-deliverCity | String | 512 | Mandatory | This is the city name of the pickup customer.
-deliverState| String | 512 | Mandatory | This is the state code of the pickup customer. Please refer to the list of state codes provided in the "State Codes" section.
-deliverCountry | String | 512 | Mandatory | This is the country code of the pickup customer. Please refer to the list of country codes provided in the "Country Codes" section.
-deliverPinCode | String | 20 | Mandatory | This is the pincode of the pickup customer.
-deliverLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the customer.
-deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the customer.
+deliverLocality | String | 512 | Mandatory | This is the locality of the delivery customer.
+deliverCity | String | 512 | Mandatory | This is the city name of the delivery customer.
+deliverState| String | 512 | Mandatory | This is the state code of the delivery customer. Please refer to the list of state codes provided in the "State Codes" section.
+deliverCountry | String | 512 | Mandatory | This is the country code of the delivery customer. Please refer to the list of country codes provided in the "Country Codes" section.
+deliverPinCode | String | 20 | Mandatory | This is the pincode of the delivery customer.
+deliverLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the delivery customer.
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
@@ -3679,7 +3772,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 
 ```json
 {
-  "newStatus":"CANCELLED",
+  "newStatus":"DELIVERED",
   "orderDetails":
   [{
     "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
@@ -3735,7 +3828,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
-newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values -<br>CANCELLED - When an order needs to marked as cancelled<br>PICKEDUP - When an order has been Picked-Up by the associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
+newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
 orderReferenceId | String | 100 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
 reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.
 otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
@@ -5019,6 +5112,7 @@ Note -
 3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.
 4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.
 5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
+6. Loginext Webhooks do not support authentication parameters. In order to add authentication to the webhook, we recommend you to write a wrapper at your end to add the authentication parameters after consuming it at the URL end point provided.
 
 ## Create Order
 
@@ -5057,6 +5151,7 @@ orderReferenceId | String | Order reference id.
 {
   "orderNo": "P_Aetos1",
 	"notificationType": "ORDERUPDATENOTIFICATION",
+  "orderReferenceId": "93780c3292ba4ee4809ad125ef97",
   "vehicleNumber":"MH04DY69",
 	"awbNumber": "AWB001",
 	"deliveryMediumName": "kumari2",
@@ -5419,8 +5514,7 @@ notificationType | String | LOADINGDONENOTIFICATION
   "paymentMode": "COD",
   "recipientName": "Rahul",
   "branchName": "AAA0",
-  "paymentSubType": "",
-  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
+  "paymentSubType": ""
 }
 
 ```
@@ -5728,6 +5822,7 @@ orderReferenceId | String | Order Reference Id
 
 ## Route Planning
 
+
 > Response
 
 ```json
@@ -5739,13 +5834,13 @@ orderReferenceId | String | Order Reference Id
       "deliveryMediumName": "Ramesh",
       "referenceId": "d1c196e8bf384c40ae7f7ca0fd1a3d58",
       "phoneNumber": "9876543213",
-      "driverName": "TestDriver1",
+      "driverName": "Matt",
       "vehicleNumber": "MH-13213",
       "orderDetails": [
         {
-          "orderNo": "DummyOrder345",
-          "startTimeWindow": "2016-10-13 11:18:00",
-          "endTimeWindow": "2016-10-13 17:45:00",
+          "orderNo": "GRU453D",
+          "startTimeWindow": "2018-04-14 11:18:00",
+          "endTimeWindow": "2018-04-14 17:45:00",
           "deliveryOrder":1,
           "latitude": 19.1239285,
           "longitude": 72.90944069999999
@@ -5757,7 +5852,7 @@ orderReferenceId | String | Order Reference Id
 
 ```
 
-This notification is sent when route planning is done to assign orders to delivery boys for a particular window of time.
+
 
 
 
@@ -5821,7 +5916,7 @@ longitude | Double | Order Longitude
 ```
 
 This notification is sent when the Route Planning API is called.
-You will have to consume this webhook in case your system is integrated with LogiNext through Route Planning API.
+
 
 
 #### Response Parameters
@@ -6087,7 +6182,6 @@ updateTime | String |  This is the time in UTC when the Delivery Associate was m
 > Response
 
 ```json
-[
 {
     "referenceId": "f40cf4493a5949199775499b5750a272",
     "notificationType": "CREATEDELIVERYMEDIUMNOTIFICATION",
@@ -6120,7 +6214,6 @@ updateTime | String |  This is the time in UTC when the Delivery Associate was m
     "fixedCost":"500",
     "variableCost":"30"
 }
-]
 ```
 
 When the Delivery Associate is created in the system.
