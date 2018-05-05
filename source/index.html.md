@@ -318,7 +318,7 @@ This means -
 
 1n 1 second you can create 20 Orders in LogiNext.
 In 1 minute you can create - 20*60 = 1200 Orders in LogiNext
-In 1 hour you can create - 20*60*60 = 7200 Orders in LogiNext
+In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext
 
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
