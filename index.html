@@ -633,9 +633,9 @@ Similarly for - <br>
 
 <p>This means - </p>
 
-<p>1n 1 second you can create 20 Orders in LogiNext.
-In 1 minute you can create - 20*60 = 1200 Orders in LogiNext
-In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext</p>
+<p>1n 1 second you can create 20 Orders in LogiNext.<br>
+In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
+In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
 
 <p>Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
 
@@ -5334,7 +5334,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the deliver account code.</td>
+<td>This is the cutomer code of the deliver customer.</td>
 </tr>
 <tr>
 <td>deliverAccountName</td>
@@ -5355,21 +5355,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the phone number of the pickup customer.</td>
+<td>This is the phone number of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the apartment details of the pickup customer.</td>
+<td>This is the apartment details of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the street name of the pickup customer.</td>
+<td>This is the street name of the delivery customer.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
@@ -5597,8 +5597,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickuprStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
@@ -6986,14 +6986,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Date</td>
 <td></td>
 <td>Conditional Mandatory</td>
-<td>If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+<td>If order_no is not passed in the request, then this field is mandatory. Range of date from which orders can be searched. This will return orders based on the order fulfillment date start time window. <BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>end_date</td>
 <td>Date</td>
 <td></td>
 <td>Conditional Mandatory</td>
-<td>If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+<td>If order_no is not passed in the request, then this field is mandatory. Range of date upto which orders can be searched. This will return orders that have fulfillment end times less than the entered time.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
 </tr>
 <tr>
 <td>status</td>
@@ -10250,12 +10250,12 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Delivery boy name</td>
+<td>Delivery Associate&rsquo;s name</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>Integer</td>
-<td>Delivery boy phone number</td>
+<td>Delivery Associate&rsquo;s phone number</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -10390,7 +10390,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is accepted by a delivery boy.</p>
+<p>This notification is sent when an order is accepted by a delivery Associate.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -10473,7 +10473,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This notification is sent when an order is rejected by a delivery boy.</p>
+<p>This notification is sent when an order is rejected by a delivery Associate.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -10934,7 +10934,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is delivered by a delivery boy to customer.</p>
+<p>This notification is sent when an order is delivered by a delivery Associate to customer.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -11121,7 +11121,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is partially delivered by a delivery boy to customer.</p>
+<p>This notification is sent when an order is partially delivered by a delivery Associate to customer.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -11396,7 +11396,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is not delivered by a delivery boy.</p>
+<p>This notification is sent when an order is not delivered by a delivery Associate.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -11520,7 +11520,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is picked up by a delivery boy.</p>
+<p>This notification is sent when an order is picked up by a delivery Associate.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -11631,7 +11631,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This notification is sent when an order is picked up by a delivery boy.</p>
+<p>This notification is sent when an order is picked up by a delivery Associate.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
@@ -12243,7 +12243,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.</p>
+<p>With this webhook, you can get the list of one or more nearest Drivers / Delivery Associate / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
