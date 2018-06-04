@@ -316,9 +316,9 @@ The LogiNext API accept upto 20 records per request. For eg - If you call the Cr
 
 This means - 
 
-1n 1 second you can create 20 Orders in LogiNext.
-In 1 minute you can create - 20*60 = 1200 Orders in LogiNext
-In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext
+1n 1 second you can create 20 Orders in LogiNext.<br>
+In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
+In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br>
 
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
@@ -2916,12 +2916,12 @@ deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format
 deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | 255 | Mandatory | This is the deliver account code.
+deliverAccountCode | String | 255 | Mandatory | This is the cutomer code of the deliver customer.
 deliverAccountName | String | 255 | Mandatory | This is the deliver account name.
 deliverEmail | String | 100 | Optional | This is the email ID details of the customer.
-deliverPhoneNumber | String | 255 | Optional | This is the phone number of the pickup customer.
-deliverApartment | String | 512 | Mandatory | This is the apartment details of the pickup customer.
-deliverStreetName | String | 512 | Mandatory | This is the street name of the pickup customer.
+deliverPhoneNumber | String | 255 | Optional | This is the phone number of the delivery customer.
+deliverApartment | String | 512 | Mandatory | This is the apartment details of the delivery customer.
+deliverStreetName | String | 512 | Mandatory | This is the street name of the delivery customer.
 deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's addess.
 deliverLocality | String | 512 | Mandatory | This is the locality of the delivery customer.
 deliverCity | String | 512 | Mandatory | This is the city name of the delivery customer.
@@ -3010,8 +3010,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupAccountCode": "jim001",
     "pickupAccountName": "James Walker",
     "pickupApartment": "901",
-    "pickuprStreetName": "2142 3rd Ave",
-    "pcikupLandmark": "Opp. McDonalds",
+    "pickupStreetName": "2142 3rd Ave",
+    "pickupLandmark": "Opp. McDonalds",
     "pickupLocality": "East Harlem",
     "pickupCity": "New York",
     "pickupState": "NY",
@@ -3543,8 +3543,8 @@ Retrieve orders and all the order associated information with this API.
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-start_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-end_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format 'yyyy-MM-dd HH:mm:ss'
+start_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request, then this field is mandatory. Range of date from which orders can be searched. This will return orders based on the order fulfillment date start time window. <BR>Format 'yyyy-MM-dd HH:mm:ss'
+end_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request, then this field is mandatory. Range of date upto which orders can be searched. This will return orders that have fulfillment end times less than the entered time.<BR>Format 'yyyy-MM-dd HH:mm:ss'
 status | String | 20 | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | 100 | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
 page_no | Integer | | Optional | This parameter lets you specify the page number. It is used to page through the orders. This is optional parameter and default value (if it isn't specified) will be 1. 
@@ -5213,8 +5213,8 @@ orderNo | String | Order No.
 notificationType | String| eg. ORDERUPDATENOTIFICATION
 vehicleNumber | String | Vehicle Number
 awbNumber | String | AWB Number
-deliveryMediumName | String | Delivery boy name
-phoneNumber | Integer | Delivery boy phone number
+deliveryMediumName | String | Delivery Associate's name
+phoneNumber | Integer | Delivery Associate's phone number
 orderState | String | eg. FORWARD or REVERSE
 clientId | Integer | Client Id
 shipmentCrateMapping | Array | Array of String of mapped crate
@@ -5260,7 +5260,7 @@ orderStatus | String | The current state of the Order.
 
 ```
 
-This notification is sent when an order is accepted by a delivery boy.
+This notification is sent when an order is accepted by a delivery Associate.
 
 
 
@@ -5297,7 +5297,7 @@ orderReferenceId | String | Order Reference Id
 }
 ```
 
-This notification is sent when an order is rejected by a delivery boy.
+This notification is sent when an order is rejected by a delivery Associate.
 
 #### Response Parameters
 
@@ -5519,7 +5519,7 @@ notificationType | String | LOADINGDONENOTIFICATION
 
 ```
 
-This notification is sent when an order is delivered by a delivery boy to customer.
+This notification is sent when an order is delivered by a delivery Associate to customer.
 
 
 
@@ -5615,7 +5615,7 @@ orderReferenceId | String | Order Reference Id
 
 ```
 
-This notification is sent when an order is partially delivered by a delivery boy to customer.
+This notification is sent when an order is partially delivered by a delivery Associate to customer.
 
 
 
@@ -5698,7 +5698,7 @@ paymentSubType | String | e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
 
 ```
 
-This notification is sent when an order is not delivered by a delivery boy.
+This notification is sent when an order is not delivered by a delivery Associate.
 
 
 
@@ -5750,7 +5750,7 @@ orderReferenceId | String | Order Reference Id
 
 ```
 
-This notification is sent when an order is picked up by a delivery boy.
+This notification is sent when an order is picked up by a delivery Associate.
 
 
 
@@ -5798,7 +5798,7 @@ orderReferenceId | String | Order Reference Id
 
 ```
 
-This notification is sent when an order is picked up by a delivery boy.
+This notification is sent when an order is picked up by a delivery Associate.
 
 
 
@@ -6119,7 +6119,7 @@ updatedDate | String | Timestamp
 }
 ```
 
-With this webhook, you can get the list of one or more nearest Drivers / Delivery Boys / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.
+With this webhook, you can get the list of one or more nearest Drivers / Delivery Associate / Field Executives that the LogiNext Delivery Associate Allocation Engine has identified to deliver your On Demand (point to point) Orders.
 
 #### Response Parameters
 
