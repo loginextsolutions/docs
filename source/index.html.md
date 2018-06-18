@@ -1167,6 +1167,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
   "modeOfTransport": "ROAD",
   "vehicleNumber": "MH40AK0175",
   "barcode": "LN00590915",
+  "routeConfigurationName":"route53",
   "startNow":false
 }
 ```
@@ -1212,6 +1213,8 @@ trainNum| String | 30 | Mandatory(Conditional) | Rail Number if modeOfTransport 
 driverName | String | 255 | Optional | Name of the driver
 vehicleNumber | String | 30 | Optional | Vehicle Number.
 barcode | String | 50 | Mandatory | Barcode of the tracker used for attaching to vehicle during trip
+routeConfigurationName | String | 50 | Optional | Name of the Route.
+startNow | Boolean | 50 | Optional | This flag will automatically start the trip upon creation if set to true. If false a trip will be created but not started.
 
 
 ### Get
@@ -2570,6 +2573,12 @@ Create Orders in the LogiNext system using the Orders API. Orders will be assign
 
 To view the Orders created in the LogiNext Web Application, select the correct date range in the date filter on the screen.
 
+You can use the property of Customer Profiling while creating orders in LogiNext to store customer information context. 
+When Customer Profiling is turned ON -
+1. You can only enter the corresponding accountCode field that will hold the customer ID. If passed, ad the accountCode exists in the LogiNext system, LogiNext will use the customer information associated with that accountCode in the Order creation. It will overlook other customer information like Name, Email and Phone Number.
+2. In Order to select a particular address for that customer, you can pass the address ID associated with that address for that customer. If passed, and the address ID exists in LogiNext for a previously created address, the address information associated with that address ID will be used.
+
+
 ### Create Pick Up Only
 
 > Definition
@@ -2607,12 +2616,13 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageValue": "5000",
     "pickupNotes": "Please ring my Door Bell",
     "pickupAccountCode": "jim001",
+    "pickupAddressId": "home",
     "pickupAccountName": "James Walker",
     "pickupEmail": "james.w@ablogs.com",
     "pickupPhoneNumber": "5163063377",
     "pickupApartment": "901",
     "pickupStreetName": "2142 3rd Ave",
-    "pcikupLandmark": "Opp. McDonalds",
+    "pickupLandmark": "Opp. McDonalds",
     "pickupLocality": "East Harlem",
     "pickupCity": "New York",
     "pickupState": "NY",
@@ -2739,17 +2749,18 @@ pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time fo
 distributionCenter |
 pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | This is the pickup account code.
-pickupAccountName | String | 255 | Mandatory | This is the pickup account name.
+pickupAccountName | String | 255 | Mandatory | This is the pickup account Name.
+pickupAddressId | String | 255 | Optional | This is the Address ID of the pickup Customer.
 pickupEmail | String | 100 | Optional | This is the email ID of the pickup customer.
-pickupPhoneNumber | String | 255 | Mandatory | This is the phone number of the pickup customer.
-pickupApartment | String | 512 | Mandatory | This is the apartment details of the pickup customer.
-pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer.
-pickupLandmark | String | 512 | Optional | This field holds any landmarks near the pickup location.
-pickupLocality | String | 512 | Mandatory | This is the locality of the pickup customer.
-pickupCity | String | 512 | Mandatory | This is the city name of the pickup customer.
-pickupState| String | 512 | Mandatory | This is the state name of the pickup customer.. Please refer to the list of state codes provided in the "State Codes" section.
-pickupCountry | String | 512 | Mandatory | This is the country name of the pickup customer. Please refer to the list of country codes provided in the "Country Codes" section.
-pickupPinCode | String | 20 | Mandatory | This is the pincode of the pickup customer.
+pickupPhoneNumber | String | 255 | Optional | This is the phone number of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Optional | This field holds any landmarks near the pickup location. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLocality | String | 512 | Conditional Mandatory | This is the locality of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | This is the city name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the state name of the pickup customer. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | This is the country name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.Please refer to the list of country codes provided in the "Country Codes" section.
+pickupPinCode | String | 20 | Conditional Mandatory | This is the pincode of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
@@ -2810,6 +2821,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "deliveryType": "Groceries",
     "deliveryLocationType":"Home",
     "deliverAccountCode": "Matt001",
+    "deliverAddressId": "Home",
     "deliverAccountName": "Mathew Richardson",
     "deliverEmail":"m.richardson@testmail.com",
     "deliverPhoneNumber":"3125096995",
@@ -2917,17 +2929,18 @@ deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - Y
 deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Mandatory | This is the cutomer code of the deliver customer.
-deliverAccountName | String | 255 | Mandatory | This is the deliver account name.
+deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
+deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
 deliverEmail | String | 100 | Optional | This is the email ID details of the customer.
 deliverPhoneNumber | String | 255 | Optional | This is the phone number of the delivery customer.
-deliverApartment | String | 512 | Mandatory | This is the apartment details of the delivery customer.
-deliverStreetName | String | 512 | Mandatory | This is the street name of the delivery customer.
+deliverApartment | String | 512 | Conditional Mandatory | This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory | This is the street name of the delivery customer.
 deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's addess.
-deliverLocality | String | 512 | Mandatory | This is the locality of the delivery customer.
-deliverCity | String | 512 | Mandatory | This is the city name of the delivery customer.
-deliverState| String | 512 | Mandatory | This is the state code of the delivery customer. Please refer to the list of state codes provided in the "State Codes" section.
-deliverCountry | String | 512 | Mandatory | This is the country code of the delivery customer. Please refer to the list of country codes provided in the "Country Codes" section.
-deliverPinCode | String | 20 | Mandatory | This is the pincode of the delivery customer.
+deliverLocality | String | 512 | Conditional Mandatory | This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | This is the state code of the delivery customer. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | This is the country code of the delivery customer. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | Conditional Mandatory | This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the delivery customer.
 deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the delivery customer.
 returnBranch | String | 255 | Mandatory | Name of return branch.
@@ -2990,6 +3003,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "deliverEmail":"m.richardson@testmail.com",
     "deliverPhoneNumber":"9891234567",
     "deliverAccountCode": "Matt001",
+    "deliverAddressId": "home",
     "deliverAccountName": "Mathew Richardson",
     "deliverApartment": "201",
     "deliverStreetName": "E Randolph St",
@@ -3008,6 +3022,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupEmail":"james.w@ablogs.com",
     "pickupPhoneNumber": "5163063377",
     "pickupAccountCode": "jim001",
+    "pickupAddressId": "Home",
     "pickupAccountName": "James Walker",
     "pickupApartment": "901",
     "pickupStreetName": "2142 3rd Ave",
@@ -3023,6 +3038,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
     "returnAccountCode": "jim001",
+    "returnAddressId": "Home",
     "returnAccountName": "James Walker",
     "returnEmail": "james.w@ablogs.com",
     "returnPhoneNumber": "9891234567",
@@ -3128,15 +3144,15 @@ deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - Y
 deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Mandatory | Deliver account code
-deliverAccountName | String | 255 | Mandatory | Deliver account name
-deliverApartment | String | 512 | Mandatory | This is the delivery customer location's apartment details.
-deliverStreetName | String | 512 | Mandatory | This is the delivery customer location's Street name.
+deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverApartment | String | 512 | Conditional Mandatory | This is the delivery customer location's apartment details. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory | This is the delivery customer location's Street name. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLandmark | String | 512 | Optional | This is the delivery customer location's Landmark.
-deliverLocality | String | 512 | Mandatory | This is the delivery customer location's Locality.
-deliverCity | String | 512 | Mandatory | This is the delivery customer location's City.
-deliverState| String | 512 | Mandatory | This is the delivery customer location's state code
-deliverCountry | String | 512 | Mandatory | This is the delivery customer location's country code
-deliverPinCode | String | 20 | Mandatory | This is the delivery customer location's Pincode
+deliverLocality | String | 512 | Conditional Mandatory | This is the delivery customer location's Locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | This is the delivery customer location's City. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | This is the delivery customer location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | This is the delivery customer location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
 deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
 pickupBranch | String | 255 | Mandatory | Name of pickup branch
@@ -3144,15 +3160,15 @@ pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
 pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupAccountCode | String | 255 | Mandatory | Pickup account code
-pickupAccountName | String | 255 | Mandatory | Pickup account name
-pickupApartment | String | 512 | Mandatory | This is the pickup location's apartment.
-pickupStreetName | String | 512 | Mandatory | This is the pickup location's street name.
+pickupAccountName | String | 255 | Conditional Mandatory | Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupApartment | String | 512 | Conditional Mandatory | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLandmark | String | 512 | Optional | This is the pickup location's  Landmark.
-pickupLocality | String | 512 | Mandatory | This is the pickup location's locality.
-pickupCity | String | 512 | Mandatory | This is the pickup location's city.
-pickupState| String | 512 | Mandatory | This is the pickup location's state code.
-pickupCountry | String | 512 | Mandatory | This is the pickup location's country code.
-pickupPinCode | String | 20 | Mandatory | This is the pickup location's pincode
+pickupLocality | String | 512 | Conditional Mandatory | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | This is the pickup location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupPinCode | String | 20 | Conditional Mandatory | This is the pickup location's pincode. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the pickup location.
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup location.
 returnBranch | String | 255 | Mandatory | Name of return branch
@@ -3160,16 +3176,16 @@ returnStartTimeWindow | Date |  | Mandatory | Return start time window. Format -
 returnEndTimeWindow | Date |  | Mandatory | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 returnAccountCode | String | 255 | Mandatory | Return account code
 returnAccountName | String | 255 | Mandatory | Return account name
-returnEmail | String | 100 | Mandatory | Return account code
-returnPhoneNumber | String | 255 | Mandatory | Return account name
-returnApartment | String | 512 | Mandatory | This is the return location's Apartment.
-returnStreetName | String | 512 | Mandatory | This is the pickup location's street name.
+returnEmail | String | 100 | Conditional Mandatory | Return account code. This field in Non Mandatory in case Customer Profiling in ON.
+returnPhoneNumber | String | 255 | Conditional Mandatory | Return account name. This field in Non Mandatory in case Customer Profiling in ON.
+returnApartment | String | 512 | Conditional Mandatory | This is the return location's Apartment. This field in Non Mandatory in case Customer Profiling in ON.
+returnStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
 returnLandmark | String | 512 | Optional | This is the pickup location's landmark.
-returnLocality | String | 512 | Mandatory | This is the pickup location's locality.
-returnCity | String | 512 | Mandatory | This is the pickup location's city.
-returnState| String | 512 | Mandatory | This is the pickup location's state code. Please refer to the list of state codes provided in the "State Codes" section.
-returnCountry | String | 512 | Mandatory | This is the pickup location's country code. Please refer to the list of country codes provided in the "Country Codes" section.
-returnPinCode | String | 20 | Mandatory | Return Pincode
+returnLocality | String | 512 | Conditional Mandatory | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
+returnCity | String | 512 | Conditional Mandatory | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
+returnState| String | 512 | Conditional Mandatory | This is the pickup location's state code. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+returnCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+returnPinCode | String | 20 | Conditional Mandatory | Return Pincode. This field in Non Mandatory in case Customer Profiling in ON.
 deliverEmail| String | 100 | Optional | Email of the customer
 deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
 pickupEmail| String | 100 | Optional | Email of the merchant
@@ -3983,10 +3999,16 @@ This endpoint downloads the EPODs for given order, delivery dates and status of 
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-orderstartdt | String |  | Mandatory | Order start date
-orderenddt | String |  | Mandatory | Order end date
-deliverystartdt | String |  | Mandatory | Delivery start date
-deliveryenddt | String |  | Mandatory | Delivery end date
+orderstartdt | String |  | Optional | This parameter will retrieve the EPODs for Orders with an Order Date greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with orderenddt.
+orderenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with orderstartdt.
+deliverystartdt | String |  | Optional | This parameter will retrieve the EPODs for Orders with an Order Deliver Date  greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with deliveryenddt. 
+deliveryenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Deliver Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with deliverystartdt. 
+startDateFilter | String |  | Optional | This field will work based on status - if status is ALL then it will retrieve the data greater than this date.
+if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. 
+else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter. 
+endDateFilter | String |  | Optional | It will work based on status if status = ALL then it will get all data less than this date.
+if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window. 
+else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter. 
 status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
 
 #### Response
@@ -5938,6 +5960,34 @@ route.shipments.end | String | End Date and Time slot of the shipment
 route.shipments.shipmentType | String | Type of Shipment i.e. DELIVER, PICKUP
 unassigned | List | List of shipment IDs that are not assigned to any trip because of constraints
 hasError | Boolean | If true - There is error in processing your request. If false - The request is successfully processed
+
+## Allocation End
+
+> Response
+
+```json
+
+{
+ "orderNo": "ORD00000002",
+ "notificationType": "ORDERALLOCATIONSTOP",
+ "orderReferenceId": "d39d14f7f08542b2b03e7e45e5aa4416",
+ "lastRunDt": "2018-06-05T07:19:13Z",
+ "isMaxAttemptsExhausted": false
+}
+```
+This notification is triggered when the Auto Allocation process for an Order ends and a driver is not assigned to the order.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+orderNo | String>|  Order No.s.
+notificationType | String |  ORDERALLOCATIONSTOP
+orderReferenceId | String |  Reference ID of the order.
+lastRunDt | String |  Last run time of the allocation engine
+isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
+
+
 
 ## Start Trip
 
