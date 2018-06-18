@@ -2209,6 +2209,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="s2">"route53"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2348,6 +2349,20 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>50</td>
 <td>Mandatory</td>
 <td>Barcode of the tracker used for attaching to vehicle during trip</td>
+</tr>
+<tr>
+<td>routeConfigurationName</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>Name of the Route.</td>
+</tr>
+<tr>
+<td>startNow</td>
+<td>Boolean</td>
+<td>50</td>
+<td>Optional</td>
+<td>This flag will automatically start the trip upon creation if set to true. If false a trip will be created but not started.</td>
 </tr>
 </tbody></table>
 
@@ -4554,6 +4569,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p>To view the Orders created in the LogiNext Web Application, select the correct date range in the date filter on the screen.</p>
 
+<p>You can use the property of Customer Profiling while creating orders in LogiNext to store customer information context. 
+When Customer Profiling is turned ON -
+1. You can only enter the corresponding accountCode field that will hold the customer ID. If passed, ad the accountCode exists in the LogiNext system, LogiNext will use the customer information associated with that accountCode in the Order creation. It will overlook other customer information like Name, Email and Phone Number.
+2. In Order to select a particular address for that customer, you can pass the address ID associated with that address for that customer. If passed, and the address ID exists in LogiNext for a previously created address, the address information associated with that address ID will be used.</p>
+
 <h3 id="create-pick-up-only">Create Pick Up Only</h3>
 
 <blockquote>
@@ -4591,12 +4611,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please ring my Door Bell"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pcikupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
@@ -4864,7 +4885,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the pickup account name.</td>
+<td>This is the pickup account Name.</td>
+</tr>
+<tr>
+<td>pickupAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the pickup Customer.</td>
 </tr>
 <tr>
 <td>pickupEmail</td>
@@ -4877,64 +4905,64 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>pickupPhoneNumber</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>This is the phone number of the pickup customer.</td>
+<td>Optional</td>
+<td>This is the phone number of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the apartment details of the pickup customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is the street name of the pickup customer.</td>
+<td>This is the street name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>This field holds any landmarks near the pickup location.</td>
+<td>This field holds any landmarks near the pickup location. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the locality of the pickup customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the locality of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the city name of the pickup customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the city name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the state name of the pickup customer.. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>This field in Non Mandatory in case Customer Profiling in ON. Mandatory</td>
+<td>This is the state name of the pickup customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the country name of the pickup customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>Conditional Mandatory</td>
+<td>This is the country name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
 <td>20</td>
-<td>Mandatory</td>
-<td>This is the pincode of the pickup customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pincode of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
@@ -5091,6 +5119,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
@@ -5337,11 +5366,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>This is the cutomer code of the deliver customer.</td>
 </tr>
 <tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the deliver customer.</td>
+</tr>
+<tr>
 <td>deliverAccountName</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>This is the deliver account name.</td>
+<td>Conditional Mandatory</td>
+<td>This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverEmail</td>
@@ -5361,14 +5397,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the apartment details of the delivery customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
+<td>Conditional Mandatory</td>
 <td>This is the street name of the delivery customer.</td>
 </tr>
 <tr>
@@ -5382,36 +5418,36 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the locality of the delivery customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the city name of the delivery customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the state code of the delivery customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>Conditional Mandatory</td>
+<td>This is the state code of the delivery customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the country code of the delivery customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>Conditional Mandatory</td>
+<td>This is the country code of the delivery customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
-<td>Mandatory</td>
-<td>This is the pincode of the delivery customer.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
@@ -5577,6 +5613,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
@@ -5595,6 +5632,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
@@ -5610,6 +5648,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
@@ -5856,22 +5895,22 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverAccountName</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>Deliver account name</td>
+<td>Conditional Mandatory</td>
+<td>Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s apartment details.</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s apartment details. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s Street name.</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s Street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
@@ -5884,36 +5923,36 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>deliverLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s Locality.</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s Locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s City.</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s City. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s state code</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s state code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s country code</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s country code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
-<td>Mandatory</td>
-<td>This is the delivery customer location&rsquo;s Pincode</td>
+<td>This field in Non Mandatory in case Customer Profiling in ON. Mandatory</td>
+<td>This is the delivery customer location&rsquo;s Pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
@@ -5968,22 +6007,22 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>pickupAccountName</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>Pickup account name</td>
+<td>Conditional Mandatory</td>
+<td>Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s apartment.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupStreetName</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s street name.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLandmark</td>
@@ -5996,36 +6035,36 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>pickupLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s locality.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s city.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s city. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s state code.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s state code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s country code.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s country code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
 <td>20</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s pincode</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
@@ -6080,29 +6119,29 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>returnEmail</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>Return account code</td>
+<td>Conditional Mandatory</td>
+<td>Return account code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnPhoneNumber</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>Return account name</td>
+<td>Conditional Mandatory</td>
+<td>Return account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnApartment</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the return location&rsquo;s Apartment.</td>
+<td>Conditional Mandatory</td>
+<td>This is the return location&rsquo;s Apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnStreetName</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s street name.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnLandmark</td>
@@ -6115,36 +6154,36 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>returnLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s locality.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnCity</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s city.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s city. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnState</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnCountry</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>This is the pickup location&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>Conditional Mandatory</td>
+<td>This is the pickup location&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>returnPinCode</td>
 <td>String</td>
 <td>20</td>
-<td>Mandatory</td>
-<td>Return Pincode</td>
+<td>Conditional Mandatory</td>
+<td>Return Pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverEmail</td>
@@ -7996,38 +8035,45 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>orderstartdt</td>
 <td>String</td>
 <td></td>
-<td>Mandatory</td>
-<td>Order start date</td>
+<td>Optional</td>
+<td>This parameter will retrieve the EPODs for Orders with an Order Date greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with orderenddt.</td>
 </tr>
 <tr>
 <td>orderenddt</td>
 <td>String</td>
 <td></td>
-<td>Mandatory</td>
-<td>Order end date</td>
+<td>Optional</td>
+<td>This parameter will retrieve the EPODs for Orders  with an Order Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with orderstartdt.</td>
 </tr>
 <tr>
 <td>deliverystartdt</td>
 <td>String</td>
 <td></td>
-<td>Mandatory</td>
-<td>Delivery start date</td>
+<td>Optional</td>
+<td>This parameter will retrieve the EPODs for Orders with an Order Deliver Date  greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with deliveryenddt.</td>
 </tr>
 <tr>
 <td>deliveryenddt</td>
 <td>String</td>
 <td></td>
-<td>Mandatory</td>
-<td>Delivery end date</td>
+<td>Optional</td>
+<td>This parameter will retrieve the EPODs for Orders  with an Order Deliver Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with deliverystartdt.</td>
 </tr>
 <tr>
-<td>status</td>
+<td>startDateFilter</td>
 <td>String</td>
-<td>20</td>
+<td></td>
 <td>Optional</td>
-<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED</td>
+<td>This field will work based on status - if status is ALL then it will retrieve the data greater than this date.</td>
 </tr>
 </tbody></table>
+
+<p>if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. 
+else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter. 
+endDateFilter | String |  | Optional | It will work based on status if status = ALL then it will get all data less than this date.
+if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window. 
+else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter. 
+status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED</p>
 
 <h4 id="response">Response</h4>
 
@@ -11950,6 +11996,59 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>hasError</td>
 <td>Boolean</td>
 <td>If true - There is error in processing your request. If false - The request is successfully processed</td>
+</tr>
+</tbody></table>
+
+<h2 id="allocation-end">Allocation End</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+ </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORD00000002"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERALLOCATIONSTOP"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d39d14f7f08542b2b03e7e45e5aa4416"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"lastRunDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-05T07:19:13Z"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"isMaxAttemptsExhausted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is triggered when the Auto Allocation process for an Order ends and a driver is not assigned to the order.</p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderNo</td>
+<td>String&gt;</td>
+<td>Order No.s.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>ORDERALLOCATIONSTOP</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>Reference ID of the order.</td>
+</tr>
+<tr>
+<td>lastRunDt</td>
+<td>String</td>
+<td>Last run time of the allocation engine</td>
+</tr>
+<tr>
+<td>isMaxAttemptsExhausted</td>
+<td>String</td>
+<td>check if the max number of attempts was exhausted.</td>
 </tr>
 </tbody></table>
 
