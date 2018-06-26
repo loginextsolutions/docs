@@ -2200,6 +2200,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="s2">"SN-123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNND"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FG-123-GH"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NAGD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -2265,6 +2266,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>1000</td>
 <td>Mandatory</td>
 <td>Destination point of the trip.Examples:-CNND,BOMX</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>AWB Number of the Order.</td>
 </tr>
 <tr>
 <td>name</td>
@@ -10125,6 +10133,660 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </tr>
 </tbody></table>
 
+<h1 id="loginext-field-tm">LogiNext Field TM</h1>
+
+<h2 id="tasks">Tasks</h2>
+
+<p>Create Tasks in the LogiNext system using the Tasks API. Tasks will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Task later.</p>
+
+<p>To view the Tasks created in the LogiNext Web Application, select the correct date range in the date filter on the screen.</p>
+
+<h3 id="create">Create</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/field/v</span><span class="mi">2</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"taskNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentTaskTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"taskState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentTaskDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Towm Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task(s) created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"taskNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ww1223"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentTaskTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"taskState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Create delivery tasks with this API in the LogiNext system. Tasks will be created and assigned a reference ID that can be used at a leter time to identify the task.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/field/v2/create</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>taskNo</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>This is the Task No.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>This is the airway Bill No.</td>
+</tr>
+<tr>
+<td>shipmentTaskTypeCd</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>This is the task type code. DELIVER for delivery leg task</td>
+</tr>
+<tr>
+<td>taskState</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>State of task. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Task is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
+</tr>
+<tr>
+<td>shipmentTaskDt</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Task Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the distribution center&rsquo;s name</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is the weight of package in Kg.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is the volume of package in CC</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is the value of package</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>This is the number of crates</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+</tr>
+<tr>
+<td>partialDeliveryAllowedFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
+</tr>
+<tr>
+<td>returnAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>This field specifies if the task can be returned. Ex: Y/N. Default value is Y.</td>
+</tr>
+<tr>
+<td>cancellationAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>Is Cancellation allowed. Ex: Y/N. Default value is Y.</td>
+</tr>
+<tr>
+<td>deliverBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of delivery branch</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Task delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. Ex: CUSTOMER, PUP</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the cutomer code of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>This is the email ID details of the customer.</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the phone number of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the street name of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This field holds any identifying landmark&rsquo;s around the customer&rsquo;s addess.</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the state code of the delivery customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the country code of the delivery customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the delivery customer.</td>
+</tr>
+<tr>
+<td>returnBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of return branch.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the task.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the task.</td>
+</tr>
+</tbody></table>
+
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/field/v</span><span class="mi">1</span><span class="err">/task?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;task_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;dm_employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d4f455a2ff074449acf79371ea55a0fe"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"taskNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP-5_Custodian4_30/6/2018_20"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Writer Safeguard Private Limited_UAT"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Writer Safeguard Private Limited_UAT Main Branch"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Writer Safeguard Private Limited_UAT Main Branch"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"., ., ., Mumbai, Maharashtra, INDIA, ."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentTaskTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"taskState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentTaskDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1529799037000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530347401000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530376801000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custodian4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverMediumPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999999994"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"assignedThrough"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manually"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-58"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530361561000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.254</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"distanceFromHub"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.713</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530342001000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530361561000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P3ENMI17"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P3ENMI17"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.082</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.849</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Retrieve orders and all the order associated information with this API.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>Date</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If task_no is not passed in the request, then this field is mandatory. Range of date from which tasks can be searched. This will return tasks based on the task fulfillment date start time window. <BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>Date</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If task_no is not passed in the request, then this field is mandatory. Range of date upto which tasks can be searched. This will return tasks that have fulfillment end times less than the entered time.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>If task_no is passed in the request,then status will not be considered for filtering the orders.Task status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
+</tr>
+<tr>
+<td>order_no</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Task Number(Only one order number can be passed at a time.If not passed ,all the tasks for the specified date range will be fetched)</td>
+</tr>
+<tr>
+<td>page_no</td>
+<td>Integer</td>
+<td></td>
+<td>Optional</td>
+<td>This parameter lets you specify the page number. It is used to page through the tasks. This is optional parameter and default value (if it isn&rsquo;t specified) will be 1.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>Integer</td>
+<td></td>
+<td>Optional</td>
+<td>This parameter lets you specify the count of tasks to return in your API call. This is optional parameter and default value (if it isn&rsquo;t specified) will be 50. The maximum accepted value is 100; higher values will be accepted but you will only get 100 records.</td>
+</tr>
+<tr>
+<td>customer_code</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>This is the Customer Address ID parameter. You can pass one customer Id at a time. The result will be list of all the tasks created for the mentioned customer ID</td>
+</tr>
+<tr>
+<td>employee_id</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>This is the Driver National ID  parameter. You can pass one driver Id at a time. The result will be list of all the tasks which were assigned to this Driver ID</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Filter applied on orders</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NOTDISPATCHED</td>
+<td>Tasks will be fetched for which either the Tasks Start Date &amp; Time Window or the Tasks End Date &amp; Time Window lies within the range specified.</td>
+</tr>
+<tr>
+<td>INTRANSIT</td>
+<td>Tasks will be fetched for which the Actual Delivery Start Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>COMPLETED</td>
+<td>For First Mile, an Task is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>NOTCOMPLETED</td>
+<td>For First Mile, when the Task is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the Tasks is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Tasks will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>CANCELLED</td>
+<td>Orders will be fetched for which the Cancellation Date &amp; Time lies within the range specified.</td>
+</tr>
+<tr>
+<td>ALL</td>
+<td>Superset of all the filters mentioned for the above statuses will be considered.</td>
+</tr>
+</tbody></table>
+
+<h3 id="update-status">Update Status</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/update/status</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"taskDetails"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.913214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+
+  </span><span class="p">}]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task status changed successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+You can pass multiple order reference IDs and can update one or more parameters.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.</td>
+</tr>
+<tr>
+<td>otherReason</td>
+<td>Date</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>Mandatory when reasonCd is OTHER</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>otherReason</td>
+<td>Date</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>Date</td>
+<td>15</td>
+<td>Conditional Optional</td>
+<td>This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.</td>
+</tr>
+</tbody></table>
+
 <h1 id="webhooks">Webhooks</h1>
 
 <p>Webhooks allow you to build or set up integrations which subscribe to certain events like Order Creation, Route Planning, Trip Start, etc. on LogiNext System. When one of those events is triggered, we&rsquo;ll send a HTTP POST request to the webhook&rsquo;s configured URL (end point).</p>
@@ -10146,14 +10808,16 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATS487"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-25 07:31:39"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERCREATIONNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-07-01 03:05:08"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"3daeaf418c59421319b1307e632b327da"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NNP001"</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143b28d87ghf46098de38b0ccce51a5d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B1372"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -10197,9 +10861,24 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>Order creation timestamp</td>
 </tr>
 <tr>
-<td>orderReferenceId</td>
+<td>referenceId</td>
 <td>String</td>
 <td>Order reference id.</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>Client ID associated with the Order</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>Custoemr ID of the deliver customer</td>
+</tr>
+<tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>Address ID of the delivery customer</td>
 </tr>
 </tbody></table>
 
@@ -10967,6 +11646,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567864</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Watson"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:11:27"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -10975,8 +11655,9 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"733a42098c1946c98aad410a1dcef75e"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
 </span></code></pre>
 
@@ -11050,6 +11731,11 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>customerName</td>
 <td>String</td>
 <td>Customer name</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>Client ID</td>
 </tr>
 <tr>
 <td>deliveryTime</td>
@@ -11424,7 +12110,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="w">
+  </span><span class="s2">"awbNumber"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AWB001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test user comments"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suresh"</span><span class="p">,</span><span class="w">
@@ -11472,6 +12159,11 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>awbNumber</td>
 <td>String</td>
 <td>AWB Number for the order</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>Client ID</td>
 </tr>
 <tr>
 <td>customerComments</td>
@@ -14535,6 +15227,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
         }
         if(jQuery(this).text() == "LogiNext OnDemand TM"){
             jQuery(this).text("LogiNext OnDemand");
+            jQuery(this).css("display","inline");
+            jQuery(this).addClass("sup");
+            // jQuery(this).css("padding-right","4px !important");
+            jQuery(this).closest('li').append("<sup>TM</sup>")
+        }
+        if(jQuery(this).text() == "LogiNext Field TM"){
+            jQuery(this).text("LogiNext Field");
             jQuery(this).css("display","inline");
             jQuery(this).addClass("sup");
             // jQuery(this).css("padding-right","4px !important");
