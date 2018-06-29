@@ -2259,6 +2259,7 @@ referenceId | List | 50 | Mandatory | This is the LogiNext Reference ID of the D
                 "deliveryMediumLoginDetails": {
                     "type": "NOTLOGEDIN"
                 },
+                "profilePicture": "https://loginext-user-image.s3-ap-southeast-1.amazonaws.com/user32330_209.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20180629T120457Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=AKIAI4W45JCJJU7CQPPQ%2F20180629%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=211c72fa8ca01f6a0d8a5a8e9c0fd62a48a970611802bba887ccd8ca36700349",
                 "deliveryMediumName": "Robin New 3",
                 "cashPaid": 0,
                 "cashCollected": 0,
@@ -5282,11 +5283,11 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/task?end_date=2017-03-07+
     "data": [
         {
             "taskReferenceId": "d4f455a2ff074449acf79371ea55a0fe",
-            "taskNo": "BP-5_Custodian4_30/6/2018_20",
-            "clientName": "Writer Safeguard Private Limited_UAT",
-            "branchName": "Writer Safeguard Private Limited_UAT Main Branch",
-            "origin": "Writer Safeguard Private Limited_UAT Main Branch",
-            "destination": "., ., ., Mumbai, Maharashtra, INDIA, .",
+            "taskNo": "ST3421S",
+            "clientName": "WritCare  Private Limited_UAT",
+            "branchName": "WritCare Private Limited Main Branch",
+            "origin": "WritCare  Private Limited Main Branch",
+            "destination": ".Mumbai, Maharashtra, INDIA, .",
             "shipmentTaskTypeCd": "DELIVER",
             "taskState": "FORWARD",
             "shipmentTaskDt": 1529799037000,
@@ -5572,6 +5573,7 @@ orderStatus | String | The current state of the Order.
   "clientShipmentId": "Order_001",
   "status": "ORDER ACCEPTED",
   "awbNumber": "AWB123456789",
+  "vehicleNumber":"A123D2",
   "deliveryMediumName": "Thomas Watson",
   "phoneNumber": 9881234567,
   "tripName": "Trip_1227",
