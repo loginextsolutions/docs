@@ -354,7 +354,7 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
   {
         "vehicleNumber":"MH-111",
         "vehicleMake":"2015",
-          "vehicleModel":"OMNI",
+        "vehicleModel":"OMNI",
         "typeOfBody":"Flat Bed",
         "unladdenWeight":10,
         "capacityInWeight":10,
@@ -1169,6 +1169,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
   "vehicleNumber": "MH40AK0175",
   "barcode": "LN00590915",
   "routeConfigurationName":"route53",
+  "note":"This vehicle is carrying fragile goods"
   "startNow":false
 }
 ```
@@ -1216,6 +1217,7 @@ driverName | String | 255 | Optional | Name of the driver
 vehicleNumber | String | 30 | Optional | Vehicle Number.
 barcode | String | 50 | Mandatory | Barcode of the tracker used for attaching to vehicle during trip
 routeConfigurationName | String | 50 | Optional | Name of the Route.
+note| String | 50 | Optional | Notes to be added to the trip.
 startNow | Boolean | 50 | Optional | This flag will automatically start the trip upon creation if set to true. If false a trip will be created but not started.
 
 
@@ -1566,6 +1568,113 @@ With this API you can fetch the list of your trips and its associated trip infor
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 reference_ids<br>OR<br>trip names | List | Mandatory | Either the list of Reference Ids or the list of Trip Names is required to fetch list of trip information
+
+### Update
+
+```json
+https://api.loginextsolutions.com/TripApp/haul/v1/trip/update
+```
+
+> Request Body
+
+```json
+{
+"referenceId":"9620737172e44effacc834e2a2f56508",
+"vehicleNumber": "GJ12Z3735",
+"barcode":"GJ12Z3735",
+"sealNumber":"SN-123",
+  "lrNumber":"LR123",
+  "originAddr": "Ahmendabad",
+  "awbNumber": "FG-123-GH",
+  "destinationAddr": "ATQD",
+  "name": "CNN-NAG-12221",
+  "packageWeight": 6,
+  "packageValue": 8,
+  "packageVolume": 10,
+  "modeOfTransport": "ROAD",
+  "notes": "CNN-NAG-12221",
+  "driverName":"Ramesh"
+  }
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Trip(s) updated successfully.. Reference Id for future access: 9620737172e44effacc834e2a2f56508",
+    "hasError": false
+}
+
+```
+
+This API is used to cancel a trip using its reference ID.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/update`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+referenceIds | List | Mandatory | Reference Ids associated with trips
+vehicleNumber | String | Optional | Vehicle Number associated with the Trip
+barcode | String | Optional | Tracker Barcode asociated with the trip.
+seal NUmber | String | Optional | Seal Number asociated with the trip.
+lrNumber | String | Optional | LR Number asociated with the trip.
+originAddr | String | Optional | Origin of the trip. THis should be one of the origins preconfigured in your account.
+destinationAddr | String | Optional | Destination of the trip. THis should be one of the destinations preconfigured in your account.
+name | String | Optional | Name of the trip.
+awbNumber | String | Optional | AWB number of the order associated with that trip.
+packageWeight | String | Optional | Package Weight.
+packageValue | String | Optional | Package Value.
+notes | String | Optional | Notes to be added in the trip.
+driverName | String | Optional | Driver Name.
+
+### Cancel
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/haul/v1/trip/cancel
+```
+
+> Request Body
+
+```json
+[{
+    "referenceId":"9620737172e44effacc834e2a2f56508",
+    "reasonCd":"Truck is not available",
+    "otherReason":"",
+    "updateTime":"2016-07-18T10:31:00.000Z"
+  }]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "Trips cancelled successfully",
+  "hasError": false
+}
+
+```
+
+This API is used to cancel a trip using its reference ID.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/cancel`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+referenceIds | List | Mandatory | Reference Ids associated with trips
+reasonCd | String | 50 | Reason for cancelleation of the trip. This should be one of the reasons configured for your client account
+otherReason | String | 50 | This will be one of the 
 
 
 
@@ -2569,6 +2678,87 @@ adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate
 mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Mandatory | Email Address of the contact person
 
+### Update
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ClientApp/v1/branch/update
+```
+
+> Request Body
+
+```json
+
+[{
+  "referenceId":"8d0a36e01c524022ab9ff2d66c14281c",
+  "address":{
+    "apartment":"Himalaya Mall",
+    "streetName":"Driving Road",
+    "pincode":"380061",
+    "locality":"Drive in Road",
+    "stateShortCode":"GJ",
+    "countryShortCode":"IND"
+  },
+
+  "division":"BDIC",
+  "isOwnBranchFl":"N",
+  "isHubFl":"Y",
+  "geoFenceRadius":"4.0",
+  "branchDescription":"DEC",
+  "billingContactName":"bill",
+  "officeNumber":"971545813943",
+  "adminContactName":"name",
+  "mobileNumber":"971545813943",
+  "emailAddress":"hack1@gmail.com"
+}]
+
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Create Hub success.",
+    "data": {
+        "referenceId": "hcgsyuc334"
+    },
+    "hasError": false
+}
+```
+
+Update hubs / branches / distribution centers in the LogiNext system with the Update Hub API. 
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/v1/branch/update`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+referenceId | String | 255 | Mandatory | This is the reference ID of the branch to be updated.
+Address.apartment | String | 512 | Optional | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center
+Address.streetName | String | 512 | Optional | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard
+Address.landmark | String | 512 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
+branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
+Address.locality | String | 512 | Optional | This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
+Address.city | String | 512 | Optional | This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur
+Address.stateShortCode | String | 11 | Optional | This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.countryShortCode | String | 11 | Mandatory | This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.
+Address.pincode | String | 20 | Mandatory | This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+division | String | 255 | Optional | Ex. ADIV
+isOwnBranchFl | String | 1 | Optional | There can be two values here -  In Mile Hardcode this to N
+isHubFl | String | 1 | Optional | There can be two values here -  In Mile Hardcode this to Y
+geoFenceRadius | String | 255 | Optional | This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs
+branchDescription | String | 500 | Optional | If you would like add a brief description name for the hub, use this field.
+billingContactName | String | 500 | Optional | Name of the Contact Person at this Branch / Hub
+officeNumber | String | 255 | Optional | Fixed Line Number of the Branch  / Hub
+adminContactName | String | 255 | Optional | Name of the Supervisor / Alternate Contact for this Hub
+mobileNumber | String | 255 | Optional | Mobile Phone No. of the contact person
+emailAddress | String | 255 | Optional | Email Address of the contact person
 
 ## Order
 
@@ -3444,7 +3634,7 @@ reference_ids | List | Mandatory | Reference Id associated with the order.
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=GKS12567&customer_code=123&dm_employee_id=134367&page_no=1&page_size=10
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=GKS12567&customer_code=123&employee_id=134367&page_no=1&page_size=10
 ```
 
 
@@ -5269,7 +5459,7 @@ deliverNotes | String | 512 | Optional | Additional delivery comments associated
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/field/v1/task?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&task_no=GKS12567&customer_code=123&dm_employee_id=134367&page_no=1&page_size=10
+https://api.loginextsolutions.com/ShipmentApp/field/v1/task?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&task_no=GKS12567&customer_code=123&employee_id=134367&page_no=1&page_size=10
 ```
 
 
@@ -5839,6 +6029,7 @@ notificationType | String | LOADINGDONENOTIFICATION
   "transactionId": "12456",
   "actualCashAmount": 120,
   "paymentMode": "COD",
+  "tripName": "TRIP-195",
   "recipientName": "Rahul",
   "branchName": "AAA0",
   "paymentSubType": "",
@@ -5873,6 +6064,7 @@ cashAmount | Double | Cash amount to collect
 deliveryLocationType | String | Delivery Location
 transactionId | String | Transaction id
 paymentMode | String | Paymode mode, Possible values : PREPAID, COD
+tripName| String | Trip the Order is attached to
 actualCashAmount | Double | Cash amount actually collected
 recipientName | String | Name of recipient
 branchName | String | Branch Name
@@ -6172,6 +6364,8 @@ orderReferenceId | String | Order Reference Id
           "orderNo": "GRU453D",
           "startTimeWindow": "2018-04-14 11:18:00",
           "endTimeWindow": "2018-04-14 17:45:00",
+          "calculatedStartDate": "2018-04-14 11:18:00",
+          "calculatedEndDate": "2018-04-14 17:45:00",
           "deliveryOrder":1,
           "latitude": 19.1239285,
           "longitude": 72.90944069999999
@@ -6296,6 +6490,70 @@ orderReferenceId | String |  Reference ID of the order.
 lastRunDt | String |  Last run time of the allocation engine
 isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
 
+
+## Create Route
+
+> Response
+
+```json
+{
+  "notificationType": "CREATEROUTE",
+  "totalDistance": 651,
+  "routeConfigurationName": "DDI - DPI",
+  "routeReferenceId": "07ead36fdf6644d6b877ca3c14d16b8a",
+  "originName": "DDI71017",
+  "destinationName": "DPI66009",
+  "totalTime": 1122,
+  "originServiceTime": 62,
+  "intransitLocations": [
+    {
+      "sequence": 1,
+      "locationName": "DPI66080",
+      "transitTime": 100,
+      "transitDistance": 97,
+      "serviceTime": 10
+    },
+    {
+      "sequence": 2,
+      "locationName": "DPI66059",
+      "transitTime": 200,
+      "transitDistance": 34,
+      "serviceTime": 20
+    },
+    {
+      "sequence": 3,
+      "locationName": "DPI66134",
+      "transitTime": 300,
+      "transitDistance": 288,
+      "serviceTime": 30
+    }
+  ],
+  "destinationTranistTime": 400,
+  "destinationDistance": 232
+}
+
+```
+
+This notification is sent when a route is created in LogiNext.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  CREATEROUTE
+totalDistance | String |  Total Distance of the Route
+routeConfigurationName | String |  Name of the Route
+routeReferenceId | String |  Reference ID of the Route
+originName | String |  Origin Hub of the route
+destinationName | String |  Destination Hub of the route
+totalTime | Long | total time
+originServiceTime | String |  Service time at the origin location
+intransitLocations | List<String> |  List of in transit hubs in the route.
+sequence | String |  Sequence of in transit hub.
+locationName | String |  Name of In transit hub.
+transitTime | String |  transit time to reach the hub.
+transitDistance | String |  transit distance to reach the hub.
+serviceTime | String |  service time at the hub.
 
 
 ## Start Trip
@@ -6535,6 +6793,41 @@ phoneNumber | String |  Phone No. of the Delivery Associate / Delivery Associate
 newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Delivery Associate is marked Active<br>INACTIVE - if Delivery Associate is marked Inactive
 reasonCd | String |  When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
 updateTime | String |  This is the time in UTC when the Delivery Associate was marked Active / Inactive
+
+## Delivery Associate On Break/ Off Break
+
+```json
+{
+  "latitude":19.6789,
+  "longitude":78.6758,
+  "timestamp":"2018-07-05 13:22:32",
+  "deliveryMediumName":"Sam",
+  "clientId":209,
+  "tripName":"TRIP-17774",
+  "referenceId":"dde5a971e67c4256af48436fe51f23c2",
+  "employeeId":"7777777",
+  "userName":"Sam1234",
+  "breakStatus":"ONBREAK"
+
+}
+
+```
+
+When the Delivery Associate is marked as Active / Inactive, you can consume this webhook
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- | -----------
+latitude | String | Geo coordinate(latitude) of the event.
+longitude | String |  Geo coordinate(longitude) of the event.
+timestamp | String |  date time of the event in UTC format.
+deliveryMediumName | String |  Name of the Delivery Associate
+clientId | String | Clinet ID
+referenceId | String | LogiNext Reference ID of the Delivery Associate.
+employeeId | String | Employee ID of the Delivery Associate.
+userName | String | Username of the Delivery Associate.
+breakStatus | String |  Status shall be one of the two below - <br>ONBREAK - if Delivery Associate is marked On Break <br>OFFBREAK - if Delivery Associate is marked Off Break.
 
 ## Create Delivery Associate 
 
@@ -7067,6 +7360,8 @@ Sulawesi Selatan|SN
 Maluku Utara|MU
 Kepulauan Riau|KR
 Kepulauan Bangka Belitung|BB
+Kalimantan Utara|KU
+Papua Barat|PB
 
 # Postal Codes
 

@@ -667,7 +667,7 @@ Please check with our assigned CSAs on the address format based on the model typ
   </span><span class="p">{</span><span class="w">
         </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
         </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -2211,7 +2211,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="s2">"route53"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="s2">"This vehicle is carrying fragile goods"</span><span class="w">
+  </span><span class="s2">"startNow"</span><span class="err">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2364,6 +2365,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>50</td>
 <td>Optional</td>
 <td>Name of the Route.</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>Notes to be added to the trip.</td>
 </tr>
 <tr>
 <td>startNow</td>
@@ -2729,6 +2737,205 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>List</td>
 <td>Mandatory</td>
 <td>Either the list of Reference Ids or the list of Trip Names is required to fetch list of trip information</td>
+</tr>
+</tbody></table>
+
+<h3 id="update">Update</h3>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"9620737172e44effacc834e2a2f56508"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GJ12Z3735"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"barcode"</span><span class="p">:</span><span class="s2">"GJ12Z3735"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="s2">"SN-123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="s2">"LR123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ahmendabad"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FG-123-GH"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATQD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"modeOfTransport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROAD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNN-NAG-12221"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Ramesh"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip(s) updated successfully.. Reference Id for future access: 9620737172e44effacc834e2a2f56508"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This API is used to cancel a trip using its reference ID.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/update</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceIds</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Ids associated with trips</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle Number associated with the Trip</td>
+</tr>
+<tr>
+<td>barcode</td>
+<td>String</td>
+<td>Optional</td>
+<td>Tracker Barcode asociated with the trip.</td>
+</tr>
+<tr>
+<td>seal NUmber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Seal Number asociated with the trip.</td>
+</tr>
+<tr>
+<td>lrNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>LR Number asociated with the trip.</td>
+</tr>
+<tr>
+<td>originAddr</td>
+<td>String</td>
+<td>Optional</td>
+<td>Origin of the trip. THis should be one of the origins preconfigured in your account.</td>
+</tr>
+<tr>
+<td>destinationAddr</td>
+<td>String</td>
+<td>Optional</td>
+<td>Destination of the trip. THis should be one of the destinations preconfigured in your account.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Optional</td>
+<td>Name of the trip.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>AWB number of the order associated with that trip.</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>String</td>
+<td>Optional</td>
+<td>Package Weight.</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>String</td>
+<td>Optional</td>
+<td>Package Value.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String</td>
+<td>Optional</td>
+<td>Notes to be added in the trip.</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Driver Name.</td>
+</tr>
+</tbody></table>
+
+<h3 id="cancel">Cancel</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/haul/v</span><span class="mi">1</span><span class="err">/trip/cancel</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"9620737172e44effacc834e2a2f56508"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"Truck is not available"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trips cancelled successfully"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This API is used to cancel a trip using its reference ID.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/haul/v1/trip/cancel</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceIds</td>
+<td>List</td>
+<td>Mandatory</td>
+<td>Reference Ids associated with trips</td>
+</tr>
+<tr>
+<td>reasonCd</td>
+<td>String</td>
+<td>50</td>
+<td>Reason for cancelleation of the trip. This should be one of the reasons configured for your client account</td>
+</tr>
+<tr>
+<td>otherReason</td>
+<td>String</td>
+<td>50</td>
+<td>This will be one of the</td>
 </tr>
 </tbody></table>
 
@@ -4568,6 +4775,215 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
+<td>Email Address of the contact person</td>
+</tr>
+</tbody></table>
+
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ClientApp/v</span><span class="mi">1</span><span class="err">/branch/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[{</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"8d0a36e01c524022ab9ff2d66c14281c"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Himalaya Mall"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Driving Road"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"380061"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Drive in Road"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"GJ"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"IND"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+
+  </span><span class="nt">"division"</span><span class="p">:</span><span class="s2">"BDIC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isOwnBranchFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isHubFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"geoFenceRadius"</span><span class="p">:</span><span class="s2">"4.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branchDescription"</span><span class="p">:</span><span class="s2">"DEC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"bill"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"officeNumber"</span><span class="p">:</span><span class="s2">"971545813943"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"971545813943"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"hack1@gmail.com"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Update hubs / branches / distribution centers in the LogiNext system with the Update Hub API. </p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/branch/update</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the reference ID of the branch to be updated.</td>
+</tr>
+<tr>
+<td>Address.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center</td>
+</tr>
+<tr>
+<td>Address.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard</td>
+</tr>
+<tr>
+<td>Address.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>Address.locality</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory</td>
+</tr>
+<tr>
+<td>Address.city</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur</td>
+</tr>
+<tr>
+<td>Address.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>Address.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>division</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Ex. ADIV</td>
+</tr>
+<tr>
+<td>isOwnBranchFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>There can be two values here -  In Mile Hardcode this to N</td>
+</tr>
+<tr>
+<td>isHubFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>There can be two values here -  In Mile Hardcode this to Y</td>
+</tr>
+<tr>
+<td>geoFenceRadius</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs</td>
+</tr>
+<tr>
+<td>branchDescription</td>
+<td>String</td>
+<td>500</td>
+<td>Optional</td>
+<td>If you would like add a brief description name for the hub, use this field.</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>500</td>
+<td>Optional</td>
+<td>Name of the Contact Person at this Branch / Hub</td>
+</tr>
+<tr>
+<td>officeNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Fixed Line Number of the Branch  / Hub</td>
+</tr>
+<tr>
+<td>adminContactName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Supervisor / Alternate Contact for this Hub</td>
+</tr>
+<tr>
+<td>mobileNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Mobile Phone No. of the contact person</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
 <td>Email Address of the contact person</td>
 </tr>
 </tbody></table>
@@ -6907,7 +7323,7 @@ When Customer Profiling is turned ON -
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;dm_employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -10516,7 +10932,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/field/v</span><span class="mi">1</span><span class="err">/task?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;task_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;dm_employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/field/v</span><span class="mi">1</span><span class="err">/task?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;task_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -11655,6 +12071,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12456"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
   </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-195"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"recipientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"paymentSubType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -11763,6 +12180,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>paymentMode</td>
 <td>String</td>
 <td>Paymode mode, Possible values : PREPAID, COD</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Trip the Order is attached to</td>
 </tr>
 <tr>
 <td>actualCashAmount</td>
@@ -12469,6 +12891,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GRU453D"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 11:18:00"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 17:45:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 11:18:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-14 17:45:00"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1239285</span><span class="p">,</span><span class="w">
           </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.90944069999999</span><span class="w">
@@ -12743,6 +13167,132 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>isMaxAttemptsExhausted</td>
 <td>String</td>
 <td>check if the max number of attempts was exhausted.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-route">Create Route</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREATEROUTE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">651</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDI - DPI"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"routeReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07ead36fdf6644d6b877ca3c14d16b8a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DDI71017"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DPI66009"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1122</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"intransitLocations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DPI66080"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">97</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DPI66059"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DPI66134"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"transitDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">288</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"destinationTranistTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">232</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a route is created in LogiNext.</p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>CREATEROUTE</td>
+</tr>
+<tr>
+<td>totalDistance</td>
+<td>String</td>
+<td>Total Distance of the Route</td>
+</tr>
+<tr>
+<td>routeConfigurationName</td>
+<td>String</td>
+<td>Name of the Route</td>
+</tr>
+<tr>
+<td>routeReferenceId</td>
+<td>String</td>
+<td>Reference ID of the Route</td>
+</tr>
+<tr>
+<td>originName</td>
+<td>String</td>
+<td>Origin Hub of the route</td>
+</tr>
+<tr>
+<td>destinationName</td>
+<td>String</td>
+<td>Destination Hub of the route</td>
+</tr>
+<tr>
+<td>totalTime</td>
+<td>Long</td>
+<td>total time</td>
+</tr>
+<tr>
+<td>originServiceTime</td>
+<td>String</td>
+<td>Service time at the origin location</td>
+</tr>
+<tr>
+<td>intransitLocations</td>
+<td>List<String></td>
+<td>List of in transit hubs in the route.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>String</td>
+<td>Sequence of in transit hub.</td>
+</tr>
+<tr>
+<td>locationName</td>
+<td>String</td>
+<td>Name of In transit hub.</td>
+</tr>
+<tr>
+<td>transitTime</td>
+<td>String</td>
+<td>transit time to reach the hub.</td>
+</tr>
+<tr>
+<td>transitDistance</td>
+<td>String</td>
+<td>transit distance to reach the hub.</td>
+</tr>
+<tr>
+<td>serviceTime</td>
+<td>String</td>
+<td>service time at the hub.</td>
 </tr>
 </tbody></table>
 
@@ -13237,6 +13787,81 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>updateTime</td>
 <td>String</td>
 <td>This is the time in UTC when the Delivery Associate was marked Active / Inactive</td>
+</tr>
+</tbody></table>
+
+<h2 id="delivery-associate-on-break-off-break">Delivery Associate On Break/ Off Break</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.6789</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.6758</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2018-07-05 13:22:32"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"Sam"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="mi">209</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="s2">"TRIP-17774"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"dde5a971e67c4256af48436fe51f23c2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"7777777"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"Sam1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"breakStatus"</span><span class="p">:</span><span class="s2">"ONBREAK"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>When the Delivery Associate is marked as Active / Inactive, you can consume this webhook</p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>latitude</td>
+<td>String</td>
+<td>Geo coordinate(latitude) of the event.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>String</td>
+<td>Geo coordinate(longitude) of the event.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>date time of the event in UTC format.</td>
+</tr>
+<tr>
+<td>deliveryMediumName</td>
+<td>String</td>
+<td>Name of the Delivery Associate</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>Clinet ID</td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>LogiNext Reference ID of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>employeeId</td>
+<td>String</td>
+<td>Employee ID of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>String</td>
+<td>Username of the Delivery Associate.</td>
+</tr>
+<tr>
+<td>breakStatus</td>
+<td>String</td>
+<td>Status shall be one of the two below - <br>ONBREAK - if Delivery Associate is marked On Break <br>OFFBREAK - if Delivery Associate is marked Off Break.</td>
 </tr>
 </tbody></table>
 
@@ -15140,6 +15765,14 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>Kepulauan Bangka Belitung</td>
 <td>BB</td>
+</tr>
+<tr>
+<td>Kalimantan Utara</td>
+<td>KU</td>
+</tr>
+<tr>
+<td>Papua Barat</td>
+<td>PB</td>
 </tr>
 </tbody></table>
 
