@@ -1673,8 +1673,9 @@ This API is used to cancel a trip using its reference ID.
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 referenceIds | List | Mandatory | Reference Ids associated with trips
-reasonCd | String | 50 | Reason for cancelleation of the trip. This should be one of the reasons configured for your client account
-otherReason | String | 50 | This will be one of the 
+reasonCd | String | Mandatory | Reason for cancelleation of the trip. This should be one of the reasons configured for your client account
+otherReason | String | Optional| This will be the reason in case the Reson code selected is other.
+updateTime | String | Optional | This is the time of the cancel trip event.
 
 
 
