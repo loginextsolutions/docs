@@ -4359,6 +4359,96 @@ notDispatchedOrders | List  |  | Mandatory | Reference Id associated with the no
 deliveredOrders | List |  | Mandatory | Reference Id associated with the delivered order.
 
 
+### Get 
+
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": {
+    "tripId": 410840,
+    "tripName": "VILE PARLE WEST-TRIP-13924",
+    "referenceId": "2becf481189f4525a23889a35c554e61",
+    "status": "NOTSTARTED",
+    "plannedStartDt": 1522618200000,
+    "plannedEndDt": 1522626600000,
+    "totalPlannedDistance": 30.1302,
+    "totalPlannedTime": 140,
+    "vehicleNumber": "MH04-HD9389",
+    "deliveryMediumName": "tetestrer",
+    "deliveryMediumPhoneNumber": "9968995522",
+    "deliveryMediumBranch": "AAA0",
+    "orderDetails": [
+        {
+            "referenceId": "3e7262c47a47441295d37dba81425827",
+            "orderNo": "Andri55",
+            "state": "FORWARD",
+            "status": "NOTDISPATCHED",
+            "orderSequence": 2,
+            "shipmentOrderTypeCd": "DELIVER",
+            "startTimeWindow": 1522661400000,
+            "endTimeWindow": 1522665000000,
+            "revisedStartTime": 1522657800000,
+            "revisedEndTime": 1522662000000
+        },
+        {
+            "referenceId": "d7b47e622a33432da70c0fddec1b3a7d",
+            "orderNo": "Andri57",
+            "state": "FORWARD",
+            "status": "NOTDISPATCHED",
+            "orderSequence": 1,
+            "shipmentOrderTypeCd": "DELIVER",
+            "startTimeWindow": 1522661400000,
+            "endTimeWindow": 1522665000000,
+            "revisedStartTime": 1522657800000,
+            "revisedEndTime": 1522661700000
+        },
+        {
+            "referenceId": "baab317214584d0a996a4dfb0b7fac85",
+            "orderNo": "Andri147",
+            "state": "FORWARD",
+            "status": "NOTDISPATCHED",
+            "orderSequence": 3,
+            "shipmentOrderTypeCd": "DELIVER",
+            "startTimeWindow": 1522661400000,
+            "endTimeWindow": 1522665000000,
+            "revisedStartTime": 1522657800000,
+            "revisedEndTime": 1522662300000
+        },
+        {
+            "referenceId": "b8e133dbc2d746c4991883631d65031b",
+            "orderNo": "Andri322",
+            "state": "FORWARD",
+            "status": "NOTDISPATCHED",
+            "orderSequence": 4,
+            "shipmentOrderTypeCd": "DELIVER",
+            "startTimeWindow": 1522661400000,
+            "endTimeWindow": 1522665000000,
+            "revisedStartTime": 1522657800000,
+            "revisedEndTime": 1522662600000
+        }
+    ]
+},
+    "hasError": false
+}
+
+```
+Get all the details of a trip with this API.
+
+#### Request
+<span class="post">GET</span>`http://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&tripname=TRIP-26516`
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+referenceId | Date |  | Conditional Mandatory |  If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.
+tripname | Date |  | Conditional Mandatory |  If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.
+
+
 ## Tracking
 
 ### Track Last Location
@@ -5608,6 +5698,8 @@ latitude | Double | 15 | Conditional Optional | Geo-location where Order status 
 otherReason | Date | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
 updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
 
+
+# Code Snippets
 
 
 
