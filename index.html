@@ -2211,8 +2211,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="s2">"route53"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"note"</span><span class="p">:</span><span class="s2">"This vehicle is carrying fragile goods"</span><span class="w">
-  </span><span class="s2">"startNow"</span><span class="err">:</span><span class="kc">false</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="s2">"This vehicle is carrying fragile goods"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goodTypeName"</span><span class="p">:</span><span class="s2">"Benzene"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2365,6 +2366,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>50</td>
 <td>Optional</td>
 <td>Name of the Route.</td>
+</tr>
+<tr>
+<td>goodTypeName</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This field can hold the types of goods being transported in the trip.</td>
 </tr>
 <tr>
 <td>note</td>
@@ -8724,6 +8732,116 @@ If it does not exist, then a new manifest will be created with the provided Mani
 </tr>
 </tbody></table>
 
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripId"</span><span class="p">:</span><span class="w"> </span><span class="mi">410840</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILE PARLE WEST-TRIP-13924"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2becf481189f4525a23889a35c554e61"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTSTARTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522618200000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522626600000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPlannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.1302</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPlannedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH04-HD9389"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetestrer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9968995522"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e7262c47a47441295d37dba81425827"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri55"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662000000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7b47e622a33432da70c0fddec1b3a7d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri57"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661700000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baab317214584d0a996a4dfb0b7fac85"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri147"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662300000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b8e133dbc2d746c4991883631d65031b"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri322"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662600000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">GET</span><code class="prettyprint">http://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>Date</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.</td>
+</tr>
+<tr>
+<td>tripname</td>
+<td>Date</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.</td>
+</tr>
+</tbody></table>
+
 <h2 id="tracking">Tracking</h2>
 
 <h3 id="track-last-location">Track Last Location</h3>
@@ -11209,6 +11327,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.</td>
 </tr>
 </tbody></table>
+
+<h1 id="code-snippets">Code Snippets</h1>
 
 <h1 id="webhooks">Webhooks</h1>
 
