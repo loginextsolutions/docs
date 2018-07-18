@@ -1169,7 +1169,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
   "vehicleNumber": "MH40AK0175",
   "barcode": "LN00590915",
   "routeConfigurationName":"route53",
-  "note":"This vehicle is carrying fragile goods"
+  "note":"This vehicle is carrying fragile goods",
+  "goodTypeName":"Benzene",
   "startNow":false
 }
 ```
@@ -1217,6 +1218,7 @@ driverName | String | 255 | Optional | Name of the driver
 vehicleNumber | String | 30 | Optional | Vehicle Number.
 barcode | String | 50 | Mandatory | Barcode of the tracker used for attaching to vehicle during trip
 routeConfigurationName | String | 50 | Optional | Name of the Route.
+goodTypeName | String | 50 | Optional | This field can hold the types of goods being transported in the trip.
 note| String | 50 | Optional | Notes to be added to the trip.
 startNow | Boolean | 50 | Optional | This flag will automatically start the trip upon creation if set to true. If false a trip will be created but not started.
 
@@ -4436,7 +4438,7 @@ deliveredOrders | List |  | Mandatory | Reference Id associated with the deliver
 }
 
 ```
-Get all the details of a trip with this API.
+Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.
 
 #### Request
 <span class="post">GET</span>`http://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&tripname=TRIP-26516`

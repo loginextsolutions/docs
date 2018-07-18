@@ -2211,8 +2211,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH40AK0175"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00590915"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="s2">"route53"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"note"</span><span class="p">:</span><span class="s2">"This vehicle is carrying fragile goods"</span><span class="w">
-  </span><span class="s2">"startNow"</span><span class="err">:</span><span class="kc">false</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="s2">"This vehicle is carrying fragile goods"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goodTypeName"</span><span class="p">:</span><span class="s2">"Benzene"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startNow"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2365,6 +2366,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>50</td>
 <td>Optional</td>
 <td>Name of the Route.</td>
+</tr>
+<tr>
+<td>goodTypeName</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This field can hold the types of goods being transported in the trip.</td>
 </tr>
 <tr>
 <td>note</td>
@@ -8801,7 +8809,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Get all the details of a trip with this API.</p>
+<p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
 
 <h4 id="request">Request</h4>
 
