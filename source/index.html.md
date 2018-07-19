@@ -6697,15 +6697,15 @@ startTime | String |  Trip start time
 
 ```json
 {
-  "notificationType": "DELIVEREDNOTIFICATION",
-  "deliveryMediumName": "Rajesh",
+  "notificationType": "STOPTRIP",
+  "deliveryMediumName": "John",
   "endTime": "2016-11-19 06:45:10",
   "tripName": "TRIP-95",
-  "vehicleNumber": "MH014841",
+  "vehicleNumber": "014AB841",
   "driverName": "",
   "clientShipmentIds": [
-    "Order001",
-    "Order002"
+    "Ord001",
+    "Ord002"
    ]
 }
 ```
