@@ -9530,7 +9530,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/CommonApp/mile/v1/geocode</code></p>
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -9589,6 +9589,127 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>Mandatory</td>
 <td>This is the address pincode.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-location-servicibility">Get Location Servicibility</h2>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19.014585"</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"72.832830"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inorbit Mall"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link Road"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goregaon West"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000104"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"geofenceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestGeo"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"geofenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hub"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"geofenceShape"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Polygon"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"geofenceArea"</span><span class="p">:</span><span class="w"> </span><span class="mf">335.55</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deliveryAssociates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"deliveryAssociateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pup 2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"deliveryAssociateRefId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c4fa64a97e24399a6cf91ef9767f980"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This API returns if a particular location is servicable. </p>
+
+<p>You can pass the geocoordinates (latitude and longitude) or address of a location  in the request body, and get a response regarding if an existing geofence exists with those geocoordinates. </p>
+
+<p>If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates .</p>
+
+<p>This information can be used to tell users if your operations are present in certain areas or not.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>latitude</td>
+<td>String</td>
+<td>Conditional Mandatory</td>
+<td>Geocoordinates(latitude) of the location, servicability is to be checked for. If longitude is passed in the request, this field is mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>String</td>
+<td>Conditional Mandatory</td>
+<td>Geocoordinates(longitude) of the location, servicability is to be checked for. If latitude is passed in the request, this field is mandatory.</td>
+</tr>
+<tr>
+<td>apartment</td>
+<td>String</td>
+<td>Optional</td>
+<td>Apartment</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>String</td>
+<td>Optional</td>
+<td>Street Name.</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>String</td>
+<td>Optional</td>
+<td>Locality</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>Optional</td>
+<td>City</td>
+</tr>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>Optional</td>
+<td>Country</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>Optional</td>
+<td>State</td>
+</tr>
+<tr>
+<td>postalCode.</td>
+<td>String</td>
+<td>Optional</td>
+<td>Postal Code</td>
 </tr>
 </tbody></table>
 

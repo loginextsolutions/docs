@@ -4862,7 +4862,7 @@ This API gets coordinates for a given location.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/CommonApp/mile/v1/geocode`
+<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get`
 
 
 #### Request Parameters
@@ -4877,6 +4877,77 @@ city | String | Optional | This is the address city.
 country | String | Optional | This is the address country.
 state | String |Optional | This is the address state.
 pincode | String | Mandatory | This is the address pincode.
+
+
+## Get Location Servicibility
+
+> Sample Request
+
+```json
+
+{
+"latitude" : "19.014585", 
+"longitude" : "72.832830",
+"apartment": "Inorbit Mall",
+"streetName": "Link Road",
+"locality": "Goregaon West",
+"city": "Mumbai",
+"country": "IND",
+"state": "MH",
+"postalCode": "4000104"
+}
+
+```
+
+> Sample Response
+
+```json
+{
+    "status": 200,
+    "data": {
+        "geofenceName": "TestGeo",
+        "geofenceType": "Hub",
+        "geofenceShape": "Polygon",
+        "geofenceArea": 335.55,
+        "deliveryAssociates": [
+            {
+                "isActiveFl": true,
+                "deliveryAssociateName": "pup 2",
+                "deliveryAssociateRefId": "5c4fa64a97e24399a6cf91ef9767f980"
+            }
+        ]
+    },
+    "hasError": false
+}
+
+```
+
+This API returns if a particular location is servicable. 
+
+You can pass the geocoordinates (latitude and longitude) or address of a location  in the request body, and get a response regarding if an existing geofence exists with those geocoordinates. 
+
+If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates .
+
+This information can be used to tell users if your operations are present in certain areas or not.
+
+#### Request
+
+<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get`
+
+
+#### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+latitude | String | Conditional Mandatory | Geocoordinates(latitude) of the location, servicability is to be checked for. If longitude is passed in the request, this field is mandatory.
+longitude | String | Conditional Mandatory | Geocoordinates(longitude) of the location, servicability is to be checked for. If latitude is passed in the request, this field is mandatory.
+apartment | String | Optional | Apartment 
+streetName | String | Optional | Street Name.
+locality | String | Optional | Locality
+city | String | Optional | City
+country | String | Optional | Country
+state | String | Optional | State
+postalCode. | String |Optional | Postal Code
 
 
 
