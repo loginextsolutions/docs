@@ -3703,6 +3703,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "deliverCheckOutLatitude": 41.882702,
       "deliverCheckOutLongitude": -87.61939,
       "orderSequence": 5,
+      "pickupAccountCode":"PDT_124",
       "customerCode": "CST_ACL1",
       "customerName": "Sg",
       "amountCollected": 200,
@@ -3722,6 +3723,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "deliveryGeofenceExitTime": 1484727387000,
       "isDelayed": false,
       "delayedBy": null,
+      "pickupEmail":"steve@movenpick.com",
+      "deliverEmail":"james@ablog.com",
       "shipmentCrateMappings": [
         {
           "crateCd": "Crate1",
@@ -5607,7 +5610,7 @@ Retrieve orders and all the order associated information with this API.
 
 #### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment`
+<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/shipment`
 
 
 #### Request Parameters
@@ -5639,7 +5642,7 @@ ALL | Superset of all the filters mentioned for the above statuses will be consi
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
+https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
 ```
 
 > Request Body
@@ -5685,7 +5688,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 #### Request
 
-<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status`
 
 
 #### Request Parameters
@@ -6651,6 +6654,42 @@ transitDistance | String |  transit distance to reach the hub.
 serviceTime | String |  service time at the hub.
 
 
+## Inactivate Route
+
+> Response
+
+```json
+{
+  "notificationType": "ROUTESTATUS",
+  "routeReferenceId": "7dd5e37fd8d641469a3195a236f2ab26",
+  "originName": "PT. Great Giant Livestock-GGL",
+  "destinationName": "PT. Great Giant Livestock-Bonanza Susu",
+  "newStatus": "INACTIVE",
+  "updateTime": "2018-06-27T17:45:08.520Z"
+}
+
+```
+
+This notification is sent when a route is created in LogiNext.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  ROUTESTATUS
+routeReferenceId | String |  Reference ID of the route
+originName | String |  Origin Name 
+destinationName | String |  Destination Name
+newStatus | String |  Origin Hub of the route
+updateTime | String |  Timestamp of the update event
+
+Status | Description
+--------- | ------- 
+ACTIVE | The Route is Active in the LogiNext system and can be selected for trips.
+INACTIVE | The Route is Inactive in the LogiNext system and cannot be selected for trips.
+
+
+
 ## Start Trip
 
 > Response
@@ -6697,15 +6736,15 @@ startTime | String |  Trip start time
 
 ```json
 {
-  "notificationType": "STOPTRIP",
+  "notificationType": "DELIVEREDNOTIFICATION",
   "deliveryMediumName": "John",
   "endTime": "2016-11-19 06:45:10",
   "tripName": "TRIP-95",
-  "vehicleNumber": "014AB841",
+  "vehicleNumber": "MH014841",
   "driverName": "",
   "clientShipmentIds": [
-    "Ord001",
-    "Ord002"
+    "Order001",
+    "Order002"
    ]
 }
 ```
