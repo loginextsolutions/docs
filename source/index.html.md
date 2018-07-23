@@ -4202,12 +4202,8 @@ orderstartdt | String |  | Optional | This parameter will retrieve the EPODs for
 orderenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with orderstartdt.
 deliverystartdt | String |  | Optional | This parameter will retrieve the EPODs for Orders with an Order Deliver Date  greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with deliveryenddt. 
 deliveryenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Deliver Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with deliverystartdt. 
-startDateFilter | String |  | Optional | This field will work based on status - if status is ALL then it will retrieve the data greater than this date.
-if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. 
-else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter. 
-endDateFilter | String |  | Optional | It will work based on status if status = ALL then it will get all data less than this date.
-if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window. 
-else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter. 
+startDateFilter | String |  | Optional | This field will work based on status - if status is ALL then it will retrieve the data greater than this date.if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. Else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter. 
+endDateFilter | String |  | Optional | It will work based on status if status = ALL then it will get all data less than this date.if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window, else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter. 
 status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
 
 #### Response
