@@ -7401,6 +7401,7 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-87.61939</span><span class="p">,</span><span class="w">
       </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="s2">"PDT_124"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CST_ACL1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sg"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -7420,6 +7421,8 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"deliveryGeofenceExitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727387000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"delayedBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"steve@movenpick.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"james@ablog.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crate1"</span><span class="p">,</span><span class="w">
@@ -11109,7 +11112,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/field/v1/shipment</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -11217,7 +11220,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/update/status</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/field/v</span><span class="mi">1</span><span class="err">/update/status</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -11264,7 +11267,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -13422,6 +13425,81 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </tbody></table>
 
+<h2 id="inactivate-route">Inactivate Route</h2>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROUTESTATUS"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"routeReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7dd5e37fd8d641469a3195a236f2ab26"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT. Great Giant Livestock-GGL"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT. Great Giant Livestock-Bonanza Susu"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-27T17:45:08.520Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is sent when a route is created in LogiNext.</p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>ROUTESTATUS</td>
+</tr>
+<tr>
+<td>routeReferenceId</td>
+<td>String</td>
+<td>Reference ID of the route</td>
+</tr>
+<tr>
+<td>originName</td>
+<td>String</td>
+<td>Origin Name</td>
+</tr>
+<tr>
+<td>destinationName</td>
+<td>String</td>
+<td>Destination Name</td>
+</tr>
+<tr>
+<td>newStatus</td>
+<td>String</td>
+<td>Origin Hub of the route</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>String</td>
+<td>Timestamp of the update event</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ACTIVE</td>
+<td>The Route is Active in the LogiNext system and can be selected for trips.</td>
+</tr>
+<tr>
+<td>INACTIVE</td>
+<td>The Route is Inactive in the LogiNext system and cannot be selected for trips.</td>
+</tr>
+</tbody></table>
+
 <h2 id="start-trip">Start Trip</h2>
 
 <blockquote>
@@ -13505,15 +13583,15 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STOPTRIP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:45:10"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-95"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014AB841"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH014841"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"Ord001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Ord002"</span><span class="w">
+    </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Order002"</span><span class="w">
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
