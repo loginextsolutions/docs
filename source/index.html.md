@@ -2104,12 +2104,26 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
       "lng": 77.96088,
       "eta": "2016-08-18 06:43:00",
       "lastTrackedAt": "2016-08-17 16:26:01",
+      "tripName": "ABCAL-NY",
+      "lastTrackedAt": "2018-07-20 05:56:02",
+      "speed": 0,
+      "batteryPerc": 1,
+      "trackerId": "6309682521",
+      "vehicleNo": "MH 03 CP 1056",
+      "baname": "TRIMURTI TRANSPORT"
     },
     {
       "lat": 23.484535,
       "lng": 79.460987,
       "eta": "2016-08-18 06:43:00",
       "lastTrackedAt": "2016-08-17 16:26:01",
+      "tripName": "GL-MAS",
+      "lastTrackedAt": "2018-07-20 05:56:02",
+      "speed": 0,
+      "batteryPerc": 1,
+      "trackerId": "6309682521",
+      "vehicleNo": "MH 03 CP 1056",
+      "baname": "PacknPick"
     }
   ],
   "hasError": false
@@ -2143,6 +2157,12 @@ lng | Double | Specifies the longitude of the last tracked location
 eta | Date   | Estimated time of arrival at the destination
 lastTrackedAt | Date | The last tracked date and time in UTC of the GPS device
 address | String | The reverse geocoded address will be fetched if the "address" parameter is passed as true
+tripName | String | Specifies the name of the trip of the last tracked location.
+speed | Number | Speed of the vehicle at the last tracked location
+batteryPerc | Number | Battery percentage.
+trackerId | String | tracker ID of the tracker.
+vehicleNo | String | Vehicle Number
+
 
 
 
@@ -2166,6 +2186,399 @@ Delivery orders by loading the items for different orders from a Single Point of
 4. You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.
 
 5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
+
+
+## Customer 
+
+### Create
+
+> Sample Request
+
+```json
+[
+ {
+"employeeId":"ALL123469",
+"branchName":"LMDCalifornia",
+"userGroupName":"MobileUser_LMDemo",
+"deliveryMediumMasterName":"James",
+"phoneNumber":9892147969,
+"imei":123456789012123,
+"emailId":"test@test.com",
+"userName":"james003",
+"password":"admin",
+"capacityInUnits":10,
+"capacityInVolume":10,
+"capacityInWeight":10,
+"dob":"2016-12-12",
+"deliveryMediumMapList": [
+     {
+       "name": "SPANISH"
+
+     },
+     {
+       "name": "ENGLISH"
+
+     }
+   ],
+"gender":"Male",
+"deliveryMediumMasterTypeCd":"Delivery Associate",
+"isOwnVehicleFl":"Company",
+"vehicleNumber":"1AB54F",
+"dmPreference":"10035",
+"shiftList": [
+     {
+       "shiftStartTime": "2018-104-01T13:30:00Z",
+       "shiftEndTime": "2018-04-01T14:30:00Z"
+     }
+   ],
+"weeklyOffList": [
+     "Thursday",
+     "Monday"
+   ],
+"maxDistance":10,
+"licenseValidity":"2016-12-12",
+"fixedCost":10,
+"variableCost":10,
+"isPresentFl":"Y",
+"addressList": [ { 
+"apartment":"901",
+"streetName":"2142 3rd Ave",
+"landmark":"Opp. McDonalds",
+"countryShortCode":"USA",
+"city":"Ney York",
+"pincode":"10035",
+"addressType":"PERMANENT" 
+},
+{ 
+"apartment":"901",
+"streetName":"2142 3rd Ave",
+"landmark":"Opp McDonalds",
+"countryShortCode":"USA",
+"city":"MUMNew YorkBAI",
+"pincode":"10035",
+"addressType":"CURRENT" 
+}
+
+],
+"maritalStatus":"Single",
+"alternateMobileNo":9892134489,
+"landlineNo":28215678,
+"licenseValidityInYears":10,
+"licenseIssuanceDate":"2016-12-12",
+"licenceNumber":2123123123
+}
+]
+```
+
+> Sample Response
+
+```json
+{
+    "status": 200,
+    "message": "Customer(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "accountCode": "apinew1"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+You can create a new Customer the LogiNext system with this API. A new Customer will be created and assigned a unique Reference ID that can be used to identify the Customer later.
+
+If you have Customers created inyour current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add these Customers in LogiNext.
+
+This API will create a Customer Entity with contact information and an optional Billing Address for a Customer. To create a Shipping/ Delivery address for a Customer, call the Create Address API.
+
+These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivuduak customers can be used in the Create Order API to create an Order.
+
+This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.
+
+You can create a maximum of 5 Customers in LogiNExt in one call of this API.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/customer/v1/create`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+accountCode | String | 50 | Mandatory | Unique Customer ID used to identify a Customer.
+name | String | 255 | Mandatory | Customer name.
+mobile | String | 255 | Mandatory | Customer Mobile NUmber.
+email | String | 255 |Optional | Customer Email ID.
+customerType | String | 255 | Optional | This is the delivery associate's mobile number.
+billingAddress.apartment | String | 40 |Optional | Customer's Billing Address apartment.
+billingAddress.streetName | String | 100 | Optional | Customer's Billing Address Street Name.
+billingAddress.landmark | String | 255 | Mandatory | Customer's Billing Address landmark.
+billingAddress.locality | String | 255 | Mandatory | Customer Billing Address locality.
+billingAddress.city | Integer | 20 | Mandatory | Customer Billing Address city.
+billingAddress.state | Integer | 20 | Optional | Customer Billing Address state. This will be based on the state codes in LogiNext for the country selected by you.
+billingAddress.country | String | 255 | Optional | Customer's Billing Address Country.
+billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
+billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
+billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
+clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+
+### Get 
+
+
+> Sample Request
+
+```json
+https://api.loginextsolutions.com/ClientApp/customer/v1/get/list?ids=cust1,65ba00dbdcf04fb789311df6aa40e3ba
+
+```
+
+Retrieve a List of Customers using this API. Pass the LogiNext Reference IDs or Customer IDs for the Customers you want to search for in the Request Body. 
+
+If you have the LogiNext Customer IDs of your Customers and require the Customer Reference IDs to update a Customer, than you can call this API to get the Reference ID.
+
+In case you only have the Customer ID, you can fetch the Customer details by calling this API. 
+
+This API does not return the Shipping/ Delivery Addresses Associated with a Customer.
+
+This API accepts upto 20 Customer IDs or Reference IDs in a comma separated format in the URL.
+
+
+> Sample Response
+
+```json
+{
+   "status": 207,
+   "message": "Customer Details fetched successfully",
+   "data": [
+       {
+           "accountCode": "cust1",
+           "name": "apiname1",
+           "mobile": "62 21 22580868",
+           "email": "api.api@test.com",
+           "customerType": "API Test",
+           "billingAddress": {
+               "apartment": "Suite No. 99, Milsons Towers",
+               "streetName": "Michigan Avenue",
+               "landmark": "Opp. Subway",
+               "city": "Chicago",
+               "locality": "Dowtown Chicago",
+               "state": "Maharashtra",
+               "country": "INDIA",
+               "pincode": "60606",
+               "latitude": 72.9095327,
+               "longitude": 19.111755
+           },
+           "isActive": "Y",
+           "referenceId": "241ccf29a4404046a033f31cc3384ac7"
+       }
+   ],
+   "error": {
+       "1": "65ba00dbdcf04fb789311df6aa40e3ba"
+   },
+   "hasError": true
+}
+
+```
+
+
+#### Request
+
+<span class="post">POST</span>` https://api.loginextsolutions.com/ClientApp/customer/v1/get/list?ids=cust1,65ba00dbdcf04fb789311df6aa40e3ba`
+
+
+### Update
+
+> Sample Request
+
+```json
+[
+  {
+    "referenceId":"65ba00dbdcf04fb789311df6aa40e3ba",
+    "name":"apiname1111",
+    "mobile":"62 21 22586666",
+    "email":"api1111.api1111@test.com",
+    "customerType":"API Test11111",
+    "billingAddress": {
+      "apartment":"Suite No. 1111, Milsons Towers",
+          "streetName":"Michigan Avenue 1111",
+          "landmark":"Opp. Subway 1111",
+          "locality":"Dowtown Chicago 111",
+          "city":"Chicago 1111",
+          "state":"MH",
+          "country":"IND",
+          "pincode":"400076",
+          "latitude": 72.9555,
+          "longitude": 19.555
+    }
+  }
+]
+```
+
+> Sample Response
+
+```json
+{
+    "status": 200,
+    "message": "Customer(s) updated successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "65ba00dbdcf04fb789311df6aa40e3ba"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+You can update a  Customer the LogiNext system with this API.
+
+
+This API will update a Customer Entity with the details provided. To update a Shipping/ Delivery address for a Customer, call the Update Address API.
+
+This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.
+
+You can create a maximum of 5 Customers in LogiNExt in one call of this API.
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com//ClientApp/customer/v1/update`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+referenceId  | String | 50 | Mandatory | Unique Customer ID used to identify a Customer.
+accountCode | String | 50 | Optional | Unique Customer ID used to identify a Customer.
+name | String | 255 | Optional | Customer name.
+mobile | String | 255 | Optional | Customer Mobile NUmber.
+email | String | 255 |Optional | Customer Email ID.
+customerType | String | 255 | Optional | This is the delivery associate's mobile number.
+billingAddress.apartment | String | 40 |Optional | Customer's Billing Address apartment.
+billingAddress.streetName | String | 100 | Optional | Customer's Billing Address Street Name.
+billingAddress.landmark | String | 255 | Optional | Customer's Billing Address landmark.
+billingAddress.locality | String | 255 | Optional | Customer Billing Address locality.
+billingAddress.city | Integer | 20 | Optional | Customer Billing Address city.
+billingAddress.state | Integer | 20 | Optional | Customer Billing Address state. This will be based on the state codes in LogiNext for the country selected by you.
+billingAddress.country | String | 255 | Optional | Customer's Billing Address Country.
+billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
+billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
+billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
+clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+
+
+## Address 
+
+### Create
+
+> Sample Request
+
+```json
+[
+  {
+    "customerReferenceId":"65ba00dbdcf04fb789311df6aa40e3ba",
+    "addressId":"HomeAdd",
+    "addressType":"Home",
+    "addressServiceTime":"5",
+    "breakTime":[
+      {
+        "startTime":"10:00",
+        "endTime":"11:30"
+      },
+      {
+        "startTime":"12:00",
+        "endTime":"13:30"
+      },
+      {
+        "startTime":"18:00",
+        "endTime":"19:00"
+      }
+    ],
+    "preferredStartTime":"11:30",
+    "preferredEndTime":"21:30",
+    "weeklyOffList":["SUNDAY","WEDNESDAY"],
+    "address":{
+      "apartment":"Suite No. 1111, Milsons Towers",
+          "streetName":"Michigan Avenue 1111",
+          "landmark":"Opp. Subway 1111",
+          "locality":"Dowtown Chicago 111",
+          "city":"Chicago 1111",
+          "state":"MH",
+          "country":"IND",
+          "pincode":"400076",
+          "latitude": 72.9555,
+          "longitude": 19.555
+    },
+    "isPrimary":"Y"
+  }
+  
+]
+```
+
+> Sample Response
+
+```json
+ {
+    "status": 200,
+    "message": "Address(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "addressId":"HomeAdd",
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "customerReferenceId": "65ba00dbdcf04fb789311df6aa40e3ba"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+You can create an Address for an existing Customer in the LogiNext system with this API. A new Customer Address will be created and assigned a unique Reference ID that can be used to identify the Address later.
+
+If you have Addresses created in your current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add them in LogiNext.
+
+This API will create an Address Entity with contact information and an optional Billing Address for a Customer. To create a Shipping/ Delivery address for a Customer, call the Create Address API.
+
+These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivuduak customers can be used in the Create Order API to create an Order.
+
+This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.
+
+You can create a maximum of 5 Customers in LogiNExt in one call of this API.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/customer/v1/create`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+customerReferenceId | String | 50 | Mandatory | Unique Customer ID used to identify the Customer the address is being created for.
+addressId | String | 255 | Optional | Address ID used to identify the address of that customer. The address ID must be unique within a Customer entity.
+addressType | String | 255 | Optional | Address Type epending on the values configured for you in LogiNext. eg - 'HOME', 'OFFICE', 'OTHER'.
+addressServiceTime | String | 255 |Optional | Service Time for that address in minutes.
+breakTime.startTime | String | 255 | Conditional Mandatory | Break Start time of the Address in HH:MM format.. This field is mandatory if a break end time is provided.
+breakTime.endTime | String | 40 |Conditional Mandatory | Break end time of the Address in HH:MM format.. This field is mandatory if a break start time is provided.
+preferredStartTime | String | 100 | Optional | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
+preferredEndTime | String | 255 | Mandatory | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
+weeklyOffList | LIST | 255 | Mandatory | Days of the week this location is OFF i.e not servicable.
+address.city | Integer | 20 | Mandatory | Address city.
+address.state | Integer | 20 | Optional |  Address state. This will be based on the state codes in LogiNext for the country selected by you.
+address.country | String | 255 | Optional | Address Country.
+address.pincode | String | 255 | Optional | Address Pincode.
+address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
+address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
+clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+
+
 
 ## Delivery Associate
 
@@ -2323,13 +2736,14 @@ licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
 ["d7f173453bab40cf83dc79bb86ea2edb"]
 ```
 
-Retrieve a List of all the Delivery Associates using this API. Pass the Reference IDs for the Delivery Associates you want to search for in the Request Body. 
+Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext Reference IDs or Username for the Delivery Associates you want to search for in the Request Body. 
 
 #### Request Parameters
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
 referenceId | List | 50 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
+userName | List | 50 | Mandatory | This is the Username of the Delivery Associate to be updated.
 
 
 > Sample Response
@@ -3851,6 +4265,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
     "deliverAccountCode": "Matt001",
+    "deliverAddressId":"MattHome"
     "deliverAccountName": "Mathew Richardson",
     "deliverApartment": "10 Suite No. A1901",
     "deliverStreetName": "Walton Avenue",
@@ -3878,6 +4293,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "returnStartTimeWindow": "2017-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2017-05-18T16:00:00.000Z",
     "returnAccountCode": "retAcc123",
+    "returnAddressId":"JeffOffice"
     "returnAccountName": "retAcc1234",
     "returnEmail": "james.w@ablogs.com",
     "returnPhoneNumber": "9891235886",
@@ -3936,6 +4352,7 @@ deliverEndTimeWindow | Date | | Optional | Deliver end time window. Format - YYY
 deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Optional | This is the delivery customer's account code.
+deliverAddressId | String | 255 | Optional | This is the delivery customer's address Id.
 deliverAccountName | String| 255  | Optional | This is the delivery customer's account name.
 deliverApartment | String | 512 | Optional | This is the delivery customer location's apartment details.
 deliverStreetName | String | 512 | Optional | This is the delivery customer location's street name.
@@ -3950,6 +4367,7 @@ pickupServiceTime | Integer | 11 | Optional | This is the pickup service time in
 pickupStartTimeWindow | Date | | Optional | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupEndTimeWindow | Date | | Optional | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupAccountCode | String | 255 | Optional | This is the pickup customer's account code.
+pickupAddressId | String | 255 | Optional | This is the pickup customer's address Id.
 pickupAccountName | String | 255 | Optional | This is the pickup customer's account name.
 pickupApartment | String | 512 | Optional | This is the pickup customer's Apartment number.
 pickupStreetName | String | 512 | Optional | This is the pickup customer's street name.
@@ -3963,6 +4381,7 @@ returnBranch | String | 255 | Optional | Name of return branch
 returnStartTimeWindow | Date | | Optional | Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 returnEndTimeWindow | Date | | Optional | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 returnAccountCode | String | 255 | Optional | This is the return customer's account code.
+returnAddressId | String | 255 | Optional | This is the return customer's address Id.
 returnAccountName | String | 255 | Optional | This is the return customer's account name.
 returnEmail | String | 500 | Optional | This is the return customer's email ID.
 returnPhoneNumber | String | 255 | Optional | This is the return customer's phone number.
@@ -4858,7 +5277,7 @@ This API gets coordinates for a given location.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get`
+<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
 
 
 #### Request Parameters
@@ -4875,7 +5294,7 @@ state | String |Optional | This is the address state.
 pincode | String | Mandatory | This is the address pincode.
 
 
-## Get Location Servicibility
+## Get Location Serviceability
 
 > Sample Request
 
@@ -4901,14 +5320,14 @@ pincode | String | Mandatory | This is the address pincode.
 {
     "status": 200,
     "data": {
-        "geofenceName": "TestGeo",
+        "geofenceName": "GeofenceA",
         "geofenceType": "Hub",
         "geofenceShape": "Polygon",
         "geofenceArea": 335.55,
         "deliveryAssociates": [
             {
                 "isActiveFl": true,
-                "deliveryAssociateName": "pup 2",
+                "deliveryAssociateName": "John Doe",
                 "deliveryAssociateRefId": "5c4fa64a97e24399a6cf91ef9767f980"
             }
         ]
@@ -4918,7 +5337,7 @@ pincode | String | Mandatory | This is the address pincode.
 
 ```
 
-This API returns if a particular location is servicable. 
+This API returns if a particular location is serviceable. 
 
 You can pass the geocoordinates (latitude and longitude) or address of a location  in the request body, and get a response regarding if an existing geofence exists with those geocoordinates. 
 
@@ -4928,15 +5347,15 @@ This information can be used to tell users if your operations are present in cer
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceAbility/get`
+<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
 
 
 #### Request Parameters
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-latitude | String | Conditional Mandatory | Geocoordinates(latitude) of the location, servicability is to be checked for. If longitude is passed in the request, this field is mandatory.
-longitude | String | Conditional Mandatory | Geocoordinates(longitude) of the location, servicability is to be checked for. If latitude is passed in the request, this field is mandatory.
+latitude | String | Conditional Mandatory | Geocoordinates(latitude) of the location, serviceability is to be checked for. If longitude is passed in the request, this field is mandatory.
+longitude | String | Conditional Mandatory | Geocoordinates(longitude) of the location, serviceability is to be checked for. If latitude is passed in the request, this field is mandatory.
 apartment | String | Optional | Apartment 
 streetName | String | Optional | Street Name.
 locality | String | Optional | Locality
@@ -5677,7 +6096,7 @@ Retrieve orders and all the order associated information with this API.
 
 #### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/shipment`
+<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/task`
 
 
 #### Request Parameters
@@ -5930,6 +6349,7 @@ orderStatus | String | The current state of the Order.
   "awbNumber": "AWB123456789",
   "vehicleNumber":"A123D2",
   "deliveryMediumName": "Thomas Watson",
+  "deliveryMediumUserName": Thomas",
   "phoneNumber": 9881234567,
   "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
@@ -5954,6 +6374,7 @@ clientShipmentId | String | Order No.
 status | String | Status of the order
 awbNumber | String | AWB No.
 deliveryMediumName | String | Name of Delivery Associate
+deliveryMediumUserName | String | Username of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
@@ -6721,7 +7142,7 @@ transitDistance | String |  transit distance to reach the hub.
 serviceTime | String |  service time at the hub.
 
 
-## Inactivate Route
+## Route Status.
 
 > Response
 
@@ -6737,7 +7158,7 @@ serviceTime | String |  service time at the hub.
 
 ```
 
-This notification is sent when a route is created in LogiNext.
+This notification is sent when a route status is changed in LogiNext.
 
 #### Response Parameters
 
