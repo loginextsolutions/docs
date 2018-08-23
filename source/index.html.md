@@ -2102,27 +2102,25 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
     {
       "lat": 10.394535555555555,
       "lng": 77.96088,
-      "eta": "2016-08-18 06:43:00",
-      "lastTrackedAt": "2016-08-17 16:26:01",
+      "eta": "2018-08-18 06:43:00",
+      "lastTrackedAt": "2018-08-17 16:26:01",
       "tripName": "ABCAL-NY",
-      "lastTrackedAt": "2018-07-20 05:56:02",
       "speed": 0,
       "batteryPerc": 1,
       "trackerId": "6309682521",
       "vehicleNo": "MH 03 CP 1056",
-      "baname": "TRIMURTI TRANSPORT"
+      "baname": "Joes Transports"
     },
     {
       "lat": 23.484535,
       "lng": 79.460987,
-      "eta": "2016-08-18 06:43:00",
-      "lastTrackedAt": "2016-08-17 16:26:01",
+      "eta": "2018-08-18 06:43:00",
       "tripName": "GL-MAS",
       "lastTrackedAt": "2018-07-20 05:56:02",
       "speed": 0,
       "batteryPerc": 1,
       "trackerId": "6309682521",
-      "vehicleNo": "MH 03 CP 1056",
+      "vehicleNo": "NC1F56",
       "baname": "PacknPick"
     }
   ],
@@ -2554,7 +2552,7 @@ You can create a maximum of 5 Customers in LogiNExt in one call of this API.
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/customer/v1/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/address/v1/create`
 
 
 #### Request Parameters
@@ -2569,7 +2567,7 @@ breakTime.startTime | String | 255 | Conditional Mandatory | Break Start time of
 breakTime.endTime | String | 40 |Conditional Mandatory | Break end time of the Address in HH:MM format.. This field is mandatory if a break start time is provided.
 preferredStartTime | String | 100 | Optional | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
 preferredEndTime | String | 255 | Mandatory | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
-weeklyOffList | LIST | 255 | Mandatory | Days of the week this location is OFF i.e not servicable.
+weeklyOffList | LIST | 255 | Mandatory | Days of the week this location is OFF i.e not serviceable.
 address.city | Integer | 20 | Mandatory | Address city.
 address.state | Integer | 20 | Optional |  Address state. This will be based on the state codes in LogiNext for the country selected by you.
 address.country | String | 255 | Optional | Address Country.
@@ -5277,7 +5275,7 @@ This API gets coordinates for a given location.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
+<span class="post">POST</span>`https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
 
 
 #### Request Parameters
@@ -6189,10 +6187,64 @@ latitude | Double | 15 | Conditional Optional | Geo-location where Order status 
 otherReason | Date | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
 updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
 
+# Custom Fields
 
-# Code Snippets
+> Request
+
+```json
+
+"customFields":[
+    {
+
+    "field":"cutOffDate",
+    "value":""2018-06-25T07:31:39Z"
+    }
+    
+    ]
+```
 
 
+If you require certain additional fields to store information regarding your Orders or Resources in LogiNext, you can use our Custom Fields features.
+
+With Custom Fields, you can enter information for reporting and analytics purposes specific to your business use case.
+
+For eg - If you need to look for specific servicability constraints like cut off times within with a certain area/ geofence can be serviced, you can configure a cut off time custom field in LogiNext that will display the availability timelines for that area/ geofence.
+
+To configure Custom Fields for your account, please reach out to your Account Manager.
+
+Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI.
+
+If using the API, you will need to add the Custome Fields object on the right as part of the API request body to create the new fields in LogiNext.
+
+For eg - If you have Custom Fields configured for the Orders module, you will need to append the request on the right to the request body of the create order API.
+
+For a Custom Field you must define the following attributes
+
+Attribute|Description
+----------|-----------
+Type| Data Type of the Custom field.
+Field| the name of the custom field.
+
+LogiNext currently supports the following field types - 
+
+Text.
+
+Number.
+
+Dropdown.
+
+DateTime.
+
+Date.
+
+Time.
+
+
+You can include the following validations in your custom fields at the time of creating them -
+
+Mandatoy/ Optional.
+
+Min length/ Man length.
 
 
 # Webhooks
@@ -7774,6 +7826,60 @@ ZIMBABWE|ZWE
 
 # State Codes
 
+## United States
+
+Alabama | AL
+Alaska  | AK
+Arizona | AZ
+Arkansas  | AR
+California  | CA
+Colorado  | CO
+Connecticut | CT
+Delaware  | DE
+District of Columbia  | DC
+Florida | FL
+Georgia | GA
+Hawaii  | HI
+Idaho | ID
+Illinois | IL
+Indiana | IN
+Iowa  | IA
+Kansas | KS
+Kentucky | KY
+Louisiana | LA
+Maine | ME
+Maryland | MD
+Massachusetts | MA
+Michigan  | MI
+Minnesota | MN
+Mississippi | MS
+Missouri  | MO
+Montana | MT
+Nebraska | NE
+Nevada  | NV
+New Hampshire | NH
+New Jersey | NJ
+New Mexico | NM
+New York | NY
+North Carolina | NC
+North Dakota | ND
+Ohio | OH
+Oklahoma | OK
+Oregon | OR
+Pennsylvania | PA
+Rhode Island | RI
+South Carolina | SC
+South Dakota | SD
+Tennessee | TN
+Texas | TX
+Utah | UT
+Vermont | VT
+Virginia | VA
+Washington | WA
+West Virginia | WV
+Wisconsin | WI
+Wyoming | WY
+
 ## India
 
 State | Code
@@ -7984,6 +8090,16 @@ Kepulauan Riau|KR
 Kepulauan Bangka Belitung|BB
 Kalimantan Utara|KU
 Papua Barat|PB
+
+## Pakistan
+Punjab | PB
+Sindh | SD
+North-West Frontier | KP
+Balochistan | BA
+Northern Areas | GB
+Azad Kashmir | JK
+Federally Administered Tribal Areas | TA
+Islamabad | IS
 
 # Postal Codes
 
