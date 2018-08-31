@@ -3670,77 +3670,24 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
- </span><span class="p">{</span><span class="w">
-</span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"ALL123469"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser_LMDemo"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">9892147969</span><span class="p">,</span><span class="w">
-</span><span class="nt">"imei"</span><span class="p">:</span><span class="mi">123456789012123</span><span class="p">,</span><span class="w">
-</span><span class="nt">"emailId"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryMediumMapList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPANISH"</span><span class="w">
-
-     </span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENGLISH"</span><span class="w">
-
-     </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-</span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="s2">"Delivery Associate"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T14:30:00Z"</span><span class="w">
-     </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-</span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Monday"</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-</span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"variableCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"isPresentFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Ney York"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"PERMANENT"</span><span class="w"> 
-</span><span class="p">},</span><span class="w">
-</span><span class="p">{</span><span class="w"> 
-</span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"901"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp McDonalds"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"MUMNew YorkBAI"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"CURRENT"</span><span class="w"> 
-</span><span class="p">}</span><span class="w">
-
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="s2">"Single"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"alternateMobileNo"</span><span class="p">:</span><span class="mi">9892134489</span><span class="p">,</span><span class="w">
-</span><span class="nt">"landlineNo"</span><span class="p">:</span><span class="mi">28215678</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenseValidityInYears"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenseIssuanceDate"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenceNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"James Wan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"341245673212"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago 11"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -3930,23 +3877,22 @@ You will have to pass the reference Id of the vehicle whose information needs to
    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer Details fetched successfully"</span><span class="p">,</span><span class="w">
    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="p">{</span><span class="w">
-           </span><span class="nt">"accountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cust1"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apiname1"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62 21 22580868"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api.api@test.com"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"customerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API Test"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-               </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="p">,</span><span class="w">
-               </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="w">
-           </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"James Wan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"341245673212"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago 11"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+                   </span><span class="p">},</span><span class="w">
            </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"241ccf29a4404046a033f31cc3384ac7"</span><span class="w">
        </span><span class="p">}</span><span class="w">
@@ -3971,19 +3917,19 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"65ba00dbdcf04fb789311df6aa40e3ba"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"apiname1111"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"62 21 22586666"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"api1111.api1111@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"API Test11111"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"James Wan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"341245673212"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1111, Milsons Towers"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue 1111"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway 1111"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago 111"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago 1111"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago 11"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
           </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -13222,7 +13168,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>customerRating</td>
-<td>Integer</td>
+<td>Double</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
@@ -13414,7 +13360,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>customerRating</td>
-<td>Integer</td>
+<td>Double</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
@@ -13690,7 +13636,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>customerRating</td>
-<td>Integer</td>
+<td>Double</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
@@ -13834,7 +13780,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>customerRating</td>
-<td>Integer</td>
+<td>Double</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>
@@ -13925,7 +13871,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>customerRating</td>
-<td>Integer</td>
+<td>Double</td>
 <td>Rating provided by customer</td>
 </tr>
 <tr>

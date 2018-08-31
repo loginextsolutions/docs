@@ -2194,77 +2194,24 @@ Delivery orders by loading the items for different orders from a Single Point of
 
 ```json
 [
- {
-"employeeId":"ALL123469",
-"branchName":"LMDCalifornia",
-"userGroupName":"MobileUser_LMDemo",
-"deliveryMediumMasterName":"James",
-"phoneNumber":9892147969,
-"imei":123456789012123,
-"emailId":"test@test.com",
-"userName":"james003",
-"password":"admin",
-"capacityInUnits":10,
-"capacityInVolume":10,
-"capacityInWeight":10,
-"dob":"2016-12-12",
-"deliveryMediumMapList": [
-     {
-       "name": "SPANISH"
-
-     },
-     {
-       "name": "ENGLISH"
-
-     }
-   ],
-"gender":"Male",
-"deliveryMediumMasterTypeCd":"Delivery Associate",
-"isOwnVehicleFl":"Company",
-"vehicleNumber":"1AB54F",
-"dmPreference":"10035",
-"shiftList": [
-     {
-       "shiftStartTime": "2018-104-01T13:30:00Z",
-       "shiftEndTime": "2018-04-01T14:30:00Z"
-     }
-   ],
-"weeklyOffList": [
-     "Thursday",
-     "Monday"
-   ],
-"maxDistance":10,
-"licenseValidity":"2016-12-12",
-"fixedCost":10,
-"variableCost":10,
-"isPresentFl":"Y",
-"addressList": [ { 
-"apartment":"901",
-"streetName":"2142 3rd Ave",
-"landmark":"Opp. McDonalds",
-"countryShortCode":"USA",
-"city":"Ney York",
-"pincode":"10035",
-"addressType":"PERMANENT" 
-},
-{ 
-"apartment":"901",
-"streetName":"2142 3rd Ave",
-"landmark":"Opp McDonalds",
-"countryShortCode":"USA",
-"city":"MUMNew YorkBAI",
-"pincode":"10035",
-"addressType":"CURRENT" 
-}
-
-],
-"maritalStatus":"Single",
-"alternateMobileNo":9892134489,
-"landlineNo":28215678,
-"licenseValidityInYears":10,
-"licenseIssuanceDate":"2016-12-12",
-"licenceNumber":2123123123
-}
+  {
+    "name":"James Wan",
+    "mobile":"341245673212",
+    "email":"james@ablogs.com",
+    "customerType":"Preferred",
+    "billingAddress": {
+      "apartment":"Suite No. 1, Milsons Towers",
+          "streetName":"Michigan Avenue",
+          "landmark":"Opp. Subway",
+          "locality":"Dowtown Chicago",
+          "city":"Chicago 11",
+          "state":"NY",
+          "country":"USA",
+          "pincode":"10045",
+          "latitude": 72.9555,
+          "longitude": 19.555
+    }
+  }
 ]
 ```
 
@@ -2353,23 +2300,22 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
    "message": "Customer Details fetched successfully",
    "data": [
        {
-           "accountCode": "cust1",
-           "name": "apiname1",
-           "mobile": "62 21 22580868",
-           "email": "api.api@test.com",
-           "customerType": "API Test",
-           "billingAddress": {
-               "apartment": "Suite No. 99, Milsons Towers",
-               "streetName": "Michigan Avenue",
-               "landmark": "Opp. Subway",
-               "city": "Chicago",
-               "locality": "Dowtown Chicago",
-               "state": "Maharashtra",
-               "country": "INDIA",
-               "pincode": "60606",
-               "latitude": 72.9095327,
-               "longitude": 19.111755
-           },
+            "name":"James Wan",
+            "mobile":"341245673212",
+            "email":"james@ablogs.com",
+            "customerType":"Preferred",
+            "billingAddress": {
+              "apartment":"Suite No. 1, Milsons Towers",
+                  "streetName":"Michigan Avenue",
+                  "landmark":"Opp. Subway",
+                  "locality":"Dowtown Chicago",
+                  "city":"Chicago 11",
+                  "state":"NY",
+                  "country":"USA",
+                  "pincode":"10045",
+                  "latitude": 72.9555,
+                  "longitude": 19.555
+                   },
            "isActive": "Y",
            "referenceId": "241ccf29a4404046a033f31cc3384ac7"
        }
@@ -2396,19 +2342,19 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
 [
   {
     "referenceId":"65ba00dbdcf04fb789311df6aa40e3ba",
-    "name":"apiname1111",
-    "mobile":"62 21 22586666",
-    "email":"api1111.api1111@test.com",
-    "customerType":"API Test11111",
+    "name":"James Wan",
+    "mobile":"341245673212",
+    "email":"james@ablogs.com",
+    "customerType":"Preferred",
     "billingAddress": {
-      "apartment":"Suite No. 1111, Milsons Towers",
-          "streetName":"Michigan Avenue 1111",
-          "landmark":"Opp. Subway 1111",
-          "locality":"Dowtown Chicago 111",
-          "city":"Chicago 1111",
-          "state":"MH",
-          "country":"IND",
-          "pincode":"400076",
+      "apartment":"Suite No. 1, Milsons Towers",
+          "streetName":"Michigan Avenue",
+          "landmark":"Opp. Subway",
+          "locality":"Dowtown Chicago",
+          "city":"Chicago 11",
+          "state":"NY",
+          "country":"USA",
+          "pincode":"10045",
           "latitude": 72.9555,
           "longitude": 19.555
     }
@@ -6691,7 +6637,7 @@ notificationType | String | DELIVEREDNOTIFICATION
 orderLeg | String | Order leg, Possible values : DELIVER, PICKUP
 awbNumber | String | Awb No.
 customerComment | String | Customer comments
-customerRating | Integer | Rating provided by customer
+customerRating | Double | Rating provided by customer
 deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | Order state, Possible values : FORWARD, REVERSE
@@ -6788,7 +6734,7 @@ notificationType | String | PARTIALDELIVERYNOTIFICATION
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
-customerRating | Integer | Rating provided by customer
+customerRating | Double | Rating provided by customer
 deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
@@ -6872,7 +6818,7 @@ orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 clientId | String | Client ID
 customerComments | String | Customer comments
-customerRating | Integer | Rating provided by customer
+customerRating | Double | Rating provided by customer
 deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
@@ -6928,7 +6874,7 @@ notificationType | String | PICKEDUPNOTIFICATION
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
-customerRating | Integer | Rating provided by customer
+customerRating | Double | Rating provided by customer
 deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
@@ -6972,7 +6918,7 @@ notificationType | String |  NOTPICKEDUPNOTIFICATION
 orderLeg | String |  Order leg
 awbNumber | String | Airway Bill Number
 customerComment | String |  Customer comments
-customerRating | Integer | Rating provided by customer
+customerRating | Double | Rating provided by customer
 deliveryMediumName | String |  Name of Delivery Associate
 phoneNumber | Long | Phone no of Delivery Associate
 orderState | String | State of the order
