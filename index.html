@@ -627,9 +627,11 @@ Similarly for - <br>
 
 <h1 id="limits">Limits</h1>
 
-<p>You can call the LogiNext API with a call rate of 1 request/second.</p>
+<p>LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API.</p>
 
-<p>The LogiNext API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
+<p>To create Orders, you can call the LogiNext API with a call rate of 1 request/second.</p>
+
+<p>The LogiNext Orders API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
 
 <p>This means - </p>
 
@@ -637,7 +639,9 @@ Similarly for - <br>
 In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
 In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
 
-<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
+<p>The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.</p>
+
+<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
 
 <h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
@@ -10353,13 +10357,17 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>This API returns if a particular location is serviceable. </p>
+<p>You can call this API to check if a particular location is serviceable. </p>
 
 <p>You can pass the geocoordinates (latitude and longitude) or address of a location  in the request body, and get a response regarding if an existing geofence exists with those geocoordinates. </p>
 
-<p>If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates .</p>
+<p>If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates.</p>
 
 <p>This information can be used to tell users if your operations are present in certain areas or not.</p>
+
+<p>The API returns data for 1 location per call.</p>
+
+<p>Rate limit of this API is 20requests/second.</p>
 
 <h4 id="request">Request</h4>
 
