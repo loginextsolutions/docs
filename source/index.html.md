@@ -309,9 +309,12 @@ CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 # Limits
 
-You can call the LogiNext API with a call rate of 1 request/second.
 
-The LogiNext API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.
+LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API.
+
+To create Orders, you can call the LogiNext API with a call rate of 1 request/second.
+
+The LogiNext Orders API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.
 
 
 This means - 
@@ -320,8 +323,9 @@ This means -
 In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
 In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br>
 
+The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.
 
-Going beyond your rate limit will cause you to receive a temporary ban. You will receice a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
+Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
 
 
 
@@ -5281,13 +5285,17 @@ pincode | String | Mandatory | This is the address pincode.
 
 ```
 
-This API returns if a particular location is serviceable. 
+You can call this API to check if a particular location is serviceable. 
 
 You can pass the geocoordinates (latitude and longitude) or address of a location  in the request body, and get a response regarding if an existing geofence exists with those geocoordinates. 
 
-If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates .
+If address information without geocoordinates are passed, then this API will geocode the address provided and check for the generated geocoordinates.
 
 This information can be used to tell users if your operations are present in certain areas or not.
+
+The API returns data for 1 location per call.
+
+Rate limit of this API is 20requests/second.
 
 #### Request
 
