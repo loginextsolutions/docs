@@ -325,7 +325,7 @@ In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br>
 
 The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.
 
-Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
+Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error  to your API calls if you go beyond this limit.
 
 
 
