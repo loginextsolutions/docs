@@ -641,7 +641,7 @@ In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
 
 <p>The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.</p>
 
-<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
+<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error  to your API calls if you go beyond this limit.</p>
 
 <h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
@@ -3522,6 +3522,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.394535555555555</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.96088</span><span class="p">,</span><span class="w">
       </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-18 06:43:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"revisedETA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-17 16:26:01"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-17 16:26:01"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCAL-NY"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3612,6 +3613,11 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>eta</td>
 <td>Date</td>
 <td>Estimated time of arrival at the destination</td>
+</tr>
+<tr>
+<td>revisedETA</td>
+<td>Date</td>
+<td>Revised Estimated time of arrival at the destination after the trip has started of the vehicle has existed an Intransit geofence.</td>
 </tr>
 <tr>
 <td>lastTrackedAt</td>
@@ -12258,10 +12264,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.</li>
 <li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.</li>
 <li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.</li>
-<li>Loginext Webhooks do not support authentication parameters. In order to add authentication to the webhook, we recommend you to write a wrapper at your end to add the authentication parameters after consuming it at the URL end point provided.</li>
+<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
+## Create Order</li>
 </ol>
-
-<h2 id="create-order">Create Order</h2>
 
 <blockquote>
 <p>Response</p>
