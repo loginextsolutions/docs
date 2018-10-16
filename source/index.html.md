@@ -118,7 +118,7 @@ LogiNext API uses Basic Authentication to provide you an authorized access. Plea
 
 You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).
 
-The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.
+The response will contain a session token, which is unique in relation to every specific customer.
 
 If you want session to be valid for 1 Hour, then the "sessionExpiryTimeout" should be 1.<br>
 Similarly for - <br>
@@ -130,7 +130,7 @@ Similarly for - <br>
 
 <b><u>If you do not provide 'sessionExpiryTimeout', the validity of this session token will be 1 day (24 hours).</u></b>
 
-Please ensure that you add the token and secret key as part of every Loginext API call.
+Please ensure that you add the token as part of every Loginext API call.
 
 > Definition
 
@@ -143,7 +143,7 @@ https://api.loginextsolutions.com/LoginApp/login/authenticate
 {
         "userName":"demouser",
         "password":"Admin#1!",
-        "sessionExpiryTimeout":72
+        "sessionExpiryTimeout": 87600
 }  
 ```
 
@@ -181,12 +181,11 @@ The response will consist of parameters as mentioned in the "Responses" section 
 
 #### Response Headers
 
-The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.
+The response header will consist of Authentication Token. Please note that the validity of this token by default is 24 hours only.
 
 Header | Sample Value
 --------- | -------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
-CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
 ## Authenticate Delivery Associate
@@ -261,12 +260,11 @@ The response header will consist of Authentication Token and Client Secret Key. 
 Header | Sample Value
 --------- | -------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
-CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
 
 
 ##Invalidate
 
-You can fetch a fresh session token and a key by calling the below API. This call will invalidate the existing token and key and then you will be provided with a new token and a key which you will have to pass everytime in every other API call.
+You can fetch a fresh session token by calling the below API. This call will invalidate the existing token  and then you will be provided with a new token which you will have to pass everytime in every other API call.
 
 > Definition
 
@@ -298,14 +296,13 @@ Header | Sample Value
 --------- | ------- | -------------
 Content-Type | application/json | Json request
 WWW-Authenticate | BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG| Authentication key
 
 #### Response Headers
 
 Header | Sample Value
 --------- | -------
 WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
-CLIENT_SECRET_KEY | $2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD
+
 
 # Limits
 
@@ -2107,6 +2104,7 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
       "lat": 10.394535555555555,
       "lng": 77.96088,
       "eta": "2018-08-18 06:43:00",
+      "revisedETA": "2018-08-17 16:26:01",
       "lastTrackedAt": "2018-08-17 16:26:01",
       "tripName": "ABCAL-NY",
       "speed": 0,
@@ -2157,6 +2155,7 @@ Parameter | DataType | Description
 lat | Double | Specifies the latitude of the last tracked location
 lng | Double | Specifies the longitude of the last tracked location
 eta | Date   | Estimated time of arrival at the destination
+revisedETA | Date | Revised Estimated time of arrival at the destination after the trip has started of the vehicle has existed an Intransit geofence.
 lastTrackedAt | Date | The last tracked date and time in UTC of the GPS device
 address | String | The reverse geocoded address will be fetched if the "address" parameter is passed as true
 tripName | String | Specifies the name of the trip of the last tracked location.
@@ -4213,7 +4212,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "deliveryType": "DLBOY",
     "deliveryLocationType":"PUP",
     "deliverAccountCode": "Matt001",
-    "deliverAddressId":"MattHome"
+    "deliverAddressId":"MattHome",
     "deliverAccountName": "Mathew Richardson",
     "deliverApartment": "10 Suite No. A1901",
     "deliverStreetName": "Walton Avenue",
@@ -5334,19 +5333,21 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
 > Request Body
 
 ```json
-[
-  {
-    "cashOnDelivery" : 1000,
-    "cashOnPickup" : 1000,
-    "customerName" : "Anuradha S.",
-    "locality" : "Andheri East",
-    "subLocality" : "JVLR",
-    "address" : "JVLR Powai",
-    "deliverPhoneNumber" : "8888889999",
-    "orderNo" : "ORder_18620161809",
-    "distributionCenter" : "Mumbai",
-    "paymentType" : "COD"
-  }
+[ 
+{
+"cashOnDelivery" : 1000,
+"cashOnPickup" : 1000,
+"customerName" : "Anuradha S.",
+"locality" : "McD Malaysia",
+"subLocality" : "Petaling Jaya",
+"address" : "JVLR Powai, Mumbai 400076",
+"deliverPhoneNumber" : "60166788040",
+"orderNo" : "testod3",
+"distributionCenter" : "McDonald's Malaysia",
+"paymentType" : "COD",
+"latitude":31.1370445,
+"longitude":80.6210216
+}
 ]
 ```
 
@@ -5383,11 +5384,13 @@ paymentType | String | 40 | Mandatory | Payment mode. Ex: COD, Prepaid
 packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
 cashOnDelivery | Double | 10 | Mandatory(if paymentType is COD) | Cash to be collected on delivery
 cashOnPickup | Double | 10 | Optional | Cash to be given on pickup
-locality | String | 512 | Mandatory | Locality name
-subLocality | String | 512 | Mandatory | Sub-locality name
+locality | String | 512 | Conditional Mandatory | Locality name of the delivery location. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.
+subLocality | String | 512 | Conditional Mandatory | Sub-locality name. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.
 address | String | 512 | Optional | Address where delivery should be done
 deliverPhoneNumber | String | 255 | Mandatory | End customer contact number
 customerName | String | 255 | Mandatory | End customer name
+latitude | Double | 14 | Conditional Mandatory | geo coordinates(latitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.
+longitude | Double | 14 | Conditional Mandatory | geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.
 
 
 
@@ -6212,8 +6215,7 @@ Note -
 3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.
 4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.
 5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
-6. Loginext Webhooks do not support authentication parameters. In order to add authentication to the webhook, we recommend you to write a wrapper at your end to add the authentication parameters after consuming it at the URL end point provided.
-
+6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
 ## Create Order
 
 > Response
@@ -6355,7 +6357,7 @@ orderStatus | String | The current state of the Order.
   "awbNumber": "AWB123456789",
   "vehicleNumber":"A123D2",
   "deliveryMediumName": "Thomas Watson",
-  "deliveryMediumUserName": Thomas",
+  "deliveryMediumUserName": "Thomas",
   "phoneNumber": 9881234567,
   "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
@@ -6381,6 +6383,8 @@ status | String | Status of the order
 awbNumber | String | AWB No.
 deliveryMediumName | String | Name of Delivery Associate
 deliveryMediumUserName | String | Username of Delivery Associate
+latitude | Double | The geo-coordinate(latitude) of the Delivery Associate when the Order was accepted
+longitude | Double | The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted
 phoneNumber | Long | Delivery Associate's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
