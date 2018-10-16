@@ -295,7 +295,7 @@ maintainence men, repair men, or delivery boys.</p>
 
 <p>You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
 
-<p>The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.</p>
+<p>The response will contain a session token, which is unique in relation to every specific customer.</p>
 
 <p>If you want session to be valid for 1 Hour, then the &ldquo;sessionExpiryTimeout&rdquo; should be 1.<br>
 Similarly for - <br>
@@ -307,7 +307,7 @@ Similarly for - <br>
 
 <p><b><u>If you do not provide &lsquo;sessionExpiryTimeout&rsquo;, the validity of this session token will be 1 day (24 hours).</u></b></p>
 
-<p>Please ensure that you add the token and secret key as part of every Loginext API call.</p>
+<p>Please ensure that you add the token as part of every Loginext API call.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -321,7 +321,7 @@ Similarly for - <br>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
         </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"demouser"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"Admin#1!"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sessionExpiryTimeout"</span><span class="p">:</span><span class="mi">72</span><span class="w">
+        </span><span class="nt">"sessionExpiryTimeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">87600</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span></code></pre>
 
@@ -396,7 +396,7 @@ Similarly for - <br>
 
 <h4 id="response-headers">Response Headers</h4>
 
-<p>The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.</p>
+<p>The response header will consist of Authentication Token. Please note that the validity of this token by default is 24 hours only.</p>
 
 <table><thead>
 <tr>
@@ -407,10 +407,6 @@ Similarly for - <br>
 <tr>
 <td>WWW-Authenticate</td>
 <td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
 </tr>
 </tbody></table>
 
@@ -552,15 +548,11 @@ Similarly for - <br>
 <td>WWW-Authenticate</td>
 <td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
 </tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
-</tr>
 </tbody></table>
 
 <h2 id="invalidate">Invalidate</h2>
 
-<p>You can fetch a fresh session token and a key by calling the below API. This call will invalidate the existing token and key and then you will be provided with a new token and a key which you will have to pass everytime in every other API call.</p>
+<p>You can fetch a fresh session token by calling the below API. This call will invalidate the existing token  and then you will be provided with a new token which you will have to pass everytime in every other API call.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -601,10 +593,6 @@ Similarly for - <br>
 <td>WWW-Authenticate</td>
 <td>BASIC 8bce7b1b-9762-4de7-b9cd-976ecf38b6a0</td>
 </tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$npX3e6RD6zJFHcvFV469D.XtRpCwCQwZ3YlsEpERDcd.c2jmabLsG</td>
-</tr>
 </tbody></table>
 
 <h4 id="response-headers">Response Headers</h4>
@@ -618,10 +606,6 @@ Similarly for - <br>
 <tr>
 <td>WWW-Authenticate</td>
 <td>BASIC 075b8961-bd02-454c-83eb-259f965f313f</td>
-</tr>
-<tr>
-<td>CLIENT_SECRET_KEY</td>
-<td>$2a$08$bCi0ja4B5S02BKQt3VdxNuReERpSV8SiAbwVrHNyhC7mD</td>
 </tr>
 </tbody></table>
 
@@ -8337,8 +8321,8 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="s2">"MattHome"</span><span class="w">
-    </span><span class="s2">"deliverAccountName"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="s2">"MattHome"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
@@ -10460,19 +10444,21 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Anuradha S."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andheri East"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8888889999"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ORder_18620161809"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> 
+</span><span class="p">{</span><span class="w">
+</span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+</span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+</span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Anuradha S."</span><span class="p">,</span><span class="w">
+</span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McD Malaysia"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Petaling Jaya"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai, Mumbai 400076"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"60166788040"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"testod3"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McDonald's Malaysia"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">31.1370445</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">80.6210216</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -10555,15 +10541,15 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>locality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>Locality name</td>
+<td>Conditional Mandatory</td>
+<td>Locality name of the delivery location. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.</td>
 </tr>
 <tr>
 <td>subLocality</td>
 <td>String</td>
 <td>512</td>
-<td>Mandatory</td>
-<td>Sub-locality name</td>
+<td>Conditional Mandatory</td>
+<td>Sub-locality name. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.</td>
 </tr>
 <tr>
 <td>address</td>
@@ -10585,6 +10571,20 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>255</td>
 <td>Mandatory</td>
 <td>End customer name</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>14</td>
+<td>Conditional Mandatory</td>
+<td>geo coordinates(latitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>14</td>
+<td>Conditional Mandatory</td>
+<td>geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.</td>
 </tr>
 </tbody></table>
 
@@ -12569,14 +12569,14 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"A123D2"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Watson"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="w"> </span><span class="err">Thomas</span><span class="s2">",
-  "</span><span class="err">phoneNumber</span><span class="s2">": 9881234567,
-  "</span><span class="err">tripName</span><span class="s2">": "</span><span class="err">Trip_</span><span class="mi">1227</span><span class="s2">",
-  "</span><span class="err">updatedOn</span><span class="s2">": "</span><span class="mi">2016-06-30</span><span class="w"> </span><span class="mi">19</span><span class="err">:</span><span class="mi">43</span><span class="err">:</span><span class="mi">07</span><span class="s2">",
-  "</span><span class="err">trackUrl</span><span class="s2">": "</span><span class="err">https://goo.gl/qhZP</span><span class="mi">63</span><span class="s2">",
-  "</span><span class="err">pickupEndDate</span><span class="s2">": "</span><span class="mi">2017-11-20</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">23</span><span class="err">:</span><span class="mi">20</span><span class="s2">",
-  "</span><span class="err">deliveryEndDate</span><span class="s2">": "</span><span class="mi">2017-11-20</span><span class="w"> </span><span class="mi">10</span><span class="err">:</span><span class="mi">23</span><span class="err">:</span><span class="mi">20</span><span class="s2">",
-  "</span><span class="err">orderReferenceId</span><span class="s2">": "</span><span class="err">b</span><span class="mi">7</span><span class="err">b</span><span class="mi">15</span><span class="err">a</span><span class="mi">79</span><span class="err">d</span><span class="mi">6734297</span><span class="err">a</span><span class="mi">00</span><span class="err">a</span><span class="mi">93755856</span><span class="err">e</span><span class="mi">8</span><span class="err">c</span><span class="mi">8</span><span class="err">"</span><span class="w">
+  </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9881234567</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_1227"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"trackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://goo.gl/qhZP63"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pickupEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-20 10:23:20"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-20 10:23:20"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7b15a79d6734297a00a93755856e8c8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -12616,6 +12616,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>deliveryMediumUserName</td>
 <td>String</td>
 <td>Username of Delivery Associate</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>The geo-coordinate(latitude) of the Delivery Associate when the Order was accepted</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
