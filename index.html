@@ -5684,6 +5684,163 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="geofence">Geofence</h2>
+
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/GeofenceApp/geofence/v</span><span class="mi">1</span><span class="err">/get?geofenceIds=Mon-MD-White</span><span class="w"> </span><span class="err">Marsh,Mon-MD-Patapsco</span><span class="w"> </span><span class="err">High/Dundalk&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">50</span><span class="err">&amp;status=ACTIVE</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geofence details fetched successfully."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryDay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533081600000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryTime"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cutOffDay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533168000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cutOffTime"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"geofenceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon-MD-Patapsco High/Dundalk"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geofenceShape"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Polygon"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geofenceArea"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geoCoordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.2363378</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.53115</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.2257375</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.5072441</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.2014656</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.5027766</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.1995356</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.4608956</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.2201521</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.4421844</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.2402943</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-76.4087104</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>If you have configured geofences in LogiNext to identify your Hubs or particular locations, you can call this API to fetch the details and geo coordinates of your geofences.</p>
+
+<p>By default, the API returns all the Active geofences</p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>geofenceIds</td>
+<td>Boolean</td>
+<td>Optional</td>
+<td>To be passed as &ldquo;true&rdquo; if reverse geocoded address is needed,else &ldquo;false&rdquo;</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Optional</td>
+<td>This can be &#39;ACTIVE&rsquo;, &#39;INACTIVE&rsquo; or &#39;ALL&rsquo;. If not passed, this API will return only ACTIVE geofences.</td>
+</tr>
+<tr>
+<td>page_no</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>You can specify whihc page to fetch for the API. By default this will be 1.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>You can the specify the number of records to be fetched with this parameter. By default the API will return 100</td>
+</tr>
+</tbody></table>
+
+<h4 id="response-body">Response Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isActiveFl</td>
+<td>Boolean</td>
+<td>Specifies if the Geofence is active or not.</td>
+</tr>
+<tr>
+<td>geofenceName</td>
+<td>String</td>
+<td>The name of the Geofence specified at the time of Geofence creation.</td>
+</tr>
+<tr>
+<td>geofenceShape</td>
+<td>Date</td>
+<td>This will be POLYGON by by default.</td>
+</tr>
+<tr>
+<td>geofenceArea</td>
+<td>Date</td>
+<td>The area of the geofence in the unit system property units configured in LogiNext. If you have configured meters, than this will be in square meters.</td>
+</tr>
+<tr>
+<td>geoCoordinates.latitude</td>
+<td>Double</td>
+<td>The geo coordinate(latitude) of the geofence edge.</td>
+</tr>
+<tr>
+<td>geoCoordinates.longitude</td>
+<td>Double</td>
+<td>The geo coordinate(longitude) of the geofence edge.</td>
+</tr>
+</tbody></table>
+
 <h2 id="order">Order</h2>
 
 <p>Create Orders in the LogiNext system using the Orders API. Orders will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Order later.</p>
@@ -10422,7 +10579,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>State</td>
 </tr>
 <tr>
-<td>postalCode.</td>
+<td>postalCode</td>
 <td>String</td>
 <td>Optional</td>
 <td>Postal Code</td>
@@ -12264,9 +12421,10 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.</li>
 <li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.</li>
 <li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.</li>
-<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
-## Create Order</li>
+<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.</li>
 </ol>
+
+<h2 id="create-order">Create Order</h2>
 
 <blockquote>
 <p>Response</p>
