@@ -2166,9 +2166,6 @@ vehicleNo | String | Vehicle Number
 
 
 
-
-
-
 # LogiNext Mile <sup>TM</sup>
 
 Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  
@@ -3123,6 +3120,111 @@ officeNumber | String | 255 | Optional | Fixed Line Number of the Branch  / Hub
 adminContactName | String | 255 | Optional | Name of the Supervisor / Alternate Contact for this Hub
 mobileNumber | String | 255 | Optional | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Optional | Email Address of the contact person
+
+## Geofence
+
+### Get
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=Mon-MD-White Marsh,Mon-MD-Patapsco High/Dundalk&page_no=1&page_size=50&status=ACTIVE
+```
+
+> Response
+
+
+```json
+{
+    "status": 200,
+    "message": "Geofence details fetched successfully.",
+    "data": [
+        {
+            "isActiveFl": true,
+            "customFields": [
+                {
+                    "field": "deliveryDay",
+                    "value": "1533081600000",
+                    "type": "date"
+                },
+                {
+                    "field": "deliveryTime",
+                    "value": "10:00",
+                    "type": "time"
+                },
+                {
+                    "field": "cutOffDay",
+                    "value": "1533168000000",
+                    "type": "date"
+                },
+                {
+                    "field": "cutOffTime",
+                    "value": "11:00",
+                    "type": "time"
+                }
+            ],
+            "geofenceName": "Mon-MD-Patapsco High/Dundalk",
+            "geofenceShape": "Polygon",
+            "geofenceArea": 0,
+            "geoCoordinates": [
+                {
+                    "latitude": 39.2363378,
+                    "longitude": -76.53115
+                },
+                {
+                    "latitude": 39.2257375,
+                    "longitude": -76.5072441
+                },
+                {
+                    "latitude": 39.2014656,
+                    "longitude": -76.5027766
+                },
+                {
+                    "latitude": 39.1995356,
+                    "longitude": -76.4608956
+                },
+                {
+                    "latitude": 39.2201521,
+                    "longitude": -76.4421844
+                },
+                {
+                    "latitude": 39.2402943,
+                    "longitude": -76.4087104
+                }
+            ]
+        }
+    ],
+    "hasError": false
+}
+```
+
+If you have configured geofences in LogiNext to identify your Hubs or particular locations, you can call this API to fetch the details and geo coordinates of your geofences.
+
+
+
+By default, the API returns all the Active geofences
+
+
+#### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+geofenceIds | Boolean | Optional | To be passed as "true" if reverse geocoded address is needed,else "false"
+status | String | Optional | This can be 'ACTIVE', 'INACTIVE' or 'ALL'. If not passed, this API will return only ACTIVE geofences.
+page_no | Integer | Optional | You can specify whihc page to fetch for the API. By default this will be 1.
+page_size | Integer | Optional |  You can the specify the number of records to be fetched with this parameter. By default the API will return 100
+
+#### Response Body
+
+Parameter | DataType | Description
+-----------|-------| ----------
+isActiveFl | Boolean | Specifies if the Geofence is active or not.
+geofenceName | String  | The name of the Geofence specified at the time of Geofence creation.
+geofenceShape | Date   | This will be POLYGON by by default.
+geofenceArea | Date | The area of the geofence in the unit system property units configured in LogiNext. If you have configured meters, than this will be in square meters.
+geoCoordinates.latitude | Double | The geo coordinate(latitude) of the geofence edge. 
+geoCoordinates.longitude | Double | The geo coordinate(longitude) of the geofence edge. 
+
 
 ## Order
 
@@ -5241,6 +5343,7 @@ state | String |Optional | This is the address state.
 pincode | String | Mandatory | This is the address pincode.
 
 
+
 ## Get Location Serviceability
 
 > Sample Request
@@ -5313,7 +5416,7 @@ locality | String | Optional | Locality
 city | String | Optional | City
 country | String | Optional | Country
 state | String | Optional | State
-postalCode. | String |Optional | Postal Code
+postalCode | String |Optional | Postal Code
 
 
 
@@ -6216,6 +6319,7 @@ Note -
 4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.
 5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
 6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
+
 ## Create Order
 
 > Response
