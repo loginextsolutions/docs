@@ -3128,7 +3128,7 @@ emailAddress | String | 255 | Optional | Email Address of the contact person
 > Definition
 
 ```json
-https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=Mon-MD-White Marsh,Mon-MD-Patapsco High/Dundalk&page_no=1&page_size=50&status=ACTIVE
+https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=MMD-White Marsh,MMD-Patapsco High/Dundalk&page_no=1&page_size=50&status=ACTIVE
 ```
 
 > Response
@@ -3163,7 +3163,8 @@ https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=Mon-MD
                     "type": "time"
                 }
             ],
-            "geofenceName": "Mon-MD-Patapsco High/Dundalk",
+            "geofenceName": "MMD-Patapsco High/Dundalk",
+            "referenceId::"987ygr43wefghyu89oikjhytrew34",
             "geofenceShape": "Polygon",
             "geofenceArea": 0,
             "geoCoordinates": [
@@ -3219,6 +3220,7 @@ page_size | Integer | Optional |  You can the specify the number of records to b
 Parameter | DataType | Description
 -----------|-------| ----------
 isActiveFl | Boolean | Specifies if the Geofence is active or not.
+referenceId | String | Reference ID of the Geofence.
 geofenceName | String  | The name of the Geofence specified at the time of Geofence creation.
 geofenceShape | Date   | This will be POLYGON by by default.
 geofenceArea | Date | The area of the geofence in the unit system property units configured in LogiNext. If you have configured meters, than this will be in square meters.
@@ -5151,6 +5153,139 @@ checkInLocation | String | 100 | Mandatory | This can be "PICKUP" or "DELIVER".
 checkinLatitude | Double | 100 | Optional | Geocoordinate(Latitude) for the Check In location.
 checkinLongitude | Double | 100 | Optional | Geocoordinate(Longitude) for the Check In location.
 checkInTime | Date | 100 | Mandatory | Check In Time in UTC format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+
+### Create Tracking
+
+> Definition
+
+```json
+https://products.loginextsolutions.com/TrackingApp/track/mobile/put 
+```
+
+> Request Body
+
+```json
+{
+  "location": [{
+    "latitude": 19.1119129,
+    "longitude": 72.9094089,
+    "speed": 0,
+    "battery": 100,
+    "locationSource": "fused",
+    "trackingDt": "2017-12-11T07:21:39Z",
+    "type": "MOBREG",
+    "distanceFromLastLocation": 0,
+    "accuracy": 23.878000259399414,
+    "bearing": 0,
+    "altitude": 0,
+    "hasAccuracy": "0",
+    "hasBearing": "0",
+    "hasSpeed": "0",
+    "lastLatitude": 19.1119129,
+    "lastLongitude": 72.9094089,
+    "isFirstPointFl": "0",
+    "currentTime": 1512976899548,
+    "previousTime": 1512976899532,
+    "userId": 4955,
+    "signalStrength": 30,
+    "appStatus": "100",
+    "networkType": "WIFI",
+    "dataNetworkType": "Unknown",
+    "isGsmFl": false,
+    "isActiveNetworkMetered": false,
+    "imei": "911380458661315"
+  }, {
+    "latitude": 19.1119129,
+    "longitude": 72.9094089,
+    "speed": 0,
+    "battery": 100,
+    "locationSource": "fused",
+    "trackingDt": "2017-12-11T07:21:19Z",
+    "type": "MOBREG",
+    "distanceFromLastLocation": 0,
+    "accuracy": 23.87700080871582,
+    "bearing": 0,
+    "altitude": 0,
+    "hasAccuracy": "0",
+    "hasBearing": "0",
+    "hasSpeed": "0",
+    "lastLatitude": 19.1119129,
+    "lastLongitude": 72.9094089,
+    "isFirstPointFl": "0",
+    "currentTime": 1512976879541,
+    "previousTime": 1512976879521,
+    "userId": 4955,
+    "signalStrength": 30,
+    "appStatus": "100",
+    "networkType": "WIFI",
+    "dataNetworkType": "Unknown",
+    "isGsmFl": false,
+    "isActiveNetworkMetered": false,
+    "imei": "911380458661315"
+  }]
+}
+}
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "data": {
+        "msg": [
+            "2018-11-11T07:20:59",
+            "2018-11-11T07:21:19",
+            "2018-11-11T07:21:39"
+        ],
+        "previousTimes": [
+            1512976859528,
+            1512976879521,
+            1512976899532
+        ]
+    },
+    "hasError": false
+}
+
+```
+
+With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.
+
+#### Request
+
+<span class="post">POST</span>`https://products.loginextsolutions.com/TrackingApp/track/mobile/put`
+
+#### Request Body
+
+Parameter | DataType | Required | Description
+-----------|-------|------- | ----|----------
+latitude|Number|Mandatory|Current Latitude Sample Value - 19.1119129
+longitude|Number|Mandatory|Current Longitude Sample Value - 72.9094089
+trackingDt|String|Mandatory|Tracking Date and Time in UTC and the mentioned Format. Sample Value - 2017-12-11T07:21:39Z
+currentTime|Long|Mandatory|Current date and time in milliseconds in the mentioned Format.Sample Value - 1512976899548
+speed|Number|Mandatory|Current Speed in meters / second
+battery|Integer|Mandatory|Current Battery percentage|Sample Value - 92
+accuracy|Number|Mandatory|Estimated accuracy of the current location in meters Sample Value - 23.878000259
+altitude|Number|Optional|In meters Sample Value - 235
+bearing |Number| Optional|Horizontal distance of travel of the device, in degrees. If the phose have this sensor, then send this value. Sample Value - Any value between 0 to 3600. 0 is North.  Consider Clockwise movement.
+locationSource|String|Optional|Location Provider Values like - “fused” , “wifi”, “gps”
+type |String|Mandatory|Tracking type.|Hardcoded Value - “MOBREG”
+isFirstPointFl|Boolean| Mandatory|If the current location is the first update after every login.|First Point - 0 Then there afterwards - 1 Sample Value -  0 (= False)  1 (= True)
+lastLatitude|Number| Mandatory| Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 19.1119129
+lastLongitude| Number| Mandatory|  Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 72.9094089
+distanceFromLastLocation| Number| Mandatory| Distance between last location update in meters. Note that if the isFirstPointFl value is “1”, then you can pass zero as the distance from last location. Sample Value - 23.5
+previousTime|Long| Mandatory|Timestamp of last location update in milliseconds Sample Value - 23.878000259
+hasAccuracy|Boolean|Optional|True, if the current location has an accuracy 0 (= False) / 1 (= True)
+hasBearing |Boolean|Optional|True, if the current location has a bearing 0 (= False) / 1 (= True)
+hasSpeed | Boolean|Optional|True, if the current location has a speed 0 (= False) / 1 (= True)
+userId|String|Optional|User Id, as identified by LogiNext Sample Value - JohnD
+networkType|String|Optional|Type of Network Sample Value - WIFI / MOBILE / UNKNOWN
+signalStrength|Integer|Mandatory|Strength of network type (Wifi, GSM, LTE)|Sample Value - 23
+dataNetworkType|String|Optional|Data Connectivity Type Sample Values - 1xRTT, EDGE, LTE, CDMA, GPRS, HSPA
+isGsmFl|Boolean|Optional|Current connectivity type Sample Value - 0 (= False) 1 (= True)
+isActiveNetworkMetered|Boolean|Optional| Is the currently active data network is metered. A network is classified as metered when the user is sensitive to heavy data usage on that connection due to monetary costs, data limitations or battery/performance issues. Sample Value -  0 (= False)  1 (= True)
+appStatus| Integer|Optional| Activity status of the app (Foreground, Background, Service, Gone, Sleep, Visible, Unknown). Sample Values - 100 (~ Foreground) 400 (~ Background) 500 (~ Empty) 125 (~ Foreground_Service) 1000 (~ Gone) 200 (~ Visible)
+imei|String|Mandatory|IMEI number for device Sample Value - 911380134661315
 
 
 ### ESIGN / EPOD Upload
