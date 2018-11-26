@@ -84,11 +84,10 @@ Header | Sample Value | Description
 --------- | ------- | -------------
 Content-Type | application/json | JSON request
 WWW-Authenticate | BASIC 51bbe3f7-1671-476c-818a-e7fbbca10202 | Authentication token
-CLIENT_SECRET_KEY | $2a$08$LQEqG3s.LF2jBt7Baq| Authentication key
 
 ### Versioning
 
-Versioning allows us to provide developers a consistent experience. All endpoints are prefixed with a version such as /v1. This version refers to the overall layout of the endpoints and response standards.
+Versioning allows us to provide developers a consistent experience. All endpoints are prefixed with a version such as /v1, v2 etc. This version refers to the overall layout of the endpoints and response standards.
 
 # Responses
 
@@ -100,11 +99,11 @@ Code | Message | Description
 ---------- | ------- | -------
 200 | Success | This message means that the request is successfully processed.
 201 | Created  | This message means that the resource is successfully created.
-400 | Bad Request  | This message means that the request is syntactically incorrect.
+400 | Bad Request  | This message means that the request is syntactically incorrect. You will receive this med=ssage in a case where the request body sent is not a standard JSON or array object as is expected by LogiNext.
 401 | Invalid username or password  | This message means that invalid credentials are passed.
 404 | Not Found  | This message means that the resource could not be found.
 405 | Method Not Allowed  | This message means that the method used to access the resource is invalid.
-409 | Conflict  | This message means that the request could not be completed due to a conflict with the current state of the target resource.
+409 | Request Error  | This message means that there is a validation error in the data sent in the request body. This could either be missing out a mandatory field in the API or sending an incrrect branch name in the request body.
 415 | Unsupported Media Type  |  This message means that the request is not in the format accepted by this method of target resource.
 429 | Too Many Requests  |  This message means that too many resources are requested.
 500 | Internal Server Error  | This message means that there is an issue with the LogiNext server.Please try accessing the request later.
@@ -3210,8 +3209,8 @@ By default, the API returns all the Active geofences
 
 Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
-geofenceIds | Boolean | Optional | To be passed as "true" if reverse geocoded address is needed,else "false"
-status | String | Optional | This can be 'ACTIVE', 'INACTIVE' or 'ALL'. If not passed, this API will return only ACTIVE geofences.
+geofenceIds | String | Optional | You can pass the LogiNext geofence reference ID or geofence name in this parameter. If there are special characters present in the geofence name, encoded values for these characters will be accepted by the API. For example, a space(' ') will be denoted by '%20' Multiple geofence identifiers can be passed in a comma separated format.
+status | String | Optional | This can be 'ACTIVE', 'INACTIVE' or 'ALL'. If not passed, this API will return all geofences by default.
 page_no | Integer | Optional | You can specify whihc page to fetch for the API. By default this will be 1.
 page_size | Integer | Optional |  You can the specify the number of records to be fetched with this parameter. By default the API will return 100
 
@@ -3291,7 +3290,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupPinCode": "10035",
     "pickupLatitude":40.760838,
     "pickupLongitude":-73.96732299999996,    
-
+    "clientCode": "Salestap",
 
     "shipmentCrateMappings": [
       {
@@ -3426,7 +3425,7 @@ pickupLatitude | Double |  | Optional | This is the geolocation coordinate (lati
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-
+clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
 
 #### Request Parameters (Crates)
 
@@ -3499,6 +3498,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "returnBranch": "Chicago",
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered",
+    "clientCode": "Salestap",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR041",
@@ -3607,6 +3607,7 @@ deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude)
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
+clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
 
 #### Request Parameters (Crates)
 
@@ -3713,6 +3714,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "returnPinCode": "10035",
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered",
+    "clientCode": "Salestap",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR121",
@@ -3853,7 +3855,7 @@ pickupEmail| String | 100 | Optional | Email of the merchant
 pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
-
+clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
 
 
 #### Request Parameters (Crates)
@@ -4615,6 +4617,69 @@ shipmentCrates.shipmentlineitems.itemPrice | Double | | Mandatory | This is the 
 shipmentCrates.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the item quantity.
 shipmentCrates.shipmentlineitems.itemType | String | 100 | Optional | This is the item type.
 shipmentCrates.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the item weight.
+
+
+### Assign
+
+> Definition
+
+```json
+http://demo.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
+```
+
+> Request Body
+
+```json
+{
+  "trip":{
+    "referenceId":"879098765678909876a87656s";
+  },
+  "deliveryMedium":{
+    "identifier":"employeeId",
+    "identifierValue":"77381"
+  },
+  "orderReferenceIds":["87678909876aa987659876sa","9876789asd98765456712"]
+}
+```
+
+
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "Order(s) Assigned Successfully!",
+    "hasError": false
+}
+
+```
+With this API, you can add Orders to a particular Trip or a Delivery Associate's Default, Not Started Trip.
+
+If you have a set of Orders to be manually assigned to a particular Delivery Associate or Trip, for eg- in the case that a Delivery Associate is Abesent or On Break, you can assign the Orders to be fulfilled to another Trip of another Delivery Associate using this API.
+
+The API will take as input the Trip or Delivery boy details and the list of orders to be added for that trip or DB.
+The API can be used in 2 ways:
+If the trip details are passed (through trip reference id), then DB details are not required and the list of orders will be added to that trip, irrespective of the trip being Started or Not Started. Other order and trip validations remain as is.
+If the trip details are not passed, then the DB details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
+The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.
+
+The Rate Limit for this API is 1 call/sec.
+
+#### Request
+
+<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign`
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ---------- | ---------- | ------------
+trip.referenceId | String | 32 | Conditional Mandatory | Reference ID of the trip to which the Order has to be assigned. This field has to be passed in case the Delivery Mednium details are not passed.
+deliveryMedium.identifier | String | 32 | Conditional Mandatory |  This is the control flag field for the Delivery Associate, to identify which details of the Delivery Associate are being passed. Possible values are 'employeeId', 'phoneNumber', 'userName'.
+deliveryMedium.identifierValue | String | 32 | Conditional Mandatory | This field will hold the Delivery Associate information to whom the Order is to be assigned, as per the flag set above. For eg - If you wish to assign an Order to a Delivert Associate whose 'employeeId' is 'John1', you would send 'employeeId' in the identifier field and 'John1' in the identifierValue field.
+orderReferenceId | String | 50 |  Mandatory | This is the Reference ID of the Order to be assigned.
+
 
 ### Cancel
 
