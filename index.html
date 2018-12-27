@@ -6038,7 +6038,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -6531,7 +6531,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
+<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -7058,7 +7058,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -7834,7 +7834,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>1</td>
 <td>Mandatory</td>
-<td>Pass this Flag as &ldquo;Y&rdquo;, if - If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as &ldquo;N&rdquo;, if - If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.</td>
+<td>Pass this Flag as &ldquo;Y&rdquo; If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as &ldquo;N&rdquo; If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>optimiseOrderSequenceFl</td>
@@ -9883,14 +9883,14 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/track/#/order?ordno=</span><span class="mi">1234</span><span class="err">&amp;aid=</span><span class="mi">4</span><span class="err">b</span><span class="mi">41</span><span class="err">a</span><span class="mi">94</span><span class="err">b</span><span class="mi">-521</span><span class="err">b</span><span class="mi">-4986-920</span><span class="err">d</span><span class="mi">-6</span><span class="err">e</span><span class="mi">4</span><span class="err">c</span><span class="mi">1</span><span class="err">cf</span><span class="mi">15</span><span class="err">fd</span><span class="mi">0</span><span class="err">b</span><span class="mi">6</span><span class="err">&amp;key=$</span><span class="mi">2</span><span class="err">a$</span><span class="mi">08</span><span class="err">$dfVg</span><span class="mi">6</span><span class="err">jJLhrHEsqOUfD</span><span class="mi">1</span><span class="err">EJHyuelHeIgcUyvgTfGaeRmnzN</span><span class="mi">5</span><span class="err">jGVi</span><span class="mi">86</span><span class="err">k</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/track/#/order?ordno=</span><span class="mi">1234</span><span class="err">&amp;aid=</span><span class="mi">4</span><span class="err">b</span><span class="mi">41</span><span class="err">a</span><span class="mi">94</span><span class="err">b</span><span class="mi">-521</span><span class="err">b</span><span class="mi">-4986-920</span><span class="err">d</span><span class="mi">-6</span><span class="err">e</span><span class="mi">4</span><span class="err">c</span><span class="mi">1</span><span class="err">cf</span><span class="mi">15</span><span class="err">fd</span><span class="mi">0</span><span class="err">b</span><span class="mi">6</span><span class="w">
 </span></code></pre>
 
 <p>The iFrame displays the last tracking for an order, including current location, based on the order no.</p>
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/track/#/order?ordno=&lt;ordno&gt;&amp;aid=&lt;aid&gt;&amp;key=&lt;key&gt;</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/track/#/order?ordno=&lt;ordno&gt;&amp;aid=&lt;aid&gt;</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -9905,11 +9905,6 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <td>aid</td>
 <td>f522631c-490c-46fd-9f79-ca8d14a704d7</td>
 <td>Value of authentication token without &#39;BASIC&rsquo; keyword</td>
-</tr>
-<tr>
-<td>key</td>
-<td>$2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT</td>
-<td>Client Secret Key</td>
 </tr>
 <tr>
 <td>ordno</td>
@@ -11004,7 +10999,9 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McDonald's Malaysia"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">31.1370445</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">80.6210216</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">80.6210216</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -11132,6 +11129,20 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>14</td>
 <td>Conditional Mandatory</td>
 <td>geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.</td>
+</tr>
+<tr>
+<td>pickupServiceTime</td>
+<td>Integer</td>
+<td>14</td>
+<td>Optional</td>
+<td>Service time at the pickup location in minutes.</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>14</td>
+<td>Optional</td>
+<td>Service time at the delivery location in minutes.</td>
 </tr>
 </tbody></table>
 
