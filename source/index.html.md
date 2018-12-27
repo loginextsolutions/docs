@@ -3391,7 +3391,7 @@ orders.orderNo | String | 100 | Conditional Mandatory | This is the Order No.
 awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
+autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
@@ -3572,7 +3572,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String  | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
+autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
@@ -3788,7 +3788,7 @@ Param | DataType | Length |  Required | Description
 orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
@@ -3995,7 +3995,7 @@ returnAllowedFl| String | 1 | Optional | If your Business process allows the cus
 cancellationAllowedFl| String | 1 | Optional | If your Business process allows the customer to cancel the orders before it is delivered to their doorstep, then you will have to mark this Flag as "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to cancel an order.<br>If you mark this flag as "N", LogiNext system will not allow you to cancel an order.<br><br>If you have not set this Flag, it will be defaulted to "N"
 returnBranch| String | 255 | Conditional Mandatory | If the "returnAllowedFl" is marked as "Y", then this is mandatory.<br>Else this this optional and you can choose to leave it blank.<br>For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will return the orders to. This is generally the Merchant's / Seller's Branch / Hub form where the shipment / parcel was picked up.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub where the Delivery Associate will have to bring back the shipment / parcel to.  <br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupNotes| String | 100 | Optional | You can enter instructions (if any) for the Delivery Associate while picking-up the order.
-autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y", if - If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as "N", if - If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.
+autoAllocateFl| String | 1 | Mandatory | Pass this Flag as "Y" If you add any order which needs to be allocated automatically to the logged-in Delivery Associate.<br>Pass this Flag as "N" If you add any order which you want to allocate manually to the Delivery Associate OR<br>If you want to run the Route optimization on the set of orders and want system to identify the Delivery Associates.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 optimiseOrderSequenceFl| String | 1 | Mandatory | This flag is to be used only if you have Multi- Destination Orders.<br>If you set this Flag as "N", system would plan the Delivery routes by keeping the sequence of the Orders same as what you have supplied.<br>If you set this Flag as "Y", system would optimize the route and re-arrange the sequence in which Order needs to be delivered.
 backToOrigin| String | 1 | Mandatory | If you want the Pick-up Branch from where the Delivery Associate has picked-up the order / shipment / parcel to be the last Destination, then set this Flag as "Y" else set this flag as "N"
 destinations| List | | Mandatory | Array - This is the list of orders and its information.
@@ -5041,7 +5041,7 @@ Use this to find out last tracked location for any order/ Delivery Associate.
 > Definition
 
 ```json
-https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6&key=$2a$08$dfVg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgTfGaeRmnzN5jGVi86k
+https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-4986-920d-6e4c1cf15fd0b6
 ```
 
 The iFrame displays the last tracking for an order, including current location, based on the order no.
@@ -5049,14 +5049,13 @@ The iFrame displays the last tracking for an order, including current location, 
 #### Request
 
 
-<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?ordno=<ordno>&aid=<aid>&key=<key>`
+<span class="post">GET</span>` https://api.loginextsolutions.com/track/#/order?ordno=<ordno>&aid=<aid>`
 
 #### Request Parameters
 
 Parameter | Sample Value | Description
 --------- | ------- | -------------
 aid | f522631c-490c-46fd-9f79-ca8d14a704d7 | Value of authentication token without 'BASIC' keyword
-key | $2a$08$Vg6jJLhrHEsqOUfD1EJHyuelHeIgcUyvgT | Client Secret Key
 ordno | 1234| Order no
 
 
@@ -5649,7 +5648,9 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
 "distributionCenter" : "McDonald's Malaysia",
 "paymentType" : "COD",
 "latitude":31.1370445,
-"longitude":80.6210216
+"longitude":80.6210216,
+"deliverServiceTime":3,
+"pickupServiceTime":3 
 }
 ]
 ```
@@ -5694,6 +5695,8 @@ deliverPhoneNumber | String | 255 | Mandatory | End customer contact number
 customerName | String | 255 | Mandatory | End customer name
 latitude | Double | 14 | Conditional Mandatory | geo coordinates(latitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.
 longitude | Double | 14 | Conditional Mandatory | geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.
+pickupServiceTime | Integer | 14 | Optional | Service time at the pickup location in minutes.
+deliverServiceTime | Integer | 14 | Optional | Service time at the delivery location in minutes.
 
 
 
