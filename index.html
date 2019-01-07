@@ -4129,7 +4129,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
           </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"isPrimary"</span><span class="p">:</span><span class="s2">"Y"</span><span class="w">
+    </span><span class="nt">"isPrimary"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="s2">"MyKart"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 
 </span><span class="p">]</span><span class="w">
@@ -4292,6 +4294,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>50</td>
 <td>Optional</td>
 <td>Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.</td>
 </tr>
 </tbody></table>
 
@@ -5282,11 +5291,12 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="nt">"branchDescription"</span><span class="p">:</span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"name"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"officeNumber"</span><span class="p">:</span><span class="s2">"2798678712"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"Suraj K."</span><span class="p">,</span><span class="w">
+</span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"John K."</span><span class="p">,</span><span class="w">
 </span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"9033977123"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"superjames@gmails.com"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="p">,</span><span class="w">
+</span><span class="nt">"timeZone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 
 </span></code></pre>
@@ -5467,6 +5477,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>255</td>
 <td>Mandatory</td>
 <td>Email Address of the contact person</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the Hub location you are creating. This will default yo your account configured timezone if not passed.</td>
 </tr>
 </tbody></table>
 
@@ -5904,6 +5921,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
 
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6258,6 +6276,13 @@ When Customer Profiling is turned ON -
 <td>The geolocation coordinate (longitude) of the pickup customer.</td>
 </tr>
 <tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
 <td>pickupNotes</td>
 <td>String</td>
 <td>512</td>
@@ -6418,7 +6443,8 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"deliverAddressTimezone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="p">,</span><span class="w">   
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
@@ -6749,6 +6775,13 @@ When Customer Profiling is turned ON -
 <td></td>
 <td>Optional</td>
 <td>The geolocation coordinate (longitude) of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
 </tr>
 <tr>
 <td>returnBranch</td>
@@ -7194,6 +7227,20 @@ When Customer Profiling is turned ON -
 <td>Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Email of the customer</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Phone number of the customer</td>
+</tr>
+<tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
@@ -7264,6 +7311,20 @@ When Customer Profiling is turned ON -
 <td>The geolocation coordinate (latitude) of the delivery customer.</td>
 </tr>
 <tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the deliver location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
+</tr>
+<tr>
 <td>pickupBranch</td>
 <td>String</td>
 <td>255</td>
@@ -7304,6 +7365,20 @@ When Customer Profiling is turned ON -
 <td>255</td>
 <td>Conditional Mandatory</td>
 <td>Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Email of the merchant</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Phone number of the merchant</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
@@ -7374,6 +7449,20 @@ When Customer Profiling is turned ON -
 <td></td>
 <td>Optional</td>
 <td>The geolocation coordinate (longitude) of the pickup location.</td>
+</tr>
+<tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
 </tr>
 <tr>
 <td>returnBranch</td>
@@ -7479,48 +7568,6 @@ When Customer Profiling is turned ON -
 <td>20</td>
 <td>Conditional Mandatory</td>
 <td>Return Pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
-</tr>
-<tr>
-<td>deliverEmail</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Email of the customer</td>
-</tr>
-<tr>
-<td>deliverPhoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Phone number of the customer</td>
-</tr>
-<tr>
-<td>pickupEmail</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Email of the merchant</td>
-</tr>
-<tr>
-<td>pickupPhoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Optional</td>
-<td>Phone number of the merchant</td>
-</tr>
-<tr>
-<td>pickupNotes</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Additional pickup comments associated with the order</td>
-</tr>
-<tr>
-<td>deliverNotes</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Additional delivery comments associated with the order</td>
 </tr>
 <tr>
 <td>clientCode</td>
@@ -12832,15 +12879,14 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CATS487"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-25 07:31:39"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERCREATIONNOTIFICATION"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AW234-TG"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERCREATIONNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-25 07:31:39"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143b28d87ghf46098de38b0ccce51a5d"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B1372"</span><span class="w">
+  </span><span class="s2">"deliverAddressId"</span><span class="err">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -12887,11 +12933,6 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>referenceId</td>
 <td>String</td>
 <td>Order reference id.</td>
-</tr>
-<tr>
-<td>clientId</td>
-<td>String</td>
-<td>Client ID associated with the Order</td>
 </tr>
 <tr>
 <td>deliverAccountCode</td>
@@ -15761,6 +15802,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h1 id="country-codes">Country Codes</h1>
 
+<p>When creating entities in LogiNext  that require country specific location information associated with them, use the country codes listed below. 
+For example, if you want to create an Order that is to be picked up from a Pick-up location in the United States, you would pass USA as the &#39;pickupCOuntry&rsquo; in the Create Order API.</p>
+
+<p>If you wish to enter a country code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> </p>
+
 <table><thead>
 <tr>
 <th>Country</th>
@@ -16731,59 +16777,225 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h1 id="state-codes">State Codes</h1>
 
+<p>When creating entities in LogiNext that require state specific location information associated with them, use the State codes listed below. 
+For example, if you want to create an Order that is to be picked up from a Pick-up location in New York , you would pass &#39;NY&rsquo; as the &#39;pickupState&rsquo; in the Create Order API.
+Note that the state code you enter should map to the country code entered in the corresponding country parameter. You cannot enter the state code for London if you have selected &#39;USA&rsquo; as the country.</p>
+
+<p>If you wish to enter a state code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> </p>
+
 <h2 id="united-states">United States</h2>
 
-<p>Alabama | AL
-Alaska  | AK
-Arizona | AZ
-Arkansas  | AR
-California  | CA
-Colorado  | CO
-Connecticut | CT
-Delaware  | DE
-District of Columbia  | DC
-Florida | FL
-Georgia | GA
-Hawaii  | HI
-Idaho | ID
-Illinois | IL
-Indiana | IN
-Iowa  | IA
-Kansas | KS
-Kentucky | KY
-Louisiana | LA
-Maine | ME
-Maryland | MD
-Massachusetts | MA
-Michigan  | MI
-Minnesota | MN
-Mississippi | MS
-Missouri  | MO
-Montana | MT
-Nebraska | NE
-Nevada  | NV
-New Hampshire | NH
-New Jersey | NJ
-New Mexico | NM
-New York | NY
-North Carolina | NC
-North Dakota | ND
-Ohio | OH
-Oklahoma | OK
-Oregon | OR
-Pennsylvania | PA
-Rhode Island | RI
-South Carolina | SC
-South Dakota | SD
-Tennessee | TN
-Texas | TX
-Utah | UT
-Vermont | VT
-Virginia | VA
-Washington | WA
-West Virginia | WV
-Wisconsin | WI
-Wyoming | WY</p>
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Alabama</td>
+<td>AL</td>
+</tr>
+<tr>
+<td>Alaska</td>
+<td>AK</td>
+</tr>
+<tr>
+<td>Arizona</td>
+<td>AZ</td>
+</tr>
+<tr>
+<td>Arkansas</td>
+<td>AR</td>
+</tr>
+<tr>
+<td>California</td>
+<td>CA</td>
+</tr>
+<tr>
+<td>Colorado</td>
+<td>CO</td>
+</tr>
+<tr>
+<td>Connecticut</td>
+<td>CT</td>
+</tr>
+<tr>
+<td>Delaware</td>
+<td>DE</td>
+</tr>
+<tr>
+<td>District of Columbia</td>
+<td>DC</td>
+</tr>
+<tr>
+<td>Florida</td>
+<td>FL</td>
+</tr>
+<tr>
+<td>Georgia</td>
+<td>GA</td>
+</tr>
+<tr>
+<td>Hawaii</td>
+<td>HI</td>
+</tr>
+<tr>
+<td>Idaho</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>Illinois</td>
+<td>IL</td>
+</tr>
+<tr>
+<td>Indiana</td>
+<td>IN</td>
+</tr>
+<tr>
+<td>Iowa</td>
+<td>IA</td>
+</tr>
+<tr>
+<td>Kansas</td>
+<td>KS</td>
+</tr>
+<tr>
+<td>Kentucky</td>
+<td>KY</td>
+</tr>
+<tr>
+<td>Louisiana</td>
+<td>LA</td>
+</tr>
+<tr>
+<td>Maine</td>
+<td>ME</td>
+</tr>
+<tr>
+<td>Maryland</td>
+<td>MD</td>
+</tr>
+<tr>
+<td>Massachusetts</td>
+<td>MA</td>
+</tr>
+<tr>
+<td>Michigan</td>
+<td>MI</td>
+</tr>
+<tr>
+<td>Minnesota</td>
+<td>MN</td>
+</tr>
+<tr>
+<td>Mississippi</td>
+<td>MS</td>
+</tr>
+<tr>
+<td>Missouri</td>
+<td>MO</td>
+</tr>
+<tr>
+<td>Montana</td>
+<td>MT</td>
+</tr>
+<tr>
+<td>Nebraska</td>
+<td>NE</td>
+</tr>
+<tr>
+<td>Nevada</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>New Hampshire</td>
+<td>NH</td>
+</tr>
+<tr>
+<td>New Jersey</td>
+<td>NJ</td>
+</tr>
+<tr>
+<td>New Mexico</td>
+<td>NM</td>
+</tr>
+<tr>
+<td>New York</td>
+<td>NY</td>
+</tr>
+<tr>
+<td>North Carolina</td>
+<td>NC</td>
+</tr>
+<tr>
+<td>North Dakota</td>
+<td>ND</td>
+</tr>
+<tr>
+<td>Ohio</td>
+<td>OH</td>
+</tr>
+<tr>
+<td>Oklahoma</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Oregon</td>
+<td>OR</td>
+</tr>
+<tr>
+<td>Pennsylvania</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>Rhode Island</td>
+<td>RI</td>
+</tr>
+<tr>
+<td>South Carolina</td>
+<td>SC</td>
+</tr>
+<tr>
+<td>South Dakota</td>
+<td>SD</td>
+</tr>
+<tr>
+<td>Tennessee</td>
+<td>TN</td>
+</tr>
+<tr>
+<td>Texas</td>
+<td>TX</td>
+</tr>
+<tr>
+<td>Utah</td>
+<td>UT</td>
+</tr>
+<tr>
+<td>Vermont</td>
+<td>VT</td>
+</tr>
+<tr>
+<td>Virginia</td>
+<td>VA</td>
+</tr>
+<tr>
+<td>Washington</td>
+<td>WA</td>
+</tr>
+<tr>
+<td>West Virginia</td>
+<td>WV</td>
+</tr>
+<tr>
+<td>Wisconsin</td>
+<td>WI</td>
+</tr>
+<tr>
+<td>Wyoming</td>
+<td>WY</td>
+</tr>
+</tbody></table>
 
 <h2 id="india">India</h2>
 
@@ -17529,14 +17741,973 @@ Wyoming | WY</p>
 
 <h2 id="pakistan">Pakistan</h2>
 
-<p>Punjab | PB
-Sindh | SD
-North-West Frontier | KP
-Balochistan | BA
-Northern Areas | GB
-Azad Kashmir | JK
-Federally Administered Tribal Areas | TA
-Islamabad | IS</p>
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Punjab</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Sindh</td>
+<td>SD</td>
+</tr>
+<tr>
+<td>North-West Frontier</td>
+<td>KP</td>
+</tr>
+<tr>
+<td>Balochistan</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>Northern Areas</td>
+<td>GB</td>
+</tr>
+<tr>
+<td>Azad Kashmir</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Federally Administered Tribal Areas</td>
+<td>TA</td>
+</tr>
+<tr>
+<td>Islamabad</td>
+<td>IS</td>
+</tr>
+</tbody></table>
+
+<h1 id="timezone-codes">Timezone Codes</h1>
+
+<p>When creating entities in LogiNext for which you want to associate Timezone specific information, use the Timezone codes listed below. </p>
+
+<p>For example, if you want to create an Order that is to be picked up from a Pick-up location in New York , you would pass &#39;America/New_York&rsquo; as the &#39;pickupAddressTimezone&rsquo; in the Create Order API.</p>
+
+<p>If you wish to enter a Timezone code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> </p>
+
+<table><thead>
+<tr>
+<th>Country Name</th>
+<th>Timezon ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AFGHANISTAN</td>
+<td>Asia/Kabul</td>
+</tr>
+<tr>
+<td>ALBANIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>ALGERIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>AMERICAN SAMOA</td>
+<td>Etc/GMT+11</td>
+</tr>
+<tr>
+<td>ANDORRA</td>
+<td>Europe/Andorra</td>
+</tr>
+<tr>
+<td>ANGOLA</td>
+<td>Africa/Luanda</td>
+</tr>
+<tr>
+<td>ANGUILLA</td>
+<td>America/Anguilla</td>
+</tr>
+<tr>
+<td>ANTARCTICA</td>
+<td>Antarctica/Palmer</td>
+</tr>
+<tr>
+<td>ANTIGUA AND BARBUDA</td>
+<td>America/St_Johns</td>
+</tr>
+<tr>
+<td>ARGENTINA</td>
+<td>America/Argentina/Buenos_Aires</td>
+</tr>
+<tr>
+<td>ARMENIA</td>
+<td>Asia/Yerevan</td>
+</tr>
+<tr>
+<td>ARUBA</td>
+<td>America/Aruba(-4:00)</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Antarctica/Macquarie</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Adelaide</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Brisbane</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Darwin</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Hobart</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Lord_Howe</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Melbourne</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Perth</td>
+</tr>
+<tr>
+<td>AUSTRALIA</td>
+<td>Australia/Sydney</td>
+</tr>
+<tr>
+<td>AUSTRIA</td>
+<td>Europe/Vienna</td>
+</tr>
+<tr>
+<td>AZERBAIJAN</td>
+<td>Asia/Baku</td>
+</tr>
+<tr>
+<td>BAHAMAS</td>
+<td>America/Nassau</td>
+</tr>
+<tr>
+<td>BAHRAIN</td>
+<td>Asia/Bahrain</td>
+</tr>
+<tr>
+<td>BANGLADESH</td>
+<td>Asia/Dhaka</td>
+</tr>
+<tr>
+<td>BARBADOS</td>
+<td>America/Barbados</td>
+</tr>
+<tr>
+<td>BELARUS</td>
+<td>Europe/Minsk</td>
+</tr>
+<tr>
+<td>BELGIUM</td>
+<td>Europe/Brussels</td>
+</tr>
+<tr>
+<td>BELIZE</td>
+<td>America/Belize</td>
+</tr>
+<tr>
+<td>BENIN</td>
+<td>Africa/Porto-Novo</td>
+</tr>
+<tr>
+<td>BERMUDA</td>
+<td>Atlantic/Bermuda</td>
+</tr>
+<tr>
+<td>BHUTAN</td>
+<td>Asia/Thimphu</td>
+</tr>
+<tr>
+<td>BOLIVIA</td>
+<td>America/La_Paz</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Africa/Gaborone</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Atlantic</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Central</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Eastern</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Mountain</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Newfoundland</td>
+</tr>
+<tr>
+<td>BOTSWANA</td>
+<td>Canada/Pacific</td>
+</tr>
+<tr>
+<td>BOUVET ISLAND</td>
+<td>Etc/GMT+5</td>
+</tr>
+<tr>
+<td>BRAZIL</td>
+<td>America/Sao_Paulo</td>
+</tr>
+<tr>
+<td>BRUNEI</td>
+<td>Asia/Brunei</td>
+</tr>
+<tr>
+<td>BULGARIA</td>
+<td>Europe/Sofia</td>
+</tr>
+<tr>
+<td>BURKINA FASO</td>
+<td>Africa/Ouagadougou</td>
+</tr>
+<tr>
+<td>BURUNDI</td>
+<td>Africa/Bujumbura</td>
+</tr>
+<tr>
+<td>CAMBODIA</td>
+<td>Asia/Phnom_Penh</td>
+</tr>
+<tr>
+<td>CAMEROON</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>Canada/Atlantic</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>Canada/Eastern</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>Canada/Mountain</td>
+</tr>
+<tr>
+<td>CAYMAN ISLANDS</td>
+<td>America/Cayman</td>
+</tr>
+<tr>
+<td>CHAD</td>
+<td>Africa/Ndjamena</td>
+</tr>
+<tr>
+<td>CHILE</td>
+<td>America/Santiago</td>
+</tr>
+<tr>
+<td>CHINA</td>
+<td>Asia/Shanghai</td>
+</tr>
+<tr>
+<td>CHRISTMAS ISLAND</td>
+<td>Indian/Christmas</td>
+</tr>
+<tr>
+<td>COLOMBIA</td>
+<td>America/Bogota</td>
+</tr>
+<tr>
+<td>COMOROS</td>
+<td>Etc/GMT-3</td>
+</tr>
+<tr>
+<td>CONGO</td>
+<td>Africa/Brazzaville</td>
+</tr>
+<tr>
+<td>CONGO, THE DRC</td>
+<td>Africa/Kinshasa</td>
+</tr>
+<tr>
+<td>COOK ISLANDS</td>
+<td>Etc/GMT+10</td>
+</tr>
+<tr>
+<td>COSTA RICA</td>
+<td>America/Costa_Rica</td>
+</tr>
+<tr>
+<td>CROATIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>CUBA</td>
+<td>America/Havana</td>
+</tr>
+<tr>
+<td>CYPRUS</td>
+<td>Asia/Nicosia</td>
+</tr>
+<tr>
+<td>CZECH REPUBLIC</td>
+<td>Europe/Prague</td>
+</tr>
+<tr>
+<td>DENMARK</td>
+<td>Europe/Copenhagen</td>
+</tr>
+<tr>
+<td>DJIBOUTI</td>
+<td>Africa/Djibouti</td>
+</tr>
+<tr>
+<td>DOMINICA</td>
+<td>America/Dominica</td>
+</tr>
+<tr>
+<td>DOMINICAN REPUBLIC</td>
+<td>Europe/Copenhagen</td>
+</tr>
+<tr>
+<td>EGYPT</td>
+<td>Africa/Cairo</td>
+</tr>
+<tr>
+<td>EL SALVADOR</td>
+<td>America/El_Salvador</td>
+</tr>
+<tr>
+<td>EQUATORIAL GUINEA</td>
+<td>Africa/Malabo</td>
+</tr>
+<tr>
+<td>ERITREA</td>
+<td>Africa/Asmara</td>
+</tr>
+<tr>
+<td>ESTONIA</td>
+<td>Europe/Tallinn</td>
+</tr>
+<tr>
+<td>ETHIOPIA</td>
+<td>Africa/Addis_Ababa</td>
+</tr>
+<tr>
+<td>FAROE ISLANDS</td>
+<td>Atlantic/Faroe</td>
+</tr>
+<tr>
+<td>FIJI</td>
+<td>Pacific/Fiji</td>
+</tr>
+<tr>
+<td>FINLAND</td>
+<td>Europe/Helsinki</td>
+</tr>
+<tr>
+<td>FRANCE</td>
+<td>Europe/Paris</td>
+</tr>
+<tr>
+<td>FRENCH GUIANA</td>
+<td>Etc/GMT+3</td>
+</tr>
+<tr>
+<td>FRENCH POLYNESIA</td>
+<td>Etc/GMT+10</td>
+</tr>
+<tr>
+<td>GABON</td>
+<td>Africa/Libreville</td>
+</tr>
+<tr>
+<td>GAMBIA</td>
+<td>Africa/Banjul</td>
+</tr>
+<tr>
+<td>GEORGIA</td>
+<td>Atlantic/South_Georgia</td>
+</tr>
+<tr>
+<td>GERMANY</td>
+<td>Europe/Berlin</td>
+</tr>
+<tr>
+<td>GHANA</td>
+<td>Africa/Accra</td>
+</tr>
+<tr>
+<td>GIBRALTAR</td>
+<td>Europe/Gibraltar</td>
+</tr>
+<tr>
+<td>GREECE</td>
+<td>Europe/Athens</td>
+</tr>
+<tr>
+<td>GREENLAND</td>
+<td>Etc/GMT+3</td>
+</tr>
+<tr>
+<td>GRENADA</td>
+<td>America/Grenada</td>
+</tr>
+<tr>
+<td>GUADELOUPE</td>
+<td>America/Guadeloupe</td>
+</tr>
+<tr>
+<td>GUAM</td>
+<td>Pacific/Guam</td>
+</tr>
+<tr>
+<td>GUATEMALA</td>
+<td>America/Guatemala</td>
+</tr>
+<tr>
+<td>GUINEA</td>
+<td>Africa/Conakry</td>
+</tr>
+<tr>
+<td>GUYANA</td>
+<td>America/Guyana</td>
+</tr>
+<tr>
+<td>HAITI</td>
+<td>America/Port-au-Prince</td>
+</tr>
+<tr>
+<td>HONDURAS</td>
+<td>America/Tegucigalpa</td>
+</tr>
+<tr>
+<td>HONG KONG</td>
+<td>Asia/Hong_Kong</td>
+</tr>
+<tr>
+<td>HUNGARY</td>
+<td>Europe/Budapest</td>
+</tr>
+<tr>
+<td>ICELAND</td>
+<td>Atlantic/Reykjavik</td>
+</tr>
+<tr>
+<td>INDIA</td>
+<td>Asia/Calcutta</td>
+</tr>
+<tr>
+<td>INDONESIA</td>
+<td>Asia/Jakarta</td>
+</tr>
+<tr>
+<td>IRAQ</td>
+<td>Asia/Baghdad</td>
+</tr>
+<tr>
+<td>IRELAND</td>
+<td>Europe/Dublin</td>
+</tr>
+<tr>
+<td>ISRAEL</td>
+<td>Asia/Jerusalem</td>
+</tr>
+<tr>
+<td>ITALY</td>
+<td>Europe/Rome</td>
+</tr>
+<tr>
+<td>JAMAICA</td>
+<td>America/Jamaica</td>
+</tr>
+<tr>
+<td>JAPAN</td>
+<td>Asia/Tokyo</td>
+</tr>
+<tr>
+<td>JORDAN</td>
+<td>Asia/Amman</td>
+</tr>
+<tr>
+<td>KAZAKHSTAN</td>
+<td>Etc/GMT-5</td>
+</tr>
+<tr>
+<td>KENYA</td>
+<td>Africa/Nairobi</td>
+</tr>
+<tr>
+<td>KIRIBATI</td>
+<td>Pacific/Tarawa</td>
+</tr>
+<tr>
+<td>KOREA, D.P.R.O.</td>
+<td>Asia/Pyongyang</td>
+</tr>
+<tr>
+<td>KOREA, REPUBLIC OF</td>
+<td>Asia/Seoul</td>
+</tr>
+<tr>
+<td>KUWAIT</td>
+<td>Asia/Kuwait</td>
+</tr>
+<tr>
+<td>KYRGYZSTAN</td>
+<td>Asia/Bishkek</td>
+</tr>
+<tr>
+<td>LAOS</td>
+<td>Asia/Vientiane</td>
+</tr>
+<tr>
+<td>LATVIA</td>
+<td>Europe/Riga</td>
+</tr>
+<tr>
+<td>LEBANON</td>
+<td>Asia/Beirut</td>
+</tr>
+<tr>
+<td>LESOTHO</td>
+<td>Africa/Maseru</td>
+</tr>
+<tr>
+<td>LIBERIA</td>
+<td>Africa/Monrovia</td>
+</tr>
+<tr>
+<td>LIECHTENSTEIN</td>
+<td>Europe/Vaduz</td>
+</tr>
+<tr>
+<td>LITHUANIA</td>
+<td>Europe/Vilnius</td>
+</tr>
+<tr>
+<td>LUXEMBOURG</td>
+<td>Europe/Luxembourg</td>
+</tr>
+<tr>
+<td>MACAU</td>
+<td>Asia/Macau</td>
+</tr>
+<tr>
+<td>MACEDONIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>MADAGASCAR</td>
+<td>Indian/Antananarivo</td>
+</tr>
+<tr>
+<td>MALAWI</td>
+<td>Etc/GMT-2</td>
+</tr>
+<tr>
+<td>MALAYSIA</td>
+<td>Asia/Kuala_Lumpur</td>
+</tr>
+<tr>
+<td>MALDIVES</td>
+<td>Indian/Maldives</td>
+</tr>
+<tr>
+<td>MALI</td>
+<td>Africa/Bamako</td>
+</tr>
+<tr>
+<td>MALTA</td>
+<td>Europe/Malta</td>
+</tr>
+<tr>
+<td>MARSHALL ISLANDS</td>
+<td>Pacific/Majuro</td>
+</tr>
+<tr>
+<td>MARTINIQUE</td>
+<td>America/Martinique</td>
+</tr>
+<tr>
+<td>MAURITANIA</td>
+<td>Africa/Nouakchott</td>
+</tr>
+<tr>
+<td>MAURITIUS</td>
+<td>Indian/Mauritius</td>
+</tr>
+<tr>
+<td>MAYOTTE</td>
+<td>Indian/Mayotte</td>
+</tr>
+<tr>
+<td>MEXICO</td>
+<td>America/Mexico_City</td>
+</tr>
+<tr>
+<td>MEXICO</td>
+<td>Etc/GMT+7</td>
+</tr>
+<tr>
+<td>MEXICO</td>
+<td>Etc/GMT+7</td>
+</tr>
+<tr>
+<td>MOLDOVA, REPUBLIC OF</td>
+<td>Europe/Chisinau</td>
+</tr>
+<tr>
+<td>MONACO</td>
+<td>Europe/Monaco</td>
+</tr>
+<tr>
+<td>MONGOLIA</td>
+<td>Asia/Ulaanbaatar</td>
+</tr>
+<tr>
+<td>MONTENEGRO</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>MONTSERRAT</td>
+<td>America/Montserrat</td>
+</tr>
+<tr>
+<td>MOROCCO</td>
+<td>Etc/GMT</td>
+</tr>
+<tr>
+<td>MOZAMBIQUE</td>
+<td>Africa/Maputo</td>
+</tr>
+<tr>
+<td>MYANMAR (BURMA)</td>
+<td>Asia/Rangoon</td>
+</tr>
+<tr>
+<td>NAMIBIA</td>
+<td>Africa/Windhoek</td>
+</tr>
+<tr>
+<td>NAURU</td>
+<td>Pacific/Nauru</td>
+</tr>
+<tr>
+<td>NEPAL</td>
+<td>Asia/Kathmandu</td>
+</tr>
+<tr>
+<td>NETHERLANDS</td>
+<td>Europe/Amsterdam</td>
+</tr>
+<tr>
+<td>NEW CALEDONIA</td>
+<td>Etc/GMT-11</td>
+</tr>
+<tr>
+<td>NEW ZEALAND</td>
+<td>Pacific/Auckland</td>
+</tr>
+<tr>
+<td>NICARAGUA</td>
+<td>America/Managua</td>
+</tr>
+<tr>
+<td>NIGER</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>NIGERIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>NIUE</td>
+<td>Pacific/Niue</td>
+</tr>
+<tr>
+<td>NORFOLK ISLAND</td>
+<td>Pacific/Norfolk</td>
+</tr>
+<tr>
+<td>NORWAY</td>
+<td>Europe/Oslo</td>
+</tr>
+<tr>
+<td>OMAN</td>
+<td>Asia/Muscat</td>
+</tr>
+<tr>
+<td>PAKISTAN</td>
+<td>Asia/Karachi</td>
+</tr>
+<tr>
+<td>PALAU</td>
+<td>Pacific/Palau</td>
+</tr>
+<tr>
+<td>PANAMA</td>
+<td>America/Panama</td>
+</tr>
+<tr>
+<td>PAPUA NEW GUINEA</td>
+<td>Pacific/Port_Moresby</td>
+</tr>
+<tr>
+<td>PARAGUAY</td>
+<td>America/Asuncion</td>
+</tr>
+<tr>
+<td>PERU</td>
+<td>America/Lima</td>
+</tr>
+<tr>
+<td>PHILIPPINES</td>
+<td>Asia/Manila</td>
+</tr>
+<tr>
+<td>PITCAIRN</td>
+<td>Pacific/Pitcairn</td>
+</tr>
+<tr>
+<td>POLAND</td>
+<td>Europe/Warsaw</td>
+</tr>
+<tr>
+<td>PORTUGAL</td>
+<td>Europe/Lisbon</td>
+</tr>
+<tr>
+<td>PUERTO RICO</td>
+<td>America/Puerto_Rico</td>
+</tr>
+<tr>
+<td>QATAR</td>
+<td>Asia/Qatar</td>
+</tr>
+<tr>
+<td>REUNION</td>
+<td>Indian/Reunion</td>
+</tr>
+<tr>
+<td>ROMANIA</td>
+<td>Europe/Bucharest</td>
+</tr>
+<tr>
+<td>RWANDA</td>
+<td>Africa/Kigali</td>
+</tr>
+<tr>
+<td>SAINT LUCIA</td>
+<td>America/St_Lucia</td>
+</tr>
+<tr>
+<td>SAMOA</td>
+<td>Pacific/Apia</td>
+</tr>
+<tr>
+<td>SAN MARINO</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>SAUDI ARABIA</td>
+<td>Asia/Riyadh</td>
+</tr>
+<tr>
+<td>SENEGAL</td>
+<td>Africa/Dakar</td>
+</tr>
+<tr>
+<td>SERBIA</td>
+<td>Europe/Belgrade</td>
+</tr>
+<tr>
+<td>SEYCHELLES</td>
+<td>Etc/GMT-4</td>
+</tr>
+<tr>
+<td>SIERRA LEONE</td>
+<td>Africa/Freetown</td>
+</tr>
+<tr>
+<td>SINGAPORE</td>
+<td>Asia/Singapore</td>
+</tr>
+<tr>
+<td>SLOVENIA</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>SOLOMON ISLANDS</td>
+<td>Etc/GMT-11</td>
+</tr>
+<tr>
+<td>SOMALIA</td>
+<td>Africa/Mogadishu</td>
+</tr>
+<tr>
+<td>SOUTH AFRICA</td>
+<td>Africa/Blantyre</td>
+</tr>
+<tr>
+<td>SOUTH SUDAN</td>
+<td>Etc/GMT-3</td>
+</tr>
+<tr>
+<td>SPAIN</td>
+<td>Europe/Madrid</td>
+</tr>
+<tr>
+<td>SRI LANKA</td>
+<td>Asia/Colombo</td>
+</tr>
+<tr>
+<td>SUDAN</td>
+<td>Africa/Khartoum</td>
+</tr>
+<tr>
+<td>SURINAME</td>
+<td>America/Paramaribo</td>
+</tr>
+<tr>
+<td>SWAZILAND</td>
+<td>Africa/Mbabane</td>
+</tr>
+<tr>
+<td>SWEDEN</td>
+<td>Europe/Stockholm</td>
+</tr>
+<tr>
+<td>SWITZERLAND</td>
+<td>Etc/GMT-1</td>
+</tr>
+<tr>
+<td>TAJIKISTAN</td>
+<td>Asia/Dushanbe</td>
+</tr>
+<tr>
+<td>TANZANIA</td>
+<td>Africa/Addis_Ababa</td>
+</tr>
+<tr>
+<td>THAILAND</td>
+<td>Asia/Bangkok</td>
+</tr>
+<tr>
+<td>TOGO</td>
+<td>Africa/Lome</td>
+</tr>
+<tr>
+<td>TOKELAU</td>
+<td>Etc/GMT-13</td>
+</tr>
+<tr>
+<td>TONGA</td>
+<td>Pacific/Tongatapu</td>
+</tr>
+<tr>
+<td>TRINIDAD AND TOBAGO</td>
+<td>America/Port_of_Spain</td>
+</tr>
+<tr>
+<td>TUNISIA</td>
+<td>Africa/Tunis</td>
+</tr>
+<tr>
+<td>TURKEY</td>
+<td>Etc/GMT-3</td>
+</tr>
+<tr>
+<td>TURKMENISTAN</td>
+<td>Asia/Ashgabat</td>
+</tr>
+<tr>
+<td>TUVALU</td>
+<td>Pacific/Funafuti</td>
+</tr>
+<tr>
+<td>UGANDA</td>
+<td>Africa/Kampala</td>
+</tr>
+<tr>
+<td>UKRAINE</td>
+<td>Etc/GMT-2</td>
+</tr>
+<tr>
+<td>UNITED ARAB EMIRATES</td>
+<td>Asia/Dubai</td>
+</tr>
+<tr>
+<td>UNITED KINGDOM</td>
+<td>Europe/London</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>America/Anchorage</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>America/Chicago</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>America/Denver</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>America/Los_Angeles</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>America/New_York</td>
+</tr>
+<tr>
+<td>UNITED STATES</td>
+<td>Pacific/Honolulu</td>
+</tr>
+<tr>
+<td>URUGUAY</td>
+<td>America/Montevideo</td>
+</tr>
+<tr>
+<td>UZBEKISTAN</td>
+<td>Asia/Tashkent</td>
+</tr>
+<tr>
+<td>VANUATU</td>
+<td>Etc/GMT-11</td>
+</tr>
+<tr>
+<td>VENEZUELA</td>
+<td>America/Caracas</td>
+</tr>
+<tr>
+<td>VIETNAM</td>
+<td>Etc/GMT-7</td>
+</tr>
+<tr>
+<td>YEMEN</td>
+<td>Etc/GMT-3</td>
+</tr>
+<tr>
+<td>ZAMBIA</td>
+<td>Africa/Lusaka</td>
+</tr>
+<tr>
+<td>ZIMBABWE</td>
+<td>Africa/Harare</td>
+</tr>
+</tbody></table>
 
 <h1 id="postal-codes">Postal Codes</h1>
 
