@@ -2458,7 +2458,9 @@ clientCode | String | 50 | Optional | Sub Client Name. With this field, you can 
           "latitude": 72.9555,
           "longitude": 19.555
     },
-    "isPrimary":"Y"
+    "isPrimary":"Y",
+    "clientCode":"MyKart",
+    "timeZone":"America/Chicago"
   }
   
 ]
@@ -2520,6 +2522,8 @@ address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
 clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
+
 
 
 
@@ -2983,11 +2987,12 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/create
 "branchDescription":"desc",
 "billingContactName":"name",
 "officeNumber":"2798678712",
-"adminContactName":"Suraj K.",
+"adminContactName":"John K.",
 "mobileNumber":"9033977123",
 "emailAddress":"superjames@gmails.com",
 "longitude": 19.111755,
-"latitude": 72.9095327
+"latitude": 72.9095327,
+"timeZone":"America/Chicago"
 }]
 
 ```
@@ -3037,6 +3042,7 @@ officeNumber | String | 255 | Mandatory | Fixed Line Number of the Branch  / Hub
 adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate Contact for this Hub
 mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Mandatory | Email Address of the contact person
+timeZone | String | | Optional | The timezone of the Hub location you are creating. This will default yo your account configured timezone if not passed.
 
 ### Update
 
@@ -3290,6 +3296,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupPinCode": "10035",
     "pickupLatitude":40.760838,
     "pickupLongitude":-73.96732299999996,    
+    "pickupAddressTimezone":"America/New_York",
     "clientCode": "Salestap",
 
     "shipmentCrateMappings": [
@@ -3423,6 +3430,7 @@ pickupCountry | String | 512 | Conditional Mandatory | This is the country name 
 pickupPinCode | String | 20 | Conditional Mandatory | This is the pincode of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
 clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
@@ -3494,7 +3502,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "deliverCountry": "USA",
     "deliverPinCode": "60602",
     "deliverLatitude":41.882702,
-    "deliverLongitude":-87.619392,    
+    "deliverLongitude":-87.619392, 
+    "deliverAddressTimezone":"America/Chicago",   
     "returnBranch": "Chicago",
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered",
@@ -3604,6 +3613,7 @@ deliverCountry | String | 512 | Conditional Mandatory | This is the country code
 deliverPinCode | String | 20 | Conditional Mandatory | This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the delivery customer.
 deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the delivery customer.
+deliverAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
@@ -3808,6 +3818,8 @@ deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VA
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Mandatory | Deliver account code
 deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail| String | 100 | Optional | Email of the customer
+deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
 deliverApartment | String | 512 | Conditional Mandatory | This is the delivery customer location's apartment details. This field in Non Mandatory in case Customer Profiling in ON.
 deliverStreetName | String | 512 | Conditional Mandatory | This is the delivery customer location's Street name. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLandmark | String | 512 | Optional | This is the delivery customer location's Landmark.
@@ -3818,12 +3830,16 @@ deliverCountry | String | 512 | Conditional Mandatory | This is the delivery cus
 deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
 deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverAddressTimezone | String | | Optional | The timezone of the deliver location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 pickupBranch | String | 255 | Mandatory | Name of pickup branch
 pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
 pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupAccountCode | String | 255 | Mandatory | Pickup account code
 pickupAccountName | String | 255 | Conditional Mandatory | Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupEmail| String | 100 | Optional | Email of the merchant
+pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
 pickupApartment | String | 512 | Conditional Mandatory | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
 pickupStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLandmark | String | 512 | Optional | This is the pickup location's  Landmark.
@@ -3834,6 +3850,8 @@ pickupCountry | String | 512 | Conditional Mandatory | This is the pickup locati
 pickupPinCode | String | 20 | Conditional Mandatory | This is the pickup location's pincode. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the pickup location.
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup location.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
 returnBranch | String | 255 | Mandatory | Name of return branch
 returnStartTimeWindow | Date |  | Mandatory | Return start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 returnEndTimeWindow | Date |  | Mandatory | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
@@ -3849,12 +3867,6 @@ returnCity | String | 512 | Conditional Mandatory | This is the pickup location'
 returnState| String | 512 | Conditional Mandatory | This is the pickup location's state code. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
 returnCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
 returnPinCode | String | 20 | Conditional Mandatory | Return Pincode. This field in Non Mandatory in case Customer Profiling in ON.
-deliverEmail| String | 100 | Optional | Email of the customer
-deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
-pickupEmail| String | 100 | Optional | Email of the merchant
-pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
-pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
-deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
 
 
@@ -6530,15 +6542,14 @@ Note -
 ```json
 {
   "orderNo": "CATS487",
-  "timestamp": "2018-06-25 07:31:39",
-  "notificationType": "ORDERCREATIONNOTIFICATION",
-  "orderLeg": "DELIVER",
-  "awbNumber": "",
   "orderState": "FORWARD",
-  "clientId": 209,
+  "orderLeg": "DELIVER",
+  "awbNumber": "AW234-TG",
+  "notificationType": "ORDERCREATIONNOTIFICATION",
+  "timestamp": "2018-06-25 07:31:39",
   "referenceId": "143b28d87ghf46098de38b0ccce51a5d",
-  "deliverAddressId": "",
   "deliverAccountCode": "B1372"
+  "deliverAddressId": "HOME"
 }
 ```
 
@@ -6553,7 +6564,6 @@ awbNumber | String | AWB Number for the order
 notificationType | String | ORDERCREATIONNOTIFICATION
 timestamp | String | Order creation timestamp
 referenceId | String | Order reference id.
-clientId|String| Client ID associated with the Order
 deliverAccountCode| String| Custoemr ID of the deliver customer
 deliverAddressId | String | Address ID of the delivery customer
 
@@ -7846,6 +7856,11 @@ variableCost | Integer |  variable cost.
 
 # Country Codes
 
+When creating entities in LogiNext  that require country specific location information associated with them, use the country codes listed below. 
+For example, if you want to create an Order that is to be picked up from a Pick-up location in the United States, you would pass USA as the 'pickupCOuntry' in the Create Order API.
+
+If you wish to enter a country code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
+
 Country |  Code
 --------- | ---------  
 ALBANIA|AFG
@@ -8091,8 +8106,15 @@ ZIMBABWE|ZWE
 
 # State Codes
 
-## United States
+When creating entities in LogiNext that require state specific location information associated with them, use the State codes listed below. 
+For example, if you want to create an Order that is to be picked up from a Pick-up location in New York , you would pass 'NY' as the 'pickupState' in the Create Order API.
+Note that the state code you enter should map to the country code entered in the corresponding country parameter. You cannot enter the state code for London if you have selected 'USA' as the country.
 
+If you wish to enter a state code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
+
+## United States
+State | Code
+--------- | ---------
 Alabama | AL
 Alaska  | AK
 Arizona | AZ
@@ -8357,6 +8379,8 @@ Kalimantan Utara|KU
 Papua Barat|PB
 
 ## Pakistan
+State | Code
+--------- | ---------
 Punjab | PB
 Sindh | SD
 North-West Frontier | KP
@@ -8365,6 +8389,246 @@ Northern Areas | GB
 Azad Kashmir | JK
 Federally Administered Tribal Areas | TA
 Islamabad | IS
+
+# Timezone Codes
+
+When creating entities in LogiNext for which you want to associate Timezone specific information, use the Timezone codes listed below. 
+
+For example, if you want to create an Order that is to be picked up from a Pick-up location in New York , you would pass 'America/New_York' as the 'pickupAddressTimezone' in the Create Order API.
+
+If you wish to enter a Timezone code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
+
+Country Name|  Timezon ID
+--------- | ---------
+AFGHANISTAN|  Asia/Kabul
+ALBANIA|  Etc/GMT-1
+ALGERIA|  Etc/GMT-1
+AMERICAN SAMOA| Etc/GMT+11
+ANDORRA|  Europe/Andorra
+ANGOLA| Africa/Luanda
+ANGUILLA| America/Anguilla
+ANTARCTICA| Antarctica/Palmer
+ANTIGUA AND BARBUDA|  America/St_Johns
+ARGENTINA|  America/Argentina/Buenos_Aires
+ARMENIA|  Asia/Yerevan
+ARUBA|  America/Aruba(-4:00)
+AUSTRALIA|  Antarctica/Macquarie
+AUSTRALIA|  Australia/Adelaide
+AUSTRALIA|  Australia/Brisbane
+AUSTRALIA|  Australia/Darwin
+AUSTRALIA|  Australia/Hobart
+AUSTRALIA|  Australia/Lord_Howe
+AUSTRALIA|  Australia/Melbourne
+AUSTRALIA|  Australia/Perth
+AUSTRALIA|  Australia/Sydney
+AUSTRIA|  Europe/Vienna
+AZERBAIJAN| Asia/Baku
+BAHAMAS|  America/Nassau
+BAHRAIN|  Asia/Bahrain
+BANGLADESH| Asia/Dhaka
+BARBADOS| America/Barbados
+BELARUS|  Europe/Minsk
+BELGIUM|  Europe/Brussels
+BELIZE| America/Belize
+BENIN|  Africa/Porto-Novo
+BERMUDA|  Atlantic/Bermuda
+BHUTAN| Asia/Thimphu
+BOLIVIA|  America/La_Paz
+BOTSWANA| Africa/Gaborone
+BOTSWANA| Canada/Atlantic
+BOTSWANA| Canada/Central
+BOTSWANA| Canada/Eastern
+BOTSWANA| Canada/Mountain
+BOTSWANA| Canada/Newfoundland
+BOTSWANA| Canada/Pacific
+BOUVET ISLAND|  Etc/GMT+5
+BRAZIL| America/Sao_Paulo
+BRUNEI| Asia/Brunei
+BULGARIA| Europe/Sofia
+BURKINA FASO| Africa/Ouagadougou
+BURUNDI|  Africa/Bujumbura
+CAMBODIA| Asia/Phnom_Penh
+CAMEROON| Etc/GMT-1
+CANADA| Canada/Atlantic
+CANADA| Canada/Eastern
+CANADA| Canada/Mountain
+CAYMAN ISLANDS| America/Cayman
+CHAD| Africa/Ndjamena
+CHILE|  America/Santiago
+CHINA|  Asia/Shanghai
+CHRISTMAS ISLAND| Indian/Christmas
+COLOMBIA| America/Bogota
+COMOROS|  Etc/GMT-3
+CONGO|  Africa/Brazzaville
+CONGO, THE DRC| Africa/Kinshasa
+COOK ISLANDS| Etc/GMT+10
+COSTA RICA| America/Costa_Rica
+CROATIA|  Etc/GMT-1
+CUBA| America/Havana
+CYPRUS| Asia/Nicosia
+CZECH REPUBLIC| Europe/Prague
+DENMARK|  Europe/Copenhagen
+DJIBOUTI| Africa/Djibouti
+DOMINICA| America/Dominica
+DOMINICAN REPUBLIC| Europe/Copenhagen
+EGYPT|  Africa/Cairo
+EL SALVADOR|  America/El_Salvador
+EQUATORIAL GUINEA|  Africa/Malabo
+ERITREA|  Africa/Asmara
+ESTONIA|  Europe/Tallinn
+ETHIOPIA| Africa/Addis_Ababa
+FAROE ISLANDS|  Atlantic/Faroe
+FIJI| Pacific/Fiji
+FINLAND|  Europe/Helsinki
+FRANCE| Europe/Paris
+FRENCH GUIANA|  Etc/GMT+3
+FRENCH POLYNESIA| Etc/GMT+10
+GABON|  Africa/Libreville
+GAMBIA| Africa/Banjul
+GEORGIA|  Atlantic/South_Georgia
+GERMANY|  Europe/Berlin
+GHANA|  Africa/Accra
+GIBRALTAR|  Europe/Gibraltar
+GREECE| Europe/Athens
+GREENLAND|  Etc/GMT+3
+GRENADA|  America/Grenada
+GUADELOUPE| America/Guadeloupe
+GUAM| Pacific/Guam
+GUATEMALA|  America/Guatemala
+GUINEA| Africa/Conakry
+GUYANA| America/Guyana
+HAITI|  America/Port-au-Prince
+HONDURAS| America/Tegucigalpa
+HONG KONG|  Asia/Hong_Kong
+HUNGARY|  Europe/Budapest
+ICELAND|  Atlantic/Reykjavik
+INDIA|  Asia/Calcutta
+INDONESIA|  Asia/Jakarta
+IRAQ| Asia/Baghdad
+IRELAND|  Europe/Dublin
+ISRAEL| Asia/Jerusalem
+ITALY|  Europe/Rome
+JAMAICA|  America/Jamaica
+JAPAN|  Asia/Tokyo
+JORDAN| Asia/Amman
+KAZAKHSTAN| Etc/GMT-5
+KENYA|  Africa/Nairobi
+KIRIBATI| Pacific/Tarawa
+KOREA, D.P.R.O.|  Asia/Pyongyang
+KOREA, REPUBLIC OF| Asia/Seoul
+KUWAIT| Asia/Kuwait
+KYRGYZSTAN| Asia/Bishkek
+LAOS| Asia/Vientiane
+LATVIA| Europe/Riga
+LEBANON|  Asia/Beirut
+LESOTHO|  Africa/Maseru
+LIBERIA|  Africa/Monrovia
+LIECHTENSTEIN|  Europe/Vaduz
+LITHUANIA|  Europe/Vilnius
+LUXEMBOURG| Europe/Luxembourg
+MACAU|  Asia/Macau
+MACEDONIA|  Etc/GMT-1
+MADAGASCAR| Indian/Antananarivo
+MALAWI| Etc/GMT-2
+MALAYSIA| Asia/Kuala_Lumpur
+MALDIVES| Indian/Maldives
+MALI| Africa/Bamako
+MALTA|  Europe/Malta
+MARSHALL ISLANDS| Pacific/Majuro
+MARTINIQUE| America/Martinique
+MAURITANIA| Africa/Nouakchott
+MAURITIUS|  Indian/Mauritius
+MAYOTTE|  Indian/Mayotte
+MEXICO| America/Mexico_City
+MEXICO| Etc/GMT+7
+MEXICO| Etc/GMT+7
+MOLDOVA, REPUBLIC OF| Europe/Chisinau
+MONACO| Europe/Monaco
+MONGOLIA| Asia/Ulaanbaatar
+MONTENEGRO| Etc/GMT-1
+MONTSERRAT| America/Montserrat
+MOROCCO|  Etc/GMT
+MOZAMBIQUE| Africa/Maputo
+MYANMAR (BURMA)|  Asia/Rangoon
+NAMIBIA|  Africa/Windhoek
+NAURU|  Pacific/Nauru
+NEPAL|  Asia/Kathmandu
+NETHERLANDS|  Europe/Amsterdam
+NEW CALEDONIA|  Etc/GMT-11
+NEW ZEALAND|  Pacific/Auckland
+NICARAGUA|  America/Managua
+NIGER|  Etc/GMT-1
+NIGERIA|  Etc/GMT-1
+NIUE| Pacific/Niue
+NORFOLK ISLAND| Pacific/Norfolk
+NORWAY| Europe/Oslo
+OMAN| Asia/Muscat
+PAKISTAN| Asia/Karachi
+PALAU|  Pacific/Palau
+PANAMA| America/Panama
+PAPUA NEW GUINEA| Pacific/Port_Moresby
+PARAGUAY| America/Asuncion
+PERU| America/Lima
+PHILIPPINES|  Asia/Manila
+PITCAIRN| Pacific/Pitcairn
+POLAND| Europe/Warsaw
+PORTUGAL| Europe/Lisbon
+PUERTO RICO|  America/Puerto_Rico
+QATAR|  Asia/Qatar
+REUNION|  Indian/Reunion
+ROMANIA|  Europe/Bucharest
+RWANDA| Africa/Kigali
+SAINT LUCIA|  America/St_Lucia
+SAMOA|  Pacific/Apia
+SAN MARINO| Etc/GMT-1
+SAUDI ARABIA| Asia/Riyadh
+SENEGAL|  Africa/Dakar
+SERBIA| Europe/Belgrade
+SEYCHELLES| Etc/GMT-4
+SIERRA LEONE| Africa/Freetown
+SINGAPORE|  Asia/Singapore
+SLOVENIA| Etc/GMT-1
+SOLOMON ISLANDS|  Etc/GMT-11
+SOMALIA|  Africa/Mogadishu
+SOUTH AFRICA| Africa/Blantyre
+SOUTH SUDAN|  Etc/GMT-3
+SPAIN|  Europe/Madrid
+SRI LANKA|  Asia/Colombo
+SUDAN|  Africa/Khartoum
+SURINAME| America/Paramaribo
+SWAZILAND|  Africa/Mbabane
+SWEDEN| Europe/Stockholm
+SWITZERLAND|  Etc/GMT-1
+TAJIKISTAN| Asia/Dushanbe
+TANZANIA| Africa/Addis_Ababa
+THAILAND| Asia/Bangkok
+TOGO| Africa/Lome
+TOKELAU|  Etc/GMT-13
+TONGA|  Pacific/Tongatapu
+TRINIDAD AND TOBAGO|  America/Port_of_Spain
+TUNISIA|  Africa/Tunis
+TURKEY| Etc/GMT-3
+TURKMENISTAN| Asia/Ashgabat
+TUVALU| Pacific/Funafuti
+UGANDA| Africa/Kampala
+UKRAINE|  Etc/GMT-2
+UNITED ARAB EMIRATES| Asia/Dubai
+UNITED KINGDOM| Europe/London
+UNITED STATES|  America/Anchorage
+UNITED STATES|  America/Chicago
+UNITED STATES|  America/Denver
+UNITED STATES|  America/Los_Angeles
+UNITED STATES|  America/New_York
+UNITED STATES|  Pacific/Honolulu
+URUGUAY|  America/Montevideo
+UZBEKISTAN| Asia/Tashkent
+VANUATU|  Etc/GMT-11
+VENEZUELA|  America/Caracas
+VIETNAM|  Etc/GMT-7
+YEMEN|  Etc/GMT-3
+ZAMBIA| Africa/Lusaka
+ZIMBABWE| Africa/Harare
+
 
 # Postal Codes
 
