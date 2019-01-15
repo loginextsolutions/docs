@@ -1798,7 +1798,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <blockquote>
 <p>Request Body</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+</span><span class="p">{</span><span class="w">
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Test_Driver"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="s2">"1234565632"</span><span class="p">,</span><span class="w">
@@ -1850,7 +1851,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
         </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="w">
-    </span><span class="p">}</span><span class="w">    
+    </span><span class="p">}</span><span class="w">  
+  </span><span class="p">]</span><span class="w">  
 </span></code></pre>
 
 <blockquote>
@@ -2386,8 +2388,6 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
  </span><span class="s2">"842b0dd8422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sfygv54g"</span><span class="p">,</span><span class="w">
- </span><span class="s2">"842b0c25422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"842c59b0422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
- </span><span class="s2">"842ce089422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"842d9d2d422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
  </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w"> </span><span class="s2">"842fc7eb422211e6860c0653055f4dfd"</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2435,7 +2435,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842c59b0422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
@@ -2472,7 +2473,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842ce089422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
@@ -2509,192 +2511,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842fc7eb422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLRH"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-05 11:49:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0038</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"goodType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8600900689"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isStuckFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastStuckDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notesDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MHHGJHGJ"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"challanNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"flightNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trainNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH02CB829"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paresh"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 09:30:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 07:46:47"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842fd22a422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELU"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-05 21:04:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"goodType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9020405010"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isStuckFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastStuckDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notesDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00840216"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jhdgfasjdgfk"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"challanNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"flightNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trainNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH02CB829"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ajay"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 18:45:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 07:48:56"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842fd2a3422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELU"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-06 03:49:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"goodType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8600900689"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isStuckFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastStuckDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notesDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00840216"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ssdghaj"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"challanNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"flightNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trainNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH02CB829"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paresh"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-05 01:30:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"842fd390422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELU"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-05 14:49:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0242</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"goodType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8600900689"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isStuckFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastStuckDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notesDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN00840216"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aGHDFKAYDG"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"challanNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"flightNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trainNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH02CB829"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paresh"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 12:30:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 09:43:40"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"843e51d3422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mum-DEL"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELU"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENDED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tripEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"eta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-15 23:51:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"actualDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.7874</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"goodType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9028811556"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isStuckFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastStuckDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notesDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN01130216"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lrNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iu878"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sealNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"challanNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"flightNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trainNum"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TN02-GG-2012"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sagnik Sen"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14 21:30:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-15 14:16:58"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.02425</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.836267</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+      </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9797,8 +9615,11 @@ If it does not exist, then a new manifest will be created with the provided Mani
             </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662000000</span><span class="w">
+
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7b47e622a33432da70c0fddec1b3a7d"</span><span class="p">,</span><span class="w">
@@ -9809,6 +9630,8 @@ If it does not exist, then a new manifest will be created with the provided Mani
             </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661700000</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -9821,21 +9644,11 @@ If it does not exist, then a new manifest will be created with the provided Mani
             </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
             </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662300000</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b8e133dbc2d746c4991883631d65031b"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri322"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662600000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">},</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
