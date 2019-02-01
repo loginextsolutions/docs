@@ -323,6 +323,15 @@ The Get Location Serviceability API has a Rate Limit of 20 requests/second. You 
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error  to your API calls if you go beyond this limit.
 
+## Batching
+The LogiNext API support multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. 
+
+APIs that support batching have a rate limit of 1 request per second and accept upto 20 records per request. 
+
+If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 1 second delay. 
+
+We recommend implementing retry mechanism at your end in case of the following error responses received from the LogiNext API - 429, 500
+
 
 
 # LogiNext Haul <sup>TM</sup>
@@ -2422,7 +2431,7 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 "landlineNo":28215678,
 "licenseValidityInYears":10,
 "licenseIssuanceDate":"2016-12-12",
-"licenceNumber":2123123123
+"licenseNumber":2123123123
 }
 ]
 ```
@@ -5475,7 +5484,8 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
 "latitude":31.1370445,
 "longitude":80.6210216,
 "deliverServiceTime":3,
-"pickupServiceTime":3 
+"pickupServiceTime":3 ,
+"deliveryType": "Groceries"
 }
 ]
 ```
@@ -5522,6 +5532,7 @@ latitude | Double | 14 | Conditional Mandatory | geo coordinates(latitude) of th
 longitude | Double | 14 | Conditional Mandatory | geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.
 pickupServiceTime | Integer | 14 | Optional | Service time at the pickup location in minutes.
 deliverServiceTime | Integer | 14 | Optional | Service time at the delivery location in minutes.
+deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
 
 
 
@@ -5581,7 +5592,8 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
     "isPartialDeliveryAllowedFl" : "N",
     "shipmentOrderDt" : "2016-07-15T08:00:00.000Z",
     "deliverCapacityInVolume":123.32,
-    "deliverCapacityInWeight":15.2
+    "deliverCapacityInWeight":15.2,
+    "deliveryType":"Groceries"
   }
 ]
 ```
@@ -5658,7 +5670,7 @@ deliverEndTimeWindow | Date | 100 | Mandatory | Deliver End time window of order
 deliverLatitude | Double | | Optional | Latitude of deliver location
 deliverLongitude | Double | | Optional | Longitude of deliver location
 deliverNotes | String | 512 | Optional | Deliver notes
-
+deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
 
 ### Get
 
@@ -6221,7 +6233,7 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
 
 ```json
 {
-  "newStatus":"DELIVERED",
+  "newStatus":"NOTDISPATCHED",
   "taskDetails":
   [{
     "taskReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
@@ -6255,7 +6267,7 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
 
 
 ```
-With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+With this API, you will be able to update the the status of an Order.
 You can pass multiple order reference IDs and can update one or more parameters.
 
 #### Request
@@ -6267,7 +6279,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
-newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
+newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values - <PICKEDUP> - When an Order has been picked up by a Delivery Associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
 orderReferenceId | String | 100 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
 reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.
 otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
@@ -6820,6 +6832,7 @@ orderReferenceId | String | Order Reference Id
   "deliveryTime": "2016-11-19 06:14:34",
   "cashAmount": 0,
   "deliveryLocationType": "",
+  "branchName": "Manhattan Main Branch",
   "transactionId": "",
   "paymentMode": "COD",
   "actualCashAmount": 532.55,
@@ -6886,6 +6899,7 @@ reasonCd | String | Reason code
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to be collected
 deliveryLocationType | String | Delivery Location
+branchName| String | Name of the Order Branch
 transactionId | String | Transaction id
 paymentMode | String | Mode of order payment
 actualCashAmount | Double | Cash amount actually collected
@@ -6925,6 +6939,8 @@ paymentSubType | String | e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
 ```json
 {
   "orderNo": "Order001",
+  "latitude": 19.1118589,
+  "longitude": 72.9095639,
   "notificationType": "NOTDELIVEREDNOTIFICATION",
   "orderLeg": "DELIVER",
   "clientId": 209
@@ -6955,6 +6971,8 @@ This notification is sent when an order is not delivered by a delivery Associate
 Key | DataType | Description
 --------- | ------- | -------
 orderNo | String | Order No.
+latitude | Double | Latitude where order was marked not delivered
+longitude | Double | Longitude where order was marked not delivered
 notificationType | String | NOTDELIVEREDNOTIFICATION
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
