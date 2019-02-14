@@ -622,6 +622,16 @@ In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
 
 <p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error  to your API calls if you go beyond this limit.</p>
 
+<h2 id="batching">Batching</h2>
+
+<p>The LogiNext API support multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. </p>
+
+<p>APIs that support batching have a rate limit of 1 request per second and accept upto 20 records per request. </p>
+
+<p>If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 1 second delay. </p>
+
+<p>We recommend implementing retry mechanism at your end in case of the following error responses received from the LogiNext API - 429, 500</p>
+
 <h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
 <ol>
@@ -1386,29 +1396,29 @@ You will have to pass the reference Id of the vehicle whose information needs to
                         </span><span class="p">},</span><span class="w">
                         </span><span class="p">{</span><span class="w">
                                 </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"A-902"</span><span class="p">,</span><span class="w">
-                                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St,
-                                "</span><span class="err">landmark</span><span class="s2">":"</span><span class="err">Opp.</span><span class="w"> </span><span class="err">Strand</span><span class="w"> </span><span class="err">Bookstore</span><span class="s2">",
-                                "</span><span class="err">countryShortCode</span><span class="s2">":"</span><span class="err">USA</span><span class="s2">",
-                                "</span><span class="err">stateShortCode</span><span class="s2">":"</span><span class="err">NY</span><span class="s2">",
-                                "</span><span class="err">city</span><span class="s2">":"</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="s2">",
-                                "</span><span class="err">pincode</span><span class="s2">":10075,
-                                "</span><span class="err">isCurrentAddress</span><span class="s2">":false
-                        }],
+                                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="mi">10075</span><span class="p">,</span><span class="w">
+                                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+                        </span><span class="p">}],</span><span class="w">
 
 
-        "</span><span class="err">driverEmployeeId</span><span class="s2">":"</span><span class="err">D</span><span class="mi">23</span><span class="s2">",
-        "</span><span class="err">shiftList</span><span class="s2">":[{
-                            "</span><span class="err">shiftStartTime</span><span class="s2">"  :"</span><span class="mi">07</span><span class="err">:</span><span class="mi">03</span><span class="err">pm</span><span class="s2">",
-                            "</span><span class="err">shiftEndTime</span><span class="s2">":"</span><span class="mi">07</span><span class="err">:</span><span class="mi">10</span><span class="err">am</span><span class="s2">",
-                            "</span><span class="err">startTime</span><span class="s2">":"</span><span class="mi">2016-06-13</span><span class="s2">",
-                            "</span><span class="err">endTime</span><span class="s2">":"</span><span class="mi">2016-06-15</span><span class="s2">"
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:[{</span><span class="w">
+                            </span><span class="nt">"shiftStartTime"</span><span class="w">  </span><span class="p">:</span><span class="s2">"07:03pm"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="s2">"07:10am"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"startTime"</span><span class="p">:</span><span class="s2">"2016-06-13"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"endTime"</span><span class="p">:</span><span class="s2">"2016-06-15"</span><span class="w">
 
-        }],
+        </span><span class="p">}],</span><span class="w">
 
-        "</span><span class="err">previousCompanyName</span><span class="s2">":"</span><span class="err">ABC</span><span class="s2">",
-        "</span><span class="err">reportingManager</span><span class="s2">":"</span><span class="err">Chris</span><span class="s2">",
-        "</span><span class="err">managerPhoneNumber</span><span class="s2">":1234567890,
-        "</span><span class="err">managerEmailId</span><span class="s2">":"</span><span class="err">chris@gologistic.com"</span><span class="w">
+        </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="s2">"chris@gologistic.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">    
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2920,7 +2930,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/TrackingApp/track/put</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/track/put</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -4199,7 +4209,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="nt">"landlineNo"</span><span class="p">:</span><span class="mi">28215678</span><span class="p">,</span><span class="w">
 </span><span class="nt">"licenseValidityInYears"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
 </span><span class="nt">"licenseIssuanceDate"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenceNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
+</span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -8422,7 +8432,7 @@ When Customer Profiling is turned ON -
 
 </span></code></pre>
 
-<p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+<p>With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
 
 <h4 id="request">Request</h4>
@@ -8874,7 +8884,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"NOTDELIVERED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
@@ -9158,7 +9168,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://demo.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/manual/assign</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/manual/assign</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -9166,7 +9176,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"trip"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"879098765678909876a87656s"</span><span class="err">;</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"879098765678909876a87656s"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"deliveryMedium"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"identifier"</span><span class="p">:</span><span class="s2">"employeeId"</span><span class="p">,</span><span class="w">
@@ -9201,7 +9211,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -9302,7 +9312,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">GET</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&amp;orderenddt=2016-06-16 00:30:00&amp;deliverystartdt=2015-06-15 00:00:00&amp;deliveryenddt=2016-06-15 00:00:00&amp;status=NOTDISPATCHED</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&amp;orderenddt=2016-06-16 00:30:00&amp;deliverystartdt=2015-06-15 00:00:00&amp;deliveryenddt=2016-06-15 00:00:00&amp;status=NOTDISPATCHED</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -9544,7 +9554,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Stop the trip for a Delivery Associate using this API.</p>
+<p>Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, yo can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.</p>
 
 <h4 id="request">Request</h4>
 
@@ -9573,14 +9583,14 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <td>List</td>
 <td></td>
 <td>Mandatory</td>
-<td>Reference Id associated with the non-dispatched order.</td>
+<td>Order Reference Idd of Orders to be marked as Not Dispatched on the Stop Trip event.Order Reference Id associated with the non-dispatched order.</td>
 </tr>
 <tr>
 <td>deliveredOrders</td>
 <td>List</td>
 <td></td>
 <td>Mandatory</td>
-<td>Reference Id associated with the delivered order.</td>
+<td>Order Reference Idd of Orders to be marked as Delviered on the Stop Trip event.</td>
 </tr>
 </tbody></table>
 
@@ -9660,7 +9670,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">GET</span><code class="prettyprint">http://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -9784,7 +9794,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -9816,7 +9826,7 @@ Please note that in headers for this API, you will have to pass the Delivery Ass
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
 
 <h4 id="request-body">Request Body</h4>
 
@@ -10320,7 +10330,7 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -10352,7 +10362,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -10763,7 +10773,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -10861,7 +10871,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">31.1370445</span><span class="p">,</span><span class="w">
 </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">80.6210216</span><span class="p">,</span><span class="w">
 </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="w"> 
+</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -11004,6 +11015,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>Optional</td>
 <td>Service time at the delivery location in minutes.</td>
 </tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+</tr>
 </tbody></table>
 
 <h3 id="create-variable-pickup">Create (Variable Pickup)</h3>
@@ -11062,7 +11080,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"isPartialDeliveryAllowedFl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCapacityInVolume"</span><span class="p">:</span><span class="mf">123.32</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCapacityInWeight"</span><span class="p">:</span><span class="mf">15.2</span><span class="w">
+    </span><span class="nt">"deliverCapacityInWeight"</span><span class="p">:</span><span class="mf">15.2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"Groceries"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -11415,6 +11434,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>Optional</td>
 <td>Deliver notes</td>
 </tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
+</tr>
 </tbody></table>
 
 <h3 id="get">Get</h3>
@@ -11598,7 +11624,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -11630,7 +11656,7 @@ Please note that in headers for this API, you will have to pass the Delivery Ass
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
 
 <h4 id="request-body">Request Body</h4>
 
@@ -11859,7 +11885,7 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">http://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -11891,7 +11917,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">PUT</span><code class="prettyprint">http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -12498,7 +12524,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"taskDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[{</span><span class="w">
     </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
@@ -12533,7 +12559,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+<p>With this API, you will be able to update the the status of an Order.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
 
 <h4 id="request">Request</h4>
@@ -12556,7 +12582,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
+<td>One status for multiple orders.The orders will be updated with this new status<br>Available Values - <PICKEDUP> - When an Order has been picked up by a Delivery Associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason</td>
 </tr>
 <tr>
 <td>orderReferenceId</td>
@@ -13711,6 +13737,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"deliveryTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-19 06:14:34"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"cashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan Main Branch"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"paymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"actualCashAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">532.55</span><span class="p">,</span><span class="w">
@@ -13843,6 +13870,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>deliveryLocationType</td>
 <td>String</td>
 <td>Delivery Location</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>Name of the Order Branch</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -14008,6 +14040,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118589</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095639</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDELIVEREDNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderLeg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="w">
@@ -14044,6 +14078,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>orderNo</td>
 <td>String</td>
 <td>Order No.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>Latitude where order was marked not delivered</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>Longitude where order was marked not delivered</td>
 </tr>
 <tr>
 <td>notificationType</td>
