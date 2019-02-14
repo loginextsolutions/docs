@@ -790,7 +790,7 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
                         },
                         {
                                 "apartment":"A-902",
-                                "streetName": "50 E 78th St,
+                                "streetName": "50 E 78th St",
                                 "landmark":"Opp. Strand Bookstore",
                                 "countryShortCode":"USA",
                                 "stateShortCode":"NY",
@@ -1638,7 +1638,7 @@ This endpoint adds tracking record.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/TrackingApp/track/put`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/track/put`
 
 
 #### Request Parameters
@@ -4213,7 +4213,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 }
 
 ```
-With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
+With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.
 
 #### Request
@@ -4298,7 +4298,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 
 ```json
 {
-  "newStatus":"DELIVERED",
+  "newStatus":"NOTDELIVERED",
   "orderDetails":
   [{
     "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
@@ -4463,7 +4463,7 @@ shipmentCrates.shipmentlineitems.itemWeight | Double | 10 | Optional | This is t
 > Definition
 
 ```json
-http://demo.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
 ```
 
 > Request Body
@@ -4471,7 +4471,7 @@ http://demo.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
 ```json
 {
   "trip":{
-    "referenceId":"879098765678909876a87656s";
+    "referenceId":"879098765678909876a87656s"
   },
   "deliveryMedium":{
     "identifier":"employeeId",
@@ -4507,7 +4507,7 @@ The Rate Limit for this API is 1 call/sec.
 
 #### Request
 
-<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign`
 
 
 #### Request Parameters
@@ -4566,7 +4566,7 @@ This endpoint downloads the EPODs for given order, delivery dates and status of 
 
 #### Request
 
-<span class="post">GET</span>`http://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
 
 #### Request Parameters
 
@@ -4719,7 +4719,8 @@ reference_ids | List | Mandatory | Reference Id associated with the trip.
 }
 
 ```
-Stop the trip for a Delivery Associate using this API.
+Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, yo can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
+
 
 #### Request
 
@@ -4730,8 +4731,8 @@ Stop the trip for a Delivery Associate using this API.
 Parameter | DataType | Length |  Required | Description
 -----------|-------|-------|------- | ----------
 tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  |  | Mandatory | Reference Id associated with the non-dispatched order.
-deliveredOrders | List |  | Mandatory | Reference Id associated with the delivered order.
+notDispatchedOrders | List  |  | Mandatory | Order Reference Idd of Orders to be marked as Not Dispatched on the Stop Trip event.Order Reference Id associated with the non-dispatched order.
+deliveredOrders | List |  | Mandatory | Order Reference Idd of Orders to be marked as Delviered on the Stop Trip event.
 
 
 ### Get 
@@ -4809,7 +4810,7 @@ deliveredOrders | List |  | Mandatory | Reference Id associated with the deliver
 Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.
 
 #### Request
-<span class="post">GET</span>`http://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&tripname=TRIP-26516`
+<span class="post">GET</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&tripname=TRIP-26516`
 
 #### Request Parameters
 
@@ -4905,7 +4906,7 @@ NOTE: These APIs require the Delivery Associate's token. Please view the Authent
 > Definition
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
+https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
 ```
 
 > Request Body
@@ -4937,7 +4938,7 @@ You can fetch the Delivery Associate's Token and Key by calling the Delivery Ass
 
 #### Request
 
-<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept`
 
 #### Request Body
 
@@ -5191,7 +5192,7 @@ imei|String|Mandatory|IMEI number for device Sample Value - 911380134661315
 > Definition
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload
+https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload
 ```
 
 > Request Body
@@ -5224,7 +5225,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 #### Request
 
-<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload`
 
 
 #### Request Parameters
@@ -5434,7 +5435,7 @@ Rate limit of this API is 20requests/second.
 
 #### Request
 
-<span class="post">POST</span>`http://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
+<span class="post">POST</span>`https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
 
 
 #### Request Parameters
@@ -5794,7 +5795,7 @@ NOTE: These APIs require the Delivery Associate's token. Please view the Authent
 > Definition
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
+https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
 ```
 
 > Request Body
@@ -5826,7 +5827,7 @@ You can fetch the Delivery Associate's Token and Key by calling the Delivery Ass
 
 #### Request
 
-<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept`
 
 #### Request Body
 
@@ -5948,7 +5949,7 @@ checkInTime | Date | 100 | Mandatory | Check In Time in UTC format - YYYY-MM-DDT
 > Definition
 
 ```json
-http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload
+https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload
 ```
 
 > Request Body
@@ -5981,7 +5982,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 #### Request
 
-<span class="post">PUT</span>`http://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload`
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload`
 
 
 #### Request Parameters
