@@ -2511,6 +2511,8 @@ licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
 ```
 
 Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext Reference IDs or Username for the Delivery Associates you want to search for in the Request Body. 
+The API also returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext. This can be used in the case where the Delivery Associate's image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
+Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.
 
 #### Request Parameters
 
@@ -3089,7 +3091,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
-    "autoAllocateFl": "Y",
+    "autoAllocateFl": "N",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "pickupStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "pickupEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -3298,7 +3300,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
-    "autoAllocateFl": "Y",
+    "autoAllocateFl": "N",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Chicago",
     "packageWeight":"10",
@@ -3482,7 +3484,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "awbNumber": "435-16685675",
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
-    "autoAllocateFl": "Y",
+    "autoAllocateFl": "N",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
@@ -3730,7 +3732,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
   "parentOrderNo":"DN987679",
   "awbNumber": "VC7",
   "shipmentOrderDt": "2018-01-10T10:00:00.000Z",
-  "autoAllocateFl": "Y",
+  "autoAllocateFl": "N",
   "shipmentOrderTypeCd": "DELIVER",
   "orderState": "FORWARD",
   "shipmentBranch": "East Manhattan",
@@ -4731,8 +4733,8 @@ Stop the trip for a Delivery Associate using this API. The API accepts 2 lists o
 Parameter | DataType | Length |  Required | Description
 -----------|-------|-------|------- | ----------
 tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  |  | Mandatory | Order Reference Idd of Orders to be marked as Not Dispatched on the Stop Trip event.Order Reference Id associated with the non-dispatched order.
-deliveredOrders | List |  | Mandatory | Order Reference Idd of Orders to be marked as Delviered on the Stop Trip event.
+notDispatchedOrders | List  |  | Mandatory | Order Reference Ids of Orders to be marked as Not Dispatched on the Stop Trip event.
+deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be marked as Delviered on the Stop Trip event.
 
 
 ### Get 
@@ -6022,7 +6024,7 @@ https://api.loginextsolutions.com/ShipmentApp/field/v2/create
     "awbNumber": "435-16685675",
     "shipmentTaskTypeCd": "DELIVER",
     "taskState": "FORWARD",
-    "autoAllocateFl": "Y",
+    "autoAllocateFl": "N",
     "shipmentTaskDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Chicago",
     "packageWeight":"10",
