@@ -32,6 +32,12 @@ Vehicles can be used to Pick-up and Deliver Orders that are part of the Trip. A 
 ###Driver 
 Driver is responsible for driving/riding the Delivery Vehicle.
 
+###Branch 
+A Branch could be the fulfillment center or warehouse where Orders are either Delivered or Pickedup from. 
+
+###Service Time 
+Service Time is the time it takes to service an Order at a particular location. For example - If an Order is to be delivered at a Customer's Home address, the Service time would include the time for parking the Vehicle and accounting for security checks at the location if any. Similarly, if an Order is to be delivered at a warehouse, Service Time will account for parking, loading and unloading at the delivery location.
+
 Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.
 
 
@@ -99,6 +105,7 @@ Code | Message | Description
 ---------- | ------- | -------
 200 | Success | This message means that the request is successfully processed.
 201 | Created  | This message means that the resource is successfully created.
+202 | Acknowledged | This status code indicates that a request has been received and taken up for processing. It may take some time to complete processing this kind of request, and LogiNext will typically send a webhook notification with the results of the response once the request has been csuccessfully completed.
 400 | Bad Request  | This message means that the request is syntactically incorrect. You will receive this med=ssage in a case where the request body sent is not a standard JSON or array object as is expected by LogiNext.
 401 | Invalid username or password  | This message means that invalid credentials are passed.
 404 | Not Found  | This message means that the resource could not be found.
@@ -2157,7 +2164,7 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
 
 #### Request
 
-<span class="post">POST</span>` https://api.loginextsolutions.com/ClientApp/customer/v1/get/list?ids=cust1,65ba00dbdcf04fb789311df6aa40e3ba`
+<span class="post">GET</span>` https://api.loginextsolutions.com/ClientApp/customer/v1/get/list?ids=cust1,65ba00dbdcf04fb789311df6aa40e3ba`
 
 
 ### Update
@@ -2518,8 +2525,8 @@ Note that in case you are storing this link in your system, this link has a life
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-referenceId | List | 50 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
-userName | List | 50 | Mandatory | This is the Username of the Delivery Associate to be updated.
+referenceId | List | 50 | Conditional Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated. 
+userName | List | 50 | Conditional Mandatory | This is the Username of the Delivery Associate to be updated.
 
 
 > Sample Response
@@ -3185,7 +3192,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 
 
 
-> Response
+> Success Response
 
 ```json
 {
@@ -3211,6 +3218,35 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 }
 
 ```
+
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "",
+   "moreResultsExists": false,
+   "error": [
+       {
+           "index": 0,
+           "orderNo": "TFC003",
+           "orderState": "FORWARD",
+           "shipmentOrderTypeCd": "PICKUP",
+           "errorList": [
+               {
+                   "key": "pickupAccountCode",
+                   "message": [
+                       "Pickup Customer id  is mandatory."
+                   ]
+               }
+           ]
+       }
+   ],
+   "hasError": true
+}
+
+```
+
 Create pickup orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
 #### Request
@@ -3223,8 +3259,8 @@ Create pickup orders with this API in the LogiNext system. Orders will be create
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orders.orderNo | String | 100 | Conditional Mandatory | This is the Order No.
-awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
+orderNo | String | 100 | Mandatory | This is the Order No.
+awbNumber | String | 1000 | Optional | If you want an AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -3233,13 +3269,13 @@ distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
-paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid
+paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid
 numberOfItems | Integer | 20 | Optional | This is the number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
 deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.
-pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distrubution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distrubution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access realted issue while creating branch, please reach out to your Account Manager
+pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z
 distributionCenter |
@@ -3279,6 +3315,7 @@ shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+
 
 
 
@@ -3369,8 +3406,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 ```
 
 
-
-> Response
+> Success Response
 
 ```json
 {
@@ -3394,8 +3430,35 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     ],
     "hasError": false
 }
-
 ```
+
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "",
+   "moreResultsExists": false,
+   "error": [
+       {
+           "index": 0,
+           "orderNo": "WFQ001",
+           "orderState": "FORWARD",
+           "shipmentOrderTypeCd": "DELIVER",
+           "errorList": [
+               {
+                   "key": "deliverEndTimeWindow",
+                   "message": [
+                       "Deliver end-time window is mandatory."
+                   ]
+               }
+           ]
+       }
+   ],
+   "hasError": true
+}
+```
+
 Create delivery orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
 #### Request
@@ -3407,7 +3470,7 @@ Create delivery orders with this API in the LogiNext system. Orders will be crea
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
 orderNo | String | 100 | Mandatory |  This is the order No.
-awbNumber | String  | 1000 | Optional | This is the airway Bill No.
+awbNumber | String  | 1000 | Optional | If you want an AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -3424,17 +3487,17 @@ cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N
 deliverBranch | String | 255 | Mandatory | Name of delivery branch
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | 255 | Mandatory | This is the cutomer code of the deliver customer.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
+deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
 deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
 deliverEmail | String | 100 | Optional | This is the email ID details of the customer.
 deliverPhoneNumber | String | 255 | Optional | This is the phone number of the delivery customer.
 deliverApartment | String | 512 | Conditional Mandatory | This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverStreetName | String | 512 | Conditional Mandatory | This is the street name of the delivery customer.
-deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's addess.
+deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's address.
 deliverLocality | String | 512 | Conditional Mandatory | This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverCity | String | 512 | Conditional Mandatory | This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverState| String | 512 | Conditional Mandatory | This is the state code of the delivery customer. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
@@ -3516,6 +3579,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "deliverPinCode": "60602",
     "deliverLatitude":41.882702,
     "deliverLongitude":-87.619392,   
+    "deliverAddressTimezone":"America/Chicago",  
     "pickupBranch":"East Manhattan",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
@@ -3535,6 +3599,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupPinCode": "10035",
     "pickupLatitude":40.760838,
     "pickupLongitude":-73.96732299999996,  
+    "pickupAddressTimezone":"America/New_York",  
     "returnBranch": "East Manhatten",
     "returnStartTimeWindow": "2016-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2016-05-18T16:00:00.000Z",
@@ -3587,7 +3652,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 
 
 
-> Response
+> Success Response
 
 ```json
 {
@@ -3613,6 +3678,35 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 }
 
 ```
+
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "",
+   "moreResultsExists": false,
+   "error": [
+       {
+           "index": 0,
+           "orderNo": "HYN001",
+           "orderState": "FORWARD",
+           "shipmentOrderTypeCd": "BOTH",
+           "errorList": [
+               {
+                   "key": "returnBranch",
+                   "message": [
+                       "Return Branch name is mandatory."
+                   ]
+               }
+           ]
+       }
+   ],
+   "hasError": true
+}
+
+```
+
 Create pickup and delivery orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
 #### Request
@@ -3641,11 +3735,11 @@ returnAllowedFl | String | 1 | Optional | This field indicates if return is allo
 cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
 deliverBranch | String | 255 | Mandatory | Name of delivery branch
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy
-deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | 255 | Mandatory | Deliver account code
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example -  ‘CUSTOMER’.
+deliverAccountCode | String | 255 | Mandatory | Customer ID of the Delivery Customer.
 deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
 deliverEmail| String | 100 | Optional | Email of the customer
 deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
@@ -3659,7 +3753,7 @@ deliverCountry | String | 512 | Conditional Mandatory | This is the delivery cus
 deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
 deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
-deliverAddressTimezone | String | | Optional | The timezone of the deliver location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
+deliverAddressTimezone | String | | Optional | The timezone of the delivery location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
 pickupBranch | String | 255 | Mandatory | Name of pickup branch
 pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
@@ -3671,7 +3765,7 @@ pickupEmail| String | 100 | Optional | Email of the merchant
 pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
 pickupApartment | String | 512 | Conditional Mandatory | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
 pickupStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLandmark | String | 512 | Optional | This is the pickup location's  Landmark.
+pickupLandmark | String | 512 | Optional | This is the pickup location's  landmark.
 pickupLocality | String | 512 | Conditional Mandatory | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
 pickupCity | String | 512 | Conditional Mandatory | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
 pickupState| String | 512 | Conditional Mandatory | This is the pickup location's state code. This field in Non Mandatory in case Customer Profiling in ON.
@@ -3714,6 +3808,8 @@ shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
+
+
 
 
 
@@ -4080,6 +4176,10 @@ Status | Filter applied on orders
 --------- | -------
 NOTDISPATCHED | Orders will be fetched for which either the Order Start Date & Time Window or the Order End Date & Time Window lies within the range specified.
 INTRANSIT | Orders will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
+PICKEDUP | This is the status of the Order when it is marked as PICKEDUP
+NOTPICKEDUP | This is the status of the Order when it is marked as Attempted Pickup
+DELIVERED | This is the status of the Order when it is marked Delivered
+NOTDELIVERED | This is the status of the Order when it is marked Attempted Delivered.
 COMPLETED | For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
 NOTCOMPLETED | For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
 CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified.
@@ -4485,7 +4585,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
 
 
 
-> Response
+> Success Response
 
 ```json
 {
@@ -4495,6 +4595,29 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/assign
 }
 
 ```
+
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "Assignment Failed",
+   "moreResultsExists": false,
+   "error": {
+       "order": [
+           {
+               "key": "orderReferenceIds",
+               "message": [
+                   "Order Reference ID is invalid"
+               ]
+           }
+       ]
+   },
+   "hasError": true
+}
+
+```
+
 With this API, you can add Orders to a particular Trip or a Delivery Associate's Default, Not Started Trip.
 
 If you have a set of Orders to be manually assigned to a particular Delivery Associate or Trip, for eg- in the case that a Delivery Associate is Abesent or On Break, you can assign the Orders to be fulfilled to another Trip of another Delivery Associate using this API.
@@ -4540,7 +4663,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 ]
 ```
 
-> Response
+> Success Response
 
 ```json
 {
@@ -4550,7 +4673,21 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 }
 ```
 
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "Order(s) couldn't be cancelled",
+   "moreResultsExists": false,
+   "hasError": false
+}
+```
+
+
 Use this API to cancel an order.
+
+With this API, you can cancel Orders that were created with a 'cancellationAllowedFl' set to 'Y'. If you try to cancel Orders that have a 'cancellationAllowedFl' set to 'N', the API will return an error response.
 
 #### Request
 
@@ -4733,8 +4870,8 @@ Stop the trip for a Delivery Associate using this API. The API accepts 2 lists o
 Parameter | DataType | Length |  Required | Description
 -----------|-------|-------|------- | ----------
 tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  |  | Mandatory | Order Reference Ids of Orders to be marked as Not Dispatched on the Stop Trip event.
-deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be marked as Delviered on the Stop Trip event.
+notDispatchedOrders | List  |  | Mandatory | Order Reference Ids of Orders to be marked as Not Dispatched on the Stop Trip event. If no Orders are to be marked Not Dispatched, send an empty list.
+deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be marked as Delviered on the Stop Trip event. If no Orders are to be marked Delivered, send an empty list.
 
 
 ### Get 
@@ -4818,8 +4955,8 @@ Get all the details of a trip with this API. You can call this API to get the Or
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-referenceId | Date |  | Conditional Mandatory |  If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.
-tripname | Date |  | Conditional Mandatory |  If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.
+referenceId | String |  | Conditional Mandatory |  If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.
+tripname | String |  | Conditional Mandatory |  If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.
 
 
 ## Tracking
@@ -6342,6 +6479,7 @@ Date.
 
 Time.
 
+Note that Date and DateTime type of type of Custom Fields will be sent in UTC format in POST API calls, and will be fetched in Epoch format in Get API calls. 
 
 You can include the following validations in your custom fields at the time of creating them -
 
