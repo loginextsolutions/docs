@@ -1690,7 +1690,9 @@ temperature | Double | 5,2 | Optional | Consignment's temperature
 ]
 ```
 
-This endpoint adds tracking record.
+This API allows you to add upto 20 tracking points in a single call of the API. For example - If you are receiving tracking data from multiple trackers simultaneously, you can batch them up and send them in one call to LogiNext in a single call of this API.
+
+This API has a rate limit of 1 req/sec.
 
 #### Request
 
@@ -2010,7 +2012,7 @@ Delivery orders by loading the items for different orders from a Single Point of
 
 1. Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.
 
-2. Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the order reference ID.
+2. Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.
 
 3. Finally you can track your pick-up / delivery executive in transit through the Track Last Location API. In this case also you need to pass the Trip Reference Id.
 
@@ -2231,7 +2233,7 @@ You can create a maximum of 5 Customers in LogiNExt in one call of this API.
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-referenceId  | String | 50 | Mandatory | Unique Customer ID used to identify a Customer.
+referenceId  | String | 32 | Mandatory | Unique Customer ID used to identify a Customer.
 accountCode | String | 50 | Optional | Unique Customer ID used to identify a Customer.
 name | String | 255 | Optional | Customer name.
 mobile | String | 255 | Optional | Customer Mobile NUmber.
@@ -2340,7 +2342,7 @@ You can create a maximum of 5 Customers in LogiNExt in one call of this API.
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-customerReferenceId | String | 50 | Mandatory | Unique Customer ID used to identify the Customer the address is being created for.
+customerReferenceId | String | 32 | Mandatory | Unique Customer ID used to identify the Customer the address is being created for.
 addressId | String | 255 | Optional | Address ID used to identify the address of that customer. The address ID must be unique within a Customer entity.
 addressType | String | 255 | Optional | Address Type epending on the values configured for you in LogiNext. eg - 'HOME', 'OFFICE', 'OTHER'.
 addressServiceTime | String | 255 |Optional | Service Time for that address in minutes.
@@ -2398,18 +2400,25 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 "isOwnVehicleFl":"Company",
 "vehicleNumber":"1AB54F",
 "dmPreference":"10035",
-"shiftList": [
-     {
-       "shiftStartTime": "2018-104-01T13:30:00Z",
-       "shiftEndTime": "2018-04-01T14:30:00Z"
-     }
-   ],
+"shiftTimeList": [
+            {
+                "shiftStartTime": "12:30",
+                "shiftEndTime": "14:30"
+            }
+        ],
+        "breakTimeList": [
+            {
+                "breakStartTime": "13:00",
+                "breakEndTime": "13:30",
+                "breakDurationInMins": 12
+            }
+        ],
+"loadingTimeInMins": 20,
 "weeklyOffList": [
      "Thursday",
      "Monday"
    ],
 "maxDistance":10,
-"licenseValidity":"2016-12-12",
 "fixedCost":10,
 "variableCost":10,
 "isPresentFl":"Y",
@@ -2427,7 +2436,7 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 "streetName":"2142 3rd Ave",
 "landmark":"Opp McDonalds",
 "countryShortCode":"USA",
-"city":"MUMNew YorkBAI",
+"city":"New York",
 "pincode":"10035",
 "addressType":"CURRENT" 
 }
@@ -2436,6 +2445,7 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 "maritalStatus":"Single",
 "alternateMobileNo":9892134489,
 "landlineNo":28215678,
+"licenseValidity":"2026-12-12",
 "licenseValidityInYears":10,
 "licenseIssuanceDate":"2016-12-12",
 "licenseNumber":2123123123
@@ -2468,7 +2478,7 @@ Create a new Delivery Associate in the LogiNext system with this API. A delivery
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-employeeId | String | 50 | Mandatory | This is the delivery associate's employee Id.
+employeeId | String | 50 | Mandatory | This is the Employee ID with which the Delivery Associate is to be created in the LogiNext Application.
 userGroupName | String | 255 | Mandatory | This is the delivery associate's user group name.
 branchName | String | 255 | Mandatory | This is the delivery associate's client branch name.
 deliveryMediumMasterName | String | 255 |Mandatory | Full name of Delivery associate.
@@ -2486,13 +2496,16 @@ deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. E
 isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
 vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery associate
 weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
-maxDistance | Integer | 20 |Optional | Max. allowed distance
-licenseValidity | String |  |Optional | License validity date
+maxDistance | Integer | 20 |Optional | This is the maximum distance the Delivery Associate is allowed to cover within a trip. This value is considered when creating a route plan for the Delivery Associate.
 deliveryMediumMapList.name | String | 255 | Optional | Name of language
-shiftList.shiftStartTime  | UTC Date |  |Optional | Shift start time
-shiftList.shiftEndTime  | UTC |  |Optional | Shift end time
+shiftTimeList.shiftStartTime  | String|  |Optional | Shift start time in HH:MM format. 
+shiftTimeList.shiftEndTime  | String |  |Optional | Shift end time in HH:MM format
+breakTimeList | List | | Optional | This is the break time of the Delivery Associate. The LogiNext Route Planning engine will not assign orders with Service time windows within a Delivery Associate's break time to that Delivery Associate. 
+breakTimeList.breakStartTime  | String |  |Optional | Break start time in HH:MM format.
+breakTimeList.breakEndTime  | String |  | Optional | Break end time in HH:MM format.
+breakTimeList.breakDurationInMins  | Integer | | Optional | Break Time Duration in minutes
 dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
-addressList | List | | Holds the address details of the Delivery Associate.
+addressList | List | | | Holds the address details of the Delivery Associate.
 addressList.apartment | String | Optional | 255 | Delivery Associate's Apartment number.
 addressList.streetName | String | Optional | 255 | Delivery Associate's Street Name.
 addressList.landmark | String | Optional | 255 | Delivery Associate's landmark.
@@ -2503,9 +2516,9 @@ addressList.addressType | String | Optional | 255 | Identifies if this is the cu
 maritalStatus | String | Optional | 255 | Delivery Associate's Marital Status.
 alternateMobileNo | String | Optional | 255 | Alternate Mobile NUmber of the Delivery Associate.
 landlineNo | String | Optional | 255 | Landline Number of the Delivery Associate.
-licenseValidity | String | Optional | String | 255 | This is the expiry Date of the Driver's License in UTC format.
+licenseValidity | String | Optional | 255 | This is the expiry Date of the Driver's License in YYYY-MM-HH format.
 licenseValidityInYears | Optional | String | 255 | License Validity in years.
-licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
+licenseIssuanceDate |String | Optional | 255 | License Issuance Date in YYYY-MM-HH format.
 
 ### Get 
 
@@ -2518,14 +2531,15 @@ licenseIssuanceDate |String | Optional | 255 | License Issuance Date.
 ```
 
 Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext Reference IDs or Username for the Delivery Associates you want to search for in the Request Body. 
-The API also returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext. This can be used in the case where the Delivery Associate's image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
+
+The API returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext, in the 'profilePicture' field.This can be used in the case where the Delivery Associate's image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
 Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.
 
 #### Request Parameters
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-referenceId | List | 50 | Conditional Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated. 
+referenceId | List | 32 | Conditional Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated. 
 userName | List | 50 | Conditional Mandatory | This is the Username of the Delivery Associate to be updated.
 
 
@@ -2555,7 +2569,20 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
                 "gender": "Male",
                 "phoneNumber": "9215697602",
                 "userName": "robin123456",
-                "shiftList": [],
+                "shiftTimeList": [
+                    {
+                        "shiftStartTime": "12:30",
+                        "shiftEndTime": "14:30"
+                    }
+                ],
+                "breakTimeList": [
+                    {
+                        "breakStartTime": "13:00",
+                        "breakEndTime": "13:30",
+                        "breakDurationInMins": 12
+                    }
+                ],
+                "loadingTimeInMins": 20,
                 "branchName": "Snappbox_UAT Main Branch",
                 "userGroupName": "Snappbox_UAT Mob",
                 "emailId": "abc@d.com",
@@ -2624,12 +2651,20 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
 "isOwnVehicleFl":"Company",
 "vehicleNumber":"1AB54F",
 "dmPreference":"10035",
-"shiftList": [
-     {
-       "shiftStartTime": "2018-104-01T13:30:00Z",
-       "shiftEndTime": "2018-04-01T14:30:00Z"
-     }
-   ],
+"shiftTimeList": [
+    {
+        "shiftStartTime": "12:30",
+        "shiftEndTime": "14:30"
+    }
+],
+"breakTimeList": [
+    {
+        "breakStartTime": "13:00",
+        "breakEndTime": "13:30",
+        "breakDurationInMins": 12
+    }
+],
+"loadingTimeInMins": 20,
 "weeklyOffList": [
      "Thursday",
      "Monday"
@@ -2694,7 +2729,7 @@ Update the details of a Delivery Associate in the LogiNext system with this API.
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-referenceId | String | 50 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
+referenceId | String | 32 | Mandatory | This is the LogiNext Reference ID of the Delivery Associate to be updated.
 employeeId | String | 50 | Optional | This is the delivery associate's employee Id.
 userGroupName | String | 255 | Optional | This is the delivery associate's user group name.
 branchName | String | 255 | Optional | This is the delivery associate's client branch name.
@@ -2719,6 +2754,11 @@ deliveryMediumMapList.name | String | 255 | Optional | Name of language
 shiftList.shiftStartTime  | UTC Date |  |Optional | Shift start time
 shiftList.shiftEndTime  | UTC Date|  |Optional | Shift end time
 dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
+shiftTimeList.shiftStartTime  | String|  |Optional | Shift start time in HH:MM format. 
+shiftTimeList.shiftEndTime  | String |  |Optional | Shift end time in HH:MM format
+breakTimeList.breakStartTime  | String |  |Optional | Break start time in HH:MM format.
+breakTimeList.breakEndTime  | UTC |  | Optional | Break end time in HH:MM format.
+breakTimeList.breakDurationInMins  | Integer  |Optional | Break Time Duration in minutes
 addressList | List | | | Holds the address details of the Delivery Associate.
 addressList.apartment | String | 255 | Optional | Delivery Associate's Apartment number.
 addressList.streetName | String | 255 | Optional | Delivery Associate's Street Name.
@@ -2730,9 +2770,9 @@ addressList.addressType | String | 255 | Optional | Identifies if this is the cu
 maritalStatus | String | 255 | Optional | Delivery Associate's Marital Status.
 alternateMobileNo | String | 255 | Optional | Alternate Mobile NUmber of the Delivery Associate.
 landlineNo | String | 255 | Optional | Landline Number of the Delivery Associate.
-licenseValidity | String | 255 | Optional | This is the expiry Date of the Driver's License in UTC format.
-licenseValidityInYears | String | 255 | Optional | License Validity in years.
-licenseIssuanceDate |String | 255 | Optional | License Issuance Date. This field accepts values in UTC format.
+licenseValidity | String | Optional | String | 255 | This is the expiry Date of the Driver's License in YYYY-MM-HH format.
+licenseValidityInYears | Optional | String | 255 | License Validity in years.
+licenseIssuanceDate |String | Optional | 255 | License Issuance Date in YYYY-MM-HH format.
 
 
 
@@ -2857,9 +2897,9 @@ Create hubs / branches / distribution centers in the LogiNext system with the Cr
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------| ------- |------- | ----------
-clientParentBranchName | String | 255 | Mandatory | This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager
+clientParentBranchName | String | 255 | Mandatory | This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot create the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager
 branchName | String | 255 | Mandatory | This is the name of the branch / hub / distribution center/ that you want to add.
-Address.apartment | String | 512 | Mandatory | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center
+Address.apartment | String | 512 | Mandatory | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center
 Address.streetName | String | 512 | Mandatory | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard
 Address.landmark | String | 512 | Mandatory | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
 branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
@@ -2879,6 +2919,8 @@ adminContactName | String | 255 | Mandatory | Name of the Supervisor / Alternate
 mobileNumber | String | 255 | Mandatory | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Mandatory | Email Address of the contact person
 timeZone | String | | Optional | The timezone of the Hub location you are creating. This will default yo your account configured timezone if not passed.
+
+
 
 ### Update
 
@@ -4858,7 +4900,7 @@ reference_ids | List | Mandatory | Reference Id associated with the trip.
 }
 
 ```
-Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, yo can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
+Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
 
 
 #### Request

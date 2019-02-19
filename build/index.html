@@ -3042,7 +3042,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint adds tracking record.</p>
+<p>This API allows you to add upto 20 tracking points in a single call of the API. For example - If you are receiving tracking data from multiple trackers simultaneously, you can batch them up and send them in one call to LogiNext in a single call of this API.</p>
+
+<p>This API has a rate limit of 1 req/sec.</p>
 
 <h4 id="request">Request</h4>
 
@@ -3486,7 +3488,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <ol>
 <li><p>Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.</p></li>
-<li><p>Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the order reference ID.</p></li>
+<li><p>Once the optimization for capacity and route planning is completed, trips will be created by the LogiNext system and you can mark the trip as started by calling the Start Trip API and mark the same trip as stopped by calling Stop Trip API. In both these API you will have to pass the trip reference ID.</p></li>
 <li><p>Finally you can track your pick-up / delivery executive in transit through the Track Last Location API. In this case also you need to pass the Trip Reference Id.</p></li>
 <li><p>You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.</p></li>
 <li><p>In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.</p></li>
@@ -3810,7 +3812,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>referenceId</td>
 <td>String</td>
-<td>50</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>Unique Customer ID used to identify a Customer.</td>
 </tr>
@@ -4027,7 +4029,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <tr>
 <td>customerReferenceId</td>
 <td>String</td>
-<td>50</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>Unique Customer ID used to identify the Customer the address is being created for.</td>
 </tr>
@@ -4182,18 +4184,25 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T14:30:00Z"</span><span class="w">
-     </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"shiftTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:30"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"breakTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"breakStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"breakEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:30"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"breakDurationInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+</span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
 </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Monday"</span><span class="w">
    </span><span class="p">],</span><span class="w">
 </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-</span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
 </span><span class="nt">"variableCost"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
 </span><span class="nt">"isPresentFl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -4211,7 +4220,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp McDonalds"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"MUMNew YorkBAI"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"addressType"</span><span class="p">:</span><span class="s2">"CURRENT"</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
@@ -4220,6 +4229,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="s2">"Single"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"alternateMobileNo"</span><span class="p">:</span><span class="mi">9892134489</span><span class="p">,</span><span class="w">
 </span><span class="nt">"landlineNo"</span><span class="p">:</span><span class="mi">28215678</span><span class="p">,</span><span class="w">
+</span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="s2">"2026-12-12"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"licenseValidityInYears"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
 </span><span class="nt">"licenseIssuanceDate"</span><span class="p">:</span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="mi">2123123123</span><span class="w">
@@ -4263,7 +4273,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s employee Id.</td>
+<td>This is the Employee ID with which the Delivery Associate is to be created in the LogiNext Application.</td>
 </tr>
 <tr>
 <td>userGroupName</td>
@@ -4389,14 +4399,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Max. allowed distance</td>
-</tr>
-<tr>
-<td>licenseValidity</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>License validity date</td>
+<td>This is the maximum distance the Delivery Associate is allowed to cover within a trip. This value is considered when creating a route plan for the Delivery Associate.</td>
 </tr>
 <tr>
 <td>deliveryMediumMapList.name</td>
@@ -4406,18 +4409,46 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Name of language</td>
 </tr>
 <tr>
-<td>shiftList.shiftStartTime</td>
-<td>UTC Date</td>
+<td>shiftTimeList.shiftStartTime</td>
+<td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Shift start time</td>
+<td>Shift start time in HH:MM format.</td>
 </tr>
 <tr>
-<td>shiftList.shiftEndTime</td>
-<td>UTC</td>
+<td>shiftTimeList.shiftEndTime</td>
+<td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Shift end time</td>
+<td>Shift end time in HH:MM format</td>
+</tr>
+<tr>
+<td>breakTimeList</td>
+<td>List</td>
+<td></td>
+<td>Optional</td>
+<td>This is the break time of the Delivery Associate. The LogiNext Route Planning engine will not assign orders with Service time windows within a Delivery Associate&rsquo;s break time to that Delivery Associate.</td>
+</tr>
+<tr>
+<td>breakTimeList.breakStartTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Break start time in HH:MM format.</td>
+</tr>
+<tr>
+<td>breakTimeList.breakEndTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Break end time in HH:MM format.</td>
+</tr>
+<tr>
+<td>breakTimeList.breakDurationInMins</td>
+<td>Integer</td>
+<td></td>
+<td>Optional</td>
+<td>Break Time Duration in minutes</td>
 </tr>
 <tr>
 <td>dmPreference</td>
@@ -4430,8 +4461,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>addressList</td>
 <td>List</td>
 <td></td>
-<td>Holds the address details of the Delivery Associate.</td>
 <td></td>
+<td>Holds the address details of the Delivery Associate.</td>
 </tr>
 <tr>
 <td>addressList.apartment</td>
@@ -4507,8 +4538,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>licenseValidity</td>
 <td>String</td>
 <td>Optional</td>
-<td>String</td>
 <td>255</td>
+<td>This is the expiry Date of the Driver&rsquo;s License in YYYY-MM-HH format.</td>
 </tr>
 <tr>
 <td>licenseValidityInYears</td>
@@ -4522,7 +4553,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>License Issuance Date.</td>
+<td>License Issuance Date in YYYY-MM-HH format.</td>
 </tr>
 </tbody></table>
 
@@ -4535,8 +4566,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span><span class="p">[</span><span class="s2">"d7f173453bab40cf83dc79bb86ea2edb"</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext Reference IDs or Username for the Delivery Associates you want to search for in the Request Body. 
-The API also returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext. This can be used in the case where the Delivery Associate&rsquo;s image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
+<p>Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext Reference IDs or Username for the Delivery Associates you want to search for in the Request Body. </p>
+
+<p>The API returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext, in the &#39;profilePicture&rsquo; field.This can be used in the case where the Delivery Associate&rsquo;s image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
 Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.</p>
 
 <h4 id="request-parameters">Request Parameters</h4>
@@ -4553,7 +4585,7 @@ Note that in case you are storing this link in your system, this link has a life
 <tr>
 <td>referenceId</td>
 <td>List</td>
-<td>50</td>
+<td>32</td>
 <td>Conditional Mandatory</td>
 <td>This is the LogiNext Reference ID of the Delivery Associate to be updated.</td>
 </tr>
@@ -4592,7 +4624,20 @@ Note that in case you are storing this link in your system, this link has a life
                 </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9215697602"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robin123456"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nt">"shiftTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:30"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"breakTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"breakStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"breakEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:30"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"breakDurationInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snappbox_UAT Main Branch"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Snappbox_UAT Mob"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@d.com"</span><span class="p">,</span><span class="w">
@@ -4659,12 +4704,20 @@ Note that in case you are storing this link in your system, this link has a life
 </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-104-01T13:30:00Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T14:30:00Z"</span><span class="w">
-     </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
+</span><span class="nt">"shiftTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:30"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nt">"breakTimeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"breakStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"breakEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"breakDurationInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
 </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"Monday"</span><span class="w">
@@ -4738,7 +4791,7 @@ Note that in case you are storing this link in your system, this link has a life
 <tr>
 <td>referenceId</td>
 <td>String</td>
-<td>50</td>
+<td>32</td>
 <td>Mandatory</td>
 <td>This is the LogiNext Reference ID of the Delivery Associate to be updated.</td>
 </tr>
@@ -4911,6 +4964,41 @@ Note that in case you are storing this link in your system, this link has a life
 <td>Preferred Pincode of Delivery associate</td>
 </tr>
 <tr>
+<td>shiftTimeList.shiftStartTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift start time in HH:MM format.</td>
+</tr>
+<tr>
+<td>shiftTimeList.shiftEndTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift end time in HH:MM format</td>
+</tr>
+<tr>
+<td>breakTimeList.breakStartTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Break start time in HH:MM format.</td>
+</tr>
+<tr>
+<td>breakTimeList.breakEndTime</td>
+<td>UTC</td>
+<td></td>
+<td>Optional</td>
+<td>Break end time in HH:MM format.</td>
+</tr>
+<tr>
+<td>breakTimeList.breakDurationInMins</td>
+<td>Integer</td>
+<td>Optional</td>
+<td>Break Time Duration in minutes</td>
+<td></td>
+</tr>
+<tr>
 <td>addressList</td>
 <td>List</td>
 <td></td>
@@ -4990,23 +5078,23 @@ Note that in case you are storing this link in your system, this link has a life
 <tr>
 <td>licenseValidity</td>
 <td>String</td>
-<td>255</td>
 <td>Optional</td>
-<td>This is the expiry Date of the Driver&rsquo;s License in UTC format.</td>
+<td>String</td>
+<td>255</td>
 </tr>
 <tr>
 <td>licenseValidityInYears</td>
+<td>Optional</td>
 <td>String</td>
 <td>255</td>
-<td>Optional</td>
 <td>License Validity in years.</td>
 </tr>
 <tr>
 <td>licenseIssuanceDate</td>
 <td>String</td>
-<td>255</td>
 <td>Optional</td>
-<td>License Issuance Date. This field accepts values in UTC format.</td>
+<td>255</td>
+<td>License Issuance Date in YYYY-MM-HH format.</td>
 </tr>
 </tbody></table>
 
@@ -5179,7 +5267,7 @@ Note that in case you are storing this link in your system, this link has a life
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot crate the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
+<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot create the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
 </tr>
 <tr>
 <td>branchName</td>
@@ -5193,7 +5281,7 @@ Note that in case you are storing this link in your system, this link has a life
 <td>String</td>
 <td>512</td>
 <td>Mandatory</td>
-<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center</td>
 </tr>
 <tr>
 <td>Address.streetName</td>
@@ -9704,7 +9792,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 </span></code></pre>
 
-<p>Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, yo can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.</p>
+<p>Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.</p>
 
 <h4 id="request">Request</h4>
 
