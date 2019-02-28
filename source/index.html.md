@@ -200,7 +200,8 @@ Call the mobile authenticate API to obtain the token and key for a Delivery Asso
 
 You will have to pass the username and password entered at the time of creating the Delivery Associate in the LogiNext system in the request body.
 
-The response will contain a session token and a Client Secret key, which is unique in relation to every specific customer.
+The response will contain a session token, which is unique in relation to every specific customer. This token will have a validaity of 4 years from the time of creation.
+
 
 
 > Definition
@@ -2504,7 +2505,7 @@ breakTimeList | List | | Optional | This is the break time of the Delivery Assoc
 breakTimeList.breakStartTime  | String |  |Optional | Break start time in HH:MM format.
 breakTimeList.breakEndTime  | String |  | Optional | Break end time in HH:MM format.
 breakTimeList.breakDurationInMins  | Integer | | Optional | Break Time Duration in minutes
-dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
+dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference' property is set.
 addressList | List | | | Holds the address details of the Delivery Associate.
 addressList.apartment | String | Optional | 255 | Delivery Associate's Apartment number.
 addressList.streetName | String | Optional | 255 | Delivery Associate's Street Name.
@@ -2753,7 +2754,7 @@ licenseValidity | String |  | Optional | License validity date. This field accep
 deliveryMediumMapList.name | String | 255 | Optional | Name of language
 shiftList.shiftStartTime  | UTC Date |  |Optional | Shift start time
 shiftList.shiftEndTime  | UTC Date|  |Optional | Shift end time
-dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate
+dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference' property is set.
 shiftTimeList.shiftStartTime  | String|  |Optional | Shift start time in HH:MM format. 
 shiftTimeList.shiftEndTime  | String |  |Optional | Shift end time in HH:MM format
 breakTimeList.breakStartTime  | String |  |Optional | Break start time in HH:MM format.
@@ -2899,7 +2900,7 @@ Parameter | DataType | Length |  Required | Description
 -----------|-------| ------- |------- | ----------
 clientParentBranchName | String | 255 | Mandatory | This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot create the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager
 branchName | String | 255 | Mandatory | This is the name of the branch / hub / distribution center/ that you want to add.
-Address.apartment | String | 512 | Mandatory | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center
+Address.apartment | String | 512 | Mandatory | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>For example - A 203 Richmond Avenue
 Address.streetName | String | 512 | Mandatory | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard
 Address.landmark | String | 512 | Mandatory | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
 branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
@@ -2984,15 +2985,15 @@ Update hubs / branches / distribution centers in the LogiNext system with the Up
 Parameter | DataType | Length |  Required | Description
 -----------|-------| ------- |------- | ----------
 referenceId | String | 255 | Mandatory | This is the reference ID of the branch to be updated.
-Address.apartment | String | 512 | Optional | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Suprement Business Center
-Address.streetName | String | 512 | Optional | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>Sample Value - Off Highway I96 or Walton Boulevard
-Address.landmark | String | 512 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
-branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital
-Address.locality | String | 512 | Optional | This is area in which the Hub is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
-Address.city | String | 512 | Optional | This is name of the city in which your Hub is situated<br>Sample Value - Atlanta or Kuala Lampur
-Address.stateShortCode | String | 11 | Optional | This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-Address.countryShortCode | String | 11 | Mandatory | This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.
-Address.pincode | String | 20 | Mandatory | This is the postal code / zip code of the area in which your Hub is situated<br>Sample Value - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.apartment | String | 512 | Optional | This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No.<br>For example - A 203 Richmond Avenue
+Address.streetName | String | 512 | Optional | This is Address Line 2.This is the name of the Street where the Hub is situated.<br>For example - Off Highway I96 or Walton Boulevard
+Address.landmark | String | 512 | Optional | Any nearby landmark to identify your Hub quickly.<br>For example - Opp. McDonalds or Behind Mercy Hospital
+branchName | String | 255 | Optional | Any nearby landmark to identify your Hub quickly.<br>For example - Opp. McDonalds or Behind Mercy Hospital
+Address.locality | String | 512 | Optional | This is area in which the Hub is located<br>For example - Southern Industry Park or Dubai Downtown<br><br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
+Address.city | String | 512 | Optional | This is name of the city in which your Hub is situated<br>For example - Atlanta or Kuala Lampur
+Address.stateShortCode | String | 11 | Optional | This is code of State / Province.<br>For example - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.countryShortCode | String | 11 | Mandatory | This is code of Country.<br>For example - For India use IND; For China use CHN<br><br>Please refer to the section where we have listed down country codes.
+Address.pincode | String | 20 | Mandatory | This is the postal code / zip code of the area in which your Hub is situated<br>For example - 72712 ; 400076<br><br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
 division | String | 255 | Optional | Ex. ADIV
 isOwnBranchFl | String | 1 | Optional | There can be two values here -  In Mile Hardcode this to N
 isHubFl | String | 1 | Optional | There can be two values here -  In Mile Hardcode this to Y
@@ -3306,7 +3307,7 @@ awbNumber | String | 1000 | Optional | If you want an AWB no. to be associated w
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
-shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
+shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
@@ -3319,9 +3320,9 @@ returnAllowedFl | String | 1 | Optional | This identifies if order return allowe
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.
 pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z
+pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
 distributionCenter |
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"
+pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | This is the pickup account code.
 pickupAccountName | String | 255 | Mandatory | This is the pickup account Name.
 pickupAddressId | String | 255 | Optional | This is the Address ID of the pickup Customer.
@@ -3963,11 +3964,11 @@ Parameter | DataType | Length |  Required | Description
 clientCode | String |255 | Optional | The account for which the Order is being created.
 parentOrderNo | String | 255 | Mandatory | This is the Order No.
 awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
-shipmentOrderDt | String | | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T10:30:00.000Z"
+shipmentOrderDt | String | | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
 shipmentOrderTypeCd| String | 10 | Mandatory | The value in this field has to be "DELIVER" always.
 orderState| String | 10 | Mandatory | If an order is a Forward way (Delivery to the Customer), then value here should be "FORWARD"<br>If an order is a Retrun way (Return from the Customer), then value here should be "REVERSE"
-deliverStartTimeWindow| String | | Mandatory | This is the start date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T11:30:00.000Z<br><br>If the you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up start Date and Time is also taken as the  same.<br>If the you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
-deliverEndTimeWindow| String | | Mandatory | This is the end date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Delivery Start Date and Time.<br>Note that this date and time has to be in UTC.<br>Sample Value - "2017-07-15T12:30:00.000Z"<br><br>If you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up end Date and Time is also taken as the  same.<br>If you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
+deliverStartTimeWindow| String | | Mandatory | This is the start date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z<br><br>If the you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up start Date and Time is also taken as the  same.<br>If the you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
+deliverEndTimeWindow| String | | Mandatory | This is the end date and time for the time slot of the Delivery.<br>Note that this date and time has to be greater than the Delivery Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"<br><br>If you set the auto allocation flag  "autoAllocateFl" as "Y", then the Pick-up end Date and Time is also taken as the  same.<br>If you set the auto allocation flag  "autoAllocateFl" as "N", then the Pick-up Date and Time is NOT set.
 deliveryType| String | 40 | Optional | This is an Optional Field. You can choose to leave it blank.<br>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be seperated with Toileteries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br><br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Delivery Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
 shipmentBranch| String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>For Delivery type of orders, this is the Branch / Distribution Center / Hub from where the Delivery Associate will pick-up the order / shipment / parcel and deliver it to the end customer.<br><br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen.<br>If you have any access related issue while creating branch, please reach out to your Account Manager
 returnAllowedFl| String | 1 | Optional | If your Business process allows the customer to return the orders back to you, then you will have to mark this Flag as  "Y". This way your OMS / WMS / ERP system(integrated with LogiNext system) or you Operations Manager will be able to create a return request for an order.<br>If you mark this flag as "N", LogiNext system will not allow you to create a return request referencing to this order.<br><br>You will always have any option to create a new order all-together for Returns by passing "REVERSE" in the "orderState" field.<br>If you have not set this Flag, it will be defaulted to "N"
@@ -3992,11 +3993,11 @@ orders.deliverAccountCode| String | 255 | Mandatory | LogiNext system allows you
 orders.deliverAccountName| String | 255 | Mandatory | LogiNext system allows you to set your Customer's addresses with unique address Id so that you do not have to send the Address parameters with every Order.<br>Customer's Address Name is mandatorily required to be set though this field.
 orders.deliverEmail| String | 100 | Optional | This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer's email Address, please pass the Customer's Email address.
 orders.deliverPhoneNumber| String | 100 | Optional | This is an optional field. You can choose to leave it blank.<br>If you want to send any Order related notifications to the Customer through the SMS or you allow the delivery associate to call your customers directly, please pass the Customer Phone no.
-orders.deliverApartment| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br><br>If you are passing the value in this field, then - <br>This is Address Line 1.<br>This is the Apartment Name / House Name / Building Name / Suite No.<br>Sample Value - A 901 Supreme Business Center
-orders.deliverStreetName| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is Address Line 2.<br>This is the name of the Street where the Customer's / Delivery location is present.<br>Sample Value - Walton Boulevard
-orders.deliverLandmark| String | 512 | Optional | Any nearby landmark to identify your Customer Address<br>Sample Value - Opp. McDonalds or Behind Mercy Hospital<br>Orders.deliverLocality| String | 255 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then -<br>This is area or locality in which the is Customer's address is located<br>Sample Value - Southern Industry Park or Dubai Downtown<br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
-orders.deliverCity| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is name of the city.<br>Sample Value - Atlanta or Kuala Lampur
-orders.deliverState| String | 3 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of State / Province.<br>Sample Value - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+orders.deliverApartment| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br><br>If you are passing the value in this field, then - <br>This is Address Line 1.<br>This is the Apartment Name / House Name / Building Name / Suite No.<br>For example - A 901 Supreme Business Center
+orders.deliverStreetName| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is Address Line 2.<br>This is the name of the Street where the Customer's / Delivery location is present.<br>For example - Walton Boulevard
+orders.deliverLandmark| String | 512 | Optional | Any nearby landmark to identify your Customer Address<br>For example - Opp. McDonalds or Behind Mercy Hospital<br>Orders.deliverLocality| String | 255 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then -<br>This is area or locality in which the is Customer's address is located<br>For example - Southern Industry Park or Dubai Downtown<br>If you think that your specific region in which you operate does not have localities, then please raise the support request with your Account Manager to make this non-mandatory
+orders.deliverCity| String | 512 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is name of the city.<br>For example - Atlanta or Kuala Lampur
+orders.deliverState| String | 3 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of State / Province.<br>For example - For Georgia use GA ; For Jawa Barat use JB<br><br>Please refer to the section where we have listed down state codes for each country.<br>If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
 orders.deliverCountry| String | 3 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>If you are passing the value in this field, then - <br>This is code of Country.<br>Sample Value - For India use IND; For China use CHN<br>Please refer to the section where we have listed down country codes.
 orders.deliverPinCode| String | 255 | Conditional Mandatory | If you have the Customer Profiling set to allow the LogiNext to select the Address based n the Account code passed, then this field is optional<br>If you have the Lat. and Long of the Customer, then this fields is optional.<br>This is the postal code / zip code of the area.<br>Sample Value - 72712 ; 400076<br>If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
 orders.deliverLatitude| String |  | Conditional Mandatory | If you are passing the Customer Address, then this field is optional or <br>If you have the Customer Profiling set to allow the LogiNext to select the Address based on the Account Code passed, then this field is optional.
@@ -4664,10 +4665,10 @@ With this API, you can add Orders to a particular Trip or a Delivery Associate's
 
 If you have a set of Orders to be manually assigned to a particular Delivery Associate or Trip, for eg- in the case that a Delivery Associate is Abesent or On Break, you can assign the Orders to be fulfilled to another Trip of another Delivery Associate using this API.
 
-The API will take as input the Trip or Delivery boy details and the list of orders to be added for that trip or DB.
+The API will take as input the Trip or Delivery boy details and the list of orders to be added for that trip or Delivery Associate.
 The API can be used in 2 ways:
-If the trip details are passed (through trip reference id), then DB details are not required and the list of orders will be added to that trip, irrespective of the trip being Started or Not Started. Other order and trip validations remain as is.
-If the trip details are not passed, then the DB details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
+If the trip details are passed (through trip reference id), then Delivery Associate details are not required and the list of orders will be added to that trip, irrespective of the trip being Started or Not Started. Other order and trip validations remain as is.
+If the trip details are not passed, then the Delivery Associate details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
 The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.
 
 The Rate Limit for this API is 1 call/sec.
@@ -4681,10 +4682,10 @@ The Rate Limit for this API is 1 call/sec.
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
-trip.referenceId | String | 32 | Conditional Mandatory | Reference ID of the trip to which the Order has to be assigned. This field has to be passed in case the Delivery Mednium details are not passed.
+trip.referenceId | String | 32 | Conditional Mandatory | Reference ID of the trip to which the Order has to be assigned. This field has to be passed in case the Delivery Associate details are not passed.
 deliveryMedium.identifier | String | 32 | Conditional Mandatory |  This is the control flag field for the Delivery Associate, to identify which details of the Delivery Associate are being passed. Possible values are 'employeeId', 'phoneNumber', 'userName'.
 deliveryMedium.identifierValue | String | 32 | Conditional Mandatory | This field will hold the Delivery Associate information to whom the Order is to be assigned, as per the flag set above. For eg - If you wish to assign an Order to a Delivert Associate whose 'employeeId' is 'John1', you would send 'employeeId' in the identifier field and 'John1' in the identifierValue field.
-orderReferenceId | String | 50 |  Mandatory | This is the Reference ID of the Order to be assigned.
+orderReferenceIds | List | |  Mandatory | These are the Reference IDs of the Order to be assigned.
 
 
 ### Cancel
@@ -4741,9 +4742,9 @@ Parameter | DataType | Required | Description
 -----------|-------|------- | ----------
 reference_ids | List  | Mandatory | This is the order reference Id.
 
-### Get EPOD
+### Get EPOD and ESIGN
 
-This endpoint downloads the EPODs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
+This endpoint downloads the EPODs and ESIGNs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
 
 #### Request
 
@@ -4764,6 +4765,7 @@ status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,
 #### Response
 
 Response is a binary zip file.<br>
+The images for the EPODs and ESIGNs will be downloaded in .png formats when unzipped
 In any browser just hit the url and zip file download will start automatically.<br>
 In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
 
@@ -5304,10 +5306,10 @@ https://products.loginextsolutions.com/TrackingApp/track/mobile/put
     "imei": "911380458661315"
   }]
 }
-}
+
 ```
 
-> Response
+> Success Response
 
 ```json
 {
@@ -5329,6 +5331,31 @@ https://products.loginextsolutions.com/TrackingApp/track/mobile/put
 
 ```
 
+
+> Failure Response
+
+
+```json
+{
+    "status": 200,
+    "data": {
+        "msg": [
+            "2018-11-11T07:20:59",
+            "2018-11-11T07:21:19",
+            "2018-11-11T07:21:39"
+        ],
+        "previousTimes": [
+            1512976859528,
+            1512976879521,
+            1512976899532
+        ]
+    },
+    "hasError": false
+}
+
+```
+
+
 With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.
 
 #### Request
@@ -5337,35 +5364,35 @@ With this API, you can send the current position of your Delivery Associates / F
 
 #### Request Body
 
-Parameter | DataType | Required | Description
+Parameter | DataType |  Length | Required | Description
 -----------|-------|------- | ----|----------
-latitude|Number|Mandatory|Current Latitude Sample Value - 19.1119129
-longitude|Number|Mandatory|Current Longitude Sample Value - 72.9094089
-trackingDt|String|Mandatory|Tracking Date and Time in UTC and the mentioned Format. Sample Value - 2017-12-11T07:21:39Z
-currentTime|Long|Mandatory|Current date and time in milliseconds in the mentioned Format.Sample Value - 1512976899548
-speed|Number|Mandatory|Current Speed in meters / second
-battery|Integer|Mandatory|Current Battery percentage|Sample Value - 92
-accuracy|Number|Mandatory|Estimated accuracy of the current location in meters Sample Value - 23.878000259
-altitude|Number|Optional|In meters Sample Value - 235
-bearing |Number| Optional|Horizontal distance of travel of the device, in degrees. If the phose have this sensor, then send this value. Sample Value - Any value between 0 to 3600. 0 is North.  Consider Clockwise movement.
-locationSource|String|Optional|Location Provider Values like - “fused” , “wifi”, “gps”
-type |String|Mandatory|Tracking type.|Hardcoded Value - “MOBREG”
-isFirstPointFl|Boolean| Mandatory|If the current location is the first update after every login.|First Point - 0 Then there afterwards - 1 Sample Value -  0 (= False)  1 (= True)
-lastLatitude|Number| Mandatory| Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 19.1119129
-lastLongitude| Number| Mandatory|  Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 72.9094089
-distanceFromLastLocation| Number| Mandatory| Distance between last location update in meters. Note that if the isFirstPointFl value is “1”, then you can pass zero as the distance from last location. Sample Value - 23.5
-previousTime|Long| Mandatory|Timestamp of last location update in milliseconds Sample Value - 23.878000259
-hasAccuracy|Boolean|Optional|True, if the current location has an accuracy 0 (= False) / 1 (= True)
-hasBearing |Boolean|Optional|True, if the current location has a bearing 0 (= False) / 1 (= True)
-hasSpeed | Boolean|Optional|True, if the current location has a speed 0 (= False) / 1 (= True)
-userId|String|Optional|User Id, as identified by LogiNext Sample Value - JohnD
-networkType|String|Optional|Type of Network Sample Value - WIFI / MOBILE / UNKNOWN
-signalStrength|Integer|Mandatory|Strength of network type (Wifi, GSM, LTE)|Sample Value - 23
-dataNetworkType|String|Optional|Data Connectivity Type Sample Values - 1xRTT, EDGE, LTE, CDMA, GPRS, HSPA
-isGsmFl|Boolean|Optional|Current connectivity type Sample Value - 0 (= False) 1 (= True)
-isActiveNetworkMetered|Boolean|Optional| Is the currently active data network is metered. A network is classified as metered when the user is sensitive to heavy data usage on that connection due to monetary costs, data limitations or battery/performance issues. Sample Value -  0 (= False)  1 (= True)
-appStatus| Integer|Optional| Activity status of the app (Foreground, Background, Service, Gone, Sleep, Visible, Unknown). Sample Values - 100 (~ Foreground) 400 (~ Background) 500 (~ Empty) 125 (~ Foreground_Service) 1000 (~ Gone) 200 (~ Visible)
-imei|String|Mandatory|IMEI number for device Sample Value - 911380134661315
+latitude|Double | 13,10 |Mandatory|The geocoordinate(Latitude) of the Delivery Associate's location. Sample Value - 19.1119129
+longitude|Double | 13,10 |Mandatory|The geocoordinate(Longitude) of the Delivery Associate's location. Sample Value - 72.9094089
+trackingDt|String| | Mandatory|This is the timestamp of the tracking Date and Time in UTC and the mentioned Format. Sample Value - 2018-12-11T07:21:39Z
+currentTime|Long| |Mandatory|This is the current timestamp at the time of sending the tracking data to LogiNext. Sample Value - 2018-12-11T07:21:39Z
+speed|Number| | Mandatory| The speed of the Delivery Associate at the time of sending the tracking data.Current Speed in meters / second. This can be received from the Android system classes. More information on this can be found in the Android documentation <a href="https://developer.android.com/reference/android/location/Location.html#getSpeed()" target="_top">here
+battery|Integer| 2 |Mandatory|This is the pattery percentage on the Delivery Associate's phone at the time of sending the tracking point. Sample Value - 92. MOre details on this can be found here<a href="https://developer.android.com/reference/android/net/ConnectivityManager#TYPE_MOBILE" target="_blank">.
+accuracy|Number| | Mandatory|Estimated accuracy of the current location in meters Sample Value - 23.878000259
+altitude|Number| | Optional|In meters Sample Value - 235
+bearing |Number| | Optional|Horizontal distance of travel of the device, in degrees. If the phone has this sensor, then send this value. Sample Value - Any value between 0 to 3600. 0 is North.  Consider Clockwise movement.
+locationSource|String| | Optional|Location Provider Values like - “fused” , “wifi”, “gps”
+type |String| |Mandatory| | The tracking type field is used to identify if the tracking is coming from the Delivery Associate's phone or some other device. This is to be hardcoded to “MOBREG” in case the tracking points will be coming from the phone.
+isFirstPointFl|Boolean| 1 | Mandatory| This is used to identify if the current tracking data being sent from the Delivery Associate's device is the first update after every login.|First Point - 0 Then there afterwards - 1 Sample Value -  0 (= False)  1 (= True)
+lastLatitude|Double| 13,10 | Mandatory| Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 19.1119129
+lastLongitude| Double | 13,10 | Mandatory|  Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 72.9094089
+distanceFromLastLocation| Number|| Mandatory| Distance between last location update in meters. Note that if the isFirstPointFl value is “1”, then you can pass zero as the distance from last location. Sample Value - 23.5
+previousTime|Long| | Mandatory|Timestamp of last location update in milliseconds Sample Value - 23.878000259
+hasAccuracy|Boolean| 1 |Optional|True, if the current location has an accuracy 0 (= False) / 1 (= True)
+hasBearing |Boolean| 1 |Optional|True, if the current location has a bearing 0 (= False) / 1 (= True)
+hasSpeed | Boolean| 1 | Optional|True, if the current location has a speed 0 (= False) / 1 (= True)
+userId|String| | Optional|User Id, as identified by LogiNext Sample Value - JohnD
+networkType|String| |Optional|This field is used to identify the network type the Delivery Associate's phone is connected to when the tracking point is sent. This can be received from the Android core Connectivity Manager APIs <a href="https://developer.android.com/reference/android/net/ConnectivityManager#TYPE_MOBILE" target="_blank">here</a>. Sample Value can include WIFI / MOBILE / UNKNOWN
+signalStrength|Integer| |Mandatory| This field is to signify the strength of the mobile network on the Delivery Associate's phone at the time when the tracking point is sent. (Wifi, GSM, LTE)|Sample Value - 23. This can be received from the Android core Connectivity Manager <a href="https://developer.android.com/reference/android/telephony/SignalStrength.html#getGsmSignalStrength()" target="_blank">here.
+dataNetworkType|String| |Optional|Data Connectivity Type. Sample Values - 1xRTT, EDGE, LTE, CDMA, GPRS, HSPA
+isGsmFl|Boolean| 1 | Optional|Current connectivity type. Sample Value - 0 (= False) 1 (= True). This can be received from the Android core Connectivity Manager <a href="https://developer.android.com/reference/android/telephony/SignalStrength.html#isGsm()" target="_blank">here.
+isActiveNetworkMetered|Boolean| 1 |Optional| Is the currently active data network is metered. A network is classified as metered when the user is sensitive to heavy data usage on that connection due to monetary costs, data limitations or battery/performance issues. Sample Value -  0 (= False)  1 (= True). This can be received from the Android core Connectivity Manager APIs <a href="https://developer.android.com/reference/android/net/ConnectivityManager#isActiveNetworkMetered()" target="_blank">here.
+appStatus| Integer||Optional| Activity status of the app (Foreground, Background, Service, Gone, Sleep, Visible, Unknown). Sample Values - 100 (~ Foreground) 400 (~ Background) 500 (~ Empty) 125 (~ Foreground_Service) 1000 (~ Gone) 200 (~ Visible). More information on this can be found on the Android Activity Manager documentation <a href="https://developer.android.com/reference/android/app/ActivityManager.RunningAppProcessInfo" target="_blank">here.
+imei|String||Mandatory|IMEI number for device Sample Value - 911380134661315
 
 
 ### ESIGN / EPOD Upload
@@ -6423,7 +6450,7 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
     "otherReason":"",
     "latitude": 19.117369,
     "longitude": 72.910214,
-    "updateTime":"2016-07-18T10:31:00.000Z"
+    "updateTime":"2018-07-18T10:31:00.000Z"
   },
   {
     "taskReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
@@ -6431,7 +6458,7 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
     "otherReason":"",
     "latitude": 19.117369,
     "longitude": 72.913214,
-    "updateTime":"2016-07-18T10:31:00.000Z"
+    "updateTime":"2018-07-18T10:31:00.000Z"
 
   }]
 
@@ -6492,9 +6519,11 @@ With Custom Fields, you can enter information for reporting and analytics purpos
 
 For eg - If you need to look for specific servicability constraints like cut off times within with a certain area/ geofence can be serviced, you can configure a cut off time custom field in LogiNext that will display the availability timelines for that area/ geofence.
 
-To configure Custom Fields for your account, please reach out to your Account Manager.
+To configure Custom Fields for your account, You can do so from the Custom Fields section of your Admin module.
 
 Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI.
+
+Please Note that if you send these fields in the API without first configuring them in your LogiNext account, the LogiNext API will NOT create a new Custom Field. You will receive a success response from such an API call, but the data sent in the 'customField object will not be considered. The data passed in the API can only be associated with an already existing Custom Field with the identifier specified in the request. 
 
 If using the API, you will need to add the Custome Fields object on the right as part of the API request body to create the new fields in LogiNext.
 
