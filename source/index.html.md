@@ -6573,7 +6573,7 @@ Note -
 6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
 
 
-## Create
+## Create Order
 
 > Response
 
