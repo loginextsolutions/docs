@@ -21,12 +21,14 @@ LogiNext welcomes you to the world of organised logistics.
 In this section we'll go over the elements that make up the LogiNext system, and how you can start integrating with the LogiNext API.
 
 ###Delivery Associate 
-A Delivery Associate carries out the Pick-up or Delivery of Orders. Delivery Associates can be
+
+A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be
 maintainence men, repair men, or delivery boys.
 
 When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.
 
 ###Vehicle
+
 Vehicles can be used to Pick-up and Deliver Orders that are part of the Trip. A Vehicle could be a bike, car, truck, van and more. 
 
 ###Driver 
@@ -34,12 +36,6 @@ Driver is responsible for driving/riding the Delivery Vehicle.
 
 ###Branch 
 A Branch could be the fulfillment center or warehouse where Orders are either Delivered or Pickedup from. 
-
-###Service Time 
-Service Time is the time it takes to service an Order at a particular location. For example - If an Order is to be delivered at a Customer's Home address, the Service time would include the time for parking the Vehicle and accounting for security checks at the location if any. Similarly, if an Order is to be delivered at a warehouse, Service Time will account for parking, loading and unloading at the delivery location.
-
-Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.
-
 
 ### Orders
 
@@ -49,6 +45,11 @@ Orders can be be labeled differently, according to your industry and needs. For 
 
 ### Trips
 Trips are defined as a group of orders that a delivery associate must fulfill as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.
+
+###Service Time 
+Service Time is the time it takes to service an Order at a particular location. For example - If an Order is to be delivered at a Customer's Home address, the Service time would include the time for parking the Vehicle and accounting for security checks at the location if any. Similarly, if an Order is to be delivered at a warehouse, Service Time will account for parking, loading and unloading at the delivery location.
+
+Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.
 
 ## Integration Details
 
@@ -105,16 +106,16 @@ Code | Message | Description
 ---------- | ------- | -------
 200 | Success | This message means that the request is successfully processed.
 201 | Created  | This message means that the resource is successfully created.
-202 | Acknowledged | This status code indicates that a request has been received and taken up for processing. It may take some time to complete processing this kind of request, and LogiNext will typically send a webhook notification with the results of the response once the request has been csuccessfully completed.
+202 | Acknowledged | This status code indicates that a request has been received and taken up for processing. It may take some time to complete processing this kind of request, and LogiNext will typically send a webhook notification with the results of the response once the request has been successfully completed.
 400 | Bad Request  | This message means that the request is syntactically incorrect. You will receive this med=ssage in a case where the request body sent is not a standard JSON or array object as is expected by LogiNext.
 401 | Invalid username or password  | This message means that invalid credentials are passed.
 404 | Not Found  | This message means that the resource could not be found.
 405 | Method Not Allowed  | This message means that the method used to access the resource is invalid.
-409 | Request Error  | This message means that there is a validation error in the data sent in the request body. This could either be missing out a mandatory field in the API or sending an incrrect branch name in the request body.
+409 | Request Error  | This message means that there is a validation error in the data sent in the request body. This could either be missing out a mandatory field in the API or sending an incorrect branch name in the request body.
 415 | Unsupported Media Type  |  This message means that the request is not in the format accepted by this method of target resource.
 429 | Too Many Requests  |  This message means that too many resources are requested.
 500 | Internal Server Error  | This message means that there is an issue with the LogiNext server.Please try accessing the request later.
-503 | Service Unavailable  | This message means that the LogiNext applications are down for scheduled maintanance. Please try accessing the request later.
+503 | Service Unavailable  | This message means that the LogiNext applications are down for scheduled maintenance.  Please try accessing the request later.
 
 # Authentication
 
@@ -2019,7 +2020,7 @@ Delivery orders by loading the items for different orders from a Single Point of
 
 4. You can also mark a particular order as cancelled by calling the Cancel Order API and passing the order reference ID.
 
-5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, the you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
+5. In case, your account is being configured into the LogiNext system as a pick-up and delivery both, then you can also create the return shipment for the order thereby optimizing you reverse logistics and return planning.
 
 
 ## Customer 
@@ -2031,6 +2032,7 @@ Delivery orders by loading the items for different orders from a Single Point of
 ```json
 [
   {
+    "accountCode":"James",
     "name":"James Wan",
     "mobile":"341245673212",
     "email":"james@ablogs.com",
@@ -2040,8 +2042,8 @@ Delivery orders by loading the items for different orders from a Single Point of
           "streetName":"Michigan Avenue",
           "landmark":"Opp. Subway",
           "locality":"Dowtown Chicago",
-          "city":"Chicago 11",
-          "state":"NY",
+          "city":"Chicago",
+          "state":"IL",
           "country":"USA",
           "pincode":"10045",
           "latitude": 72.9555,
@@ -2051,7 +2053,7 @@ Delivery orders by loading the items for different orders from a Single Point of
 ]
 ```
 
-> Sample Response
+> Success Response
 
 ```json
 {
@@ -2061,7 +2063,7 @@ Delivery orders by loading the items for different orders from a Single Point of
         {
             "index": 0,
             "referenceId": "6a34c7274df0489f97c0f891514b488b",
-            "accountCode": "apinew1"
+            "accountCode": "james"
         }
     ],
     "hasError": false
@@ -2069,17 +2071,81 @@ Delivery orders by loading the items for different orders from a Single Point of
 
 ```
 
+
+> Partial Success Response
+
+```json
+
+
+{
+    "status": 207,
+    "message": "Customer(s) created partially",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "3a973fdcb1eb41d5ad7408c57e13cc87",
+            "accountCode": "name1"
+        }
+    ],
+    "error": [
+        {
+            "index": 1,
+            "accountCd": "name",
+            "errorList": [
+                {
+                    "key": "accountCode",
+                    "message": [
+                        "Account Code already exists for client"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+
+> Failure Response
+
+```json
+
+{
+    "status": 409,
+    "message": "Customer(s) creation failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "accountCd": "name",
+            "errorList": [
+                {
+                    "key": "mobile",
+                    "message": [
+                        "INVALID Mobile Number"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
 You can create a new Customer the LogiNext system with this API. A new Customer will be created and assigned a unique Reference ID that can be used to identify the Customer later.
 
-If you have Customers created inyour current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add these Customers in LogiNext.
+If you have Customers created in your current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add these Customers in LogiNext.
 
 This API will create a Customer Entity with contact information and an optional Billing Address for a Customer. To create a Shipping/ Delivery address for a Customer, call the Create Address API.
 
-These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivuduak customers can be used in the Create Order API to create an Order.
+These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivudual customers can be used in the Create Order API to create an Order.
 
 This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.
 
-You can create a maximum of 5 Customers in LogiNExt in one call of this API.
+You can create a maximum of 5 Customers in LogiNext in one call of this API. This API has a rate limit of 1 request per second.
 
 #### Request
 
@@ -2094,7 +2160,7 @@ accountCode | String | 50 | Mandatory | Unique Customer ID used to identify a Cu
 name | String | 255 | Mandatory | Customer name.
 mobile | String | 255 | Mandatory | Customer Mobile NUmber.
 email | String | 255 |Optional | Customer Email ID.
-customerType | String | 255 | Optional | This is the delivery associate's mobile number.
+customerType | String | 255 | Optional | This field represents the type of Customer. For example, you can create 'Premium' Customers and identify them in LogiNext based on values in these fields. 
 billingAddress.apartment | String | 40 |Optional | Customer's Billing Address apartment.
 billingAddress.streetName | String | 100 | Optional | Customer's Billing Address Street Name.
 billingAddress.landmark | String | 255 | Mandatory | Customer's Billing Address landmark.
@@ -2105,7 +2171,7 @@ billingAddress.country | String | 255 | Optional | Customer's Billing Address Co
 billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+clientCode | String | 50 | Optional | With this field you can create Customers on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 
 ### Get 
 
@@ -2128,7 +2194,44 @@ This API does not return the Shipping/ Delivery Addresses Associated with a Cust
 This API accepts upto 20 Customer IDs or Reference IDs in a comma separated format in the URL.
 
 
-> Sample Response
+> Success Response
+
+```json
+{
+  {
+    "status": 200,
+    "message": "Customer Details fetched successfully",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "accountCode": "name1",
+            "name": "James Wan",
+            "mobile": "5163063377",
+            "email": "james@ablogs.com",
+            "customerType": "Preferred",
+            "billingAddress": {
+                "apartment": "Suite No. 1, Milsons Towers",
+                "streetName": "Michigan Avenue",
+                "landmark": "Opp. Subway",
+                "city": "Mumbai",
+                "locality": "Dowtown Chicago",
+                "state": "Maharashtra",
+                "country": "INDIA",
+                "pincode": "10045",
+                "latitude": 72.9555,
+                "longitude": 19.555
+            },
+            "isActive": "Y",
+            "referenceId": "3a973fdcb1eb41d5ad7408c57e13cc87"
+        }
+    ],
+    "error": [],
+    "hasError": false
+}
+
+```
+
+> Partial Success Response
 
 ```json
 {
@@ -2160,6 +2263,22 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
        "1": "65ba00dbdcf04fb789311df6aa40e3ba"
    },
    "hasError": true
+}
+
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 400,
+    "message": "Incorrect reference id / Customer code",
+    "moreResultsExists": false,
+    "error": [
+        "89889897iyguy"
+    ],
+    "hasError": true
 }
 
 ```
@@ -2198,7 +2317,7 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
 ]
 ```
 
-> Sample Response
+> Success Response
 
 ```json
 {
@@ -2214,6 +2333,64 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
 }
 
 ```
+
+> Partial Success Response
+
+```json
+{
+    "status": 207,
+    "message": "Customer(s) updated partially",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "3a973fdcb1eb41d5ad7408c57e13cc87"
+        }
+    ],
+    "error": [
+        {
+            "index": 1,
+            "errorList": [
+                {
+                    "key": "referenceId",
+                    "message": [
+                        "Reference Id does not exists"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Customer(s) updation failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "errorList": [
+                {
+                    "key": "referenceId",
+                    "message": [
+                        "Reference Id does not exists"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+
 
 You can update a  Customer the LogiNext system with this API.
 
@@ -2250,7 +2427,7 @@ billingAddress.country | String | 255 | Optional | Customer's Billing Address Co
 billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+clientCode | String | 50 | Optional | Sub Client Name. With this field, you can update Customers for your  clients in LogiNext.
 
 
 ## Address 
@@ -2303,7 +2480,7 @@ clientCode | String | 50 | Optional | Sub Client Name. With this field, you can 
 ]
 ```
 
-> Sample Response
+> Success Response
 
 ```json
  {
@@ -2321,6 +2498,8 @@ clientCode | String | 50 | Optional | Sub Client Name. With this field, you can 
 }
 
 ```
+
+
 
 You can create an Address for an existing Customer in the LogiNext system with this API. A new Customer Address will be created and assigned a unique Reference ID that can be used to identify the Address later.
 
@@ -2358,7 +2537,7 @@ address.country | String | 255 | Optional | Address Country.
 address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | Sub Client Name. With this field, you can create Customers for your  clients in LogiNext.
+clientCode | String | 50 | Optional | With this field you can create addresses on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
 
 
@@ -3262,6 +3441,55 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 
 ```
 
+> Partial Success Response
+
+```json
+{
+    "status": 207,
+    "message": "Order(s) created partially",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "orderNumber": "ww1220",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "af7065ad4f3945a889ec25c323aa7b68",
+            "orderNumber": "ww1244",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 2,
+            "referenceId": "a4e6dc610c854166a7957b9876aa4ce5",
+            "orderNumber": "ww1234",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "error": [
+        {
+            "index": 3,
+            "orderNo": "ww1229",
+            "orderState": "FORWARD",
+            "shipmentOrderTypeCd": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverBranch",
+                    "message": [
+                        "Deliver Branch is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+```
+
 > Failure Response
 
 ```json
@@ -3312,7 +3540,7 @@ distributionCenter | String | 255 | Mandatory | Distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
-paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid
+paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | This is the number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.
 deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
@@ -3341,7 +3569,7 @@ pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) 
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 
 #### Request Parameters (Crates)
 
@@ -3474,7 +3702,54 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "hasError": false
 }
 ```
+> Partial Success Response
 
+```json
+{
+    "status": 207,
+    "message": "Order(s) created partially",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "orderNumber": "ww1220",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "af7065ad4f3945a889ec25c323aa7b68",
+            "orderNumber": "ww1244",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 2,
+            "referenceId": "a4e6dc610c854166a7957b9876aa4ce5",
+            "orderNumber": "ww1234",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "error": [
+        {
+            "index": 3,
+            "orderNo": "ww1229",
+            "orderState": "FORWARD",
+            "shipmentOrderTypeCd": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverBranch",
+                    "message": [
+                        "Deliver Branch is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+```
 > Failure Response
 
 ```json
@@ -3523,7 +3798,7 @@ packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
-paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid
+paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This field specifies if the order can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
@@ -3552,7 +3827,7 @@ deliverAddressTimezone | String | | Optional | The timezone of the pickup locati
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 
 #### Request Parameters (Crates)
 
@@ -3721,6 +3996,55 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 }
 
 ```
+> Partial Success Response
+
+```json
+{
+    "status": 207,
+    "message": "Order(s) created partially",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "orderNumber": "ww1220",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "af7065ad4f3945a889ec25c323aa7b68",
+            "orderNumber": "ww1244",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 2,
+            "referenceId": "a4e6dc610c854166a7957b9876aa4ce5",
+            "orderNumber": "ww1234",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "error": [
+        {
+            "index": 3,
+            "orderNo": "ww1229",
+            "orderState": "FORWARD",
+            "shipmentOrderTypeCd": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverBranch",
+                    "message": [
+                        "Deliver Branch is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+```
+
 
 > Failure Response
 
@@ -3772,7 +4096,7 @@ packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
-paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid
+paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
 cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
@@ -3833,7 +4157,7 @@ returnCity | String | 512 | Conditional Mandatory | This is the pickup location'
 returnState| String | 512 | Conditional Mandatory | This is the pickup location's state code. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
 returnCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
 returnPinCode | String | 20 | Conditional Mandatory | Return Pincode. This field in Non Mandatory in case Customer Profiling in ON.
-clientCode | String | 32 | Optional | Using this field you can create orders for sub clients, by passing the sub client name in this field.
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 
 
 #### Request Parameters (Crates)
@@ -3853,6 +4177,318 @@ shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Thi
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
 
 
+
+### Create Point to Point 
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
+```
+
+> Request Body
+
+```json
+
+
+[
+  {
+    "orderNo": "PPPL0001",
+    "autoAllocateFl":"N",
+    "awbNumber": "435-16685675",
+    "shipmentOrderDt": "2019-02-05T10:30:00.000Z",
+    "shipmentOrderTypeCd": "DELIVER",
+    "orderState": "FORWARD",
+    "distributionCenter": "Lower Manhattan",
+    "packageWeight":"10",
+    "packageVolume": "4500",
+    "packageLength":5,
+    "packageBreadth":5,
+    "packageHeight":5,
+    "paymentType": "Prepaid",
+    "packageValue": "5000",
+    "numberOfItems": 1,
+    "partialDeliveryAllowedFl": "Y",
+    "returnAllowedFl": "N",
+    "cancellationAllowedFl": "Y",    
+    "deliverServiceTime": "20",
+    "deliverEndTimeWindow": "2018-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2018-07-16T10:31:00.000Z",
+    "deliveryType": "Groceries",
+    "deliveryLocationType":"Home",
+    "deliverEmail":"m.richardson@testmail.com",
+    "deliverPhoneNumber":"9891234567",
+    "deliverAccountCode": "Matt001",
+    "deliverAddressId": "home",
+    "deliverAccountName": "Mathew Richardson",
+    "deliverApartment": "201",
+    "deliverStreetName": "E Randolph St",
+    "deliverLandmark": "Opp. Chiptole",
+    "deliverLocality": "Down Towm Chicago",
+    "deliverCity": "Chicago",
+    "deliverState": "IL",
+    "deliverCountry": "USA",
+    "deliverPinCode": "60602",
+    "deliverLatitude":41.882702,
+    "deliverLongitude":-87.619392,   
+    "deliverAddressTimezone":"America/Chicago",  
+    "pickupServiceTime": "50",
+    "pickupStartTimeWindow": "2018-07-16T14:24:00.000Z",
+    "pickupEndTimeWindow": "2018-07-17T14:24:00.000Z",
+    "pickupEmail":"james.w@ablogs.com",
+    "pickupPhoneNumber": "5163063377",
+    "pickupAccountCode": "jim001",
+    "pickupAddressId": "Home",
+    "pickupAccountName": "James Walker",
+    "pickupApartment": "901",
+    "pickupStreetName": "2142 3rd Ave",
+    "pickupLandmark": "Opp. McDonalds",
+    "pickupLocality": "East Harlem",
+    "pickupCity": "New York",
+    "pickupState": "NY",
+    "pickupCountry": "USA",
+    "pickupPinCode": "10035",
+    "pickupLatitude":40.760838,
+    "pickupLongitude":-73.96732299999996,  
+    "pickupAddressTimezone":"America/New_York",  
+    "clientCode": "Salestap",
+    "shipmentCrateMappings": [
+      {
+        "crateCd": "CR041",
+        "crateAmount":100.65,
+        "crateType":"case",
+        "noOfUnits":2,
+        "crateWeight":10,
+        "crateVolume":11,
+        "crateLength":12,
+        "crateBreadth":13,
+        "crateHeight":14,
+        "shipmentlineitems": [
+          {
+            "itemCd": "IT043",
+            "itemName": "Chicken Soup 2X200gm",
+            "itemPrice": 500,
+            "itemQuantity": 1,
+            "itemType": "soup",
+            "itemWeight": 10,
+            "itemVolume":11,
+            "itemLength":12,
+            "itemBreadth":13,
+            "itemHeight":14
+          },
+          {
+            "itemCd": "IT030",
+            "itemName": "WholeBeanCoffee 6x1kg",
+            "itemPrice": 400,
+            "itemQuantity": 2,
+            "itemType": "coffee",
+            "itemWeight": 15,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
+          }
+        ]
+      }
+      ]
+  }
+]
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "eb7a0e88612c4e888f04b98387099fd1",
+            "orderNumber": "PPPL0001",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "hasError": false
+}
+
+```
+> Partial Success Response
+
+```json
+{
+    "status": 207,
+    "message": "Order(s) created partially",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "orderNumber": "ww1220",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 1,
+            "referenceId": "af7065ad4f3945a889ec25c323aa7b68",
+            "orderNumber": "ww1244",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        },
+        {
+            "index": 2,
+            "referenceId": "a4e6dc610c854166a7957b9876aa4ce5",
+            "orderNumber": "ww1234",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD"
+        }
+    ],
+    "error": [
+        {
+            "index": 3,
+            "orderNo": "ww1229",
+            "orderState": "FORWARD",
+            "shipmentOrderTypeCd": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverBranch",
+                    "message": [
+                        "Deliver Branch is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "orderNo": "PPPL0001",
+            "orderState": "FORWARD",
+            "shipmentOrderTypeCd": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliveryType",
+                    "message": [
+                        "DeliveryType is invalid"
+                    ]
+                },
+                {
+                    "key": "distributionCenter",
+                    "message": [
+                        "Distribution Center is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+With This API you can create Orders that have to be Pickedup from and Delivered directly to Customer locations without being dropped of at a branch or Distribution Center in between.
+
+You will have to pass the Pickup and Deliver Customer details in the API to create a Point to Point type of Order.
+
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+orderNo | String | 100 | Mandatory |  This is the order No.
+awbNumber | String | 1000 | Optional | This is the airway Bill No.
+shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+distributionCenter | String | 255 | Mandatory | This is the distribution center's name
+packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
+packageVolume | Double | 10 | Optional | This is the volume of package in CC
+packageValue | Double | 10 | Optional | This is the value of package
+numberOfItems | Integer | 20 | Optional | This is the number of crates
+paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
+cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
+pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
+pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Mandatory | Pickup account code
+pickupAccountName | String | 255 | Conditional Mandatory | Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupEmail| String | 100 | Optional | Email of the merchant
+pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
+pickupApartment | String | 512 | Conditional Mandatory | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Optional | This is the pickup location's  landmark.
+pickupLocality | String | 512 | Conditional Mandatory | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | This is the pickup location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupPinCode | String | 20 | Conditional Mandatory | This is the pickup location's pincode. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the pickup location.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup location.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example -  ‘CUSTOMER’.
+deliverAccountCode | String | 255 | Mandatory | Customer ID of the Delivery Customer.
+deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail| String | 100 | Optional | Email of the customer
+deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
+deliverApartment | String | 512 | Conditional Mandatory | This is the delivery customer location's apartment details. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory | This is the delivery customer location's Street name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLandmark | String | 512 | Optional | This is the delivery customer location's Landmark.
+deliverLocality | String | 512 | Conditional Mandatory | This is the delivery customer location's Locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | This is the delivery customer location's City. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | This is the delivery customer location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | This is the delivery customer location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverAddressTimezone | String | | Optional | The timezone of the delivery location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+
+
+#### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | These are the order crates.
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | This is the crate code for a crate.
+shipmentCrateMappings.crateAmount | Double |  | Mandatory | This is the crate amount for a crate.
+shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | This is the Number of items in the crate.
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | This is the crate item code.
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | This is the crate item name.
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This is the crate item price.
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
 
 
 
@@ -3961,7 +4597,7 @@ This API can also be used for single Pick Up location and single destinaton.
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------| ------- |------- | ----------
-clientCode | String |255 | Optional | The account for which the Order is being created.
+clientCode | String |255 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
 parentOrderNo | String | 255 | Mandatory | This is the Order No.
 awbNumber | String | 1000 | Optional | If you want a AWB no. to be associated with an order, you can pass the same here.
 shipmentOrderDt | String | | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
@@ -4348,16 +4984,44 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 
 
 
-> Response
+> Success Response
 
 ```json
 {
-  "status": 200,
-  "message": "success",
-  "hasError": false
+    "status": 200,
+    "message": "Order updated successfully",
+    "moreResultsExists": false,
+    "data": [
+        17055042
+    ],
+    "hasError": false
 }
 
 ```
+
+> Failure Response
+
+```json
+{
+    "status": 400,
+    "message": "Referenceids does not exists",
+    "moreResultsExists": false,
+    "error": {
+        "order_0": [
+            {
+                "key": "04c1c0c283a34769a5baca01c987b51a",
+                "message": [
+                    "referenceId.doestnot.exists"
+                ]
+            }
+        ]
+    },
+    "hasError": true
+}
+
+```
+
+
 With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.
 
@@ -4769,6 +5433,159 @@ The images for the EPODs and ESIGNs will be downloaded in .png formats when unzi
 In any browser just hit the url and zip file download will start automatically.<br>
 In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
 
+### Get Custom Forms
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/customform/list
+```
+
+> Request Body
+
+```json
+{"orderReferenceId":["ce9e99c4b4924b23b0692fafa26e4d25"]}
+```
+
+> Response
+
+```json
+{
+    "status": 200,
+    "message": "success",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "referenceId": "ce9e99c4b4924b23b0692fafa26e4d25",
+            "tripName": "TRIP-19107",
+            "orderNo": "ORD_188",
+            "deliveryMediumName": "Bishwajeet",
+            "status": "DELIVERED",
+            "results": [
+                {
+                    "event": "UNLOAD_AFTER",
+                    "moduleName": "ORDERS",
+                    "formName": "unloadtesrt",
+                    "formStatus": "ACTIVE",
+                    "formdata": [
+                        {
+                            "field": "text",
+                            "value": "Test Form"
+                        }
+                    ],
+                    "formSubmissionDt": 1552031091965
+                },
+                {
+                    "moduleId": 8043067,
+                    "event": "ESIGN_AFTER",
+                    "moduleName": "ORDERS",
+                    "formName": "datePicker",
+                    "formStatus": "ACTIVE",
+                    "formdata": [
+                        {
+                            "field": "date",
+                            "value": "1554834600000",
+                            "type": "DATE"
+                        },
+                        {
+                            "field": "text",
+                            "value": "test"
+                        }
+                    ],
+                    "formSubmissionDt": 1552031112446
+                },
+                {
+                    "moduleId": 8043067,
+                    "event": "PAYMENT_AFTER",
+                    "moduleName": "ORDERS",
+                    "formName": "Customer Feedback",
+                    "formStatus": "ACTIVE",
+                    "formdata": [
+                        {
+                            "field": "orderCollectedBy:",
+                            "value": "test"
+                        },
+                        {
+                            "field": "gender",
+                            "value": "Male",
+                            "type": "RADIO"
+                        },
+                        {
+                            "field": "itemCount",
+                            "value": "58"
+                        },
+                        {
+                            "field": "e-Signature",
+                            "value": "8043067_PAYMENT_AFTER_e-Signature_2019_03_08_13_15_27.jpg",
+                            "type": "IMAGE"
+                        },
+                        {
+                            "field": "image",
+                            "value": "ORD_188_PAYMENT_AFTER_image_2019_03_08_13_15_42_211_camera.jpg",
+                            "type": "IMAGE"
+                        }
+                    ],
+                    "formSubmissionDt": 1552031146897
+                },
+                {
+                    "moduleId": 8043067,
+                    "event": "EPOD_AFTER",
+                    "moduleName": "ORDERS",
+                    "formName": "Customer Detail",
+                    "formStatus": "ACTIVE",
+                    "formdata": [
+                        {
+                            "field": "checkbox",
+                            "value": "Options1",
+                            "type": "CHECKBOX"
+                        }
+                    ],
+                    "formSubmissionDt": 1552031150616
+                }
+            ]
+        }
+    ],
+    "hasError": false
+}
+```
+
+With this API you can fetch the details of Custom Forms associated with your Orders by passing the Order reference IDs of the required Orders.
+
+For example, if you capture the parking or toll charges against an Order using custom forms in the TrackNext application, you can fetch the details of that data with this API. 
+
+The details of the form data filled when submitting a custom form are present inside the formdata object in the API response. 
+The 'field' key denotes the field name code that this particular element refers to.
+The 'value' key denotes the data that was input when filling this 'field'
+The 'type' key denotes the data type of the data captured.
+
+Date fields stored at the custom form level will be returned in EPOCH format.
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/customform/list`
+
+
+#### Request Body
+
+Parameter | DataType  |  Description
+-----------|-------| ----------
+referenceId | String | The reference ID of the Order.
+tripName | String |Name of the trip the Order is associated with.
+orderNo | String | Order number.
+deliveryMediumName | String | Name of the Delivery Associate.
+status | String | Order status.
+results | List |This contains the results object.
+results.event | String | This is the event that the cusomt form was associated with. These can be CHECKIN_AFTER, ESIGN, EPOD, LOAD, UNLOAD, CASH_COLLECTED, EPOP, NOTPICKUP, NOTDELIVER, DELIVERED, PICKEDUP, PARTIAL_DELIVER, PAYMENT, TRIPSTART, TRIPEND
+results.moduleName | String | Name of the custom form Module. Will be hardcoded to 'ORDERS' if Order reference IDs are passed in the request body.
+results.formName | String | Name of the custom form that was set when creating the template in LogiNext Mile.
+results.formStatus | String | This will be hardcoded to 'ACTIVE' if the custom form is currently acitve. If the custom form has been deactivated this will be 'INACTIVE'.
+results.formSubmissionDt | String | Form submission date in EPOCK format.
+results.formdata | List | This list contains the custom form specific data associated with the order.
+results.formdata.field | String | Field name code.
+results.formdata.value | String | Field value that was filled when submitting the form.
+results.formdata.type | String | Data type of the input field.
+
 
 ## Manifest
 
@@ -4928,7 +5745,6 @@ deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be mark
     "status": 200,
     "message": "Success",
     "data": {
-    "tripId": 410840,
     "tripName": "VILE PARLE WEST-TRIP-13924",
     "referenceId": "2becf481189f4525a23889a35c554e61",
     "status": "NOTSTARTED",
@@ -5337,20 +6153,10 @@ https://products.loginextsolutions.com/TrackingApp/track/mobile/put
 
 ```json
 {
-    "status": 200,
-    "data": {
-        "msg": [
-            "2018-11-11T07:20:59",
-            "2018-11-11T07:21:19",
-            "2018-11-11T07:21:39"
-        ],
-        "previousTimes": [
-            1512976859528,
-            1512976879521,
-            1512976899532
-        ]
-    },
-    "hasError": false
+    "status": 500,
+    "message": "Error occured!",
+    "moreResultsExists": false,
+    "hasError": true
 }
 
 ```
@@ -5371,12 +6177,12 @@ longitude|Double | 13,10 |Mandatory|The geocoordinate(Longitude) of the Delivery
 trackingDt|String| | Mandatory|This is the timestamp of the tracking Date and Time in UTC and the mentioned Format. Sample Value - 2018-12-11T07:21:39Z
 currentTime|Long| |Mandatory|This is the current timestamp at the time of sending the tracking data to LogiNext. Sample Value - 2018-12-11T07:21:39Z
 speed|Number| | Mandatory| The speed of the Delivery Associate at the time of sending the tracking data.Current Speed in meters / second. This can be received from the Android system classes. More information on this can be found in the Android documentation <a href="https://developer.android.com/reference/android/location/Location.html#getSpeed()" target="_top">here
-battery|Integer| 2 |Mandatory|This is the pattery percentage on the Delivery Associate's phone at the time of sending the tracking point. Sample Value - 92. MOre details on this can be found here<a href="https://developer.android.com/reference/android/net/ConnectivityManager#TYPE_MOBILE" target="_blank">.
-accuracy|Number| | Mandatory|Estimated accuracy of the current location in meters Sample Value - 23.878000259
-altitude|Number| | Optional|In meters Sample Value - 235
-bearing |Number| | Optional|Horizontal distance of travel of the device, in degrees. If the phone has this sensor, then send this value. Sample Value - Any value between 0 to 3600. 0 is North.  Consider Clockwise movement.
-locationSource|String| | Optional|Location Provider Values like - “fused” , “wifi”, “gps”
-type |String| |Mandatory| | The tracking type field is used to identify if the tracking is coming from the Delivery Associate's phone or some other device. This is to be hardcoded to “MOBREG” in case the tracking points will be coming from the phone.
+battery|Integer| 3 |Mandatory|This is the pattery percentage on the Delivery Associate's phone at the time of sending the tracking point. Sample Value - 92. MOre details on this can be found here<a href="https://developer.android.com/reference/android/net/ConnectivityManager#TYPE_MOBILE" target="_blank">.
+accuracy|Number| 13,10 | Mandatory|Estimated accuracy of the current location in meters Sample Value - 23.878000259
+altitude|Number| 10 | Optional|In meters Sample Value - 235
+bearing |Number| 10 | Optional|Horizontal distance of travel of the device, in degrees. If the phone has this sensor, then send this value. Sample Value - Any value between 0 to 3600. 0 is North.  Consider Clockwise movement.
+locationSource|String| 32 | Optional|Location Provider Values like - “fused” , “wifi”, “gps”
+type |String| 40 |Mandatory| The tracking type field is used to identify if the tracking is coming from the Delivery Associate's phone or some other device. This is to be hardcoded to “MOBREG” in case the tracking points will be coming from the phone.
 isFirstPointFl|Boolean| 1 | Mandatory| This is used to identify if the current tracking data being sent from the Delivery Associate's device is the first update after every login.|First Point - 0 Then there afterwards - 1 Sample Value -  0 (= False)  1 (= True)
 lastLatitude|Double| 13,10 | Mandatory| Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 19.1119129
 lastLongitude| Double | 13,10 | Mandatory|  Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 72.9094089
@@ -5392,7 +6198,7 @@ dataNetworkType|String| |Optional|Data Connectivity Type. Sample Values - 1xRTT,
 isGsmFl|Boolean| 1 | Optional|Current connectivity type. Sample Value - 0 (= False) 1 (= True). This can be received from the Android core Connectivity Manager <a href="https://developer.android.com/reference/android/telephony/SignalStrength.html#isGsm()" target="_blank">here.
 isActiveNetworkMetered|Boolean| 1 |Optional| Is the currently active data network is metered. A network is classified as metered when the user is sensitive to heavy data usage on that connection due to monetary costs, data limitations or battery/performance issues. Sample Value -  0 (= False)  1 (= True). This can be received from the Android core Connectivity Manager APIs <a href="https://developer.android.com/reference/android/net/ConnectivityManager#isActiveNetworkMetered()" target="_blank">here.
 appStatus| Integer||Optional| Activity status of the app (Foreground, Background, Service, Gone, Sleep, Visible, Unknown). Sample Values - 100 (~ Foreground) 400 (~ Background) 500 (~ Empty) 125 (~ Foreground_Service) 1000 (~ Gone) 200 (~ Visible). More information on this can be found on the Android Activity Manager documentation <a href="https://developer.android.com/reference/android/app/ActivityManager.RunningAppProcessInfo" target="_blank">here.
-imei|String||Mandatory|IMEI number for device Sample Value - 911380134661315
+imei|String|40|Mandatory|IMEI number for device Sample Value - 911380134661315
 
 
 ### ESIGN / EPOD Upload
@@ -6573,21 +7379,27 @@ Note -
 6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.
 
 
-## Create Order
+## Orders
+
+### Create
 
 > Response
 
 ```json
 {
-  "orderNo": "CATS487",
-  "orderState": "FORWARD",
-  "orderLeg": "DELIVER",
-  "awbNumber": "AW234-TG",
   "notificationType": "ORDERCREATIONNOTIFICATION",
   "timestamp": "2018-06-25 07:31:39",
+  "orderNo": "CATS487",
   "referenceId": "143b28d87ghf46098de38b0ccce51a5d",
-  "deliverAccountCode": "B1372"
-  "deliverAddressId": "HOME"
+  "awbNumber": "AW234-TG",
+  "orderState": "FORWARD",
+  "orderLeg": "DELIVER",
+  "pickupAccountCode": "JAMES1",
+  "pickupAddressId": "HOME",
+  "deliverAccountCode": "WAYNE",
+  "deliverAddressId": "OFFICE",
+  "returnAccountCode": "JAMES1",
+  "returnAddressId": "P1947"
 }
 ```
 
@@ -6595,24 +7407,28 @@ This notification is sent when an order is created.
 
 Param | DataType | Description
 --------- | ------- | ----------
-orderNo | String | Order No.
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'ORDERCREATIONNOTIFICATION'
+timestamp | String | this represents the Order creation timestamp
+orderNo | String | This is the Order No.
+referenceId | String | Order reference id.
+awbNumber | String | AWB Number for the order
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
-awbNumber | String | AWB Number for the order
-notificationType | String | ORDERCREATIONNOTIFICATION
-timestamp | String | Order creation timestamp
-referenceId | String | Order reference id.
-deliverAccountCode| String| Custoemr ID of the deliver customer
-deliverAddressId | String | Address ID of the delivery customer
+pickupAccountCode| String| Custoemr ID of the pickup customer. This field will be sent if the Order has a Pickup leg.
+pickupAddressId | String | Address ID of the delivery customer. This field will be sent if the Order has a Pickup leg.
+deliverAccountCode| String| Custoemr ID of the deliver customer. This field will be sent if the Order has a Deliver leg.
+deliverAddressId | String | Address ID of the delivery customer. This field will be sent if the Order has a Deliver leg
+returnAccountCode| String| Custoemr ID of the deliver customer. This field will be sent if the Order has a Return leg i.e the is Return allowed option was selected at the time of Order creation.
+returnAddressId | String | Address ID of the delivery customer. This field will be sent if the Order has a Return leg i.e the is Return allowed option was selected at the time of Order creation.
 
-## Update Order
+### Update
 
 > Response
 
 ```json
 {
-  "orderNo": "P_Aetos1",
-	"notificationType": "ORDERUPDATENOTIFICATION",
+  "notificationType": "ORDERUPDATENOTIFICATION",
+  "orderNo": "CATS487",
   "orderReferenceId": "93780c3292ba4ee4809ad125ef97",
   "vehicleNumber":"MH04DY69",
 	"awbNumber": "AWB001",
@@ -6647,7 +7463,6 @@ deliverAddressId | String | Address ID of the delivery customer
 	"startTimeWindow": "2017-08-17 02:00:00",
 	"endTimeWindow": "2017-08-17 03:00:00",
 	"tripReferenceId": "c1aa3beae7844b77a90bb6fe0518992c",
-	"orderReferenceId": "b7b15a79d6734297a00a93755856e8c8",
 	"numberOfItems": 1,
 	"packageWeight": 10.0,
 	"packageVolume": 4500.0,
@@ -6671,19 +7486,18 @@ This notification is sent when an order is updated.
 
 Param | DataType | Description
 --------- | ------- | ----------
+notificationType | String| This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'ORDERUPDATENOTIFICATION' 
 orderNo | String | Order No.
-notificationType | String| eg. ORDERUPDATENOTIFICATION
+orderReferenceId | String | Order reference id.
 vehicleNumber | String | Vehicle Number
 awbNumber | String | AWB Number
 deliveryMediumName | String | Delivery Associate's name
 phoneNumber | Integer | Delivery Associate's phone number
 orderState | String | eg. FORWARD or REVERSE
-clientId | Integer | Client Id
 shipmentCrateMapping | Array | Array of String of mapped crate
 startTimeWindow | String | Order's start time window
 endTimeWindow | String  | Order's end time window
-tripReferenceId | String | Trip Reference Id
-orderReferenceId | String | Order Reference Id
+tripReferenceId | String | Trip Reference Id. This will be sent if the Order is currently part of a Trip.
 numberOfItems | Integer | No. of Orders / Items
 packageWeight | Double | Package weight
 packageVolume | Double | Package volume
@@ -6696,18 +7510,17 @@ address | String  | Client Address
 deliveryType | String  | Delivery type
 shipmentNotes | String  | eg . PickedUp
 assignmentMethod | String  | Order assigned to the Trip. eg MANUAL
-calculatedStartDt | String  | Calculated start date
+calculatedStartDt | String  | This is the Calculated start date
 calculatedEndDt | String  | Calculated end date
 orderStatus | String | The current state of the Order.
 
 
-## Accept Order
+### Accepted
 
 > Response
 
 ```json
 {
-  "clientShipmentId": "Order_001",
   "status": "ORDER ACCEPTED",
   "awbNumber": "AWB123456789",
   "vehicleNumber":"A123D2",
@@ -6749,7 +7562,7 @@ pickupEndDate | String | Planned ETA for the Delivery Associate to complete the 
 orderReferenceId | String | Order Reference Id
 
 
-## Reject Order
+### Rejected
 
 > Response
 
@@ -6779,25 +7592,26 @@ orderReferenceId | String | Order Reference Id
 
 
 
-## Cancel Order
+### Cancel
 
 > Response
 
 ```json
 {
-  "orderNo": "Order_001",
   "notificationType": "CANCELLEDNOTIFICATION",
-  "orderLeg": "DELIVER",
+  "cancellationTime": "2016-12-05 12:59:16",
+  "orderNo": "CATS487",
+  "orderReferenceId": "cd81bd6ab1104dc3841e3ae405b",
   "awbNumber": "AWB123456789",
-  "deliveryMediumName": "Abhi.P",
-  "phoneNumber": "9922904337",
+  "orderLeg": "DELIVER",
   "orderState": "FORWARD",
+  "tripName": "TRIP-809",
+  "deliveryMediumName": "Abhi.P",
+  "customerCode": "Cust122435",
   "customerName": "Name",
+  "phoneNumber": "9922904337",
   "reason": "Customer Unavailable",
   "reasonCd": "Customer Unavailable Cd",
-  "tripName": "TRIP-809",
-  "customerCode": "Cust122435",
-  "cancellationTime": "2016-12-05 12:59:16",
   "cancelledBy": "M. Smith",
   "isCancelOccurAfterPickupFl": false
 }
@@ -6809,29 +7623,31 @@ This notification is sent when an order is cancelled.
 
 Param | DataType | Description
 --------- | ------- | ----------
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'CANCELLEDNOTIFICATION'.
+cancellationTime | String | Cancellation timestamp. This will have the time in UTC.
 orderNo | String | Order No.
-notificationType | String | CANCELLEDNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER
+orderReferenceId | String | Order Reference Id
 awbNumber | String | AWB Number for the order
-deliveryMediumName | String | Name of Delivery Associate
-phoneNumber | Long | Delivery Associate's phone no.
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
 orderState | String | State of order. Ex: FORWARD, REVERSE
+tripName | String | Name of the Trip the Order is currently in.
+deliveryMediumName | String | Name of Delivery Associate. This will be sent if the Order was assigned to a Delivery Associate when it was cancelled.
+phoneNumber | Long | Delivery Associate's phone no.
 customerName | String | Name of customer
 reason | String | Reason for the order being cancelled
 reasonCd | String | Reason code
-cancellationTime | String | Cancellation timestamp
 cancelledBy | String | Cancelled by user name
 isCancelOccurAfterPickupFl | Boolean | whether order was cancelled after Pickup
 
 
-## Check In
+### Check In
 
 > Response
 
 ```json
 
 {
-  "orderNo": "GW458R6",
+  "orderNo": "CATS487",
   "notificationType": "CHECKINPUSHNOTIFICATION",
   "awbNumber": "435-16685675",
   "tripName": "TRIP-15264",
@@ -6865,11 +7681,11 @@ parentOrderNo | String | This is the order number of the parent order.
 
 
 
-## Load Items
+### Load Items
 
 ```json
 {
-  "orderNo": "Order_0001",  
+  "orderNo": "CATS487",  
   "orderState":"FORWARD",
   "orderLeg":"PICKUP",
   "awbNumber":"AWB123456789",
@@ -6909,7 +7725,7 @@ orderNo | String | Order No.
 orderState | String | State of order. Ex: FORWARD, REVERSE
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
-notificationType | String | LOADITEMNOTIFICATION
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'LOADITEMNOTIFICATION'.
 orderReferenceId | String | Order Reference Id
 shipmentCrateMapping.crateCd | String | Crate code
 shipmentCrateMapping.crateType | String | Crate type
@@ -6922,7 +7738,7 @@ shipmentCrateMapping.shipmentlineitems.itemName | String | Name of item
 shipmentCrateMapping.shipmentlineitems.itemPrice | Double | Item price
 shipmentCrateMapping.shipmentlineitems.itemQuantity | Integer | Item quantity
 
-## Load Complete
+### Load Complete
 
 ```json
 {
@@ -6953,17 +7769,17 @@ phoneNumber | Long | Delivery Associate's phone no.
 driverName | String | Driver's name
 vehicleNumber | String | Vehicle no.
 revisedEta | Date | Revised ETA
-notificationType | String | LOADINGDONENOTIFICATION
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'LOADINGDONENOTIFICATION'.
 
-## Delivered
+### Delivered
 
 > Response
 
 ```json
 {
-  "orderNo": "Order_1001",
-  "latitude": 19.1118589,
-  "longitude": 72.9095639,
+  "orderNo": "CATS487",
+  "latitude":41.882702,
+  "longitude":-87.619392,   
   "notificationType": "DELIVEREDNOTIFICATION",
   "orderLeg": "DELIVER",
   "awbNumber": "AWB012345678",
@@ -7000,7 +7816,7 @@ Key | DataType | Description
 orderNo | String | Order No.
 latitude | Double | Latitude where order was delivered
 longitude | Double | Longitude where order was delivered
-notificationType | String | DELIVEREDNOTIFICATION
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'DELIVEREDNOTIFICATION'.
 orderLeg | String | Order leg, Possible values : DELIVER, PICKUP
 awbNumber | String | Awb No.
 customerComment | String | Customer comments
@@ -7023,7 +7839,7 @@ paymentSubType | String | Possible values : CASH, CARD_AUTO, CARD_MANUAL,MOMOE,M
 orderReferenceId | String | Order Reference Id
 
 
-## Partially Delivered
+### Partially Delivered
 
 > Response
 
@@ -7098,7 +7914,7 @@ Key | DataType | Description
 --------- | ------- |-------
 orderNo | String | Order No.
 statusCd | String | PARTIALLYDELIVERED
-notificationType | String | PARTIALDELIVERYNOTIFICATION
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'PARTIALDELIVERYNOTIFICATION'.
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 customerComments | String | Customer comments
@@ -7145,15 +7961,15 @@ customerEmailAddress | String | Customer email address
 customerPhoneNumber | String | Customer phone number
 paymentSubType | String | e.g. CASH, CARD_AUTO, CARD_MANUAL,MOMOE,MSWIPE
 
-## Not Delivered
+### Not Delivered
 
 > Response
 
 ```json
 {
-  "orderNo": "Order001",
-  "latitude": 19.1118589,
-  "longitude": 72.9095639,
+  "orderNo": "CATS487",
+  "latitude":41.882702,
+  "longitude":-87.619392,   
   "notificationType": "NOTDELIVEREDNOTIFICATION",
   "orderLeg": "DELIVER",
   "clientId": 209
@@ -7186,7 +8002,7 @@ Key | DataType | Description
 orderNo | String | Order No.
 latitude | Double | Latitude where order was marked not delivered
 longitude | Double | Longitude where order was marked not delivered
-notificationType | String | NOTDELIVEREDNOTIFICATION
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'NOTDELIVEREDNOTIFICATION'.
 orderLeg | String | Order leg Ex: PICKUP, DELIVER
 awbNumber | String | AWB Number for the order
 clientId | String | Client ID
@@ -7204,33 +8020,34 @@ recipientName | String | Name of recipient
 branchName | String | Hub branch name
 orderReferenceId | String | Order Reference Id
 
-## Pickedup
+### Pickedup
 
 > Response
 
 ```json
 {
-  "orderNo": "Order001",
-  "latitude": 19.1119015,
-  "longitude": 72.9095815,
-  "pickedUpTime": "2016-11-19 06:33:48",
-  "status": "PICKEDUP",
   "notificationType": "PICKEDUPNOTIFICATION",
-  "orderLeg": "PICKUP",
+  "orderNo": "CATS487",
+  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
   "awbNumber": "AWB001",
+  "pickedUpTime": "2016-11-19 06:33:48",
+  "latitude":41.882702,
+  "longitude":-87.619392,   
+  "status": "PICKEDUP",
+  "orderLeg": "PICKUP",
+  "deliveryMediumName": "James",
   "customerComment": "Test user comments",
   "customerRating": 0,
-  "deliveryMediumName": "TestDB",
   "phoneNumber": 1234565435,
   "orderState": "FORWARD",
   "branchName": "1008",
-  "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
+  
 }
 
 
 ```
 
-This notification is sent when an order is picked up by a delivery Associate.
+This notification is sent when an order is picked up by a Delivery Associate.
 
 
 
@@ -7238,24 +8055,25 @@ This notification is sent when an order is picked up by a delivery Associate.
 
 Key | DataType | Description
 --------- | ------- |-------
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'PICKEDUPNOTIFICATION'.
 orderNo | String | Order No.
-latitude | Double | Latitude where order was pickedup
-longitude | Double | Longitude where order was pickedup
-pickedUpTime | String | Pickup order timestamp
-status | String | PICKEDUP
-notificationType | String | PICKEDUPNOTIFICATION
-orderLeg | String | Order leg Ex: PICKUP, DELIVER
+orderReferenceId | String | Order Reference Id
 awbNumber | String | AWB Number for the order
-customerComments | String | Customer comments
-customerRating | Double | Rating provided by customer
+pickedUpTime | String | Timestamp of the event when the Order was marked Pickedup by the Delivery Associate.
+latitude | Double | Geo coordinates(latitude) of the location where order was marked Pickedup.
+longitude | Double | Geo coordinates(longitude) of the location where order was marked Pickedup.
+status | String | The new status of the Order. Will be 'PICKEDUP' in case of this webhook.
+orderLeg | String | Order leg Ex: PICKUP, DELIVER
+customerComments | String | Customer comments provided by the Customer during the Pickup leg of the Order.
+customerRating | Double | Rating provided by customer in the Pickup leg of the Order
 deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | State of order. Ex: FORWARD, REVERSE
-branchName | String | -
-orderReferenceId | String | Order Reference Id
+branchName | String | Distribution Center of the Order.
 
 
-## Not Pickedup
+
+### Not Pickedup
 
 > Response
 
@@ -7300,33 +8118,211 @@ reason | String | Reason for order not pickedup
 reasonCd | String | Reason code
 orderReferenceId | String | Order Reference Id
 
+### Allocation End
+
+> Response
+
+```json
+
+{
+ "orderNo": "ORD00000002",
+ "notificationType": "ORDERALLOCATIONSTOP",
+ "orderReferenceId": "d39d14f7f08542b2b03e7e45e5aa4416",
+ "lastRunDt": "2018-06-05T07:19:13Z",
+ "isMaxAttemptsExhausted": false
+}
+```
+This notification is triggered when the Auto Allocation process for an Order ends and a driver is not assigned to the order.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+orderNo | String>|  Order No.s.
+notificationType | String |  ORDERALLOCATIONSTOP
+orderReferenceId | String |  Reference ID of the order.
+lastRunDt | String |  Last run time of the allocation engine
+isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
+
+
+## Trips
+
+### Start
+
+> Response
+
+```json
+{
+  "latitude":41.882702,
+  "longitude":-87.619392,   
+  "notificationType": "STARTTRIP",
+  "deliveryMediumName": "Suraj Singh",
+  "phoneNumber": 1234567546,
+  "startTime": "2016-11-19 06:42:44",
+  "tripName": "TRIP-84",
+  "vehicleNumber":"MH084819",
+  "driverName":"Rahul",
+  "clientShipmentIds": [
+    "Order001",
+    "Order002"
+  ],
+  "branchName": "Vikhroli"
+}
+
+```
+
+This notification is sent when a trip is started.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+clientShipmentIds | List<String> |  Order No.s.
+notificationType | String |  STARTTRIP
+tripName | String |  Trip name
+vehicleNumber | String |  Vehicle no.
+driverName | String |  Name of driver
+deliveryMediumName | String |  Name of Delivery Associate
+phoneNumber | Long | Phone no.
+startTime | String |  Trip start time
+
+
+### Stop
+
+> Response
+
+```json
+{
+  "notificationType": "DELIVEREDNOTIFICATION",
+  "deliveryMediumName": "John",
+  "endTime": "2016-11-19 06:45:10",
+  "tripName": "TRIP-95",
+  "vehicleNumber": "MH014841",
+  "driverName": "",
+  "clientShipmentIds": [
+    "Order001",
+    "Order002"
+   ]
+}
+```
+
+This notification is sent when a trip is ended.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+clientShipmentIds | List<String> |  Order Nos.
+notificationType | String |  DELIVEREDNOTIFICATION
+tripName | String |  Trip name
+vehicleNumber | String |  Vehicle no.
+driverName | String |  Name of driver
+deliveryMediumName | String |  Name of Delivery Associate
+endTime | String |  Trip end time
+
 ## Route Planning
 
+### Route Planning Webhook
+
+The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.
+
+Note that a single Route Planning operation can have multiple Route Planning webhooks generated for it. This will happen in a case where more than 30 Trips are created as part of a Route Planning operation. Each Route Planning webhook will hold the details of not more than 30 trips. 
+
+The Route Planning webhook also provides the details regarding how many total pages of the webhook were generated as part of the Route Planning operation. This can be found from the 'currentPageIndex' and 'totalPages' keys in the webhook. Each page will be sent to the URL configured in LogiNext to receive the webhook.
+
+The list of unassigned Orders will be sent in the 'unassignmentReasons' list in the first page of the webhook. Look for the 'currentPageIndex' key having a value of 1 to find this list. Please note that if all the Orders were assigned and no Orders were left unassigned as part of the Route Planning operation, the 'unassignmentReasons' list will not be sent in the webhook.
 
 > Response
 
 ```json
 {
   "notificationType": "DELIVERYPLANNING",
+  "routeName": "ROUTEP1",
+  "totalTripCount": 1,
+  "currentTripCount": 1,
+  "currentPageIndex": 1,
+  "totalPages": 1,
+  "totalOrderCount": 100,
+  "assignedOrderCount": 50,
+  "unassignedOrderCount": 50,
   "notificationDetails": [
     {
-      "tripName": "TRIP-46",
-      "deliveryMediumName": "Ramesh",
-      "referenceId": "d1c196e8bf384c40ae7f7ca0fd1a3d58",
-      "phoneNumber": "9876543213",
-      "driverName": "Matt",
-      "vehicleNumber": "MH-13213",
+      "tripName": "TRIP-7736",
+      "referenceId": "225dc58843234f4f80158940d9ed123b",
+      "deliveryMediumName": "Hyc_Mld_Superman_12",
+      "phoneNumber": "9292929292",
       "orderDetails": [
         {
-          "orderNo": "GRU453D",
-          "startTimeWindow": "2018-04-14 11:18:00",
-          "endTimeWindow": "2018-04-14 17:45:00",
-          "calculatedStartDate": "2018-04-14 11:18:00",
-          "calculatedEndDate": "2018-04-14 17:45:00",
-          "deliveryOrder":1,
-          "latitude": 19.1239285,
-          "longitude": 72.90944069999999
+          "packageStatusCd": "INTRANSIT",
+          "originLatitude": 19.171036,
+          "originLongitude": 72.835163,
+          "destinationLatitude": 19.126844,
+          "destinationLongitude": 72.901015,
+          "projectDistance": 2.0882,
+          "deliveryOrder": 21,
+          "shipmentOrderTypeCd": "DELIVER",
+          "startTimeWindow": "2019-03-10 14:54:00",
+          "endTimeWindow": "2019-03-11 00:54:00",
+          "orderNo": "powai",
+          "clientName": "Capillary Tech.",
+          "clientCity": "mumbai",
+          "paymentType": "Prepaid",
+          "latitude":41.882702,
+          "longitude":-87.619392,
+          "calculatedStartDate": "2019-03-04 09:36:41",
+          "calculatedEndDate": "2019-03-10 10:28:00"
+        },
+        {
+          "packageStatusCd": "INTRANSIT",
+          "originLatitude": 19.171036,
+          "originLongitude": 72.835163,
+          "destinationLatitude": 19.116835,
+          "destinationLongitude": 72.910467,
+          "projectDistance": 2.4557,
+          "deliveryOrder": 20,
+          "shipmentOrderTypeCd": "DELIVER",
+          "startTimeWindow": "2019-03-10 14:54:00",
+          "endTimeWindow": "2019-03-11 00:54:00",
+          "orderNo": "dmart",
+          "clientName": "Capillary Tech.",
+          "clientCity": "mumbai",
+          "paymentType": "Prepaid",
+          "latitude": 19.116835,
+          "longitude": 72.910467,
+          "calculatedStartDate": "2019-03-04 09:36:41",
+          "calculatedEndDate": "2019-03-10 10:03:00"
+        },
+        {
+          "packageStatusCd": "INTRANSIT",
+          "originLatitude": 19.171036,
+          "originLongitude": 72.835163,
+          "destinationLatitude": 19.132447,
+          "destinationLongitude": 72.91286,
+          "projectDistance": 27.2243,
+          "deliveryOrder": 19,
+          "shipmentOrderTypeCd": "DELIVER",
+          "startTimeWindow": "2019-03-10 14:54:00",
+          "endTimeWindow": "2019-03-11 00:54:00",
+          "orderNo": "iit",
+          "clientName": "Capillary Tech.",
+          "clientCity": "mumbai",
+          "paymentType": "Prepaid",
+          "latitude": 19.132447,
+          "longitude": 72.91286,
+          "calculatedStartDate": "2019-03-04 08:10:41",
+          "calculatedEndDate": "2019-03-10 09:36:00"
         }
+      ],
+      "branchName": "1001",
+    }
+  ],
+  
+  "unassignmentReasons": [
+    {
+      "reasonCd": "ORDER_TIMEWINDOW_EXCEEDED",
+      "orderCount": 1,
+      "orderReferenceIds": [
+        "75fe20605f1d4c34b82fcf5df65269ee"
       ]
     }
   ]
@@ -7342,23 +8338,57 @@ orderReferenceId | String | Order Reference Id
 
 Key | DataType | Description
 --------- | ------- |-------
-notificationType | String |  DELIVERYPLANNING
+notificationType | String |  This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to 'DELIVERYPLANNING'
+routeName | String | This is the name of the Route 
+totalTripCount | Number |  This is the count of the total number of Trips created as part of the route planning operation. This will hold the count of all the trips created across all the webhooks generated for the current route plan.
+currentTripCount | Number | This is the count number of trips in the current webhook.
+currentPageIndex | Number |  This is the page index of the current route planning webhook.
+totalPages | Number | This is the total number of pages geneerated for the current route planning webhook. For example, this will be 4 if 100 trips were created as part of the route planning operation.
+totalOrderCount | Number | Total number of Orders considered in the Route planning
+assignedOrderCount | Number |  Number of Orders that got assignemd after the current Route Planning operation completed.
+unassignedOrderCount | Number |  Number of Orders that remained unassignemd after the current Route Planning operation completed.
 notificationDetails | List | Notification details
-tripName | String |  Trip name
-deliveryMediumName | String |  Name of Delivery Associate
-referenceId | String | Reference id of the trip
-phoneNumber | String | Phone no of Delivery Associate
-driverName | String |  Name of driver
-vehicleNumber | String |  Vehicle no.
-orderDetails | List | List of orders present in the trip
-orderNo | String |  Order no.
-startTimeWindow | String |  Estimated start time of order
-endTimeWindow | String |  Estimated end time of order
-deliveryOrder | Integer |  Delivery order
-latitude | Double | Order Latitude
-longitude | Double | Order Longitude
+notificationDetails.tripName | String |  This is the Trip name.
+notificationDetails.referenceId | String | Reference id of the trip
+notificationDetails.deliveryMediumName | String |  Name of Delivery Associate associated with the current Trip.
+notificationDetails.phoneNumber | String | Phone no of Delivery Associate
+notificationDetails.orderDetails | List | List of orders present in the trip
+originLatitude | Number |  Pickup location geolocation(latitude). 
+originLongitude |  Number |  Pickup location geolocation(longitude). 
+destinationLatitude |  Number |  Pickup location geolocation(latitude). 
+destinationLongitude |  Number |  Delivery location geolocation(latitude). 
+projectDistance|  Number |  Delivery location geolocation(latitude). 
+shipmentOrderTypeCd | String | Hardcoded to 'DELIVER for Delivery Orders and 'PICKUP' for Pickup Orders.
+startTimeWindow | String | Order Start Time Window. Format - "YYYY-MM-DD HH:MM:SS"
+endTimeWindow | String | Order End Time Window. Format - "YYYY-MM-DD HH:MM:SS",
+orderNo | String | Order Number
+paymentType | String | Payment Mode of the Order. Can be "Prepaid" or "COD"
+latitude | Double | Order geolocation(latitude). This will be same as the OriginLatitude for Pickup type Orders and the same as destinationLatitude for Deliver type of Orders.
+longitude | Double | Order geolocation(longitude). This will be same as the OriginLatitude for Pickup type Orders and the same as destinationLatitude for Deliver type of Orders.
+calculatedStartDate | String | The lastest updated ETA to start servicing the current Order. Format - YYYY-MM-DD HH:MM:SS
+calculatedEndDate | String | The lastest updated ETA to end servicing the current Order. Format - YYYY-MM-DD HH:MM:SS
+unassignmentReasons | List |
+unassignmentReasons.reasonCd | String | Reason code of the unassignment reason. This can be one of the following values
+unassignmentReasons.orderCount | Number | Number of Orders that were unassigned due to the current unassignment reason
+unassignmentReasons.orderReferenceIds | List | List of the ORder Reference IDs that remained unassigned due to the current unassignemnt reason
 
-## Route Planning - API
+
+Unassignment Key | Description
+--------- | -------
+REQUIRED_SKILL_NOT_FULLFILLED | No Delivery Associates were found with the required skillset match to fufill these Order
+INSUFFICIENT_TIME_WINDOW | The unassigned Orders could not be fulfilled in their given time windows.
+INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfill the Orders
+MAX_DISTANCE_NOT_FULFILLED | If a Maximum distance check was applied to the Delivery Associate, then Orders that remained unassigned due to this reason were because they were 
+BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfill these Orders
+NOT_GEOCODED | The Orders unassigned due to this reason were not geocoded in LogiNext
+GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.
+DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.
+ROUTE_MAX_DISTANCE_NOT_FULLFILLED |  Distance constraint between first Order location and last Order location was not met.
+PINCODE_MISMATCH | No Delivery Associates were found with the pincode preference of the Orders.
+CUSTOMER_BREAK_OVERLAP_TIMEWINDOW | Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.
+ORDER_TIMEWINDOW_EXCEEDED | Orders unassigned due to this reason could not be serviced in their respective time windows.
+
+### Route Planning - API
 
 > Response
 
@@ -7421,279 +8451,6 @@ route.shipments.shipmentType | String | Type of Shipment i.e. DELIVER, PICKUP
 unassigned | List | List of shipment IDs that are not assigned to any trip because of constraints
 hasError | Boolean | If true - There is error in processing your request. If false - The request is successfully processed
 
-## Allocation End
-
-> Response
-
-```json
-
-{
- "orderNo": "ORD00000002",
- "notificationType": "ORDERALLOCATIONSTOP",
- "orderReferenceId": "d39d14f7f08542b2b03e7e45e5aa4416",
- "lastRunDt": "2018-06-05T07:19:13Z",
- "isMaxAttemptsExhausted": false
-}
-```
-This notification is triggered when the Auto Allocation process for an Order ends and a driver is not assigned to the order.
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-orderNo | String>|  Order No.s.
-notificationType | String |  ORDERALLOCATIONSTOP
-orderReferenceId | String |  Reference ID of the order.
-lastRunDt | String |  Last run time of the allocation engine
-isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
-
-
-## Create Route
-
-> Response
-
-```json
-{
-  "notificationType": "CREATEROUTE",
-  "totalDistance": 651,
-  "routeConfigurationName": "DDI - DPI",
-  "routeReferenceId": "07ead36fdf6644d6b877ca3c14d16b8a",
-  "originName": "DDI71017",
-  "destinationName": "DPI66009",
-  "totalTime": 1122,
-  "originServiceTime": 62,
-  "intransitLocations": [
-    {
-      "sequence": 1,
-      "locationName": "DPI66080",
-      "transitTime": 100,
-      "transitDistance": 97,
-      "serviceTime": 10
-    },
-    {
-      "sequence": 2,
-      "locationName": "DPI66059",
-      "transitTime": 200,
-      "transitDistance": 34,
-      "serviceTime": 20
-    },
-    {
-      "sequence": 3,
-      "locationName": "DPI66134",
-      "transitTime": 300,
-      "transitDistance": 288,
-      "serviceTime": 30
-    }
-  ],
-  "destinationTranistTime": 400,
-  "destinationDistance": 232
-}
-
-```
-
-This notification is sent when a route is created in LogiNext.
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-notificationType | String |  CREATEROUTE
-totalDistance | String |  Total Distance of the Route
-routeConfigurationName | String |  Name of the Route
-routeReferenceId | String |  Reference ID of the Route
-originName | String |  Origin Hub of the route
-destinationName | String |  Destination Hub of the route
-totalTime | Long | total time
-originServiceTime | String |  Service time at the origin location
-intransitLocations | List<String> |  List of in transit hubs in the route.
-sequence | String |  Sequence of in transit hub.
-locationName | String |  Name of In transit hub.
-transitTime | String |  transit time to reach the hub.
-transitDistance | String |  transit distance to reach the hub.
-serviceTime | String |  service time at the hub.
-
-
-## Route Status.
-
-> Response
-
-```json
-{
-  "notificationType": "ROUTESTATUS",
-  "routeReferenceId": "7dd5e37fd8d641469a3195a236f2ab26",
-  "originName": "PT. Great Giant Livestock-GGL",
-  "destinationName": "PT. Great Giant Livestock-Bonanza Susu",
-  "newStatus": "INACTIVE",
-  "updateTime": "2018-06-27T17:45:08.520Z"
-}
-
-```
-
-This notification is sent when a route status is changed in LogiNext.
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-notificationType | String |  ROUTESTATUS
-routeReferenceId | String |  Reference ID of the route
-originName | String |  Origin Name 
-destinationName | String |  Destination Name
-newStatus | String |  Origin Hub of the route
-updateTime | String |  Timestamp of the update event
-
-Status | Description
---------- | ------- 
-ACTIVE | The Route is Active in the LogiNext system and can be selected for trips.
-INACTIVE | The Route is Inactive in the LogiNext system and cannot be selected for trips.
-
-
-
-## Start Trip
-
-> Response
-
-```json
-{
-  "latitude": 0,
-  "longitude": 0,
-  "notificationType": "STARTTRIP",
-  "deliveryMediumName": "Suraj Singh",
-  "phoneNumber": 1234567546,
-  "startTime": "2016-11-19 06:42:44",
-  "tripName": "TRIP-84",
-  "vehicleNumber":"MH084819",
-  "driverName":"Rahul",
-  "clientShipmentIds": [
-    "Order001",
-    "Order002"
-  ],
-  "branchName": "Vikhroli"
-}
-
-```
-
-This notification is sent when a trip is started.
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-clientShipmentIds | List<String> |  Order No.s.
-notificationType | String |  STARTTRIP
-tripName | String |  Trip name
-vehicleNumber | String |  Vehicle no.
-driverName | String |  Name of driver
-deliveryMediumName | String |  Name of Delivery Associate
-phoneNumber | Long | Phone no.
-startTime | String |  Trip start time
-
-
-## Stop Trip
-
-> Response
-
-```json
-{
-  "notificationType": "DELIVEREDNOTIFICATION",
-  "deliveryMediumName": "John",
-  "endTime": "2016-11-19 06:45:10",
-  "tripName": "TRIP-95",
-  "vehicleNumber": "MH014841",
-  "driverName": "",
-  "clientShipmentIds": [
-    "Order001",
-    "Order002"
-   ]
-}
-```
-
-This notification is sent when a trip is ended.
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-clientShipmentIds | List<String> |  Order Nos.
-notificationType | String |  DELIVEREDNOTIFICATION
-tripName | String |  Trip name
-vehicleNumber | String |  Vehicle no.
-driverName | String |  Name of driver
-deliveryMediumName | String |  Name of Delivery Associate
-endTime | String |  Trip end time
-
-## Hub In
-
-> Response
-
-```json
-{
-
-  "url" : "endpoint url",
-  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
-          <geofencePushNotificationDTO>\n    
-            <hubName>HubName</hubName>\n    
-            <latitude>13.018617777777777</latitude>\n    
-            <longitude>80.01128</longitude>\n    
-            <sightingDate>201603091412</sightingDate>\n    
-            <status>HUB IN</status>\n    
-            <tripId>TripName</tripId>\n
-          </geofencePushNotificationDTO>\n",
-  "notificationType" : "HUB IN",
-  "updatedDate" : "2016-03-09 07:09:10"
-}
-
-```
-
-This notification is sent when a vehicle enters inside a hub.
-
-
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-url | String |  Endpoint URL
-data | String |  Data in XML format
-notificationType | String |  HUB IN
-updatedDate | String | Timestamp
-
-
-## Hub Out
-
-> Response
-
-```json
-{
-
-  "url" : "endpoint url",
-  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
-          <geofencePushNotificationDTO>\n    
-            <hubName>HubName</hubName>\n    
-            <latitude>13.018617777777777</latitude>\n    
-            <longitude>80.01128</longitude>\n    
-            <sightingDate>201603091412</sightingDate>\n    
-            <status>HUB OUT</status>\n    
-            <tripId>TripName</tripId>\n
-          </geofencePushNotificationDTO>\n",
-  "notificationType" : "HUB OUT",
-  "updatedDate" : "2016-03-09 07:09:10"
-}
-
-```
-
-This notification is sent when a vehicle enters inside a hub.
-
-
-
-#### Response Parameters
-
-Key | DataType | Description
---------- | ------- |-------
-url | String |  Endpoint URL
-data | String |  Data in XML format
-notificationType | String |  HUB IN
-updatedDate | String | Timestamp
 
 ## Allocation Engine
 
@@ -7702,8 +8459,8 @@ updatedDate | String | Timestamp
 ```json
 {
   "originAddr": "Client Name Main Branch",
-  "originLatitude": 19.116858,
-  "originLongitude": 72.910157,
+  "originLatitude":41.882702,
+  "originLongitude":-87.619392,
   "notificationType":"ORDERALLOCATION",
   "parentOrderNo": "Customer1_Parent_Order",
   "orderNo": "Customer1_Parent_Order_1",
@@ -7715,8 +8472,8 @@ updatedDate | String | Timestamp
        "employeeId": "133467",
        "userName": "mathewsandroid",
        "phoneNumber": "9881127443",
-       "latitude": 19.1119195,
-       "longitude": 72.9093988,
+       "latitude":41.882702,
+       "longitude":-87.619392,
        "pickupEta": "2016-07-15T10:47:00.000Z",
        "distanceInKms": 0.849,
        "timeInMin": 29,
@@ -7757,7 +8514,9 @@ deliveryMediums.statusCd | String | Mandatory | This is the current Status of th
 deliveryMediums.tripStatus | String | Mandatory | This is the current Status of the Trip of the Delivery Associate.<br>This will have either of the two values depending on the configuration you have set.<br>If you want the Delivery Associate to cater to only one order at a time, then this Status code will be NOT STARTED .<br>If you want an order to be allocated to the Delivery Associate to cater to multiple orders at any given time i.e. even when is catering another order, then the Status Code will be DISPATCHED in case he is delivering another order.
 deliveryMediums.referenceId | String | Mandatory | This is the LogiNext reference ID of the Delivery Associate / Driver / Field Executive.
 
-## Active / Inactive
+## Delivery Associates 
+
+### Active / Inactive
 
 > Response
 
@@ -7787,12 +8546,12 @@ newStatus | String |  Status shall be one of the two below - <br>ACTIVE - if Del
 reasonCd | String |  When you activate / deactivate the Delivery Associate, you mention the reason for activation / deactivation.<br>The reasons shall be mentioned here
 updateTime | String |  This is the time in UTC when the Delivery Associate was marked Active / Inactive
 
-## Delivery Associate On Break/ Off Break
+### Delivery Associate On Break/ Off Break
 
 ```json
 {
-  "latitude":19.6789,
-  "longitude":78.6758,
+  "latitude":41.882702,
+  "longitude":-87.619392,
   "timestamp":"2018-07-05 13:22:32",
   "deliveryMediumName":"Sam",
   "clientId":209,
@@ -7822,7 +8581,7 @@ employeeId | String | Employee ID of the Delivery Associate.
 userName | String | Username of the Delivery Associate.
 breakStatus | String |  Status shall be one of the two below - <br>ONBREAK - if Delivery Associate is marked On Break <br>OFFBREAK - if Delivery Associate is marked Off Break.
 
-## Create Delivery Associate 
+### Create Delivery Associate 
 
 > Response
 
@@ -7896,6 +8655,183 @@ updateTime | String |  This is the time in UTC when the Delivery Associate was m
 weeklyOffList | List |  List of weekly off's
 fixedCost | Integer |  fixed cost associated with delivery boy.
 variableCost | Integer |  variable cost.
+
+
+## Hubs
+
+### Hub In
+
+> Response
+
+```json
+{
+
+  "url" : "endpoint url",
+  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
+          <geofencePushNotificationDTO>\n    
+            <hubName>HubName</hubName>\n    
+            <latitude>13.018617777777777</latitude>\n    
+            <longitude>80.01128</longitude>\n    
+            <sightingDate>201603091412</sightingDate>\n    
+            <status>HUB IN</status>\n    
+            <tripId>TripName</tripId>\n
+          </geofencePushNotificationDTO>\n",
+  "notificationType" : "HUB IN",
+  "updatedDate" : "2016-03-09 07:09:10"
+}
+
+```
+
+This notification is sent in LogiNext Haul when a vehicle enters inside a hub.
+
+
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+url | String |  Endpoint URL
+data | String |  Data in XML format
+notificationType | String |  HUB IN
+updatedDate | String | Timestamp
+
+
+### Hub Out
+
+> Response
+
+```json
+{
+
+  "url" : "endpoint url",
+  "data" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n
+          <geofencePushNotificationDTO>\n    
+            <hubName>HubName</hubName>\n    
+            <latitude>13.018617777777777</latitude>\n    
+            <longitude>80.01128</longitude>\n    
+            <sightingDate>201603091412</sightingDate>\n    
+            <status>HUB OUT</status>\n    
+            <tripId>TripName</tripId>\n
+          </geofencePushNotificationDTO>\n",
+  "notificationType" : "HUB OUT",
+  "updatedDate" : "2016-03-09 07:09:10"
+}
+
+```
+
+This notification is sent in LogiNext Haul when a vehicle enters inside a hub.
+
+
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+url | String |  Endpoint URL
+data | String |  Data in XML format
+notificationType | String |  HUB IN
+updatedDate | String | Timestamp
+
+## Routes
+
+### Create Route
+
+> Response
+
+```json
+{
+  "notificationType": "CREATEROUTE",
+  "totalDistance": 651,
+  "routeConfigurationName": "DDI - DPI",
+  "routeReferenceId": "07ead36fdf6644d6b877ca3c14d16b8a",
+  "originName": "DDI71017",
+  "destinationName": "DPI66009",
+  "totalTime": 1122,
+  "originServiceTime": 62,
+  "intransitLocations": [
+    {
+      "sequence": 1,
+      "locationName": "DPI66080",
+      "transitTime": 100,
+      "transitDistance": 97,
+      "serviceTime": 10
+    },
+    {
+      "sequence": 2,
+      "locationName": "DPI66059",
+      "transitTime": 200,
+      "transitDistance": 34,
+      "serviceTime": 20
+    },
+    {
+      "sequence": 3,
+      "locationName": "DPI66134",
+      "transitTime": 300,
+      "transitDistance": 288,
+      "serviceTime": 30
+    }
+  ],
+  "destinationTranistTime": 400,
+  "destinationDistance": 232
+}
+
+```
+
+This notification is sent in LogiNext Haul when a route is created in LogiNext.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  CREATEROUTE
+totalDistance | String |  Total Distance of the Route
+routeConfigurationName | String |  Name of the Route
+routeReferenceId | String |  Reference ID of the Route
+originName | String |  Origin Hub of the route
+destinationName | String |  Destination Hub of the route
+totalTime | Long | total time
+originServiceTime | String |  Service time at the origin location
+intransitLocations | List<String> |  List of in transit hubs in the route.
+sequence | String |  Sequence of in transit hub.
+locationName | String |  Name of In transit hub.
+transitTime | String |  transit time to reach the hub.
+transitDistance | String |  transit distance to reach the hub.
+serviceTime | String |  service time at the hub.
+
+
+### Route Status.
+
+> Response
+
+```json
+{
+  "notificationType": "ROUTESTATUS",
+  "routeReferenceId": "7dd5e37fd8d641469a3195a236f2ab26",
+  "originName": "PT. Great Giant Livestock-GGL",
+  "destinationName": "PT. Great Giant Livestock-Bonanza Susu",
+  "newStatus": "INACTIVE",
+  "updateTime": "2018-06-27T17:45:08.520Z"
+}
+
+```
+
+This notification is sent in LogiNext Haulwhen a route status is changed in LogiNext.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  ROUTESTATUS
+routeReferenceId | String |  Reference ID of the route
+originName | String |  Origin Name 
+destinationName | String |  Destination Name
+newStatus | String |  Origin Hub of the route
+updateTime | String |  Timestamp of the update event
+
+Status | Description
+--------- | ------- 
+ACTIVE | The Route is Active in the LogiNext system and can be selected for trips.
+INACTIVE | The Route is Inactive in the LogiNext system and cannot be selected for trips.
 
 
 # Country Codes
