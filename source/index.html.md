@@ -6256,6 +6256,75 @@ longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was tak
 
 ## Route Planning
 
+### Replan 
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/v1/resequence
+```
+
+> Request Body
+
+```json
+[
+"8dd4e493c715493da182f52eb69d1bcb"
+]
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 202,
+    "message": "Success",
+    "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"
+}
+```
+
+> Failure Response
+
+```json
+{
+    "status": 400,
+    "message": "Bad Request",
+    "errors": [
+        {
+            "key": "",
+            "message": [
+                "73d57cbe0dc147da8c6b4503b76d5bda"
+            ],
+            "code": "Trip does not have any pending shipments to be replanned"
+        }
+    ]
+}
+```
+
+With this API you can replan Not Started or Started trips by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. The results 
+
+For Not Started Trips, the API considers the Hub location as the starting point. For Started Trips, the API considers the last tracked location of the Delivery Associate whose Trip it is. If no last tracking is received for the Delivery Associate, then the location of the last Delivered Order will be used.
+
+If there are Orders that can no longer be fulfilled within their service windows at the time of replanning, those Orders will get unassigned from the Trip and will be a part of the unallocation reasons object in th Route Planning webhook. These Orders can then be manually assigned to other Trips using the 'Suggest Trips' API and the 'Assign' API.
+
+All Not Delivered Orders will be considered for replanning with this API. For example, if your Delivery Associate delivered Orders #1 and #4 in their Trip, and calls this API, then Orders #2 and #3 in their Trip will also be replanned. The new sequence of Orders after replanning will start from #5 in the above case as Order #4 was already Delviered. Sequence #2 and #3 will remain blank.
+
+This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/resequence`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+reference ID | String | 32 | Mandatory | Trip Reference ID for the trip you wish to replan.
+
+
+### Route Planning API request
+
 > Definition
 
 ```json

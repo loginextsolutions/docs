@@ -11984,6 +11984,87 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h2 id="route-planning">Route Planning</h2>
 
+<h3 id="replan">Replan</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/v</span><span class="mi">1</span><span class="err">/resequence</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+</span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"73d57cbe0dc147da8c6b4503b76d5bda"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip does not have any pending shipments to be replanned"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>With this API you can replan Not Started or Started trips by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. The results </p>
+
+<p>For Not Started Trips, the API considers the Hub location as the starting point. For Started Trips, the API considers the last tracked location of the Delivery Associate whose Trip it is. If no last tracking is received for the Delivery Associate, then the location of the last Delivered Order will be used.</p>
+
+<p>If there are Orders that can no longer be fulfilled within their service windows at the time of replanning, those Orders will get unassigned from the Trip and will be a part of the unallocation reasons object in th Route Planning webhook. These Orders can then be manually assigned to other Trips using the &#39;Suggest Trips&rsquo; API and the &#39;Assign&rsquo; API.</p>
+
+<p>All Not Delivered Orders will be considered for replanning with this API. For example, if your Delivery Associate delivered Orders #1 and #4 in their Trip, and calls this API, then Orders #2 and #3 in their Trip will also be replanned. The new sequence of Orders after replanning will start from #5 in the above case as Order #4 was already Delviered. Sequence #2 and #3 will remain blank.</p>
+
+<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/v1/resequence</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference ID</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Trip Reference ID for the trip you wish to replan.</td>
+</tr>
+</tbody></table>
+
+<h3 id="route-planning-api-request">Route Planning API request</h3>
+
 <blockquote>
 <p>Definition</p>
 </blockquote>
