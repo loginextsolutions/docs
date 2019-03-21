@@ -3336,6 +3336,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "numberOfItems": 2,
     "packageWeight":"10",
     "packageVolume": "4500",
+    "packageLength": 2.5,
+    "packageBreadth": 2.5,
+    "packageHeight": 2.5,
+    "priority": "High",
+    "serviceType":"Premium",
     "paymentType": "COD",
     "packageValue": "5000",
     "pickupNotes": "Please ring my Door Bell",
@@ -3363,6 +3368,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateAmount":1000,
         "crateType":"Case",
         "noOfUnits":3,
+        "crateWeight":10,
+        "crateVolume":11,
+        "crateLength":12,
+        "crateBreadth":13,
+        "crateHeight":14,
         "shipmentlineitems": [
           {
             "itemCd": "IT038",
@@ -3370,7 +3380,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
             "itemPrice": 100,
             "itemQuantity": 1,
             "itemType": "dairy",
-            "itemWeight": 10
+            "itemWeight": 15,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           },
           {
             "itemCd": "IT043",
@@ -3378,7 +3392,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
             "itemPrice": 500,
             "itemQuantity": 1,
             "itemType": "soup",
-            "itemWeight": 10
+            "itemWeight": 10,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           },
           {
             "itemCd": "IT030",
@@ -3386,7 +3404,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
             "itemPrice": 400,
             "itemQuantity": 1,
             "itemType": "coffee",
-            "itemWeight": 10
+            "itemWeight": 10,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           }
         ]
 
@@ -3537,8 +3559,13 @@ orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup fro
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center's name
-packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
-packageVolume | Double | 10 | Optional | This is the volume of package in CC
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+serviceType | String | 16 | Optional | This is the service type of the Order.
 packageValue | Double | 10 | Optional | This is the value of package
 paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | This is the number of items in the order.
@@ -3549,7 +3576,7 @@ cancellationAllowedFl | String | 1 | Optional | This identifies if order cancell
 pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-distributionCenter |
+distributionCenter | String |  | Mandatory | This is the branch that is responsible for fulfilling the Order.
 pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | This is the pickup account code.
 pickupAccountName | String | 255 | Mandatory | This is the pickup account Name.
@@ -3557,12 +3584,12 @@ pickupAddressId | String | 255 | Optional | This is the Address ID of the pickup
 pickupEmail | String | 100 | Optional | This is the email ID of the pickup customer.
 pickupPhoneNumber | String | 255 | Optional | This is the phone number of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
-pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLandmark | String | 512 | Optional | This field holds any landmarks near the pickup location. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Conditional Mandatory | This field holds any landmarks near the pickup location. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLocality | String | 512 | Conditional Mandatory | This is the locality of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupCity | String | 512 | Conditional Mandatory | This is the city name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupState| String | 512 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the state name of the pickup customer. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
-pickupCountry | String | 512 | Conditional Mandatory | This is the country name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.Please refer to the list of country codes provided in the "Country Codes" section.
+pickupCountry | String | 512 | Conditional Mandatory | This is the country name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the "Country Codes" section.
 pickupPinCode | String | 20 | Conditional Mandatory | This is the pincode of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
 pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
@@ -3580,14 +3607,20 @@ shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code.
 shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
 shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
 shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
 shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
 shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
-
-
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 
 
 
@@ -3613,6 +3646,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "distributionCenter": "Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
+    "packageLength": 2.5,
+    "packageBreadth": 2.5,
+    "packageHeight": 2.5,
     "paymentType": "Prepaid",
     "packageValue": "500",
     "numberOfItems": 1,
@@ -3651,6 +3687,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateAmount":100.65,
         "crateType":"case",
         "noOfUnits":2,
+        "crateWeight":10,
+        "crateVolume":11,
+        "crateLength":12,
+        "crateBreadth":13,
+        "crateHeight":14,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",
@@ -3658,7 +3699,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
             "itemPrice": 500,
             "itemQuantity": 1,
             "itemType": "soup",
-            "itemWeight": 10
+            "itemWeight": 10,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           },
           {
             "itemCd": "IT030",
@@ -3666,7 +3711,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
             "itemPrice": 400,
             "itemQuantity": 2,
             "itemType": "coffee",
-            "itemWeight": 10
+            "itemWeight": 10,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           }
         ]
 
@@ -3795,8 +3844,13 @@ autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", 
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
-packageVolume | Double | 10 | Optional | This is the volume of package in CC
-packageValue | Double | 10 | Optional | This is the value of package
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+serviceType | String | 16 | Optional |This is the service type of the Order.
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
@@ -3844,8 +3898,9 @@ shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
-
-
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 
 
 ### Create Pickup & Delivery
@@ -4092,8 +4147,13 @@ autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
-packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
-packageVolume | Double | 10 | Optional | This is the volume of package in CC
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+serviceType | String | 16 | Optional | This is the service type of the Order.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
@@ -4175,7 +4235,10 @@ shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
-
+hipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 
 
 ### Create Point to Point 
@@ -4423,8 +4486,13 @@ autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | This is the distribution center's name
-packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
-packageVolume | Double | 10 | Optional | This is the volume of package in CC
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+serviceType | String | 16 | Optional | This is the service type of the Order.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
@@ -4489,7 +4557,10 @@ shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This
 shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
 shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
 shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
-
+hipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 
 
 ### Create Order Multi Stop
@@ -4558,7 +4629,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create
             "itemPrice": 12,
             "itemQuantity": 12,
             "itemType": "Biscuit",
-            "itemWeight": 50
+            "itemWeight": 10,
+            "itemVolume":11,
+            "itemLength":12,
+            "itemBreadth":13,
+            "itemHeight":14
           }
         ]
         }
@@ -5863,7 +5938,7 @@ https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmen
 }
 
 ```
-Use this to find out last tracked location for any order/ Delivery Associate.
+With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.
 
 #### Request
 
@@ -5879,6 +5954,13 @@ https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-498
 ```
 
 The iFrame displays the last tracking for an order, including current location, based on the order no.
+You can use this particular feature to display real time Order tracking information to your customers on your UI in Order to provide them great user experience.
+
+You can do so by embedding the URL alongside in your client side application. For example, this could be in the form of a 'Track' button on your UI that calls the iFrame URL when clicked. The tracking URL can then be opened on your webpage as an iFrame that will show your customers the live tracking of their Orders.
+
+The Order number will need to be sent in the URL request along with the LogiNext token provided for calling the iFrame. 
+
+Please note that the authentication token provided for the iFrame is different from the one provided to call the LogiNext API. Please reach out to your Account Manager to get this token if you wish to call the iFrame.
 
 #### Request
 
@@ -6323,7 +6405,7 @@ Parameter | DataType | Length |  Required | Description
 reference ID | String | 32 | Mandatory | Trip Reference ID for the trip you wish to replan.
 
 
-### Route Planning API request
+### Route Planning as a Service
 
 > Definition
 
@@ -6375,6 +6457,10 @@ https://api.loginextsolutions.com/TripApp/deliveryplanner/v1/plan
 "hasError": false
 }
 ```
+
+With this API you can create an optimised Route plan for Orders in the your system. You will need to provide the details of the of your Orders (like weight, volume, geocoordinates and service windows) along with the details of your fleet(weight, volume, and capacity).
+
+The Route Planning operation will provide a list of optimised routes based on the details provided.
 
 #### Request
 
@@ -9447,236 +9533,276 @@ For example, if you want to create an Order that is to be picked up from a Pick-
 
 If you wish to enter a Timezone code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
 
-Country Name|  Timezon ID
---------- | ---------
-AFGHANISTAN|  Asia/Kabul
-ALBANIA|  Etc/GMT-1
-ALGERIA|  Etc/GMT-1
-AMERICAN SAMOA| Etc/GMT+11
-ANDORRA|  Europe/Andorra
-ANGOLA| Africa/Luanda
-ANGUILLA| America/Anguilla
-ANTARCTICA| Antarctica/Palmer
-ANTIGUA AND BARBUDA|  America/St_Johns
-ARGENTINA|  America/Argentina/Buenos_Aires
-ARMENIA|  Asia/Yerevan
-ARUBA|  America/Aruba(-4:00)
-AUSTRALIA|  Antarctica/Macquarie
-AUSTRALIA|  Australia/Adelaide
-AUSTRALIA|  Australia/Brisbane
-AUSTRALIA|  Australia/Darwin
-AUSTRALIA|  Australia/Hobart
-AUSTRALIA|  Australia/Lord_Howe
-AUSTRALIA|  Australia/Melbourne
-AUSTRALIA|  Australia/Perth
-AUSTRALIA|  Australia/Sydney
-AUSTRIA|  Europe/Vienna
-AZERBAIJAN| Asia/Baku
-BAHAMAS|  America/Nassau
-BAHRAIN|  Asia/Bahrain
-BANGLADESH| Asia/Dhaka
-BARBADOS| America/Barbados
-BELARUS|  Europe/Minsk
-BELGIUM|  Europe/Brussels
-BELIZE| America/Belize
-BENIN|  Africa/Porto-Novo
-BERMUDA|  Atlantic/Bermuda
-BHUTAN| Asia/Thimphu
-BOLIVIA|  America/La_Paz
-BOTSWANA| Africa/Gaborone
-BOTSWANA| Canada/Atlantic
-BOTSWANA| Canada/Central
-BOTSWANA| Canada/Eastern
-BOTSWANA| Canada/Mountain
-BOTSWANA| Canada/Newfoundland
-BOTSWANA| Canada/Pacific
-BOUVET ISLAND|  Etc/GMT+5
-BRAZIL| America/Sao_Paulo
-BRUNEI| Asia/Brunei
-BULGARIA| Europe/Sofia
-BURKINA FASO| Africa/Ouagadougou
-BURUNDI|  Africa/Bujumbura
-CAMBODIA| Asia/Phnom_Penh
-CAMEROON| Etc/GMT-1
-CANADA| Canada/Atlantic
-CANADA| Canada/Eastern
-CANADA| Canada/Mountain
-CAYMAN ISLANDS| America/Cayman
-CHAD| Africa/Ndjamena
-CHILE|  America/Santiago
-CHINA|  Asia/Shanghai
-CHRISTMAS ISLAND| Indian/Christmas
-COLOMBIA| America/Bogota
-COMOROS|  Etc/GMT-3
-CONGO|  Africa/Brazzaville
-CONGO, THE DRC| Africa/Kinshasa
-COOK ISLANDS| Etc/GMT+10
-COSTA RICA| America/Costa_Rica
-CROATIA|  Etc/GMT-1
-CUBA| America/Havana
-CYPRUS| Asia/Nicosia
-CZECH REPUBLIC| Europe/Prague
-DENMARK|  Europe/Copenhagen
-DJIBOUTI| Africa/Djibouti
-DOMINICA| America/Dominica
-DOMINICAN REPUBLIC| Europe/Copenhagen
-EGYPT|  Africa/Cairo
-EL SALVADOR|  America/El_Salvador
-EQUATORIAL GUINEA|  Africa/Malabo
-ERITREA|  Africa/Asmara
-ESTONIA|  Europe/Tallinn
-ETHIOPIA| Africa/Addis_Ababa
-FAROE ISLANDS|  Atlantic/Faroe
-FIJI| Pacific/Fiji
-FINLAND|  Europe/Helsinki
-FRANCE| Europe/Paris
-FRENCH GUIANA|  Etc/GMT+3
-FRENCH POLYNESIA| Etc/GMT+10
-GABON|  Africa/Libreville
-GAMBIA| Africa/Banjul
-GEORGIA|  Atlantic/South_Georgia
-GERMANY|  Europe/Berlin
-GHANA|  Africa/Accra
-GIBRALTAR|  Europe/Gibraltar
-GREECE| Europe/Athens
-GREENLAND|  Etc/GMT+3
-GRENADA|  America/Grenada
-GUADELOUPE| America/Guadeloupe
-GUAM| Pacific/Guam
-GUATEMALA|  America/Guatemala
-GUINEA| Africa/Conakry
-GUYANA| America/Guyana
-HAITI|  America/Port-au-Prince
-HONDURAS| America/Tegucigalpa
-HONG KONG|  Asia/Hong_Kong
-HUNGARY|  Europe/Budapest
-ICELAND|  Atlantic/Reykjavik
-INDIA|  Asia/Calcutta
-INDONESIA|  Asia/Jakarta
-IRAQ| Asia/Baghdad
-IRELAND|  Europe/Dublin
-ISRAEL| Asia/Jerusalem
-ITALY|  Europe/Rome
-JAMAICA|  America/Jamaica
-JAPAN|  Asia/Tokyo
-JORDAN| Asia/Amman
-KAZAKHSTAN| Etc/GMT-5
-KENYA|  Africa/Nairobi
-KIRIBATI| Pacific/Tarawa
-KOREA, D.P.R.O.|  Asia/Pyongyang
-KOREA, REPUBLIC OF| Asia/Seoul
-KUWAIT| Asia/Kuwait
-KYRGYZSTAN| Asia/Bishkek
-LAOS| Asia/Vientiane
-LATVIA| Europe/Riga
-LEBANON|  Asia/Beirut
-LESOTHO|  Africa/Maseru
-LIBERIA|  Africa/Monrovia
-LIECHTENSTEIN|  Europe/Vaduz
-LITHUANIA|  Europe/Vilnius
-LUXEMBOURG| Europe/Luxembourg
-MACAU|  Asia/Macau
-MACEDONIA|  Etc/GMT-1
-MADAGASCAR| Indian/Antananarivo
-MALAWI| Etc/GMT-2
-MALAYSIA| Asia/Kuala_Lumpur
-MALDIVES| Indian/Maldives
-MALI| Africa/Bamako
-MALTA|  Europe/Malta
-MARSHALL ISLANDS| Pacific/Majuro
-MARTINIQUE| America/Martinique
-MAURITANIA| Africa/Nouakchott
-MAURITIUS|  Indian/Mauritius
-MAYOTTE|  Indian/Mayotte
-MEXICO| America/Mexico_City
-MEXICO| Etc/GMT+7
-MEXICO| Etc/GMT+7
-MOLDOVA, REPUBLIC OF| Europe/Chisinau
-MONACO| Europe/Monaco
-MONGOLIA| Asia/Ulaanbaatar
-MONTENEGRO| Etc/GMT-1
-MONTSERRAT| America/Montserrat
-MOROCCO|  Etc/GMT
-MOZAMBIQUE| Africa/Maputo
-MYANMAR (BURMA)|  Asia/Rangoon
-NAMIBIA|  Africa/Windhoek
-NAURU|  Pacific/Nauru
-NEPAL|  Asia/Kathmandu
-NETHERLANDS|  Europe/Amsterdam
-NEW CALEDONIA|  Etc/GMT-11
-NEW ZEALAND|  Pacific/Auckland
-NICARAGUA|  America/Managua
-NIGER|  Etc/GMT-1
-NIGERIA|  Etc/GMT-1
-NIUE| Pacific/Niue
-NORFOLK ISLAND| Pacific/Norfolk
-NORWAY| Europe/Oslo
-OMAN| Asia/Muscat
-PAKISTAN| Asia/Karachi
-PALAU|  Pacific/Palau
-PANAMA| America/Panama
-PAPUA NEW GUINEA| Pacific/Port_Moresby
-PARAGUAY| America/Asuncion
-PERU| America/Lima
-PHILIPPINES|  Asia/Manila
-PITCAIRN| Pacific/Pitcairn
-POLAND| Europe/Warsaw
-PORTUGAL| Europe/Lisbon
-PUERTO RICO|  America/Puerto_Rico
-QATAR|  Asia/Qatar
-REUNION|  Indian/Reunion
-ROMANIA|  Europe/Bucharest
-RWANDA| Africa/Kigali
-SAINT LUCIA|  America/St_Lucia
-SAMOA|  Pacific/Apia
-SAN MARINO| Etc/GMT-1
-SAUDI ARABIA| Asia/Riyadh
-SENEGAL|  Africa/Dakar
-SERBIA| Europe/Belgrade
-SEYCHELLES| Etc/GMT-4
-SIERRA LEONE| Africa/Freetown
-SINGAPORE|  Asia/Singapore
-SLOVENIA| Etc/GMT-1
-SOLOMON ISLANDS|  Etc/GMT-11
-SOMALIA|  Africa/Mogadishu
-SOUTH AFRICA| Africa/Blantyre
-SOUTH SUDAN|  Etc/GMT-3
-SPAIN|  Europe/Madrid
-SRI LANKA|  Asia/Colombo
-SUDAN|  Africa/Khartoum
-SURINAME| America/Paramaribo
-SWAZILAND|  Africa/Mbabane
-SWEDEN| Europe/Stockholm
-SWITZERLAND|  Etc/GMT-1
-TAJIKISTAN| Asia/Dushanbe
-TANZANIA| Africa/Addis_Ababa
-THAILAND| Asia/Bangkok
-TOGO| Africa/Lome
-TOKELAU|  Etc/GMT-13
-TONGA|  Pacific/Tongatapu
-TRINIDAD AND TOBAGO|  America/Port_of_Spain
-TUNISIA|  Africa/Tunis
-TURKEY| Etc/GMT-3
-TURKMENISTAN| Asia/Ashgabat
-TUVALU| Pacific/Funafuti
-UGANDA| Africa/Kampala
-UKRAINE|  Etc/GMT-2
-UNITED ARAB EMIRATES| Asia/Dubai
-UNITED KINGDOM| Europe/London
-UNITED STATES|  America/Anchorage
-UNITED STATES|  America/Chicago
-UNITED STATES|  America/Denver
-UNITED STATES|  America/Los_Angeles
-UNITED STATES|  America/New_York
-UNITED STATES|  Pacific/Honolulu
-URUGUAY|  America/Montevideo
-UZBEKISTAN| Asia/Tashkent
-VANUATU|  Etc/GMT-11
-VENEZUELA|  America/Caracas
-VIETNAM|  Etc/GMT-7
-YEMEN|  Etc/GMT-3
-ZAMBIA| Africa/Lusaka
-ZIMBABWE| Africa/Harare
+Country Name| Description | Daylight Savings | Timezone Canonical ID
+--------- | --------- | -------------- | -------------
+AFGHANISTAN|(GMT+04:30) Afghanistan||Asia/Kabul
+AFGHANISTAN|(GMT+04:30) Afghanistan||Asia/Kabul
+ALBANIA|(GMT+01:00) Albania|ALBANIA(GMT+02:00)|Etc/GMT-1
+ALGERIA|(GMT+01:00) Algeria||Etc/GMT-1
+AMERICAN SAMOA|(GMT-11:00) American Samoa||Etc/GMT+11
+ANDORRA|(GMT+01:00) Andorra|ANDORRA(GMT+02:00)|Europe/Andorra
+ANGOLA|(GMT+01:00) Angola||Africa/Luanda
+ANGUILLA|(GMT-04:00) Anguilla||America/Anguilla
+ANTARCTICA|(GMT-04:00) Antarctica||Antarctica/Palmer
+ANTIGUA AND BARBUDA|(GMT-03:00) Antigua And Barbuda||America/St_Johns
+ARGENTINA|(GMT+04:00) Argentina||America/Argentina/Buenos_Aires
+ARMENIA|(GMT-04:00) Armenia||Asia/Yerevan
+ARUBA|(GMT±00:00) Aruba||America/Aruba(-4:00)
+AUSTRALIA|(GMT+08:00) Western Australia|-|Australia/Perth
+AUSTRALIA|(GMT+09:30) Northern Territory|NULL|Australia/Darwin
+AUSTRALIA|(GMT+09:30) South Australia|South Australia(GMT+10:30)|Australia/Adelaide
+AUSTRALIA|(GMT+10:00) Australian Capital Territory|Australian Capital Territory(GMT+11:00)|Australia/Sydney
+AUSTRALIA|(GMT+10:00) New South Wales|New South Wales(GMT+11:00)|Australia/Sydney
+AUSTRALIA|(GMT+10:00) Queensland|NULL|Australia/Brisbane
+AUSTRALIA|(GMT+10:00) Tasmania|Tasmania(GMT+11:00)|Australia/Hobart
+AUSTRALIA|(GMT+10:00) Victoria|Victoria(GMT+11:00)|Australia/Melbourne
+AUSTRALIA|(GMT+10:30) Lord Howe Island|Lord Howe Island(GMT+11:00)|Australia/Lord_Howe
+AUSTRALIA|(GMT+11:00) Macquarie Island|NULL|Antarctica/Macquarie
+AUSTRIA|(GMT+01:00) Austria|AUSTRIA(GMT+02:00)|Europe/Vienna
+AZERBAIJAN|(GMT+04:00) Azerbaijan||Asia/Baku
+BAHAMAS.THE|(GMT-05:00) Bahamas.The|BAHAMAS.THE(GMT-04:00)|America/Nassau
+BAHAMAS|(GMT-05:00) Bahamas|BAHAMAS(GMT-04:00)|America/Nassau
+BAHRAIN|(GMT+03:00) Bahrain||Asia/Bahrain
+BANGLADESH|(GMT+06:00) Bangladesh||Asia/Dhaka
+BARBADOS|(GMT-04:00) Barbados||America/Barbados
+BELARUS|(GMT+03:00) Belarus||Europe/Minsk
+BELGIUM|(GMT+01:00) Belgium|BELGIUM(GMT+02:00)|Europe/Brussels
+BELIZE|(GMT-06:00) Belize||America/Belize
+BENIN|(GMT+01:00) Benin||Africa/Porto-Novo
+BERMUDA|(GMT-04:00) Bermuda|BERMUDA(GMT-03:00)|Atlantic/Bermuda
+BHUTAN|(GMT+06:00) Bhutan||Asia/Thimphu
+BOLIVIA|(GMT-04:00) Bolivia||America/La_Paz
+BOSNIA AND HERZEGOVINA|(GMT+01:00) Bosnia And Herzegovina||NULL
+BOSNIA AND HERZEGOWINA|(GMT+01:00) Bosnia And Herzegowina|BOSNIA AND HERZEGOWINA(GMT+02:|NULL
+BOTSWANA|(GMT-03:30) Newfoundland||Canada/Newfoundland
+BOTSWANA|(GMT-04:00) Atlantic||Canada/Atlantic
+BOTSWANA|(GMT-05:00) Eastern||Canada/Eastern
+BOTSWANA|(GMT-06:00) Central||Canada/Central
+BOTSWANA|(GMT-07:00) Mountain||Canada/Mountain
+BOTSWANA|(GMT-08:00) Pacific||Canada/Pacific
+BOTSWANA|(GMT+02:00) Botswana||Africa/Gaborone
+BOUVET ISLAND|(GMT-05:00) Bouvet Island||Etc/GMT+5
+BRAZIL|(GMT-03:00) Brasilia Standard Time||America/Sao_Paulo
+BRITISH INDIAN OCEAN TERRITORY|(GMT+06:00) British Indian Ocean Territory||NULL
+BRUNEI DARUSSALAM|(GMT+08:00) Brunei Darussalam||Asia/Brunei
+BRUNEI|(GMT-04:00) Brunei||Asia/Brunei
+BULGARIA|(GMT+02:00) Bulgaria|BULGARIA(GMT+03:00)|Europe/Sofia
+BURKINA FASO|(GMT±00:00) Burkina Faso||Africa/Ouagadougou
+BURUNDI|(GMT+02:00) Burundi||Africa/Bujumbura
+CAMBODIA|(GMT+07:00) Cambodia||Asia/Phnom_Penh
+CAMEROON|(GMT+01:00) Cameroon||Etc/GMT-1
+CANADA|(GMT-04:00) Canada(Atlantic)||Canada/Atlantic
+CANADA|(GMT-05:00) Canada(Eastern)||Canada/Eastern
+CANADA|(GMT-07:00) Canada(Mountain)||Canada/Mountain
+CAYMAN ISLANDS|(GMT-05:00) Cayman Islands||America/Cayman
+CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
+CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
+CHAD|(GMT+01:00) Chad||Africa/Ndjamena
+CHILE|(GMT-04:00) Chile|CHILE(GMT-03:00)|America/Santiago
+CHINA|(GMT+08:00) China||Asia/Shanghai
+CHRISTMAS ISLAND|(GMT+07:00) Christmas Island||Indian/Christmas
+COCOS (KEELING) ISLANDS|(GMT+06:00) Cocos (Keeling) Islands||NULL
+COLOMBIA|(GMT-05:00) Colombia||America/Bogota
+COMOROS|(GMT+03:00) Comoros||Etc/GMT-3
+CONGO| DEMOCRATIC REPUBLIC OF THE|(GMT+01:00) Congo| Democratic Republic Of||NULL
+CONGO| THE DRC|(GMT+02:00) Congo| The Drc||Africa/Kinshasa
+CONGO|(GMT+01:00) Congo||Africa/Brazzaville
+COOK ISLANDS|(GMT-10:00) Cook Islands||Etc/GMT+10
+COSTA RICA|(GMT-06:00) Costa Rica||America/Costa_Rica
+CROATIA|(GMT+01:00) Croatia|CROATIA(GMT+02:00)|Etc/GMT-1
+CUBA|(GMT-05:00) Cuba|CUBA(GMT-04:00)|America/Havana
+CYPRUS|(GMT+02:00) Cyprus|CYPRUS(GMT+03:00)|Asia/Nicosia
+CZECH REPUBLIC|(GMT+01:00) Czech Republic|CZECH REPUBLIC(GMT+02:00)|Europe/Prague
+DENMARK|(GMT+01:00) Denmark|DENMARK(GMT+02:00)|Europe/Copenhagen
+DJIBOUTI|(GMT+03:00) Djibouti||Africa/Djibouti
+DOMINICA|(GMT-04:00) Dominica||America/Dominica
+DOMINICAN REPUBLIC|(GMT-04:00) Dominican Republic||Europe/Copenhagen
+ECUADOR|(GMT?05:00) Ecuador||NULL
+EGYPT|(GMT+02:00) Egypt||Africa/Cairo
+EL SALVADOR|(GMT-06:00) El Salvador||America/El_Salvador
+EQUATORIAL GUINEA|(GMT+01:00) Equatorial Guinea||Africa/Malabo
+ERITREA|(GMT+03:00) Eritrea||Africa/Asmara
+ESTONIA|(GMT+02:00) Estonia|ESTONIA(GMT+03:00)|Europe/Tallinn
+ETHIOPIA|(GMT+03:00) Ethiopia||Africa/Addis_Ababa
+FALKLAND ISLANDS (MALVINAS)|(GMT-03:00) Falkland Islands (Malvinas)||NULL
+FAROE ISLANDS|(GMT±00:00) Faroe Islands|FAROE ISLANDS(GMT+01:00)|Atlantic/Faroe
+FIJI|(GMT+12:00) Fiji|FIJI(GMT+13:00)|Pacific/Fiji
+FINLAND|(GMT+02:00) Finland|FINLAND(GMT+03:00)|Europe/Helsinki
+FRANCE| METROPOLITAN|(GMT+01:00) France| Metropolitan|FRANCE| METROPOLITAN(GMT+02:00|NULL
+FRANCE|(GMT+01:00) France|FRANCE(GMT+02:00)|Europe/Paris
+FRENCH GUIANA|(GMT-03:00) French Guiana||Etc/GMT+3
+FRENCH POLYNESIA|(GMT-10:00) French Polynesia||Etc/GMT+10
+FRENCH SOUTHERN TERRITORIES|(GMT+05:00) French Southern Territories|FRENCH SOUTHERN TERRITORIES(GM|NULL
+GABON|(GMT+01:00) Gabon||Africa/Libreville
+GAMBIA|(GMT±00:00) Gambia||Africa/Banjul
+GEORGIA|(GMT+04:00) Georgia||Atlantic/South_Georgia
+GERMANY|(GMT+01:00) Germany|GERMANY(GMT+02:00)|Europe/Berlin
+GHANA|(GMT±00:00) Ghana||Africa/Accra
+GIBRALTAR|(GMT+01:00) Gibraltar|GIBRALTAR(GMT+02:00)|Europe/Gibraltar
+GREECE|(GMT+02:00) Greece|GREECE(GMT+03:00)|Europe/Athens
+GREENLAND|(GMT-03:00) Greenland|GREENLAND(GMT-02:00)|Etc/GMT+3
+GRENADA|(GMT-04:00) Grenada||America/Grenada
+GUADELOUPE|(GMT-04:00) Guadeloupe||America/Guadeloupe
+GUAM|(GMT+10:00) Guam||Pacific/Guam
+GUATEMALA|(GMT-06:00) Guatemala||America/Guatemala
+GUINEA|(GMT±00:00) Guinea||Africa/Conakry
+GUYANA|(GMT-04:00) Guyana||America/Guyana
+HAITI|(GMT-05:00) Haiti||America/Port-au-Prince
+HONDURAS|(GMT-06:00) Honduras||America/Tegucigalpa
+HONG KONG|(GMT+08:00) Hong Kong||Asia/Hong_Kong
+HUNGARY|(GMT+01:00) Hungary|HUNGARY(GMT+02:00)|Europe/Budapest
+ICELAND|(GMT±00:00) Iceland||Atlantic/Reykjavik
+INDIA|(GMT+05:30) India||Asia/Calcutta
+INDONESIA|(GMT+07:00) Indonesia||Asia/Jakarta
+IRAN|(GMT+03:30) Iran (Islamic Republic Of)|IRAN (ISLAMIC REPUBLIC OF)(GMT|Asia/Tehran
+IRAQ|(GMT+03:00) Iraq||Asia/Baghdad
+IRELAND|(GMT±00:00) Ireland|IRELAND(GMT+01:00)|Europe/Dublin
+ISRAEL|(GMT+02:00) Israel|ISRAEL(GMT+03:00)|Asia/Jerusalem
+ITALY|(GMT+01:00) Italy|ITALY(GMT+02:00)|Europe/Rome
+JAMAICA|(GMT-05:00) Jamaica||America/Jamaica
+JAPAN|(GMT+09:00) Japan||Asia/Tokyo
+JORDAN|(GMT+02:00) Jordan|JORDAN(GMT+03:00)|Asia/Amman
+KAZAKHSTAN|(GMT+05:00) Kazakhstan||Etc/GMT-5
+KENYA|(GMT+03:00) Kenya||Africa/Nairobi
+KIRIBATI|(GMT+05:00) Kiribati||Pacific/Tarawa
+KOREA| D.P.R.O.|(GMT+09:00) Korea| D.P.R.O.||Asia/Pyongyang
+KOREA| REPUBLIC OF|(GMT+09:00) Korea| Republic Of||Asia/Seoul
+KUWAIT|(GMT+03:00) Kuwait||Asia/Kuwait
+KYRGYZSTAN|(GMT+06:00) Kyrgyzstan||Asia/Bishkek
+LAOS|(GMT+07:00) Laos||Asia/Vientiane
+LATVIA|(GMT+02:00) Latvia|LATVIA(GMT+03:00)|Europe/Riga
+LEBANON|(GMT+02:00) Lebanon|LEBANON(GMT+03:00)|Asia/Beirut
+LESOTHO|(GMT+02:00) Lesotho||Africa/Maseru
+LIBERIA|(GMT±00:00) Liberia||Africa/Monrovia
+LIECHTENSTEIN|(GMT+01:00) Liechtenstein|LIECHTENSTEIN(GMT+02:00)|Europe/Vaduz
+LITHUANIA|(GMT+02:00) Lithuania|LITHUANIA(GMT+03:00)|Europe/Vilnius
+LUXEMBOURG|(GMT+01:00) Luxembourg|LUXEMBOURG(GMT+02:00)|Europe/Luxembourg
+MACAU|(GMT+08:00) Macau||Asia/Macau
+MACEDONIA|(GMT+01:00) Macedonia|MACEDONIA(GMT+02:00)|Etc/GMT-1
+MADAGASCAR|(GMT+03:00) Madagascar||Indian/Antananarivo
+MALAWI|(GMT+02:00) Malawi||Etc/GMT-2
+MALAYSIA|(GMT+08:00) Malaysia||Asia/Kuala_Lumpur
+MALDIVES|(GMT+05:00) Maldives||Indian/Maldives
+MALI|(GMT±00:00) Mali||Africa/Bamako
+MALTA|(GMT+01:00) Malta|MALTA(GMT+02:00)|Europe/Malta
+MARSHALL ISLANDS|(GMT+12:00) Marshall Islands||Pacific/Majuro
+MARTINIQUE|(GMT-04:00) Martinique||America/Martinique
+MAURITANIA|(GMT±00:00) Mauritania||Africa/Nouakchott
+MAURITIUS|(GMT+04:00) Mauritius||Indian/Mauritius
+MAYOTTE|(GMT+03:00) Mayotte||Indian/Mayotte
+MEXICO|(GMT-05:00) Mexico(State Of Quintana Roo)|MEXICO(GMT-05:00)|NULL
+MEXICO|(GMT-06:00) Mexico(Baja California Sur (South)| Chihuahua|Nayarit| Sinaloa|Mexico(states of Baja California Sur| Chihuahua| N|America/Mexico_City
+MEXICO|(GMT-07:00) Mexico(State Of Sonora)|NULL|Etc/GMT+7
+MEXICO|(GMT-08:00) Mexico(State Of Baja California)|Mexico(state of Baja California)(GMT-07:00)|Etc/GMT+7
+MICRONESIA| FEDERATED STATES OF|(GMT+10:00) Micronesia| Federated States Of||NULL
+MOLDOVA| REPUBLIC OF|(GMT+02:00) Moldova| Republic Of|MOLDOVA| REPUBLIC OF(GMT+03:00|Europe/Chisinau
+MONACO|(GMT+01:00) Monaco|MONACO(GMT+02:00)|Europe/Monaco
+MONGOLIA|(GMT+08:00) Mongolia|MONGOLIA(GMT+09:00)|Asia/Ulaanbaatar
+MONTENEGRO|(GMT+01:00) Montenegro|MONTENEGRO(GMT+02:00)|Etc/GMT-1
+MONTSERRAT|(GMT-04:00) Montserrat||America/Montserrat
+MOROCCO|(GMT±00:00) Morocco|MOROCCO(GMT+01:00)|Etc/GMT
+MOZAMBIQUE|(GMT+02:00) Mozambique||Africa/Maputo
+MYANMAR (BURMA)|(GMT+06:30) Myanmar (Burma)||Asia/Rangoon
+NAMIBIA|(GMT+01:00) Namibia|NAMIBIA(GMT+02:00)|Africa/Windhoek
+NAURU|(GMT+12:00) Nauru||Pacific/Nauru
+NEPAL|(GMT+05:45) Nepal||Asia/Kathmandu
+NETHERLANDS ANTILLES|(GMT+01:00) Netherlands Antilles|NETHERLANDS ANTILLES(GMT+02:00|NULL
+NETHERLANDS|(GMT+01:00) Netherlands|NETHERLANDS(GMT+02:00)|Europe/Amsterdam
+NEW CALEDONIA|(GMT+11:00) New Caledonia||Etc/GMT-11
+NEW ZEALAND|(GMT+12:00) New Zealand|NEW ZEALAND(GMT+13:00)|Pacific/Auckland
+NICARAGUA|(GMT-06:00) Nicaragua||America/Managua
+NIGER|(GMT+01:00) Niger||Etc/GMT-1
+NIGERIA|(GMT+01:00) Nigeria||Etc/GMT-1
+NIUE|(GMT-11:00) Niue||Pacific/Niue
+NORFOLK ISLAND|(GMT+11:00) Norfolk Island||Pacific/Norfolk
+NORTHERN MARIANA ISLANDS|(GMT+10:00) Northern Mariana Islands||NULL
+NORWAY|(GMT+01:00) Norway|NORWAY(GMT+02:00)|Europe/Oslo
+OMAN|(GMT+04:00) Oman||Asia/Muscat
+PAKISTAN|(GMT+05:00) Pakistan||Asia/Karachi
+PALAU|(GMT+09:00) Palau||Pacific/Palau
+PANAMA|(GMT-05:00) Panama||America/Panama
+PAPUA NEW GUINEA|(GMT+10:00) Papua New Guinea||Pacific/Port_Moresby
+PARAGUAY|(GMT-04:00) Paraguay|PARAGUAY(GMT-03:00)|America/Asuncion
+PERU|(GMT-05:00) Peru||America/Lima
+PHILIPPINES|(GMT+08:00) Philippines||Asia/Manila
+PITCAIRN|(GMT-08:00) Pitcairn||Pacific/Pitcairn
+POLAND|(GMT+01:00) Poland|POLAND(GMT+02:00)|Europe/Warsaw
+PORTUGAL|(GMT±00:00) Portugal|PORTUGAL(GMT+01:00)|Europe/Lisbon
+PUERTO RICO|(GMT-04:00) Puerto Rico||America/Puerto_Rico
+QATAR|(GMT+03:00) Qatar||Asia/Qatar
+REUNION|(GMT+04:00) Reunion||Indian/Reunion
+ROMANIA|(GMT+02:00) Romania|ROMANIA(GMT+03:00)|Europe/Bucharest
+RUSSIA|(GMT+02:00) Russia(Kaliningrad)|RUSSIA()|Europe/Moscow
+RUSSIA|(GMT+03:00) Russia(Moscow)||Europe/Moscow
+RUSSIA|(GMT+04:00) Russia(Samara)||Europe/Samara
+RUSSIA|(GMT+05:00) Russia(Yekaterinburg)||Asia/Yekaterinburg
+RUSSIA|(GMT+06:00) Russia(Omsk)||Asia/Omsk
+RUSSIA|(GMT+07:00) Russia(Krasnoyarsk)||Asia/Krasnoyarsk
+RUSSIA|(GMT+08:00) Russia(Irkutsk)||Asia/Irkutsk
+RUSSIA|(GMT+09:00) Russia(Yakutsk)||Asia/Yakutsk
+RUSSIA|(GMT+10:00) Russia(Vladivostok)||Asia/Vladivostok
+RUSSIA|(GMT+11:00) Russia(Magadan)||Asia/Magadan
+RUSSIA|(GMT+12:00) Russia(Kamchatka)||Asia/Kamchatka
+RWANDA|(GMT+02:00) Rwanda||Africa/Kigali
+SAINT KITTS AND NEVIS|(GMT-04:00) Saint Kitts And Nevis||NULL
+SAINT LUCIA|(GMT-04:00) Saint Lucia||America/St_Lucia
+SAINT VINCENT AND THE GRENADINES|(GMT-04:00) Saint Vincent And The Grenadin||NULL
+SAMOA|(GMT+13:00) Samoa|SAMOA(GMT+14:00)|Pacific/Apia
+SAN MARINO|(GMT+01:00) San Marino|SAN MARINO(GMT+02:00)|Etc/GMT-1
+SAO TOME AND PRINCIPE|(GMT±00:00) Sao Tome And Principe||NULL
+SAUDI ARABIA|(GMT+03:00) Saudi Arabia||Asia/Riyadh
+SENEGAL|(GMT±00:00) Senegal||Africa/Dakar
+SERBIA|(GMT+01:00) Serbia|SERBIA(GMT+02:00)|Europe/Belgrade
+SEYCHELLES|(GMT+04:00) Seychelles||Etc/GMT-4
+SIERRA LEONE|(GMT±00:00) Sierra Leone||Africa/Freetown
+SINGAPORE|(GMT+08:00) Singapore||Asia/Singapore
+SLOVENIA|(GMT+01:00) Slovenia|SLOVENIA(GMT+02:00)|Etc/GMT-1
+SOLOMON ISLANDS|(GMT+11:00) Solomon Islands||Etc/GMT-11
+SOMALIA|(GMT+03:00) Somalia||Africa/Mogadishu
+SOUTH AFRICA|(GMT+02:00) South Africa||Africa/Blantyre
+SOUTH GEORGIA AND SOUTH S.S.|(GMT-02:00) South Georgia And South S.S.||NULL
+SOUTH SUDAN|(GMT+03:00) South Sudan||Etc/GMT-3
+SPAIN|(GMT+01:00) Spain|SPAIN(GMT+02:00)|Europe/Madrid
+SRI LANKA|(GMT+05:30) Sri Lanka||Asia/Colombo
+SUDAN|(GMT+03:00) Sudan||Africa/Khartoum
+SURINAME|(GMT-03:00) Suriname||America/Paramaribo
+SVALBARD AND JAN MAYEN ISLANDS|(GMT+01:00) Svalbard And Jan Mayen Islands|SVALBARD AND JAN MAYEN ISLANDS|NULL
+SWAZILAND|(GMT+02:00) Swaziland||Africa/Mbabane
+SWEDEN|(GMT+01:00) Sweden|SWEDEN(GMT+02:00)|Europe/Stockholm
+SWITZERLAND|(GMT+01:00) Switzerland|SWITZERLAND(GMT+02:00)|Etc/GMT-1
+SYRIAN ARAB REPUBLIC|(GMT+02:00) Syrian Arab Republic|SYRIAN ARAB REPUBLIC(GMT+03:00|NULL
+TAJIKISTAN|(GMT+05:00) Tajikistan||Asia/Dushanbe
+TANZANIA|(GMT+03:00) Tanzania||Africa/Addis_Ababa
+THAILAND|(GMT+07:00) Thailand||Asia/Bangkok
+TOGO|(GMT±00:00) Togo||Africa/Lome
+TOKELAU|(GMT+13:00) Tokelau||Etc/GMT-13
+TONGA|(GMT+13:00) Tonga|TONGA(GMT+14:00)|Pacific/Tongatapu
+TRINIDAD AND TOBAGO|(GMT-04:00) Trinidad And Tobago||America/Port_of_Spain
+TUNISIA|(GMT+01:00) Tunisia||Africa/Tunis
+TURKEY|(GMT+03:00) Turkey||Etc/GMT-3
+TURKMENISTAN|(GMT+05:00) Turkmenistan||Asia/Ashgabat
+TURKS AND CAICOS ISLANDS|(GMT-04:00) Turks And Caicos Islands||NULL
+TUVALU|(GMT+12:00) Tuvalu||Pacific/Funafuti
+UGANDA|(GMT+03:00) Uganda||Africa/Kampala
+UKRAINE|(GMT+02:00) Ukraine|UKRAINE(GMT+03:00)|Etc/GMT-2
+UNITED ARAB EMIRATES|(GMT+04:00) United Arab Emirates||Asia/Dubai
+UNITED KINGDOM|(GMT±00:00) United Kingdom|UNITED KINGDOM(GMT+01:00)|Europe/London
+UNITED STATES|(GMT-05:00) United States(Eastern)|UNITED STATES(GMT-04:00)|America/New_York
+UNITED STATES|(GMT-06:00) United Stated(Central)||America/Chicago
+UNITED STATES|(GMT-07:00) United Stated(Arizona)||America/Phoenix
+UNITED STATES|(GMT-07:00) United States(Mountain)|NULL|America/Denver
+UNITED STATES|(GMT-08:00) United States(Pacific)|NULL|America/Los_Angeles
+UNITED STATES|(GMT-09:00) United States(Alaska)|NULL|America/Anchorage
+UNITED STATES|(GMT-10:00) United States(Hawaii-Aleutian)|NULL|Pacific/Honolulu
+URUGUAY|(GMT-03:00) Uruguay||America/Montevideo
+UZBEKISTAN|(GMT+05:00) Uzbekistan||Asia/Tashkent
+VANUATU|(GMT+11:00) Vanuatu||Etc/GMT-11
+VENEZUELA|(GMT-04:00) Venezuela||America/Caracas
+VIETNAM|(GMT+07:00) Vietnam|NULL|Etc/GMT-7
+WALLIS AND FUTUNA ISLANDS|(GMT+12:00) Wallis And Futuna Islands||NULL
+YEMEN|(GMT+03:00) Yemen||Etc/GMT-3
+ZAMBIA|(GMT+02:00) Zambia||Africa/Lusaka
+ZIMBABWE|(GMT+02:00) Zimbabwe||Africa/Harare
 
 
 # Postal Codes
