@@ -6271,7 +6271,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -6397,7 +6397,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td></td>
 <td>Mandatory</td>
-<td>This is the branch that is responsible for fulfilling the Order.</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
@@ -6954,7 +6954,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -7052,7 +7052,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Name of delivery branch</td>
+<td>For Deliver type of orders, this is the Branch / Distribution Center / Hub from which the Delivery Associate will pickup the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager.</td>
 </tr>
 <tr>
 <td>deliverServiceTime</td>
@@ -7630,7 +7630,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -8536,7 +8536,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -9619,7 +9619,7 @@ When Customer Profiling is turned ON -
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=GKS</span><span class="mi">12567</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=GKS</span><span class="mi">12567</span><span class="err">&amp;orderReferenceId=f</span><span class="mi">40</span><span class="err">cf</span><span class="mi">4493</span><span class="err">a</span><span class="mi">5949199775499</span><span class="err">b</span><span class="mi">5750</span><span class="err">a</span><span class="mi">272</span><span class="err">&amp;customer_code=</span><span class="mi">123</span><span class="err">&amp;employee_id=</span><span class="mi">134367</span><span class="err">&amp;page_no=</span><span class="mi">1</span><span class="err">&amp;page_size=</span><span class="mi">10</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -9771,6 +9771,13 @@ When Customer Profiling is turned ON -
 <td>100</td>
 <td>Optional</td>
 <td>Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)</td>
+</tr>
+<tr>
+<td>orderReferenceId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Order Reference ID(Only one order number can be passed at a time.If not passed, all the orders for the specified date range will be fetched)</td>
 </tr>
 <tr>
 <td>page_no</td>
@@ -10859,6 +10866,80 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 <td></td>
 <td>Mandatory</td>
 <td>These are the Reference IDs of the Order to be assigned.</td>
+</tr>
+</tbody></table>
+
+<h3 id="unssign">Unssign</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/mile/v</span><span class="mi">1</span><span class="err">/manual/unassign?referenceId=</span><span class="mi">6186</span><span class="err">d</span><span class="mi">5</span><span class="err">fc</span><span class="mi">6</span><span class="err">e</span><span class="mi">324</span><span class="err">c</span><span class="mi">42</span><span class="err">abb</span><span class="mi">5</span><span class="err">ea</span><span class="mi">1</span><span class="err">a</span><span class="mi">32</span><span class="err">e</span><span class="mi">05</span><span class="err">f</span><span class="mi">66</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassignment Successful"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7d7527b351e74159adb05abe9529b0a9"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac4de0a72fa6421e83e00acaeb391d26"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2fd9619be204195b8995539e9a946fb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTSTARTED"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unassignment Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Reference Id is invalid"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2d971c78f3f1431c91d9ad76db90202b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With this API, you can Unassign a Not Delivered Order from a started or Not Started Trip. </p>
+
+<p>The API accepts a single Order Reference ID in the request and checks if the Order is currently assigned to a trip. If yes, and the Order has not yet been marked Delivered, it will be unassigned from the Trip and put in a Not Dispatced state. This Order can then be assigned to another Trip.</p>
+
+<p>This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.</p>
+
+<p>The Rate Limit for this API is 1 call/sec.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/unassign?referenceId=6186d5fc6e324c42abb5ea1a32e05f66</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference ID of the Order which is to be unassigned from the Trip.</td>
 </tr>
 </tbody></table>
 
@@ -12306,6 +12387,294 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h2 id="route-planning">Route Planning</h2>
 
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/v</span><span class="mi">1</span><span class="err">/plan</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLAN-1548845037527"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-01T10:43:57.563Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-31T10:43:57.560Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hubReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"orderReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"73d57cbe0dc147da8c6b4503b76d5bda"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"planningProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"territoryProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"outsourcedFleet"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"hubReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miami"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPO Logistics"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fleetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck/Cargo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"territoryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"territoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miami block 18"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"countPerVehicleType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},{</span><span class="w">
+      </span><span class="nt">"territoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NONE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"countPerVehicleType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIMIZE_DISTANCE_TIME"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"73d57cbe0dc147da8c6b4503b76d5bda"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"deliveryMediumStartLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"hub"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="err">“Success!”</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routeName"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Duplicate Route Name"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryMediumReferenceIds"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Medium reference ids are required"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>The Route Planning API allows you to create Optimised Route Plans in LogiNext for your Orders.</p>
+
+<p>The API accepts the details of your Owned and Outsourced Fleet and can plan for a single ROute Planning operation using details of both fleets.</p>
+
+<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/v1/plan</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>routeName</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the Name of the Route Plan</td>
+</tr>
+<tr>
+<td>startTimeWindow</td>
+<td>String</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>This is the start time window of the Orders to be considered for route planning. If orderReferenceIds are not passed, this field is Mandatory.</td>
+</tr>
+<tr>
+<td>endTimeWindow</td>
+<td>String</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>This is the start time window of the Orders to be considered for route planning. If orderReferenceIds are not passed, this field is Mandatory.</td>
+</tr>
+<tr>
+<td>hubReferenceIds</td>
+<td>List</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is a list of Hubs the current Route Plan is to be run for. If not passed, the Route Planning operation will run for the Parent Hub.</td>
+</tr>
+<tr>
+<td>orderReferenceIds</td>
+<td>List</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>This is the list of Orders to be considered for Route Planning.If start and end time are not passed, this field is Mandatory.</td>
+</tr>
+<tr>
+<td>planningProfile</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.</td>
+</tr>
+<tr>
+<td>territoryProfile</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the name of the Territory Profile you wish to use for the Current Route Planning operation. You can setup multiple Territory profiles in your LogiNext account. If not passed, your default Territory profile will be considered.</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Trip Reference ID for the trip you wish to replan.</td>
+</tr>
+<tr>
+<td>deliveryMediumReferenceIds</td>
+<td>List</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the list of Delivery Associate&rsquo;s to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.</td>
+</tr>
+</tbody></table>
+
+<h3 id="route-optimization">Route Optimization</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/v</span><span class="mi">1</span><span class="err">/optimize</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"routeName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Route237"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"planningProfile"</span><span class="p">:</span><span class="s2">"PlanP1"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"plan"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"f40cf4493a5949199775499b43545656"</span><span class="w">
+  </span><span class="p">]},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="s2">"status"</span><span class="err">:</span><span class="w"> </span><span class="mi">409</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="err">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivery Associate(s) does not exist"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"f40cf4493a5949199775499b43545656"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Orders do not exist"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Planning allowed only for Not Dispatched Orders"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planningProfile"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid Planning profile"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="err">}</span><span class="w">
+
+</span></code></pre>
+
+<p>The Route Optimization API allows you to create Optimised Route Plans in LogiNext for your Orders.</p>
+
+<p>Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfill those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfill these Orders.</p>
+
+<p>This API will support maximum of 150 orders per Delivery Associate, and upto 20 Delivery Associates per request.</p>
+
+<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/v1/optimize</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>routeName</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the Name of the Route Plan</td>
+</tr>
+<tr>
+<td>planningProfile</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.</td>
+</tr>
+<tr>
+<td>plan.deliveryMediumReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>This is the list of Delivery Associate&rsquo;s to be considered for the current Route Planning Operation.</td>
+</tr>
+<tr>
+<td>plan.orderReferenceIds</td>
+<td>List</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is a list of Orders to be optimized for the Delivery Associate</td>
+</tr>
+</tbody></table>
+
 <h3 id="replan">Replan</h3>
 
 <blockquote>
@@ -13108,7 +13477,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -14093,7 +14462,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the distribution center&rsquo;s name</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -16877,7 +17246,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>unassignmentReasons.orderReferenceIds</td>
 <td>List</td>
-<td>List of the ORder Reference IDs that remained unassigned due to the current unassignemnt reason</td>
+<td>List of the ORder Reference IDs that remained unassigned due to the current unassignment reason</td>
 </tr>
 </tbody></table>
 

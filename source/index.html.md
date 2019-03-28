@@ -3558,7 +3558,7 @@ shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to b
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
-distributionCenter | String | 255 | Mandatory | Distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -3576,7 +3576,7 @@ cancellationAllowedFl | String | 1 | Optional | This identifies if order cancell
 pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-distributionCenter | String |  | Mandatory | This is the branch that is responsible for fulfilling the Order.
+distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | This is the pickup account code.
 pickupAccountName | String | 255 | Mandatory | This is the pickup account Name.
@@ -3842,7 +3842,7 @@ shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DE
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-distributionCenter | String | 255 | Mandatory | This is the distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
@@ -3856,7 +3856,7 @@ paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash 
 partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This field specifies if the order can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
-deliverBranch | String | 255 | Mandatory | Name of delivery branch
+deliverBranch | String | 255 | Mandatory | For Deliver type of orders, this is the Branch / Distribution Center / Hub from which the Delivery Associate will pickup the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager.
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
@@ -4146,7 +4146,7 @@ shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOT
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-distributionCenter | String | 255 | Mandatory | This is the distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4485,7 +4485,7 @@ shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOT
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-distributionCenter | String | 255 | Mandatory | This is the distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4795,7 +4795,7 @@ reference_ids | List | Mandatory | Reference Id associated with the order.
 > Definition
 
 ```json
-https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=GKS12567&customer_code=123&employee_id=134367&page_no=1&page_size=10
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&order_no=GKS12567&orderReferenceId=f40cf4493a5949199775499b5750a272&customer_code=123&employee_id=134367&page_no=1&page_size=10
 ```
 
 
@@ -4920,6 +4920,7 @@ start_date | Date |  | Conditional Mandatory |  If order_no is not passed in the
 end_date | Date |  | Conditional Mandatory |  If order_no is not passed in the request, then this field is mandatory. Range of date upto which orders can be searched. This will return orders that have fulfillment end times less than the entered time.<BR>Format 'yyyy-MM-dd HH:mm:ss'
 status | String | 20 | Optional |  If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
 order_no | String | 100 | Optional | Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)
+orderReferenceId | String | 100 | Optional | Order Reference ID(Only one order number can be passed at a time.If not passed, all the orders for the specified date range will be fetched)
 page_no | Integer | | Optional | This parameter lets you specify the page number. It is used to page through the orders. This is optional parameter and default value (if it isn't specified) will be 1. 
 page_size | Integer | |  Optional |  This parameter lets you specify the count of orders to return in your API call. This is optional parameter and default value (if it isn't specified) will be 50. The maximum accepted value is 100; higher values will be accepted but you will only get 100 records.
 customer_code | String | |  Optional | This is the Customer Address ID parameter. You can pass one customer Id at a time. The result will be list of all the orders created for the mentioned customer ID
@@ -5425,6 +5426,72 @@ trip.referenceId | String | 32 | Conditional Mandatory | Reference ID of the tri
 deliveryMedium.identifier | String | 32 | Conditional Mandatory |  This is the control flag field for the Delivery Associate, to identify which details of the Delivery Associate are being passed. Possible values are 'employeeId', 'phoneNumber', 'userName'.
 deliveryMedium.identifierValue | String | 32 | Conditional Mandatory | This field will hold the Delivery Associate information to whom the Order is to be assigned, as per the flag set above. For eg - If you wish to assign an Order to a Delivert Associate whose 'employeeId' is 'John1', you would send 'employeeId' in the identifier field and 'John1' in the identifierValue field.
 orderReferenceIds | List | |  Mandatory | These are the Reference IDs of the Order to be assigned.
+
+
+### Unssign
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/unassign?referenceId=6186d5fc6e324c42abb5ea1a32e05f66
+```
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Unassignment Successful",
+    "moreResultsExists": false,
+    "data": {
+        "orderReferenceId": "7d7527b351e74159adb05abe9529b0a9",
+        "tripReferenceId": "ac4de0a72fa6421e83e00acaeb391d26",
+        "deliveryMediumReferenceId": "a2fd9619be204195b8995539e9a946fb",
+        "tripStatus": "NOTSTARTED"
+    },
+    "hasError": false
+}
+
+```
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Unassignment Failed",
+    "moreResultsExists": false,
+    "data": {
+        "message": "Order Reference Id is invalid",
+        "orderReferenceId": "2d971c78f3f1431c91d9ad76db90202b"
+    },
+    "hasError": true
+}
+
+```
+
+With this API, you can Unassign a Not Delivered Order from a started or Not Started Trip. 
+
+The API accepts a single Order Reference ID in the request and checks if the Order is currently assigned to a trip. If yes, and the Order has not yet been marked Delivered, it will be unassigned from the Trip and put in a Not Dispatced state. This Order can then be assigned to another Trip.
+
+This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.
+
+
+The Rate Limit for this API is 1 call/sec.
+
+#### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/manual/unassign?referenceId=6186d5fc6e324c42abb5ea1a32e05f66`
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ---------- | ---------- | ------------
+referenceId | String | 32 | Mandatory | Reference ID of the Order which is to be unassigned from the Trip.
+
+
 
 
 ### Cancel
@@ -6338,6 +6405,207 @@ longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was tak
 
 ## Route Planning
 
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/v1/plan
+```
+
+> Request Body
+
+```json
+{
+  "routeName": "PLAN-1548845037527",
+  "startTimeWindow": "2018-12-01T10:43:57.563Z",
+  "endTimeWindow": "2018-12-31T10:43:57.560Z",
+  "hubReferenceIds": [],
+  "orderReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"],
+  "planningProfile": "1",
+  "territoryProfile": "80",
+  "outsourcedFleet": [{
+    "hubReferenceId": "Miami",
+    "agentName": "XPO Logistics",
+    "fleetType": "Truck/Cargo",
+    "territoryDetails": [{
+      "territoryName": "Miami block 18",
+      "countPerVehicleType": 2
+    },{
+      "territoryName": "NONE",
+      "countPerVehicleType": 1
+    }]
+  }],
+  "mode": "OPTIMIZE_DISTANCE_TIME",
+  "deliveryMediumReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"],
+  "deliveryMediumStartLocation" : "hub"
+}
+
+
+```
+
+> Success Response
+
+```json
+{
+  "status": 202,
+  "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!",
+ "message": “Success!”
+}
+
+```
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Bad Request",
+    "errors": [
+        {
+            "key": "routeName",
+            "code": "Duplicate Route Name"
+        },
+        {
+            "key": "deliveryMediumReferenceIds",
+            "code": "Delivery Medium reference ids are required"
+        }
+    ]
+}
+
+```
+
+The Route Planning API allows you to create Optimised Route Plans in LogiNext for your Orders.
+
+The API accepts the details of your Owned and Outsourced Fleet and can plan for a single ROute Planning operation using details of both fleets.
+
+This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/plan`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+routeName | String | 32 | Mandatory | This is the Name of the Route Plan
+startTimeWindow | String | 32 | Conditional Mandatory | This is the start time window of the Orders to be considered for route planning. If orderReferenceIds are not passed, this field is Mandatory.
+endTimeWindow | String | 32 | Conditional Mandatory | This is the start time window of the Orders to be considered for route planning. If orderReferenceIds are not passed, this field is Mandatory.
+hubReferenceIds | List | 32 | Optional | This is a list of Hubs the current Route Plan is to be run for. If not passed, the Route Planning operation will run for the Parent Hub.
+orderReferenceIds | List | 32 | Conditional Mandatory |  This is the list of Orders to be considered for Route Planning.If start and end time are not passed, this field is Mandatory.
+planningProfile | String | 32 | Optional | This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.
+territoryProfile | String | 32 | Optional | This is the name of the Territory Profile you wish to use for the Current Route Planning operation. You can setup multiple Territory profiles in your LogiNext account. If not passed, your default Territory profile will be considered.
+mode | String | 32 | Mandatory | Trip Reference ID for the trip you wish to replan.
+deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery Associate's to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.
+
+
+### Route Optimization
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/v1/optimize
+```
+
+> Request Body
+
+```json
+{
+"routeName" : "Route237",
+"planningProfile":"PlanP1",
+"plan" : [{
+  "deliveryMediumReferenceId": "f40cf4493a5949199775499b5750a272", 
+  "orderReferenceIds":[
+    "8dd4e493c715493da182f52eb69d1bcb",
+    "f40cf4493a5949199775499b43545656"
+  ]},
+  {
+    "deliveryMediumReferenceId": "f40cf4493a5949199775499b5750a272",
+    "orderReferenceIds":[
+      "8dd4e493c715493da182f52eb69d1bcb",
+      "f40cf4493a5949199775499b5750a272"
+    ]
+  }]
+}
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 202,
+    "message": "Success",
+    "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"
+}
+
+```
+
+> Failure Response
+
+```json
+
+"status": 409,
+    "message": "Bad Request",
+    "errors": [
+        {
+            "key": "plan",
+            "message": [
+                "f40cf4493a5949199775499b5750a272",
+                "f40cf4493a5949199775499b5750a272"
+            ],
+            "code": "Delivery Associate(s) does not exist"
+        },
+        {
+            "key": "plan",
+            "message": [
+                "8dd4e493c715493da182f52eb69d1bcb",
+                "f40cf4493a5949199775499b43545656",
+                "8dd4e493c715493da182f52eb69d1bcb"
+            ],
+            "code": "Orders do not exist"
+        },
+        {
+            "message": [
+                "f40cf4493a5949199775499b5750a272"
+            ],
+            "code": "Planning allowed only for Not Dispatched Orders"
+        },
+        {
+            "key": "planningProfile",
+            "code": "Invalid Planning profile"
+        }
+    ]
+}
+
+```
+
+The Route Optimization API allows you to create Optimised Route Plans in LogiNext for your Orders.
+
+Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfill those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfill these Orders.
+
+
+This API will support maximum of 150 orders per Delivery Associate, and upto 20 Delivery Associates per request.
+
+This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/optimize`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+routeName | String | 32 | Mandatory | This is the Name of the Route Plan
+planningProfile | String | 32 | Optional | This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.
+plan.deliveryMediumReferenceId | String | 32 | Mandatory | This is the list of Delivery Associate's to be considered for the current Route Planning Operation.
+plan.orderReferenceIds | List | 32 | Optional | This is a list of Orders to be optimized for the Delivery Associate
+
+
+
+
 ### Replan 
 
 > Definition
@@ -6797,7 +7065,7 @@ Param | DataType |  Length | Required | Description
 --------- | ------- | -------|-------- | ------------
 orderNo | String | 100 | Mandatory |  Order No.
 awbNumber | String | 1000 | Optional |  Awb No.
-distributionCenter | String | 255 | Mandatory | Distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 shipmentOrderDt | Double | | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverCapacityInVolume | 10 | Double | Optional | Weight of package in Kg.
 deliverCapacityInUnits | 10 | Double | Optional | Volume of package in CC
@@ -7268,7 +7536,7 @@ shipmentTaskTypeCd | String  | 40 | Mandatory | This is the task type code. DELI
 taskState | String  | 512 | Mandatory | State of task. Ex: FORWARD
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Task is ready to be allocated to them, and they can choose to Accept or Reject it.
 shipmentTaskDt | Date |  | Mandatory | Task Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-distributionCenter | String | 255 | Mandatory | This is the distribution center's name
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
@@ -8525,7 +8793,7 @@ calculatedEndDate | String | The lastest updated ETA to end servicing the curren
 unassignmentReasons | List |
 unassignmentReasons.reasonCd | String | Reason code of the unassignment reason. This can be one of the following values
 unassignmentReasons.orderCount | Number | Number of Orders that were unassigned due to the current unassignment reason
-unassignmentReasons.orderReferenceIds | List | List of the ORder Reference IDs that remained unassigned due to the current unassignemnt reason
+unassignmentReasons.orderReferenceIds | List | List of the ORder Reference IDs that remained unassigned due to the current unassignment reason
 
 
 Unassignment Key | Description
@@ -8542,6 +8810,7 @@ ROUTE_MAX_DISTANCE_NOT_FULLFILLED |  Distance constraint between first Order loc
 PINCODE_MISMATCH | No Delivery Associates were found with the pincode preference of the Orders.
 CUSTOMER_BREAK_OVERLAP_TIMEWINDOW | Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.
 ORDER_TIMEWINDOW_EXCEEDED | Orders unassigned due to this reason could not be serviced in their respective time windows.
+
 
 ### Route Planning - API
 
