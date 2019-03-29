@@ -6453,7 +6453,7 @@ https://api.loginextsolutions.com/TripApp/v1/plan
 ```json
 {
   "status": 202,
-  "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!",
+  "data": "Planning request received successfully.",
  "message": “Success!”
 }
 
@@ -6542,7 +6542,7 @@ https://api.loginextsolutions.com/TripApp/v1/optimize
 {
     "status": 202,
     "message": "Success",
-    "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"
+    "data": "Sequencing request received successfully."
 }
 
 ```
@@ -6635,7 +6635,7 @@ https://api.loginextsolutions.com/TripApp/v1/resequence
 {
     "status": 202,
     "message": "Success",
-    "data": "We have received your request for delivery planning, it will take some time to plan all your deliveries. We will push the planned routes to your system once the planning is completed. Thank you!"
+    "data": "Replanning request received successfully."
 }
 ```
 
