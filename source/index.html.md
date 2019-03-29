@@ -2994,6 +2994,12 @@ licenseIssuanceDate |String | Optional | 255 | License Issuance Date in YYYY-MM-
 
 Update the status of a previously created delivery associate with this API. Pass the new status of the associate in the 'newStatus' field, along with an optional reason and the geocoordinates of the delivery associate.
 
+If you are marking a Delivery Associate's status as OFFBREAK with this API, the ETAs for all the subsequent Not Delivered Orders will be revised. This ETA revision logic will work as follows -
+
+If the Delivery Associate's geocoordinates(latitude and longitude) are sent in the API request, ETAs will be revised considering these geocoordinates.
+If the Delivery Associate's geocoordinates are not sent in the request, but a tracking location for the Delivery Associate was received in the last 5 minutes, then that tracking location will be used to revise ETAs.
+If no tracking location was received for the Delviery Associate in the last 5 minutes, then the ETAs will not be revised for the Orders.
+
 #### Request
 
 <span class="post">PUT</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status`
@@ -8645,7 +8651,7 @@ endTime | String |  Trip end time
 
 ## Route Planning
 
-### Route Planning Webhook
+### Route Planning Webhook V1
 
 The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.
 
@@ -8795,6 +8801,249 @@ unassignmentReasons.reasonCd | String | Reason code of the unassignment reason. 
 unassignmentReasons.orderCount | Number | Number of Orders that were unassigned due to the current unassignment reason
 unassignmentReasons.orderReferenceIds | List | List of the ORder Reference IDs that remained unassigned due to the current unassignment reason
 
+
+Unassignment Key | Description
+--------- | -------
+REQUIRED_SKILL_NOT_FULLFILLED | No Delivery Associates were found with the required skillset match to fufill these Order
+INSUFFICIENT_TIME_WINDOW | The unassigned Orders could not be fulfilled in their given time windows.
+INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfill the Orders
+MAX_DISTANCE_NOT_FULFILLED | If a Maximum distance check was applied to the Delivery Associate, then Orders that remained unassigned due to this reason were because they were 
+BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfill these Orders
+NOT_GEOCODED | The Orders unassigned due to this reason were not geocoded in LogiNext
+GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.
+DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.
+ROUTE_MAX_DISTANCE_NOT_FULLFILLED |  Distance constraint between first Order location and last Order location was not met.
+PINCODE_MISMATCH | No Delivery Associates were found with the pincode preference of the Orders.
+CUSTOMER_BREAK_OVERLAP_TIMEWINDOW | Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.
+ORDER_TIMEWINDOW_EXCEEDED | Orders unassigned due to this reason could not be serviced in their respective time windows.
+
+
+### Route Planning Webhook V2
+
+The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.
+
+Note that a single Route Planning operation can have multiple Route Planning webhooks generated for it. This will happen in a case where more than 30 Trips are created as part of a Route Planning operation. Each Route Planning webhook will hold the details of not more than 30 trips. 
+
+The Route Planning webhook also provides the details regarding how many total pages of the webhook were generated as part of the Route Planning operation. This can be found from the 'currentPageIndex' and 'totalPages' keys in the webhook. Each page will be sent to the URL configured in LogiNext to receive the webhook.
+
+The list of unassigned Orders will be sent in the 'unassignmentReasons' list in the first page of the webhook. Look for the 'currentPageIndex' key having a value of 1 to find this list. Please note that if all the Orders were assigned and no Orders were left unassigned as part of the Route Planning operation, the 'unassignmentReasons' list will not be sent in the webhook.
+
+> Response
+
+```json
+{
+  "notificationType": "PLANNINGNOTIFICATION",
+  "routeName": "AS_2703",
+  "unassignmentReasons": [],
+  "totalTripCount": 1,
+  "currentTripCount": 1,
+  "currentPageIndex": 1,
+  "totalPages": 1,
+  "totalOrderCount": 4,
+  "assignedOrderCount": 4,
+  "unassignedOrderCount": 0,
+  "tripDetails": [
+    {
+      "tripName": "TRIP-1550",
+      "tripReferenceId": "a24ffe5dcdd94e8c8ca7c2d1b2f6489b",
+      "tripStatus": "NOTSTARTED",
+      "deliveryMediumName": "James",
+      "deliveryMediumReferenceId": "b725204fs5a945ea908abacadd1e352b",
+      "phoneNumber": "93462027",
+      "branchName": "LB01",
+      "orderDetails": [
+        {
+          "orderStatusCd": "NOTDISPATCHED",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "NA12070320191",
+          "orderReferenceId": "ed9906f4debe4260a4211b801b3b945c",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 11.319291,
+              "longitude": 42.89481899999998,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-26 23:42:53",
+              "plannedEndDate": "2019-03-26 23:42:53",
+              "calculatedStartDate": "2019-03-26 23:42:53",
+              "calculatedEndDate": "2019-03-26 23:42:53",
+              "plannedDistance": 0,
+              "sequence": 3
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 11.344959,
+              "longitude": 42.963202,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-27 00:15:40",
+              "plannedEndDate": "2019-03-27 00:28:36",
+              "calculatedStartDate": "2019-03-27 00:15:40",
+              "calculatedEndDate": "2019-03-27 00:28:36",
+              "plannedDistance": 2.692,
+              "sequence": 7
+            }
+          ]
+        },
+        {
+          "orderStatusCd": "NOTDISPATCHED",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "NA12070320191",
+          "orderReferenceId": "a4592e15a4d44436ae761bc47bf332a0",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 11.319291,
+              "longitude": 42.89481899999998,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-26 23:42:53",
+              "plannedEndDate": "2019-03-26 23:42:53",
+              "calculatedStartDate": "2019-03-26 23:42:53",
+              "calculatedEndDate": "2019-03-26 23:42:53",
+              "plannedDistance": 0,
+              "sequence": 4
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 11.339693,
+              "longitude": 42.954843,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-27 00:28:36",
+              "plannedEndDate": "2019-03-27 00:38:47",
+              "calculatedStartDate": "2019-03-27 00:28:36",
+              "calculatedEndDate": "2019-03-27 00:38:47",
+              "plannedDistance": 2.029,
+              "sequence": 8
+            }
+          ]
+        },
+        {
+          "orderStatusCd": "NOTDISPATCHED",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "NA12070320191",
+          "orderReferenceId": "3d1dc7bdb0c44e63991f112956f37843",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 11.319291,
+              "longitude": 42.89481899999998,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-26 23:42:53",
+              "plannedEndDate": "2019-03-26 23:42:53",
+              "calculatedStartDate": "2019-03-26 23:42:53",
+              "calculatedEndDate": "2019-03-26 23:42:53",
+              "plannedDistance": 0,
+              "sequence": 1
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 1.329154,
+              "longitude": 103.967634,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-26 23:42:53",
+              "plannedEndDate": "2019-03-27 00:05:00",
+              "calculatedStartDate": "2019-03-26 23:42:53",
+              "calculatedEndDate": "2019-03-27 00:05:00",
+              "plannedDistance": 11.397,
+              "sequence": 5
+            }
+          ]
+        },
+        {
+          "orderStatusCd": "NOTDISPATCHED",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "TestAS_NA12070320191_CNSGS0002704403",
+          "orderReferenceId": "7584a114bd3447759898ea8c823045ad",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 1.319291,
+              "longitude": 103.89481899999998,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-26 23:42:53",
+              "plannedEndDate": "2019-03-26 23:42:53",
+              "calculatedStartDate": "2019-03-26 23:42:53",
+              "calculatedEndDate": "2019-03-26 23:42:53",
+              "plannedDistance": 0,
+              "sequence": 2
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 1.3421429,
+              "longitude": 103.9641279,
+              "startTimeWindow": "2019-03-27 00:00:00",
+              "endTimeWindow": "2019-03-27 12:00:00",
+              "plannedStartDate": "2019-03-27 00:05:00",
+              "plannedEndDate": "2019-03-27 00:15:40",
+              "calculatedStartDate": "2019-03-27 00:05:00",
+              "calculatedEndDate": "2019-03-27 00:15:40",
+              "plannedDistance": 2.023,
+              "sequence": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to 'DELIVERYPLANNING'
+routeName | String | This is the name of the Route 
+totalTripCount | Number |  This is the count of the total number of Trips created as part of the route planning operation. This will hold the count of all the trips created across all the webhooks generated for the current route plan.
+currentTripCount | Number | This is the count number of trips in the current webhook.
+currentPageIndex | Number |  This is the page index of the current route planning webhook.
+totalPages | Number | This is the total number of pages geneerated for the current route planning webhook. For example, this will be 4 if 100 trips were created as part of the route planning operation.
+totalOrderCount | Number | Total number of Orders considered in the Route planning
+assignedOrderCount | Number |  Number of Orders that got assignemd after the current Route Planning operation completed.
+unassignedOrderCount | Number |  Number of Orders that remained unassignemd after the current Route Planning operation completed.
+tripDetails | List | Notification details
+tripDetails.tripName | String |  This is the Trip name.
+tripDetails.tripReferenceId | String | Reference id of the trip
+tripDetails.tripStatus | String | Status of the trip
+tripDetails.deliveryMediumName | String | Name of the Delivery Associate who will be fulfilling the Orders in this Trip
+tripDetails.deliveryMediumReferenceId | String | Reference ID of the Delivery Associate who will be fulfilling the Orders in this Trip
+tripDetails.tripReferenceId | String | Reference id of the trip
+notificationDetails.deliveryMediumName | String |  Name of Delivery Associate associated with the current Trip.
+tripDetails.phoneNumber | String | Phone no of Delivery Associate.
+tripDetails.branchName | String | Branch Name.
+tripDetails.orderDetails | List | List of Order details in the Current Trip.
+tripDetails.orderDetails.orderTypeCd | String | Order type. Can be 'PICKUP' or 'DELIVER'.
+tripDetails.orderDetails.orderNo | String | Order Number
+tripDetails.orderDetails.orderReferenceId | String | Order reference ID
+tripDetails.orderDetails.paymentType | String | payment type for the Order
+tripDetails.orderDetails.pickupDetails | List | Details of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
+tripDetails.orderDetails.pickupDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
+tripDetails.orderDetails.pickupDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
+tripDetails.orderDetails.pickupDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
+tripDetails.orderDetails.pickupDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
+tripDetails.orderDetails.deliverDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
+tripDetails.orderDetails.deliverDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
 
 Unassignment Key | Description
 --------- | -------
