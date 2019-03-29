@@ -5307,6 +5307,12 @@ Note that in case you are storing this link in your system, this link has a life
 
 <p>Update the status of a previously created delivery associate with this API. Pass the new status of the associate in the &#39;newStatus&rsquo; field, along with an optional reason and the geocoordinates of the delivery associate.</p>
 
+<p>If you are marking a Delivery Associate&rsquo;s status as OFFBREAK with this API, the ETAs for all the subsequent Not Delivered Orders will be revised. This ETA revision logic will work as follows -</p>
+
+<p>If the Delivery Associate&rsquo;s geocoordinates(latitude and longitude) are sent in the API request, ETAs will be revised considering these geocoordinates.
+If the Delivery Associate&rsquo;s geocoordinates are not sent in the request, but a tracking location for the Delivery Associate was received in the last 5 minutes, then that tracking location will be used to revise ETAs.
+If no tracking location was received for the Delviery Associate in the last 5 minutes, then the ETAs will not be revised for the Orders.</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update/status</code></p>
@@ -16966,7 +16972,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h2 id="route-planning">Route Planning</h2>
 
-<h3 id="route-planning-webhook">Route Planning Webhook</h3>
+<h3 id="route-planning-webhook-v1">Route Planning Webhook V1</h3>
 
 <p>The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.</p>
 
@@ -17247,6 +17253,459 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>unassignmentReasons.orderReferenceIds</td>
 <td>List</td>
 <td>List of the ORder Reference IDs that remained unassigned due to the current unassignment reason</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Unassignment Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>REQUIRED_SKILL_NOT_FULLFILLED</td>
+<td>No Delivery Associates were found with the required skillset match to fufill these Order</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_TIME_WINDOW</td>
+<td>The unassigned Orders could not be fulfilled in their given time windows.</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_CAPACITY</td>
+<td>The fleet capacity was not sufficient to fulfill the Orders</td>
+</tr>
+<tr>
+<td>MAX_DISTANCE_NOT_FULFILLED</td>
+<td>If a Maximum distance check was applied to the Delivery Associate, then Orders that remained unassigned due to this reason were because they were</td>
+</tr>
+<tr>
+<td>BRANCH_DM_NA</td>
+<td>No Delivery Associates of the relevant branch were found to fulfill these Orders</td>
+</tr>
+<tr>
+<td>NOT_GEOCODED</td>
+<td>The Orders unassigned due to this reason were not geocoded in LogiNext</td>
+</tr>
+<tr>
+<td>GEOFENCE_DM_NA</td>
+<td>For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.</td>
+</tr>
+<tr>
+<td>DM_NA</td>
+<td>For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.</td>
+</tr>
+<tr>
+<td>ROUTE_MAX_DISTANCE_NOT_FULLFILLED</td>
+<td>Distance constraint between first Order location and last Order location was not met.</td>
+</tr>
+<tr>
+<td>PINCODE_MISMATCH</td>
+<td>No Delivery Associates were found with the pincode preference of the Orders.</td>
+</tr>
+<tr>
+<td>CUSTOMER_BREAK_OVERLAP_TIMEWINDOW</td>
+<td>Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.</td>
+</tr>
+<tr>
+<td>ORDER_TIMEWINDOW_EXCEEDED</td>
+<td>Orders unassigned due to this reason could not be serviced in their respective time windows.</td>
+</tr>
+</tbody></table>
+
+<h3 id="route-planning-webhook-v2">Route Planning Webhook V2</h3>
+
+<p>The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.</p>
+
+<p>Note that a single Route Planning operation can have multiple Route Planning webhooks generated for it. This will happen in a case where more than 30 Trips are created as part of a Route Planning operation. Each Route Planning webhook will hold the details of not more than 30 trips. </p>
+
+<p>The Route Planning webhook also provides the details regarding how many total pages of the webhook were generated as part of the Route Planning operation. This can be found from the &#39;currentPageIndex&rsquo; and &#39;totalPages&rsquo; keys in the webhook. Each page will be sent to the URL configured in LogiNext to receive the webhook.</p>
+
+<p>The list of unassigned Orders will be sent in the &#39;unassignmentReasons&rsquo; list in the first page of the webhook. Look for the &#39;currentPageIndex&rsquo; key having a value of 1 to find this list. Please note that if all the Orders were assigned and no Orders were left unassigned as part of the Route Planning operation, the &#39;unassignmentReasons&rsquo; list will not be sent in the webhook.</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLANNINGNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS_2703"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unassignmentReasons"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"totalTripCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"currentTripCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"currentPageIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalOrderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assignedOrderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unassignedOrderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-1550"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a24ffe5dcdd94e8c8ca7c2d1b2f6489b"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTSTARTED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b725204fs5a945ea908abacadd1e352b"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93462027"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LB01"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA12070320191"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9906f4debe4260a4211b801b3b945c"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.344959</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.963202</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:15:40"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:28:36"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:15:40"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:28:36"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.692</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA12070320191"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a4592e15a4d44436ae761bc47bf332a0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.339693</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.954843</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:28:36"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:38:47"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:28:36"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:38:47"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.029</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA12070320191"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d1dc7bdb0c44e63991f112956f37843"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.329154</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.967634</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:05:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:05:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.397</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestAS_NA12070320191_CNSGS0002704403"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7584a114bd3447759898ea8c823045ad"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.3421429</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.9641279</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:05:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:15:40"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:05:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:15:40"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.023</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to &#39;DELIVERYPLANNING&rsquo;</td>
+</tr>
+<tr>
+<td>routeName</td>
+<td>String</td>
+<td>This is the name of the Route</td>
+</tr>
+<tr>
+<td>totalTripCount</td>
+<td>Number</td>
+<td>This is the count of the total number of Trips created as part of the route planning operation. This will hold the count of all the trips created across all the webhooks generated for the current route plan.</td>
+</tr>
+<tr>
+<td>currentTripCount</td>
+<td>Number</td>
+<td>This is the count number of trips in the current webhook.</td>
+</tr>
+<tr>
+<td>currentPageIndex</td>
+<td>Number</td>
+<td>This is the page index of the current route planning webhook.</td>
+</tr>
+<tr>
+<td>totalPages</td>
+<td>Number</td>
+<td>This is the total number of pages geneerated for the current route planning webhook. For example, this will be 4 if 100 trips were created as part of the route planning operation.</td>
+</tr>
+<tr>
+<td>totalOrderCount</td>
+<td>Number</td>
+<td>Total number of Orders considered in the Route planning</td>
+</tr>
+<tr>
+<td>assignedOrderCount</td>
+<td>Number</td>
+<td>Number of Orders that got assignemd after the current Route Planning operation completed.</td>
+</tr>
+<tr>
+<td>unassignedOrderCount</td>
+<td>Number</td>
+<td>Number of Orders that remained unassignemd after the current Route Planning operation completed.</td>
+</tr>
+<tr>
+<td>tripDetails</td>
+<td>List</td>
+<td>Notification details</td>
+</tr>
+<tr>
+<td>tripDetails.tripName</td>
+<td>String</td>
+<td>This is the Trip name.</td>
+</tr>
+<tr>
+<td>tripDetails.tripReferenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>tripDetails.tripStatus</td>
+<td>String</td>
+<td>Status of the trip</td>
+</tr>
+<tr>
+<td>tripDetails.deliveryMediumName</td>
+<td>String</td>
+<td>Name of the Delivery Associate who will be fulfilling the Orders in this Trip</td>
+</tr>
+<tr>
+<td>tripDetails.deliveryMediumReferenceId</td>
+<td>String</td>
+<td>Reference ID of the Delivery Associate who will be fulfilling the Orders in this Trip</td>
+</tr>
+<tr>
+<td>tripDetails.tripReferenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>notificationDetails.deliveryMediumName</td>
+<td>String</td>
+<td>Name of Delivery Associate associated with the current Trip.</td>
+</tr>
+<tr>
+<td>tripDetails.phoneNumber</td>
+<td>String</td>
+<td>Phone no of Delivery Associate.</td>
+</tr>
+<tr>
+<td>tripDetails.branchName</td>
+<td>String</td>
+<td>Branch Name.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails</td>
+<td>List</td>
+<td>List of Order details in the Current Trip.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderTypeCd</td>
+<td>String</td>
+<td>Order type. Can be &#39;PICKUP&rsquo; or &#39;DELIVER&rsquo;.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderNo</td>
+<td>String</td>
+<td>Order Number</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderReferenceId</td>
+<td>String</td>
+<td>Order reference ID</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.paymentType</td>
+<td>String</td>
+<td>payment type for the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails</td>
+<td>List</td>
+<td>Details of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.latitude</td>
+<td>Double</td>
+<td>Geocoordinates (latitude) of the pickup leg of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.longitude</td>
+<td>Double</td>
+<td>Geocoordinates (longitude) pickup leg of the of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.startTimeWindow</td>
+<td>String</td>
+<td>Start Time Window of the pickup leg of the of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.endTimeWindow</td>
+<td>String</td>
+<td>End Time Window of the pickup leg of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.calculatedStartDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.calculatedEndDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.plannedDistance</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.sequence</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.latitude</td>
+<td>Double</td>
+<td>Geocoordinates (latitude) of the pickup leg of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.longitude</td>
+<td>Double</td>
+<td>Geocoordinates (longitude) pickup leg of the of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.startTimeWindow</td>
+<td>String</td>
+<td>Start Time Window of the pickup leg of the of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.endTimeWindow</td>
+<td>String</td>
+<td>End Time Window of the pickup leg of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.calculatedStartDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.calculatedEndDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.plannedDistance</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.sequence</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
 </tr>
 </tbody></table>
 
