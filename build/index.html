@@ -154,7 +154,7 @@ maintainence men, repair men, or delivery boys.</p>
 
 <h3 id="trips">Trips</h3>
 
-<p>Trips are defined as a group of orders that a delivery associate must fulfill as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.</p>
+<p>Trips are defined as a group of orders that a delivery associate must fulfil as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.</p>
 
 <h3 id="service-time">Service Time</h3>
 
@@ -621,15 +621,36 @@ Similarly for - <br>
 
 <p>LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API.</p>
 
-<p>To create Orders, you can call the LogiNext API with a call rate of 1 request/second.</p>
+<p>The LogiNext API rate limits are defined based on the nature of the API being called. APIs are categorised as per the following criteria</p>
 
-<p>The LogiNext Orders API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.</p>
-
-<p>This means - </p>
-
-<p>1n 1 second you can create 20 Orders in LogiNext.<br>
-In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
-In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
+<table><thead>
+<tr>
+<th>API Type</th>
+<th>Description</th>
+<th>Rate Limit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Master Data</td>
+<td>These are APIs that perform operations on Master Data</td>
+<td>5 requests per second</td>
+</tr>
+<tr>
+<td>Transaction Data</td>
+<td>These are APIs that perform operations on Transaction Data</td>
+<td>5 requests per second</td>
+</tr>
+<tr>
+<td>High Frequency Transaction Data</td>
+<td>These are APIs that perform operations on High Frequency Transaction Data. For example, this can include creating or retrieving tracking data in LogiNext.</td>
+<td>10 requests per second</td>
+</tr>
+<tr>
+<td>Custom APIs</td>
+<td>These are APIs that perform specific operations on LogiNext Data. THis includes APIs like the Route Optimization API, and the Replan API. Such APIs will have special rate limits defined for them that will be menioned in the API description.</td>
+<td>Custom Rate Limits. Rate limit Will be mentioned in the API description.</td>
+</tr>
+</tbody></table>
 
 <p>The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.</p>
 
@@ -639,9 +660,9 @@ In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br></p>
 
 <p>The LogiNext API support multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. </p>
 
-<p>APIs that support batching have a rate limit of 1 request per second and accept upto 20 records per request. </p>
+<p>APIs that support batching have a rate limit of 5 request per second and accept upto 20 records per request. </p>
 
-<p>If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 1 second delay. </p>
+<p>If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 0.2 second delay. </p>
 
 <p>We recommend implementing retry mechanism at your end in case of the following error responses received from the LogiNext API - 429, 500</p>
 
@@ -2456,8 +2477,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-24 13:30:00"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-28 12:18:29"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.909683</span><span class="p">,</span><span class="w">
       </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2494,8 +2515,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27 19:30:00"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-29 09:03:52"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.909683</span><span class="p">,</span><span class="w">
       </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2532,8 +2553,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
       </span><span class="nt">"vehicleReportingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-28 19:30:00"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-04 07:34:38"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastHub"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.909683</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastTrackedLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.909683</span><span class="p">,</span><span class="w">
       </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2929,8 +2950,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"trackerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4568088900"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9003884</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.9889999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9889999</span><span class="p">,</span><span class="w">
   </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-14T09:11:56Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.4</span><span class="p">,</span><span class="w">
@@ -3022,8 +3043,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
   </span><span class="nt">"trackerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358899056518932"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9003884</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.9889999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9889999</span><span class="p">,</span><span class="w">
   </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T07:21:56Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.4</span><span class="p">,</span><span class="w">
@@ -3031,8 +3052,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
   </span><span class="nt">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.5</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"trackerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4209917397"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9003884</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.9889999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9889999</span><span class="p">,</span><span class="w">
   </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T07:21:56Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.4</span><span class="p">,</span><span class="w">
@@ -3517,8 +3538,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.555</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -3741,7 +3762,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>With this field you can create Customers on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.</td>
+<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create a Customer entity on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -3788,8 +3809,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
                 </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+                </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.555</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a973fdcb1eb41d5ad7408c57e13cc87"</span><span class="w">
@@ -3822,8 +3843,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
                   </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
-                  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
-                  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+                  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.555</span><span class="w">
                    </span><span class="p">},</span><span class="w">
            </span><span class="nt">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"241ccf29a4404046a033f31cc3384ac7"</span><span class="w">
@@ -3877,8 +3898,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"10045"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.555</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -4097,7 +4118,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>Sub Client Name. With this field, you can update Customers for your  clients in LogiNext.</td>
+<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to update a Customer entity on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -4140,8 +4161,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"MH"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"IND"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9555</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.555</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.555</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"isPrimary"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="s2">"MyKart"</span><span class="p">,</span><span class="w">
@@ -4307,7 +4328,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>With this field you can create addresses on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.</td>
+<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Address entity on behalf of one of your Customers.</td>
 </tr>
 <tr>
 <td>timeZone</td>
@@ -4351,7 +4372,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
      </span><span class="p">}</span><span class="w">
    </span><span class="p">],</span><span class="w">
 </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="s2">"Delivery Associate"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumMasterTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bakery"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"1AB54F"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
@@ -4423,6 +4444,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span></code></pre>
 
 <p>Create a new Delivery Associate in the LogiNext system with this API. A delivery associate will be created and assigned a unique Reference ID that can be used to identify the Delivery Associate later.</p>
+
+<p>API Type: Master Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -4542,7 +4565,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Delivery associate type. Ex - Truck, Delivery Boy</td>
+<td>Delivery associate type. For example, &#39;Bakery&rsquo; if the Delivery Associate can fulfill Bakery type of Orders &#39;Groceries&rsquo; if the Delivery Associate can fulfill Groceries&rsquo; type of Orders. This will be mapped to the &#39;deliveryType&rsquo; field at the Order level.</td>
 </tr>
 <tr>
 <td>isOwnVehicleFl</td>
@@ -4742,6 +4765,8 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>The API returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext, in the &#39;profilePicture&rsquo; field.This can be used in the case where the Delivery Associate&rsquo;s image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
 Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.</p>
 
+<p>API Type: Master Data API</p>
+
 <h4 id="request-parameters">Request Parameters</h4>
 
 <table><thead>
@@ -4846,7 +4871,7 @@ Note that in case you are storing this link in your system, this link has a life
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
  </span><span class="p">{</span><span class="w">
- </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"f0094fd13acc4d76827898bddc2ce0e3"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"ALL123469"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser_LMDemo"</span><span class="p">,</span><span class="w">
@@ -4943,6 +4968,8 @@ Note that in case you are storing this link in your system, this link has a life
 </span></code></pre>
 
 <p>Update the details of a Delivery Associate in the LogiNext system with this API. </p>
+
+<p>API Type: Master Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5279,16 +5306,16 @@ Note that in case you are storing this link in your system, this link has a life
   </span><span class="nt">"deliveryMediumDetails"</span><span class="p">:</span><span class="w">
   </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.6758</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.6758</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
             </span><span class="nt">"referenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bae83999422211e6860c0653055f4dfd"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.67890</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">78.67589</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.67589</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5312,6 +5339,8 @@ Note that in case you are storing this link in your system, this link has a life
 <p>If the Delivery Associate&rsquo;s geocoordinates(latitude and longitude) are sent in the API request, ETAs will be revised considering these geocoordinates.
 If the Delivery Associate&rsquo;s geocoordinates are not sent in the request, but a tracking location for the Delivery Associate was received in the last 5 minutes, then that tracking location will be used to revise ETAs.
 If no tracking location was received for the Delviery Associate in the last 5 minutes, then the ETAs will not be revised for the Orders.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5402,8 +5431,8 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </span><span class="nt">"adminContactName"</span><span class="p">:</span><span class="s2">"John K."</span><span class="p">,</span><span class="w">
 </span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="s2">"9033977123"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="s2">"superjames@gmails.com"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="p">,</span><span class="w">
 </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 
@@ -5416,13 +5445,15 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>Create hubs / branches / distribution centers in the LogiNext system with the Create Hub API. Hubs will be created and will be assigned a unique Reference ID that can be used to look up the hub later.</p>
+
+<p>API Type: Master Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5608,7 +5639,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </blockquote>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">[{</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"8d0a36e01c524022ab9ff2d66c14281c"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Himalaya Mall"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Driving Road"</span><span class="p">,</span><span class="w">
@@ -5639,13 +5670,15 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Hub success."</span><span class="p">,</span><span class="w">
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hcgsyuc334"</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>Update hubs / branches / distribution centers in the LogiNext system with the Update Hub API. </p>
+
+<p>API Type: Master Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5846,7 +5879,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nt">"geofenceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MMD-Patapsco High/Dundalk"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId::"</span><span class="err">987ygr43wefghyu89oikjhytrew34</span><span class="nt">",
+            </span><span class="nt">"referenceId::"</span><span class="err">fa7716b25fe5432a96d1a709a28bd6d8</span><span class="nt">",
             "</span><span class="err">geofenceShape</span><span class="nt">": "</span><span class="err">Polygon</span><span class="nt">",
             "</span><span class="err">geofenceArea</span><span class="nt">": 0,
             "</span><span class="err">geoCoordinates</span><span class="nt">": [
@@ -5884,6 +5917,8 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <p>If you have configured geofences in LogiNext to identify your Hubs or particular locations, you can call this API to fetch the details and geo coordinates of your geofences.</p>
 
 <p>By default, the API returns all the Active geofences</p>
+
+<p>API Type: Master Data API</p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -6118,7 +6153,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ww1223"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="w">
@@ -6145,7 +6180,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b032f3e9397343ba812f96370b92d592"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa7716b25fe5432a96d1a709a28bd6d8"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ww1220"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="w">
@@ -6214,6 +6249,8 @@ When Customer Profiling is turned ON -
 </span></code></pre>
 
 <p>Create pickup orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -6543,7 +6580,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>32</td>
 <td>Optional</td>
-<td>With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.</td>
+<td>This is the identifier for an account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create Orders on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -6898,6 +6935,8 @@ When Customer Profiling is turned ON -
 
 <p>Create delivery orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/create</code></p>
@@ -6961,13 +7000,6 @@ When Customer Profiling is turned ON -
 <td>255</td>
 <td>Mandatory</td>
 <td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
-</tr>
-<tr>
-<td>packageWeight</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>This is the weight of package in Kg.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
@@ -7064,7 +7096,7 @@ When Customer Profiling is turned ON -
 <td>deliverServiceTime</td>
 <td>Integer</td>
 <td>11</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver service time in mins.</td>
 </tr>
 <tr>
@@ -7142,7 +7174,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the street name of the delivery customer.</td>
+<td>TThis is the street name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
@@ -7233,7 +7265,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>32</td>
 <td>Optional</td>
-<td>With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.</td>
+<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Order on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -8480,6 +8512,8 @@ When Customer Profiling is turned ON -
 
 <p>You will have to pass the Pickup and Deliver Customer details in the API to create a Point to Point type of Order.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/create</code></p>
@@ -9141,6 +9175,8 @@ When Customer Profiling is turned ON -
 
 <p>This API can also be used for single Pick Up location and single destinaton.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/multidestination/create</code></p>
@@ -9598,6 +9634,8 @@ When Customer Profiling is turned ON -
 
 <p>Create return orders for existing orders with this API in the LogiNext system.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return</code></p>
@@ -9734,6 +9772,8 @@ When Customer Profiling is turned ON -
 </span></code></pre>
 
 <p>Retrieve orders and all the order associated information with this API.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10033,6 +10073,8 @@ When Customer Profiling is turned ON -
 
 <p>With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10489,16 +10531,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.910214</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.913214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.913214</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
 
   </span><span class="p">},</span><span class="w">
@@ -10506,8 +10548,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6156ty46e324c42abb5ea1a32y45f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">"Technical Issues"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910321</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.910321</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
 
   </span><span class="p">}]</span><span class="w">
@@ -10528,6 +10570,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10667,6 +10711,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>This API will not delete existing crates.</p>
 
 <p>You can pass multiple crate and line items.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10828,7 +10874,7 @@ If the trip details are passed (through trip reference id), then Delivery Associ
 If the trip details are not passed, then the Delivery Associate details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
 The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.</p>
 
-<p>The Rate Limit for this API is 1 call/sec.</p>
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10923,7 +10969,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.</p>
 
-<p>The Rate Limit for this API is 1 call/sec.</p>
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10991,6 +11037,8 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 <p>Use this API to cancel an order.</p>
 
 <p>With this API, you can cancel Orders that were created with a &#39;cancellationAllowedFl&rsquo; set to &#39;Y&rsquo;. If you try to cancel Orders that have a &#39;cancellationAllowedFl&rsquo; set to &#39;N&rsquo;, the API will return an error response.</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11218,6 +11266,8 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 
 <p>Date fields stored at the custom form level will be returned in EPOCH format.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v1/customform/list</code></p>
@@ -11354,7 +11404,9 @@ If you do not store the Reference ID for orders,  you will need to fetch the sam
 <p>This API will do the following when called:<br>
 If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.<br>
 If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.<br>
-If it does not exist, then a new manifest will be created with the provided Manifest ID.</p>
+If it does not exist, then a new manifest will be created with the provided Manifest ID</p>
+
+<p>API Type: Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11482,6 +11534,8 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop</code></p>
@@ -11593,6 +11647,8 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
@@ -11669,6 +11725,8 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.</p>
 
+<p>API Type: Transaction Data API</p>
+
 <h4 id="request">Request</h4>
 
 <p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation</code></p>
@@ -11736,8 +11794,8 @@ You can use this particular feature to display real time Order tracking informat
   </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"a3bee4486d9f467d72e96f4d32c5569b"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"1316MDO"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderAcceptTime"</span><span class="p">:</span><span class="s2">"2017-12-27T10:00:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111555</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9099327</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9099327</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -11755,6 +11813,8 @@ You can use this particular feature to display real time Order tracking informat
 Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
+
+<p>API Type: High Volume Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11819,8 +11879,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="mf">12.11</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="mf">78.11223</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="mf">74.11223</span><span class="p">,</span><span class="w">
   </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -11840,6 +11900,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
+
+<p>API Type: High Volume Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11907,8 +11969,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="s2">"12.11"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="s2">"78.11223"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="s2">"40.760838"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="s2">"74 .11223"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -11929,6 +11991,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
+
+<p>API Type: High Volume Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -12090,6 +12154,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 </span></code></pre>
 
 <p>With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.</p>
+
+<p>API Type: High Volume Transaction Data API</p>
 
 <h4 id="request">Request</h4>
 
@@ -12393,6 +12459,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h2 id="route-planning">Route Planning</h2>
 
+<h3 id="plan">Plan</h3>
+
 <blockquote>
 <p>Definition</p>
 </blockquote>
@@ -12461,11 +12529,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>The Route Planning API allows you to create Optimised Route Plans in LogiNext for your Orders.</p>
+<p>The Plan API allows you to create Optimised Route Plans in LogiNext for your Orders.</p>
 
-<p>The API accepts the details of your Owned and Outsourced Fleet and can plan for a single ROute Planning operation using details of both fleets.</p>
+<p>The API accepts the details of your Owned and Outsourced Fleet and can plan for a single Route Planning operation using details of both fleets.</p>
 
-<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.</p>
+
+<p>API Type: Custom. The rate Limit for this API is 1 request per minute.</p>
 
 <h4 id="request">Request</h4>
 
@@ -12547,7 +12617,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </tr>
 </tbody></table>
 
-<h3 id="route-optimization">Route Optimization</h3>
+<h3 id="optimize">Optimize</h3>
 
 <blockquote>
 <p>Definition</p>
@@ -12630,11 +12700,15 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <p>The Route Optimization API allows you to create Optimised Route Plans in LogiNext for your Orders.</p>
 
-<p>Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfill those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfill these Orders.</p>
+<p>Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfil those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfil these Orders.</p>
 
 <p>This API will support maximum of 150 orders per Delivery Associate, and upto 20 Delivery Associates per request.</p>
 
-<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+<p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.</p>
+
+<p>This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.</p>
+
+<p>API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.</p>
 
 <h4 id="request">Request</h4>
 
@@ -12735,6 +12809,10 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>All Not Delivered Orders will be considered for replanning with this API. For example, if your Delivery Associate delivered Orders #1 and #4 in their Trip, and calls this API, then Orders #2 and #3 in their Trip will also be replanned. The new sequence of Orders after replanning will start from #5 in the above case as Order #4 was already Delviered. Sequence #2 and #3 will remain blank.</p>
 
 <p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
+
+<p>This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.</p>
+
+<p>API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.</p>
 
 <h4 id="request">Request</h4>
 
@@ -13061,7 +13139,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </tr>
 </tbody></table>
 
-<h2 id="get-location-serviceability">Get Location Serviceability</h2>
+<h2 id="location-serviceability">Location Serviceability</h2>
 
 <blockquote>
 <p>Sample Request</p>
@@ -17272,7 +17350,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>INSUFFICIENT_CAPACITY</td>
-<td>The fleet capacity was not sufficient to fulfill the Orders</td>
+<td>The fleet capacity was not sufficient to fulfil the Orders</td>
 </tr>
 <tr>
 <td>MAX_DISTANCE_NOT_FULFILLED</td>
@@ -17280,7 +17358,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>BRANCH_DM_NA</td>
-<td>No Delivery Associates of the relevant branch were found to fulfill these Orders</td>
+<td>No Delivery Associates of the relevant branch were found to fulfil these Orders</td>
 </tr>
 <tr>
 <td>NOT_GEOCODED</td>
@@ -17288,11 +17366,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>GEOFENCE_DM_NA</td>
-<td>For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.</td>
+<td>For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfil them, those Orders will remain unassigned due to this reason.</td>
 </tr>
 <tr>
 <td>DM_NA</td>
-<td>For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.</td>
+<td>For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfil these Orders, those Orders will remain unassigned due to this reason.</td>
 </tr>
 <tr>
 <td>ROUTE_MAX_DISTANCE_NOT_FULLFILLED</td>
@@ -17725,7 +17803,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>INSUFFICIENT_CAPACITY</td>
-<td>The fleet capacity was not sufficient to fulfill the Orders</td>
+<td>The fleet capacity was not sufficient to fulfil the Orders</td>
 </tr>
 <tr>
 <td>MAX_DISTANCE_NOT_FULFILLED</td>
@@ -17733,7 +17811,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>BRANCH_DM_NA</td>
-<td>No Delivery Associates of the relevant branch were found to fulfill these Orders</td>
+<td>No Delivery Associates of the relevant branch were found to fulfil these Orders</td>
 </tr>
 <tr>
 <td>NOT_GEOCODED</td>
@@ -17741,11 +17819,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 <tr>
 <td>GEOFENCE_DM_NA</td>
-<td>For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.</td>
+<td>For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfil them, those Orders will remain unassigned due to this reason.</td>
 </tr>
 <tr>
 <td>DM_NA</td>
-<td>For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.</td>
+<td>For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfil these Orders, those Orders will remain unassigned due to this reason.</td>
 </tr>
 <tr>
 <td>ROUTE_MAX_DISTANCE_NOT_FULLFILLED</td>
@@ -22361,7 +22439,7 @@ Note that the state code you enter should map to the country code entered in the
 <tr>
 <td>Off Break</td>
 <td>OFFBREAK</td>
-<td>Delivery Associate is back from Break and ready to fulfill Orders. Only Active Delivery Associates can be On Break.</td>
+<td>Delivery Associate is back from Break and ready to fulfil Orders. Only Active Delivery Associates can be On Break.</td>
 </tr>
 </tbody></table>
 

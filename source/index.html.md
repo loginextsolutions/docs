@@ -44,7 +44,7 @@ An Order has details of shipment you want to pickup from your merchant or delive
 Orders can be be labeled differently, according to your industry and needs. For example, one customer has named it shipment.
 
 ### Trips
-Trips are defined as a group of orders that a delivery associate must fulfill as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.
+Trips are defined as a group of orders that a delivery associate must fulfil as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.
 
 ###Service Time 
 Service Time is the time it takes to service an Order at a particular location. For example - If an Order is to be delivered at a Customer's Home address, the Service time would include the time for parking the Vehicle and accounting for security checks at the location if any. Similarly, if an Order is to be delivered at a warehouse, Service Time will account for parking, loading and unloading at the delivery location.
@@ -317,27 +317,27 @@ WWW-Authenticate | BASIC 075b8961-bd02-454c-83eb-259f965f313f
 
 LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API.
 
-To create Orders, you can call the LogiNext API with a call rate of 1 request/second.
+The LogiNext API rate limits are defined based on the nature of the API being called. APIs are categorised as per the following criteria
 
-The LogiNext Orders API accept upto 20 records per request. For eg - If you call the Create Order API, you can create upto 20 Orders per second, with a single call of this API.
+API Type | Description |Rate Limit
+--------- | ------- | -------------
+Master Data | These are APIs that perform operations on Master Data  | 5 requests per second
+Transaction Data | These are APIs that perform operations on Transaction Data | 5 requests per second
+High Frequency Transaction Data | These are APIs that perform operations on High Frequency Transaction Data. For example, this can include creating or retrieving tracking data in LogiNext. | 10 requests per second
+Custom APIs | These are APIs that perform specific operations on LogiNext Data. THis includes APIs like the Route Optimization API, and the Replan API. Such APIs will have special rate limits defined for them that will be menioned in the API description. | Custom Rate Limits. Rate limit Will be mentioned in the API description.
 
-
-This means - 
-
-1n 1 second you can create 20 Orders in LogiNext.<br>
-In 1 minute you can create - 20*60 = 1200 Orders in LogiNext.<br>
-In 1 hour you can create - 20*60*60 = 72000 Orders in LogiNext.<br>
 
 The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error  to your API calls if you go beyond this limit.
 
 ## Batching
+
 The LogiNext API support multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. 
 
-APIs that support batching have a rate limit of 1 request per second and accept upto 20 records per request. 
+APIs that support batching have a rate limit of 5 request per second and accept upto 20 records per request. 
 
-If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 1 second delay. 
+If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 0.2 second delay. 
 
 We recommend implementing retry mechanism at your end in case of the following error responses received from the LogiNext API - 429, 500
 
@@ -1301,8 +1301,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/get
       "vehicleReportingTime": "2016-03-24 13:30:00",
       "tracking": "2016-03-28 12:18:29",
       "lastHub": null,
-      "lastTrackedLatitude": 19.1118,
-      "lastTrackedLongitude": 72.909683,
+      "lastTrackedLatitude": 40.760838,
+      "lastTrackedLongitude": 74.909683,
       "batteryPerc": 40,
       "speed": 54
     },
@@ -1339,8 +1339,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/get
       "vehicleReportingTime": "2016-03-27 19:30:00",
       "tracking": "2016-03-29 09:03:52",
       "lastHub": null,
-      "lastTrackedLatitude": 19.1118,
-      "lastTrackedLongitude": 72.909683,
+      "lastTrackedLatitude": 40.760838,
+      "lastTrackedLongitude": 74.909683,
       "batteryPerc": 40,
       "speed": 54
     },
@@ -1377,8 +1377,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/get
       "vehicleReportingTime": "2016-03-28 19:30:00",
       "tracking": "2016-04-04 07:34:38",
       "lastHub": null,
-      "lastTrackedLatitude": 19.1118,
-      "lastTrackedLongitude": 72.909683,
+      "lastTrackedLatitude": 40.760838,
+      "lastTrackedLongitude": 74.909683,
       "batteryPerc": 40,
       "speed": 54
     }
@@ -1633,8 +1633,8 @@ tripname | TestTripName| Trip name
 ```json
 {
   "trackerId": "4568088900",
-  "latitude": 12.9003884,
-  "longitude": 14.9889999,
+  "latitude": 40.760838,
+  "longitude": 74.9889999,
   "time": "2016-07-14T09:11:56Z",
   "batteryPerc": 70.5,
   "speed": 40.4,
@@ -1672,8 +1672,8 @@ temperature | Double | 5,2 | Optional | Consignment's temperature
 [
   {
   "trackerId": "358899056518932",
-  "latitude": 12.9003884,
-  "longitude": 14.9889999,
+  "latitude": 40.760838,
+  "longitude": 74.9889999,
   "time": "2018-01-04T07:21:56Z",
   "batteryPerc": 70.5,
   "speed": 40.4,
@@ -1681,8 +1681,8 @@ temperature | Double | 5,2 | Optional | Consignment's temperature
   "temperature": 30.5
   }, {
   "trackerId": "4209917397",
-  "latitude": 12.9003884,
-  "longitude": 14.9889999,
+  "latitude": 40.760838,
+  "longitude": 74.9889999,
   "time": "2018-01-04T07:21:56Z",
   "batteryPerc": 70.5,
   "speed": 40.4,
@@ -2046,8 +2046,8 @@ Delivery orders by loading the items for different orders from a Single Point of
           "state":"IL",
           "country":"USA",
           "pincode":"10045",
-          "latitude": 72.9555,
-          "longitude": 19.555
+          "latitude": 40.760838,
+          "longitude": 79.555
     }
   }
 ]
@@ -2171,7 +2171,7 @@ billingAddress.country | String | 255 | Optional | Customer's Billing Address Co
 billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | With this field you can create Customers on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create a Customer entity on behalf of one of your Customers.
 
 ### Get 
 
@@ -2218,8 +2218,8 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
                 "state": "Maharashtra",
                 "country": "INDIA",
                 "pincode": "10045",
-                "latitude": 72.9555,
-                "longitude": 19.555
+                "latitude": 40.760838,
+                "longitude": 74.555
             },
             "isActive": "Y",
             "referenceId": "3a973fdcb1eb41d5ad7408c57e13cc87"
@@ -2252,8 +2252,8 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
                   "state":"NY",
                   "country":"USA",
                   "pincode":"10045",
-                  "latitude": 72.9555,
-                  "longitude": 19.555
+                  "latitude": 40.760838,
+                  "longitude": 74.555
                    },
            "isActive": "Y",
            "referenceId": "241ccf29a4404046a033f31cc3384ac7"
@@ -2310,8 +2310,8 @@ This API accepts upto 20 Customer IDs or Reference IDs in a comma separated form
           "state":"NY",
           "country":"USA",
           "pincode":"10045",
-          "latitude": 72.9555,
-          "longitude": 19.555
+          "latitude": 40.760838,
+          "longitude": 74.555
     }
   }
 ]
@@ -2427,7 +2427,7 @@ billingAddress.country | String | 255 | Optional | Customer's Billing Address Co
 billingAddress.pincode | String | 255 | Optional | Customer's Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer's Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | Sub Client Name. With this field, you can update Customers for your  clients in LogiNext.
+clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to update a Customer entity on behalf of one of your Customers.
 
 
 ## Address 
@@ -2469,8 +2469,8 @@ clientCode | String | 50 | Optional | Sub Client Name. With this field, you can 
           "state":"MH",
           "country":"IND",
           "pincode":"400076",
-          "latitude": 72.9555,
-          "longitude": 19.555
+          "latitude": 40.760838,
+          "longitude": 74.555
     },
     "isPrimary":"Y",
     "clientCode":"MyKart",
@@ -2537,7 +2537,7 @@ address.country | String | 255 | Optional | Address Country.
 address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | With this field you can create addresses on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Address entity on behalf of one of your Customers.
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
 
 
@@ -2576,7 +2576,7 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
      }
    ],
 "gender":"Male",
-"deliveryMediumMasterTypeCd":"Delivery Associate",
+"deliveryMediumMasterTypeCd": "Bakery",
 "isOwnVehicleFl":"Company",
 "vehicleNumber":"1AB54F",
 "dmPreference":"10035",
@@ -2649,6 +2649,8 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 
 Create a new Delivery Associate in the LogiNext system with this API. A delivery associate will be created and assigned a unique Reference ID that can be used to identify the Delivery Associate later.
 
+API Type: Master Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create`
@@ -2672,7 +2674,7 @@ capacityInVolume | Integer | 20 | Optional | Capacity of Delivery associate in v
 capacityInWeight | Integer | 20 |Optional | Capacity of Delivery associate in weight
 dob | String |  | Optional | Date of birth
 gender | ISODate | 12 |Optional | Gender. Ex - Male,Female
-deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. Ex - Truck, Delivery Boy
+deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. For example, 'Bakery' if the Delivery Associate can fulfill Bakery type of Orders 'Groceries' if the Delivery Associate can fulfill Groceries' type of Orders. This will be mapped to the 'deliveryType' field at the Order level.
 isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
 vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery associate
 weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
@@ -2714,6 +2716,8 @@ Retrieve a List of all the Delivery Associates using this API. Pass the LogiNext
 
 The API returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext, in the 'profilePicture' field.This can be used in the case where the Delivery Associate's image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
 Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.
+
+API Type: Master Data API
 
 #### Request Parameters
 
@@ -2802,7 +2806,7 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
 ```json
 [
  {
- "referenceId":"f0094fd13acc4d76827898bddc2ce0e3",
+ "referenceId":"fa7716b25fe5432a96d1a709a28bd6d8",
 "employeeId":"ALL123469",
 "branchName":"LMDCalifornia",
 "userGroupName":"MobileUser_LMDemo",
@@ -2900,6 +2904,8 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
 
 Update the details of a Delivery Associate in the LogiNext system with this API. 
 
+API Type: Master Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/update`
@@ -2966,16 +2972,16 @@ licenseIssuanceDate |String | Optional | 255 | License Issuance Date in YYYY-MM-
   "deliveryMediumDetails":
   [
     {
-            "referenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
+            "referenceId":"fa7716b25fe5432a96d1a709a28bd6d8",
             "reasonCd":"DBUNAVAILABLE",
-            "latitude":19.67890,
-            "longitude":78.6758
+            "latitude":40.760838,
+            "longitude":74.6758
     },
     {
             "referenceId" : "bae83999422211e6860c0653055f4dfd",
             "reasonCd":"DBUNAVAILABLE",
-            "latitude":19.67890,
-            "longitude":78.67589
+            "latitude":40.760838,
+            "longitude":74.67589
     }
   ]
 }
@@ -2999,6 +3005,8 @@ If you are marking a Delivery Associate's status as OFFBREAK with this API, the 
 If the Delivery Associate's geocoordinates(latitude and longitude) are sent in the API request, ETAs will be revised considering these geocoordinates.
 If the Delivery Associate's geocoordinates are not sent in the request, but a tracking location for the Delivery Associate was received in the last 5 minutes, then that tracking location will be used to revise ETAs.
 If no tracking location was received for the Delviery Associate in the last 5 minutes, then the ETAs will not be revised for the Orders.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -3052,8 +3060,8 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/create
 "adminContactName":"John K.",
 "mobileNumber":"9033977123",
 "emailAddress":"superjames@gmails.com",
-"longitude": 19.111755,
-"latitude": 72.9095327,
+"longitude": 40.760838,
+"latitude": 74.9095327,
 "timeZone":"America/Chicago"
 }]
 
@@ -3066,13 +3074,15 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/create
     "status": 200,
     "message": "Create Hub success.",
     "data": {
-        "referenceId": "hcgsyuc334"
+        "referenceId": "fa7716b25fe5432a96d1a709a28bd6d8"
     },
     "hasError": false
 }
 ```
 
 Create hubs / branches / distribution centers in the LogiNext system with the Create Hub API. Hubs will be created and will be assigned a unique Reference ID that can be used to look up the hub later.
+
+API Type: Master Data API
 
 #### Request
 
@@ -3121,7 +3131,7 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/update
 ```json
 
 [{
-  "referenceId":"8d0a36e01c524022ab9ff2d66c14281c",
+  "referenceId":"fa7716b25fe5432a96d1a709a28bd6d8",
   "address":{
     "apartment":"Himalaya Mall",
     "streetName":"Driving Road",
@@ -3152,13 +3162,15 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/update
     "status": 200,
     "message": "Create Hub success.",
     "data": {
-        "referenceId": "hcgsyuc334"
+        "referenceId": "fa7716b25fe5432a96d1a709a28bd6d8"
     },
     "hasError": false
 }
 ```
 
 Update hubs / branches / distribution centers in the LogiNext system with the Update Hub API. 
+
+API Type: Master Data API
 
 #### Request
 
@@ -3233,7 +3245,7 @@ https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=MMD-Wh
                 }
             ],
             "geofenceName": "MMD-Patapsco High/Dundalk",
-            "referenceId::"987ygr43wefghyu89oikjhytrew34",
+            "referenceId::"fa7716b25fe5432a96d1a709a28bd6d8",
             "geofenceShape": "Polygon",
             "geofenceArea": 0,
             "geoCoordinates": [
@@ -3270,10 +3282,9 @@ https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=MMD-Wh
 
 If you have configured geofences in LogiNext to identify your Hubs or particular locations, you can call this API to fetch the details and geo coordinates of your geofences.
 
-
-
 By default, the API returns all the Active geofences
 
+API Type: Master Data API
 
 #### Request Parameters
 
@@ -3451,7 +3462,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "data": [
         {
             "index": 0,
-            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "referenceId": "fa7716b25fe5432a96d1a709a28bd6d8",
             "orderNumber": "ww1223",
             "shipmentOrderTypeCd": "PICKUP",
             "orderState": "FORWARD"
@@ -3478,7 +3489,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "data": [
         {
             "index": 0,
-            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "referenceId": "fa7716b25fe5432a96d1a709a28bd6d8",
             "orderNumber": "ww1220",
             "shipmentOrderTypeCd": "DELIVER",
             "orderState": "FORWARD"
@@ -3548,6 +3559,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 
 Create pickup orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
+API Type: Transaction Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
@@ -3602,7 +3615,7 @@ pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) 
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+clientCode | String | 32 | Optional | This is the identifier for an account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create Orders on behalf of one of your Customers.
 
 #### Request Parameters (Crates)
 
@@ -3834,6 +3847,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
 
 Create delivery orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.
 
+API Type: Transaction Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/create`
@@ -3849,7 +3864,6 @@ orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
 autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -3863,7 +3877,7 @@ partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Deliv
 returnAllowedFl | String | 1 | Optional | This field specifies if the order can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
 deliverBranch | String | 255 | Mandatory | For Deliver type of orders, this is the Branch / Distribution Center / Hub from which the Delivery Associate will pickup the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager.
-deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
+deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders
@@ -3874,7 +3888,7 @@ deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver 
 deliverEmail | String | 100 | Optional | This is the email ID details of the customer.
 deliverPhoneNumber | String | 255 | Optional | This is the phone number of the delivery customer.
 deliverApartment | String | 512 | Conditional Mandatory | This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
-deliverStreetName | String | 512 | Conditional Mandatory | This is the street name of the delivery customer.
+deliverStreetName | String | 512 | Conditional Mandatory | TThis is the street name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's address.
 deliverLocality | String | 512 | Conditional Mandatory | This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
 deliverCity | String | 512 | Conditional Mandatory | This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
@@ -3887,7 +3901,7 @@ deliverAddressTimezone | String | | Optional | The timezone of the pickup locati
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+clientCode | String | 32 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Order on behalf of one of your Customers.
 
 #### Request Parameters (Crates)
 
@@ -4474,6 +4488,8 @@ With This API you can create Orders that have to be Pickedup from and Delivered 
 
 You will have to pass the Pickup and Deliver Customer details in the API to create a Point to Point type of Order.
 
+API Type: Transaction Data API
+
 
 
 #### Request
@@ -4668,6 +4684,8 @@ Create single Pick Up and multiple destination type orders with this API in the 
 
 This API can also be used for single Pick Up location and single destinaton.
 
+API Type: Transaction Data API
+
 
 #### Request
 
@@ -4783,6 +4801,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/create/return
 
 
 Create return orders for existing orders with this API in the LogiNext system.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -4912,6 +4932,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
 ```
 
 Retrieve orders and all the order associated information with this API.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -5107,6 +5129,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.
 
+API Type: Transaction Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/update`
@@ -5195,16 +5219,16 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
     "orderReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
     "reasonCd":"DBUNAVAILABLE",
     "otherReason":"",
-    "latitude": 19.117369,
-    "longitude": 72.910214,
+    "latitude": 40.760838,
+    "longitude": 74.910214,
     "updateTime":"2016-07-18T10:31:00.000Z"
   },
   {
     "orderReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
     "reasonCd":"DBUNAVAILABLE",
     "otherReason":"",
-    "latitude": 19.117369,
-    "longitude": 72.913214,
+    "latitude": 40.760838,
+    "longitude": 74.913214,
     "updateTime":"2016-07-18T10:31:00.000Z"
 
   },
@@ -5212,8 +5236,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
     "orderReferenceId":"6156ty46e324c42abb5ea1a32y45f66",
     "reasonCd":"OTHER",
     "otherReason":"Technical Issues",
-    "latitude": 19.117369,
-    "longitude": 72.910321,
+    "latitude": 40.760838,
+    "longitude": 74.910321,
     "updateTime":"2016-07-18T10:31:00.000Z"
 
   }]
@@ -5235,6 +5259,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 ```
 With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -5328,6 +5354,8 @@ This API will not delete existing crates.
 
 You can pass multiple crate and line items.
 
+API Type: Transaction Data API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/updateCrates`
@@ -5417,7 +5445,7 @@ If the trip details are passed (through trip reference id), then Delivery Associ
 If the trip details are not passed, then the Delivery Associate details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
 The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.
 
-The Rate Limit for this API is 1 call/sec.
+API Type: Transaction Data API
 
 #### Request
 
@@ -5484,7 +5512,7 @@ The API accepts a single Order Reference ID in the request and checks if the Ord
 This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.
 
 
-The Rate Limit for this API is 1 call/sec.
+API Type: Transaction Data API
 
 #### Request
 
@@ -5543,6 +5571,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 Use this API to cancel an order.
 
 With this API, you can cancel Orders that were created with a 'cancellationAllowedFl' set to 'Y'. If you try to cancel Orders that have a 'cancellationAllowedFl' set to 'N', the API will return an error response.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -5708,6 +5738,8 @@ The 'type' key denotes the data type of the data captured.
 
 Date fields stored at the custom form level will be returned in EPOCH format.
 
+API Type: Transaction Data API
+
 
 #### Request
 
@@ -5781,8 +5813,9 @@ You can also manifest Cancelled Orders (by turning this flag to "true") in case 
 This API will do the following when called:<br>
 If you pass the manifestId, there would be a check if that Manifest ID exists in LogiNext application.<br>
 If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.<br>
-If it does not exist, then a new manifest will be created with the provided Manifest ID.
+If it does not exist, then a new manifest will be created with the provided Manifest ID
 
+API Type: Transaction Data API
 
 #### Request
 
@@ -5868,6 +5901,8 @@ reference_ids | List | Mandatory | Reference Id associated with the trip.
 
 ```
 Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
+
+API Type: Transaction Data API
 
 
 #### Request
@@ -5956,6 +5991,8 @@ deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be mark
 ```
 Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.
 
+API Type: Transaction Data API
+
 #### Request
 <span class="post">GET</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&tripname=TRIP-26516`
 
@@ -6012,6 +6049,8 @@ https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmen
 
 ```
 With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.
+
+API Type: Transaction Data API
 
 #### Request
 
@@ -6070,8 +6109,8 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept
   "orderReferenceId":"a3bee4486d9f467d72e96f4d32c5569b",
   "parentOrderNo":"1316MDO",
   "orderAcceptTime":"2017-12-27T10:00:00Z",
-  "latitude": 19.111555,
-  "longitude": 72.9099327
+  "latitude": 40.760838,
+  "longitude": 74.9099327
 }
 ```
 
@@ -6089,6 +6128,8 @@ With this API, you can mark the Order as Accepted by the Delivery Associate / As
 Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
 You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
+
+API Type: High Volume Transaction Data API
 
 #### Request
 
@@ -6120,8 +6161,8 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 {
   "orderReferenceIds":["6b106144208243ffb4b8c4114fd44f123d"],
   "checkInLocation":"PICKUP",
-  "checkinLatitude":12.11,
-  "checkinLongitude":78.11223,
+  "checkinLatitude":40.760838,
+  "checkinLongitude":74.11223,
   "checkInTime":"2018-02-08T09:30:00Z"
 }
 ```
@@ -6141,6 +6182,8 @@ With this API, the delivery assosicate can check In at the pickup or delivery lo
 Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
 You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
+
+API Type: High Volume Transaction Data API
 
 #### Request
 
@@ -6170,8 +6213,8 @@ https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin
 {
   "orderReferenceIds":["6b106144208243ffb4b8c4114fd44f123d"],
   "checkInLocation":"PICKUP",
-  "checkinLatitude":"12.11",
-  "checkinLongitude":"78.11223",
+  "checkinLatitude":"40.760838",
+  "checkinLongitude":"74 .11223",
   "checkInTime":"2018-02-08T09:30:00Z"
 }
 ```
@@ -6192,6 +6235,8 @@ With this API, the Delivery associate can Check In at the time of Order Delivery
 Please note that in headers for this API, you will have to pass the Delivery Associate's Token and Key and not the Account level Token and Key.
 
 You can fetch the Delivery Associate's Token and Key by calling the Delivery Associate Authenticate API.
+
+API Type: High Volume Transaction Data API
 
 #### Request
 
@@ -6319,6 +6364,8 @@ https://products.loginextsolutions.com/TrackingApp/track/mobile/put
 
 With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.
 
+API Type: High Volume Transaction Data API
+
 #### Request
 
 <span class="post">POST</span>`https://products.loginextsolutions.com/TrackingApp/track/mobile/put`
@@ -6411,6 +6458,8 @@ longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was tak
 
 ## Route Planning
 
+### Plan
+
 > Definition
 
 ```json
@@ -6479,11 +6528,13 @@ https://api.loginextsolutions.com/TripApp/v1/plan
 
 ```
 
-The Route Planning API allows you to create Optimised Route Plans in LogiNext for your Orders.
+The Plan API allows you to create Optimised Route Plans in LogiNext for your Orders.
 
-The API accepts the details of your Owned and Outsourced Fleet and can plan for a single ROute Planning operation using details of both fleets.
+The API accepts the details of your Owned and Outsourced Fleet and can plan for a single Route Planning operation using details of both fleets.
 
-This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.
+
+API Type: Custom. The rate Limit for this API is 1 request per minute.
 
 #### Request
 
@@ -6505,7 +6556,7 @@ mode | String | 32 | Mandatory | Trip Reference ID for the trip you wish to repl
 deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery Associate's to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.
 
 
-### Route Optimization
+###  Optimize
 
 > Definition
 
@@ -6588,12 +6639,16 @@ https://api.loginextsolutions.com/TripApp/v1/optimize
 
 The Route Optimization API allows you to create Optimised Route Plans in LogiNext for your Orders.
 
-Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfill those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfill these Orders.
+Use this API when you have a list of Orders assigned to a Delivery Associate, and you need an optimizes sequence to deliver those Orders. For example, you you have Orders to be Delivered in the Lower Manhattan area, and you have a Delivery Associate that if familiar with the Lower Manhattan area, this Delivery Associate would be the best person to fulfil those Orders. This API will return the most optimized sequence in which this Delivery Associate can fulfil these Orders.
 
 
 This API will support maximum of 150 orders per Delivery Associate, and upto 20 Delivery Associates per request.
 
-This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.
+
+This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.
+
+API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.
 
 #### Request
 
@@ -6666,6 +6721,10 @@ If there are Orders that can no longer be fulfilled within their service windows
 All Not Delivered Orders will be considered for replanning with this API. For example, if your Delivery Associate delivered Orders #1 and #4 in their Trip, and calls this API, then Orders #2 and #3 in their Trip will also be replanned. The new sequence of Orders after replanning will start from #5 in the above case as Order #4 was already Delviered. Sequence #2 and #3 will remain blank.
 
 This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
+
+This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.
+
+API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.
 
 #### Request
 
@@ -6821,7 +6880,7 @@ pincode | String | Mandatory | This is the address pincode.
 
 
 
-## Get Location Serviceability
+## Location Serviceability
 
 > Sample Request
 
@@ -8806,12 +8865,12 @@ Unassignment Key | Description
 --------- | -------
 REQUIRED_SKILL_NOT_FULLFILLED | No Delivery Associates were found with the required skillset match to fufill these Order
 INSUFFICIENT_TIME_WINDOW | The unassigned Orders could not be fulfilled in their given time windows.
-INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfill the Orders
+INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfil the Orders
 MAX_DISTANCE_NOT_FULFILLED | If a Maximum distance check was applied to the Delivery Associate, then Orders that remained unassigned due to this reason were because they were 
-BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfill these Orders
+BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfil these Orders
 NOT_GEOCODED | The Orders unassigned due to this reason were not geocoded in LogiNext
-GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.
-DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.
+GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfil them, those Orders will remain unassigned due to this reason.
+DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfil these Orders, those Orders will remain unassigned due to this reason.
 ROUTE_MAX_DISTANCE_NOT_FULLFILLED |  Distance constraint between first Order location and last Order location was not met.
 PINCODE_MISMATCH | No Delivery Associates were found with the pincode preference of the Orders.
 CUSTOMER_BREAK_OVERLAP_TIMEWINDOW | Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.
@@ -9049,12 +9108,12 @@ Unassignment Key | Description
 --------- | -------
 REQUIRED_SKILL_NOT_FULLFILLED | No Delivery Associates were found with the required skillset match to fufill these Order
 INSUFFICIENT_TIME_WINDOW | The unassigned Orders could not be fulfilled in their given time windows.
-INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfill the Orders
+INSUFFICIENT_CAPACITY | The fleet capacity was not sufficient to fulfil the Orders
 MAX_DISTANCE_NOT_FULFILLED | If a Maximum distance check was applied to the Delivery Associate, then Orders that remained unassigned due to this reason were because they were 
-BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfill these Orders
+BRANCH_DM_NA | No Delivery Associates of the relevant branch were found to fulfil these Orders
 NOT_GEOCODED | The Orders unassigned due to this reason were not geocoded in LogiNext
-GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfill them, those Orders will remain unassigned due to this reason.
-DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfill these Orders, those Orders will remain unassigned due to this reason.
+GEOFENCE_DM_NA | For Orders that were mapped to a particular Geofence, if no Delivery Associates was found to fulfil them, those Orders will remain unassigned due to this reason.
+DM_NA | For Orders that are not mapped to any Geofence, if no relevant Delivery Associates were found to fulfil these Orders, those Orders will remain unassigned due to this reason.
 ROUTE_MAX_DISTANCE_NOT_FULLFILLED |  Distance constraint between first Order location and last Order location was not met.
 PINCODE_MISMATCH | No Delivery Associates were found with the pincode preference of the Orders.
 CUSTOMER_BREAK_OVERLAP_TIMEWINDOW | Orders unassigned due to this reason could be delivered to customer locations during the break times for those Customers.
@@ -10336,7 +10395,7 @@ Status | Code | Description
 Active | ACTIVE | A Delivery Associate that is Active will be assigned Orders and can Sign In to their TrackNext account. 
 Inactive | INACTIVE | A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their TrackNext account.
 On Break | ONBREAK | The Delivery Associate is not currently fulfilling Orders. New Orders cannot be assigned to an On Break Delivery associate. Only Active Delivery Associates can be On Break.
-Off Break | OFFBREAK | Delivery Associate is back from Break and ready to fulfill Orders. Only Active Delivery Associates can be On Break.
+Off Break | OFFBREAK | Delivery Associate is back from Break and ready to fulfil Orders. Only Active Delivery Associates can be On Break.
 
 # Trip Status
 
