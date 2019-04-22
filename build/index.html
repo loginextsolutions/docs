@@ -136,31 +136,33 @@ maintainence men, repair men, or delivery boys.</p>
 
 <h3 id="vehicle">Vehicle</h3>
 
-<p>Vehicles can be used to Pick-up and Deliver Orders that are part of the Trip. A Vehicle could be a bike, car, truck, van and more. </p>
+<p>A Vehicle can be used to Pick-up and Deliver Orders that are part of the Trip. A Vehicle could be a bike, car, truck, van and more. </p>
 
 <h3 id="driver">Driver</h3>
 
-<p>Driver is responsible for driving/riding the Delivery Vehicle.</p>
+<p>A Driver is responsible for driving/riding the Delivery Vehicle.</p>
+
+<p>Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.</p>
 
 <h3 id="branch">Branch</h3>
 
 <p>A Branch could be the fulfillment center or warehouse where Orders are either Delivered or Pickedup from. </p>
 
-<h3 id="orders">Orders</h3>
+<h3 id="order">Order</h3>
 
 <p>An Order has details of shipment you want to pickup from your merchant or deliver to your customer. Pick Up and Delivery could be different depending on the industry you are in. For example, in the Courier Industry, Pick Up and Delivery can be for Customers.</p>
 
-<p>Orders can be be labeled differently, according to your industry and needs. For example, one customer has named it shipment.</p>
+<h3 id="trip">Trip</h3>
 
-<h3 id="trips">Trips</h3>
+<p>A Trip is a run where a Delivery Associate fulfills one or more Orders. A Trip is created in the LogiNext System as a result of Route Planning or Auto-Assignment operations.</p>
 
-<p>Trips are defined as a group of orders that a delivery associate must fulfil as part of a single assignment. One trip can consist of multiple orders to be delivered by a delivery associate.</p>
+<h3 id="account">Account</h3>
+
+<p>An Account is used to represent LogiNext’s Customer’s Customer. You can create an Account in LogiNext to represent different Customers. Orders can be created in LogiNext on behalf of your Customers using the &lsquo;clientCode&rsquo; field in the APIs that support this functionality. Details will be mentioed in the specific APIs.</p>
 
 <h3 id="service-time">Service Time</h3>
 
 <p>Service Time is the time it takes to service an Order at a particular location. For example - If an Order is to be delivered at a Customer&rsquo;s Home address, the Service time would include the time for parking the Vehicle and accounting for security checks at the location if any. Similarly, if an Order is to be delivered at a warehouse, Service Time will account for parking, loading and unloading at the delivery location.</p>
-
-<p>Depending on the kind of business, the Driver and Delivery Associate could be the same person. In some cases they are different where in addition to a Driver, there is a Delivery Associate delivering the shipments home.</p>
 
 <h2 id="integration-details">Integration Details</h2>
 
@@ -168,16 +170,16 @@ maintainence men, repair men, or delivery boys.</p>
 
 <p>The LogiNext API is designed to allow our client partners to add delivery associates(resources), orders, plan a route, start the trip, track and follow the updates till the trip is completed and shipment is pickedup/delivered at the desired location.</p>
 
-<p>Below are few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.</p>
+<p>Below are a few important steps that would explain what it takes for you, as our Client partner, to link your system with LogiNext’s.</p>
 
 <p><b><u>Step 1</u></b> –  Please read carefully the Request, Responses and Authentication section so that you can configure things on your end to integrate with LogiNext APIs.</p>
 
-<p><b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
+<p><b><u>Step 2</u></b> – You will need to get the username and password which will be provided to you either by our system (in case of auto sign-up) or by your LogiNext Account Manager.</p>
 
-<p><b><u>Step 3</u></b> – (Optional) If you are planning to consume any of the LogiNext notifications, you will need to share the end-point URL on your system to consume the Webhook.</p>
+<p><b><u>Step 3</u></b> – (Optional) If you are planning to consume any of the LogiNext Webhooks, you will need to share the end-point URL of your system to consume the Webhook. This end-point will be configured in the LogiNext system by your Account Manager.</p>
 
 <p><br> In case of any queries during the integration process, please reach out to us at
-<a href="mailto:support@loginextsolutions.com?Subject=Integration%20Queries" target="_top">support@loginextsolutions.com</a> </p>
+<a href="mailto:support@loginextsolutions.com?Subject=Integration%20Queries" target="_top">support@loginextsolutions.com</a>.</p>
 
 <h1 id="requests">Requests</h1>
 
@@ -188,9 +190,9 @@ maintainence men, repair men, or delivery boys.</p>
 <p>Our API is REST-based. This means:</p>
 
 <ol>
-<li><p>It make use of standard HTTP verbs like GET, POST, DELETE.</p></li>
+<li><p>It makes use of standard HTTP methods like GET, POST, DELETE.</p></li>
 <li><p>The API uses standard HTTP error responses(status codes) to indicate status of your requests – success and error codes.</p></li>
-<li><p>Authentication is specified with HTTP Basic Authentication.</p></li>
+<li><p>All LogiNext API requests are authenticated with an API Token. Details on how to obtain an authentication Token are mentioned in the <a href="https://developers.loginextsolutions.com/#authentication" target="_top">Authentication section</a> of this Documentation.</p></li>
 </ol>
 
 <p>Also,the input dates like 2016-07-01T11:18:00.000Z are accepted in Coordinated Universal Time (UTC) format.</p>
@@ -249,6 +251,11 @@ maintainence men, repair men, or delivery boys.</p>
 <td>This status code indicates that a request has been received and taken up for processing. It may take some time to complete processing this kind of request, and LogiNext will typically send a webhook notification with the results of the response once the request has been successfully completed.</td>
 </tr>
 <tr>
+<td>207</td>
+<td>Partial Success</td>
+<td>This status code indicates that some of the entities in the request were successfully processed, while some others failed. The response will provide details regarding the state of each record that was sent in the request.</td>
+</tr>
+<tr>
 <td>400</td>
 <td>Bad Request</td>
 <td>This message means that the request is syntactically incorrect. You will receive this med=ssage in a case where the request body sent is not a standard JSON or array object as is expected by LogiNext.</td>
@@ -299,11 +306,13 @@ maintainence men, repair men, or delivery boys.</p>
 
 <h2 id="authenticate">Authenticate</h2>
 
-<p>LogiNext API uses Basic Authentication to provide you an authorized access. Please use the the below URL Endpoint to authenticate yourself as a user of this API.</p>
+<p>The LogiNext API uses Authentication tokens to provide you an authorized access. </p>
 
-<p>You will have to pass the username and password which is provided to you either by our system (in case of auto sign-up) or by our assigned CSAs(Customer Service Associate).</p>
+<p>You can generate an Authentication token by logging in to your LogiNext Account and going to the &#39;API Token Management&rsquo; page, or by calling the below API endpoint.</p>
 
-<p>The response will contain a session token, which is unique in relation to every specific customer.</p>
+<p>You will have to pass the username and password for your LogiNext Account, or by your LogiNext Account Manager.</p>
+
+<p>The response will contain a the Authentication Token required to make calls to the LogiNext API.</p>
 
 <p>If you want session to be valid for 1 Hour, then the &ldquo;sessionExpiryTimeout&rdquo; should be 1.<br>
 Similarly for - <br>
@@ -313,7 +322,7 @@ Similarly for - <br>
 5 Years, it should be 365*5*24 = 43800<br>
 10 Years, it should be 365*10*24= 87600<br></p>
 
-<p><b><u>If you do not provide &lsquo;sessionExpiryTimeout&rsquo;, the validity of this session token will be 1 day (24 hours).</u></b></p>
+<p><b><u>If you do not provide &#39;sessionExpiryTimeout&rsquo;, the validity of this session token will be 90 days(3 months).</u></b></p>
 
 <p>Please ensure that you add the token as part of every Loginext API call.</p>
 
@@ -404,7 +413,7 @@ Similarly for - <br>
 
 <h4 id="response-headers">Response Headers</h4>
 
-<p>The response header will consist of Authentication Token. Please note that the validity of this token by default is 24 hours only.</p>
+<p>The response header will consist of Authentication Token. Please note that the validity of this token by default is 90 days.</p>
 
 <table><thead>
 <tr>
@@ -420,11 +429,11 @@ Similarly for - <br>
 
 <h2 id="authenticate-delivery-associate">Authenticate Delivery Associate</h2>
 
-<p>Call the mobile authenticate API to obtain the token and key for a Delivery Associate.</p>
+<p>Call the mobile authenticate API to obtain the authentication token for a Delivery Associate.</p>
 
 <p>You will have to pass the username and password entered at the time of creating the Delivery Associate in the LogiNext system in the request body.</p>
 
-<p>The response will contain a session token, which is unique in relation to every specific customer. This token will have a validaity of 4 years from the time of creation.</p>
+<p>The response will contain an authentication token which is unique to every specific Delivery Associate. This token will have a validaity of 4 years from the time of creation.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -436,11 +445,11 @@ Similarly for - <br>
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnc"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"imei"</span><span class="p">:</span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1114131</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094666</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"imei"</span><span class="p">:</span><span class="s2">"854437655912443"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.1114131</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094666</span><span class="p">,</span><span class="w">
   </span><span class="nt">"androidId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ce6448cf20b78483"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"androidTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-21T05:53:47Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">  
@@ -492,14 +501,14 @@ Similarly for - <br>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Username provided by LogiNext</td>
+<td>Username entered when created the Delivery Associate in the LogiNext system</td>
 </tr>
 <tr>
 <td>password</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Password provided by LogiNext</td>
+<td>Password entered when created the Delivery Associate in the LogiNext system</td>
 </tr>
 <tr>
 <td>imei</td>
@@ -511,14 +520,14 @@ Similarly for - <br>
 <tr>
 <td>latitude</td>
 <td>Double</td>
-<td></td>
+<td>10,13</td>
 <td>Optional</td>
 <td>Geolocation(latitude) coordinate of the Delivery Associate</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>Double</td>
-<td></td>
+<td>10,13</td>
 <td>Optional</td>
 <td>Geolocation(longitude) coordinate of the Delivery Associate</td>
 </tr>
@@ -544,7 +553,7 @@ Similarly for - <br>
 
 <h4 id="response-headers">Response Headers</h4>
 
-<p>The response header will consist of Authentication Token and Client Secret Key. Please note that the validity of this token and key is 24 hours only.</p>
+<p>The response header will consist of Authentication Token. Please note that the validity of this token and key is 4 years.</p>
 
 <table><thead>
 <tr>
@@ -560,7 +569,7 @@ Similarly for - <br>
 
 <h2 id="invalidate">Invalidate</h2>
 
-<p>You can fetch a fresh session token by calling the below API. This call will invalidate the existing token  and then you will be provided with a new token which you will have to pass everytime in every other API call.</p>
+<p>You can fetch a fresh authentication token by calling the below API. This call will invalidate the existing token and you will be provided with a new authentication token which you will have to pass in every other API call.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -619,9 +628,7 @@ Similarly for - <br>
 
 <h1 id="limits">Limits</h1>
 
-<p>LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API.</p>
-
-<p>The LogiNext API rate limits are defined based on the nature of the API being called. APIs are categorised as per the following criteria</p>
+<p>LogiNext API defines Rate Limits based on the API being called. Different APIs have different Rate Limits depending on the use case and request body of the API. APIs are categorised as per the following criteria</p>
 
 <table><thead>
 <tr>
@@ -631,40 +638,38 @@ Similarly for - <br>
 </tr>
 </thead><tbody>
 <tr>
-<td>Master Data</td>
-<td>These are APIs that perform operations on Master Data</td>
+<td>Tier 1 APIs</td>
+<td>Tier 1 APIs have a specified Rate Limit to allow for a varierty of operations in the LogiNext system.</td>
 <td>5 requests per second</td>
 </tr>
 <tr>
-<td>Transaction Data</td>
-<td>These are APIs that perform operations on Transaction Data</td>
-<td>5 requests per second</td>
-</tr>
-<tr>
-<td>High Frequency Transaction Data</td>
-<td>These are APIs that perform operations on High Frequency Transaction Data. For example, this can include creating or retrieving tracking data in LogiNext.</td>
+<td>Tier 2 APIs</td>
+<td>Tier 2 APIs have a more generous rate Limit than Tier 1 APIs, to support burst behaviour.</td>
 <td>10 requests per second</td>
 </tr>
 <tr>
-<td>Custom APIs</td>
-<td>These are APIs that perform specific operations on LogiNext Data. THis includes APIs like the Route Optimization API, and the Replan API. Such APIs will have special rate limits defined for them that will be menioned in the API description.</td>
+<td>Special Tier APIs</td>
+<td>Custom Rate Limits are defined for Special Tier APIs. For example, the  the Route Optimization API allows 1 request per minute.</td>
 <td>Custom Rate Limits. Rate limit Will be mentioned in the API description.</td>
 </tr>
 </tbody></table>
 
-<p>The Get Location Serviceability API has a Rate Limit of 20 requests/second. You can make 20 calls for this API every second, as one call for this API returns a signle address per call.</p>
-
-<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error  to your API calls if you go beyond this limit.</p>
+<p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
 
 <h2 id="batching">Batching</h2>
 
-<p>The LogiNext API support multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. </p>
+<p>The LogiNext API supports multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. </p>
 
-<p>APIs that support batching have a rate limit of 5 request per second and accept upto 20 records per request. </p>
+<p>APIs that support batching will have rate limit depending on the tier of the API.</p>
 
-<p>If you are pushing more than 20 Orders to LogiNext, you will need to create a queuing mechanism that will push 20 Orders  in each request of the Create Order API per second. The next set of Orders can be sent in the next request after a 0.2 second delay. </p>
+<h2 id="best-practices">Best Practices</h2>
 
-<p>We recommend implementing retry mechanism at your end in case of the following error responses received from the LogiNext API - 429, 500</p>
+<ol>
+<li><p>We recommend using webhooks instead of polling GET APIs to get real time event updates. For example, if you wish to get the current status of an Order, consume the Update Order Status webhook rather than polling the Get Order API consistently to fetch Order related details.</p></li>
+<li><p>You can decide if you wish to leverage the batching functionality of the LogiNext API depending on how your business operations run. For example, you may choose to send 20 Orders in a single request of the Create Order API if you witness large bursts in transactions in your system at certain times. In this case, the Create ORder API can return a partial success response where some of the Orders are successfully created in the LogiNext system, and some Orders did not get created. You will need to understand how to handle the partial success response and define business logic in your code to handle it.</p></li>
+<li><p>We recommend implementing retry mechanism in case of the 429, or 500 error responses received from the LogiNext API.</p></li>
+<li><p>Implement logic to respect the LogiNext API Rate limits. Exceeding these limits will cause API requests to receive a 429 error response from LogiNext.</p></li>
+</ol>
 
 <h1 id="loginext-haul-tm">LogiNext Haul <sup>TM</sup></h1>
 
@@ -3501,11 +3506,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <h1 id="loginext-mile-tm">LogiNext Mile <sup>TM</sup></h1>
 
-<p>Mile Product refers to the first mile and last mile shipment deliveries. Mile product will help you create -  </p>
+<p>The Mile Product refers to the first mile and last mile Order Pick-up and Deliveries. The Mile product will help you create -  </p>
 
 <p>Pick-up orders thereby catering to your first leg of logistics, wherein shipments are ‘picked’ from your customer / merchants / suppliers / vendors and transported to the hub for aggregation.</p>
 
 <p>Delivery orders by loading the items for different orders from a Single Point of Pick Up (Hub) and deliver the same to your customers (Multiple Drop Points).</p>
+
+<p>Point to Point Orders for variable Pick-up and Delivery locations.</p>
 
 <ol>
 <li><p>Once the resources are created, then you can add shipments or orders in the LogiNext database by calling Create Order API. You need to provide the Order Number, Date and time window on which order should be picked-up / delivered and the pick-up / delivery address details. Additionally you can also specify the Crate level and line item level details contained in that order.The response consists of the Reference ID against each Order ID which needs to be stored in your system for future references.</p></li>
@@ -3530,7 +3537,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
@@ -3555,7 +3562,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james"</span><span class="w">
+            </span><span class="nt">"accountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cust001"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -3576,13 +3583,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a973fdcb1eb41d5ad7408c57e13cc87"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name1"</span><span class="w">
+            </span><span class="nt">"accountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cust001"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accountCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"accountCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cust001"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accountCode"</span><span class="p">,</span><span class="w">
@@ -3609,7 +3616,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"accountCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"accountCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cust001"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile"</span><span class="p">,</span><span class="w">
@@ -3625,15 +3632,17 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>You can create a new Customer the LogiNext system with this API. A new Customer will be created and assigned a unique Reference ID that can be used to identify the Customer later.</p>
+<p>Create a new Customer the LogiNext system with this API. A new Customer will be created and assigned a unique Reference ID that can be used to identify the Customer later.</p>
 
 <p>If you have Customers created in your current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add these Customers in LogiNext.</p>
 
 <p>This API will create a Customer Entity with contact information and an optional Billing Address for a Customer. To create a Shipping/ Delivery address for a Customer, call the Create Address API.</p>
 
-<p>These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivudual customers can be used in the Create Order API to create an Order.</p>
+<p>These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify individual customers can be used in the Create Order API to create an Order.</p>
 
 <p>This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.</p>
+
+<p>Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a></p>
 
 <p>You can create a maximum of 5 Customers in LogiNext in one call of this API. This API has a rate limit of 1 request per second.</p>
 
@@ -3685,77 +3694,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This field represents the type of Customer. For example, you can create &#39;Premium&rsquo; Customers and identify them in LogiNext based on values in these fields.</td>
+<td>Customer Type. For example, you can create &#39;Premium&rsquo; Customers and identify them in LogiNext based on values in these fields.</td>
 </tr>
 <tr>
 <td>billingAddress.apartment</td>
 <td>String</td>
 <td>40</td>
-<td>Optional</td>
-<td>Customer&rsquo;s Billing Address apartment.</td>
+<td>Address Validations</td>
+<td>Customer Billing Address apartment.</td>
 </tr>
 <tr>
 <td>billingAddress.streetName</td>
 <td>String</td>
 <td>100</td>
-<td>Optional</td>
-<td>Customer&rsquo;s Billing Address Street Name.</td>
+<td>Address Validations</td>
+<td>Customer Billing Address Street Name.</td>
 </tr>
 <tr>
 <td>billingAddress.landmark</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>Customer&rsquo;s Billing Address landmark.</td>
+<td>Address Validations</td>
+<td>Customer Billing Address landmark.</td>
 </tr>
 <tr>
 <td>billingAddress.locality</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Address Validations</td>
 <td>Customer Billing Address locality.</td>
 </tr>
 <tr>
 <td>billingAddress.city</td>
 <td>Integer</td>
 <td>20</td>
-<td>Mandatory</td>
+<td>Address Validations</td>
 <td>Customer Billing Address city.</td>
 </tr>
 <tr>
 <td>billingAddress.state</td>
 <td>Integer</td>
 <td>20</td>
-<td>Optional</td>
+<td>Address Validations</td>
 <td>Customer Billing Address state. This will be based on the state codes in LogiNext for the country selected by you.</td>
 </tr>
 <tr>
 <td>billingAddress.country</td>
 <td>String</td>
 <td>255</td>
-<td>Optional</td>
-<td>Customer&rsquo;s Billing Address Country.</td>
+<td>Address Validations</td>
+<td>Customer Billing Address Country.</td>
 </tr>
 <tr>
 <td>billingAddress.pincode</td>
 <td>String</td>
 <td>255</td>
-<td>Optional</td>
-<td>Customer&rsquo;s Billing Address Pincode.</td>
+<td>Address Validations</td>
+<td>Customer Billing Address Pincode.</td>
 </tr>
 <tr>
 <td>billingAddress.latitude</td>
 <td>Double</td>
 <td>20</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address geo-coordinate(latitude)</td>
+<td>Customer Billing Address geo-coordinate(latitude)</td>
 </tr>
 <tr>
 <td>billingAddress.longitude</td>
 <td>Double</td>
 <td>20</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address geo-coordinate(longitude)</td>
+<td>Customer Billing Address geo-coordinate(longitude)</td>
 </tr>
 <tr>
 <td>clientCode</td>
@@ -3835,7 +3844,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
             </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
@@ -3890,7 +3899,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"james@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"customerType"</span><span class="p">:</span><span class="s2">"Preferred"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"billingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1, Milsons Towers"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago"</span><span class="p">,</span><span class="w">
@@ -3978,11 +3987,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>You can update a  Customer the LogiNext system with this API.</p>
+<p>Update a Customer the LogiNext system with this API.</p>
 
 <p>This API will update a Customer Entity with the details provided. To update a Shipping/ Delivery address for a Customer, call the Update Address API.</p>
 
 <p>This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.</p>
+
+<p>Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a></p>
 
 <p>You can create a maximum of 5 Customers in LogiNExt in one call of this API.</p>
 
@@ -4006,7 +4017,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>32</td>
 <td>Mandatory</td>
-<td>Unique Customer ID used to identify a Customer.</td>
+<td>LogiNext generated Reference ID used to identify a Customer.</td>
 </tr>
 <tr>
 <td>accountCode</td>
@@ -4041,28 +4052,28 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s mobile number.</td>
+<td>Customer Type. For example, you can create &#39;Premium&rsquo; Customers and identify them in LogiNext based on values in these fields.</td>
 </tr>
 <tr>
 <td>billingAddress.apartment</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address apartment.</td>
+<td>Customer Billing Address apartment.</td>
 </tr>
 <tr>
 <td>billingAddress.streetName</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address Street Name.</td>
+<td>Customer Billing Address Street Name.</td>
 </tr>
 <tr>
 <td>billingAddress.landmark</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address landmark.</td>
+<td>Customer Billing Address landmark.</td>
 </tr>
 <tr>
 <td>billingAddress.locality</td>
@@ -4090,28 +4101,28 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address Country.</td>
+<td>Customer Billing Address Country.</td>
 </tr>
 <tr>
 <td>billingAddress.pincode</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address Pincode.</td>
+<td>Customer Billing Address Pincode.</td>
 </tr>
 <tr>
 <td>billingAddress.latitude</td>
 <td>Double</td>
 <td>20</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address geo-coordinate(latitude)</td>
+<td>Customer Billing Address geo-coordinate(latitude)</td>
 </tr>
 <tr>
 <td>billingAddress.longitude</td>
 <td>Double</td>
 <td>20</td>
 <td>Optional</td>
-<td>Customer&rsquo;s Billing Address geo-coordinate(longitude)</td>
+<td>Customer Billing Address geo-coordinate(longitude)</td>
 </tr>
 <tr>
 <td>clientCode</td>
@@ -4153,7 +4164,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
     </span><span class="nt">"preferredEndTime"</span><span class="p">:</span><span class="s2">"21:30"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"weeklyOffList"</span><span class="p">:[</span><span class="s2">"SUNDAY"</span><span class="p">,</span><span class="s2">"WEDNESDAY"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1111, Milsons Towers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 1111, Milsons Towers"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue 1111"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway 1111"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Dowtown Chicago 111"</span><span class="p">,</span><span class="w">
@@ -4191,17 +4202,15 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>You can create an Address for an existing Customer in the LogiNext system with this API. A new Customer Address will be created and assigned a unique Reference ID that can be used to identify the Address later.</p>
+<p>Create an Address for an existing Customer in the LogiNext system with this API. A new Customer Address will be created and assigned a unique Reference ID that can be used to identify the Address later.</p>
 
 <p>If you have Addresses created in your current system that you would like to push to LogiNext, call this API with the parameters mentioned below to add them in LogiNext.</p>
 
-<p>This API will create an Address Entity with contact information and an optional Billing Address for a Customer. To create a Shipping/ Delivery address for a Customer, call the Create Address API.</p>
-
-<p>These are the customers you would create Orders for in LogiNext. The Customer ID you use to identify indivuduak customers can be used in the Create Order API to create an Order.</p>
-
 <p>This API will only accept inputs if your Customer Profiling property is set in LogiNext. To know more about the Customer Profiling property, please reach out to us at support@loginextsolutions.com.</p>
 
-<p>You can create a maximum of 5 Customers in LogiNExt in one call of this API.</p>
+<p>Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a></p>
+
+<p>You can create a maximum of 5 Addresses in LogiNext in one call of this API.</p>
 
 <h4 id="request">Request</h4>
 
@@ -4244,21 +4253,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Service Time for that address in minutes.</td>
+<td>Address Service Time in minutes.</td>
 </tr>
 <tr>
 <td>breakTime.startTime</td>
 <td>String</td>
 <td>255</td>
 <td>Conditional Mandatory</td>
-<td>Break Start time of the Address in HH:MM format.. This field is mandatory if a break end time is provided.</td>
+<td>Address Break Start time in HH:MM format. This field is mandatory if a break end time is provided.</td>
 </tr>
 <tr>
 <td>breakTime.endTime</td>
 <td>String</td>
 <td>40</td>
 <td>Conditional Mandatory</td>
-<td>Break end time of the Address in HH:MM format.. This field is mandatory if a break start time is provided.</td>
+<td>Address Break end time in HH:MM format.. This field is mandatory if a break start time is provided.</td>
 </tr>
 <tr>
 <td>preferredStartTime</td>
@@ -4349,12 +4358,12 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
  </span><span class="p">{</span><span class="w">
 </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"ALL123469"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"LMDCalifornia"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser_LMDemo"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"branchName"</span><span class="p">:</span><span class="s2">"California"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"userGroupName"</span><span class="p">:</span><span class="s2">"MobileUser"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"deliveryMediumMasterName"</span><span class="p">:</span><span class="s2">"James"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="mi">9892147969</span><span class="p">,</span><span class="w">
 </span><span class="nt">"imei"</span><span class="p">:</span><span class="mi">123456789012123</span><span class="p">,</span><span class="w">
-</span><span class="nt">"emailId"</span><span class="p">:</span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"emailId"</span><span class="p">:</span><span class="s2">"james@ablogistics.com"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -4445,7 +4454,9 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 <p>Create a new Delivery Associate in the LogiNext system with this API. A delivery associate will be created and assigned a unique Reference ID that can be used to identify the Delivery Associate later.</p>
 
-<p>API Type: Master Data API</p>
+<p>Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a></p>
+
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -4467,105 +4478,105 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Mandatory</td>
-<td>This is the Employee ID with which the Delivery Associate is to be created in the LogiNext Application.</td>
+<td>Delivery Associate employee ID.</td>
 </tr>
 <tr>
 <td>userGroupName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s user group name.</td>
+<td>Delivery Associate user group name.</td>
 </tr>
 <tr>
 <td>branchName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s client branch name.</td>
+<td>Delivery Associate client branch name.</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Full name of Delivery associate.</td>
+<td>Delivery Associate full name.</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s mobile number.</td>
+<td>Delivery associate mobile number.</td>
 </tr>
 <tr>
 <td>imei</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s IMEI number.</td>
+<td>TDelivery Associate IMEI number.</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s email ID.</td>
+<td>Delivery Associate email ID.</td>
 </tr>
 <tr>
 <td>userName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s username.</td>
+<td>Delivery Associate username.</td>
 </tr>
 <tr>
 <td>password</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the delivery associate&rsquo;s password.</td>
+<td>Delivery Associate password.</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
 <td>20</td>
 <td>Mandatory</td>
-<td>Capacity of Delivery associate in units</td>
+<td>Delivery Associate capacity in units.</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of Delivery associate in volume</td>
+<td>Delivery Associate capacity in volume.</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of Delivery associate in weight</td>
+<td>Delivery Associate capacity in weight.</td>
 </tr>
 <tr>
 <td>dob</td>
 <td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Date of birth</td>
+<td>Delivery Associate date of birth.</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>ISODate</td>
 <td>12</td>
 <td>Optional</td>
-<td>Gender. Ex - Male,Female</td>
+<td>Delivery Associate Gender. Ex - Male,Female.</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterTypeCd</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Delivery associate type. For example, &#39;Bakery&rsquo; if the Delivery Associate can fulfill Bakery type of Orders &#39;Groceries&rsquo; if the Delivery Associate can fulfill Groceries&rsquo; type of Orders. This will be mapped to the &#39;deliveryType&rsquo; field at the Order level.</td>
+<td>Delivery Associate type. For example, &#39;Bakery&rsquo; if the Delivery Associate can fulfill Bakery type of Orders &#39;Groceries&rsquo; if the Delivery Associate can fulfill Groceries&rsquo; type of Orders. This will be mapped to the &#39;deliveryType&rsquo; field at the Order level.</td>
 </tr>
 <tr>
 <td>isOwnVehicleFl</td>
@@ -4579,14 +4590,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Vehicle number to be assigned to the delivery associate</td>
+<td>delivery associate Vehicle number.</td>
 </tr>
 <tr>
 <td>weeklyOffList</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Array of week&rsquo;s off days. Ex - Monday, Tuesday etc.</td>
+<td>Delivery Associate days off. Ex - Monday, Tuesday etc.</td>
 </tr>
 <tr>
 <td>maxDistance</td>
@@ -4600,21 +4611,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Name of language</td>
+<td>Delivery Associate language list.</td>
 </tr>
 <tr>
 <td>shiftTimeList.shiftStartTime</td>
 <td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Shift start time in HH:MM format.</td>
+<td>Delivery Associate Shift start time in HH:MM format.</td>
 </tr>
 <tr>
 <td>shiftTimeList.shiftEndTime</td>
 <td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Shift end time in HH:MM format</td>
+<td>Delivery Associate Shift end time in HH:MM format.</td>
 </tr>
 <tr>
 <td>breakTimeList</td>
@@ -4628,77 +4639,77 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Break start time in HH:MM format.</td>
+<td>Delivery Associate Break start time in HH:MM format.</td>
 </tr>
 <tr>
 <td>breakTimeList.breakEndTime</td>
 <td>String</td>
 <td></td>
 <td>Optional</td>
-<td>Break end time in HH:MM format.</td>
+<td>Delivery Associate Break end time in HH:MM format.</td>
 </tr>
 <tr>
 <td>breakTimeList.breakDurationInMins</td>
 <td>Integer</td>
 <td></td>
 <td>Optional</td>
-<td>Break Time Duration in minutes</td>
+<td>Delivery Associate Break Time Duration in minutes</td>
 </tr>
 <tr>
 <td>dmPreference</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Preferred Pincode of Delivery associate. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference&rsquo; property is set.</td>
+<td>Delivery Associate Preferred Pincode. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference&rsquo; property is set.</td>
 </tr>
 <tr>
 <td>addressList</td>
 <td>List</td>
 <td></td>
 <td></td>
-<td>Holds the address details of the Delivery Associate.</td>
+<td>Delivery Associate address details.</td>
 </tr>
 <tr>
 <td>addressList.apartment</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s Apartment number.</td>
+<td>Delivery Associate Apartment number.</td>
 </tr>
 <tr>
 <td>addressList.streetName</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s Street Name.</td>
+<td>Delivery Associate Street Name.</td>
 </tr>
 <tr>
 <td>addressList.landmark</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s landmark.</td>
+<td>Delivery Associate landmark.</td>
 </tr>
 <tr>
 <td>addressList.countryShortCode</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>This is the  Delivery Associate&rsquo;s country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>This is the  Delivery Associate country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>addressList.city</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s city.</td>
+<td>Delivery Associate city.</td>
 </tr>
 <tr>
 <td>addressList.pincode</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s pincode.</td>
+<td>Delivery Associate postal code.</td>
 </tr>
 <tr>
 <td>addressList.addressType</td>
@@ -4712,21 +4723,21 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Delivery Associate&rsquo;s Marital Status.</td>
+<td>Delivery Associate Marital Status.</td>
 </tr>
 <tr>
 <td>alternateMobileNo</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Alternate Mobile NUmber of the Delivery Associate.</td>
+<td>Delivery Associate alternate Mobile NUmber.</td>
 </tr>
 <tr>
 <td>landlineNo</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>Landline Number of the Delivery Associate.</td>
+<td>Delivery Associate landline Number.</td>
 </tr>
 <tr>
 <td>licenseValidity</td>
@@ -4740,14 +4751,14 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Optional</td>
 <td>String</td>
 <td>255</td>
-<td>License Validity in years.</td>
+<td>Delivery Associate license Validity in years.</td>
 </tr>
 <tr>
 <td>licenseIssuanceDate</td>
 <td>String</td>
 <td>Optional</td>
 <td>255</td>
-<td>License Issuance Date in YYYY-MM-HH format.</td>
+<td>Delivery Associate license issuance Date in YYYY-MM-HH format.</td>
 </tr>
 </tbody></table>
 
@@ -4765,7 +4776,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>The API returns a link of the profile picture of the Delivery Associate, if one was uploaded in LogiNext, in the &#39;profilePicture&rsquo; field.This can be used in the case where the Delivery Associate&rsquo;s image may need to be displayed on your mobile application screen to show Customers who is fulfilling their Order.
 Note that in case you are storing this link in your system, this link has a life time of 1 hour post which it will expire, and will need to be fetched again.</p>
 
-<p>API Type: Master Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -4847,7 +4858,7 @@ Note that in case you are storing this link in your system, this link has a life
                     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTLOGEDIN"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://loginext-user-image.s3-ap-southeast-1.amazonaws.com/user32330_209.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20180629T120457Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=3599&amp;X-Amz-Credential=AKIAI4W45JCJJU7CQPPQ%2F20180629%2Fap-southeast-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=211c72fa8ca01f6a0d8a5a8e9c0fd62a48a970611802bba887ccd8ca36700349"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin New 3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin Jones"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"cashPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"cashCollected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"cashBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4969,7 +4980,7 @@ Note that in case you are storing this link in your system, this link has a life
 
 <p>Update the details of a Delivery Associate in the LogiNext system with this API. </p>
 
-<p>API Type: Master Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -4991,91 +5002,91 @@ Note that in case you are storing this link in your system, this link has a life
 <td>String</td>
 <td>32</td>
 <td>Mandatory</td>
-<td>This is the LogiNext Reference ID of the Delivery Associate to be updated.</td>
+<td>Delivery Associate LogiNext Reference ID. This field will identify the Delivery Associate being updated.</td>
 </tr>
 <tr>
 <td>employeeId</td>
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s employee Id.</td>
+<td>Delivery Associate employee Id.</td>
 </tr>
 <tr>
 <td>userGroupName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s user group name.</td>
+<td>Delivery Associate user group name.</td>
 </tr>
 <tr>
 <td>branchName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s client branch name.</td>
+<td>Delivery Associate&rsquo;s client branch name.</td>
 </tr>
 <tr>
 <td>deliveryMediumMasterName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Full name of Delivery associate.</td>
+<td>Delivery associate full name.</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s mobile number.</td>
+<td>Delivery Associate mobile number.</td>
 </tr>
 <tr>
 <td>imei</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s IMEI number.</td>
+<td>Delivery Associate IMEI number.</td>
 </tr>
 <tr>
 <td>emailId</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s email ID.</td>
+<td>Delivery Associate email ID.</td>
 </tr>
 <tr>
 <td>userName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s username.</td>
+<td>Delivery Associate username.</td>
 </tr>
 <tr>
 <td>password</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the delivery associate&rsquo;s password.</td>
+<td>Delivery Associate password.</td>
 </tr>
 <tr>
 <td>capacityInUnits</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of Delivery associate in units</td>
+<td>Delivery Associate capacity in units.</td>
 </tr>
 <tr>
 <td>capacityInVolume</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of Delivery associate in volume</td>
+<td>Delivery Associate capacity in volume.</td>
 </tr>
 <tr>
 <td>capacityInWeight</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>Capacity of Delivery associate in weight</td>
+<td>Delivery Associate capacity in weight.</td>
 </tr>
 <tr>
 <td>dob</td>
@@ -5340,7 +5351,7 @@ Note that in case you are storing this link in your system, this link has a life
 If the Delivery Associate&rsquo;s geocoordinates are not sent in the request, but a tracking location for the Delivery Associate was received in the last 5 minutes, then that tracking location will be used to revise ETAs.
 If no tracking location was received for the Delviery Associate in the last 5 minutes, then the ETAs will not be revised for the Orders.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5453,7 +5464,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 
 <p>Create hubs / branches / distribution centers in the LogiNext system with the Create Hub API. Hubs will be created and will be assigned a unique Reference ID that can be used to look up the hub later.</p>
 
-<p>API Type: Master Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5678,7 +5689,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 
 <p>Update hubs / branches / distribution centers in the LogiNext system with the Update Hub API. </p>
 
-<p>API Type: Master Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -5918,7 +5929,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 
 <p>By default, the API returns all the Active geofences</p>
 
-<p>API Type: Master Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -6250,7 +6261,7 @@ When Customer Profiling is turned ON -
 
 <p>Create pickup orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -6935,7 +6946,7 @@ When Customer Profiling is turned ON -
 
 <p>Create delivery orders with this API in the LogiNext system. Orders will be created and assigned a reference ID that can be used at a leter time to identify the order.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -8512,7 +8523,7 @@ When Customer Profiling is turned ON -
 
 <p>You will have to pass the Pickup and Deliver Customer details in the API to create a Point to Point type of Order.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -9175,7 +9186,7 @@ When Customer Profiling is turned ON -
 
 <p>This API can also be used for single Pick Up location and single destinaton.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -9634,7 +9645,7 @@ When Customer Profiling is turned ON -
 
 <p>Create return orders for existing orders with this API in the LogiNext system.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -9773,7 +9784,7 @@ When Customer Profiling is turned ON -
 
 <p>Retrieve orders and all the order associated information with this API.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10074,7 +10085,7 @@ When Customer Profiling is turned ON -
 <p>With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10571,7 +10582,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10712,7 +10723,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <p>You can pass multiple crate and line items.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10874,7 +10885,7 @@ If the trip details are passed (through trip reference id), then Delivery Associ
 If the trip details are not passed, then the Delivery Associate details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
 The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -10910,7 +10921,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 <td>String</td>
 <td>32</td>
 <td>Conditional Mandatory</td>
-<td>This field will hold the Delivery Associate information to whom the Order is to be assigned, as per the flag set above. For eg - If you wish to assign an Order to a Delivert Associate whose &#39;employeeId&rsquo; is &#39;John1&rsquo;, you would send &#39;employeeId&rsquo; in the identifier field and &#39;John1&rsquo; in the identifierValue field.</td>
+<td>This field will hold the Delivery Associate information to whom the Order is to be assigned, as per the flag set above. For eg - If you wish to assign an Order to a Delivery Associate whose &#39;employeeId&rsquo; is &#39;John1&rsquo;, you would send &#39;employeeId&rsquo; in the identifier field and &#39;John1&rsquo; in the identifierValue field.</td>
 </tr>
 <tr>
 <td>orderReferenceIds</td>
@@ -10969,7 +10980,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11038,7 +11049,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>With this API, you can cancel Orders that were created with a &#39;cancellationAllowedFl&rsquo; set to &#39;Y&rsquo;. If you try to cancel Orders that have a &#39;cancellationAllowedFl&rsquo; set to &#39;N&rsquo;, the API will return an error response.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11266,7 +11277,7 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 
 <p>Date fields stored at the custom form level will be returned in EPOCH format.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11406,7 +11417,7 @@ If you pass the manifestId, there would be a check if that Manifest ID exists in
 If it exists, then the orders (through order reference ID) will be updated in the LogiNext application.<br>
 If it does not exist, then a new manifest will be created with the provided Manifest ID</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11534,7 +11545,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11647,7 +11658,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11725,7 +11736,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.</p>
 
-<p>API Type: Transaction Data API</p>
+<p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11814,7 +11825,7 @@ Please note that in headers for this API, you will have to pass the Delivery Ass
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
-<p>API Type: High Volume Transaction Data API</p>
+<p>API Type: Tier 2 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11901,7 +11912,7 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
-<p>API Type: High Volume Transaction Data API</p>
+<p>API Type: Tier 2 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -11992,7 +12003,7 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
 
-<p>API Type: High Volume Transaction Data API</p>
+<p>API Type: Tier 2 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -12059,8 +12070,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119129</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094089</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094089</span><span class="p">,</span><span class="w">
     </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locationSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fused"</span><span class="p">,</span><span class="w">
@@ -12073,8 +12084,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
     </span><span class="nt">"hasAccuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"hasBearing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"hasSpeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119129</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094089</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094089</span><span class="p">,</span><span class="w">
     </span><span class="nt">"isFirstPointFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976899548</span><span class="p">,</span><span class="w">
     </span><span class="nt">"previousTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976899532</span><span class="p">,</span><span class="w">
@@ -12087,8 +12098,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
     </span><span class="nt">"isActiveNetworkMetered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"911380458661315"</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119129</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094089</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094089</span><span class="p">,</span><span class="w">
     </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"battery"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locationSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fused"</span><span class="p">,</span><span class="w">
@@ -12101,8 +12112,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
     </span><span class="nt">"hasAccuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"hasBearing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"hasSpeed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1119129</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094089</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094089</span><span class="p">,</span><span class="w">
     </span><span class="nt">"isFirstPointFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976879541</span><span class="p">,</span><span class="w">
     </span><span class="nt">"previousTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976879521</span><span class="p">,</span><span class="w">
@@ -12155,7 +12166,7 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 
 <p>With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.</p>
 
-<p>API Type: High Volume Transaction Data API</p>
+<p>API Type: Tier 2 API</p>
 
 <h4 id="request">Request</h4>
 
@@ -12177,14 +12188,14 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <td>Double</td>
 <td>13,10</td>
 <td>Mandatory</td>
-<td>The geocoordinate(Latitude) of the Delivery Associate&rsquo;s location. Sample Value - 19.1119129</td>
+<td>The geocoordinate(Latitude) of the Delivery Associate&rsquo;s location. Sample Value - 40.760838</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>Double</td>
 <td>13,10</td>
 <td>Mandatory</td>
-<td>The geocoordinate(Longitude) of the Delivery Associate&rsquo;s location. Sample Value - 72.9094089</td>
+<td>The geocoordinate(Longitude) of the Delivery Associate&rsquo;s location. Sample Value - 74.9094089</td>
 </tr>
 <tr>
 <td>trackingDt</td>
@@ -12261,14 +12272,14 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <td>Double</td>
 <td>13,10</td>
 <td>Mandatory</td>
-<td>Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 19.1119129</td>
+<td>Last known Latitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 40.760838</td>
 </tr>
 <tr>
 <td>lastLongitude</td>
 <td>Double</td>
 <td>13,10</td>
 <td>Mandatory</td>
-<td>Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 72.9094089</td>
+<td>Last known Longitude Note that if the isFirstPointFl value is “1”, then you can pass zero in this field Sample Value - 74.9094089</td>
 </tr>
 <tr>
 <td>distanceFromLastLocation</td>
@@ -12379,8 +12390,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 </span><span class="nt">"orderLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYLOCATION"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"imageType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ESIGN"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">],</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -12535,7 +12546,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.</p>
 
-<p>API Type: Custom. The rate Limit for this API is 1 request per minute.</p>
+<p>API Type: Special Tier API. The rate Limit for this API is 1 request per minute.</p>
 
 <h4 id="request">Request</h4>
 
@@ -12708,7 +12719,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <p>This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.</p>
 
-<p>API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.</p>
+<p>API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seconds.</p>
 
 <h4 id="request">Request</h4>
 
@@ -12812,7 +12823,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <p>This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.</p>
 
-<p>API Type: Custom. The rate Limit for this API is 1 request per 20 seconds.</p>
+<p>API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seconds.</p>
 
 <h4 id="request">Request</h4>
 
@@ -12852,8 +12863,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"routeName"</span><span class="p">:</span><span class="s2">"fas"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"startLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1164057</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9047021</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9047021</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"vehicles"</span><span class="p">:[{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
@@ -12867,8 +12878,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"shipments"</span><span class="p">:[{</span><span class="w">
     </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="s2">"s1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1172561</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.8925094</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.8925094</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T16:00:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-27T18:00:00Z"</span><span class="p">,</span><span class="w">
@@ -13146,8 +13157,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </blockquote>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19.014585"</span><span class="p">,</span><span class="w"> 
-</span><span class="nt">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"72.832830"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"40.760838"</span><span class="p">,</span><span class="w"> 
+</span><span class="nt">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"74.832830"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inorbit Mall"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Link Road"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goregaon West"</span><span class="p">,</span><span class="w">
@@ -13291,8 +13302,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"testod3"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McDonald's Malaysia"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">31.1370445</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">80.6210216</span><span class="p">,</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.6210216</span><span class="p">,</span><span class="w">
 </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
 </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
 </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="w">
@@ -13477,8 +13488,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"pickupPinCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:45:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">19.1239285</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094407</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094407</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
@@ -13495,8 +13506,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"deliverNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T08:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">19.0778737</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">72.9055627</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">74.9055627</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
@@ -14057,8 +14068,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"a3bee4486d9f467d72e96f4d32c5569b"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"1316MDO"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderAcceptTime"</span><span class="p">:</span><span class="s2">"2017-12-27T10:00:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111555</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9099327</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9099327</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -14140,8 +14151,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="mf">12.11</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="mf">78.11223</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="mf">74.11223</span><span class="p">,</span><span class="w">
   </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14228,8 +14239,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="s2">"12.11"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="s2">"78.11223"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="s2">"40.760838"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="s2">"74.11223"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -14319,8 +14330,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 </span><span class="nt">"orderLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYLOCATION"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"imageType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ESIGN"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">],</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.111755</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9095327</span><span class="w">
+</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -14452,8 +14463,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">74.619392</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="w">
@@ -14820,8 +14831,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
             </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.082</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.849</span><span class="w">
+            </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.849</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -14953,16 +14964,16 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42abb5ea1a32e05f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.910214</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2018-07-18T10:31:00.000Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"taskReferenceId"</span><span class="p">:</span><span class="s2">"6186d7r5te324c42abb5ea1a32x45f66"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.117369</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.913214</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.913214</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2018-07-18T10:31:00.000Z"</span><span class="w">
 
   </span><span class="p">}]</span><span class="w">
@@ -15033,14 +15044,14 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>Double</td>
 <td>15</td>
 <td>Conditional Optional</td>
-<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;40.760838&rdquo;</td>
 </tr>
 <tr>
 <td>otherReason</td>
 <td>Date</td>
 <td>15</td>
 <td>Conditional Optional</td>
-<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;17.996&rdquo;</td>
+<td>Geo-location where Order status was updated<br>Sample Value - &ldquo;74.996&rdquo;</td>
 </tr>
 <tr>
 <td>updateTime</td>
@@ -17050,7 +17061,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h2 id="route-planning">Route Planning</h2>
 
-<h3 id="route-planning-webhook-v1">Route Planning Webhook V1</h3>
+<h3 id="route-planning-v1-deprecated">Route Planning v1(Deprecated)</h3>
 
 <p>The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.</p>
 
@@ -17082,10 +17093,10 @@ You can pass multiple order reference IDs and can update one or more parameters.
       </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"packageStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.171036</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.835163</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.126844</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.901015</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.835163</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.901015</span><span class="p">,</span><span class="w">
           </span><span class="nt">"projectDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0882</span><span class="p">,</span><span class="w">
           </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
           </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
@@ -17095,16 +17106,16 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capillary Tech."</span><span class="p">,</span><span class="w">
           </span><span class="nt">"clientCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mumbai"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.619392</span><span class="p">,</span><span class="w">
           </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-04 09:36:41"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-10 10:28:00"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"packageStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.171036</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.835163</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.116835</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.835163</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.116835</span><span class="p">,</span><span class="w">
           </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.910467</span><span class="p">,</span><span class="w">
           </span><span class="nt">"projectDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4557</span><span class="p">,</span><span class="w">
           </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
@@ -17122,9 +17133,9 @@ You can pass multiple order reference IDs and can update one or more parameters.
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"packageStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.171036</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.835163</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.132447</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.171036</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.835163</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.132447</span><span class="p">,</span><span class="w">
           </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.91286</span><span class="p">,</span><span class="w">
           </span><span class="nt">"projectDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.2243</span><span class="p">,</span><span class="w">
           </span><span class="nt">"deliveryOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
@@ -17390,7 +17401,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </tbody></table>
 
-<h3 id="route-planning-webhook-v2">Route Planning Webhook V2</h3>
+<h3 id="route-planning-v2">Route Planning v2</h3>
 
 <p>The Route Planning webhook is generated as part of the Route Planning operation. This webhook contains the details of the trips created as a part of the Route Planning operation and the Orders assigned to each trip.</p>
 
@@ -17432,8 +17443,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
@@ -17446,8 +17457,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.344959</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.963202</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.344959</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.963202</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:15:40"</span><span class="p">,</span><span class="w">
@@ -17467,8 +17478,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
@@ -17481,8 +17492,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.339693</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.954843</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.339693</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.954843</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:28:36"</span><span class="p">,</span><span class="w">
@@ -17502,8 +17513,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.319291</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">42.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
@@ -17516,8 +17527,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.329154</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.967634</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.329154</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.967634</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
@@ -17537,8 +17548,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.319291</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26 23:42:53"</span><span class="p">,</span><span class="w">
@@ -17551,8 +17562,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.3421429</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">103.9641279</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.3421429</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9641279</span><span class="p">,</span><span class="w">
               </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 12:00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-27 00:05:00"</span><span class="p">,</span><span class="w">
@@ -17843,7 +17854,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </tr>
 </tbody></table>
 
-<h3 id="route-planning-api">Route Planning - API</h3>
+<h3 id="route-planning-api">Route Planning(API)</h3>
 
 <blockquote>
 <p>Response</p>
@@ -17977,8 +17988,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Name Main Branch"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="mf">40.882702</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="mf">72.619392</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="s2">"ORDERALLOCATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer1_Parent_Order"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer1_Parent_Order_1"</span><span class="p">,</span><span class="w">
@@ -17990,8 +18001,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
        </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133467"</span><span class="p">,</span><span class="w">
        </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mathewsandroid"</span><span class="p">,</span><span class="w">
        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9881127443"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.882702</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.619392</span><span class="p">,</span><span class="w">
        </span><span class="nt">"pickupEta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:47:00.000Z"</span><span class="p">,</span><span class="w">
        </span><span class="nt">"distanceInKms"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.849</span><span class="p">,</span><span class="w">
        </span><span class="nt">"timeInMin"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
@@ -18158,7 +18169,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="s2">"9881134567"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"newStatus"</span><span class="p">:</span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"DBUNAVAILABLE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="w">
+  </span><span class="nt">"updateTime"</span><span class="p">:</span><span class="s2">"2018-07-18T10:31:00.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -18212,14 +18223,13 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <h3 id="delivery-associate-on-break-off-break">Delivery Associate On Break/ Off Break</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.882702</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.619392</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2018-07-05 13:22:32"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="s2">"Sam"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"clientId"</span><span class="p">:</span><span class="mi">209</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="s2">"TRIP-17774"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="s2">"dde5a971e67c4256af48436fe51f23c2"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"7777777"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"7324567"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"userName"</span><span class="p">:</span><span class="s2">"Sam1234"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"breakStatus"</span><span class="p">:</span><span class="s2">"ONBREAK"</span><span class="w">
 
@@ -18294,21 +18304,21 @@ You can pass multiple order reference IDs and can update one or more parameters.
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREATEDELIVERYMEDIUMNOTIFICATION"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amit"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63865471261"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"imei"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789012645"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@ablogistics.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james003"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumLanguageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"HINDI"</span><span class="p">,</span><span class="s2">"MARATHI"</span><span class="p">,</span><span class="s2">"GUJARATI"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"deliveryMediumLanguageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ENGLISH"</span><span class="p">,</span><span class="s2">"SPANISH"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryMediumTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Delivery Boy"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH034506"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"400001"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"10035"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"cashInHand"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -18317,7 +18327,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T13:30:00Z"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"weeklyOffList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Thursday"</span><span class="p">,</span><span class="s2">"Monday"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"fixedCost"</span><span class="p">:</span><span class="s2">"500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"variableCost"</span><span class="p">:</span><span class="s2">"30"</span><span class="w">
@@ -18495,8 +18505,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?&gt;\n
           &lt;geofencePushNotificationDTO&gt;\n    
             &lt;hubName&gt;HubName&lt;/hubName&gt;\n    
-            &lt;latitude&gt;13.018617777777777&lt;/latitude&gt;\n    
-            &lt;longitude&gt;80.01128&lt;/longitude&gt;\n    
+            &lt;latitude&gt;40.018617777777777&lt;/latitude&gt;\n    
+            &lt;longitude&gt;74.01128&lt;/longitude&gt;\n    
             &lt;sightingDate&gt;201603091412&lt;/sightingDate&gt;\n    
             &lt;status&gt;HUB IN&lt;/status&gt;\n    
             &lt;tripId&gt;TripName&lt;/tripId&gt;\n
@@ -18551,8 +18561,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?&gt;\n
           &lt;geofencePushNotificationDTO&gt;\n    
             &lt;hubName&gt;HubName&lt;/hubName&gt;\n    
-            &lt;latitude&gt;13.018617777777777&lt;/latitude&gt;\n    
-            &lt;longitude&gt;80.01128&lt;/longitude&gt;\n    
+            &lt;latitude&gt;40.018617777777777&lt;/latitude&gt;\n    
+            &lt;longitude&gt;74.01128&lt;/longitude&gt;\n    
             &lt;sightingDate&gt;201603091412&lt;/sightingDate&gt;\n    
             &lt;status&gt;HUB OUT&lt;/status&gt;\n    
             &lt;tripId&gt;TripName&lt;/tripId&gt;\n
