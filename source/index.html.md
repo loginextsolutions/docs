@@ -2759,10 +2759,10 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
                 "capacityInVolume": 100,
                 "capacityInWeight": 1098,
                 "deliveryMediumMasterTypeCd": "Truck",
-                "imei": "",
+                "imei": "873345632458765",
                 "statusCd": "Available",
                 "employeeId": "NBVA114",
-                "weeklyOff": "Monday",
+                "weeklyOff": ["Monday"],
                 "maxDistance": 100,
                 "licenseValidity": "2018-12-20",
                 "dob": "2000-12-01",
@@ -2822,85 +2822,85 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
 ```json
 [
  {
- "referenceId":"fa7716b25fe5432a96d1a709a28bd6d8",
-"employeeId":"ALL123469",
-"branchName":"LMDCalifornia",
-"userGroupName":"MobileUser_LMDemo",
-"deliveryMediumMasterName":"James",
-"phoneNumber":9892147969,
-"imei":123456789012123,
-"emailId":"test@test.com",
-"userName":"james003",
-"password":"admin",
-"capacityInUnits":10,
-"capacityInVolume":10,
-"capacityInWeight":10,
-"dob":"2018-104-01T13:30:00Z",
-"deliveryMediumMapList": [
-     {
-       "name": "SPANISH"
+  "referenceId":"fa7716b25fe5432a96d1a709a28bd6d8",
+  "employeeId":"ALL123469",
+  "branchName":"LMDCalifornia",
+  "userGroupName":"MobileUser",
+  "deliveryMediumMasterName":"James",
+  "phoneNumber":9892147969,
+  "imei":123456789012123,
+  "emailId":"james@ablogistics.com",
+  "userName":"james003",
+  "password":"admin",
+  "capacityInUnits":10,
+  "capacityInVolume":10,
+  "capacityInWeight":10,
+  "dob":"2018-104-01T13:30:00Z",
+  "deliveryMediumMapList": [
+       {
+         "name": "SPANISH"
 
-     },
-     {
-       "name": "ENGLISH"
+       },
+       {
+         "name": "ENGLISH"
 
-     }
-   ],
-"gender":"Male",
-"deliveryMediumMasterTypeCd":"Delivery Associate",
-"isOwnVehicleFl":"Company",
-"vehicleNumber":"1AB54F",
-"dmPreference":"10035",
-"shiftTimeList": [
-    {
-        "shiftStartTime": "12:30",
-        "shiftEndTime": "14:30"
-    }
-],
-"breakTimeList": [
-    {
-        "breakStartTime": "13:00",
-        "breakEndTime": "13:30",
-        "breakDurationInMins": 12
-    }
-],
-"loadingTimeInMins": 20,
-"weeklyOffList": [
-     "Thursday",
-     "Monday"
-   ],
-"maxDistance":10,
-"licenseValidity":"2018-104-01T13:30:00Z",
-"fixedCost":10,
-"variableCost":10,
-"isPresentFl":"Y",
-"addressList": [ { 
-"apartment":"901",
-"streetName":"2142 3rd Ave",
-"landmark":"Opp. McDonalds",
-"countryShortCode":"USA",
-"city":"New York",
-"pincode":"10035",
-"addressType":"PERMANENT" 
-},
-{ 
-"apartment":"901",
-"streetName":"2142 3rd Ave",
-"landmark":"Opp McDonalds",
-"countryShortCode":"USA",
-"city":"New York",
-"pincode":"10035",
-"addressType":"CURRENT" 
-}
+       }
+     ],
+  "gender":"Male",
+  "deliveryMediumMasterTypeCd":"Delivery Associate",
+  "isOwnVehicleFl":"Company",
+  "vehicleNumber":"1AB54F",
+  "dmPreference":"10035",
+  "shiftTimeList": [
+      {
+          "shiftStartTime": "12:30",
+          "shiftEndTime": "14:30"
+      }
+  ],
+  "breakTimeList": [
+      {
+          "breakStartTime": "13:00",
+          "breakEndTime": "13:30",
+          "breakDurationInMins": 12
+      }
+  ],
+  "loadingTimeInMins": 20,
+  "weeklyOffList": [
+       "Thursday",
+       "Monday"
+     ],
+  "maxDistance":10,
+  "licenseValidity":"2018-104-01T13:30:00Z",
+  "fixedCost":10,
+  "variableCost":10,
+  "isPresentFl":"Y",
+  "addressList": [ { 
+  "apartment":"901",
+  "streetName":"2142 3rd Ave",
+  "landmark":"Opp. McDonalds",
+  "countryShortCode":"USA",
+  "city":"New York",
+  "pincode":"10035",
+  "addressType":"PERMANENT" 
+  },
+  { 
+  "apartment":"901",
+  "streetName":"2142 3rd Ave",
+  "landmark":"Opp McDonalds",
+  "countryShortCode":"USA",
+  "city":"New York",
+  "pincode":"10035",
+  "addressType":"CURRENT" 
+  }
 
-],
-"maritalStatus":"Single",
-"alternateMobileNo":9892134489,
-"landlineNo":28215678,
-"licenseValidityInYears":10,
-"licenseIssuanceDate":"2018-104-01T13:30:00Z",
-"licenceNumber":2123123123
-}
+  ],
+  "maritalStatus":"Single",
+  "alternateMobileNo":9892134489,
+  "landlineNo":28215678,
+  "licenseValidityInYears":10,
+  "licenseIssuanceDate":"2018-104-01T13:30:00Z",
+  "licenceNumber":2123123123
+  }
 ]
 ```
 
@@ -2934,8 +2934,8 @@ Parameter | DataType | Length |  Required | Description
 referenceId | String | 32 | Mandatory | Delivery Associate LogiNext Reference ID. This field will identify the Delivery Associate being updated.
 employeeId | String | 50 | Optional | Delivery Associate employee Id.
 userGroupName | String | 255 | Optional | Delivery Associate user group name.
-branchName | String | 255 | Optional | Delivery Associate's client branch name.
-deliveryMediumMasterName | String | 255 | Optional | Delivery associate full name.
+branchName | String | 255 | Optional | Delivery Associate client Branch name.
+deliveryMediumMasterName | String | 255 | Optional | Delivery Associate full name.
 phoneNumber | String | 255 | Optional | Delivery Associate mobile number.
 imei | String | 40 | Optional | Delivery Associate IMEI number.
 emailId | String | 100 | Optional | Delivery Associate email ID.
@@ -2944,34 +2944,34 @@ password | String | 255 | Optional | Delivery Associate password.
 capacityInUnits | Integer | 20 | Optional | Delivery Associate capacity in units.
 capacityInVolume | Integer | 20 | Optional | Delivery Associate capacity in volume.
 capacityInWeight | Integer | 20 |Optional | Delivery Associate capacity in weight.
-dob | String |  | Optional | Date of birth.This field accepts values in UTC format.
+dob | String |  | Optional | Delivery Associate date of birth.This field accepts values in UTC format.
 gender | ISODate | 12 |Optional | Gender. Ex - Male,Female
 deliveryMediumMasterTypeCd | String | 255 |Optional | Delivery associate type. Ex - Truck, Delivery Boy
 isOwnVehicleFl | String | 1 |Optional | Owner of vehicle. Ex - Owned, Company
-vehicleNumber | String | 255 | Optional | Vehicle number to be assigned to the delivery associate
+vehicleNumber | String | 255 | Optional | Delivery Associate Vehicle number.
 weeklyOffList  | String | 255 |Optional | Array of week's off days. Ex - Monday, Tuesday etc.
 maxDistance | Integer | 20 |Optional | Max. allowed distance
 licenseValidity | String |  | Optional | License validity date. This field accepts values in UTC format.
 deliveryMediumMapList.name | String | 255 | Optional | Name of language
-shiftList.shiftStartTime  | UTC Date |  |Optional | Shift start time
-shiftList.shiftEndTime  | UTC Date|  |Optional | Shift end time
-dmPreference  | String | 255 | Optional | Preferred Pincode of Delivery associate. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference' property is set.
-shiftTimeList.shiftStartTime  | String|  |Optional | Shift start time in HH:MM format. 
-shiftTimeList.shiftEndTime  | String |  |Optional | Shift end time in HH:MM format
-breakTimeList.breakStartTime  | String |  |Optional | Break start time in HH:MM format.
-breakTimeList.breakEndTime  | UTC |  | Optional | Break end time in HH:MM format.
-breakTimeList.breakDurationInMins  | Integer  |Optional | Break Time Duration in minutes
-addressList | List | | | Holds the address details of the Delivery Associate.
-addressList.apartment | String | 255 | Optional | Delivery Associate's Apartment number.
-addressList.streetName | String | 255 | Optional | Delivery Associate's Street Name.
-addressList.landmark | String | 255 | Optional | Delivery Associate's landmark.
-addressList.countryShortCode | String | 255 | Optional | This is the  Delivery Associate's country code. Please refer to the list of country codes provided in the "Country Codes" section.
-addressList.city | String | 255 | Optional | Delivery Associate's city.
-addressList.pincode | String | 255 | Optional | Delivery Associate's pincode.
+shiftList.shiftStartTime  | UTC Date |  |Optional | Delivery Associate shift start time.
+shiftList.shiftEndTime  | UTC Date|  |Optional | Delivery Associate shift end time.
+dmPreference  | String | 255 | Optional | Delivery Associate preferred postal code. The Route Planning engine will consider this piccode preference when assignming Orders to the Delivery Associate if the Pin Code Preference' property is set.
+shiftTimeList.shiftStartTime  | String|  |Optional | Delivery Associate shift start time in HH:MM format. 
+shiftTimeList.shiftEndTime  | String |  |Optional | Delivery Associate shift end time in HH:MM format.
+breakTimeList.breakStartTime  | String |  |Optional | Delivery Associate break start time in HH:MM format.
+breakTimeList.breakEndTime  | UTC |  | Optional | Delivery Associate break end time in HH:MM format.
+breakTimeList.breakDurationInMins  | Integer  |Optional |  Delivery Associate break Time Duration in minutes.
+addressList | List | | | Delivery Associate address details of the Delivery Associate.
+addressList.apartment | String | 255 | Optional | Delivery Associate Apartment number.
+addressList.streetName | String | 255 | Optional | Delivery Associate Street Name.
+addressList.landmark | String | 255 | Optional | Delivery Associate landmark.
+addressList.countryShortCode | String | 255 | Optional | Delivery Associate's country code. Please refer to the list of country codes provided in the "Country Codes" section.
+addressList.city | String | 255 | Optional | Delivery Associate city.
+addressList.pincode | String | 255 | Optional | Delivery Associate pincode.
 addressList.addressType | String | 255 | Optional | Identifies if this is the current or permanent address of the Delivery Associate. If set to "CURRENT", it will select the entered address as current. If "PERMANENT", it will set the entered address as permanent. This field does not accept any other value. You must send this field if adding an address for the Delivery Associate.
-maritalStatus | String | 255 | Optional | Delivery Associate's Marital Status.
-alternateMobileNo | String | 255 | Optional | Alternate Mobile NUmber of the Delivery Associate.
-landlineNo | String | 255 | Optional | Landline Number of the Delivery Associate.
+maritalStatus | String | 255 | Optional | Delivery Associate Marital Status.
+alternateMobileNo | String | 255 | Optional | Delivery Associate alternate mobile number.
+landlineNo | String | 255 | Optional | Delivery Associate landline number.
 licenseValidity | String | Optional | String | 255 | This is the expiry Date of the Driver's License in YYYY-MM-HH format.
 licenseValidityInYears | Optional | String | 255 | License Validity in years.
 licenseIssuanceDate |String | Optional | 255 | License Issuance Date in YYYY-MM-HH format.
@@ -7903,7 +7903,8 @@ Note -
   "deliverAccountCode": "WAYNE",
   "deliverAddressId": "OFFICE",
   "returnAccountCode": "JAMES1",
-  "returnAddressId": "P1947"
+  "returnAddressId": "P1947",
+  "clientCode":"MyKart"
 }
 ```
 
@@ -7924,6 +7925,7 @@ deliverAccountCode| String| Custoemr ID of the deliver customer. This field will
 deliverAddressId | String | Address ID of the delivery customer. This field will be sent if the Order has a Deliver leg
 returnAccountCode| String| Custoemr ID of the deliver customer. This field will be sent if the Order has a Return leg i.e the is Return allowed option was selected at the time of Order creation.
 returnAddressId | String | Address ID of the delivery customer. This field will be sent if the Order has a Return leg i.e the is Return allowed option was selected at the time of Order creation.
+clientCode | String | Account name. This field is sent if the Order was created for a particular Account.
 
 ### Update
 
