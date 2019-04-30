@@ -5132,7 +5132,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
                 "key": "04c1c0c283a34769a5baca01c987b51a",
                 "message": [
                     "referenceId.doestnot.exists"
-                ]
+                ],
+                "orderReferenceId":"04c1c0c283a34769a5baca01c987b51a"
             }
         ]
     },
@@ -5772,7 +5773,7 @@ orderNo | String | Order number.
 deliveryMediumName | String | Name of the Delivery Associate.
 status | String | Order status.
 results | List |This contains the results object.
-results.event | String | This is the event that the cusomt form was associated with. These can be CHECKIN_AFTER, ESIGN, EPOD, LOAD, UNLOAD, CASH_COLLECTED, EPOP, NOTPICKUP, NOTDELIVER, DELIVERED, PICKEDUP, PARTIAL_DELIVER, PAYMENT, TRIPSTART, TRIPEND
+results.event | String | This is the event that the custom form was associated with. These can be CHECKIN_AFTER, ESIGN, EPOD, LOAD, UNLOAD, CASH_COLLECTED, EPOP, NOTPICKUP, NOTDELIVER, DELIVERED, PICKEDUP, PARTIAL_DELIVER, PAYMENT, TRIPSTART, TRIPEND
 results.moduleName | String | Name of the custom form Module. Will be hardcoded to 'ORDERS' if Order reference IDs are passed in the request body.
 results.formName | String | Name of the custom form that was set when creating the template in LogiNext Mile.
 results.formStatus | String | This will be hardcoded to 'ACTIVE' if the custom form is currently acitve. If the custom form has been deactivated this will be 'INACTIVE'.
@@ -8020,6 +8021,47 @@ calculatedStartDt | String  | This is the Calculated start date
 calculatedEndDt | String  | Calculated end date
 orderStatus | String | The current state of the Order.
 
+### Order Status Update
+
+> Response
+
+```json
+{
+  "notificationType": "ORDERSTATUSNOTIFICATON",
+  "orderNo": "ScanWithAwbOrOrder4",
+  "orderReferenceId": "3a2511a92bac464aa001f75f4ba84b7f",
+  "scanStatus": "INSCANNED",
+  "orderStatus": "NOTDISPATCHED"
+  "orderLeg": "DELIVER",
+  "awbNumber": "AwbNoOnly",
+  "orderState": "FORWARD",
+  "branchName": "Powai Vendor",
+  "scanTime": "2019-04-26 07:30:55",
+  
+}
+
+```
+
+This notification is sent when an order Status change occurs. This webhook is triggered at 4 events. When an Order is in scanned, out scanned, handed over or closed.
+
+
+
+#### Response Parameters
+
+
+Param | DataType | Description
+--------- | ------- | ----------
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'ORDERSTATUSNOTIFICATON'.
+orderNo | String | Order No.
+orderReferenceId | String | Order reference id.
+scanStatus | String | Scan Status of the Order. This can be INSCANNED, OUTSCANNED, HANDEDOVER, CLOSED.
+branchName | String | Branch Name.
+orderLeg | String | Order Leg.
+awbNumber | String | AWB Number.
+orderState | String | Order State.
+branchName | String | Branch Name.
+scanTime | String | Order Scan Timestamp.
+
 
 ### Accepted
 
@@ -8650,6 +8692,74 @@ orderReferenceId | String |  Reference ID of the order.
 lastRunDt | String |  Last run time of the allocation engine
 isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
 
+### Custom Form
+
+> Response
+
+```json
+
+{
+  "notificationType": "ORDERCUSTOMFORMNOTIFICATION",
+  "event": "EPOD_AFTER",
+  "formName": "POD",
+  "timestamp": "2019-04-26 02:55:24",
+  "orderNo": "26752501_0",
+  "orderReferenceId": "d7738ffd9508461e80c5aebad2021ae6",
+  "orderStatus": "PICKEDUP",
+  "deliveryMediumName": "ATL Dallas Pass_15121",
+  "formdata": [
+    {
+      "key": "recipientName",
+      "value": "dallas",
+      "type": "text"
+    },
+    {
+      "key": "dept-Floor-Suite-Comments",
+      "value": "floor 2",
+      "type": "text"
+    }
+  ]
+}
+```
+This notification is triggered when any Custom form related to an ORder is submitted. This webhook contains the details filled in the custom form.
+
+Custom form data will be sent inside the formData object that contains the key name, value and data type of each field filled in the custom form.
+
+Date and DateTime fields will hold values in the EPOCH format, while Time fields will hold data in HH:MM format.
+
+Editing an existing custom form is likely to impact any integration where there is a check on a specific key name.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType| String | Event Identifier. Hardcoded to 'ORDERCUSTOMFORMNOTIFICATION' for the custom form notification event.
+event| String | The event at which the current custom form was triggered. This helps identify at what point in the Order lifecycle was the custom form filled. This can have any one of the values mentioned in the table below.
+formName | String | Name of the custom form entered when the custom form was created in the Mile application.
+timestamp | String | The timestamp of the event at which the custom form was submitted in 'YYYY-MM-DD HH:MM:SS' format. For example, "2019-04-26 02:55:24".
+orderNo | String | Order number against which the custom form was filled. 
+orderReferenceId | String | Order Reference ID of the Order against which the custom form was filled.
+orderStatus | String | The current Order Status.
+deliveryMediumName | String | Delivery Associate name.
+formData | List | This list contains the details of the custom form filled.
+formData.key | | The key name of the custom form field.
+formData.value | | The value of the custom form field.  
+formData.type | String | Data type of the custom form field.
+ 
+Event Key | Description
+----------|------------
+CHECKIN_AFTER | Custom form located after the Check In screen on TrackNext.
+LOAD_AFTER | Custom form located after the Loading screen on TrackNext.
+UNLOAD_AFTER | Custom form located after the Unloading screen on TrackNext.
+ESIGN_AFTER | Custom form located after the ESIGN screen on TrackNext.
+PAYMENT_AFTER | Custom form located after the Payment screen on TrackNext.
+EPOP_AFTER | Custom form located after the E Proof of Pickup screen on TrackNext.
+EPOD_AFTER | Custom form located after the E Proof of Delivery on TrackNext.
+PICKEDUP_AFTER | Custom form filled after the Pickup is complete for the Order.
+NOTPICKED-UP_AFTER | Custom form filled after the Order is marked Not Picked Up.
+DELIVERED_AFTER | Custom form filled after the Order is marked Delivered.
+NOTDELIVER_AFTER | Custom form filled after the Order is marked Delivered.
+PARTIALDELIVER_AFTER | Custom form filled after the Order is marked Partial Delivered.
 
 ## Trips
 
