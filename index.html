@@ -130,7 +130,7 @@
 <h3 id="delivery-associate">Delivery Associate</h3>
 
 <p>A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be
-maintainence men, repair men, or delivery boys.</p>
+maintainence men, repair men, or Delivery Associates.</p>
 
 <p>When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.</p>
 
@@ -5107,7 +5107,7 @@ Note that in case you are storing this link in your system, this link has a life
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>Delivery associate type. Ex - Truck, Delivery Boy</td>
+<td>Delivery associate type. Ex - Truck, Delivery Associate.</td>
 </tr>
 <tr>
 <td>isOwnVehicleFl</td>
@@ -5486,14 +5486,14 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is name of the Parent Branch under which you want to create the new branch.<br>Please note that you cannot create the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
+<td>This is name of the Parent Hub under which you want to create the new branch.<br>Please note that you cannot create the Main Parent branch for your account through this API.<br>The Main Parent Branch gets created automatically when your account is configured in LogiNext system.<br>If you want to know the name of the Main Parent Branch Name, please get in touch with your assigned Account Manager</td>
 </tr>
 <tr>
 <td>branchName</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the name of the branch / hub / distribution center/ that you want to add.</td>
+<td>Hub Name.</td>
 </tr>
 <tr>
 <td>Address.apartment</td>
@@ -5711,7 +5711,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the reference ID of the branch to be updated.</td>
+<td>Hub Reference ID</td>
 </tr>
 <tr>
 <td>Address.apartment</td>
@@ -6283,14 +6283,14 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>This is the Order No.</td>
+<td>Order Number.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>If you want an AWB no. to be associated with an order, you can pass the same here.</td>
+<td>Airway Bill Number associated with an order.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
@@ -6318,84 +6318,84 @@ When Customer Profiling is turned ON -
 <td>Date</td>
 <td></td>
 <td>Mandatory</td>
-<td>The date and time on which the order is created.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
+<td>Order Date.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+<td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>packageWeight</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+<td>Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+<td>Order package volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
 </tr>
 <tr>
 <td>packageLength</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageBreadth</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageHeight</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>String</td>
 <td>16</td>
 <td>Optional</td>
-<td>This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;High&rsquo;, and &#39;Low&rsquo;, or &#39;Gold&rsquo; and &#39;Silver&rsquo;.</td>
+<td>Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;High&rsquo;, and &#39;Low&rsquo;, or &#39;Gold&rsquo; and &#39;Silver&rsquo;.</td>
 </tr>
 <tr>
 <td>serviceType</td>
 <td>String</td>
 <td>16</td>
 <td>Optional</td>
-<td>This is the service type of the Order.</td>
+<td>Order Service Type.</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>This is the value of package</td>
+<td>Order value.</td>
 </tr>
 <tr>
 <td>paymentType</td>
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>This is the number of items in the order.</td>
+<td>Number of items in the order.</td>
 </tr>
 <tr>
 <td>deliveryType</td>
@@ -6465,35 +6465,35 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>255</td>
 <td>Mandatory</td>
-<td>This is the pickup account code.</td>
+<td>Pick-up Customer ID.</td>
 </tr>
 <tr>
 <td>pickupAccountName</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
-<td>This is the pickup account Name.</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupAddressId</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the Address ID of the pickup Customer.</td>
+<td>Pick-up Customer Address ID.</td>
 </tr>
 <tr>
 <td>pickupEmail</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>This is the email ID of the pickup customer.</td>
+<td>Pick-up Customer email ID.</td>
 </tr>
 <tr>
 <td>pickupPhoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the phone number of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupApartment</td>
@@ -6514,42 +6514,42 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This field holds any landmarks near the pickup location. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the locality of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCity</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the city name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupState</td>
 <td>String</td>
 <td>512</td>
-<td>This field in Non Mandatory in case Customer Profiling in ON. Mandatory</td>
-<td>This is the state name of the pickup customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the country name of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+<td>Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
 </tr>
 <tr>
 <td>pickupPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Conditional Mandatory</td>
-<td>This is the pincode of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>pickupLatitude</td>
@@ -6577,14 +6577,14 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional pickup comments associated with the order.</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
 </tr>
 <tr>
 <td>deliverNotes</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>Additional delivery comments associated with the order.</td>
+<td>Additional Delivery notes associated with the order.</td>
 </tr>
 <tr>
 <td>clientCode</td>
@@ -6968,14 +6968,14 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Order Number.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>If you want an AWB no. to be associated with an order, you can pass the same here.</td>
+<td>Airway Bill Number associated with an order.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
@@ -7017,35 +7017,35 @@ When Customer Profiling is turned ON -
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+<td>Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+<td>Order package volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
 </tr>
 <tr>
 <td>packageLength</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageBreadth</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package breadth.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageHeight</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package height. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>priority</td>
@@ -7164,84 +7164,84 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>This is the email ID details of the customer.</td>
+<td>Delivery Customer email ID.</td>
 </tr>
 <tr>
 <td>deliverPhoneNumber</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the phone number of the delivery customer.</td>
+<td>Delivery Customer phone number.</td>
 </tr>
 <tr>
 <td>deliverApartment</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverStreetName</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>TThis is the street name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLandmark</td>
 <td>String</td>
 <td>512</td>
 <td>Optional</td>
-<td>This field holds any identifying landmark&rsquo;s around the customer&rsquo;s address.</td>
+<td>Delivery Address landmark.</td>
 </tr>
 <tr>
 <td>deliverLocality</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCity</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverState</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the state code of the delivery customer. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverCountry</td>
 <td>String</td>
 <td>512</td>
 <td>Conditional Mandatory</td>
-<td>This is the country code of the delivery customer. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverPinCode</td>
 <td>String</td>
 <td>20</td>
 <td>Conditional Mandatory</td>
-<td>This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+<td>Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
 </tr>
 <tr>
 <td>deliverLatitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>The geolocation coordinate (latitude) of the delivery customer.</td>
+<td>Delivery Address geolocation coordinate (latitude).</td>
 </tr>
 <tr>
 <td>deliverLongitude</td>
 <td>Double</td>
 <td></td>
 <td>Optional</td>
-<td>The geolocation coordinate (longitude) of the delivery customer.</td>
+<td>Delivery Address geolocation coordinate (longitude).</td>
 </tr>
 <tr>
 <td>deliverAddressTimezone</td>
@@ -7637,14 +7637,14 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>100</td>
 <td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Order Number.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
 <td>String</td>
 <td>1000</td>
 <td>Optional</td>
-<td>This is the airway Bill No.</td>
+<td>Airway Bill No associated with the Order.</td>
 </tr>
 <tr>
 <td>shipmentOrderTypeCd</td>
@@ -7686,63 +7686,63 @@ When Customer Profiling is turned ON -
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+<td>Order package Weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
 </tr>
 <tr>
 <td>packageVolume</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+<td>Order package Volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
 </tr>
 <tr>
 <td>packageLength</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageBreadth</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package breadth.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>packageHeight</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Order package height.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>priority</td>
 <td>String</td>
 <td>16</td>
 <td>Optional</td>
-<td>This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;High&rsquo;, and &#39;Low&rsquo;, or &#39;Gold&rsquo; and &#39;Silver&rsquo;.</td>
+<td>Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;High&rsquo;, and &#39;Low&rsquo;, or &#39;Gold&rsquo; and &#39;Silver&rsquo;.</td>
 </tr>
 <tr>
 <td>serviceType</td>
 <td>String</td>
 <td>16</td>
 <td>Optional</td>
-<td>This is the service type of the Order.</td>
+<td>Order service type.</td>
 </tr>
 <tr>
 <td>packageValue</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>This is the value of package</td>
+<td>Order value.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
 <td>Optional</td>
-<td>This is the number of crates</td>
+<td>This is the number of crates.</td>
 </tr>
 <tr>
 <td>paymentType</td>
@@ -8196,21 +8196,21 @@ When Customer Profiling is turned ON -
 <td>Array of objects</td>
 <td></td>
 <td>Optional</td>
-<td>These are the order crates.</td>
+<td>Order crates.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateCd</td>
 <td>String</td>
 <td>128</td>
 <td>Mandatory</td>
-<td>This is the crate code for a crate.</td>
+<td>Crate code for a crate.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateAmount</td>
 <td>Double</td>
 <td></td>
 <td>Mandatory</td>
-<td>This is the crate amount for a crate.</td>
+<td>Crate amount for a crate.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.crateType</td>
@@ -8224,77 +8224,70 @@ When Customer Profiling is turned ON -
 <td>Integer</td>
 <td>10</td>
 <td>Mandatory</td>
-<td>This is the Number of items in the crate.</td>
+<td>Number of items in the crate.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
 <td>String</td>
 <td>200</td>
 <td>Mandatory</td>
-<td>This is the crate item code.</td>
+<td>Crate item code.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemName</td>
 <td>String</td>
 <td>255</td>
 <td>Optional</td>
-<td>This is the crate item name.</td>
+<td>Crate item name.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
 <td>Double</td>
 <td></td>
 <td>Mandatory</td>
-<td>This is the crate item price.</td>
+<td>Crate item price.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
 <td>Double</td>
 <td>10</td>
 <td>Mandatory</td>
-<td>This is the crate item quantity.</td>
+<td>Crate item quantity.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemType</td>
 <td>String</td>
 <td>100</td>
 <td>Optional</td>
-<td>This is the crate item type.</td>
+<td>Crate item type.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
 <td>Double</td>
 <td>10</td>
 <td>Optional</td>
-<td>This is the crate item weight.</td>
-</tr>
-<tr>
-<td>hipmentCrateMappings.shipmentlineitems.itemWeight</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Item weight</td>
+<td>Crate item weight.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemLength</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Crate item length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemBreadth</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Crate item breadth.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemHeight</td>
 <td>Double</td>
 <td>10,3</td>
 <td>Optional</td>
-<td>This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+<td>Crate item height.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 </tbody></table>
 
@@ -10220,7 +10213,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
@@ -10880,11 +10873,11 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <p>If you have a set of Orders to be manually assigned to a particular Delivery Associate or Trip, for eg- in the case that a Delivery Associate is Abesent or On Break, you can assign the Orders to be fulfilled to another Trip of another Delivery Associate using this API.</p>
 
-<p>The API will take as input the Trip or Delivery boy details and the list of orders to be added for that trip or Delivery Associate.
+<p>The API will take as input the Trip or Delivery Associate details and the list of orders to be added for that trip or Delivery Associate.
 The API can be used in 2 ways:
 If the trip details are passed (through trip reference id), then Delivery Associate details are not required and the list of orders will be added to that trip, irrespective of the trip being Started or Not Started. Other order and trip validations remain as is.
 If the trip details are not passed, then the Delivery Associate details will be required to be passed, either through username, mobile number or employee id (unique identifiers) and a control flag identifying which of these values is being passed. 
-The orders will be added to the Default trip (Started or Not Started) of the Delivery boy.</p>
+The orders will be added to the Default trip (Started or Not Started) of the Delivery Associate.</p>
 
 <p>API Type: Tier 1 API</p>
 
@@ -11181,6 +11174,7 @@ In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;
             </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"moduleId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8043067</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLOAD_AFTER"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"moduleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"formName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unloadtesrt"</span><span class="p">,</span><span class="w">
@@ -11326,7 +11320,7 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 <tr>
 <td>results.event</td>
 <td>String</td>
-<td>This is the event that the custom form was associated with. These can be CHECKIN_AFTER, ESIGN, EPOD, LOAD, UNLOAD, CASH_COLLECTED, EPOP, NOTPICKUP, NOTDELIVER, DELIVERED, PICKEDUP, PARTIAL_DELIVER, PAYMENT, TRIPSTART, TRIPEND</td>
+<td>This is the event that the custom form was associated with. The list of poosible events is listed in the table below.</td>
 </tr>
 <tr>
 <td>results.moduleName</td>
@@ -11346,7 +11340,7 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 <tr>
 <td>results.formSubmissionDt</td>
 <td>String</td>
-<td>Form submission date in EPOCK format.</td>
+<td>Form submission date in EPOCH format.</td>
 </tr>
 <tr>
 <td>results.formdata</td>
@@ -11367,6 +11361,62 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 <td>results.formdata.type</td>
 <td>String</td>
 <td>Data type of the input field.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Event Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CHECKIN_AFTER</td>
+<td>Custom form located after the Check In screen on TrackNext.</td>
+</tr>
+<tr>
+<td>LOAD_AFTER</td>
+<td>Custom form located after the Loading screen on TrackNext.</td>
+</tr>
+<tr>
+<td>UNLOAD_AFTER</td>
+<td>Custom form located after the Unloading screen on TrackNext.</td>
+</tr>
+<tr>
+<td>ESIGN_AFTER</td>
+<td>Custom form located after the ESIGN screen on TrackNext.</td>
+</tr>
+<tr>
+<td>PAYMENT_AFTER</td>
+<td>Custom form located after the Payment screen on TrackNext.</td>
+</tr>
+<tr>
+<td>EPOP_AFTER</td>
+<td>Custom form located after the E Proof of Pickup screen on TrackNext.</td>
+</tr>
+<tr>
+<td>EPOD_AFTER</td>
+<td>Custom form located after the E Proof of Delivery on TrackNext.</td>
+</tr>
+<tr>
+<td>PICKEDUP_AFTER</td>
+<td>Custom form filled after the Pickup is complete for the Order.</td>
+</tr>
+<tr>
+<td>NOTPICKED-UP_AFTER</td>
+<td>Custom form filled after the Order is marked Not Picked Up.</td>
+</tr>
+<tr>
+<td>DELIVERED_AFTER</td>
+<td>Custom form filled after the Order is marked Delivered.</td>
+</tr>
+<tr>
+<td>NOTDELIVER_AFTER</td>
+<td>Custom form filled after the Order is marked Delivered.</td>
+</tr>
+<tr>
+<td>PARTIALDELIVER_AFTER</td>
+<td>Custom form filled after the Order is marked Partial Delivered.</td>
 </tr>
 </tbody></table>
 
@@ -12090,7 +12140,6 @@ Sample Value - &ldquo;17.996&rdquo;</p>
     </span><span class="nt">"isFirstPointFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976899548</span><span class="p">,</span><span class="w">
     </span><span class="nt">"previousTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976899532</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4955</span><span class="p">,</span><span class="w">
     </span><span class="nt">"signalStrength"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
     </span><span class="nt">"appStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"networkType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WIFI"</span><span class="p">,</span><span class="w">
@@ -12118,7 +12167,6 @@ Sample Value - &ldquo;17.996&rdquo;</p>
     </span><span class="nt">"isFirstPointFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976879541</span><span class="p">,</span><span class="w">
     </span><span class="nt">"previousTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1512976879521</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4955</span><span class="p">,</span><span class="w">
     </span><span class="nt">"signalStrength"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
     </span><span class="nt">"appStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"networkType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WIFI"</span><span class="p">,</span><span class="w">
@@ -12316,13 +12364,6 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 <td>1</td>
 <td>Optional</td>
 <td>True, if the current location has a speed 0 (= False) / 1 (= True)</td>
-</tr>
-<tr>
-<td>userId</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>User Id, as identified by LogiNext Sample Value - JohnD</td>
 </tr>
 <tr>
 <td>networkType</td>
@@ -14649,7 +14690,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Task delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Boy</td>
+<td>Task delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
@@ -15091,7 +15132,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <p>Please Note that if you send these fields in the API without first configuring them in your LogiNext account, the LogiNext API will NOT create a new Custom Field. You will receive a success response from such an API call, but the data sent in the &#39;customField object will not be considered. The data passed in the API can only be associated with an already existing Custom Field with the identifier specified in the request. </p>
 
-<p>If using the API, you will need to add the Custome Fields object on the right as part of the API request body to create the new fields in LogiNext.</p>
+<p>If using the API, you will need to add the Custom Fields object on the right as part of the API request body to create the new fields in LogiNext.</p>
 
 <p>For eg - If you have Custom Fields configured for the Orders module, you will need to append the request on the right to the request body of the create order API.</p>
 
@@ -15127,7 +15168,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 <p>Time.</p>
 
-<p>Note that Date and DateTime type of type of Custom Fields will be sent in UTC format in POST API calls, and will be fetched in Epoch format in Get API calls. </p>
+<p>Note that Date and DateTime type of type of Custom Fields will be sent in UTC format in POST API calls, and will be fetched in Epoch format in Get API calls. For example, In the Create Order API, you could pass &ldquo;shipmentOrderDt&rdquo;: &ldquo;2016-07-15T10:30:00.000Z&rdquo;. In Custom fields a DateTime field would have the sample value &#39;1485153536000&rsquo;, which will represent a timestamp.</p>
 
 <p>You can include the following validations in your custom fields at the time of creating them -</p>
 
@@ -18323,13 +18364,13 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>allocationTimeStamp</td>
 <td>String</td>
 <td>Mandatory</td>
-<td>This is the time at which the allocation engine has identified the nearest Delivery Boy / Driver / Associate / Field Executive.<br>Note that this date and time is in UTC.<br>Sample Value - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
+<td>This is the time at which the allocation engine has identified the nearest  Driver / Associate / Field Executive.<br>Note that this date and time is in UTC.<br>Sample Value - &ldquo;2017-07-15T10:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
 <td>deliveryMediums</td>
 <td>Array Of Object</td>
 <td></td>
-<td>Array - <br>This list would contain list of one or more nearest Delivery Boy / Driver / Associate / Field Executive identified for your order.<br>Note that if you have set your account configuration to identify only the nearest driver first, then this array would have only one value.<br>If your account configuration is set to identify X no. of drivers, then this array will have list of the X nearest drivers.</td>
+<td>Array - <br>This list would contain list of one or more nearest  Drivery Associate / Field Executive identified for your order.<br>Note that if you have set your account configuration to identify only the nearest driver first, then this array would have only one value.<br>If your account configuration is set to identify X no. of drivers, then this array will have list of the X nearest drivers.</td>
 </tr>
 <tr>
 <td>deliveryMediums.userGroupName</td>
@@ -18694,7 +18735,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>cashInHand</td>
 <td>Double</td>
-<td>cash with delivery boy.</td>
+<td>cash with delivery Associate.</td>
 </tr>
 <tr>
 <td>shiftList</td>
@@ -18739,7 +18780,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <tr>
 <td>fixedCost</td>
 <td>Integer</td>
-<td>fixed cost associated with delivery boy.</td>
+<td>fixed cost associated with delivery Associate.</td>
 </tr>
 <tr>
 <td>variableCost</td>
