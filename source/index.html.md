@@ -2185,7 +2185,7 @@ billingAddress.country | String | 255 | Address Validations | Customer Billing A
 billingAddress.pincode | String | 255 | Address Validations | Customer Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create a Customer entity on behalf of one of your Customers.
+clientCode | String | 50 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create a Customer entity on behalf of one of your Customers.
 
 ### Get 
 
@@ -2443,7 +2443,7 @@ billingAddress.country | String | 255 | Optional | Customer Billing Address Coun
 billingAddress.pincode | String | 255 | Optional | Customer Billing Address Pincode.
 billingAddress.latitude | Double | 20 | Optional | Customer Billing Address geo-coordinate(latitude)
 billingAddress.longitude | Double | 20 | Optional | Customer Billing Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to update a Customer entity on behalf of one of your Customers.
+clientCode | String | 50 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to update a Customer entity on behalf of one of your Customers.
 
 
 ## Address 
@@ -2543,7 +2543,7 @@ addressServiceTime | String | 255 |Optional | Address Service Time in minutes.
 breakTime.startTime | String | 255 | Conditional Mandatory | Address Break Start time in HH:MM format. This field is mandatory if a break end time is provided.
 breakTime.endTime | String | 40 |Conditional Mandatory | Address Break end time in HH:MM format.. This field is mandatory if a break start time is provided.
 preferredStartTime | String | 100 | Optional | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
-preferredEndTime | String | 255 | Mandatory | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
+preferredEndTime | String | 255 | Optional | If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.
 weeklyOffList | LIST | 255 | Mandatory | Days of the week this location is OFF i.e not serviceable.
 address.city | Integer | 20 | Mandatory | Address city.
 address.state | Integer | 20 | Optional |  Address state. This will be based on the state codes in LogiNext for the country selected by you.
@@ -2551,7 +2551,7 @@ address.country | String | 255 | Optional | Address Country.
 address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
-clientCode | String | 50 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Address entity on behalf of one of your Customers.
+clientCode | String | 50 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Address entity on behalf of one of your Customers.
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
 
 
@@ -3631,7 +3631,7 @@ pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) 
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
 deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
-clientCode | String | 32 | Optional | This is the identifier for an account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create Orders on behalf of one of your Customers.
+clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.
 
 #### Request Parameters (Crates)
 
@@ -3917,7 +3917,7 @@ deliverAddressTimezone | String | | Optional | The timezone of the pickup locati
 returnBranch | String | 255 | Mandatory | Name of return branch.
 pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order.
 deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order.
-clientCode | String | 32 | Optional | This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Order on behalf of one of your Customers.
+clientCode | String | 32 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Order on behalf of one of your Customers.
 
 #### Request Parameters (Crates)
 
@@ -5251,7 +5251,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
   },
   {
     "orderReferenceId":"6156ty46e324c42abb5ea1a32y45f66",
-    "reasonCd":"OTHER",
+    "reasonCd":"Other",
     "otherReason":"Technical Issues",
     "latitude": 40.760838,
     "longitude": 74.910321,
@@ -5274,8 +5274,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update/status
 }
 
 ```
-With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
-You can pass multiple order reference IDs and can update one or more parameters.
+With this API, you will be able to update the the status of a Order.
+You can pass multiple Order reference IDs and can update one or more parameters.
+
 
 API Type: Tier 1 API
 
@@ -5290,11 +5291,12 @@ Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
 newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values - <br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
 orderReferenceId | String | 100 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
-reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.
+reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is Other, in case the delivery Associate selects the reason as Others.
 otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
 latitude | Double | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
 otherReason | Date | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "17.996"
 updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
+
 
 
 ### Update Crates and Line Items
@@ -6100,7 +6102,7 @@ https://api.loginextsolutions.com/track/#/order?ordno=1234&aid=4b41a94b-521b-498
 The iFrame displays the last tracking for an order, including current location, based on the order no.
 You can use this particular feature to display real time Order tracking information to your customers on your UI in Order to provide them great user experience.
 
-You can do so by embedding the URL alongside in your client side application. For example, this could be in the form of a 'Track' button on your UI that calls the iFrame URL when clicked. The tracking URL can then be opened on your webpage as an iFrame that will show your customers the live tracking of their Orders.
+You can do so by embedding the URL alongside in your client side application inside a 'frame' tag in the webpage's HTML. For example, this could be in the form of a 'Track' button on your UI that calls the iFrame URL when clicked. The tracking URL can then be opened on your webpage on your webiste's subdomain as an iFrame that will show your customers the live tracking of their Orders.
 
 The Order number will need to be sent in the URL request along with the LogiNext token provided for calling the iFrame. 
 
@@ -6506,18 +6508,6 @@ https://api.loginextsolutions.com/TripApp/v1/plan
   "orderReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"],
   "planningProfile": "1",
   "territoryProfile": "80",
-  "outsourcedFleet": [{
-    "hubReferenceId": "Miami",
-    "agentName": "XPO Logistics",
-    "fleetType": "Truck/Cargo",
-    "territoryDetails": [{
-      "territoryName": "Miami block 18",
-      "countPerVehicleType": 2
-    },{
-      "territoryName": "NONE",
-      "countPerVehicleType": 1
-    }]
-  }],
   "mode": "OPTIMIZE_DISTANCE_TIME",
   "deliveryMediumReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"],
   "deliveryMediumStartLocation" : "hub"
@@ -6939,6 +6929,7 @@ pincode | String | Mandatory | This is the address pincode.
         "geofenceType": "Hub",
         "geofenceShape": "Polygon",
         "geofenceArea": 335.55,
+        "geofenceReferenceId": "3e290b46495b482a8e70e1078bd73c3f",
         "deliveryAssociates": [
             {
                 "isActiveFl": true,
@@ -7799,8 +7790,8 @@ https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
 
 
 ```
-With this API, you will be able to update the the status of an Order.
-You can pass multiple order reference IDs and can update one or more parameters.
+With this API, you will be able to update the the status of a Task.
+You can pass multiple task reference IDs and can update the status of a task.
 
 #### Request
 
@@ -8847,6 +8838,139 @@ vehicleNumber | String |  Vehicle no.
 driverName | String |  Name of driver
 deliveryMediumName | String |  Name of Delivery Associate
 endTime | String |  Trip end time
+
+
+### ETA Revision
+
+> Response
+
+```json
+{
+  "notificationType": "REVISEETANOTIFICATION",
+  "eventName": "MANUALASSIGNMENT",
+  "tripDetails": [
+    {
+      "tripName": "TRIP-152",
+      "tripReferenceId": "26ba0ccxd3c743a6848e2377aea5c2ef",
+      "tripStatus": "STARTED",
+      "deliveryMediumName": "trampolin",
+      "deliveryMediumReferenceId": "9391fbc28a6b4b12923477fc301334ca",
+      "phoneNumber": "93189490",
+      "branchName": "California Main Branch",
+      "orderDetails": [
+        {
+          "orderStatusCd": "PICKEDUP",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "GR432U5",
+          "orderReferenceId": "d9a0febe56264bbc8b9d43273c53ge75",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 40.319291,
+              "longitude": 72.89481899999998,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "plannedStartDate": "2019-05-20 14:22:42",
+              "plannedEndDate": "2019-05-20 14:22:42",
+              "calculatedStartDate": "2019-05-20 14:23:22",
+              "calculatedEndDate": "2019-05-20 14:23:22",
+              "plannedDistance": 0,
+              "sequence": 2
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 40.344959,
+              "longitude": 72.963202,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "plannedStartDate": "2019-05-20 14:27:59",
+              "plannedEndDate": "2019-05-20 14:32:59",
+              "calculatedStartDate": "2019-05-20 16:31:50",
+              "calculatedEndDate": "2019-05-20 16:36:50",
+              "plannedDistance": 0,
+              "sequence": 4
+            }
+          ]
+        },
+        {
+          "orderStatusCd": "INTRANSIT",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "GR432U7",
+          "orderReferenceId": "1df561c31fd24be621aa816836a90127",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 40.319291,
+              "longitude": 72.89481899999998,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "calculatedStartDate": "2019-05-20 16:42:28",
+              "calculatedEndDate": "2019-05-20 16:42:49",
+              "plannedDistance": 0.11,
+              "sequence": 7
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 40.339693,
+              "longitude": 72.954843,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "calculatedStartDate": "2019-05-20 16:42:49",
+              "calculatedEndDate": "2019-05-20 16:48:06",
+              "plannedDistance": 0.11,
+              "sequence": 8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+This notification is sent when a trip is ended.
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+notificationType | String |  This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to 'REVISEETANOTIFICATION'
+eventName | String | This is the name of the event at which the webhook was triggered. This can be one of 'TRIPSTART', 'ORDERCHECKOUT', 'MANUALASSIGNMENT', 'DELIVERYMEDIUMOFFBREAK'. 
+tripDetails | List | Notification details
+tripDetails.tripName | String |  This is the Trip name.
+tripDetails.tripReferenceId | String | Reference id of the trip
+tripDetails.tripStatus | String | Status of the trip
+tripDetails.deliveryMediumName | String | Name of the Delivery Associate who will be fulfilling the Orders in this Trip
+tripDetails.deliveryMediumReferenceId | String | Reference ID of the Delivery Associate who will be fulfilling the Orders in this Trip
+tripDetails.tripReferenceId | String | Reference id of the trip
+notificationDetails.deliveryMediumName | String |  Name of Delivery Associate associated with the current Trip.
+tripDetails.phoneNumber | String | Phone no of Delivery Associate.
+tripDetails.branchName | String | Branch Name.
+tripDetails.orderDetails | List | List of Order details in the Current Trip.
+tripDetails.orderDetails.orderTypeCd | String | Order type. Can be 'PICKUP' or 'DELIVER'.
+tripDetails.orderDetails.orderNo | String | Order Number
+tripDetails.orderDetails.orderReferenceId | String | Order reference ID
+tripDetails.orderDetails.paymentType | String | payment type for the Order
+tripDetails.orderDetails.pickupDetails | List | Details of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
+tripDetails.orderDetails.pickupDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
+tripDetails.orderDetails.pickupDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
+tripDetails.orderDetails.pickupDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
+tripDetails.orderDetails.pickupDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
+tripDetails.orderDetails.deliverDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
+tripDetails.orderDetails.deliverDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
+
 
 ## Route Planning
 

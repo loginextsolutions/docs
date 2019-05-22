@@ -1,0 +1,83 @@
+{
+  "notificationType": "REVISEETANOTIFICATION",
+  "eventName": "MANUALASSIGNMENT",
+  "tripDetails": [
+    {
+      "tripName": "TRIP-152",
+      "tripReferenceId": "26ba0ccxd3c743a6848e2377aea5c2ef",
+      "tripStatus": "STARTED",
+      "deliveryMediumName": "trampolin",
+      "deliveryMediumReferenceId": "9391fbc28a6b4b12923477fc301334ca",
+      "phoneNumber": "93189490",
+      "branchName": "California Main Branch",
+      "orderDetails": [
+        {
+          "orderStatusCd": "PICKEDUP",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "GR432U5",
+          "orderReferenceId": "d9a0febe56264bbc8b9d43273c53ge75",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 40.319291,
+              "longitude": 72.89481899999998,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "plannedStartDate": "2019-05-20 14:22:42",
+              "plannedEndDate": "2019-05-20 14:22:42",
+              "calculatedStartDate": "2019-05-20 14:23:22",
+              "calculatedEndDate": "2019-05-20 14:23:22",
+              "plannedDistance": 0,
+              "sequence": 2
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 40.344959,
+              "longitude": 72.963202,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "plannedStartDate": "2019-05-20 14:27:59",
+              "plannedEndDate": "2019-05-20 14:32:59",
+              "calculatedStartDate": "2019-05-20 16:31:50",
+              "calculatedEndDate": "2019-05-20 16:36:50",
+              "plannedDistance": 0,
+              "sequence": 4
+            }
+          ]
+        },
+        {
+          "orderStatusCd": "INTRANSIT",
+          "orderTypeCd": "DELIVER",
+          "orderNo": "GR432U7",
+          "orderReferenceId": "1df561c31fd24be621aa816836a90127",
+          "paymentType": "COD",
+          "pickupDetails": [
+            {
+              "latitude": 40.319291,
+              "longitude": 72.89481899999998,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "calculatedStartDate": "2019-05-20 16:42:28",
+              "calculatedEndDate": "2019-05-20 16:42:49",
+              "plannedDistance": 0.11,
+              "sequence": 7
+            }
+          ],
+          "deliverDetails": [
+            {
+              "latitude": 40.339693,
+              "longitude": 72.954843,
+              "startTimeWindow": "2019-05-20 10:00:00",
+              "endTimeWindow": "2019-05-23 00:00:00",
+              "calculatedStartDate": "2019-05-20 16:42:49",
+              "calculatedEndDate": "2019-05-20 16:48:06",
+              "plannedDistance": 0.11,
+              "sequence": 8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

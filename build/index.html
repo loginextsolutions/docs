@@ -3771,7 +3771,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create a Customer entity on behalf of one of your Customers.</td>
+<td>This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create a Customer entity on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -4129,7 +4129,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to update a Customer entity on behalf of one of your Customers.</td>
+<td>This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to update a Customer entity on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -4280,7 +4280,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>preferredEndTime</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>If a particular customer location has preferred times within which it should be serviced, you can enter those times here. They will be considered during planning deliveries to that address location. This field accepts values in HH:MM format.</td>
 </tr>
 <tr>
@@ -4337,7 +4337,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Address entity on behalf of one of your Customers.</td>
+<td>This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Address entity on behalf of one of your Customers.</td>
 </tr>
 <tr>
 <td>timeZone</td>
@@ -6591,7 +6591,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>32</td>
 <td>Optional</td>
-<td>This is the identifier for an account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create Orders on behalf of one of your Customers.</td>
+<td>This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -7276,7 +7276,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>32</td>
 <td>Optional</td>
-<td>This is the identifier for an account. An account is used to represent LogiNext’s Customer’s Customer. Pass the name of the account in this field if you wish to create an Order on behalf of one of your Customers.</td>
+<td>This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Order on behalf of one of your Customers.</td>
 </tr>
 </tbody></table>
 
@@ -10551,7 +10551,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"6156ty46e324c42abb5ea1a32y45f66"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"OTHER"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"otherReason"</span><span class="p">:</span><span class="s2">"Technical Issues"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
     </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.910321</span><span class="p">,</span><span class="w">
@@ -10573,8 +10573,8 @@ You can pass multiple order reference IDs and can update one or more parameters.
 
 </span></code></pre>
 
-<p>With this API, you will be able to update the order information unless and until that order is not dispatched and not associated with any Trip.
-You can pass multiple order reference IDs and can update one or more parameters.</p>
+<p>With this API, you will be able to update the the status of a Order.
+You can pass multiple Order reference IDs and can update one or more parameters.</p>
 
 <p>API Type: Tier 1 API</p>
 
@@ -10612,7 +10612,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>255</td>
 <td>Conditional Mandatory</td>
-<td>Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.</td>
+<td>Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is Other, in case the delivery Associate selects the reason as Others.</td>
 </tr>
 <tr>
 <td>otherReason</td>
@@ -11804,7 +11804,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <p>The iFrame displays the last tracking for an order, including current location, based on the order no.
 You can use this particular feature to display real time Order tracking information to your customers on your UI in Order to provide them great user experience.</p>
 
-<p>You can do so by embedding the URL alongside in your client side application. For example, this could be in the form of a &#39;Track&rsquo; button on your UI that calls the iFrame URL when clicked. The tracking URL can then be opened on your webpage as an iFrame that will show your customers the live tracking of their Orders.</p>
+<p>You can do so by embedding the URL alongside in your client side application inside a &#39;frame&rsquo; tag in the webpage&rsquo;s HTML. For example, this could be in the form of a &#39;Track&rsquo; button on your UI that calls the iFrame URL when clicked. The tracking URL can then be opened on your webpage on your webiste&rsquo;s subdomain as an iFrame that will show your customers the live tracking of their Orders.</p>
 
 <p>The Order number will need to be sent in the URL request along with the LogiNext token provided for calling the iFrame. </p>
 
@@ -12531,18 +12531,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
   </span><span class="nt">"orderReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"73d57cbe0dc147da8c6b4503b76d5bda"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"planningProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"territoryProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"outsourcedFleet"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"hubReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miami"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"agentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPO Logistics"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fleetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck/Cargo"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"territoryDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"territoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miami block 18"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"countPerVehicleType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">},{</span><span class="w">
-      </span><span class="nt">"territoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NONE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"countPerVehicleType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
   </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTIMIZE_DISTANCE_TIME"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"8dd4e493c715493da182f52eb69d1bcb"</span><span class="p">,</span><span class="w"> </span><span class="s2">"73d57cbe0dc147da8c6b4503b76d5bda"</span><span class="p">],</span><span class="w">
   </span><span class="nt">"deliveryMediumStartLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"hub"</span><span class="w">
@@ -13222,6 +13210,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
         </span><span class="nt">"geofenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hub"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"geofenceShape"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Polygon"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"geofenceArea"</span><span class="p">:</span><span class="w"> </span><span class="mf">335.55</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"geofenceReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e290b46495b482a8e70e1078bd73c3f"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"deliveryAssociates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -15035,8 +15024,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 </span></code></pre>
 
-<p>With this API, you will be able to update the the status of an Order.
-You can pass multiple order reference IDs and can update one or more parameters.</p>
+<p>With this API, you will be able to update the the status of a Task.
+You can pass multiple task reference IDs and can update the status of a task.</p>
 
 <h4 id="request">Request</h4>
 
@@ -17353,6 +17342,279 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>endTime</td>
 <td>String</td>
 <td>Trip end time</td>
+</tr>
+</tbody></table>
+
+<h3 id="eta-revision">ETA Revision</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REVISEETANOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUALASSIGNMENT"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-152"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26ba0ccxd3c743a6848e2377aea5c2ef"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STARTED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trampolin"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9391fbc28a6b4b12923477fc301334ca"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93189490"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California Main Branch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKEDUP"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9a0febe56264bbc8b9d43273c53ge75"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 10:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:22:42"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:22:42"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:23:22"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:23:22"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.344959</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.963202</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 10:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:27:59"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 14:32:59"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:31:50"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:36:50"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"orderStatusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U7"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1df561c31fd24be621aa816836a90127"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pickupDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.319291</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.89481899999998</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 10:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:42:28"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:42:49"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"deliverDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.339693</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.954843</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 10:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-23 00:00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:42:49"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"calculatedEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-20 16:48:06"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This notification is sent when a trip is ended.</p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to &#39;REVISEETANOTIFICATION&rsquo;</td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>String</td>
+<td>This is the name of the event at which the webhook was triggered. This can be one of &#39;TRIPSTART&rsquo;, &#39;ORDERCHECKOUT&rsquo;, &#39;MANUALASSIGNMENT&rsquo;, &#39;DELIVERYMEDIUMOFFBREAK&rsquo;.</td>
+</tr>
+<tr>
+<td>tripDetails</td>
+<td>List</td>
+<td>Notification details</td>
+</tr>
+<tr>
+<td>tripDetails.tripName</td>
+<td>String</td>
+<td>This is the Trip name.</td>
+</tr>
+<tr>
+<td>tripDetails.tripReferenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>tripDetails.tripStatus</td>
+<td>String</td>
+<td>Status of the trip</td>
+</tr>
+<tr>
+<td>tripDetails.deliveryMediumName</td>
+<td>String</td>
+<td>Name of the Delivery Associate who will be fulfilling the Orders in this Trip</td>
+</tr>
+<tr>
+<td>tripDetails.deliveryMediumReferenceId</td>
+<td>String</td>
+<td>Reference ID of the Delivery Associate who will be fulfilling the Orders in this Trip</td>
+</tr>
+<tr>
+<td>tripDetails.tripReferenceId</td>
+<td>String</td>
+<td>Reference id of the trip</td>
+</tr>
+<tr>
+<td>notificationDetails.deliveryMediumName</td>
+<td>String</td>
+<td>Name of Delivery Associate associated with the current Trip.</td>
+</tr>
+<tr>
+<td>tripDetails.phoneNumber</td>
+<td>String</td>
+<td>Phone no of Delivery Associate.</td>
+</tr>
+<tr>
+<td>tripDetails.branchName</td>
+<td>String</td>
+<td>Branch Name.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails</td>
+<td>List</td>
+<td>List of Order details in the Current Trip.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderTypeCd</td>
+<td>String</td>
+<td>Order type. Can be &#39;PICKUP&rsquo; or &#39;DELIVER&rsquo;.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderNo</td>
+<td>String</td>
+<td>Order Number</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.orderReferenceId</td>
+<td>String</td>
+<td>Order reference ID</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.paymentType</td>
+<td>String</td>
+<td>payment type for the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails</td>
+<td>List</td>
+<td>Details of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.latitude</td>
+<td>Double</td>
+<td>Geocoordinates (latitude) of the pickup leg of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.longitude</td>
+<td>Double</td>
+<td>Geocoordinates (longitude) pickup leg of the of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.startTimeWindow</td>
+<td>String</td>
+<td>Start Time Window of the pickup leg of the of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.endTimeWindow</td>
+<td>String</td>
+<td>End Time Window of the pickup leg of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.calculatedStartDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.calculatedEndDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.plannedDistance</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.pickupDetails.sequence</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.latitude</td>
+<td>Double</td>
+<td>Geocoordinates (latitude) of the pickup leg of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.longitude</td>
+<td>Double</td>
+<td>Geocoordinates (longitude) pickup leg of the of the Order.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.startTimeWindow</td>
+<td>String</td>
+<td>Start Time Window of the pickup leg of the of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.endTimeWindow</td>
+<td>String</td>
+<td>End Time Window of the pickup leg of the Order in UTC.</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.calculatedStartDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.calculatedEndDate</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.plannedDistance</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
+</tr>
+<tr>
+<td>tripDetails.orderDetails.deliverDetails.sequence</td>
+<td>List</td>
+<td>Details of the pickup leg of the pickup leg of the Order</td>
 </tr>
 </tbody></table>
 
