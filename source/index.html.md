@@ -2551,6 +2551,7 @@ address.country | String | 255 | Optional | Address Country.
 address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
+isPrimary | String | 1 | Optional | Identify if the current address is the end customer's primary address or not. If your end customer has a primary address, Orders can be created for that address passing only the customer ID in the accountCode field of the Create Order API, with no identifier needed for the address.
 clientCode | String | 50 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Address entity on behalf of one of your Customers.
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
 
@@ -3365,6 +3366,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "partialDeliveryAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
     "returnAllowedFl": "Y",
+    "deliveryMediumUsername":"johnc",
     "returnBranch": "Chicago North",
     "numberOfItems": 2,
     "packageWeight":"10",
@@ -3608,6 +3610,7 @@ deliveryType | String | 40 | Optional | In certain operations, there are differe
 deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.
+deliveryMediumUsername | STRING | | Optional |  
 pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
@@ -3890,6 +3893,7 @@ serviceType | String | 16 | Optional |This is the service type of the Order.
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
+packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
 returnAllowedFl | String | 1 | Optional | This field specifies if the order can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
 deliverBranch | String | 255 | Mandatory | For Deliver type of orders, this is the Branch / Distribution Center / Hub from which the Delivery Associate will pickup the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager.
@@ -3928,6 +3932,11 @@ shipmentCrateMappings.crateCd | String | 128 | Mandatory | This is the crate cod
 shipmentCrateMappings.crateAmount | Double |  | Mandatory | This is the crate amount for a crate.
 shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type.
 shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | This is the Number of items in the crate.
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | This is the crate item code.
 shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | This is the crate item name.
 shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This is the crate item price.
@@ -4265,6 +4274,11 @@ shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code for a crat
 shipmentCrateMappings.crateAmount | Double |  | Mandatory | Crate amount for a crate.
 shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type.
 shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | Number of items in the crate.
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Crate item code.
 shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Crate item name.
 shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Crate item price.
@@ -5055,7 +5069,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
     "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "deliveryType": "DLBOY",
+    "deliveryType": "RIDER",
     "deliveryLocationType":"PUP",
     "deliverAccountCode": "Matt001",
     "deliverAddressId":"MattHome",
@@ -5146,6 +5160,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.
 
+This API does not support a partial success response. If you pass multiple Orders in a single call of this API, and even one of them fails a validation check, the entire batch of Orders will be considered a failed request.
+
 API Type: Tier 1 API
 
 #### Request
@@ -5173,7 +5189,7 @@ deliverBranch | String | 255 | Optional | Name of delivery branch
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
 deliverStartTimeWindow | Date | | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverEndTimeWindow | Date | | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate
+deliveryType | String | 40 | Optional | Order delivery type. Ex: TRK - Truck, VAN - Van, RIDER - Delivery Associate
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Optional | This is the delivery customer's account code.
 deliverAddressId | String | 255 | Optional | This is the delivery customer's address Id.
@@ -5298,6 +5314,17 @@ otherReason | Date | 15 | Conditional Optional | Geo-location where Order status
 updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
 
 
+Status | Not Dispatched |  Intransit | Picked Up | Delivered | Attempted | Cancelled
+--------- | ------- | ---------- | ---------- | ----------|----------|---------
+Not Dispatched | No | No | Yes | Yes | Yes | Yes
+Intransit Before Trip Stop | No | No | Yes | Yes | Yes | Yes
+Picked Up | No | No | No | Yes | Yes | Yes
+Intransit order marked Delivered | Yes | No | No | No | Yes | Yes
+NOT DISPTACHED order marked Delivered | Yes | No | No | No | Yes | Yes
+Intransit order marked Attempted | Yes | No | No | Yes | No | Yes
+NOT DISPTACHED order marked Attempted | Yes | No | No | Yes | No | Yes
+Intransit order marked Cancelled | Yes | No | No | Yes | Yes | No
+NOT DISPTACHED order marked Cancelled | Yes | No | No | Yes | Yes | No
 
 ### Update Crates and Line Items
 
@@ -5788,17 +5815,17 @@ results.formdata.type | String | Data type of the input field.
 
 Event Key | Description
 ----------|------------
-CHECKIN_AFTER | Custom form located after the Check In screen on TrackNext.
-LOAD_AFTER | Custom form located after the Loading screen on TrackNext.
-UNLOAD_AFTER | Custom form located after the Unloading screen on TrackNext.
-ESIGN_AFTER | Custom form located after the ESIGN screen on TrackNext.
-PAYMENT_AFTER | Custom form located after the Payment screen on TrackNext.
-EPOP_AFTER | Custom form located after the E Proof of Pickup screen on TrackNext.
-EPOD_AFTER | Custom form located after the E Proof of Delivery on TrackNext.
+CHECKIN_AFTER | Custom form filled after the Check In screen on TrackNext.
+LOAD_AFTER | Custom form filled after the Loading screen on TrackNext.
+UNLOAD_AFTER | Custom form filled after the Unloading screen on TrackNext.
+ESIGN_AFTER | Custom form filled after the ESIGN screen on TrackNext.
+PAYMENT_AFTER | Custom form filled after the Payment screen on TrackNext.
+EPOP_AFTER | Custom form filled after the E Proof of Pickup screen on TrackNext.
+EPOD_AFTER | Custom form filled after the E Proof of Delivery on TrackNext.
 PICKEDUP_AFTER | Custom form filled after the Pickup is complete for the Order.
 NOTPICKED-UP_AFTER | Custom form filled after the Order is marked Not Picked Up.
 DELIVERED_AFTER | Custom form filled after the Order is marked Delivered.
-NOTDELIVER_AFTER | Custom form filled after the Order is marked Delivered.
+NOTDELIVER_AFTER | Custom form filled after the Order is marked Not Delivered.
 PARTIALDELIVER_AFTER | Custom form filled after the Order is marked Partial Delivered.
 
 ## Manifest
@@ -7634,7 +7661,7 @@ deliverBranch | String | 255 | Mandatory | Name of delivery branch
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Task delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate
+deliveryType | String | 40 | Optional | Task delivery type. Ex: TRK - Truck, VAN - Van, RIDER - Delivery Associate
 deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
 deliverAccountCode | String | 255 | Mandatory | This is the cutomer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -7982,7 +8009,7 @@ clientCode | String | Account name. This field is sent if the Order was created 
 	"clientNodeName": "Client Node Name",
 	"clientNodeCd": "Client Node Code",
 	"address": "145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367",
-	"deliveryType": "DLBOY",
+	"deliveryType": "RIDER",
 	"shipmentNotes": "PickedUp",
 	"assignmentMethod": "MANUAL",
 	"calculatedStartDt": "2017-08-18 12:53:00",
@@ -9157,7 +9184,15 @@ The list of unassigned Orders will be sent in the 'unassignmentReasons' list in 
 {
   "notificationType": "PLANNINGNOTIFICATION",
   "routeName": "AS_2703",
-  "unassignmentReasons": [],
+  "unassignmentReasons": [ 
+{ 
+     "reasonCd": "NOT_GEOCODED", 
+     "orderCount": 1, 
+     "orderReferenceIds": [ 
+          "444820b3361d4e4e8e484060f9b15625"
+     ] 
+  } 
+]
   "totalTripCount": 1,
   "currentTripCount": 1,
   "currentPageIndex": 1,
@@ -9328,6 +9363,10 @@ Key | DataType | Description
 --------- | ------- |-------
 notificationType | String |  This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to 'DELIVERYPLANNING'
 routeName | String | This is the name of the Route 
+unassingmentReasons | List  | List of Orders that remained unassigned along with the reason for unassignment
+unassignmentReasons.reasonCd | String | Reason code of the unassignment reason. This can be one of the values as mentioned in reason code table
+unassignmentReasons.orderCount | Number | Number of Orders that were unassigned due to the current unassignment reason
+unassignmentReasons.orderReferenceIds | List | List of the Order Reference IDs that remained unassigned due to the current unassignment reason
 totalTripCount | Number |  This is the count of the total number of Trips created as part of the route planning operation. This will hold the count of all the trips created across all the webhooks generated for the current route plan.
 currentTripCount | Number | This is the count number of trips in the current webhook.
 currentPageIndex | Number |  This is the page index of the current route planning webhook.
@@ -9355,18 +9394,19 @@ tripDetails.orderDetails.pickupDetails.latitude | Double | Geocoordinates (latit
 tripDetails.orderDetails.pickupDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
 tripDetails.orderDetails.pickupDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
 tripDetails.orderDetails.pickupDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
-tripDetails.orderDetails.pickupDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.pickupDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedStartDate | String | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedEndDate | String | Details of the pickup leg of the pickup leg of the Order
 tripDetails.orderDetails.pickupDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
 tripDetails.orderDetails.pickupDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
-tripDetails.orderDetails.deliverDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
-tripDetails.orderDetails.deliverDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
-tripDetails.orderDetails.deliverDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
-tripDetails.orderDetails.deliverDetails.calculatedStartDate | List | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.calculatedEndDate | List | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails | List | Details of the deliver leg of the Order
+tripDetails.orderDetails.deliverDetails.latitude | Double | Geocoordinates (latitude) of the deliver leg of the Order.
+tripDetails.orderDetails.deliverDetails.longitude | Double | Geocoordinates (longitude) deliver leg of the of the Order.
+tripDetails.orderDetails.deliverDetails.startTimeWindow | String | Start Time Window of the deliver leg of the of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.endTimeWindow | String | End Time Window of the deliver leg of the Order in UTC.
+tripDetails.orderDetails.deliverDetails.calculatedStartDate | String | Details of the deliver leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.calculatedEndDate | String | Details of the deliver leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the deliver leg of the pickup leg of the Order
+tripDetails.orderDetails.deliverDetails.sequence | List | Details of the pickup leg of the deliver leg of the Order
 
 Unassignment Key | Description
 --------- | -------
@@ -9596,7 +9636,7 @@ breakStatus | String |  Status shall be one of the two below - <br>ONBREAK - if 
     "dob": "2016-12-12",
     "deliveryMediumLanguageList": ["ENGLISH","SPANISH"],
     "gender": "Male",
-    "deliveryMediumTypeCd": ["Delivery Boy"],
+    "deliveryMediumTypeCd": ["Delivery Associate"],
     "isOwnVehicleFl": "Company",
     "vehicleNumber": "MH034506",
     "dmPreference": ["10035"],

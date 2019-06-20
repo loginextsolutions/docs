@@ -4333,6 +4333,13 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Address geo-coordinate(longitude)</td>
 </tr>
 <tr>
+<td>isPrimary</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>Identify if the current address is the end customer&rsquo;s primary address or not. If your end customer has a primary address, Orders can be created for that address passing only the customer ID in the accountCode field of the Create Order API, with no identifier needed for the address.</td>
+</tr>
+<tr>
 <td>clientCode</td>
 <td>String</td>
 <td>50</td>
@@ -6053,6 +6060,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumUsername"</span><span class="p">:</span><span class="s2">"johnc"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago North"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -6424,6 +6432,13 @@ When Customer Profiling is turned ON -
 <td>1</td>
 <td>Optional</td>
 <td>This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.</td>
+</tr>
+<tr>
+<td>deliveryMediumUsername</td>
+<td>STRING</td>
+<td></td>
+<td>Optional</td>
+<td></td>
 </tr>
 <tr>
 <td>pickupBranch</td>
@@ -7083,6 +7098,13 @@ When Customer Profiling is turned ON -
 <td>This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.</td>
 </tr>
 <tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Package Value (This will be used when paymentType is Prepaid)</td>
+</tr>
+<tr>
 <td>returnAllowedFl</td>
 <td>String</td>
 <td>1</td>
@@ -7325,6 +7347,41 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Mandatory</td>
 <td>This is the Number of items in the crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
@@ -8225,6 +8282,41 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Mandatory</td>
 <td>Number of items in the crate.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
 </tr>
 <tr>
 <td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
@@ -9991,7 +10083,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIDER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="s2">"MattHome"</span><span class="p">,</span><span class="w">
@@ -10078,6 +10170,8 @@ When Customer Profiling is turned ON -
 
 <p>With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
 You can pass multiple order reference IDs and can update one or more parameters.</p>
+
+<p>This API does not support a partial success response. If you pass multiple Orders in a single call of this API, and even one of them fails a validation check, the entire batch of Orders will be considered a failed request.</p>
 
 <p>API Type: Tier 1 API</p>
 
@@ -10213,7 +10307,7 @@ You can pass multiple order reference IDs and can update one or more parameters.
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Order delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate</td>
+<td>Order delivery type. Ex: TRK - Truck, VAN - Van, RIDER - Delivery Associate</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
@@ -10641,6 +10735,100 @@ You can pass multiple Order reference IDs and can update one or more parameters.
 <td>15</td>
 <td>Conditional Optional</td>
 <td>This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Not Dispatched</th>
+<th>Intransit</th>
+<th>Picked Up</th>
+<th>Delivered</th>
+<th>Attempted</th>
+<th>Cancelled</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Not Dispatched</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Intransit Before Trip Stop</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Picked Up</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Intransit order marked Delivered</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>NOT DISPTACHED order marked Delivered</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Intransit order marked Attempted</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>NOT DISPTACHED order marked Attempted</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Intransit order marked Cancelled</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>NOT DISPTACHED order marked Cancelled</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 </tbody></table>
 
@@ -11372,31 +11560,31 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 </thead><tbody>
 <tr>
 <td>CHECKIN_AFTER</td>
-<td>Custom form located after the Check In screen on TrackNext.</td>
+<td>Custom form filled after the Check In screen on TrackNext.</td>
 </tr>
 <tr>
 <td>LOAD_AFTER</td>
-<td>Custom form located after the Loading screen on TrackNext.</td>
+<td>Custom form filled after the Loading screen on TrackNext.</td>
 </tr>
 <tr>
 <td>UNLOAD_AFTER</td>
-<td>Custom form located after the Unloading screen on TrackNext.</td>
+<td>Custom form filled after the Unloading screen on TrackNext.</td>
 </tr>
 <tr>
 <td>ESIGN_AFTER</td>
-<td>Custom form located after the ESIGN screen on TrackNext.</td>
+<td>Custom form filled after the ESIGN screen on TrackNext.</td>
 </tr>
 <tr>
 <td>PAYMENT_AFTER</td>
-<td>Custom form located after the Payment screen on TrackNext.</td>
+<td>Custom form filled after the Payment screen on TrackNext.</td>
 </tr>
 <tr>
 <td>EPOP_AFTER</td>
-<td>Custom form located after the E Proof of Pickup screen on TrackNext.</td>
+<td>Custom form filled after the E Proof of Pickup screen on TrackNext.</td>
 </tr>
 <tr>
 <td>EPOD_AFTER</td>
-<td>Custom form located after the E Proof of Delivery on TrackNext.</td>
+<td>Custom form filled after the E Proof of Delivery on TrackNext.</td>
 </tr>
 <tr>
 <td>PICKEDUP_AFTER</td>
@@ -11412,7 +11600,7 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 </tr>
 <tr>
 <td>NOTDELIVER_AFTER</td>
-<td>Custom form filled after the Order is marked Delivered.</td>
+<td>Custom form filled after the Order is marked Not Delivered.</td>
 </tr>
 <tr>
 <td>PARTIALDELIVER_AFTER</td>
@@ -14679,7 +14867,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Task delivery type. Ex: TRK - Truck, VAN - Van, DLBOY - Delivery Associate</td>
+<td>Task delivery type. Ex: TRK - Truck, VAN - Van, RIDER - Delivery Associate</td>
 </tr>
 <tr>
 <td>deliveryLocationType</td>
@@ -15337,7 +15525,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
     </span><span class="nt">"clientNodeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Name"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientNodeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Code"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLBOY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIDER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"assignmentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 12:53:00"</span><span class="p">,</span><span class="w">
@@ -17976,8 +18164,16 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLANNINGNOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"routeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS_2703"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"unassignmentReasons"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nt">"totalTripCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unassignmentReasons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+</span><span class="p">{</span><span class="w"> 
+     </span><span class="nt">"reasonCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOT_GEOCODED"</span><span class="p">,</span><span class="w"> 
+     </span><span class="nt">"orderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
+     </span><span class="nt">"orderReferenceIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+          </span><span class="s2">"444820b3361d4e4e8e484060f9b15625"</span><span class="w">
+     </span><span class="p">]</span><span class="w"> 
+  </span><span class="p">}</span><span class="w"> 
+</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"totalTripCount"</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"currentTripCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"currentPageIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -18161,6 +18357,26 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <td>This is the name of the Route</td>
 </tr>
 <tr>
+<td>unassingmentReasons</td>
+<td>List</td>
+<td>List of Orders that remained unassigned along with the reason for unassignment</td>
+</tr>
+<tr>
+<td>unassignmentReasons.reasonCd</td>
+<td>String</td>
+<td>Reason code of the unassignment reason. This can be one of the values as mentioned in reason code table</td>
+</tr>
+<tr>
+<td>unassignmentReasons.orderCount</td>
+<td>Number</td>
+<td>Number of Orders that were unassigned due to the current unassignment reason</td>
+</tr>
+<tr>
+<td>unassignmentReasons.orderReferenceIds</td>
+<td>List</td>
+<td>List of the Order Reference IDs that remained unassigned due to the current unassignment reason</td>
+</tr>
+<tr>
 <td>totalTripCount</td>
 <td>Number</td>
 <td>This is the count of the total number of Trips created as part of the route planning operation. This will hold the count of all the trips created across all the webhooks generated for the current route plan.</td>
@@ -18297,12 +18513,12 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </tr>
 <tr>
 <td>tripDetails.orderDetails.pickupDetails.calculatedStartDate</td>
-<td>List</td>
+<td>String</td>
 <td>Details of the pickup leg of the pickup leg of the Order</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.pickupDetails.calculatedEndDate</td>
-<td>List</td>
+<td>String</td>
 <td>Details of the pickup leg of the pickup leg of the Order</td>
 </tr>
 <tr>
@@ -18316,44 +18532,49 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <td>Details of the pickup leg of the pickup leg of the Order</td>
 </tr>
 <tr>
+<td>tripDetails.orderDetails.deliverDetails</td>
+<td>List</td>
+<td>Details of the deliver leg of the Order</td>
+</tr>
+<tr>
 <td>tripDetails.orderDetails.deliverDetails.latitude</td>
 <td>Double</td>
-<td>Geocoordinates (latitude) of the pickup leg of the Order.</td>
+<td>Geocoordinates (latitude) of the deliver leg of the Order.</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.longitude</td>
 <td>Double</td>
-<td>Geocoordinates (longitude) pickup leg of the of the Order.</td>
+<td>Geocoordinates (longitude) deliver leg of the of the Order.</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.startTimeWindow</td>
 <td>String</td>
-<td>Start Time Window of the pickup leg of the of the Order in UTC.</td>
+<td>Start Time Window of the deliver leg of the of the Order in UTC.</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.endTimeWindow</td>
 <td>String</td>
-<td>End Time Window of the pickup leg of the Order in UTC.</td>
+<td>End Time Window of the deliver leg of the Order in UTC.</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.calculatedStartDate</td>
-<td>List</td>
-<td>Details of the pickup leg of the pickup leg of the Order</td>
+<td>String</td>
+<td>Details of the deliver leg of the pickup leg of the Order</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.calculatedEndDate</td>
-<td>List</td>
-<td>Details of the pickup leg of the pickup leg of the Order</td>
+<td>String</td>
+<td>Details of the deliver leg of the pickup leg of the Order</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.plannedDistance</td>
 <td>List</td>
-<td>Details of the pickup leg of the pickup leg of the Order</td>
+<td>Details of the deliver leg of the pickup leg of the Order</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.deliverDetails.sequence</td>
 <td>List</td>
-<td>Details of the pickup leg of the pickup leg of the Order</td>
+<td>Details of the pickup leg of the deliver leg of the Order</td>
 </tr>
 </tbody></table>
 
@@ -18874,7 +19095,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
     </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-12"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryMediumLanguageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ENGLISH"</span><span class="p">,</span><span class="s2">"SPANISH"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Delivery Boy"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"deliveryMediumTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Delivery Associate"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"isOwnVehicleFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH034506"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"dmPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"10035"</span><span class="p">],</span><span class="w">
