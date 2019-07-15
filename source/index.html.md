@@ -3610,7 +3610,7 @@ deliveryType | String | 40 | Optional | In certain operations, there are differe
 deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>partialDeliveryAllowedFl | String | 50 | Optional | Is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N. Default value is Y.
-deliveryMediumUsername | STRING | | Optional |  
+deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.
 pickupBranch | String | 255 | Mandatory | For Pick-Up type of orders, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupServiceTime | Integer | 11 | Mandatory | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the orders.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
@@ -3687,12 +3687,15 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageLength": 2.5,
     "packageBreadth": 2.5,
     "packageHeight": 2.5,
+    "priority": "High",
+    "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "500",
     "numberOfItems": 1,
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
+    "deliveryMediumUsername":"johnc",
     "deliverBranch": "Boston",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -3896,6 +3899,7 @@ partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Deliv
 packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
 returnAllowedFl | String | 1 | Optional | This field specifies if the order can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
+deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.
 deliverBranch | String | 255 | Mandatory | For Deliver type of orders, this is the Branch / Distribution Center / Hub from which the Delivery Associate will pickup the order / shipment /parcel to.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager.
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
@@ -3970,12 +3974,15 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
+    "priority": "High",
+    "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": 1,
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
+    "deliveryMediumUsername":"johnc",
     "deliverBranch": "Boston",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -4205,6 +4212,7 @@ paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - C
 partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
 cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
+deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.
 deliverBranch | String | 255 | Mandatory | Name of delivery branch
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
@@ -4318,6 +4326,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageLength":5,
     "packageBreadth":5,
     "packageHeight":5,
+    "priority": "High",
+    "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "5000",
     "numberOfItems": 1,
@@ -4613,6 +4623,302 @@ hipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Ite
 shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+
+
+### Create E2E 
+
+> Definition
+
+```json
+ https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create
+```
+
+> Request Body
+
+```json
+
+
+[
+  {
+    "orderNo": "GR432U5",
+    "awbNumber": "435-16685675",
+    "shipmentOrderTypeCd": "ALLMILE",
+    "orderState": "FORWARD",
+    "autoAllocateFl": "N",
+    "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+    "distributionCenter": "Down Town Chicago",
+    "originBranchName" :"Houston",
+    "destinationBranchName" : "Boston",
+    "routeConfigurationName": "Houston-Boston",
+    "nextBranchName":"Cupertino",
+    "nextBranchServiceTime": 5,
+    "nextBranchStartTimeWindow" : "2016-07-15T10:30:00.000Z",
+    "nextBranchEndTimeWindow": "2016-07-15T10:30:00.000Z",
+    "deliveryType": "Groceries",
+    "serviceTypeCd": "Economy",
+    "packageWeight":"10",
+    "packageVolume": "4500",
+    "paymentType": "Prepaid",
+    "packageValue": "5000",
+    "numberOfItems": 1,
+    "partialDeliveryAllowedFl": "Y",
+    "cancellationAllowedFl": "N",    
+    "deliverServiceTime": "20",
+    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+    "deliveryLocationType":"Home",
+    "deliverEmail":"m.richardson@testmail.com",
+    "deliverPhoneNumber":"9891234567",
+    "deliverAccountCode": "Matt001",
+    "deliverAddressId": "home",
+    "deliverAccountName": "Mathew Richardson",
+    "deliverApartment": "201",
+    "deliverStreetName": "E Randolph St",
+    "deliverLandmark": "Opp. Chiptole",
+    "deliverLocality": "Down Town Chicago",
+    "deliverCity": "Chicago",
+    "deliverState": "IL",
+    "deliverCountry": "USA",
+    "deliverPinCode": "60602",
+    "deliverLatitude":41.882702,
+    "deliverLongitude":-87.619392,   
+    "deliverAddressTimezone":"America/Chicago",  
+    "deliverBranch": "East Manhattan",
+    "pickupBranch":"East Manhattan",
+    "pickupServiceTime": "50",
+    "pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+    "pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
+    "pickupEmail":"james.w@ablogs.com",
+    "pickupPhoneNumber": "5163063377",
+    "pickupAccountCode": "jim001",
+    "pickupAddressId": "Home",
+    "pickupAccountName": "James Walker",
+    "pickupApartment": "901",
+    "pickupStreetName": "2142 3rd Ave",
+    "pickupLandmark": "Opp. McDonalds",
+    "pickupLocality": "East Harlem",
+    "pickupCity": "New York",
+    "pickupState": "NY",
+    "pickupCountry": "USA",
+    "pickupPinCode": "10035",
+    "pickupLatitude":40.760838,
+    "pickupLongitude":-73.96732299999996,  
+    "pickupAddressTimezone":"America/New_York",  
+    "pickupNotes": "PickedUp",
+    "deliverNotes": "Delivered",
+    "clientCode": "Salestap",
+    "shipmentCrateMappings": [
+      {
+        "crateCd": "CR121",
+        "crateAmount":100.65,
+        "crateType":"case",
+        "noOfUnits":10,
+        "shipmentlineitems": [
+          {
+            "itemCd": "IT043",
+            "itemName": "Chicken Soup 2X200gm",
+            "itemPrice": 500,
+            "itemQuantity": 3,
+            "itemType": "soup",
+            "itemWeight": 10
+          },
+          {
+            "itemCd": "IT030",
+            "itemName": "WholeBeanCoffee 6x1kg",
+            "itemPrice": 400,
+            "itemQuantity": 1,
+            "itemType": "coffee",
+            "itemWeight": 10
+          }
+        ]
+
+      }
+    ]
+  }
+]
+
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Order(s) created successfully",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "6a34c7274df0489f97c0f891514b488b",
+            "orderNumber": "ww1223"
+        }
+    ],
+    "hasError": false
+}
+
+```
+> Partial Success Response
+
+```json
+{
+    "status": 207,
+    "message": "Order(s) created partially",
+    "data": [
+        {
+            "index": 0,
+            "referenceId": "b032f3e9397343ba812f96370b92d592",
+            "orderNumber": "ww1220"
+        }
+    ],
+    "error": [
+        {
+            "index": 3,
+            "orderNo": "ww1229"
+            "errorList": [
+                {
+                    "key": "deliverBranch",
+                    "message": [
+                        "Deliver Branch is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+```
+
+
+> Failure Response
+
+```json
+{
+   "status": 409,
+   "message": "",
+   "moreResultsExists": false,
+   "error": [
+       {
+           "index": 0,
+           "orderNo": "HYN001",
+           "errorList": [
+               {
+                   "key": "returnBranch",
+                   "message": [
+                       "Return Branch name is mandatory."
+                   ]
+               }
+           ]
+       }
+   ],
+   "hasError": true
+}
+
+```
+
+With This API you can create All MIle type of Orders that can have multiple legs in between the Origin and Destination.
+
+
+API Type: Tier 1 API
+
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create`
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+orderNo | String | 100 | Mandatory |  This is the order No.
+awbNumber | String | 1000 | Optional | This is the airway Bill No.
+shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+originBranchName |  String | Optional | 255 | This is the Origin branch of the Order
+destinationBranchName |  String | Optional | 255 | This is the Destination branch of the Order
+routeConfigurationName |  String | Optional | 255 | This is the route of the Order
+serviceTypeCd |  String | Optional | 255 | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types.
+distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+serviceType | String | 16 | Optional | This is the service type of the Order.
+packageValue | Double | 10 | Optional | This is the value of package
+numberOfItems | Integer | 20 | Optional | This is the number of crates
+paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
+cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
+pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
+pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Mandatory | Pickup account code
+pickupAccountName | String | 255 | Conditional Mandatory | Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupEmail| String | 100 | Optional | Email of the merchant
+pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
+pickupApartment | String | 512 | Conditional Mandatory | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Optional | This is the pickup location's  landmark.
+pickupLocality | String | 512 | Conditional Mandatory | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | This is the pickup location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | This is the pickup location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupPinCode | String | 20 | Conditional Mandatory | This is the pickup location's pincode. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the pickup location.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup location.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.
+deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example -  ‘CUSTOMER’.
+deliverAccountCode | String | 255 | Mandatory | Customer ID of the Delivery Customer.
+deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail| String | 100 | Optional | Email of the customer
+deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
+deliverApartment | String | 512 | Conditional Mandatory | This is the delivery customer location's apartment details. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory | This is the delivery customer location's Street name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLandmark | String | 512 | Optional | This is the delivery customer location's Landmark.
+deliverLocality | String | 512 | Conditional Mandatory | This is the delivery customer location's Locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | This is the delivery customer location's City. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | This is the delivery customer location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | This is the delivery customer location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverAddressTimezone | String | | Optional | The timezone of the delivery location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+
+
+#### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | These are the order crates.
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | This is the crate code for a crate.
+shipmentCrateMappings.crateAmount | Double |  | Mandatory | This is the crate amount for a crate.
+shipmentCrateMappings.crateType | String | 100 | Mandatory | Crate type.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Mandatory | This is the Number of items in the crate.
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | This is the crate item code.
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | This is the crate item name.
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | This is the crate item price.
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | This is the crate item quantity.
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | This is the crate item type.
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | This is the crate item weight.
+hipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+
 
 
 ### Create Order Multi Stop
@@ -5158,7 +5464,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
 
 
 With this API, you will be able to update the order information unless and until that order is not delivered and not associated with any Trip.
+
 You can pass multiple order reference IDs and can update one or more parameters.
+
+This API has Custom Field support included. You only need to pass data for the Custom Fields you want to addd or update the values for in the request body. All Custom Fields created at the time of Order creation do not have to be passed here again. For details on how to pass Custom Fields in this API, please refer to the custom fields section of the API documentation.
 
 This API does not support a partial success response. If you pass multiple Orders in a single call of this API, and even one of them fails a validation check, the entire batch of Orders will be considered a failed request.
 
@@ -5793,7 +6102,7 @@ API Type: Tier 1 API
 <span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v1/customform/list`
 
 
-#### Request Body
+#### Response Body
 
 Parameter | DataType  |  Description
 -----------|-------| ----------
@@ -6521,7 +6830,7 @@ longitude | Double | 15 | Optional | Geo-location where where EPOD/ESIGN was tak
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TripApp/v1/plan
+https://api.loginextsolutions.com/TripApp/mile/v1/plan
 ```
 
 > Request Body
@@ -6584,7 +6893,7 @@ API Type: Special Tier API. The rate Limit for this API is 1 request per minute.
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/plan`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/plan`
 
 
 #### Request Body
@@ -6607,7 +6916,7 @@ deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TripApp/v1/optimize
+https://api.loginextsolutions.com/TripApp/mile/v1/optimize
 ```
 
 > Request Body
@@ -6698,7 +7007,7 @@ API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seco
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/optimize`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/optimize`
 
 
 #### Request Body
@@ -6718,7 +7027,7 @@ plan.orderReferenceIds | List | 32 | Optional | This is a list of Orders to be o
 > Definition
 
 ```json
-https://api.loginextsolutions.com/TripApp/v1/resequence
+https://api.loginextsolutions.com/TripApp/mile/v1/resequence
 ```
 
 > Request Body
@@ -6774,7 +7083,7 @@ API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seco
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/v1/resequence`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/resequence`
 
 
 #### Request Body
@@ -7847,7 +8156,7 @@ updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC fo
     {
 
     "field":"cutOffDate",
-    "value":""2018-06-25T07:31:39Z"
+    "value":"2018-06-25T07:31:39Z"
     }
     
     ]
@@ -8791,6 +9100,162 @@ DELIVERED_AFTER | Custom form filled after the Order is marked Delivered.
 NOTDELIVER_AFTER | Custom form filled after the Order is marked Delivered.
 PARTIALDELIVER_AFTER | Custom form filled after the Order is marked Partial Delivered.
 
+### Create E2E Order
+
+
+> Response
+
+```json
+
+{
+  "notificationType": "MILEE2EORDERCREATIONNOTIFICATION",
+  "orderDetails": [
+
+    {
+      "orderNo": "MM_Excel_WH47",
+      "timestamp": "2019-06-07 10:26:49",
+      "awbNumber": "MM_Excel_WH",
+      "orderState": "FORWARD",
+      "orderReferenceId": "adda676c70fa4be3a6c7d6a72eec7ce3",
+      "deliveryType": "Small Box",
+      "routeConfigurationName": "LA_NY_2",
+      "orderType": "ALLMILE",
+      "serviceType": "Economy",
+      "distributionCenter": "California Main Hub",
+      "originBranchName": "California Main Hub",
+      "destinationBranchName": "New York Central Hub",
+      "nextBranchName": "Boston",
+      "milestoneNo": "MM_Excel_WH47_M1",
+      "milestoneType": "PICKUP",
+      "movementType": "Customer-to-Branch",
+      "milestoneReferenceId": "adda676c70fa4be3a6c7d6a72eec7ce3",
+      "orderDate": "2019-06-25 12:45:00"
+    },
+    {
+      "orderNo": "MM_Excel_WH48",
+      "timestamp": "2019-06-07 10:26:49",
+      "awbNumber": "MM_Excel_WH",
+      "orderState": "FORWARD",
+      "orderReferenceId": "2af1ae80a2424fd8bcc473dd037677bc",
+      "deliveryType": "Small Box",
+      "routeConfigurationName": "LA_NY_2",
+      "orderType": "ALLMILE",
+      "serviceType": "Economy",
+      "distributionCenter": "California Main Hub",
+      "originBranchName": "California Main Hub",
+      "destinationBranchName": "New York Main Hub",
+      "nextBranchName": "Boston",
+      "milestoneNo": "MM_Excel_WH48_M1",
+      "milestoneType": "PICKUP",
+      "movementType": "Customer-to-Branch",
+      "milestoneReferenceId": "2af1ae80a2424fd8bcc473dd037677bc",
+      "orderDate": "2019-06-25 12:45:00"
+    }
+  ]
+}
+```
+This notification is triggered when an All Mile type of Order is created in LogiNext. The Creation notification can be sent for upto 20 Orders in a single webhook object. For example, if 20 Orders were created in a single call of the Create Order API, the notification for all 20 will be received in a single webhook response.
+
+#### Response Parameters
+
+Param | DataType | Description
+--------- | ------- | ----------
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'MILEE2EORDERCREATIONNOTIFICATION'
+orderNo | String | This is the Order No.
+timestamp | String | this represents the Order creation timestamp
+awbNumber | String | AWB Number for the order
+orderState | String | State of order. Ex: FORWARD, REVERSE
+orderReferenceId | String | Order reference id
+deliveryType | String | Order skill-set type
+routeConfigurationName| String| Route name if entered while creating the Order
+orderType | String | Will be defaulted to ALLMILE
+serviceType| String| The service type entered for the Order at the time of creation
+distributionCenter | String | The branch to which the Order is assigned
+originBranchName| String| The branch that will fulfill the first leg of the Order
+destinationBranchName | String | The branch that will fulfill the last leg of the Order
+nextBranchName | String | The branch that will fulfill the next leg of the Order
+milestoneNo| String | The milestone number of the first milestone created under the Order
+milestoneType| String | can be 'PICKUP' or 'DELIVER' depending on the route configuration defined when creating the route
+movementType| String | Can be 'Branch-to-Branch', 'Customer-to-Branch' or 'Branch-to-Customer' depending on the type of movement and Order leg 
+milestoneReferenceId| String | Milestone reference ID
+orderDate| String | Order creation Date.
+
+### Update E2E Order
+
+
+> Response
+
+```json
+
+{
+  "notificationType": "MILEE2EORDERUPDATESTATUSNOTIFICATION",
+  "orderDetails": [
+    {
+
+
+      "orderNo": "LastMile_1",
+      "timestamp": "2019-06-24 10:46:57",
+      "awbNumber": "LastMile_1",
+      "orderState": "FORWARD",
+      "orderReferenceId": "91c501c223134022a6708df64bc6a8a8",
+      "scanStatus": "INSCANNED",
+      "orderStatus": "NOTDISPATCHED",
+      "orderType": "LM",
+      "distributionCenter": "Main Branch",
+      "milestoneNo": "LastMile_1_M1",
+      "milestoneType": "DELIVER",
+      "milestoneReferenceId": "91c501c223134022a6708df64bc6a8a8",
+      "detailedOrderStatus": "NOTDISPATCHED_ASSIGNED",
+      "milestoneStatus": "NOTDISPATCHED",
+      "classType": "ORDERS_PN"
+    },
+    {
+      "orderNo": "LastMile_2",
+      "timestamp": "2019-06-24 10:46:58",
+      "awbNumber": "LastMile_1",
+      "orderState": "FORWARD",
+      "orderReferenceId": "91c501c223134022a6708df64bc6a8a8",
+      "scanStatus": "INSCANNED",
+      "orderStatus": "NOTDISPATCHED",
+      "orderType": "LM",
+      "distributionCenter": "Main Branch",
+      "milestoneNo": "LastMile_1_M1",
+      "milestoneType": "DELIVER",
+      "milestoneReferenceId": "91c501c223134022a6708df64bc6a8a8",
+      "detailedOrderStatus": "NOTDISPATCHED_ASSIGNED",
+      "milestoneStatus": "NOTDISPATCHED",
+      "classType": "ORDERS_PN"
+    }
+  ]
+}
+```
+This notification is triggered when an All Mile type of Order is updated in LogiNext. The update notification can be sent for upto 20 Orders in a single webhook object.
+
+#### Response Parameters
+
+Param | DataType | Description
+--------- | ------- | ----------
+notificationType | String | This is the notification of the event that triggered the webhook. In case of Order Creation it is hardcoded to 'MILEE2EORDERUPDATESTATUSNOTIFICATION'
+orderNo | String | This is the Order No.
+timestamp | String | this represents the Order creation timestamp
+awbNumber | String | AWB Number for the order
+orderState | String | State of order. Ex: FORWARD, REVERSE
+orderReferenceId | String | Order reference id
+deliveryType | String | Order skill-set type
+routeConfigurationName| String| Route name if entered while creating the Order
+orderType | String | Will be defaulted to ALLMILE
+serviceType| String| The service type entered for the Order at the time of creation
+distributionCenter | String | The branch to which the Order is assigned
+originBranchName| String| The branch that will fulfill the first leg of the Order
+destinationBranchName | String | The branch that will fulfill the last leg of the Order
+nextBranchName | String | The branch that will fulfill the next leg of the Order
+milestoneNo| String | The milestone number of the first milestone created under the Order
+milestoneType| String | can be 'PICKUP' or 'DELIVER' depending on the route configuration defined when creating the route
+movementType| String | Can be 'Branch-to-Branch', 'Customer-to-Branch' or 'Branch-to-Customer' depending on the type of movement and Order leg 
+milestoneReferenceId| String | Milestone reference ID
+orderDate| String | Order creation Date.
+ 
+
 ## Trips
 
 ### Start
@@ -8957,7 +9422,7 @@ endTime | String |  Trip end time
 }
 ```
 
-This notification is sent when a trip is ended.
+This webhook is triggered when the ETA for a particular Order is revised.
 
 #### Response Parameters
 
@@ -9394,8 +9859,8 @@ tripDetails.orderDetails.pickupDetails.latitude | Double | Geocoordinates (latit
 tripDetails.orderDetails.pickupDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
 tripDetails.orderDetails.pickupDetails.startTimeWindow | String | Start Time Window of the pickup leg of the of the Order in UTC.
 tripDetails.orderDetails.pickupDetails.endTimeWindow | String | End Time Window of the pickup leg of the Order in UTC.
-tripDetails.orderDetails.pickupDetails.calculatedStartDate | String | Details of the pickup leg of the pickup leg of the Order
-tripDetails.orderDetails.pickupDetails.calculatedEndDate | String | Details of the pickup leg of the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedStartDate | String | The latest updated ETA to start servicing the pickup leg of the Order
+tripDetails.orderDetails.pickupDetails.calculatedEndDate | String | The latest updated ETA to end servicing the pickup leg of the Order
 tripDetails.orderDetails.pickupDetails.plannedDistance | List | Details of the pickup leg of the pickup leg of the Order
 tripDetails.orderDetails.pickupDetails.sequence | List | Details of the pickup leg of the pickup leg of the Order
 tripDetails.orderDetails.deliverDetails | List | Details of the deliver leg of the Order
@@ -9403,10 +9868,10 @@ tripDetails.orderDetails.deliverDetails.latitude | Double | Geocoordinates (lati
 tripDetails.orderDetails.deliverDetails.longitude | Double | Geocoordinates (longitude) deliver leg of the of the Order.
 tripDetails.orderDetails.deliverDetails.startTimeWindow | String | Start Time Window of the deliver leg of the of the Order in UTC.
 tripDetails.orderDetails.deliverDetails.endTimeWindow | String | End Time Window of the deliver leg of the Order in UTC.
-tripDetails.orderDetails.deliverDetails.calculatedStartDate | String | Details of the deliver leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.calculatedEndDate | String | Details of the deliver leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the deliver leg of the pickup leg of the Order
-tripDetails.orderDetails.deliverDetails.sequence | List | Details of the pickup leg of the deliver leg of the Order
+tripDetails.orderDetails.deliverDetails.calculatedStartDate | String | The latest updated ETA to start servicing the deliver leg of the Order
+tripDetails.orderDetails.deliverDetails.calculatedEndDate | String | The latest updated ETA to end servicing the deliver leg of the Order
+tripDetails.orderDetails.deliverDetails.plannedDistance | List | Details of the deliver leg of the Order
+tripDetails.orderDetails.deliverDetails.sequence | List | Details of the deliver leg of the Order
 
 Unassignment Key | Description
 --------- | -------
