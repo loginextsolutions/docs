@@ -4841,7 +4841,8 @@ shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM
 originBranchName |  String | Optional | 255 | This is the Origin branch of the Order
 destinationBranchName |  String | Optional | 255 | This is the Destination branch of the Order
 routeConfigurationName |  String | Optional | 255 | This is the route of the Order
-serviceTypeCd |  String | Optional | 255 | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types.
+deliveryType | String | 40 | Conditional Mandatory | Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
+serviceTypeCd |  String | Conditional Mandatory | 255 | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
@@ -4849,7 +4850,6 @@ packageLength | Double | 10,3 | Optional | This is the length of package. The un
 packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
-serviceType | String | 16 | Optional | This is the service type of the Order.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
@@ -4878,7 +4878,6 @@ pickupNotes | String | 512 | Optional | Additional pickup comments associated wi
 deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
 deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
 deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example -  ‘CUSTOMER’.
 deliverAccountCode | String | 255 | Mandatory | Customer ID of the Delivery Customer.
 deliverAccountName | String | 255 | Conditional Mandatory | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
@@ -9154,7 +9153,9 @@ PARTIALDELIVER_AFTER | Custom form filled after the Order is marked Partial Deli
   ]
 }
 ```
-This notification is triggered when an All Mile type of Order is created in LogiNext. The Creation notification can be sent for upto 20 Orders in a single webhook object. For example, if 20 Orders were created in a single call of the Create Order API, the notification for all 20 will be received in a single webhook response.
+
+A Mile E2E Order is a multi leg Order that can have multiple legs between a pickup and Delivery. If you have an ORder that is to be picked up from a Customer in California and Delivered to a Customer in New York, and has to go through Boston and Chicago on the way there
+This notification is triggered when a Mile E2E type of Order is created in LogiNext. The Creation notification can be sent for upto 20 Orders in a single webhook object. For example, if 20 Orders were created in a single call of the Create Order API, the notification for all 20 will be received in a single webhook response.
 
 #### Response Parameters
 
