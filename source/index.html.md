@@ -10865,6 +10865,22 @@ Veracruz Llave|VER
 Yucatan|YUC
 Zacatecas|ZAC
 
+## Myanmar
+State | Code
+--------- | ---------
+Mandalay | MA
+Irrawaddy | IR
+Mon State | MS
+Sagaing | SG
+Shan State | SS
+Pegu | PG
+Rakhine State | RS
+Kachin State | KCS
+Magwe | MG
+Kayah State | KYS
+Chin State | CS
+Karan State | KRS
+Rangoon | RN
 
 ## Nepal
 State | Code
@@ -10916,6 +10932,40 @@ Asir|Asir
 Najran|Najran
 Eastern Province|Eastern Pr
 
+
+## Sri Lanka
+
+State | Code
+--------- | ---------
+Southern | SO
+North Central | NC
+Uva | UV
+Sabaragamuwa | SB
+North Western | NW
+Jaffna | JF
+Kalutara | KL
+Kandy | KA
+Kegalla | Kegalla
+Kurunegala | KU
+Mannar | MN
+Matale | MT
+Amparai | AM,
+Moneragala | MO
+Mullaittivu | MU
+Nuwara Eliya | NE
+Polonnaruwa | PO
+Puttalam | PU
+Ratnapura | RA
+Trincomalee | TR
+Vavuniya | VA
+Matara | MA
+Anuradhapura | AN
+Badulla | BD
+Batticaloa | BT
+Colombo | CO
+Galle | GL
+Gampaha | GM
+Hambantota | HA
 
 ## Tanzania
 
