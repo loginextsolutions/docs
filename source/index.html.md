@@ -1457,7 +1457,7 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/update
 
 ```
 
-This API is used to cancel a trip using its reference ID.
+This API is used to update a trip using its reference ID.
 
 #### Request
 
@@ -3593,7 +3593,7 @@ orderNo | String | 100 | Mandatory | Order Number.
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an order.
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | Order Date.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
@@ -3883,7 +3883,7 @@ orderNo | String | 100 | Mandatory |  Order Number.
 awbNumber | String  | 1000 | Optional | Airway Bill Number associated with an order.
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
@@ -4195,7 +4195,7 @@ Param | DataType | Length |  Required | Description
 orderNo | String | 100 | Mandatory |  Order Number.
 awbNumber | String | 1000 | Optional | Airway Bill No associated with the Order.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
-autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
@@ -4544,7 +4544,7 @@ Param | DataType | Length |  Required | Description
 orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
-autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateFl| String | 50 | Optional |This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
@@ -4834,8 +4834,8 @@ Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
 orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
-shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
-autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 originBranchName |  String | Optional | 255 | This is the Origin branch of the Order
@@ -5164,6 +5164,110 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
 > Response
 
 ```json
+
+{
+    "status": 200,
+    "message": "SUCCESS",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "referenceId": "f40cf4493a5949199775499b5750a272",
+            "orderNo": "GR432U5",
+            "parentOrderNo": "GKS12",
+            "clientName": "UNY Logistics",
+            "branchName": "West Brooklyn Hub",
+            "origin": "West Brooklyn Hub",
+            "destination": "California Hub",
+            "shipmentOrderTypeCd": "DELIVER",
+            "orderState": "FORWARD",
+            "deliveryType": "TRK",
+            "deliveryLocationType": "PUP",
+            "shipmentOrderDt": 1485153536000,
+            "startTimeWindow": 1485174600000,
+            "endTimeWindow": 1485181800000,
+            "paymentType": "COD",
+            "notes": "Order recieved successfully.Thanks",
+            "packageValue": 300.0,
+            "recalculatedValue": 300.0,
+            "status": "DELIVERED",
+            "serviceTime": 5,
+            "deliveryMediumName": "James",
+            "deliverMediumPhoneNumber": "9757282492",
+            "assignedThrough": "Manually",
+            "tripName": "TRIP-5276",
+            "actualStartDt": 1562152130000,
+            "actualEndDt": 1562152153000,
+            "timeTakenDifferenceInMins": 0,
+            "pickupCheckOutTime": 1562152130000,
+            "pickupCheckOutLatitude": 40.7520394,
+            "pickupCheckOutLongitude": -73.9763424,
+            "deliverCheckInTime": 1562152141000,
+            "deliverCheckOutTime": 1562152153000,
+            "deliverCheckInLatitude": 19.1118182,
+            "deliverCheckInLongitude": 72.9094924,
+            "deliverCheckOutLatitude": 19.1118182,
+            "deliverCheckOutLongitude": 72.9094924,
+            "orderSequence": 2,
+            "customerCode": "johnsmith",
+            "customerName": "John Smith",
+            "amountCollected": 300.0,
+            "noOfAttempts": 1,
+            "isDelayed": false,
+            "originLatitude": 40.7520394,
+            "originLongitude": -73.9763424,
+            "destinationLatitude": 19.1118133,
+            "destinationLongitude": 72.9094806,
+             "shipmentCrateMappings": [
+                {
+                    "createdOnDt": 1564757907000,
+                    "updatedOnDt": 1564757950000,
+                    "createdByUserId": 1535,
+                    "updatedByUserId": 1535,
+                    "isDeleteFl": "N",
+                    "isActiveFl": true,
+                    "id": 30310923,
+                    "shipmentMappingId": 30310923,
+                    "crateCd": "ABG001",
+                    "statusCd": "LOADED",
+                    "crateAmount": 0.0,
+                    "shipmentlineitems": [
+                        {
+                            "createdOnDt": 1564757907000,
+                            "updatedOnDt": 1564757939000,
+                            "itemCd": "R445",
+                            "itemName": "",
+                            "itemPrice": 100.0,
+                            "itemQuantity": 10.0,
+                            "itemType": "Groceries",
+                            "itemWeight": 0.0,
+                            "amountToCollect": 1000.0,
+                            "statusCd": "LOADED",
+                            "loadedQuantity": 10.0,
+                            "unloadedQuantity": 0.0
+                        }
+                    ],
+                    "noOfUnits": 1.0,
+                    "loadedUnits": 10.0,
+                    "unloadedUnits": 0.0,
+                    "orderNo": "GR432U5"
+                }
+            ],
+            "employeeId": "ABC345",
+            "shipmentOrderDtTZ": "America/New_York",
+            "startTimeWindowTZ": "America/New_York",
+            "endTimeWindowTZ": "America/Los_Angeles",
+            "actualStartDtTZ": "America/New_York",
+            "actualEndDtTZ": "America/Los_Angeles",
+            "pickupCheckOutTimeTZ": "America/New_York",
+            "deliverCheckInTimeTZ": "America/Los_Angeles",
+            "deliverCheckOutTimeTZ": "America/Los_Angeles"
+        }
+    ],
+    "hasError": false
+}
+
+
+
 {
   "status": 200,
   "message": "SUCCESS",
@@ -5204,8 +5308,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "plannedStartDt": 1485154380000,
       "plannedEndDt": 1485155640000,
       "timeTakenDifferenceInMins": 10,
-      "pickupLatitude": 40.760838,
-      "pickupLongitude": -73.96732299999996,
+      "originLatitude": 40.760838,
+      "originLongitude": -73.96732299999996,
       “employeeId”: 3224567,
       "pickupCheckInTime": 1485154765000,
       "pickupCheckOutTime": 1485154887000,
@@ -5213,8 +5317,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "pickupCheckInLongitude": -73.96732299999996,
       "pickupCheckOutLatitude": 40.760838,
       "pickupCheckOutLongitude": -73.96732299999996,
-      "deliverLatitude": 41.882702,
-      "deliverLongitude":101.706872,
+      "destinationLatitude": 41.882702,
+      "destinationLongitude":101.706872,
       "deliverCheckInTime": 1485154905000,
       "deliverCheckOutTime": 1485155021000,
       "deliverCheckInLatitude": 41.882702,
@@ -5224,7 +5328,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "orderSequence": 5,
       "pickupAccountCode":"PDT_124",
       "customerCode": "CST_ACL1",
-      "customerName": "Sg",
+      "customerName": "Steven Goods",
       "amountCollected": 200,
       "podCount": 2,
       "noOfCrates": 1,
@@ -5236,7 +5340,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "customerPhoneNumber": "5163063377",
       "deliveryMediumPhoneNumber":"3125096995",
       "reason": null,
-      "vehicleNumber": "MH 02 T 123",
+      "vehicleNumber": "AC2T123",
       "noOfAttempts": 1,
       "deliveryGeofenceEnterTime": 1484727378000,
       "deliveryGeofenceExitTime": 1484727387000,
@@ -7954,7 +8058,7 @@ taskNo | String | 100 | Mandatory |  This is the Task No.
 awbNumber | String  | 1000 | Optional | This is the airway Bill No.
 shipmentTaskTypeCd | String  | 40 | Mandatory | This is the task type code. DELIVER for delivery leg task
 taskState | String  | 512 | Mandatory | State of task. Ex: FORWARD
-autoAllocateFl| String | 50 | Optional | This can be "Y" or "N". If set to "Y", the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. If "N", the Delivery Associate will get notified if the Task is ready to be allocated to them, and they can choose to Accept or Reject it.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Task will not be considered for auto assignment at the time of Task Creation
 shipmentTaskDt | Date |  | Mandatory | Task Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
@@ -9207,8 +9311,7 @@ orderDate| String | Order creation Date.
       "milestoneType": "DELIVER",
       "milestoneReferenceId": "91c501c223134022a6708df64bc6a8a8",
       "detailedOrderStatus": "NOTDISPATCHED_ASSIGNED",
-      "milestoneStatus": "NOTDISPATCHED",
-      "classType": "ORDERS_PN"
+      "milestoneStatus": "NOTDISPATCHED"    
     },
     {
       "orderNo": "LastMile_2",
@@ -9224,8 +9327,7 @@ orderDate| String | Order creation Date.
       "milestoneType": "DELIVER",
       "milestoneReferenceId": "91c501c223134022a6708df64bc6a8a8",
       "detailedOrderStatus": "NOTDISPATCHED_ASSIGNED",
-      "milestoneStatus": "NOTDISPATCHED",
-      "classType": "ORDERS_PN"
+      "milestoneStatus": "NOTDISPATCHED"
     }
   ]
 }
@@ -10593,6 +10695,251 @@ Note that the state code you enter should map to the country code entered in the
 
 If you wish to enter a state code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> 
 
+
+
+
+## Australia
+
+State | Code
+--------- | ---------
+New South Wales|New South
+Victoria|Victoria
+Queensland|Queensland
+South Australia|South Aust
+Tasmania|Tasmania
+
+## Canada
+
+State | Code
+--------- | ---------
+Alberta|Alberta
+British Columbia|British Co
+Manitoba|Manitoba
+New Brunswick|New Brunsw
+Newfoundland and Labrador|Newfoundla
+Nova Scotia|Nova Scoti
+Northwest Territory|Northwest
+Nunavut Territory|Nunavut Te
+Ontario|Ontario
+Prince Edward Island|Prince Edw
+Quebec|Quebec
+Saskatchewan|Saskatchew
+Yukon|Yukon
+
+## India
+
+State | Code
+--------- | ---------
+Delhi|DL
+Andhra Pradesh|AP
+Goa|GA
+Jharkhand|JH
+Manipur|MN
+Punjab|PB
+Uttar Pradesh|UP
+Arunachal Pradesh|AR
+Gujarat|GJ
+Karnataka|KA
+Meghalaya|ML
+Rajasthan|RJ
+Uttaranchal|UT
+Assam|AS
+Haryana|HR
+Kerala|KL
+Mizoram|MZ
+Sikkim|SK
+West Bengal|WB
+Bihar|BR
+Himachal Pradesh|HP
+Madhya Pradesh|MP
+Nagaland|NL
+Tamil Nadu|TN
+Chhattisgarh|CH
+Jammu and Kashmir|JK
+Maharashtra|MH
+Orissa|OR
+Tripura|TR
+Telangana|TA
+Andaman and Nicobar Islands|AN
+Chandigarh|CD
+Dadra and Nagar Haveli|DN
+Daman and Diu|DD
+Lakshadweep|LD
+Puducherry|PC
+
+## Indonesia
+
+State | Code
+--------- | ---------
+Jawa Barat|JB
+Jakarta Raya|JK
+Jawa Timur|JI
+Jawa Tengah|JT
+Sumatera Utara|SU
+Yogyakarta|YO
+Kalimantan Timur|KI
+Sumatera Barat|SB
+Banten|BT
+Lampung|LA
+Kalimantan Selatan|KS
+Sulawesi Utara|SA
+Bali|BA
+Kalimantan Barat|KB
+Jambi|JA
+Nusa Tenggara Timur|NT
+Nusa Tenggara Barat|NB
+Aceh|AC
+Sulawesi Tengah|ST
+Bengkulu|BE
+Sulawesi Tenggara|SG
+Kalimantan Tengah|KT
+Papua|PA
+Riau|RI
+Sulawesi Barat|SR
+Maluku|MA
+Irian Jaya Barat|PB
+Sumatera Selatan|SS
+Gorontalo|GO
+Sulawesi Selatan|SN
+Maluku Utara|MU
+Kepulauan Riau|KR
+Kepulauan Bangka Belitung|BB
+Kalimantan Utara|KU
+Papua Barat|PB
+
+## Malaysia
+
+State | Code
+--------- | ---------
+Johor|JHR
+Kedah|KDH
+Kelantan|KTN
+Kuala Lumpur|KUL
+Labuan|LBN
+Melaka|MLK
+Negeri Sembilan|NSN
+Pahang|PHG
+Perak|PRK
+Perlis|PLS
+Pulau Pinang|PNG
+Putrajaya|PJY
+Sabah|SBH
+Sarawak|SWK
+Selangor|SGR
+Terengganu|TRG
+
+## Mexico
+
+State | Code
+--------- | ---------
+Aguascalientes|AGU
+Baja California|BCN
+Baja California Sur|BCS
+Campeche|CAM
+Colima|CHH
+Coahuila De Zaragoza|CHP
+Chiapas|COA
+Chihuahua|COL
+Distrito Federal|DIF
+Durango|DUR
+Guerrero|GRO
+Guanajuato|GUA
+Hidalgo|HID
+Jalisco|JAL
+Mexico|MEX
+Michoacan De Ocampo|MIC
+Morelos|MOR
+Nayarit|NAY
+Nuevo Leon|NLE
+Oaxaca|OAX
+Puebla|PUE
+Queretaro De Arteaga|QUE
+Quintana Roo|ROO
+Sinaloa|SIN
+San Luis Potosi|SLP
+Sonora|SON
+Tabasco|TAB
+Tamaulipas|TAM
+Tlaxcala|TLA
+Veracruz Llave|VER
+Yucatan|YUC
+Zacatecas|ZAC
+
+
+## Nepal
+State | Code
+--------- | ---------
+Janakpur | JA
+Bheri | BH
+Dhawalagiri | DH
+Gandaki | GA
+Karnali | KA
+Kosi | KO
+Lumbini | LU
+Mahakali | MA
+Mechi | ME
+Narayani | NA
+Rapti | RA
+Sagarmatha | SA
+Bagmati | BA
+Seti | SE
+
+## Pakistan
+State | Code
+--------- | ---------
+Punjab | PB
+Sindh | SD
+North-West Frontier | KP
+Balochistan | BA
+Northern Areas | GB
+Azad Kashmir | JK
+Federally Administered Tribal Areas | TA
+Islamabad | IS
+
+
+
+## Saudi Arabia
+
+State | Code
+--------- | ---------
+Ha'il|Ha'il
+Qassim|Qassim
+Riyadh|Riyadh
+Tabuk|Tabuk
+Madinah|Madinah
+Makkah|Makkah
+Bahah|Bahah
+Northern Borders|Northern B
+Jawf|Jawf
+Jizan|Jizan
+Asir|Asir
+Najran|Najran
+Eastern Province|Eastern Pr
+
+
+## Tanzania
+
+State | Code
+--------- | ---------
+Dar es salaam Tz|Dar es sal
+Arusha Tz|Arusha Tz
+Mbeya Tz|Mbeya Tz
+Mtwara Tz|Mtwara Tz
+Dodoma Tz|Dodoma Tz
+Other States Tz|Other Stat
+
+## United Arab Emirates
+
+State | Code
+--------- | ---------
+Abu Dhabi|AZ
+Dubai|DU
+Sharjah|SH
+Ajman|AJ
+Umm Al Quwain|UQ
+Ras Al Khaimah|RK
+Fujairah|FU
+
 ## United States
 State | Code
 --------- | ---------
@@ -10648,228 +10995,7 @@ West Virginia | WV
 Wisconsin | WI
 Wyoming | WY
 
-## India
 
-State | Code
---------- | ---------
-Delhi|DL
-Andhra Pradesh|AP
-Goa|GA
-Jharkhand|JH
-Manipur|MN
-Punjab|PB
-Uttar Pradesh|UP
-Arunachal Pradesh|AR
-Gujarat|GJ
-Karnataka|KA
-Meghalaya|ML
-Rajasthan|RJ
-Uttaranchal|UT
-Assam|AS
-Haryana|HR
-Kerala|KL
-Mizoram|MZ
-Sikkim|SK
-West Bengal|WB
-Bihar|BR
-Himachal Pradesh|HP
-Madhya Pradesh|MP
-Nagaland|NL
-Tamil Nadu|TN
-Chhattisgarh|CH
-Jammu and Kashmir|JK
-Maharashtra|MH
-Orissa|OR
-Tripura|TR
-Telangana|TA
-Andaman and Nicobar Islands|AN
-Chandigarh|CD
-Dadra and Nagar Haveli|DN
-Daman and Diu|DD
-Lakshadweep|LD
-Puducherry|PC
-
-## Australia
-
-State | Code
---------- | ---------
-New South Wales|New South
-Victoria|Victoria
-Queensland|Queensland
-South Australia|South Aust
-Tasmania|Tasmania
-
-## Canada
-
-State | Code
---------- | ---------
-Alberta|Alberta
-British Columbia|British Co
-Manitoba|Manitoba
-New Brunswick|New Brunsw
-Newfoundland and Labrador|Newfoundla
-Nova Scotia|Nova Scoti
-Northwest Territory|Northwest
-Nunavut Territory|Nunavut Te
-Ontario|Ontario
-Prince Edward Island|Prince Edw
-Quebec|Quebec
-Saskatchewan|Saskatchew
-Yukon|Yukon
-
-
-## Mexico
-
-State | Code
---------- | ---------
-Aguascalientes|AGU
-Baja California|BCN
-Baja California Sur|BCS
-Campeche|CAM
-Colima|CHH
-Coahuila De Zaragoza|CHP
-Chiapas|COA
-Chihuahua|COL
-Distrito Federal|DIF
-Durango|DUR
-Guerrero|GRO
-Guanajuato|GUA
-Hidalgo|HID
-Jalisco|JAL
-Mexico|MEX
-Michoacan De Ocampo|MIC
-Morelos|MOR
-Nayarit|NAY
-Nuevo Leon|NLE
-Oaxaca|OAX
-Puebla|PUE
-Queretaro De Arteaga|QUE
-Quintana Roo|ROO
-Sinaloa|SIN
-San Luis Potosi|SLP
-Sonora|SON
-Tabasco|TAB
-Tamaulipas|TAM
-Tlaxcala|TLA
-Veracruz Llave|VER
-Yucatan|YUC
-Zacatecas|ZAC
-
-
-## Saudi Arabia
-
-State | Code
---------- | ---------
-Ha'il|Ha'il
-Qassim|Qassim
-Riyadh|Riyadh
-Tabuk|Tabuk
-Madinah|Madinah
-Makkah|Makkah
-Bahah|Bahah
-Northern Borders|Northern B
-Jawf|Jawf
-Jizan|Jizan
-Asir|Asir
-Najran|Najran
-Eastern Province|Eastern Pr
-
-
-## Tanzania
-
-State | Code
---------- | ---------
-Dar es salaam Tz|Dar es sal
-Arusha Tz|Arusha Tz
-Mbeya Tz|Mbeya Tz
-Mtwara Tz|Mtwara Tz
-Dodoma Tz|Dodoma Tz
-Other States Tz|Other Stat
-
-## United Arab Emirates
-
-State | Code
---------- | ---------
-Abu Dhabi|AZ
-Dubai|DU
-Sharjah|SH
-Ajman|AJ
-Umm Al Quwain|UQ
-Ras Al Khaimah|RK
-Fujairah|FU
-
-## Malaysia
-
-State | Code
---------- | ---------
-Johor|JHR
-Kedah|KDH
-Kelantan|KTN
-Kuala Lumpur|KUL
-Labuan|LBN
-Melaka|MLK
-Negeri Sembilan|NSN
-Pahang|PHG
-Perak|PRK
-Perlis|PLS
-Pulau Pinang|PNG
-Putrajaya|PJY
-Sabah|SBH
-Sarawak|SWK
-Selangor|SGR
-Terengganu|TRG
-
-## Indonesia
-
-State | Code
---------- | ---------
-Jawa Barat|JB
-Jakarta Raya|JK
-Jawa Timur|JI
-Jawa Tengah|JT
-Sumatera Utara|SU
-Yogyakarta|YO
-Kalimantan Timur|KI
-Sumatera Barat|SB
-Banten|BT
-Lampung|LA
-Kalimantan Selatan|KS
-Sulawesi Utara|SA
-Bali|BA
-Kalimantan Barat|KB
-Jambi|JA
-Nusa Tenggara Timur|NT
-Nusa Tenggara Barat|NB
-Aceh|AC
-Sulawesi Tengah|ST
-Bengkulu|BE
-Sulawesi Tenggara|SG
-Kalimantan Tengah|KT
-Papua|PA
-Riau|RI
-Sulawesi Barat|SR
-Maluku|MA
-Irian Jaya Barat|PB
-Sumatera Selatan|SS
-Gorontalo|GO
-Sulawesi Selatan|SN
-Maluku Utara|MU
-Kepulauan Riau|KR
-Kepulauan Bangka Belitung|BB
-Kalimantan Utara|KU
-Papua Barat|PB
-
-## Pakistan
-State | Code
---------- | ---------
-Punjab | PB
-Sindh | SD
-North-West Frontier | KP
-Balochistan | BA
-Northern Areas | GB
-Azad Kashmir | JK
-Federally Administered Tribal Areas | TA
-Islamabad | IS
 
 # Timezone Codes
 
