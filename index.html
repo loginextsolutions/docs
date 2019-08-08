@@ -2635,7 +2635,7 @@ You will have to pass the reference Id of the vehicle whose information needs to
 
 </span></code></pre>
 
-<p>This API is used to cancel a trip using its reference ID.</p>
+<p>This API is used to update a trip using its reference ID.</p>
 
 <h4 id="request">Request</h4>
 
@@ -6319,7 +6319,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -7014,7 +7014,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -7728,7 +7728,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -8673,7 +8673,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -9421,14 +9421,14 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>This is the order type code. BOTH for pickup &amp; delivery leg order</td>
+<td>This is the order type code. With this API you can create &#39;FM&rsquo;(First Mile), &#39;LM&rsquo;(Last Mile), or &#39;ALLMILE&rsquo; type of Orders. &#39;ALLMILE&rsquo; Orders are Orders that have more than one leg of movements.</td>
 </tr>
 <tr>
 <td>autoAllocateFl</td>
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Order is ready to be allocated to them, and they can choose to Accept or Reject it.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -10563,7 +10563,111 @@ When Customer Profiling is turned ON -
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f40cf4493a5949199775499b5750a272"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GKS12"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNY Logistics"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"West Brooklyn Hub"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"West Brooklyn Hub"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California Hub"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRK"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUP"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485153536000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485174600000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485181800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order recieved successfully.Thanks"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"recalculatedValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverMediumPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9757282492"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"assignedThrough"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manually"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-5276"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"actualStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562152130000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"actualEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562152153000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"timeTakenDifferenceInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pickupCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562152130000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7520394</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9763424</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562152141000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1562152153000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118182</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094924</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118182</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094924</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsmith"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7520394</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9763424</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1118133</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9094806</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564757907000</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564757950000</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"createdByUserId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"updatedByUserId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"isDeleteFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30310923</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"shipmentMappingId"</span><span class="p">:</span><span class="w"> </span><span class="mi">30310923</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABG001"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nt">"createdOnDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564757907000</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"updatedOnDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564757939000</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R445"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"amountToCollect"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADED"</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"loadedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+                            </span><span class="nt">"unloadedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"loadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"unloadedUnits"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GR432U5"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC345"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderDtTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindowTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindowTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"actualStartDtTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"actualEndDtTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pickupCheckOutTimeTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckInTimeTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deliverCheckOutTimeTZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+
+</span><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -10603,8 +10707,8 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154380000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155640000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"timeTakenDifferenceInMins"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
       </span><span class="err">“employeeId”</span><span class="p">:</span><span class="w"> </span><span class="mi">3224567</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154765000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154887000</span><span class="p">,</span><span class="w">
@@ -10612,8 +10716,8 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"pickupCheckInLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckOutLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupCheckOutLongitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">101.706872</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destinationLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"destinationLongitude"</span><span class="p">:</span><span class="mf">101.706872</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckInTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485154905000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1485155021000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliverCheckInLatitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
@@ -10623,7 +10727,7 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="s2">"PDT_124"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CST_ACL1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steven Goods"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"amountCollected"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
       </span><span class="nt">"podCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"noOfCrates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -10635,7 +10739,7 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="s2">"3125096995"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH 02 T 123"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AC2T123"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryGeofenceEnterTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727378000</span><span class="p">,</span><span class="w">
       </span><span class="nt">"deliveryGeofenceExitTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1484727387000</span><span class="p">,</span><span class="w">
@@ -15563,7 +15667,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>50</td>
 <td>Optional</td>
-<td>This can be &ldquo;Y&rdquo; or &ldquo;N&rdquo;. If set to &ldquo;Y&rdquo;, the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. If &ldquo;N&rdquo;, the Delivery Associate will get notified if the Task is ready to be allocated to them, and they can choose to Accept or Reject it.</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Task will not be considered for auto assignment at the time of Task Creation</td>
 </tr>
 <tr>
 <td>shipmentTaskDt</td>
@@ -18376,8 +18480,7 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
       </span><span class="nt">"milestoneType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"milestoneReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91c501c223134022a6708df64bc6a8a8"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"detailedOrderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED_ASSIGNED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"milestoneStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"classType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS_PN"</span><span class="w">
+      </span><span class="nt">"milestoneStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="w">    
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastMile_2"</span><span class="p">,</span><span class="w">
@@ -18393,8 +18496,7 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
       </span><span class="nt">"milestoneType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"milestoneReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91c501c223134022a6708df64bc6a8a8"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"detailedOrderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED_ASSIGNED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"milestoneStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"classType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS_PN"</span><span class="w">
+      </span><span class="nt">"milestoneStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -21693,6 +21795,856 @@ Note that the state code you enter should map to the country code entered in the
 
 <p>If you wish to enter a state code not listed below, please reach out to your Account Manager, write to us at: <a href="mailto:support@loginextsolutions.com?Subject=Postal-Code%20Queries" target="_top">support@loginextsolutions.com</a> </p>
 
+<h2 id="australia">Australia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>New South Wales</td>
+<td>New South</td>
+</tr>
+<tr>
+<td>Victoria</td>
+<td>Victoria</td>
+</tr>
+<tr>
+<td>Queensland</td>
+<td>Queensland</td>
+</tr>
+<tr>
+<td>South Australia</td>
+<td>South Aust</td>
+</tr>
+<tr>
+<td>Tasmania</td>
+<td>Tasmania</td>
+</tr>
+</tbody></table>
+
+<h2 id="canada">Canada</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Alberta</td>
+<td>Alberta</td>
+</tr>
+<tr>
+<td>British Columbia</td>
+<td>British Co</td>
+</tr>
+<tr>
+<td>Manitoba</td>
+<td>Manitoba</td>
+</tr>
+<tr>
+<td>New Brunswick</td>
+<td>New Brunsw</td>
+</tr>
+<tr>
+<td>Newfoundland and Labrador</td>
+<td>Newfoundla</td>
+</tr>
+<tr>
+<td>Nova Scotia</td>
+<td>Nova Scoti</td>
+</tr>
+<tr>
+<td>Northwest Territory</td>
+<td>Northwest</td>
+</tr>
+<tr>
+<td>Nunavut Territory</td>
+<td>Nunavut Te</td>
+</tr>
+<tr>
+<td>Ontario</td>
+<td>Ontario</td>
+</tr>
+<tr>
+<td>Prince Edward Island</td>
+<td>Prince Edw</td>
+</tr>
+<tr>
+<td>Quebec</td>
+<td>Quebec</td>
+</tr>
+<tr>
+<td>Saskatchewan</td>
+<td>Saskatchew</td>
+</tr>
+<tr>
+<td>Yukon</td>
+<td>Yukon</td>
+</tr>
+</tbody></table>
+
+<h2 id="india">India</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Delhi</td>
+<td>DL</td>
+</tr>
+<tr>
+<td>Andhra Pradesh</td>
+<td>AP</td>
+</tr>
+<tr>
+<td>Goa</td>
+<td>GA</td>
+</tr>
+<tr>
+<td>Jharkhand</td>
+<td>JH</td>
+</tr>
+<tr>
+<td>Manipur</td>
+<td>MN</td>
+</tr>
+<tr>
+<td>Punjab</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Uttar Pradesh</td>
+<td>UP</td>
+</tr>
+<tr>
+<td>Arunachal Pradesh</td>
+<td>AR</td>
+</tr>
+<tr>
+<td>Gujarat</td>
+<td>GJ</td>
+</tr>
+<tr>
+<td>Karnataka</td>
+<td>KA</td>
+</tr>
+<tr>
+<td>Meghalaya</td>
+<td>ML</td>
+</tr>
+<tr>
+<td>Rajasthan</td>
+<td>RJ</td>
+</tr>
+<tr>
+<td>Uttaranchal</td>
+<td>UT</td>
+</tr>
+<tr>
+<td>Assam</td>
+<td>AS</td>
+</tr>
+<tr>
+<td>Haryana</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>Kerala</td>
+<td>KL</td>
+</tr>
+<tr>
+<td>Mizoram</td>
+<td>MZ</td>
+</tr>
+<tr>
+<td>Sikkim</td>
+<td>SK</td>
+</tr>
+<tr>
+<td>West Bengal</td>
+<td>WB</td>
+</tr>
+<tr>
+<td>Bihar</td>
+<td>BR</td>
+</tr>
+<tr>
+<td>Himachal Pradesh</td>
+<td>HP</td>
+</tr>
+<tr>
+<td>Madhya Pradesh</td>
+<td>MP</td>
+</tr>
+<tr>
+<td>Nagaland</td>
+<td>NL</td>
+</tr>
+<tr>
+<td>Tamil Nadu</td>
+<td>TN</td>
+</tr>
+<tr>
+<td>Chhattisgarh</td>
+<td>CH</td>
+</tr>
+<tr>
+<td>Jammu and Kashmir</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Maharashtra</td>
+<td>MH</td>
+</tr>
+<tr>
+<td>Orissa</td>
+<td>OR</td>
+</tr>
+<tr>
+<td>Tripura</td>
+<td>TR</td>
+</tr>
+<tr>
+<td>Telangana</td>
+<td>TA</td>
+</tr>
+<tr>
+<td>Andaman and Nicobar Islands</td>
+<td>AN</td>
+</tr>
+<tr>
+<td>Chandigarh</td>
+<td>CD</td>
+</tr>
+<tr>
+<td>Dadra and Nagar Haveli</td>
+<td>DN</td>
+</tr>
+<tr>
+<td>Daman and Diu</td>
+<td>DD</td>
+</tr>
+<tr>
+<td>Lakshadweep</td>
+<td>LD</td>
+</tr>
+<tr>
+<td>Puducherry</td>
+<td>PC</td>
+</tr>
+</tbody></table>
+
+<h2 id="indonesia">Indonesia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Jawa Barat</td>
+<td>JB</td>
+</tr>
+<tr>
+<td>Jakarta Raya</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Jawa Timur</td>
+<td>JI</td>
+</tr>
+<tr>
+<td>Jawa Tengah</td>
+<td>JT</td>
+</tr>
+<tr>
+<td>Sumatera Utara</td>
+<td>SU</td>
+</tr>
+<tr>
+<td>Yogyakarta</td>
+<td>YO</td>
+</tr>
+<tr>
+<td>Kalimantan Timur</td>
+<td>KI</td>
+</tr>
+<tr>
+<td>Sumatera Barat</td>
+<td>SB</td>
+</tr>
+<tr>
+<td>Banten</td>
+<td>BT</td>
+</tr>
+<tr>
+<td>Lampung</td>
+<td>LA</td>
+</tr>
+<tr>
+<td>Kalimantan Selatan</td>
+<td>KS</td>
+</tr>
+<tr>
+<td>Sulawesi Utara</td>
+<td>SA</td>
+</tr>
+<tr>
+<td>Bali</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>Kalimantan Barat</td>
+<td>KB</td>
+</tr>
+<tr>
+<td>Jambi</td>
+<td>JA</td>
+</tr>
+<tr>
+<td>Nusa Tenggara Timur</td>
+<td>NT</td>
+</tr>
+<tr>
+<td>Nusa Tenggara Barat</td>
+<td>NB</td>
+</tr>
+<tr>
+<td>Aceh</td>
+<td>AC</td>
+</tr>
+<tr>
+<td>Sulawesi Tengah</td>
+<td>ST</td>
+</tr>
+<tr>
+<td>Bengkulu</td>
+<td>BE</td>
+</tr>
+<tr>
+<td>Sulawesi Tenggara</td>
+<td>SG</td>
+</tr>
+<tr>
+<td>Kalimantan Tengah</td>
+<td>KT</td>
+</tr>
+<tr>
+<td>Papua</td>
+<td>PA</td>
+</tr>
+<tr>
+<td>Riau</td>
+<td>RI</td>
+</tr>
+<tr>
+<td>Sulawesi Barat</td>
+<td>SR</td>
+</tr>
+<tr>
+<td>Maluku</td>
+<td>MA</td>
+</tr>
+<tr>
+<td>Irian Jaya Barat</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Sumatera Selatan</td>
+<td>SS</td>
+</tr>
+<tr>
+<td>Gorontalo</td>
+<td>GO</td>
+</tr>
+<tr>
+<td>Sulawesi Selatan</td>
+<td>SN</td>
+</tr>
+<tr>
+<td>Maluku Utara</td>
+<td>MU</td>
+</tr>
+<tr>
+<td>Kepulauan Riau</td>
+<td>KR</td>
+</tr>
+<tr>
+<td>Kepulauan Bangka Belitung</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Kalimantan Utara</td>
+<td>KU</td>
+</tr>
+<tr>
+<td>Papua Barat</td>
+<td>PB</td>
+</tr>
+</tbody></table>
+
+<h2 id="malaysia">Malaysia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Johor</td>
+<td>JHR</td>
+</tr>
+<tr>
+<td>Kedah</td>
+<td>KDH</td>
+</tr>
+<tr>
+<td>Kelantan</td>
+<td>KTN</td>
+</tr>
+<tr>
+<td>Kuala Lumpur</td>
+<td>KUL</td>
+</tr>
+<tr>
+<td>Labuan</td>
+<td>LBN</td>
+</tr>
+<tr>
+<td>Melaka</td>
+<td>MLK</td>
+</tr>
+<tr>
+<td>Negeri Sembilan</td>
+<td>NSN</td>
+</tr>
+<tr>
+<td>Pahang</td>
+<td>PHG</td>
+</tr>
+<tr>
+<td>Perak</td>
+<td>PRK</td>
+</tr>
+<tr>
+<td>Perlis</td>
+<td>PLS</td>
+</tr>
+<tr>
+<td>Pulau Pinang</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>Putrajaya</td>
+<td>PJY</td>
+</tr>
+<tr>
+<td>Sabah</td>
+<td>SBH</td>
+</tr>
+<tr>
+<td>Sarawak</td>
+<td>SWK</td>
+</tr>
+<tr>
+<td>Selangor</td>
+<td>SGR</td>
+</tr>
+<tr>
+<td>Terengganu</td>
+<td>TRG</td>
+</tr>
+</tbody></table>
+
+<h2 id="mexico">Mexico</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Aguascalientes</td>
+<td>AGU</td>
+</tr>
+<tr>
+<td>Baja California</td>
+<td>BCN</td>
+</tr>
+<tr>
+<td>Baja California Sur</td>
+<td>BCS</td>
+</tr>
+<tr>
+<td>Campeche</td>
+<td>CAM</td>
+</tr>
+<tr>
+<td>Colima</td>
+<td>CHH</td>
+</tr>
+<tr>
+<td>Coahuila De Zaragoza</td>
+<td>CHP</td>
+</tr>
+<tr>
+<td>Chiapas</td>
+<td>COA</td>
+</tr>
+<tr>
+<td>Chihuahua</td>
+<td>COL</td>
+</tr>
+<tr>
+<td>Distrito Federal</td>
+<td>DIF</td>
+</tr>
+<tr>
+<td>Durango</td>
+<td>DUR</td>
+</tr>
+<tr>
+<td>Guerrero</td>
+<td>GRO</td>
+</tr>
+<tr>
+<td>Guanajuato</td>
+<td>GUA</td>
+</tr>
+<tr>
+<td>Hidalgo</td>
+<td>HID</td>
+</tr>
+<tr>
+<td>Jalisco</td>
+<td>JAL</td>
+</tr>
+<tr>
+<td>Mexico</td>
+<td>MEX</td>
+</tr>
+<tr>
+<td>Michoacan De Ocampo</td>
+<td>MIC</td>
+</tr>
+<tr>
+<td>Morelos</td>
+<td>MOR</td>
+</tr>
+<tr>
+<td>Nayarit</td>
+<td>NAY</td>
+</tr>
+<tr>
+<td>Nuevo Leon</td>
+<td>NLE</td>
+</tr>
+<tr>
+<td>Oaxaca</td>
+<td>OAX</td>
+</tr>
+<tr>
+<td>Puebla</td>
+<td>PUE</td>
+</tr>
+<tr>
+<td>Queretaro De Arteaga</td>
+<td>QUE</td>
+</tr>
+<tr>
+<td>Quintana Roo</td>
+<td>ROO</td>
+</tr>
+<tr>
+<td>Sinaloa</td>
+<td>SIN</td>
+</tr>
+<tr>
+<td>San Luis Potosi</td>
+<td>SLP</td>
+</tr>
+<tr>
+<td>Sonora</td>
+<td>SON</td>
+</tr>
+<tr>
+<td>Tabasco</td>
+<td>TAB</td>
+</tr>
+<tr>
+<td>Tamaulipas</td>
+<td>TAM</td>
+</tr>
+<tr>
+<td>Tlaxcala</td>
+<td>TLA</td>
+</tr>
+<tr>
+<td>Veracruz Llave</td>
+<td>VER</td>
+</tr>
+<tr>
+<td>Yucatan</td>
+<td>YUC</td>
+</tr>
+<tr>
+<td>Zacatecas</td>
+<td>ZAC</td>
+</tr>
+</tbody></table>
+
+<h2 id="nepal">Nepal</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Janakpur</td>
+<td>JA</td>
+</tr>
+<tr>
+<td>Bheri</td>
+<td>BH</td>
+</tr>
+<tr>
+<td>Dhawalagiri</td>
+<td>DH</td>
+</tr>
+<tr>
+<td>Gandaki</td>
+<td>GA</td>
+</tr>
+<tr>
+<td>Karnali</td>
+<td>KA</td>
+</tr>
+<tr>
+<td>Kosi</td>
+<td>KO</td>
+</tr>
+<tr>
+<td>Lumbini</td>
+<td>LU</td>
+</tr>
+<tr>
+<td>Mahakali</td>
+<td>MA</td>
+</tr>
+<tr>
+<td>Mechi</td>
+<td>ME</td>
+</tr>
+<tr>
+<td>Narayani</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>Rapti</td>
+<td>RA</td>
+</tr>
+<tr>
+<td>Sagarmatha</td>
+<td>SA</td>
+</tr>
+<tr>
+<td>Bagmati</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>Seti</td>
+<td>SE</td>
+</tr>
+</tbody></table>
+
+<h2 id="pakistan">Pakistan</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Punjab</td>
+<td>PB</td>
+</tr>
+<tr>
+<td>Sindh</td>
+<td>SD</td>
+</tr>
+<tr>
+<td>North-West Frontier</td>
+<td>KP</td>
+</tr>
+<tr>
+<td>Balochistan</td>
+<td>BA</td>
+</tr>
+<tr>
+<td>Northern Areas</td>
+<td>GB</td>
+</tr>
+<tr>
+<td>Azad Kashmir</td>
+<td>JK</td>
+</tr>
+<tr>
+<td>Federally Administered Tribal Areas</td>
+<td>TA</td>
+</tr>
+<tr>
+<td>Islamabad</td>
+<td>IS</td>
+</tr>
+</tbody></table>
+
+<h2 id="saudi-arabia">Saudi Arabia</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Ha&#39;il</td>
+<td>Ha&#39;il</td>
+</tr>
+<tr>
+<td>Qassim</td>
+<td>Qassim</td>
+</tr>
+<tr>
+<td>Riyadh</td>
+<td>Riyadh</td>
+</tr>
+<tr>
+<td>Tabuk</td>
+<td>Tabuk</td>
+</tr>
+<tr>
+<td>Madinah</td>
+<td>Madinah</td>
+</tr>
+<tr>
+<td>Makkah</td>
+<td>Makkah</td>
+</tr>
+<tr>
+<td>Bahah</td>
+<td>Bahah</td>
+</tr>
+<tr>
+<td>Northern Borders</td>
+<td>Northern B</td>
+</tr>
+<tr>
+<td>Jawf</td>
+<td>Jawf</td>
+</tr>
+<tr>
+<td>Jizan</td>
+<td>Jizan</td>
+</tr>
+<tr>
+<td>Asir</td>
+<td>Asir</td>
+</tr>
+<tr>
+<td>Najran</td>
+<td>Najran</td>
+</tr>
+<tr>
+<td>Eastern Province</td>
+<td>Eastern Pr</td>
+</tr>
+</tbody></table>
+
+<h2 id="tanzania">Tanzania</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Dar es salaam Tz</td>
+<td>Dar es sal</td>
+</tr>
+<tr>
+<td>Arusha Tz</td>
+<td>Arusha Tz</td>
+</tr>
+<tr>
+<td>Mbeya Tz</td>
+<td>Mbeya Tz</td>
+</tr>
+<tr>
+<td>Mtwara Tz</td>
+<td>Mtwara Tz</td>
+</tr>
+<tr>
+<td>Dodoma Tz</td>
+<td>Dodoma Tz</td>
+</tr>
+<tr>
+<td>Other States Tz</td>
+<td>Other Stat</td>
+</tr>
+</tbody></table>
+
+<h2 id="united-arab-emirates">United Arab Emirates</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Abu Dhabi</td>
+<td>AZ</td>
+</tr>
+<tr>
+<td>Dubai</td>
+<td>DU</td>
+</tr>
+<tr>
+<td>Sharjah</td>
+<td>SH</td>
+</tr>
+<tr>
+<td>Ajman</td>
+<td>AJ</td>
+</tr>
+<tr>
+<td>Umm Al Quwain</td>
+<td>UQ</td>
+</tr>
+<tr>
+<td>Ras Al Khaimah</td>
+<td>RK</td>
+</tr>
+<tr>
+<td>Fujairah</td>
+<td>FU</td>
+</tr>
+</tbody></table>
+
 <h2 id="united-states">United States</h2>
 
 <table><thead>
@@ -21904,790 +22856,6 @@ Note that the state code you enter should map to the country code entered in the
 <tr>
 <td>Wyoming</td>
 <td>WY</td>
-</tr>
-</tbody></table>
-
-<h2 id="india">India</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Delhi</td>
-<td>DL</td>
-</tr>
-<tr>
-<td>Andhra Pradesh</td>
-<td>AP</td>
-</tr>
-<tr>
-<td>Goa</td>
-<td>GA</td>
-</tr>
-<tr>
-<td>Jharkhand</td>
-<td>JH</td>
-</tr>
-<tr>
-<td>Manipur</td>
-<td>MN</td>
-</tr>
-<tr>
-<td>Punjab</td>
-<td>PB</td>
-</tr>
-<tr>
-<td>Uttar Pradesh</td>
-<td>UP</td>
-</tr>
-<tr>
-<td>Arunachal Pradesh</td>
-<td>AR</td>
-</tr>
-<tr>
-<td>Gujarat</td>
-<td>GJ</td>
-</tr>
-<tr>
-<td>Karnataka</td>
-<td>KA</td>
-</tr>
-<tr>
-<td>Meghalaya</td>
-<td>ML</td>
-</tr>
-<tr>
-<td>Rajasthan</td>
-<td>RJ</td>
-</tr>
-<tr>
-<td>Uttaranchal</td>
-<td>UT</td>
-</tr>
-<tr>
-<td>Assam</td>
-<td>AS</td>
-</tr>
-<tr>
-<td>Haryana</td>
-<td>HR</td>
-</tr>
-<tr>
-<td>Kerala</td>
-<td>KL</td>
-</tr>
-<tr>
-<td>Mizoram</td>
-<td>MZ</td>
-</tr>
-<tr>
-<td>Sikkim</td>
-<td>SK</td>
-</tr>
-<tr>
-<td>West Bengal</td>
-<td>WB</td>
-</tr>
-<tr>
-<td>Bihar</td>
-<td>BR</td>
-</tr>
-<tr>
-<td>Himachal Pradesh</td>
-<td>HP</td>
-</tr>
-<tr>
-<td>Madhya Pradesh</td>
-<td>MP</td>
-</tr>
-<tr>
-<td>Nagaland</td>
-<td>NL</td>
-</tr>
-<tr>
-<td>Tamil Nadu</td>
-<td>TN</td>
-</tr>
-<tr>
-<td>Chhattisgarh</td>
-<td>CH</td>
-</tr>
-<tr>
-<td>Jammu and Kashmir</td>
-<td>JK</td>
-</tr>
-<tr>
-<td>Maharashtra</td>
-<td>MH</td>
-</tr>
-<tr>
-<td>Orissa</td>
-<td>OR</td>
-</tr>
-<tr>
-<td>Tripura</td>
-<td>TR</td>
-</tr>
-<tr>
-<td>Telangana</td>
-<td>TA</td>
-</tr>
-<tr>
-<td>Andaman and Nicobar Islands</td>
-<td>AN</td>
-</tr>
-<tr>
-<td>Chandigarh</td>
-<td>CD</td>
-</tr>
-<tr>
-<td>Dadra and Nagar Haveli</td>
-<td>DN</td>
-</tr>
-<tr>
-<td>Daman and Diu</td>
-<td>DD</td>
-</tr>
-<tr>
-<td>Lakshadweep</td>
-<td>LD</td>
-</tr>
-<tr>
-<td>Puducherry</td>
-<td>PC</td>
-</tr>
-</tbody></table>
-
-<h2 id="australia">Australia</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>New South Wales</td>
-<td>New South</td>
-</tr>
-<tr>
-<td>Victoria</td>
-<td>Victoria</td>
-</tr>
-<tr>
-<td>Queensland</td>
-<td>Queensland</td>
-</tr>
-<tr>
-<td>South Australia</td>
-<td>South Aust</td>
-</tr>
-<tr>
-<td>Tasmania</td>
-<td>Tasmania</td>
-</tr>
-</tbody></table>
-
-<h2 id="canada">Canada</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Alberta</td>
-<td>Alberta</td>
-</tr>
-<tr>
-<td>British Columbia</td>
-<td>British Co</td>
-</tr>
-<tr>
-<td>Manitoba</td>
-<td>Manitoba</td>
-</tr>
-<tr>
-<td>New Brunswick</td>
-<td>New Brunsw</td>
-</tr>
-<tr>
-<td>Newfoundland and Labrador</td>
-<td>Newfoundla</td>
-</tr>
-<tr>
-<td>Nova Scotia</td>
-<td>Nova Scoti</td>
-</tr>
-<tr>
-<td>Northwest Territory</td>
-<td>Northwest</td>
-</tr>
-<tr>
-<td>Nunavut Territory</td>
-<td>Nunavut Te</td>
-</tr>
-<tr>
-<td>Ontario</td>
-<td>Ontario</td>
-</tr>
-<tr>
-<td>Prince Edward Island</td>
-<td>Prince Edw</td>
-</tr>
-<tr>
-<td>Quebec</td>
-<td>Quebec</td>
-</tr>
-<tr>
-<td>Saskatchewan</td>
-<td>Saskatchew</td>
-</tr>
-<tr>
-<td>Yukon</td>
-<td>Yukon</td>
-</tr>
-</tbody></table>
-
-<h2 id="mexico">Mexico</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Aguascalientes</td>
-<td>AGU</td>
-</tr>
-<tr>
-<td>Baja California</td>
-<td>BCN</td>
-</tr>
-<tr>
-<td>Baja California Sur</td>
-<td>BCS</td>
-</tr>
-<tr>
-<td>Campeche</td>
-<td>CAM</td>
-</tr>
-<tr>
-<td>Colima</td>
-<td>CHH</td>
-</tr>
-<tr>
-<td>Coahuila De Zaragoza</td>
-<td>CHP</td>
-</tr>
-<tr>
-<td>Chiapas</td>
-<td>COA</td>
-</tr>
-<tr>
-<td>Chihuahua</td>
-<td>COL</td>
-</tr>
-<tr>
-<td>Distrito Federal</td>
-<td>DIF</td>
-</tr>
-<tr>
-<td>Durango</td>
-<td>DUR</td>
-</tr>
-<tr>
-<td>Guerrero</td>
-<td>GRO</td>
-</tr>
-<tr>
-<td>Guanajuato</td>
-<td>GUA</td>
-</tr>
-<tr>
-<td>Hidalgo</td>
-<td>HID</td>
-</tr>
-<tr>
-<td>Jalisco</td>
-<td>JAL</td>
-</tr>
-<tr>
-<td>Mexico</td>
-<td>MEX</td>
-</tr>
-<tr>
-<td>Michoacan De Ocampo</td>
-<td>MIC</td>
-</tr>
-<tr>
-<td>Morelos</td>
-<td>MOR</td>
-</tr>
-<tr>
-<td>Nayarit</td>
-<td>NAY</td>
-</tr>
-<tr>
-<td>Nuevo Leon</td>
-<td>NLE</td>
-</tr>
-<tr>
-<td>Oaxaca</td>
-<td>OAX</td>
-</tr>
-<tr>
-<td>Puebla</td>
-<td>PUE</td>
-</tr>
-<tr>
-<td>Queretaro De Arteaga</td>
-<td>QUE</td>
-</tr>
-<tr>
-<td>Quintana Roo</td>
-<td>ROO</td>
-</tr>
-<tr>
-<td>Sinaloa</td>
-<td>SIN</td>
-</tr>
-<tr>
-<td>San Luis Potosi</td>
-<td>SLP</td>
-</tr>
-<tr>
-<td>Sonora</td>
-<td>SON</td>
-</tr>
-<tr>
-<td>Tabasco</td>
-<td>TAB</td>
-</tr>
-<tr>
-<td>Tamaulipas</td>
-<td>TAM</td>
-</tr>
-<tr>
-<td>Tlaxcala</td>
-<td>TLA</td>
-</tr>
-<tr>
-<td>Veracruz Llave</td>
-<td>VER</td>
-</tr>
-<tr>
-<td>Yucatan</td>
-<td>YUC</td>
-</tr>
-<tr>
-<td>Zacatecas</td>
-<td>ZAC</td>
-</tr>
-</tbody></table>
-
-<h2 id="saudi-arabia">Saudi Arabia</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Ha&#39;il</td>
-<td>Ha&#39;il</td>
-</tr>
-<tr>
-<td>Qassim</td>
-<td>Qassim</td>
-</tr>
-<tr>
-<td>Riyadh</td>
-<td>Riyadh</td>
-</tr>
-<tr>
-<td>Tabuk</td>
-<td>Tabuk</td>
-</tr>
-<tr>
-<td>Madinah</td>
-<td>Madinah</td>
-</tr>
-<tr>
-<td>Makkah</td>
-<td>Makkah</td>
-</tr>
-<tr>
-<td>Bahah</td>
-<td>Bahah</td>
-</tr>
-<tr>
-<td>Northern Borders</td>
-<td>Northern B</td>
-</tr>
-<tr>
-<td>Jawf</td>
-<td>Jawf</td>
-</tr>
-<tr>
-<td>Jizan</td>
-<td>Jizan</td>
-</tr>
-<tr>
-<td>Asir</td>
-<td>Asir</td>
-</tr>
-<tr>
-<td>Najran</td>
-<td>Najran</td>
-</tr>
-<tr>
-<td>Eastern Province</td>
-<td>Eastern Pr</td>
-</tr>
-</tbody></table>
-
-<h2 id="tanzania">Tanzania</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Dar es salaam Tz</td>
-<td>Dar es sal</td>
-</tr>
-<tr>
-<td>Arusha Tz</td>
-<td>Arusha Tz</td>
-</tr>
-<tr>
-<td>Mbeya Tz</td>
-<td>Mbeya Tz</td>
-</tr>
-<tr>
-<td>Mtwara Tz</td>
-<td>Mtwara Tz</td>
-</tr>
-<tr>
-<td>Dodoma Tz</td>
-<td>Dodoma Tz</td>
-</tr>
-<tr>
-<td>Other States Tz</td>
-<td>Other Stat</td>
-</tr>
-</tbody></table>
-
-<h2 id="united-arab-emirates">United Arab Emirates</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Abu Dhabi</td>
-<td>AZ</td>
-</tr>
-<tr>
-<td>Dubai</td>
-<td>DU</td>
-</tr>
-<tr>
-<td>Sharjah</td>
-<td>SH</td>
-</tr>
-<tr>
-<td>Ajman</td>
-<td>AJ</td>
-</tr>
-<tr>
-<td>Umm Al Quwain</td>
-<td>UQ</td>
-</tr>
-<tr>
-<td>Ras Al Khaimah</td>
-<td>RK</td>
-</tr>
-<tr>
-<td>Fujairah</td>
-<td>FU</td>
-</tr>
-</tbody></table>
-
-<h2 id="malaysia">Malaysia</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Johor</td>
-<td>JHR</td>
-</tr>
-<tr>
-<td>Kedah</td>
-<td>KDH</td>
-</tr>
-<tr>
-<td>Kelantan</td>
-<td>KTN</td>
-</tr>
-<tr>
-<td>Kuala Lumpur</td>
-<td>KUL</td>
-</tr>
-<tr>
-<td>Labuan</td>
-<td>LBN</td>
-</tr>
-<tr>
-<td>Melaka</td>
-<td>MLK</td>
-</tr>
-<tr>
-<td>Negeri Sembilan</td>
-<td>NSN</td>
-</tr>
-<tr>
-<td>Pahang</td>
-<td>PHG</td>
-</tr>
-<tr>
-<td>Perak</td>
-<td>PRK</td>
-</tr>
-<tr>
-<td>Perlis</td>
-<td>PLS</td>
-</tr>
-<tr>
-<td>Pulau Pinang</td>
-<td>PNG</td>
-</tr>
-<tr>
-<td>Putrajaya</td>
-<td>PJY</td>
-</tr>
-<tr>
-<td>Sabah</td>
-<td>SBH</td>
-</tr>
-<tr>
-<td>Sarawak</td>
-<td>SWK</td>
-</tr>
-<tr>
-<td>Selangor</td>
-<td>SGR</td>
-</tr>
-<tr>
-<td>Terengganu</td>
-<td>TRG</td>
-</tr>
-</tbody></table>
-
-<h2 id="indonesia">Indonesia</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Jawa Barat</td>
-<td>JB</td>
-</tr>
-<tr>
-<td>Jakarta Raya</td>
-<td>JK</td>
-</tr>
-<tr>
-<td>Jawa Timur</td>
-<td>JI</td>
-</tr>
-<tr>
-<td>Jawa Tengah</td>
-<td>JT</td>
-</tr>
-<tr>
-<td>Sumatera Utara</td>
-<td>SU</td>
-</tr>
-<tr>
-<td>Yogyakarta</td>
-<td>YO</td>
-</tr>
-<tr>
-<td>Kalimantan Timur</td>
-<td>KI</td>
-</tr>
-<tr>
-<td>Sumatera Barat</td>
-<td>SB</td>
-</tr>
-<tr>
-<td>Banten</td>
-<td>BT</td>
-</tr>
-<tr>
-<td>Lampung</td>
-<td>LA</td>
-</tr>
-<tr>
-<td>Kalimantan Selatan</td>
-<td>KS</td>
-</tr>
-<tr>
-<td>Sulawesi Utara</td>
-<td>SA</td>
-</tr>
-<tr>
-<td>Bali</td>
-<td>BA</td>
-</tr>
-<tr>
-<td>Kalimantan Barat</td>
-<td>KB</td>
-</tr>
-<tr>
-<td>Jambi</td>
-<td>JA</td>
-</tr>
-<tr>
-<td>Nusa Tenggara Timur</td>
-<td>NT</td>
-</tr>
-<tr>
-<td>Nusa Tenggara Barat</td>
-<td>NB</td>
-</tr>
-<tr>
-<td>Aceh</td>
-<td>AC</td>
-</tr>
-<tr>
-<td>Sulawesi Tengah</td>
-<td>ST</td>
-</tr>
-<tr>
-<td>Bengkulu</td>
-<td>BE</td>
-</tr>
-<tr>
-<td>Sulawesi Tenggara</td>
-<td>SG</td>
-</tr>
-<tr>
-<td>Kalimantan Tengah</td>
-<td>KT</td>
-</tr>
-<tr>
-<td>Papua</td>
-<td>PA</td>
-</tr>
-<tr>
-<td>Riau</td>
-<td>RI</td>
-</tr>
-<tr>
-<td>Sulawesi Barat</td>
-<td>SR</td>
-</tr>
-<tr>
-<td>Maluku</td>
-<td>MA</td>
-</tr>
-<tr>
-<td>Irian Jaya Barat</td>
-<td>PB</td>
-</tr>
-<tr>
-<td>Sumatera Selatan</td>
-<td>SS</td>
-</tr>
-<tr>
-<td>Gorontalo</td>
-<td>GO</td>
-</tr>
-<tr>
-<td>Sulawesi Selatan</td>
-<td>SN</td>
-</tr>
-<tr>
-<td>Maluku Utara</td>
-<td>MU</td>
-</tr>
-<tr>
-<td>Kepulauan Riau</td>
-<td>KR</td>
-</tr>
-<tr>
-<td>Kepulauan Bangka Belitung</td>
-<td>BB</td>
-</tr>
-<tr>
-<td>Kalimantan Utara</td>
-<td>KU</td>
-</tr>
-<tr>
-<td>Papua Barat</td>
-<td>PB</td>
-</tr>
-</tbody></table>
-
-<h2 id="pakistan">Pakistan</h2>
-
-<table><thead>
-<tr>
-<th>State</th>
-<th>Code</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Punjab</td>
-<td>PB</td>
-</tr>
-<tr>
-<td>Sindh</td>
-<td>SD</td>
-</tr>
-<tr>
-<td>North-West Frontier</td>
-<td>KP</td>
-</tr>
-<tr>
-<td>Balochistan</td>
-<td>BA</td>
-</tr>
-<tr>
-<td>Northern Areas</td>
-<td>GB</td>
-</tr>
-<tr>
-<td>Azad Kashmir</td>
-<td>JK</td>
-</tr>
-<tr>
-<td>Federally Administered Tribal Areas</td>
-<td>TA</td>
-</tr>
-<tr>
-<td>Islamabad</td>
-<td>IS</td>
 </tr>
 </tbody></table>
 
