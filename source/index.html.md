@@ -3374,7 +3374,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageLength": 2.5,
     "packageBreadth": 2.5,
     "packageHeight": 2.5,
-    "priority": "High",
+    "priority": "PRIORITY1",
     "serviceType":"Premium",
     "paymentType": "COD",
     "packageValue": "5000",
@@ -3601,7 +3601,7 @@ packageVolume | Double | 10,3 | Optional | Order package volume. The unit of mea
 packageLength | Double | 10,3 | Optional | Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageBreadth| Double | 10,3 | Optional | Order package width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | Order package hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
-priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 serviceType | String | 16 | Optional | Order Service Type.
 packageValue | Double | 10 | Optional | Order value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
@@ -3687,7 +3687,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageLength": 2.5,
     "packageBreadth": 2.5,
     "packageHeight": 2.5,
-    "priority": "High",
+    "priority": "PRIORITY1",
     "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "500",
@@ -3891,7 +3891,7 @@ packageVolume | Double | 10,3 | Optional | Order package volume. The unit of mea
 packageLength | Double | 10,3 | Optional | Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageBreadth| Double | 10,3 | Optional | Order package breadth.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | Order package height. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
-priority | String | 16 | Optional | This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+priority | String | 16 | Optional | This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 serviceType | String | 16 | Optional |This is the service type of the Order.
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
@@ -3974,7 +3974,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
     "packageVolume": "4500",
-    "priority": "High",
+    "priority": "PRIORITY3",
     "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "5000",
@@ -4204,7 +4204,7 @@ packageVolume | Double | 10,3 | Optional | Order package Volume. The unit of mea
 packageLength | Double | 10,3 | Optional | Order package length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageBreadth| Double | 10,3 | Optional | Order package breadth.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | Order package height.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
-priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 serviceType | String | 16 | Optional | Order service type.
 packageValue | Double | 10 | Optional | Order value.
 numberOfItems | Integer | 20 | Optional | This is the number of crates.
@@ -4260,8 +4260,8 @@ returnStartTimeWindow | Date |  | Mandatory | Return start time window. Format -
 returnEndTimeWindow | Date |  | Mandatory | Return end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 returnAccountCode | String | 255 | Mandatory | Return account code
 returnAccountName | String | 255 | Mandatory | Return account name
-returnEmail | String | 100 | Conditional Mandatory | Return account code. This field in Non Mandatory in case Customer Profiling in ON.
-returnPhoneNumber | String | 255 | Conditional Mandatory | Return account name. This field in Non Mandatory in case Customer Profiling in ON.
+returnEmail | String | 100 | Conditional Mandatory | Return email address. This field in Non Mandatory in case Customer Profiling in ON.
+returnPhoneNumber | String | 255 | Conditional Mandatory | Return Phone number. This field in Non Mandatory in case Customer Profiling in ON.
 returnApartment | String | 512 | Conditional Mandatory | This is the return location's Apartment. This field in Non Mandatory in case Customer Profiling in ON.
 returnStreetName | String | 512 | Conditional Mandatory | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
 returnLandmark | String | 512 | Optional | This is the pickup location's landmark.
@@ -4326,7 +4326,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "packageLength":5,
     "packageBreadth":5,
     "packageHeight":5,
-    "priority": "High",
+    "priority": "PRIORITY1",
     "serviceType":"Premium",
     "paymentType": "Prepaid",
     "packageValue": "5000",
@@ -4553,7 +4553,7 @@ packageVolume | Double | 10,3 | Optional | This is the volume of package.The uni
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
-priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 serviceType | String | 16 | Optional | This is the service type of the Order.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
@@ -4849,7 +4849,7 @@ packageVolume | Double | 10,3 | Optional | This is the volume of package.The uni
 packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
-priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'High', and 'Low', or 'Gold' and 'Silver'.
+priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
 paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
