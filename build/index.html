@@ -8666,7 +8666,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>This is the order type code. BOTH for pickup &amp; delivery leg order</td>
+<td>This is the order type code. This will be DELIVER for a point to point type of Order.</td>
 </tr>
 <tr>
 <td>autoAllocateFl</td>
@@ -11016,8 +11016,8 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"returnStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-18T03:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-18T16:00:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc123"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"returnAddressId"</span><span class="p">:</span><span class="s2">"JeffOffice"</span><span class="w">
-    </span><span class="s2">"returnAccountName"</span><span class="err">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAddressId"</span><span class="p">:</span><span class="s2">"JeffOffice"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retAcc1234"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9891235886"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
@@ -12067,6 +12067,8 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.</p>
 
+<p>This API accepts only one Order Reference ID in a request</p>
+
 <p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
@@ -12105,9 +12107,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-     </span><span class="s2">"c8714df4347911e6829f000d3aa044508"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"c8714df4347911e6829f654677aa04450"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"c8714df4347911e436667888d3aa04450"</span><span class="w">
+     </span><span class="s2">"c8714df4347911e6829f000d3aa044508"</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -12162,11 +12162,19 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <h3 id="get-epod-and-esign">Get EPOD and ESIGN</h3>
 
-<p>This endpoint downloads the EPODs and ESIGNs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.</p>
+<p>This endpoint downloads the EPODs and ESIGNs for given order. </p>
+
+<p>The API responds with a 202 Request received response along with a request ID that uniquely identifies each request of the API. A webhook response is triggered once the images are fetched with the URL to the EPOD/ ESign images. This webhook also has the same request ID to confirm which Order images are being sent.</p>
+
+<p>Calling the URL in the webhook downloads a compressed zip file with the EPOD and ESigns for the Orders sent in the request.</p>
+
+<p>The URL in the webhook has a validity of 1 hour. If you wish to download and save the images in your system, please download these files within one hour of consuming this webhook.</p>
+
+<p>NOTE: The dates accepted are in UTC.</p>
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&amp;orderenddt=2016-06-16 00:30:00&amp;deliverystartdt=2015-06-15 00:00:00&amp;deliveryenddt=2016-06-15 00:00:00&amp;status=NOTDISPATCHED</code></p>
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/mile/v2/epod/list?orderReferenceId=5e7a0f2804f14cd591a4740dfc7abdf1</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -12180,62 +12188,46 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 </tr>
 </thead><tbody>
 <tr>
-<td>orderstartdt</td>
+<td>orderNo</td>
 <td>String</td>
-<td></td>
-<td>Optional</td>
-<td>This parameter will retrieve the EPODs for Orders with an Order Date greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with orderenddt.</td>
+<td>40</td>
+<td>Conditional Mandatory</td>
+<td>Order Number of the Order for which EPOD/ ESign is required. Mandatory if orderReferenceId is not passed.</td>
 </tr>
 <tr>
-<td>orderenddt</td>
+<td>orderReferenceId</td>
 <td>String</td>
-<td></td>
-<td>Optional</td>
-<td>This parameter will retrieve the EPODs for Orders  with an Order Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with orderstartdt.</td>
-</tr>
-<tr>
-<td>deliverystartdt</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>This parameter will retrieve the EPODs for Orders with an Order Deliver Date  greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with deliveryenddt.</td>
-</tr>
-<tr>
-<td>deliveryenddt</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>This parameter will retrieve the EPODs for Orders  with an Order Deliver Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with deliverystartdt.</td>
-</tr>
-<tr>
-<td>startDateFilter</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>This field will work based on status - if status is ALL then it will retrieve the data greater than this date.if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. Else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter.</td>
-</tr>
-<tr>
-<td>endDateFilter</td>
-<td>String</td>
-<td></td>
-<td>Optional</td>
-<td>It will work based on status if status = ALL then it will get all data less than this date.if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window, else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>String</td>
-<td>20</td>
-<td>Optional</td>
-<td>Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>Order Number of the Order for which EPOD/ ESign is required Mandatory if orderNo is not passed.</td>
 </tr>
 </tbody></table>
 
-<h4 id="response">Response</h4>
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">202</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPOD-ESign request received successfully"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb82b48ba4c44370b48c04dc168f0e68"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p>Response is a binary zip file.<br>
-The images for the EPODs and ESIGNs will be downloaded in .png formats when unzipped
-In any browser just hit the url and zip file download will start automatically.<br>
-In tools like POSTMAN instead of clicking &#39;Send&rsquo; button click on &#39;Send &amp; Download&rsquo; button, which will save the zip file.</p>
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order referenceId does not exist"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
 
 <h3 id="get-custom-forms">Get Custom Forms</h3>
 
@@ -14178,14 +14170,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>Get Geocode - Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"summerset building"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"powai"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dmart"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hirananddanin"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mumbai"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="w">
+ </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"611"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5th Ave"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"near Saks"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York City"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10022"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -14193,16 +14184,18 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>Get Geocode - Sample Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
- </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
- </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geocodes Fetched Successfully"</span><span class="p">,</span><span class="w">
- </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-     </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.11736939999999</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.9103214</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE_PLACES"</span><span class="w">
-   </span><span class="p">}</span><span class="w">
- </span><span class="p">],</span><span class="w">
- </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Geocodes Fetched Successfully"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+           </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.75813</span><span class="p">,</span><span class="w">
+           </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9772</span><span class="p">,</span><span class="w">
+           </span><span class="nt">"geocodingSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGLE_GEOCODING"</span><span class="p">,</span><span class="w">
+           </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[department_store, establishment, point_of_interest, store]"</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -14211,7 +14204,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get</code></p>
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com//CommonApp/mile/v1/geocode</code></p>
 
 <h4 id="request-parameters">Request Parameters</h4>
 
@@ -18127,6 +18120,58 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </tr>
 </tbody></table>
 
+<h3 id="get-epod-and-esign">Get EPOD and ESign</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-29 14:16:13"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GETEPODNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bucketname.s3.ap-southeast-1.amazonaws.com/images/EPOD_ESIGN/EPOD2019_08_29_14_16_12.zip?X-..."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5d95546b50e45d2b73f9cdad7dbac18"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This notification is triggered in response to calling the Get EPOD and ESign API, and has the URL to the EPOD and ESign images for the Orders that were requested in the API. </p>
+
+<p>This webhook also has the requestId field that is also received in the response of the API request. Use this field to verify which request the webhook has been triggered form.</p>
+
+<p>Calling the URL recevied in the webhook will auomatically trigger a download of a compressed file that has all the images that were uploaded against the Order. This URL is valid for 1 hour from the time at which the request is received. </p>
+
+<h4 id="response-parameters">Response Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>UTC time at which the notification was triggered.</td>
+</tr>
+<tr>
+<td>notificationType</td>
+<td>String</td>
+<td>GETEPODNOTIFICATION</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>URL of the compressed file that contains the EPOD and ESign images for the Order. This URL is valid for 1 hour from the time of being triggered.</td>
+</tr>
+<tr>
+<td>requestId</td>
+<td>String</td>
+<td>Unique request identifier to reconcile which API request the webhook was triggered against.s</td>
+</tr>
+</tbody></table>
+
 <h3 id="custom-form">Custom Form</h3>
 
 <blockquote>
@@ -21824,6 +21869,25 @@ Note that the state code you enter should map to the country code entered in the
 <td>Tasmania</td>
 </tr>
 </tbody></table>
+
+<h2 id="bangladesh">Bangladesh</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>Dhaka | Dhaka
+Khulna  | Khulna
+Rājshāhi  | Rajshahi
+Chattogram | Chittagong
+Sylhet | Sylhet
+Barisāl | Barisal
+Rangpur | GI
+Mymensingh | MY</p>
 
 <h2 id="canada">Canada</h2>
 

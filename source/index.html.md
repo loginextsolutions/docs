@@ -4543,7 +4543,7 @@ Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
 orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
-shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
+shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. This will be DELIVER for a point to point type of Order.
 autoAllocateFl| String | 50 | Optional |This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
@@ -5509,7 +5509,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "returnStartTimeWindow": "2017-05-18T03:00:00.000Z",
     "returnEndTimeWindow": "2017-05-18T16:00:00.000Z",
     "returnAccountCode": "retAcc123",
-    "returnAddressId":"JeffOffice"
+    "returnAddressId":"JeffOffice",
     "returnAccountName": "retAcc1234",
     "returnEmail": "james.w@ablogs.com",
     "returnPhoneNumber": "9891235886",
@@ -5969,6 +5969,7 @@ The API accepts a single Order Reference ID in the request and checks if the Ord
 
 This API will not revise the ETAs of other Orders in the Trip after unassigning the current Order, not will it resequnce the remaining Orders to come up with the new optimised sequnce of Orders in that Trip. You will need to call the LogiNext Replan API in order to revise ETAs and resequnce the Orders in the Trip.
 
+This API accepts only one Order Reference ID in a request
 
 API Type: Tier 1 API
 
@@ -5998,9 +5999,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 
 ```json
 [
-     "c8714df4347911e6829f000d3aa044508",
-     "c8714df4347911e6829f654677aa04450",
-     "c8714df4347911e436667888d3aa04450"
+     "c8714df4347911e6829f000d3aa044508"
 ]
 ```
 
@@ -6044,30 +6043,53 @@ reference_ids | List  | Mandatory | This is the order reference Id.
 
 ### Get EPOD and ESIGN
 
-This endpoint downloads the EPODs and ESIGNs for given order, delivery dates and status of order. The response is in form of a zip file. NOTE: The dates accepted are in UTC.
+This endpoint downloads the EPODs and ESIGNs for given order. 
+
+The API responds with a 202 Request received response along with a request ID that uniquely identifies each request of the API. A webhook response is triggered once the images are fetched with the URL to the EPOD/ ESign images. This webhook also has the same request ID to confirm which Order images are being sent.
+
+Calling the URL in the webhook downloads a compressed zip file with the EPOD and ESigns for the Orders sent in the request.
+
+The URL in the webhook has a validity of 1 hour. If you wish to download and save the images in your system, please download these files within one hour of consuming this webhook.
+
+NOTE: The dates accepted are in UTC.
 
 #### Request
 
-<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/shipment/fmlm/epod/list?orderstartdt=2015-06-16 00:00:00&orderenddt=2016-06-16 00:30:00&deliverystartdt=2015-06-15 00:00:00&deliveryenddt=2016-06-15 00:00:00&status=NOTDISPATCHED`
+<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/epod/list?orderReferenceId=5e7a0f2804f14cd591a4740dfc7abdf1`
 
 #### Request Parameters
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-orderstartdt | String |  | Optional | This parameter will retrieve the EPODs for Orders with an Order Date greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with orderenddt.
-orderenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with orderstartdt.
-deliverystartdt | String |  | Optional | This parameter will retrieve the EPODs for Orders with an Order Deliver Date  greater than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS. This parameter has to be entered along with deliveryenddt. 
-deliveryenddt | String |  | Optional | This parameter will retrieve the EPODs for Orders  with an Order Deliver Date less than or equal to the date entered. The date format entered should be YYYY-MM-DD HH:MM:SS . This parameter has to be entered along with deliverystartdt. 
-startDateFilter | String |  | Optional | This field will work based on status - if status is ALL then it will retrieve the data greater than this date.if status is NOTDISPATCHED, it will get EPODs for Orders between ORDER start time window and end time window. Else it will get data between ORDER actual START and END Date. This parameter has to be entered along with endDateFilter. 
-endDateFilter | String |  | Optional | It will work based on status if status = ALL then it will get all data less than this date.if status*=*NOTDISPATCHED then it will retrieve EPODs for Orders between ORDER start time window and end time window, else it will get data between ORDER actual START and END Date. This parameter has to be entered along with startDateFilter. 
-status | String | 20 | Optional | Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,DELIVERED,<BR>NOTDELIVERED,PICKEDUP,NOTPICKEDUP,CANCELLED
+orderNo | String | 40 | Conditional Mandatory | Order Number of the Order for which EPOD/ ESign is required. Mandatory if orderReferenceId is not passed.
+orderReferenceId | String | 32 | Conditional Mandatory | Order Number of the Order for which EPOD/ ESign is required Mandatory if orderNo is not passed.
 
-#### Response
 
-Response is a binary zip file.<br>
-The images for the EPODs and ESIGNs will be downloaded in .png formats when unzipped
-In any browser just hit the url and zip file download will start automatically.<br>
-In tools like POSTMAN instead of clicking 'Send' button click on 'Send & Download' button, which will save the zip file.
+> Success Response
+
+```json
+{
+     "status": 202,
+     "message": "EPOD-ESign request received successfully",
+     "requestId": "fb82b48ba4c44370b48c04dc168f0e68",
+     "moreResultsExists": false,
+     "hasError": false
+}
+
+```
+
+> Failure Response
+
+```json
+
+{
+   "status": 409,
+   "message": "Order referenceId does not exist",
+   "moreResultsExists": false,
+   "hasError": true
+}
+
+```
 
 ### Get Custom Forms
 
@@ -7287,14 +7309,13 @@ shipments.type | List |  | Mandatory | Type of orders
 
 ```json
 {
-  "apartment": "summerset building",
-  "streetName": "powai",
-  "landmark": "dmart",
-  "locality": "hirananddanin",
-  "city": "mumbai",
-  "country": "India",
-  "state": "Maharashtra",
-  "pincode": "400076"
+ "apartment": "611",
+ "streetName": "5th Ave",
+ "landmark": "near Saks",
+ "city": "New York City",
+ "country": "United States",
+ "state": "NY",
+ "pincode": "10022"
 }
 ```
 
@@ -7302,16 +7323,18 @@ shipments.type | List |  | Mandatory | Type of orders
 
 ```json
 {
- "status": 200,
- "message": "Geocodes Fetched Successfully",
- "data": [
-   {
-     "lat": 19.11736939999999,
-     "lng": 72.9103214,
-     "geocodingSource": "GOOGLE_PLACES"
-   }
- ],
- "hasError": false
+   "status": 200,
+   "message": "Geocodes Fetched Successfully",
+   "moreResultsExists": false,
+   "data": [
+       {
+           "lat": 40.75813,
+           "lng": -73.9772,
+           "geocodingSource": "GOOGLE_GEOCODING",
+           "types": "[department_store, establishment, point_of_interest, store]"
+       }
+   ],
+   "hasError": false
 }
 
 ```
@@ -7320,7 +7343,7 @@ This API gets coordinates for a given location.
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
+<span class="post">POST</span>`https://api.loginextsolutions.com//CommonApp/mile/v1/geocode`
 
 
 #### Request Parameters
@@ -9134,6 +9157,39 @@ orderReferenceId | String |  Reference ID of the order.
 lastRunDt | String |  Last run time of the allocation engine
 isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
 
+
+### Get EPOD and ESign
+
+> Response
+
+```json
+
+{
+  "timestamp": "2019-08-29 14:16:13",
+  "notificationType": "GETEPODNOTIFICATION",
+  "url": "https://bucketname.s3.ap-southeast-1.amazonaws.com/images/EPOD_ESIGN/EPOD2019_08_29_14_16_12.zip?X-...",
+  "requestId": "e5d95546b50e45d2b73f9cdad7dbac18"
+}
+
+```
+
+This notification is triggered in response to calling the Get EPOD and ESign API, and has the URL to the EPOD and ESign images for the Orders that were requested in the API. 
+
+This webhook also has the requestId field that is also received in the response of the API request. Use this field to verify which request the webhook has been triggered form.
+
+Calling the URL recevied in the webhook will auomatically trigger a download of a compressed file that has all the images that were uploaded against the Order. This URL is valid for 1 hour from the time at which the request is received. 
+
+
+#### Response Parameters
+
+Key | DataType | Description
+--------- | ------- |-------
+timestamp | String | UTC time at which the notification was triggered.
+notificationType | String |  GETEPODNOTIFICATION
+url | String |  URL of the compressed file that contains the EPOD and ESign images for the Order. This URL is valid for 1 hour from the time of being triggered.
+requestId | String |  Unique request identifier to reconcile which API request the webhook was triggered against.s
+
+
 ### Custom Form
 
 > Response
@@ -10707,6 +10763,19 @@ Victoria|Victoria
 Queensland|Queensland
 South Australia|South Aust
 Tasmania|Tasmania
+
+## Bangladesh 
+State | Code
+--------- | ---------
+
+Dhaka | Dhaka
+Khulna  | Khulna
+Rājshāhi  | Rajshahi
+Chattogram | Chittagong
+Sylhet | Sylhet
+Barisāl | Barisal
+Rangpur | GI
+Mymensingh | MY
 
 ## Canada
 
