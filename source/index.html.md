@@ -4919,7 +4919,7 @@ shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | 
 shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
 
 
-### Create E2E Order Template
+### Create Recurring E2E Order
 
 > Definition
 
@@ -5024,14 +5024,12 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 ```json
 {
     "status": 200,
-    "message": "Order(s) created successfully",
-    "data": [
-        {
-            "index": 0,
-            "referenceId": "6a34c7274df0489f97c0f891514b488b",
-            "orderNumber": "ww1223"
-        }
-    ],
+    "message": "Order template created successfully",
+    "moreResultsExists": false,
+    "data": {
+        "orderTemplateReferenceId": "ed7cfd8b400b488babebb68d33f1ddbb",
+        "orderTemplateNumber": "FM_QQWA"
+    },
     "hasError": false
 }
 
@@ -5042,31 +5040,29 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 
 ```json
 {
-   "status": 409,
-   "message": "",
-   "moreResultsExists": false,
-   "error": [
-       {
-           "index": 0,
-           "orderNo": "HYN001",
-           "errorList": [
-               {
-                   "key": "returnBranch",
-                   "message": [
-                       "Return Branch name is mandatory."
-                   ]
-               }
-           ]
-       }
-   ],
-   "hasError": true
+    "status": 409,
+    "message": "Order template creation failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "errorList": [
+                {
+                    "key": "orderTemplateNumber",
+                    "message": [
+                        "Order template number already exists"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
 }
 
 ```
 
-With This API you can a template for All Mile type of Orders. 
+With This API you can create a Recurring All Mile type of Order. 
 
-Order Templates can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.
+Recurring Orders can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.
 
 The API accepts 2 objects in its request body. The 'orderTemplateDetails' object holds the details of the Orders to be created, and the 'schedulerDetails' objects which defines the frequency and duration of the recurring Order entities.
 
@@ -5883,6 +5879,243 @@ returnCity | String | 512 | Optional | This is the return customer's city.
 returnState| String | 512 | Optional | Return State code. Please refer to the list of state codes provided in the "State Codes" section.
 returnCountry | String | 512 | Optional | Return Country code. Please refer to the list of country codes provided in the "Country Codes" section.
 returnPinCode | String | 20 | Optional | This is the return customer's pincode.
+
+
+### Update Recurring E2E Order
+
+> Definition
+
+```json
+ https://demo.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/template/update
+```
+
+> Request Body
+
+```json
+
+
+{
+"orderTemplateDetails": {
+"orderTemplateReferenceId":"a8462eb3838d4701bf6182de315c0b14",
+"awbNumber": "435-16685675",
+"shipmentOrderTypeCd": "ALLMILE",
+"orderState": "FORWARD",
+"autoAllocateFl": "N",
+"shipmentOrderDt": "2016-07-15T10:30:00.000Z",
+"distributionCenter": "Down Town Chicago",
+"originBranchName" :"Houston",
+"destinationBranchName" : "Boston",
+"routeConfigurationName": "Houston-Boston",
+"nextBranchName":"Cupertino",
+"nextBranchServiceTime": 5,
+"nextBranchStartTimeWindow" : "2016-07-15T10:30:00.000Z",
+"nextBranchEndTimeWindow": "2016-07-15T10:30:00.000Z",
+"deliveryType": "Groceries",
+"serviceTypeCd": "Economy",
+"packageWeight":"10",
+"packageVolume": "4500",
+"paymentType": "Prepaid",
+"packageValue": "5000",
+"numberOfItems": 1,
+"partialDeliveryAllowedFl": "Y",
+"cancellationAllowedFl": "N",    
+"deliverServiceTime": "20",
+"deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
+"deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
+"deliveryLocationType":"Home",
+"deliverEmail":"m.richardson@testmail.com",
+"deliverPhoneNumber":"9891234567",
+"deliverAccountCode": "Matt001",
+"deliverAddressId": "home",
+"deliverAccountName": "Mathew Richardson",
+"deliverApartment": "201",
+"deliverStreetName": "E Randolph St",
+"deliverLandmark": "Opp. Chiptole",
+"deliverLocality": "Down Town Chicago",
+"deliverCity": "Chicago",
+"deliverState": "IL",
+"deliverCountry": "USA",
+"deliverPinCode": "60602",
+"deliverLatitude":41.882702,
+"deliverLongitude":-87.619392,   
+"deliverAddressTimezone":"America/Chicago",  
+"deliverBranch": "East Manhattan",
+"pickupBranch":"East Manhattan",
+"pickupServiceTime": "50",
+"pickupStartTimeWindow": "2016-07-16T14:24:00.000Z",
+"pickupEndTimeWindow": "2016-07-17T14:24:00.000Z",
+"pickupEmail":"james.w@ablogs.com",
+"pickupPhoneNumber": "5163063377",
+"pickupAccountCode": "jim001",
+"pickupAddressId": "Home",
+"pickupAccountName": "James Walker",
+"pickupApartment": "901",
+"pickupStreetName": "2142 3rd Ave",
+"pickupLandmark": "Opp. McDonalds",
+"pickupLocality": "East Harlem",
+"pickupCity": "New York",
+"pickupState": "NY",
+"pickupCountry": "USA",
+"pickupPinCode": "10035",
+"pickupLatitude":40.760838,
+"pickupLongitude":-73.96732299999996,  
+"pickupAddressTimezone":"America/New_York",  
+"pickupNotes": "PickedUp",
+"deliverNotes": "Delivered",
+"clientCode": "Salestap",
+
+"shipmentCrateMappings": []
+}
+,
+"schedulerDetails": {
+"startDate": "2019-09-23T11:00:00.000Z",
+"endDate": "2019-09-25T15:00:00.000Z",
+"frequency": "DAILY",
+"weekDays":"Tuesday,Thursday",
+"interval": 0,
+"numberOfOccurrences": 1
+}
+}
+
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Order template updated successfully",
+    "moreResultsExists": false,
+    "data": {
+        "orderTemplateReferenceId": "d5c2add00b9146beb8fce30b257c0e9d",
+        "orderTemplateNumber": "FM_AQWA"
+    },
+    "hasError": false
+}
+
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Order template update failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "errorList": [
+                {
+                    "key": "orderTemplateReferenceId",
+                    "message": [
+                        "orderTemplateReferenceId is mandatory"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+With This API you can update a recurring Order for All Mile type of Orders. 
+
+Recurring Orders can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.
+
+The API accepts 2 objects in its request body. The 'orderTemplateDetails' object holds the details of the Orders to be created, and the 'schedulerDetails' objects which defines the frequency and duration of the recurring Order entities.
+
+If the API request is sent for example on a Tuesday, with the first Order occurance for Wednesday, the first Order occurances for that week will be created immediately. Order occurances for subsequent weeks will be created every Sunday.
+
+
+API Type: Tier 1 API
+
+
+
+#### Request
+
+<span class="post">PUT</span>`https://demo.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/template/update`
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+orderTemplateReferenceId | String | 100 | Mandatory |  This is the order Template Number. Orders for this Template will be created by appending the date time to the Order Template number with which the request was passed.
+awbNumber | String | 1000 | Optional | This is the airway Bill No.
+shipmentOrderTypeCd | String | 40 | Optional | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
+autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+orderState | String | 512 | Optional | This is the state of order. Ex: FORWARD
+shipmentOrderDt | Date |  | Optional | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+originBranchName |  String | 255 | Optional | This is the Origin branch of the Order
+destinationBranchName |  String | 255 | Optional | This is the Destination branch of the Order
+routeConfigurationName |  String | 255 | Optional | This is the route of the Order
+deliveryType | String | 40 | Optional | Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
+serviceTypeCd |  String | 255 | Optional | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
+distributionCenter | String | 255 | Optional | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
+packageValue | Double | 10 | Optional | This is the value of package
+numberOfItems | Integer | 20 | Optional | This is the number of crates
+paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
+returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
+cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
+pickupServiceTime | Integer | 11 | Optional | Pickup service time in mins.
+pickupStartTimeWindow | Date |  | Optional | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupEndTimeWindow | Date |  | Optional | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+pickupAccountCode | String | 255 | Optional | Pickup account code
+pickupAccountName | String | 255 | Optional | Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupEmail| String | 100 | Optional | Email of the merchant
+pickupPhoneNumber| String | 255 | Optional | Phone number of the merchant
+pickupApartment | String | 512 | Optional | This is the pickup location's apartment. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Optional | This is the pickup location's street name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Optional | This is the pickup location's  landmark.
+pickupLocality | String | 512 | Optional | This is the pickup location's locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Optional | This is the pickup location's city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Optional | This is the pickup location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Optional | This is the pickup location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupPinCode | String | 20 | Optional | This is the pickup location's pincode. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the pickup location.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup location.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional pickup comments associated with the order
+deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example -  ‘CUSTOMER’.
+deliverAccountCode | String | 255 | Optional | Customer ID of the Delivery Customer.
+deliverAccountName | String | 255 | Optional | Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail| String | 100 | Optional | Email of the customer
+deliverPhoneNumber| String | 255 | Optional | Phone number of the customer
+deliverApartment | String | 512 | Conditional Mandatory | This is the delivery customer location's apartment details. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Optional | This is the delivery customer location's Street name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLandmark | String | 512 | Optional | This is the delivery customer location's Landmark.
+deliverLocality | String | 512 | Optional | This is the delivery customer location's Locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Optional | This is the delivery customer location's City. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Optional | This is the delivery customer location's state code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Optional | This is the delivery customer location's country code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | This field in Non Mandatory in case Customer Profiling in ON. Mandatory | This is the delivery customer location's Pincode. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLatitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverLongitude | Double | 100 | Optional | The geolocation coordinate (latitude) of the delivery customer.
+deliverAddressTimezone | String | | Optional | The timezone of the delivery location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.
+deliverNotes | String | 512 | Optional | Additional delivery comments associated with the order
+clientCode | String | 32 | Optional | With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.
+schedulerDetails | Object | | | The Scheduler Details object has the details for defining the duration and frequency of the Orders to be creatted against this Order Template.
+startDate | DateTime | | Optional | The start date time from which the Order instances for the Template should be created.
+endDate | DateTime |  | Optional | The end date time from which the Order instances for the Template should be created. If not passed, the API will consider only one instance of the Order Template.
+frequency | String | | Optional | The frequncy of the occurance of Orders for the Template. This can be 'DAILY' for daily recurrance, 'WEEKLY' for weekly recurrance, 'MONTHLY' for monthly recurrance, or 'CUSTOM', in case a specific recurrance pattern is to be defined, like every alternate day for example. This field is required if weekDays is not passed.
+weekDays | String |  | Optional | Comma separated list of day names for which the Order occurances are to be created. This field is required if frequency is 'CUSTOM'.
+numberOfOccurrences | Number |  | Optional | Number of occurance of the Order Template.
+interval | Number | | Optional | In case you want to create Order occurances once every 2 weeks, you can use this field and a frequency of 'WEEKLY'.
+
 
 ### Update Status
 

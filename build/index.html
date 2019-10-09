@@ -9970,7 +9970,7 @@ When Customer Profiling is turned ON -
 </tr>
 </tbody></table>
 
-<h3 id="create-e2e-order-template">Create E2E Order Template</h3>
+<h3 id="create-recurring-e2e-order">Create Recurring E2E Order</h3>
 
 <blockquote>
 <p>Definition</p>
@@ -10073,14 +10073,12 @@ When Customer Profiling is turned ON -
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order(s) created successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ww1223"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order template created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"orderTemplateReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed7cfd8b400b488babebb68d33f1ddbb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"orderTemplateNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM_QQWA"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -10090,31 +10088,29 @@ When Customer Profiling is turned ON -
 <p>Failure Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
-   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-   </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-   </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-       </span><span class="p">{</span><span class="w">
-           </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HYN001"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-               </span><span class="p">{</span><span class="w">
-                   </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"returnBranch"</span><span class="p">,</span><span class="w">
-                   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                       </span><span class="s2">"Return Branch name is mandatory."</span><span class="w">
-                   </span><span class="p">]</span><span class="w">
-               </span><span class="p">}</span><span class="w">
-           </span><span class="p">]</span><span class="w">
-       </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order template creation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderTemplateNumber"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Order template number already exists"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
-<p>With This API you can a template for All Mile type of Orders. </p>
+<p>With This API you can create a Recurring All Mile type of Order. </p>
 
-<p>Order Templates can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.</p>
+<p>Recurring Orders can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.</p>
 
 <p>The API accepts 2 objects in its request body. The &#39;orderTemplateDetails&rsquo; object holds the details of the Orders to be created, and the &#39;schedulerDetails&rsquo; objects which defines the frequency and duration of the recurring Order entities.</p>
 
@@ -12180,6 +12176,668 @@ When Customer Profiling is turned ON -
 <td>20</td>
 <td>Optional</td>
 <td>This is the return customer&rsquo;s pincode.</td>
+</tr>
+</tbody></table>
+
+<h3 id="update-recurring-e2e-order">Update Recurring E2E Order</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w"> </span><span class="err">https://demo.loginextsolutions.com/ShipmentApp/middlemile/v</span><span class="mi">1</span><span class="err">/shipment/template/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+
+</span><span class="p">{</span><span class="w">
+</span><span class="nt">"orderTemplateDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="nt">"orderTemplateReferenceId"</span><span class="p">:</span><span class="s2">"a8462eb3838d4701bf6182de315c0b14"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLMILE"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"originBranchName"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Houston"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"destinationBranchName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"routeConfigurationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Houston-Boston"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"nextBranchName"</span><span class="p">:</span><span class="s2">"Cupertino"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"nextBranchServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+</span><span class="nt">"nextBranchStartTimeWindow"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"nextBranchEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"serviceTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Economy"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+</span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverPhoneNumber"</span><span class="p">:</span><span class="s2">"9891234567"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matt001"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E Randolph St"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60602"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">   
+</span><span class="nt">"deliverAddressTimezone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="p">,</span><span class="w">  
+</span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Manhattan"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"East Manhattan"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">  
+</span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">  
+</span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
+
+</span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">,</span><span class="w">
+</span><span class="nt">"schedulerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23T11:00:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-25T15:00:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"weekDays"</span><span class="p">:</span><span class="s2">"Tuesday,Thursday"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"numberOfOccurrences"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order template updated successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"orderTemplateReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d5c2add00b9146beb8fce30b257c0e9d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"orderTemplateNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM_AQWA"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order template update failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderTemplateReferenceId"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"orderTemplateReferenceId is mandatory"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>With This API you can update a recurring Order for All Mile type of Orders. </p>
+
+<p>Recurring Orders can be used in operations where there are subscriptions or visits to be catered to, where the same Order level parameters are requried to be created in the system at different times depending on the schedule and frequency of these transactions.</p>
+
+<p>The API accepts 2 objects in its request body. The &#39;orderTemplateDetails&rsquo; object holds the details of the Orders to be created, and the &#39;schedulerDetails&rsquo; objects which defines the frequency and duration of the recurring Order entities.</p>
+
+<p>If the API request is sent for example on a Tuesday, with the first Order occurance for Wednesday, the first Order occurances for that week will be created immediately. Order occurances for subsequent weeks will be created every Sunday.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://demo.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/template/update</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderTemplateReferenceId</td>
+<td>String</td>
+<td>100</td>
+<td>Mandatory</td>
+<td>This is the order Template Number. Orders for this Template will be created by appending the date time to the Order Template number with which the request was passed.</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>This is the airway Bill No.</td>
+</tr>
+<tr>
+<td>shipmentOrderTypeCd</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>This is the order type code. With this API you can create &#39;FM&rsquo;(First Mile), &#39;LM&rsquo;(Last Mile), or &#39;ALLMILE&rsquo; type of Orders. &#39;ALLMILE&rsquo; Orders are Orders that have more than one leg of movements.</td>
+</tr>
+<tr>
+<td>autoAllocateFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>orderState</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the state of order. Ex: FORWARD</td>
+</tr>
+<tr>
+<td>shipmentOrderDt</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>originBranchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Origin branch of the Order</td>
+</tr>
+<tr>
+<td>destinationBranchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Destination branch of the Order</td>
+</tr>
+<tr>
+<td>routeConfigurationName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the route of the Order</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an &#39;ALLMILE&rsquo; type of Order.</td>
+</tr>
+<tr>
+<td>serviceTypeCd</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a &#39;Premium&rsquo; service type can have shorter SLAs than Orders having &#39;Normal&rsquo; service types. This field is Mandatory if you are creating an &#39;ALLMILE&rsquo; type of Order.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of package.The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+</tr>
+<tr>
+<td>packageLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;PRIORITY1&rsquo;, &#39;PRIORITY2&rsquo;, or &#39;PRIORITY3&rsquo;.</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>This is the value of package</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>This is the number of crates</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+</tr>
+<tr>
+<td>partialDeliveryAllowedFl</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This field indicates if partial Delivery allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>returnAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>This field indicates if return is allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>cancellationAllowedFl</td>
+<td>String</td>
+<td>1</td>
+<td>Optional</td>
+<td>This field indicates if cancellation is allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>pickupServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>Pickup service time in mins.</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pickup account code</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pickup account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Email of the merchant</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Phone number of the merchant</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s  landmark.</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s city. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s state code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s country code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>This is the pickup location&rsquo;s pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the pickup location.</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the pickup location.</td>
+</tr>
+<tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional pickup comments associated with the order</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2018-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2018-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. For example -  ‘CUSTOMER’.</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Customer ID of the Delivery Customer.</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Email of the customer</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Phone number of the customer</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the delivery customer location&rsquo;s apartment details. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s Street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s Landmark.</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s Locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s City. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s state code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>This is the delivery customer location&rsquo;s country code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>This field in Non Mandatory in case Customer Profiling in ON. Mandatory</td>
+<td>This is the delivery customer location&rsquo;s Pincode. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td>100</td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td>100</td>
+<td>Optional</td>
+<td>The geolocation coordinate (latitude) of the delivery customer.</td>
+</tr>
+<tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the delivery location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the deliver location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional delivery comments associated with the order</td>
+</tr>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>With this field you can create Orders on behalf of your Customers(accounts) in LogiNext. An account is used to represent LogiNext’s Customer’s Customer.</td>
+</tr>
+<tr>
+<td>schedulerDetails</td>
+<td>Object</td>
+<td></td>
+<td></td>
+<td>The Scheduler Details object has the details for defining the duration and frequency of the Orders to be creatted against this Order Template.</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>DateTime</td>
+<td></td>
+<td>Optional</td>
+<td>The start date time from which the Order instances for the Template should be created.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>DateTime</td>
+<td></td>
+<td>Optional</td>
+<td>The end date time from which the Order instances for the Template should be created. If not passed, the API will consider only one instance of the Order Template.</td>
+</tr>
+<tr>
+<td>frequency</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The frequncy of the occurance of Orders for the Template. This can be &#39;DAILY&rsquo; for daily recurrance, &#39;WEEKLY&rsquo; for weekly recurrance, &#39;MONTHLY&rsquo; for monthly recurrance, or &#39;CUSTOM&rsquo;, in case a specific recurrance pattern is to be defined, like every alternate day for example. This field is required if weekDays is not passed.</td>
+</tr>
+<tr>
+<td>weekDays</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Comma separated list of day names for which the Order occurances are to be created. This field is required if frequency is &#39;CUSTOM&rsquo;.</td>
+</tr>
+<tr>
+<td>numberOfOccurrences</td>
+<td>Number</td>
+<td></td>
+<td>Optional</td>
+<td>Number of occurance of the Order Template.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>Number</td>
+<td></td>
+<td>Optional</td>
+<td>In case you want to create Order occurances once every 2 weeks, you can use this field and a frequency of &#39;WEEKLY&rsquo;.</td>
 </tr>
 </tbody></table>
 
