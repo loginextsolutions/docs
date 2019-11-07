@@ -1650,7 +1650,11 @@ tripname | TestTripName| Trip name
   "batteryPerc": 70.5,
   "speed": 40.4,
   "messageType": "REG",
-  "temperature": 30.5
+  "temperature": 30.5,
+  "reeferActive": true,
+  "harshDriving": 63.5,
+  "doorStatus":false
+
 }
 ```
 
@@ -1673,7 +1677,10 @@ batteryPerc | Double | 5,2 | Mandatory | Battery Percentage of device
 speed | Double | 5,2 | Optional | Speed with which consignment is moving
 messageType | String | 10 | Mandatory | Message type. Ex: REG
 temperature | Double | 5,2 | Optional | Consignment's temperature
-
+reeferActive | Boolean | | Optional | This represents the state of the Reefer. eeferActive=true represents the event when the Reefer is switched on and reeferActive=false refers to the event when Reefer is switched off
+harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has 
+been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
+doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed
 
 ### Create Tracking Record (Bulk)
 
@@ -1689,7 +1696,10 @@ temperature | Double | 5,2 | Optional | Consignment's temperature
   "batteryPerc": 70.5,
   "speed": 40.4,
   "messageType": "REG",
-  "temperature": 30.5
+  "temperature": 30.5,
+  "reeferActive": true,
+  "harshDriving": 63.5,
+  "doorStatus":false
   }, {
   "trackerId": "4209917397",
   "latitude": 40.760838,
@@ -1698,7 +1708,10 @@ temperature | Double | 5,2 | Optional | Consignment's temperature
   "batteryPerc": 70.5,
   "speed": 40.4,
   "messageType": "REG",
-  "temperature": 30.5
+  "temperature": 30.5,
+  "reeferActive": true,
+  "harshDriving": 63.5,
+  "doorStatus":false
   }
 ]
 ```
@@ -1724,7 +1737,10 @@ batteryPerc | Double | 5,2 | Mandatory | Battery Percentage of device
 speed | Double | 5,2 | Optional | Speed with which consignment is moving
 messageType | String | 10 | Mandatory | Message type. Ex: REG
 temperature | Double | 5,2 | Optional | Consignment's temperature
-
+reeferActive | Boolean | | Optional | This represents the state of the Reefer. eeferActive=true represents the event when the Reefer is switched on and reeferActive=false refers to the event when Reefer is switched off
+harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has 
+been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
+doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed
 
 ### Get Tracker (List)
 
@@ -11656,9 +11672,12 @@ BURKINA FASO|(GMT±00:00) Burkina Faso||Africa/Ouagadougou
 BURUNDI|(GMT+02:00) Burundi||Africa/Bujumbura
 CAMBODIA|(GMT+07:00) Cambodia||Asia/Phnom_Penh
 CAMEROON|(GMT+01:00) Cameroon||Etc/GMT-1
-CANADA|(GMT-04:00) Canada(Atlantic)||Canada/Atlantic
-CANADA|(GMT-05:00) Canada(Eastern)||Canada/Eastern
-CANADA|(GMT-07:00) Canada(Mountain)||Canada/Mountain
+CANADA | (GMT-04:00) Canada(Atlantic) - America/Halifax
+CANADA | (GMT-07:00) Canada(Mountain) - America/Edmonton
+CANADA | (GMT-05:00) Canada(Eastern) - America/Toronto
+CANADA | (GMT-03:30) Canada(Newfoundland) - America/St_Johns
+CANADA | (GMT-08:00) Canada(Pacific) - America/Vancouver
+CANADA | (GMT-06:00) Canada(Central) - America/Regina
 CAYMAN ISLANDS|(GMT-05:00) Cayman Islands||America/Cayman
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
