@@ -3054,12 +3054,16 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>Double</td>
 <td>13,10</td>
 <td>Optional</td>
-<td>Event when Harsh Acceleration / Harsh Deceleration has</td>
+<td>Event when Harsh Acceleration / Harsh Deceleration has been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.</td>
+</tr>
+<tr>
+<td>doorStatus</td>
+<td>Boolean</td>
+<td></td>
+<td>Optional</td>
+<td>doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed</td>
 </tr>
 </tbody></table>
-
-<p>been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
-doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed</p>
 
 <h3 id="create-tracking-record-bulk">Create Tracking Record (Bulk)</h3>
 
@@ -3182,12 +3186,16 @@ doorStatus | Boolean |  | Optional | doorStatus=true represents the event when t
 <td>Double</td>
 <td>13,10</td>
 <td>Optional</td>
-<td>Event when Harsh Acceleration / Harsh Deceleration has</td>
+<td>Event when Harsh Acceleration / Harsh Deceleration has been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.</td>
+</tr>
+<tr>
+<td>doorStatus</td>
+<td>Boolean</td>
+<td></td>
+<td>Optional</td>
+<td>doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed</td>
 </tr>
 </tbody></table>
-
-<p>been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
-doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed</p>
 
 <h3 id="get-tracker-list">Get Tracker (List)</h3>
 
@@ -17754,6 +17762,24 @@ You can pass multiple task reference IDs and can update the status of a task.</p
     </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kumari2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6590110114"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 03:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1aa3beae7844b77a90bb6fe0518992c"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mf">4500.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123,Supreme Business Park,Hiranandani,DMart,Mumbai,400076"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Destinatioln Address"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientNodeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"clientNodeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIDER"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipmentNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assignmentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 12:53:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:52:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMapping"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crt A001"</span><span class="p">,</span><span class="w">
@@ -17778,25 +17804,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P_Aetos1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 03:00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1aa3beae7844b77a90bb6fe0518992c"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="mf">4500.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"originAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123,Supreme Business Park,Hiranandani,DMart,Mumbai,400076"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"destinationAddr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Destinatioln Address"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"clientNodeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Name"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"clientNodeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client Node Code"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIDER"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"assignmentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MANUAL"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"calculatedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18 12:53:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"calculatedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-17 02:52:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTRANSIT"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -19488,7 +19496,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </tr>
 </tbody></table>
 
-<h3 id="get-epod-and-esign">Get EPOD and ESign</h3>
+<h3 id="get-e-pod-amp-esign">Get E-POD &amp; ESign</h3>
 
 <blockquote>
 <p>Response</p>
@@ -24841,39 +24849,39 @@ Mymensingh | MY</p>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-04:00) Canada(Atlantic) - America/Halifax</td>
+<td>(GMT-04:00) Canada(Atlantic)</td>
 <td></td>
-<td></td>
+<td>America/Halifax</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-07:00) Canada(Mountain) - America/Edmonton</td>
+<td>(GMT-07:00) Canada(Mountain)</td>
 <td></td>
-<td></td>
+<td>America/Edmonton</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-05:00) Canada(Eastern) - America/Toronto</td>
+<td>(GMT-05:00) Canada(Eastern)</td>
 <td></td>
-<td></td>
+<td>America/Toronto</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-03:30) Canada(Newfoundland) - America/St_Johns</td>
+<td>(GMT-03:30) Canada(Newfoundland)</td>
 <td></td>
-<td></td>
+<td>America/St_Johns</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-08:00) Canada(Pacific) - America/Vancouver</td>
+<td>(GMT-08:00) Canada(Pacific)</td>
 <td></td>
-<td></td>
+<td>America/Vancouver</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-06:00) Canada(Central) - America/Regina</td>
+<td>(GMT-06:00) Canada(Central)</td>
 <td></td>
-<td></td>
+<td>America/Regina</td>
 </tr>
 <tr>
 <td>CAYMAN ISLANDS</td>
