@@ -1678,8 +1678,7 @@ speed | Double | 5,2 | Optional | Speed with which consignment is moving
 messageType | String | 10 | Mandatory | Message type. Ex: REG
 temperature | Double | 5,2 | Optional | Consignment's temperature
 reeferActive | Boolean | | Optional | This represents the state of the Reefer. eeferActive=true represents the event when the Reefer is switched on and reeferActive=false refers to the event when Reefer is switched off
-harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has 
-been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
+harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
 doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed
 
 ### Create Tracking Record (Bulk)
@@ -1738,8 +1737,7 @@ speed | Double | 5,2 | Optional | Speed with which consignment is moving
 messageType | String | 10 | Mandatory | Message type. Ex: REG
 temperature | Double | 5,2 | Optional | Consignment's temperature
 reeferActive | Boolean | | Optional | This represents the state of the Reefer. eeferActive=true represents the event when the Reefer is switched on and reeferActive=false refers to the event when Reefer is switched off
-harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has 
-been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
+harshDriving | Double | 13,10 | Optional | Event when Harsh Acceleration / Harsh Deceleration has been observed and speed associated with the event. You can calculate harsh driving  as the change in” speed per second”. The SI units for harsh driving are m/s2, meters per second squared or meters per second per second, which means by how many meters per second the velocity changes every second. The units shall vary as per the Unit System preferences set in LogiNext Settings → System Preferences. In case if Harsh Acceleration occurs, the change in speed reported shall be positive. If Harsh Deceleration occurs, reported, the change in speed reported shall be negative.
 doorStatus | Boolean |  | Optional | doorStatus=true represents the event when the Door is open and doorStatus=false refers to the event when Door is closed
 
 ### Get Tracker (List)
@@ -8894,6 +8892,24 @@ clientCode | String | Account name. This field is sent if the Order was created 
 	"deliveryMediumName": "kumari2",
 	"phoneNumber": "6590110114",
 	"orderState": "FORWARD",
+  "startTimeWindow": "2017-08-17 02:00:00",
+  "endTimeWindow": "2017-08-17 03:00:00",
+  "tripReferenceId": "c1aa3beae7844b77a90bb6fe0518992c",
+  "numberOfItems": 1,
+  "packageWeight": 10.0,
+  "packageVolume": 4500.0,
+  "originAddr": "123,Supreme Business Park,Hiranandani,DMart,Mumbai,400076",
+  "destinationAddr": "Destinatioln Address",
+  "shipmentOrderTypeCd": "PICKUP",
+  "clientNodeName": "Client Node Name",
+  "clientNodeCd": "Client Node Code",
+  "address": "145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367",
+  "deliveryType": "RIDER",
+  "shipmentNotes": "PickedUp",
+  "assignmentMethod": "MANUAL",
+  "calculatedStartDt": "2017-08-18 12:53:00",
+  "calculatedEndDt": "2017-08-17 02:52:00",
+  "orderStatus": "INTRANSIT",
 	"shipmentCrateMapping":  [
     {
       "crateCd": "Crt A001",
@@ -8918,25 +8934,7 @@ clientCode | String | Account name. This field is sent if the Order was created 
       "orderNo": "P_Aetos1",
       "isActiveFl": true
     }
-  ],
-	"startTimeWindow": "2017-08-17 02:00:00",
-	"endTimeWindow": "2017-08-17 03:00:00",
-	"tripReferenceId": "c1aa3beae7844b77a90bb6fe0518992c",
-	"numberOfItems": 1,
-	"packageWeight": 10.0,
-	"packageVolume": 4500.0,
-	"originAddr": "123,Supreme Business Park,Hiranandani,DMart,Mumbai,400076",
-	"destinationAddr": "Destinatioln Address",
-	"shipmentOrderTypeCd": "PICKUP",
-	"clientNodeName": "Client Node Name",
-	"clientNodeCd": "Client Node Code",
-	"address": "145 West Coast Road, Singapore, Singapore, Singapore, SINGAPORE, 127367",
-	"deliveryType": "RIDER",
-	"shipmentNotes": "PickedUp",
-	"assignmentMethod": "MANUAL",
-	"calculatedStartDt": "2017-08-18 12:53:00",
-	"calculatedEndDt": "2017-08-17 02:52:00",
-  "orderStatus": "INTRANSIT"
+  ]
 }
 ```
 
@@ -9645,7 +9643,7 @@ lastRunDt | String |  Last run time of the allocation engine
 isMaxAttemptsExhausted | String |  check if the max number of attempts was exhausted.
 
 
-### Get EPOD and ESign
+### Get E-POD & ESign
 
 > Response
 
@@ -11672,12 +11670,12 @@ BURKINA FASO|(GMT±00:00) Burkina Faso||Africa/Ouagadougou
 BURUNDI|(GMT+02:00) Burundi||Africa/Bujumbura
 CAMBODIA|(GMT+07:00) Cambodia||Asia/Phnom_Penh
 CAMEROON|(GMT+01:00) Cameroon||Etc/GMT-1
-CANADA | (GMT-04:00) Canada(Atlantic) - America/Halifax
-CANADA | (GMT-07:00) Canada(Mountain) - America/Edmonton
-CANADA | (GMT-05:00) Canada(Eastern) - America/Toronto
-CANADA | (GMT-03:30) Canada(Newfoundland) - America/St_Johns
-CANADA | (GMT-08:00) Canada(Pacific) - America/Vancouver
-CANADA | (GMT-06:00) Canada(Central) - America/Regina
+CANADA | (GMT-04:00) Canada(Atlantic) || America/Halifax
+CANADA | (GMT-07:00) Canada(Mountain) ||  America/Edmonton
+CANADA | (GMT-05:00) Canada(Eastern) ||  America/Toronto
+CANADA | (GMT-03:30) Canada(Newfoundland) || America/St_Johns
+CANADA | (GMT-08:00) Canada(Pacific) || America/Vancouver
+CANADA | (GMT-06:00) Canada(Central) || America/Regina
 CAYMAN ISLANDS|(GMT-05:00) Cayman Islands||America/Cayman
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
