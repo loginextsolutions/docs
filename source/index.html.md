@@ -20,10 +20,9 @@ LogiNext welcomes you to the world of organised logistics.
 
 In this section we'll go over the elements that make up the LogiNext system, and how you can start integrating with the LogiNext API.
 
-###Delivery Associate 
+### Delivery Associate 
 
-A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be
-maintainence men, repair men, or Delivery Associates.
+A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be maintainence men, repair men, or Delivery Associates.
 
 When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.
 
@@ -43,7 +42,7 @@ A Branch could be the fulfillment center or warehouse where Orders are either De
 
 ### Order
 
-An Order has details of shipment you want to pickup from your merchant or deliver to your customer. Pick Up and Delivery could be different depending on the industry you are in. For example, in the Courier Industry, Pick Up and Delivery can be for Customers.
+Orders are the base transaction entities in the LogiNext system. An Order has details of shipment you want to pickup from your merchant or deliver to your customer. Pick Up and Delivery could be different depending on the industry you are in. For example, in the Courier Industry, Pick Up and Delivery can be for Customers.
 
 
 ### Trip
