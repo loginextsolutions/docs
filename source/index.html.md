@@ -11268,19 +11268,20 @@ Mymensingh | MY
 
 State | Code
 --------- | ---------
-Alberta|Alberta
-British Columbia|British Co
-Manitoba|Manitoba
-New Brunswick|New Brunsw
-Newfoundland and Labrador|Newfoundla
-Nova Scotia|Nova Scoti
-Northwest Territory|Northwest
-Nunavut Territory|Nunavut Te
-Ontario|Ontario
-Prince Edward Island|Prince Edw
-Quebec|Quebec
-Saskatchewan|Saskatchew
-Yukon|Yukon
+
+Alberta | CA-AB
+British Columbia | CA-BC
+Manitoba | CA-MB
+New Brunswick | CA-NB
+Newfoundland and Labrador | CA-NL
+Nova Scotia | CA-NS
+Northwest Territory | CA-NT
+Nunavut Territory | CA-NU
+Ontario | CA-ON
+Prince Edward Island | CA-PE
+Quebec | CA-QC
+Saskatchewan | CA-SK
+Yukon | CA-YT
 
 ## India
 
