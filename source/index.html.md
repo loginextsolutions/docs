@@ -11268,7 +11268,6 @@ Mymensingh | MY
 
 State | Code
 --------- | ---------
-
 Alberta | CA-AB
 British Columbia | CA-BC
 Manitoba | CA-MB
