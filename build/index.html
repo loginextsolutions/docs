@@ -5927,22 +5927,22 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
             </span><span class="nt">"isActiveFl"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nt">"customFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryDay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf_deliveryDay"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533081600000"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryTime"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf_deliveryTime"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cutOffDay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf_cutOffDay"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1533168000000"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cutOffTime"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf_cutOffTime"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"time"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -17563,7 +17563,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </span><span class="s2">"customFields"</span><span class="err">:</span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
 
-    </span><span class="nt">"field"</span><span class="p">:</span><span class="s2">"cutOffDate"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"field"</span><span class="p">:</span><span class="s2">"cf_cutOffDate"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"2018-06-25T07:31:39Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 
@@ -17578,7 +17578,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 
 <p>To configure Custom Fields for your account, You can do so from the Custom Fields section of your Admin module.</p>
 
-<p>Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI.</p>
+<p>Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI. Please note that when passing a Custom Field name in the API request object, the Custom Field name would have be preceeded by &#39;cf_&rsquo; to signify that this is a Custom Field. </p>
 
 <p>Please Note that if you send these fields in the API without first configuring them in your LogiNext account, the LogiNext API will NOT create a new Custom Field. You will receive a success response from such an API call, but the data sent in the &#39;customField object will not be considered. The data passed in the API can only be associated with an already existing Custom Field with the identifier specified in the request. </p>
 

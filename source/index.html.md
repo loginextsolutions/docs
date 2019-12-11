@@ -3254,22 +3254,22 @@ https://api.loginextsolutions.com/GeofenceApp/geofence/v1/get?geofenceIds=MMD-Wh
             "isActiveFl": true,
             "customFields": [
                 {
-                    "field": "deliveryDay",
+                    "field": "cf_deliveryDay",
                     "value": "1533081600000",
                     "type": "date"
                 },
                 {
-                    "field": "deliveryTime",
+                    "field": "cf_deliveryTime",
                     "value": "10:00",
                     "type": "time"
                 },
                 {
-                    "field": "cutOffDay",
+                    "field": "cf_cutOffDay",
                     "value": "1533168000000",
                     "type": "date"
                 },
                 {
-                    "field": "cutOffTime",
+                    "field": "cf_cutOffTime",
                     "value": "11:00",
                     "type": "time"
                 }
@@ -8765,7 +8765,7 @@ updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC fo
 "customFields":[
     {
 
-    "field":"cutOffDate",
+    "field":"cf_cutOffDate",
     "value":"2018-06-25T07:31:39Z"
     }
     
@@ -8781,7 +8781,7 @@ For eg - If you need to look for specific servicability constraints like cut off
 
 To configure Custom Fields for your account, You can do so from the Custom Fields section of your Admin module.
 
-Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI.
+Once configured, you can enter data for the custom fields like any other field in LogiNext. These fields are currently available in the APIs and UI. Please note that when passing a Custom Field name in the API request object, the Custom Field name would have be preceeded by 'cf_' to signify that this is a Custom Field. 
 
 Please Note that if you send these fields in the API without first configuring them in your LogiNext account, the LogiNext API will NOT create a new Custom Field. You will receive a success response from such an API call, but the data sent in the 'customField object will not be considered. The data passed in the API can only be associated with an already existing Custom Field with the identifier specified in the request. 
 
