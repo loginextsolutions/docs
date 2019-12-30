@@ -2501,6 +2501,18 @@ clientCode | String | 50 | Optional | This is the identifier for an Account. An 
           "latitude": 40.760838,
           "longitude": 74.555
     },
+    "additionalContactDetails": [
+            {
+                "name": "James Smith",
+                "mobileNumber": "18552306564",
+                "emailAddress": "james@ablogistics.com"
+            },
+            {
+                "name": "John Barnes",
+                "mobileNumber": "18552306565",
+                "emailAddress": "john@ablogistics.com"
+            }
+        ],
     "isPrimary":"Y",
     "clientCode":"MyKart",
     "timeZone":"America/Chicago"
@@ -2564,6 +2576,9 @@ address.country | String | 255 | Optional | Address Country.
 address.pincode | String | 255 | Optional | Address Pincode.
 address.latitude | Double | 20 | Optional |  Address geo-coordinate(latitude)
 address.longitude | Double | 20 | Optional | Address geo-coordinate(longitude)
+additionalContactDetails.name | String | 255 | Conditional Mandatory | Name of the additional contact person being added. This field is required if the additional Contact Details object is being passed. 
+additionalContactDetails.mobileNumber | String | 20 | Conditional Mandatory |  Mobile Number of the additional contact person being added. Either mobile number or email is mandatory if name is passed.
+additionalContactDetails.emailAddress | String | 255 | Conditional Mandatory | Email ID of the additional contact person being added. Either mobile number or email is mandatory if name is passed.
 isPrimary | String | 1 | Optional | Identify if the current address is the end customer's primary address or not. If your end customer has a primary address, Orders can be created for that address passing only the customer ID in the accountCode field of the Create Order API, with no identifier needed for the address.
 clientCode | String | 50 | Optional | This is the identifier for an Account. An Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create an Address entity on behalf of one of your Customers.
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
@@ -9023,6 +9038,8 @@ scanTime | String | Order Scan Timestamp.
   "vehicleNumber":"A123D2",
   "deliveryMediumName": "Thomas Watson",
   "deliveryMediumUserName": "Thomas",
+  "carrierName":"A&C Transporters", // will not be sent if order is assigned to a driver
+  "carrierBranchName":"Brooklyn" // will not be sent if order is assigned to a driver
   "phoneNumber": 9881234567,
   "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
@@ -11533,6 +11550,89 @@ Mbeya Tz|Mbeya Tz
 Mtwara Tz|Mtwara Tz
 Dodoma Tz|Dodoma Tz
 Other States Tz|Other Stat
+
+## Thailand
+
+State | Code
+--------- | ---------
+Amnat Charoen | TH-37
+Ang Thong | TH-15
+Bueng Kan | TH-38
+Buri Ram  | TH-31
+Chachoengsao  | TH-24
+Chai Nat  | TH-18
+Chaiyaphum  | TH-36
+Chanthaburi | TH-22
+Chiang Mai  | TH-50
+Chiang Rai  | TH-57
+Chon Buri | TH-20
+Chumphon  | TH-86
+Kalasin | TH-46
+Kamphaeng Phet  | TH-62
+Kanchanaburi  | TH-71
+Khon Kaen | TH-40
+Krabi | TH-81
+Krung Thep Maha Nakhon  | TH-10
+Lampang | TH-52
+Lamphun | TH-51
+Loei  | TH-42
+Lop Buri  | TH-16
+Mae Hong Son  | TH-58
+Maha Sarakham | TH-44
+Mukdahan  | TH-49
+Nakhon Nayok  | TH-26
+Nakhon Pathom | TH-73
+Nakhon Phanom | TH-48
+Nakhon Ratchasima | TH-30
+Nakhon Sawan  | TH-60
+Nakhon Si Thammarat | TH-80
+Nan | TH-55
+Narathiwat  | TH-96
+Nong Bua Lam Phu  | TH-39
+Nong Khai | TH-43
+Nonthaburi  | TH-12
+Pathum Thani  | TH-13
+Pattani | TH-94
+Phangnga  | TH-82
+Phatthalung | TH-93
+Phatthaya | TH-S
+Phayao  | TH-56
+Phetchabun  | TH-67
+Phetchaburi | TH-76
+Phichit | TH-66
+Phitsanulok | TH-65
+Phra Nakhon Si Ayutthaya  | TH-14
+Phrae | TH-54
+Phuket  | TH-83
+Prachin Buri  | TH-25
+Prachuap Khiri Khan | TH-77
+Ranong  | TH-85
+Ratchaburi  | TH-70
+Rayong  | TH-21
+Roi Et  | TH-45
+Sa Kaeo | TH-27
+Sakon Nakhon  | TH-47
+Samut Prakan  | TH-11
+Samut Sakhon  | TH-74
+Samut Songkhram | TH-75
+Saraburi  | TH-19
+Satun | TH-91
+Si Sa Ket | TH-33
+Sing Buri | TH-17
+Songkhla  | TH-90
+Sukhothai | TH-64
+Suphan Buri | TH-72
+Surat Thani | TH-84
+Surin | TH-32
+Tak | TH-63
+Trang | TH-92
+Trat  | TH-23
+Ubon Ratchathani  | TH-34
+Udon Thani  | TH-41
+Uthai Thani | TH-61
+Uttaradit | TH-53
+Yala  | TH-95
+Yasothon  | TH-35
 
 ## United Arab Emirates
 

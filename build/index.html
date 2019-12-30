@@ -4226,6 +4226,18 @@ You will have to pass the reference Id of the vehicle whose information needs to
           </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
           </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.555</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"additionalContactDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Smith"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18552306564"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@ablogistics.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Barnes"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18552306565"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@ablogistics.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
     </span><span class="nt">"isPrimary"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="s2">"MyKart"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="w">
@@ -4382,6 +4394,27 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>20</td>
 <td>Optional</td>
 <td>Address geo-coordinate(longitude)</td>
+</tr>
+<tr>
+<td>additionalContactDetails.name</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Name of the additional contact person being added. This field is required if the additional Contact Details object is being passed.</td>
+</tr>
+<tr>
+<td>additionalContactDetails.mobileNumber</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Mobile Number of the additional contact person being added. Either mobile number or email is mandatory if name is passed.</td>
+</tr>
+<tr>
+<td>additionalContactDetails.emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Email ID of the additional contact person being added. Either mobile number or email is mandatory if name is passed.</td>
 </tr>
 <tr>
 <td>isPrimary</td>
@@ -18048,7 +18081,9 @@ You can pass multiple task reference IDs and can update the status of a task.</p
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"A123D2"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Watson"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">9881234567</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"carrierName"</span><span class="p">:</span><span class="s2">"A&amp;C Transporters"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
+  </span><span class="nt">"carrierBranchName"</span><span class="p">:</span><span class="s2">"Brooklyn"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="err">:</span><span class="w"> </span><span class="mi">9881234567</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_1227"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"trackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://goo.gl/qhZP63"</span><span class="p">,</span><span class="w">
@@ -24239,6 +24274,328 @@ Mymensingh | MY</p>
 <tr>
 <td>Other States Tz</td>
 <td>Other Stat</td>
+</tr>
+</tbody></table>
+
+<h2 id="thailand">Thailand</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Amnat Charoen</td>
+<td>TH-37</td>
+</tr>
+<tr>
+<td>Ang Thong</td>
+<td>TH-15</td>
+</tr>
+<tr>
+<td>Bueng Kan</td>
+<td>TH-38</td>
+</tr>
+<tr>
+<td>Buri Ram</td>
+<td>TH-31</td>
+</tr>
+<tr>
+<td>Chachoengsao</td>
+<td>TH-24</td>
+</tr>
+<tr>
+<td>Chai Nat</td>
+<td>TH-18</td>
+</tr>
+<tr>
+<td>Chaiyaphum</td>
+<td>TH-36</td>
+</tr>
+<tr>
+<td>Chanthaburi</td>
+<td>TH-22</td>
+</tr>
+<tr>
+<td>Chiang Mai</td>
+<td>TH-50</td>
+</tr>
+<tr>
+<td>Chiang Rai</td>
+<td>TH-57</td>
+</tr>
+<tr>
+<td>Chon Buri</td>
+<td>TH-20</td>
+</tr>
+<tr>
+<td>Chumphon</td>
+<td>TH-86</td>
+</tr>
+<tr>
+<td>Kalasin</td>
+<td>TH-46</td>
+</tr>
+<tr>
+<td>Kamphaeng Phet</td>
+<td>TH-62</td>
+</tr>
+<tr>
+<td>Kanchanaburi</td>
+<td>TH-71</td>
+</tr>
+<tr>
+<td>Khon Kaen</td>
+<td>TH-40</td>
+</tr>
+<tr>
+<td>Krabi</td>
+<td>TH-81</td>
+</tr>
+<tr>
+<td>Krung Thep Maha Nakhon</td>
+<td>TH-10</td>
+</tr>
+<tr>
+<td>Lampang</td>
+<td>TH-52</td>
+</tr>
+<tr>
+<td>Lamphun</td>
+<td>TH-51</td>
+</tr>
+<tr>
+<td>Loei</td>
+<td>TH-42</td>
+</tr>
+<tr>
+<td>Lop Buri</td>
+<td>TH-16</td>
+</tr>
+<tr>
+<td>Mae Hong Son</td>
+<td>TH-58</td>
+</tr>
+<tr>
+<td>Maha Sarakham</td>
+<td>TH-44</td>
+</tr>
+<tr>
+<td>Mukdahan</td>
+<td>TH-49</td>
+</tr>
+<tr>
+<td>Nakhon Nayok</td>
+<td>TH-26</td>
+</tr>
+<tr>
+<td>Nakhon Pathom</td>
+<td>TH-73</td>
+</tr>
+<tr>
+<td>Nakhon Phanom</td>
+<td>TH-48</td>
+</tr>
+<tr>
+<td>Nakhon Ratchasima</td>
+<td>TH-30</td>
+</tr>
+<tr>
+<td>Nakhon Sawan</td>
+<td>TH-60</td>
+</tr>
+<tr>
+<td>Nakhon Si Thammarat</td>
+<td>TH-80</td>
+</tr>
+<tr>
+<td>Nan</td>
+<td>TH-55</td>
+</tr>
+<tr>
+<td>Narathiwat</td>
+<td>TH-96</td>
+</tr>
+<tr>
+<td>Nong Bua Lam Phu</td>
+<td>TH-39</td>
+</tr>
+<tr>
+<td>Nong Khai</td>
+<td>TH-43</td>
+</tr>
+<tr>
+<td>Nonthaburi</td>
+<td>TH-12</td>
+</tr>
+<tr>
+<td>Pathum Thani</td>
+<td>TH-13</td>
+</tr>
+<tr>
+<td>Pattani</td>
+<td>TH-94</td>
+</tr>
+<tr>
+<td>Phangnga</td>
+<td>TH-82</td>
+</tr>
+<tr>
+<td>Phatthalung</td>
+<td>TH-93</td>
+</tr>
+<tr>
+<td>Phatthaya</td>
+<td>TH-S</td>
+</tr>
+<tr>
+<td>Phayao</td>
+<td>TH-56</td>
+</tr>
+<tr>
+<td>Phetchabun</td>
+<td>TH-67</td>
+</tr>
+<tr>
+<td>Phetchaburi</td>
+<td>TH-76</td>
+</tr>
+<tr>
+<td>Phichit</td>
+<td>TH-66</td>
+</tr>
+<tr>
+<td>Phitsanulok</td>
+<td>TH-65</td>
+</tr>
+<tr>
+<td>Phra Nakhon Si Ayutthaya</td>
+<td>TH-14</td>
+</tr>
+<tr>
+<td>Phrae</td>
+<td>TH-54</td>
+</tr>
+<tr>
+<td>Phuket</td>
+<td>TH-83</td>
+</tr>
+<tr>
+<td>Prachin Buri</td>
+<td>TH-25</td>
+</tr>
+<tr>
+<td>Prachuap Khiri Khan</td>
+<td>TH-77</td>
+</tr>
+<tr>
+<td>Ranong</td>
+<td>TH-85</td>
+</tr>
+<tr>
+<td>Ratchaburi</td>
+<td>TH-70</td>
+</tr>
+<tr>
+<td>Rayong</td>
+<td>TH-21</td>
+</tr>
+<tr>
+<td>Roi Et</td>
+<td>TH-45</td>
+</tr>
+<tr>
+<td>Sa Kaeo</td>
+<td>TH-27</td>
+</tr>
+<tr>
+<td>Sakon Nakhon</td>
+<td>TH-47</td>
+</tr>
+<tr>
+<td>Samut Prakan</td>
+<td>TH-11</td>
+</tr>
+<tr>
+<td>Samut Sakhon</td>
+<td>TH-74</td>
+</tr>
+<tr>
+<td>Samut Songkhram</td>
+<td>TH-75</td>
+</tr>
+<tr>
+<td>Saraburi</td>
+<td>TH-19</td>
+</tr>
+<tr>
+<td>Satun</td>
+<td>TH-91</td>
+</tr>
+<tr>
+<td>Si Sa Ket</td>
+<td>TH-33</td>
+</tr>
+<tr>
+<td>Sing Buri</td>
+<td>TH-17</td>
+</tr>
+<tr>
+<td>Songkhla</td>
+<td>TH-90</td>
+</tr>
+<tr>
+<td>Sukhothai</td>
+<td>TH-64</td>
+</tr>
+<tr>
+<td>Suphan Buri</td>
+<td>TH-72</td>
+</tr>
+<tr>
+<td>Surat Thani</td>
+<td>TH-84</td>
+</tr>
+<tr>
+<td>Surin</td>
+<td>TH-32</td>
+</tr>
+<tr>
+<td>Tak</td>
+<td>TH-63</td>
+</tr>
+<tr>
+<td>Trang</td>
+<td>TH-92</td>
+</tr>
+<tr>
+<td>Trat</td>
+<td>TH-23</td>
+</tr>
+<tr>
+<td>Ubon Ratchathani</td>
+<td>TH-34</td>
+</tr>
+<tr>
+<td>Udon Thani</td>
+<td>TH-41</td>
+</tr>
+<tr>
+<td>Uthai Thani</td>
+<td>TH-61</td>
+</tr>
+<tr>
+<td>Uttaradit</td>
+<td>TH-53</td>
+</tr>
+<tr>
+<td>Yala</td>
+<td>TH-95</td>
+</tr>
+<tr>
+<td>Yasothon</td>
+<td>TH-35</td>
 </tr>
 </tbody></table>
 
