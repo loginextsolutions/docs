@@ -3098,6 +3098,8 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/create
 "division":"ADIV",
 "isOwnBranchFl":"N",
 "isHubFl":"Y",
+"deliveryMediumAutoAllocateFl": "Y",
+"autoAllocateFl": "Y"
 "geoFenceRadius":"2.0",
 "branchDescription":"desc",
 "billingContactName":"name",
@@ -3153,6 +3155,8 @@ division | String | 255 | Optional | Ex. ADIV
 isOwnBranchFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to N
 isHubFl | String | 1 | Mandatory | There can be two values here -  In Mile Hardcode this to Y
 geoFenceRadius | String | 255 | Optional | This is the radius in KMs that you have to enter if you want to create a geofence for your hub.<br>If no value is passed, then the default value of 2 Kms is taken.<br>Ideally a geofence radius should range between - 200 meters to 2 KMs
+autoAllocateFl  | String | 1 | Optional | If 'Y' this branch will be considered for Auto Assignment of Orders when the AutoAllocateFl is passed as 'Y' in the Create Order API. If 'N' then Orders will not be auto assigned to this branch even if the Order is created in the system with AutoAllocateFl 'Y'. This can be used when you do not want to consider a certain branch and its drivers for auto assignment of Orders if there are higher cost implications of using resources of the branch in Order fulfillment. You can still manually assign Orders to the branch and the Drivers of the branch. If not passed, this will default to 'Y'.
+deliveryMediumAutoAllocateFl  | String | 1 | Optional | If 'Y', Drivers of this branch will be considered in Auto Assignment of Orders if you have configured the Resource Pooling property in the Auto Assignment profile. YOu can pass this as 'N' if you do not want Drivers of certain branches to be considered for auto assignment of Orders. Order can still be manually assigned to these Drivers. If not passed, this will default to 'Y'.
 branchDescription | String | 500 | Optional | If you would like add a brief description name for the hub, use this field.
 billingContactName | String | 500 | Mandatory | Name of the Contact Person at this Branch / Hub
 officeNumber | String | 255 | Mandatory | Fixed Line Number of the Branch  / Hub
@@ -9303,7 +9307,10 @@ notificationType | String | This is the notification of the event that triggered
   "phoneNumber": 1234567864,
   "orderState": "FORWARD",
   "customerName": "John Watson",
-  "clientId": 209,
+  "deliverAccountCode": "JohnWatson",
+  "deliverAddressId": "Home",
+  "pickupAccountCode":"JamesDean", 
+  "pickupAddressId": "Office",
   "deliveryTime": "2016-11-19 06:11:27",
   "cashAmount": 0,
   "deliveryLocationType": "",
@@ -9339,6 +9346,10 @@ deliveryMediumName | String | Name of Delivery Associate
 phoneNumber | Long | Delivery Associate's phone no.
 orderState | String | Order state, Possible values : FORWARD, REVERSE
 customerName | String | Customer name
+pickupAccountCode | String | Pickup Customer ID. This field will be absent for a DELIVER type Order.
+pickupAddressId| String | Pickup Customer ID. This field will be absent for a DELIVER type Order.
+deliverAccountCode | String | Deliver Customer ID. This field will be absent for a PICKUP type Order.
+deliverAddressId | String | Deliver Customer Address ID. This field will be absent for a PICKUP type Order.
 clientId | String | Client ID
 deliveryTime | String | Delivery timestamp
 cashAmount | Double | Cash amount to collect
@@ -10083,7 +10094,7 @@ endTime | String |  Trip end time
 }
 ```
 
-This webhook is triggered when the ETA for a particular Order is revised.
+This webhook is triggered when the ETA for a particular Order is revised. This can happen at 
 
 #### Response Parameters
 
