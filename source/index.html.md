@@ -2620,7 +2620,7 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 "licenseValidity":"2026-12-12",
 "licenseValidityInYears":10,
 "licenseIssuanceDate":"2016-12-12",
-"licenseNumber":2123123123
+"licenseNumber":2123123123,
 "loadingTimeInMins": 20,
 "unloadingTimeInMins": 20,
 "fixedCost":10,
@@ -3118,7 +3118,7 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/create
 "latitude": 74.9095327,
 "timeZone":"America/Chicago",
 "loadingTime": 20,
-"unLoadingTime": 20
+"unloadingTime": 20
 }]
 
 ```
@@ -3214,7 +3214,7 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/update
   "latitude": 74.9095327,
   "timeZone":"America/Chicago",
   "loadingTime": 20,
-  "unLoadingTime": 20
+  "unloadingTime": 20
 }]
 
 ```
