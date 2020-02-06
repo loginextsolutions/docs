@@ -4403,6 +4403,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "deliverLatitude":41.882702,
     "deliverLongitude":-87.619392,   
     "deliverAddressTimezone":"America/Chicago",  
+    "deliverNotes": "Leave it with the neighbour",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2018-07-16T14:24:00.000Z",
     "pickupEndTimeWindow": "2018-07-17T14:24:00.000Z",
@@ -4422,6 +4423,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupLatitude":40.760838,
     "pickupLongitude":-73.96732299999996,  
     "pickupAddressTimezone":"America/New_York",  
+    "pickupNotes": "Don't ring the doorbell",
     "clientCode": "Salestap",
     "shipmentCrateMappings": [
       {
@@ -5755,7 +5757,8 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "numberOfItems": "10",
     "partialDeliveryAllowedFl": "Y",
     "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "N",    
+    "cancellationAllowedFl": "N",   
+    "distributionCenter": "Manhattan Branch"
     "deliverBranch": "test",
     "deliverServiceTime": "20",
     "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -5879,6 +5882,7 @@ paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash 
 partialDeliveryAllowedFl | String | 50 | Optional | This identifies if partial delivery is allowed. Ex: Y/N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N
+distributionCenter | String | 255 | Optional | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 deliverBranch | String | 255 | Optional | Name of delivery branch
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
 deliverStartTimeWindow | Date | | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
@@ -6008,8 +6012,8 @@ returnPinCode | String | 20 | Optional | This is the return customer's pincode.
 "pickupLatitude":40.760838,
 "pickupLongitude":-73.96732299999996,  
 "pickupAddressTimezone":"America/New_York",  
-"pickupNotes": "PickedUp",
-"deliverNotes": "Delivered",
+"pickupNotes": "Don't ring the doorbell",
+"deliverNotes": "Leave it with the neighbour",
 "clientCode": "Salestap",
 
 "shipmentCrateMappings": []
@@ -8072,7 +8076,7 @@ https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create
     "pickupEndTimeWindow": "2016-07-15T08:45:00.000Z",
     "pickupLatitude" : 40.760838,
     "pickupLongitude" : 74.9094407,
-    "pickupNotes" : "",
+    "pickupNotes" : "Don't ring the doorbell",
     "deliverAccountCode" : "5678",
     "deliverAccountName" : "Name2",
     "deliverEmail" : "demo2@ymail.com",
@@ -9055,12 +9059,11 @@ scanTime | String | Order Scan Timestamp.
 {
   "status": "ORDER ACCEPTED",
   "awbNumber": "AWB123456789",
-  "vehicleNumber":"A123D2",
   "deliveryMediumName": "Thomas Watson",
   "deliveryMediumUserName": "Thomas",
   "carrierName":"A&C Transporters", // will not be sent if order is assigned to a driver
   "carrierBranchName":"Brooklyn" // will not be sent if order is assigned to a driver
-  "phoneNumber": 9881234567,
+  "phoneNumber": "9881234567",
   "tripName": "Trip_1227",
   "updatedOn": "2016-06-30 19:43:07",
   "trackUrl": "https://goo.gl/qhZP63",
@@ -9087,7 +9090,7 @@ deliveryMediumName | String | Name of Delivery Associate
 deliveryMediumUserName | String | Username of Delivery Associate
 latitude | Double | The geo-coordinate(latitude) of the Delivery Associate when the Order was accepted
 longitude | Double | The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted
-phoneNumber | Long | Delivery Associate's phone no.
+phoneNumber | String | Delivery Associate's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
 trackUrl | String | Url to track Order
@@ -11796,13 +11799,17 @@ BURKINA FASO|(GMT±00:00) Burkina Faso||Africa/Ouagadougou
 BURUNDI|(GMT+02:00) Burundi||Africa/Bujumbura
 CAMBODIA|(GMT+07:00) Cambodia||Asia/Phnom_Penh
 CAMEROON|(GMT+01:00) Cameroon||Etc/GMT-1
-CANADA | (GMT-04:00) Canada(Atlantic) || America/Halifax
-CANADA | (GMT-07:00) Canada(Mountain) ||  America/Edmonton
-CANADA | (GMT-05:00) Canada(Eastern) ||  America/Toronto
 CANADA | (GMT-03:30) Canada(Newfoundland) || America/St_Johns
-CANADA | (GMT-08:00) Canada(Pacific) || America/Vancouver
+CANADA | (GMT-04:00) Canada(Atlantic) || America/Halifax
+CANADA | (GMT-04:00) Canada (Atlantic Standard Time) || America/Blanc-Sablon
+CANADA | (GMT-05:00) Canada(Eastern) ||  America/Toronto
+CANADA | (GMT-05:00) Canada (Eastern Standard Time) || America/Atikokan
 CANADA | (GMT-06:00) Canada(Central) || America/Regina
-CAYMAN ISLANDS|(GMT-05:00) Cayman Islands||America/Cayman
+CANADA | (GMT-06:00) Canada (Central Standard Time) || America/Winnipeg
+CANADA | (GMT-07:00) Canada(Mountain) ||  America/Edmonton
+CANADA | (GMT-07:00) Canada (Mountain Standard Time) || America/Creston
+CANADA | (GMT-08:00) Canada(Pacific) || America/Vancouver
+CAYMAN ISLANDS|(GMT-05:00) Cayman Islands || America/Cayman
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
 CENTRAL AFRICAN REPUBLIC|(GMT+01:00) Central African Republic||NULL
 CHAD|(GMT+01:00) Chad||Africa/Ndjamena

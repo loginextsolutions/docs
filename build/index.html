@@ -8630,6 +8630,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"deliverLatitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverLongitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">   
     </span><span class="nt">"deliverAddressTimezone"</span><span class="p">:</span><span class="s2">"America/Chicago"</span><span class="p">,</span><span class="w">  
+    </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leave it with the neighbour"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
@@ -8649,6 +8650,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">  
     </span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">  
+    </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't ring the doorbell"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -11813,8 +11815,9 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
-    </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">   
+    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan Branch"</span><span class="w">
+    </span><span class="s2">"deliverBranch"</span><span class="err">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
@@ -12011,6 +12014,13 @@ When Customer Profiling is turned ON -
 <td>1</td>
 <td>Optional</td>
 <td>This identifies if order cancellation is allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>deliverBranch</td>
@@ -12429,8 +12439,8 @@ When Customer Profiling is turned ON -
 </span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
 </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">  
 </span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">  
-</span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't ring the doorbell"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leave it with the neighbour"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
 
 </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -16102,7 +16112,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:45:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094407</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pickupNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't ring the doorbell"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEmail"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"demo2@ymail.com"</span><span class="p">,</span><span class="w">
@@ -18165,12 +18175,11 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER ACCEPTED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"A123D2"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Watson"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"carrierName"</span><span class="p">:</span><span class="s2">"A&amp;C Transporters"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
   </span><span class="nt">"carrierBranchName"</span><span class="p">:</span><span class="s2">"Brooklyn"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
-  </span><span class="s2">"phoneNumber"</span><span class="err">:</span><span class="w"> </span><span class="mi">9881234567</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="err">:</span><span class="w"> </span><span class="s2">"9881234567"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_1227"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"trackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://goo.gl/qhZP63"</span><span class="p">,</span><span class="w">
@@ -18229,7 +18238,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </tr>
 <tr>
 <td>phoneNumber</td>
-<td>Long</td>
+<td>String</td>
 <td>Delivery Associate&rsquo;s phone no.</td>
 </tr>
 <tr>
@@ -25315,15 +25324,21 @@ Mymensingh | MY</p>
 </tr>
 <tr>
 <td>CANADA</td>
+<td>(GMT-03:30) Canada(Newfoundland)</td>
+<td></td>
+<td>America/St_Johns</td>
+</tr>
+<tr>
+<td>CANADA</td>
 <td>(GMT-04:00) Canada(Atlantic)</td>
 <td></td>
 <td>America/Halifax</td>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-07:00) Canada(Mountain)</td>
+<td>(GMT-04:00) Canada (Atlantic Standard Time)</td>
 <td></td>
-<td>America/Edmonton</td>
+<td>America/Blanc-Sablon</td>
 </tr>
 <tr>
 <td>CANADA</td>
@@ -25333,21 +25348,39 @@ Mymensingh | MY</p>
 </tr>
 <tr>
 <td>CANADA</td>
-<td>(GMT-03:30) Canada(Newfoundland)</td>
+<td>(GMT-05:00) Canada (Eastern Standard Time)</td>
 <td></td>
-<td>America/St_Johns</td>
-</tr>
-<tr>
-<td>CANADA</td>
-<td>(GMT-08:00) Canada(Pacific)</td>
-<td></td>
-<td>America/Vancouver</td>
+<td>America/Atikokan</td>
 </tr>
 <tr>
 <td>CANADA</td>
 <td>(GMT-06:00) Canada(Central)</td>
 <td></td>
 <td>America/Regina</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>(GMT-06:00) Canada (Central Standard Time)</td>
+<td></td>
+<td>America/Winnipeg</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>(GMT-07:00) Canada(Mountain)</td>
+<td></td>
+<td>America/Edmonton</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>(GMT-07:00) Canada (Mountain Standard Time)</td>
+<td></td>
+<td>America/Creston</td>
+</tr>
+<tr>
+<td>CANADA</td>
+<td>(GMT-08:00) Canada(Pacific)</td>
+<td></td>
+<td>America/Vancouver</td>
 </tr>
 <tr>
 <td>CAYMAN ISLANDS</td>
