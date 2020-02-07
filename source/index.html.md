@@ -6536,12 +6536,23 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
 }
 ```
 
-> Failure Response
+> Failure Response 1
 
 ```json
 {
    "status": 409,
    "message": "Order(s) couldn't be cancelled",
+   "moreResultsExists": false,
+   "hasError": false
+}
+```
+
+> Failure Response 2
+
+```json
+{
+   "status": 409,
+   "message": "Order(s) are already cancelled",
    "moreResultsExists": false,
    "hasError": false
 }
