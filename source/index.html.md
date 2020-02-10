@@ -9101,7 +9101,7 @@ awbNumber | String | AWB No.
 deliveryMediumName | String | Name of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.
 deliveryMediumUserName | String | Username of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.
 carrierName | String | Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.
-carrierBranchName | Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.
+carrierBranchName | String | Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.
 latitude | Double | The geo-coordinate(latitude) of the Delivery Associate when the Order was accepted
 longitude | Double | The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted.
 phoneNumber | String | Delivery Associate's phone no.
