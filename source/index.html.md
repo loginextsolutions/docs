@@ -8816,7 +8816,7 @@ updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC fo
     {
 
     "field":"cf_cutOffDate",
-    "value":"2018-06-25T07:31:39Z"
+    "value":"2018-06-25T07:31:39Z.000"
     }
     
     ]
@@ -9068,18 +9068,19 @@ scanTime | String | Order Scan Timestamp.
 
 ```json
 {
+  "clientShipmentId": "Order_001",
   "status": "ORDER ACCEPTED",
   "awbNumber": "AWB123456789",
   "deliveryMediumName": "Thomas Watson",
   "deliveryMediumUserName": "Thomas",
-  "carrierName":"A&C Transporters", // will not be sent if order is assigned to a driver
-  "carrierBranchName":"Brooklyn" // will not be sent if order is assigned to a driver
+  "carrierName":"A&C Transporters",
+  "carrierBranchName":"Brooklyn",
   "phoneNumber": "9881234567",
   "tripName": "Trip_1227",
-  "updatedOn": "2016-06-30 19:43:07",
+  "updatedOn": "2019-06-30 19:43:07",
   "trackUrl": "https://goo.gl/qhZP63",
-  "pickupEndDate": "2017-11-20 10:23:20",
-  "deliveryEndDate": "2017-11-20 10:23:20",
+  "pickupEndDate": "2019-11-20 10:23:20",
+  "deliveryEndDate": "2019-11-20 10:23:20",
   "orderReferenceId": "b7b15a79d6734297a00a93755856e8c8"
 }
 
@@ -9097,10 +9098,12 @@ Param | DataType | Description
 clientShipmentId | String | Order No.
 status | String | Status of the order
 awbNumber | String | AWB No.
-deliveryMediumName | String | Name of Delivery Associate
-deliveryMediumUserName | String | Username of Delivery Associate
+deliveryMediumName | String | Name of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.
+deliveryMediumUserName | String | Username of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.
+carrierName | String | Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.
+carrierBranchName | Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.
 latitude | Double | The geo-coordinate(latitude) of the Delivery Associate when the Order was accepted
-longitude | Double | The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted
+longitude | Double | The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted.
 phoneNumber | String | Delivery Associate's phone no.
 tripName | String | Trip name
 updatedOn | String | Accept order timestamp
@@ -9966,6 +9969,10 @@ orderDate| String | Order creation Date.
 
 ```json
 {
+  "clientShipmentIds": [
+    "Order001",
+    "Order002"
+  ],
   "latitude":41.882702,
   "longitude":-87.619392,   
   "notificationType": "STARTTRIP",
@@ -9975,10 +9982,6 @@ orderDate| String | Order creation Date.
   "tripName": "TRIP-84",
   "vehicleNumber":"MH084819",
   "driverName":"Rahul",
-  "clientShipmentIds": [
-    "Order001",
-    "Order002"
-  ],
   "branchName": "Vikhroli"
 }
 
@@ -9990,6 +9993,8 @@ This notification is sent when a trip is started.
 
 Key | DataType | Description
 --------- | ------- |-------
+latitude | Long | Geo-coordnates(latitude) of the start trip event,
+longitude | Long | Geo-coordnates(longitude) of the start trip event.
 clientShipmentIds | List<String> |  Order No.s.
 notificationType | String |  STARTTRIP
 tripName | String |  Trip name
