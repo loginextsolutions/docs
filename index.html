@@ -17705,7 +17705,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
     </span><span class="p">{</span><span class="w">
 
     </span><span class="nt">"field"</span><span class="p">:</span><span class="s2">"cf_cutOffDate"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"2018-06-25T07:31:39Z"</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"2018-06-25T07:31:39Z.000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 
     </span><span class="p">]</span><span class="w">
@@ -18184,18 +18184,19 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order_001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDER ACCEPTED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB123456789"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Watson"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"carrierName"</span><span class="p">:</span><span class="s2">"A&amp;C Transporters"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
-  </span><span class="nt">"carrierBranchName"</span><span class="p">:</span><span class="s2">"Brooklyn"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">driver</span><span class="w">
-  </span><span class="s2">"phoneNumber"</span><span class="err">:</span><span class="w"> </span><span class="s2">"9881234567"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"carrierName"</span><span class="p">:</span><span class="s2">"A&amp;C Transporters"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"carrierBranchName"</span><span class="p">:</span><span class="s2">"Brooklyn"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9881234567"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip_1227"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-30 19:43:07"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30 19:43:07"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"trackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://goo.gl/qhZP63"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"pickupEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-20 10:23:20"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deliveryEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-20 10:23:20"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pickupEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-20 10:23:20"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-20 10:23:20"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7b15a79d6734297a00a93755856e8c8"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -18230,12 +18231,22 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <tr>
 <td>deliveryMediumName</td>
 <td>String</td>
-<td>Name of Delivery Associate</td>
+<td>Name of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.</td>
 </tr>
 <tr>
 <td>deliveryMediumUserName</td>
 <td>String</td>
-<td>Username of Delivery Associate</td>
+<td>Username of Delivery Associate who Accepted the Order. This field will not be sent if Order is assigned to a Carrier.</td>
+</tr>
+<tr>
+<td>carrierName</td>
+<td>String</td>
+<td>Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.</td>
+</tr>
+<tr>
+<td>carrierBranchName</td>
+<td>Name of the Carrier who Accepted the Order. This field will not be sent if Order is assigned to a Driver.</td>
+<td></td>
 </tr>
 <tr>
 <td>latitude</td>
@@ -18245,7 +18256,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <tr>
 <td>longitude</td>
 <td>Double</td>
-<td>The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted</td>
+<td>The geo-coordinate(longitude) of the Delivery Associate when the Order was accepted.</td>
 </tr>
 <tr>
 <td>phoneNumber</td>
@@ -20203,6 +20214,10 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Order002"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">41.882702</span><span class="p">,</span><span class="w">
   </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">-87.619392</span><span class="p">,</span><span class="w">   
   </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STARTTRIP"</span><span class="p">,</span><span class="w">
@@ -20212,10 +20227,6 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
   </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRIP-84"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"MH084819"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"driverName"</span><span class="p">:</span><span class="s2">"Rahul"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"clientShipmentIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"Order001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Order002"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vikhroli"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -20232,6 +20243,16 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>latitude</td>
+<td>Long</td>
+<td>Geo-coordnates(latitude) of the start trip event,</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Long</td>
+<td>Geo-coordnates(longitude) of the start trip event.</td>
+</tr>
 <tr>
 <td>clientShipmentIds</td>
 <td>List<String></td>
