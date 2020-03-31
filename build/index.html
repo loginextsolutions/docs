@@ -323,7 +323,9 @@ Similarly for - <br>
 
 <p><b><u>If you do not provide &#39;sessionExpiryTimeout&rsquo;, the validity of this session token will be 90 days(3 months).</u></b></p>
 
-<p>Please ensure that you add the token as part of every Loginext API call.</p>
+<p>Ensure that you add the token as part of every Loginext API call.</p>
+
+<p>Note that certain API fields like the &#39;paymentType&rsquo; field in the Create Order API are dependant on the language preferences set for the user account the API token is created for when it is created. For a seamless integration experience, we recommend using an English language user account for creating your API tokens for integrating with LogiNext.</p>
 
 <blockquote>
 <p>Definition</p>
@@ -7964,29 +7966,41 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR121"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateWeight"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateVolume"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicken Soup 2X200gm"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"soup"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemVolume"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemHeight"</span><span class="p">:</span><span class="mi">14</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT030"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WholeBeanCoffee 6x1kg"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coffee"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+            </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemVolume"</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemLength"</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemBreadth"</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"itemHeight"</span><span class="p">:</span><span class="mi">19</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
-
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -10412,7 +10426,6 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"serviceTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Economy"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
@@ -10423,8 +10436,8 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"deliverBranch"</span><span class="p">:</span><span class="s2">"Boston Main Hub"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries, Reefer"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryLocationType"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverEmail"</span><span class="p">:</span><span class="s2">"m.richardson@testmail.com"</span><span class="p">,</span><span class="w">
@@ -11016,6 +11029,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
+    </span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-16T14:24:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-17T14:24:00.000Z"</span><span class="p">,</span><span class="w">
@@ -11302,6 +11316,13 @@ When Customer Profiling is turned ON -
 <td>1</td>
 <td>Optional</td>
 <td>This field indicates if cancellation is allowed. Ex: Y/N</td>
+</tr>
+<tr>
+<td>pickupBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Pickup Branch of the Order.</td>
 </tr>
 <tr>
 <td>pickupServiceTime</td>
@@ -13978,6 +13999,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRIORITY1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -14149,6 +14171,13 @@ When Customer Profiling is turned ON -
 <td>This is the value of the order package.</td>
 </tr>
 <tr>
+<td>priority</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Order Priority.</td>
+</tr>
+<tr>
 <td>numberOfItems</td>
 <td>Integer</td>
 <td>20</td>
@@ -14160,7 +14189,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid.</td>
+<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
@@ -14836,7 +14865,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+<td>This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
@@ -18164,7 +18193,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>40</td>
 <td>Mandatory</td>
-<td>Payment mode. Ex: COD, Prepaid</td>
+<td>Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
 </tr>
 <tr>
 <td>packageValue</td>
@@ -18401,7 +18430,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>Payment mode. Ex: COD, Prepaid</td>
+<td>Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
 </tr>
 <tr>
 <td>packageValue</td>
@@ -19393,7 +19422,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>40</td>
 <td>Optional</td>
-<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid</td>
+<td>This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
 </tr>
 <tr>
 <td>partialDeliveryAllowedFl</td>
@@ -22714,7 +22743,7 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 <tr>
 <td>tripDetails.orderDetails.paymentType</td>
 <td>String</td>
-<td>payment type for the Order</td>
+<td>payment type for the Order.</td>
 </tr>
 <tr>
 <td>tripDetails.orderDetails.pickupDetails</td>

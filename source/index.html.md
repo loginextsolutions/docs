@@ -148,7 +148,9 @@ Similarly for - <br>
 
 <b><u>If you do not provide 'sessionExpiryTimeout', the validity of this session token will be 90 days(3 months).</u></b>
 
-Please ensure that you add the token as part of every Loginext API call.
+Ensure that you add the token as part of every Loginext API call.
+
+Note that certain API fields like the 'paymentType' field in the Create Order API are dependant on the language preferences set for the user account the API token is created for when it is created. For a seamless integration experience, we recommend using an English language user account for creating your API tokens for integrating with LogiNext.
 
 > Definition
 
@@ -4221,29 +4223,41 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "clientCode": "Salestap",
     "shipmentCrateMappings": [
       {
-        "crateCd": "CR121",
+        "crateCd": "CR041",
         "crateAmount":100.65,
         "crateType":"case",
-        "noOfUnits":10,
+        "noOfUnits":2,
+        "crateWeight":10,
+        "crateVolume":11,
+        "crateLength":12,
+        "crateBreadth":13,
+        "crateHeight":14,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",
             "itemName": "Chicken Soup 2X200gm",
             "itemPrice": 500,
-            "itemQuantity": 3,
+            "itemQuantity": 1,
             "itemType": "soup",
-            "itemWeight": 10
+            "itemWeight": 10,
+            "itemVolume":11,
+            "itemLength":12,
+            "itemBreadth":13,
+            "itemHeight":14
           },
           {
             "itemCd": "IT030",
             "itemName": "WholeBeanCoffee 6x1kg",
             "itemPrice": 400,
-            "itemQuantity": 1,
+            "itemQuantity": 2,
             "itemType": "coffee",
-            "itemWeight": 10
+            "itemWeight": 15,
+            "itemVolume":16,
+            "itemLength":17,
+            "itemBreadth":18,
+            "itemHeight":19
           }
         ]
-
       }
     ]
   }
@@ -5120,7 +5134,6 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "autoAllocateFl": "N",
     "shipmentOrderDt": "2019-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
-    "deliveryType": "Groceries",
     "serviceTypeCd": "Economy",
     "packageWeight":"10",
     "packageVolume": "4500",
@@ -5131,8 +5144,8 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "cancellationAllowedFl": "N",    
     "deliverBranch":"Boston Main Hub",
     "deliverServiceTime": "20",
-    "deliverEndTimeWindow": "2018-07-18T10:31:00.000Z",
-    "deliverStartTimeWindow": "2018-07-16T10:31:00.000Z",
+    "deliverEndTimeWindow": "2019-07-18T10:31:00.000Z",
+    "deliverStartTimeWindow": "2019-07-16T10:31:00.000Z",
     "deliveryType": "Groceries, Reefer",
     "deliveryLocationType":"Home",
     "deliverEmail":"m.richardson@testmail.com",
@@ -5374,6 +5387,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "numberOfItems": 1,
     "partialDeliveryAllowedFl": "Y",
     "cancellationAllowedFl": "N",    
+    "pickupBranch": "Down Town Chicago",
     "pickupServiceTime": "50",
     "pickupStartTimeWindow": "2019-07-16T14:24:00.000Z",
     "pickupEndTimeWindow": "2019-07-17T14:24:00.000Z",
@@ -5540,6 +5554,7 @@ paymentType | String | 40 | Mandatory | This is the mode of payment. Ex: COD - C
 partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
 cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
+pickupBranch | String | 255 | Mandatory | Pickup Branch of the Order.
 pickupServiceTime | Integer | 11 | Mandatory | Pickup service time in mins.
 pickupStartTimeWindow | Date |  | Mandatory | Pickup start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 pickupEndTimeWindow | Date |  | Mandatory | Pickup end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
@@ -6649,6 +6664,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/update
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "packageWeight":"10",
     "packageVolume": "450",
+    "priority": "PRIORITY1",
     "paymentType": "Prepaid",
     "packageValue": "65",
     "numberOfItems": "10",
@@ -6774,8 +6790,9 @@ shipmentOrderDt | Date | | Optional | This is the order date in UTC format. Form
 packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC.
 packageValue | Double | 10 | Optional | This is the value of the order package.
+priority | String |100 | Optional |  Order Priority.
 numberOfItems | Integer | 20 | Optional | This is the number of crates in the order.
-paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid.
+paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
 partialDeliveryAllowedFl | String | 50 | Optional | This identifies if partial delivery is allowed. Ex: Y/N.
 returnAllowedFl | String | 1 | Optional | This identifies if order return allowed. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | This identifies if order cancellation is allowed. Ex: Y/N
@@ -7013,7 +7030,7 @@ packageHeight| Double | 10,3 | Optional | This is the height of package.  The un
 priority | String | 16 | Optional |This is the priority of the current Order. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
-paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+paymentType | String | 40 | Optional | This is the mode of payment. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
 partialDeliveryAllowedFl | String | 50 | Optional | This field indicates if partial Delivery allowed. Ex: Y/N
 returnAllowedFl | String | 1 | Optional | This field indicates if return is allowed. Ex: Y/N
 cancellationAllowedFl | String | 1 | Optional | This field indicates if cancellation is allowed. Ex: Y/N
@@ -8935,7 +8952,7 @@ Param | DataType |  Length | Required | Description
 --------- | ------- | -------|------- | ------------
 orderNo | String | 100 | Mandatory |  Order No.
 distributionCenter | String | 255 | Mandatory | Distribution center's name
-paymentType | String | 40 | Mandatory | Payment mode. Ex: COD, Prepaid
+paymentType | String | 40 | Mandatory | Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
 packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
 cashOnDelivery | Double | 10 | Mandatory(if paymentType is COD) | Cash to be collected on delivery
 cashOnPickup | Double | 10 | Optional | Cash to be given on pickup
@@ -9047,7 +9064,7 @@ distributionCenter | String | 255 | Mandatory | Distribution center's name. The 
 shipmentOrderDt | Double | | Mandatory | Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliverCapacityInVolume | 10 | Double | Optional | Weight of package in Kg.
 deliverCapacityInUnits | 10 | Double | Optional | Volume of package in CC
-paymentType | String | 40 | Optional | Payment mode. Ex: COD, Prepaid
+paymentType | String | 40 | Optional | Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
 packageValue | Double | 10 | Optional | Package Value (This will be used when paymentType is Prepaid)
 cashOnDelivery | Double | 10 | Mandatory(if paymentType is Delivery) | Cash to be collected on delivery
 cashOnPickup | Double | 10 | Optional | Cash to be given on pickup
@@ -9519,7 +9536,7 @@ packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
 packageVolume | Double | 10 | Optional | This is the volume of package in CC
 packageValue | Double | 10 | Optional | This is the value of package
 numberOfItems | Integer | 20 | Optional | This is the number of crates
-paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid
+paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
 partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
 returnAllowedFl | String | 1 | Optional | This field specifies if the task can be returned. Ex: Y/N. Default value is Y.
 cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
@@ -11048,7 +11065,7 @@ tripDetails.orderDetails | List | List of Order details in the Current Trip.
 tripDetails.orderDetails.orderTypeCd | String | Order type. Can be 'PICKUP' or 'DELIVER'.
 tripDetails.orderDetails.orderNo | String | Order Number
 tripDetails.orderDetails.orderReferenceId | String | Order reference ID
-tripDetails.orderDetails.paymentType | String | payment type for the Order
+tripDetails.orderDetails.paymentType | String | payment type for the Order. 
 tripDetails.orderDetails.pickupDetails | List | Details of the pickup leg of the Order
 tripDetails.orderDetails.pickupDetails.latitude | Double | Geocoordinates (latitude) of the pickup leg of the Order.
 tripDetails.orderDetails.pickupDetails.longitude | Double | Geocoordinates (longitude) pickup leg of the of the Order.
