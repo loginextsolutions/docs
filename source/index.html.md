@@ -7946,6 +7946,71 @@ Param | DataType | Length |  Required | Description
 referenceId | String |  | Conditional Mandatory |  If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.
 tripname | String |  | Conditional Mandatory |  If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.
 
+### Update
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/update
+```
+
+> Request Body
+
+```json
+{
+"tripReferenceId" : "65ba00dbdcf04fb789311df6aa40e3ba",
+"tripName" : "23022020-Trip-Central Chicago",
+"deliveryMediumReferenceId" :"96271ec538494ddf8e3ffe234c58b123"
+}  
+```
+
+> Success Response
+
+```json
+{
+  "status": 200,
+  "message": "Trip Updated Successfully.",
+  "data": {
+    "tripReferenceId": "65ba00dbdcf04fb789311df6aa40e3ba",
+    "deliveryMediumReferenceId": "96271ec538494ddf8e3ffe234c58b123"
+  },
+  "hasError": false
+}
+
+```
+
+> Failure Response
+
+```json
+{
+  "status": 409,
+  "message": "Trip Updation Failed.",
+  "error": [
+    {
+      "key": "tripReferenceId",
+      "message": "Trip Reference Id is invalid."
+    }
+  ],
+  "hasError": true
+}
+
+```
+Update an existing trip  using this API. You can change the Trip Name or the Delivery Associate of this Trip
+
+Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/update`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+tripReferenceId | String | Mandatory | Reference Id of the trip.
+tripName | String | Optional | New Trip name to be updated in the system.
+deliveryMediumReferenceId | String | Optional | The Reference ID of the new Delivery Associate to be tagged to this Trip.
+
 
 ## Tracking
 
