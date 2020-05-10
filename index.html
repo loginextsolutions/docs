@@ -657,6 +657,8 @@ Similarly for - <br>
 
 <p>Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 &#39;Max Request Limit Reached&rsquo; error to your API calls if you go beyond this limit.</p>
 
+<p>Note that all Rate Limits apply on a rolling time interval basis. If you are calling a Tier 1 API that supports a Rate Limit of 5 requests per second, that means you can send a total of 5 requests within a one second interval of each other.</p>
+
 <h2 id="batching">Batching</h2>
 
 <p>The LogiNext API supports multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. </p>
@@ -22756,7 +22758,7 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 <tr>
 <td>eventName</td>
 <td>String</td>
-<td>This is the name of the event at which the webhook was triggered. This can be one of &#39;TRIPSTART&rsquo;, &#39;ORDERCHECKOUT&rsquo;, &#39;MANUALASSIGNMENT&rsquo;, &#39;DELIVERYMEDIUMOFFBREAK&rsquo;.</td>
+<td>This is the name of the event at which the webhook was triggered. This can be one of &#39;TRIPSTART&rsquo;, &#39;ORDERCHECKOUT&rsquo;, &#39;MANUALASSIGNMENT&rsquo;, &#39;DELIVERYMEDIUMOFFBREAK&rsquo;, &#39;SCHEDULED&rsquo;.</td>
 </tr>
 <tr>
 <td>tripDetails</td>
