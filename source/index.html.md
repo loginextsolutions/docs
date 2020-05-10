@@ -338,6 +338,8 @@ Special Tier APIs | Custom Rate Limits are defined for Special Tier APIs. For ex
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
 
+Note that all Rate Limits apply on a rolling time interval basis. If you are calling a Tier 1 API that supports a Rate Limit of 5 requests per second, that means you can send a total of 5 requests within a one second interval of each other.
+
 ## Batching
 
 The LogiNext API supports multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. 
@@ -11115,7 +11117,7 @@ This webhook is triggered when the ETA for a particular Order is revised. This c
 Key | DataType | Description
 --------- | ------- |-------
 notificationType | String |  This represents the event that triggered the webhook. In the case of Route Planning it is hardcoded to 'REVISEETANOTIFICATION'
-eventName | String | This is the name of the event at which the webhook was triggered. This can be one of 'TRIPSTART', 'ORDERCHECKOUT', 'MANUALASSIGNMENT', 'DELIVERYMEDIUMOFFBREAK'. 
+eventName | String | This is the name of the event at which the webhook was triggered. This can be one of 'TRIPSTART', 'ORDERCHECKOUT', 'MANUALASSIGNMENT', 'DELIVERYMEDIUMOFFBREAK', 'SCHEDULED'. 
 tripDetails | List | Notification details
 tripDetails.tripName | String |  This is the Trip name.
 tripDetails.tripReferenceId | String | Reference id of the trip
