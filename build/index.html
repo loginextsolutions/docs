@@ -6428,6 +6428,1804 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </tr>
 </tbody></table>
 
+<h2 id="order-request">Order Request</h2>
+
+<p>Create Order Requests in the LogiNext system using the Order Request API. Order Requests will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Order Request later.</p>
+
+<p>To view the Order Requests created in the LogiNext Web Application, select the correct date range in the date filter on the screen.</p>
+
+<p>When Customer Profiling is turned ON -</p>
+
+<ol>
+<li><p>You can only enter the corresponding accountCode field that will hold the customer ID. If passed, ad the accountCode exists in the LogiNext system, LogiNext will use the customer information associated with that accountCode in the Order creation. It will overlook other customer information like Name, Email and Phone Number.</p></li>
+<li><p>In Order to select a particular address for that customer, you can pass the address ID associated with that address for that customer. If passed, and the address ID exists in LogiNext for a previously created address, the address information associated with that address ID will be used.</p></li>
+</ol>
+
+<h3 id="create-pick-up-only">Create Pick Up Only</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/BookingApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+</span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-19T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageValue"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageLength"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageBreadth"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageHeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"priority"</span><span class="p">:</span><span class="s2">"Priority 1"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"paymentType"</span><span class="p">:</span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Express"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">"mea_allmile_sandbox Main Branch"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupBranch"</span><span class="p">:</span><span class="s2">"mea_allmile_sandbox Main Branch"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-19T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-19T14:24:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupEmail"</span><span class="p">:</span><span class="s2">"james.w@ablogs.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAddressType"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Walker"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupApartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupStreetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2142 3rd Ave"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLandmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. McDonalds"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLocality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"East Harlem"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupPinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10035"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="s2">"notes for pickup"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"clientCode"</span><span class="p">:</span><span class="s2">"ShipGenie"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.65</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+             </span><span class="p">{</span><span class="w">
+                 </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicken Soup 2X200gm"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"soup"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemBreadth"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"itemHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+ </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request(s) created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c0dcb93ca494cfc92d5b830c1c8033a"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request Creation Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pickupAccountCode"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Address not serviceable"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryType"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"DeliveryType is invalid"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Create pickup Order requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/BookingApp/mile/v1/create</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentRequestNo</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Order request Number. If not passed, the system will auto generate an Order request number</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>Airway Bill Number associated with an Order request.</td>
+</tr>
+<tr>
+<td>shipmentRequestDispatchDate</td>
+<td></td>
+<td></td>
+<td>Optional</td>
+<td>The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.</td>
+</tr>
+<tr>
+<td>shipmentRequestType</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>The value in this field has to be &ldquo;PICKUP&rdquo; always.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+</tr>
+<tr>
+<td>packageLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;PRIORITY1&rsquo;, &#39;PRIORITY2&rsquo;, or &#39;PRIORITY3&rsquo;.</td>
+</tr>
+<tr>
+<td>serviceType</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order request Service Type.</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Order request value.</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Number of items in the order.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br></td>
+</tr>
+<tr>
+<td>deliveryMediumUsername</td>
+<td>STRING</td>
+<td></td>
+<td>Optional</td>
+<td>If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.</td>
+</tr>
+<tr>
+<td>pickupBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>For Pick-Up type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the Order request to. It is recommended to not pass this field so the system can use the branch linked to the zone of the pickup location. You can pass this field if the Shipper the Order request is being created for is not linked with a Service area Profile on the LogiNext system.</td>
+</tr>
+<tr>
+<td>pickupServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order.</td>
+</tr>
+</tbody></table>
+
+<p>distributionCenter | String |  | Mandatory | Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</p>
+
+<p>pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;
+pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
+pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
+pickupEmail | String | 100 | Optional | Pick-up Customer email ID.
+pickupPhoneNumber | String | 255 | Optional | Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.
+pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Conditional Mandatory | Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLocality | String | 512 | Conditional Mandatory | Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.
+pickupPinCode | String | 20 | Conditional Mandatory | Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
+deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
+clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</p>
+
+<h4 id="request-parameters-crates">Request Parameters (Crates)</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>Crate code.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>No. of crate units</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Item weight</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+</tbody></table>
+
+<h3 id="create-deliver-only">Create Deliver Only</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/BookingApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+</span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-19T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageValue"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageLength"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageBreadth"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageHeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"priority"</span><span class="p">:</span><span class="s2">"Priority 1"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"paymentType"</span><span class="p">:</span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Express"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">""</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">Main</span><span class="w"> </span><span class="err">Branch</span><span class="s2">",
+"</span><span class="err">deliverBranch</span><span class="s2">":"</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">Main</span><span class="w"> </span><span class="err">Branch</span><span class="s2">",
+deliverServiceTime:"</span><span class="mi">10</span><span class="s2">",
+deliverStartTimeWindow: "</span><span class="mi">2020-04-10</span><span class="err">T</span><span class="mi">10</span><span class="err">:</span><span class="mi">31</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+deliverEndTimeWindow: "</span><span class="mi">2020-04-10</span><span class="err">T</span><span class="mi">10</span><span class="err">:</span><span class="mi">31</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+deliverAccountCode: "</span><span class="err">Matt</span><span class="mi">001</span><span class="s2">",
+deliverAccountName:"</span><span class="err">Jane</span><span class="w"> </span><span class="err">Doe</span><span class="s2">",
+deliverEmail:"</span><span class="err">m.richardson@testmail.com</span><span class="s2">",
+deliverPhoneNumber:"</span><span class="mi">9891234567</span><span class="s2">",
+deliverAddressId: "</span><span class="err">home</span><span class="s2">",
+deliverAddressType:"</span><span class="err">Home</span><span class="s2">",
+deliverApartment: "</span><span class="mi">201</span><span class="s2">",
+deliverStreetName: "</span><span class="err">E</span><span class="w"> </span><span class="err">Randolph</span><span class="w"> </span><span class="err">St</span><span class="s2">",
+deliverLandmark: "</span><span class="err">Opp.</span><span class="w"> </span><span class="err">Chiptole</span><span class="s2">",
+deliverLocality: "</span><span class="err">Down</span><span class="w"> </span><span class="err">Towm</span><span class="w"> </span><span class="err">Chicago</span><span class="s2">",
+deliverCity: "</span><span class="err">Chicago</span><span class="s2">",
+deliverState: "</span><span class="err">IL</span><span class="s2">",
+deliverCountry: "</span><span class="err">USA</span><span class="s2">",
+deliverPinCode: "</span><span class="mi">60602</span><span class="s2">",
+deliverLatitude:41.882702,
+deliverLongitude:-87.619392,
+deliverAddressTimezone:"</span><span class="err">America/Chicago</span><span class="s2">",
+deliverNotes:"</span><span class="err">notes</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">delivery</span><span class="s2">",
+"</span><span class="err">shipmentCrateMappings</span><span class="s2">": [
+     {
+         "</span><span class="err">crateCd</span><span class="s2">": "</span><span class="err">CR</span><span class="mi">041</span><span class="s2">",
+         "</span><span class="err">crateAmount</span><span class="s2">": 100.65,
+         "</span><span class="err">crateType</span><span class="s2">": "</span><span class="err">case</span><span class="s2">",
+         "</span><span class="err">noOfUnits</span><span class="s2">": 2,
+         "</span><span class="err">crateWeight</span><span class="s2">": 10,
+         "</span><span class="err">crateVolume</span><span class="s2">": 11,
+         "</span><span class="err">crateLength</span><span class="s2">": 12,
+         "</span><span class="err">crateBreadth</span><span class="s2">": 13,
+         "</span><span class="err">crateHeight</span><span class="s2">": 14,
+         "</span><span class="err">shipmentlineitems</span><span class="s2">": [
+             {
+                 "</span><span class="err">itemCd</span><span class="s2">": "</span><span class="err">IT</span><span class="mi">043</span><span class="s2">",
+                 "</span><span class="err">itemName</span><span class="s2">": "</span><span class="err">Chicken</span><span class="w"> </span><span class="err">Soup</span><span class="w"> </span><span class="mi">2</span><span class="err">X</span><span class="mi">200</span><span class="err">gm</span><span class="s2">",
+                 "</span><span class="err">itemPrice</span><span class="s2">": 500,
+                 "</span><span class="err">itemQuantity</span><span class="s2">": 1,
+                 "</span><span class="err">itemType</span><span class="s2">": "</span><span class="err">soup</span><span class="s2">",
+                 "</span><span class="err">itemWeight</span><span class="s2">": 10,
+                 "</span><span class="err">itemVolume</span><span class="s2">": 11,
+                 "</span><span class="err">itemLength</span><span class="s2">": 12,
+                 "</span><span class="err">itemBreadth</span><span class="s2">": 13,
+                 "</span><span class="err">itemHeight":</span><span class="w"> </span><span class="mi">14</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+ </span><span class="err">]</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request(s) created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c0dcb93ca494cfc92d5b830c1c8033a"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request Creation Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliverAccountCode"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Address not serviceable"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryType"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"DeliveryType is invalid"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Create deliver Order requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/BookingApp/mile/v1/create</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentRequestNo</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Order request Number. If not passed, the system will auto generate an Order request number</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>Airway Bill Number associated with an Order request.</td>
+</tr>
+<tr>
+<td>shipmentRequestDispatchDate</td>
+<td></td>
+<td></td>
+<td>Optional</td>
+<td>The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.</td>
+</tr>
+<tr>
+<td>shipmentRequestType</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>The value in this field has to be &ldquo;PICKUP&rdquo; always.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+</tr>
+<tr>
+<td>packageLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;PRIORITY1&rsquo;, &#39;PRIORITY2&rsquo;, or &#39;PRIORITY3&rsquo;.</td>
+</tr>
+<tr>
+<td>serviceType</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order request Service Type.</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Order request value.</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Number of items in the order.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.</td>
+</tr>
+<tr>
+<td>deliverBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. For example - CUSTOMER</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the customer code of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Delivery Customer email ID.</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Customer phone number.</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Delivery Address landmark.</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (latitude).</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (longitude).</td>
+</tr>
+<tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Delivery notes associated with the order.</td>
+</tr>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</td>
+</tr>
+</tbody></table>
+
+<h4 id="request-parameters-crates">Request Parameters (Crates)</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>Crate code.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>No. of crate units</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Item weight</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+</tbody></table>
+
+<h3 id="create-pickup-and-deliver">Create Pickup and Deliver</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/BookingApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+</span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-19T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageValue"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageLength"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageBreadth"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"packageHeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"priority"</span><span class="p">:</span><span class="s2">"Priority 1"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"paymentType"</span><span class="p">:</span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Express"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">""</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">Main</span><span class="w"> </span><span class="err">Branch</span><span class="s2">",
+"</span><span class="err">pickupBranch</span><span class="s2">":"</span><span class="err">mea_allmile_sandbox</span><span class="w"> </span><span class="err">Main</span><span class="w"> </span><span class="err">Branch</span><span class="s2">",
+"</span><span class="err">pickupServiceTime</span><span class="s2">": "</span><span class="mi">50</span><span class="s2">",
+"</span><span class="err">pickupStartTimeWindow</span><span class="s2">": "</span><span class="mi">2020-05-19</span><span class="err">T</span><span class="mi">14</span><span class="err">:</span><span class="mi">24</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+"</span><span class="err">pickupEndTimeWindow</span><span class="s2">": "</span><span class="mi">2020-05-19</span><span class="err">T</span><span class="mi">14</span><span class="err">:</span><span class="mi">24</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+"</span><span class="err">pickupEmail</span><span class="s2">":"</span><span class="err">james.w@ablogs.com</span><span class="s2">",
+"</span><span class="err">pickupPhoneNumber</span><span class="s2">": "</span><span class="mi">5163063377</span><span class="s2">",
+"</span><span class="err">pickupAccountCode</span><span class="s2">": "</span><span class="err">jim</span><span class="mi">001</span><span class="s2">",
+"</span><span class="err">pickupAddressId</span><span class="s2">": "</span><span class="err">Home</span><span class="s2">",
+"</span><span class="err">pickupAddressType</span><span class="s2">":"</span><span class="err">Home</span><span class="s2">",
+"</span><span class="err">pickupAccountName</span><span class="s2">": "</span><span class="err">James</span><span class="w"> </span><span class="err">Walker</span><span class="s2">",
+"</span><span class="err">pickupApartment</span><span class="s2">": "</span><span class="mi">901</span><span class="s2">",
+"</span><span class="err">pickupStreetName</span><span class="s2">": "</span><span class="mi">2142</span><span class="w"> </span><span class="mi">3</span><span class="err">rd</span><span class="w"> </span><span class="err">Ave</span><span class="s2">",
+"</span><span class="err">pickupLandmark</span><span class="s2">": "</span><span class="err">Opp.</span><span class="w"> </span><span class="err">McDonalds</span><span class="s2">",
+"</span><span class="err">pickupLocality</span><span class="s2">": "</span><span class="err">East</span><span class="w"> </span><span class="err">Harlem</span><span class="s2">",
+"</span><span class="err">pickupCity</span><span class="s2">": "</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="s2">",
+"</span><span class="err">pickupState</span><span class="s2">": "</span><span class="err">NY</span><span class="s2">",
+"</span><span class="err">pickupCountry</span><span class="s2">": "</span><span class="err">USA</span><span class="s2">",
+"</span><span class="err">pickupPinCode</span><span class="s2">": "</span><span class="mi">10035</span><span class="s2">",
+"</span><span class="err">pickupLatitude</span><span class="s2">":40.760838,
+"</span><span class="err">pickupLongitude</span><span class="s2">":-73.96732299999996,
+"</span><span class="err">pickupAddressTimezone</span><span class="s2">":"</span><span class="err">America/New_York</span><span class="s2">",
+"</span><span class="err">deliverBranch</span><span class="s2">":"</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">Main</span><span class="w"> </span><span class="err">Branch</span><span class="s2">",
+deliverServiceTime:"</span><span class="mi">10</span><span class="s2">",
+deliverStartTimeWindow: "</span><span class="mi">2020-04-10</span><span class="err">T</span><span class="mi">10</span><span class="err">:</span><span class="mi">31</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+deliverEndTimeWindow: "</span><span class="mi">2020-04-10</span><span class="err">T</span><span class="mi">10</span><span class="err">:</span><span class="mi">31</span><span class="err">:</span><span class="mi">0</span><span class="mf">0.000</span><span class="err">Z</span><span class="s2">",
+deliverAccountCode: "</span><span class="err">Matt</span><span class="mi">001</span><span class="s2">",
+deliverAccountName:"</span><span class="err">Jane</span><span class="w"> </span><span class="err">Doe</span><span class="s2">",
+deliverEmail:"</span><span class="err">m.richardson@testmail.com</span><span class="s2">",
+deliverPhoneNumber:"</span><span class="mi">9891234567</span><span class="s2">",
+deliverAddressId: "</span><span class="err">home</span><span class="s2">",
+deliverAddressType:"</span><span class="err">Home</span><span class="s2">",
+deliverApartment: "</span><span class="mi">201</span><span class="s2">",
+deliverStreetName: "</span><span class="err">E</span><span class="w"> </span><span class="err">Randolph</span><span class="w"> </span><span class="err">St</span><span class="s2">",
+deliverLandmark: "</span><span class="err">Opp.</span><span class="w"> </span><span class="err">Chiptole</span><span class="s2">",
+deliverLocality: "</span><span class="err">Down</span><span class="w"> </span><span class="err">Towm</span><span class="w"> </span><span class="err">Chicago</span><span class="s2">",
+deliverCity: "</span><span class="err">Chicago</span><span class="s2">",
+deliverState: "</span><span class="err">IL</span><span class="s2">",
+deliverCountry: "</span><span class="err">USA</span><span class="s2">",
+deliverPinCode: "</span><span class="mi">60602</span><span class="s2">",
+deliverLatitude:41.882702,
+deliverLongitude:-87.619392,
+deliverAddressTimezone:"</span><span class="err">America/Chicago</span><span class="s2">",
+deliverNotes:"</span><span class="err">notes</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">delivery</span><span class="s2">",
+"</span><span class="err">shipmentCrateMappings</span><span class="s2">": [
+     {
+         "</span><span class="err">crateCd</span><span class="s2">": "</span><span class="err">CR</span><span class="mi">041</span><span class="s2">",
+         "</span><span class="err">crateAmount</span><span class="s2">": 100.65,
+         "</span><span class="err">crateType</span><span class="s2">": "</span><span class="err">case</span><span class="s2">",
+         "</span><span class="err">noOfUnits</span><span class="s2">": 2,
+         "</span><span class="err">crateWeight</span><span class="s2">": 10,
+         "</span><span class="err">crateVolume</span><span class="s2">": 11,
+         "</span><span class="err">crateLength</span><span class="s2">": 12,
+         "</span><span class="err">crateBreadth</span><span class="s2">": 13,
+         "</span><span class="err">crateHeight</span><span class="s2">": 14,
+         "</span><span class="err">shipmentlineitems</span><span class="s2">": [
+             {
+                 "</span><span class="err">itemCd</span><span class="s2">": "</span><span class="err">IT</span><span class="mi">043</span><span class="s2">",
+                 "</span><span class="err">itemName</span><span class="s2">": "</span><span class="err">Chicken</span><span class="w"> </span><span class="err">Soup</span><span class="w"> </span><span class="mi">2</span><span class="err">X</span><span class="mi">200</span><span class="err">gm</span><span class="s2">",
+                 "</span><span class="err">itemPrice</span><span class="s2">": 500,
+                 "</span><span class="err">itemQuantity</span><span class="s2">": 1,
+                 "</span><span class="err">itemType</span><span class="s2">": "</span><span class="err">soup</span><span class="s2">",
+                 "</span><span class="err">itemWeight</span><span class="s2">": 10,
+                 "</span><span class="err">itemVolume</span><span class="s2">": 11,
+                 "</span><span class="err">itemLength</span><span class="s2">": 12,
+                 "</span><span class="err">itemBreadth</span><span class="s2">": 13,
+                 "</span><span class="err">itemHeight":</span><span class="w"> </span><span class="mi">14</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+ </span><span class="err">]</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request(s) created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c0dcb93ca494cfc92d5b830c1c8033a"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipment Request Creation Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SH12432"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentRequestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliverAccountCode"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Address not serviceable"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveryType"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"DeliveryType is invalid"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Create pickup Oand deliverrder requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/BookingApp/mile/v1/create</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentRequestNo</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Order request Number. If not passed, the system will auto generate an Order request number</td>
+</tr>
+<tr>
+<td>awbNumber</td>
+<td>String</td>
+<td>1000</td>
+<td>Optional</td>
+<td>Airway Bill Number associated with an Order request.</td>
+</tr>
+<tr>
+<td>shipmentRequestDispatchDate</td>
+<td></td>
+<td></td>
+<td>Optional</td>
+<td>The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.</td>
+</tr>
+<tr>
+<td>shipmentRequestType</td>
+<td>String</td>
+<td>40</td>
+<td>Mandatory</td>
+<td>The value in this field has to be &ldquo;PICKUP&rdquo; always.</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>packageWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>packageVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).</td>
+</tr>
+<tr>
+<td>packageLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>packageHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be &#39;PRIORITY1&rsquo;, &#39;PRIORITY2&rsquo;, or &#39;PRIORITY3&rsquo;.</td>
+</tr>
+<tr>
+<td>serviceType</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>Order request Service Type.</td>
+</tr>
+<tr>
+<td>packageValue</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Order request value.</td>
+</tr>
+<tr>
+<td>paymentType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Number of items in the order.</td>
+</tr>
+<tr>
+<td>deliveryType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.</td>
+</tr>
+<tr>
+<td>deliverBranch</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</td>
+</tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Pick-up Customer ID.</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer Address ID.</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Pick-up Customer email ID.</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>pickupPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>This is the geolocation coordinate (latitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. For example - CUSTOMER</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the customer code of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Delivery Customer email ID.</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Customer phone number.</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Delivery Address landmark.</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (latitude).</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (longitude).</td>
+</tr>
+<tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Delivery notes associated with the order.</td>
+</tr>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</td>
+</tr>
+</tbody></table>
+
+<h4 id="request-parameters-crates">Request Parameters (Crates)</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipmentCrateMappings</td>
+<td>Array of objects</td>
+<td></td>
+<td>Optional</td>
+<td>Shipment crates</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateCd</td>
+<td>String</td>
+<td>128</td>
+<td>Mandatory</td>
+<td>Crate code.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateAmount</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Crate amount</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Type of crate. Ex: cake, juice, sweet, furniture etc.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.noOfUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>No. of crate units</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateVolume</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateWeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.crateHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemCd</td>
+<td>String</td>
+<td>200</td>
+<td>Mandatory</td>
+<td>Item code</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Item name</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemPrice</td>
+<td>Double</td>
+<td></td>
+<td>Mandatory</td>
+<td>Item price</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemQuantity</td>
+<td>Double</td>
+<td>10</td>
+<td>Mandatory</td>
+<td>Item quantity</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemType</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Item type</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemWeight</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Item weight</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemLength</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemBreadth</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+<tr>
+<td>shipmentCrateMappings.shipmentlineitems.itemHeight</td>
+<td>Double</td>
+<td>10,3</td>
+<td>Optional</td>
+<td>This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.</td>
+</tr>
+</tbody></table>
+
 <h2 id="order">Order</h2>
 
 <p>Create Orders in the LogiNext system using the Orders API. Orders will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Order later.</p>
@@ -6480,6 +8278,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Premium"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please ring my Door Bell"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAccountCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jim001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupAddressId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
@@ -6798,6 +8597,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>Order value.</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>paymentType</td>
@@ -7194,6 +9000,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Premium"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -7522,6 +9329,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>Package Value (This will be used when paymentType is Prepaid)</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>returnAllowedFl</td>
@@ -7900,6 +9714,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Premium"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -8234,6 +10049,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>Order value.</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -8863,6 +10685,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"serviceType"</span><span class="p">:</span><span class="s2">"Premium"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
@@ -9189,6 +11012,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of package</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -9667,6 +11497,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -9970,6 +11801,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of package</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -10433,6 +12271,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -10690,6 +12529,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of package</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -11028,6 +12874,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4500"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">    
@@ -11283,6 +13130,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of package</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -11613,6 +13467,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"packageVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450.12"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cancellationAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
@@ -11898,6 +13753,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of package</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>numberOfItems</td>
@@ -13613,6 +15475,7 @@ When Customer Profiling is turned ON -
             </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order recieved successfully.Thanks"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
             </span><span class="nt">"recalculatedValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
             </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"serviceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -13717,6 +15580,7 @@ When Customer Profiling is turned ON -
       </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order recieved successfully.Thanks"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
       </span><span class="nt">"recalculatedValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERED"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"plannedServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
@@ -14004,6 +15868,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRIORITY1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prepaid"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingCost"</span><span class="p">:</span><span class="s2">"50"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberOfItems"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"partialDeliveryAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"returnAllowedFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -14171,6 +16036,13 @@ When Customer Profiling is turned ON -
 <td>10</td>
 <td>Optional</td>
 <td>This is the value of the order package.</td>
+</tr>
+<tr>
+<td>shippingCost</td>
+<td>Double</td>
+<td>10</td>
+<td>Optional</td>
+<td>Shipping cost or delivery Fee for the Order.</td>
 </tr>
 <tr>
 <td>priority</td>
@@ -18195,1139 +20067,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </tr>
 </tbody></table>
 
-<h1 id="loginext-ondemand-tm">LogiNext OnDemand <sup>TM</sup></h1>
-
-<h2 id="order">Order</h2>
-
-<h3 id="create-fixed-pickup">Create (Fixed Pickup)</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w"> 
-</span><span class="p">{</span><span class="w">
-</span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-</span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-</span><span class="nt">"customerName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Anuradha S."</span><span class="p">,</span><span class="w">
-</span><span class="nt">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McD Malaysia"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"subLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Petaling Jaya"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JVLR Powai, Mumbai 400076"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"60166788040"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"testod3"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"distributionCenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"McDonald's Malaysia"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">74.6210216</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliverServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-</span><span class="nt">"pickupServiceTime"</span><span class="p">:</span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"80ecfaccd4544980805aedeefc9325d3"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-
-</span></code></pre>
-
-<p>Place a new delivery leg order with this API.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create</code></p>
-
-<h4 id="request-parameters">Request Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderNo</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Order No.</td>
-</tr>
-<tr>
-<td>distributionCenter</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Distribution center&rsquo;s name</td>
-</tr>
-<tr>
-<td>paymentType</td>
-<td>String</td>
-<td>40</td>
-<td>Mandatory</td>
-<td>Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
-</tr>
-<tr>
-<td>packageValue</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Package Value (This will be used when paymentType is Prepaid)</td>
-</tr>
-<tr>
-<td>cashOnDelivery</td>
-<td>Double</td>
-<td>10</td>
-<td>Mandatory(if paymentType is COD)</td>
-<td>Cash to be collected on delivery</td>
-</tr>
-<tr>
-<td>cashOnPickup</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Cash to be given on pickup</td>
-</tr>
-<tr>
-<td>locality</td>
-<td>String</td>
-<td>512</td>
-<td>Conditional Mandatory</td>
-<td>Locality name of the delivery location. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.</td>
-</tr>
-<tr>
-<td>subLocality</td>
-<td>String</td>
-<td>512</td>
-<td>Conditional Mandatory</td>
-<td>Sub-locality name. This has to be passed if geo coordinates are not passed for the Order to be of fixed pickup type.</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Address where delivery should be done</td>
-</tr>
-<tr>
-<td>deliverPhoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>End customer contact number</td>
-</tr>
-<tr>
-<td>customerName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>End customer name</td>
-</tr>
-<tr>
-<td>latitude</td>
-<td>Double</td>
-<td>14</td>
-<td>Conditional Mandatory</td>
-<td>geo coordinates(latitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>Double</td>
-<td>14</td>
-<td>Conditional Mandatory</td>
-<td>geo coordinates(longitude) of the delivery location. This has to be passed if the locality and subLocality fields are not passed for the Order to be of fixed pickup type.</td>
-</tr>
-<tr>
-<td>pickupServiceTime</td>
-<td>Integer</td>
-<td>14</td>
-<td>Optional</td>
-<td>Service time at the pickup location in minutes.</td>
-</tr>
-<tr>
-<td>deliverServiceTime</td>
-<td>Integer</td>
-<td>14</td>
-<td>Optional</td>
-<td>Service time at the delivery location in minutes.</td>
-</tr>
-<tr>
-<td>deliveryType</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
-</tr>
-</tbody></table>
-
-<h3 id="create-variable-pickup">Create (Variable Pickup)</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWB000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cashOnDelivery"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cashOnPickup"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEmail"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"demo1@ymail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8888990000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupApartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStreetName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SC1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLandmark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LM1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AN1"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupCountry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupCity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupPinCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"400076"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:45:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">74.9094407</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pickupNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't ring the doorbell"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverAccountCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverAccountName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEmail"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"demo2@ymail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPhoneNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"7788888899"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverApartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment2"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStreetName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SC2"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLandmark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"LM2"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLocality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AN2"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCountry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIA"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Maharashtra"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverPinCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"400077"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverNotes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T08:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLatitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverLongitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">74.9055627</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderNo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TestOrder"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"paymentType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="s2">"Mumbai"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isPartialDeliveryAllowedFl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipmentOrderDt"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T08:00:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCapacityInVolume"</span><span class="p">:</span><span class="mf">123.32</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliverCapacityInWeight"</span><span class="p">:</span><span class="mf">15.2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="s2">"Groceries"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"80ecfaccd4544980805aedeefc9325d3"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-
-</span></code></pre>
-
-<p>Place a new delivery leg order with this API.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/create</code></p>
-
-<h4 id="request-parameters">Request Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderNo</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Order No.</td>
-</tr>
-<tr>
-<td>awbNumber</td>
-<td>String</td>
-<td>1000</td>
-<td>Optional</td>
-<td>Awb No.</td>
-</tr>
-<tr>
-<td>distributionCenter</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
-</tr>
-<tr>
-<td>shipmentOrderDt</td>
-<td>Double</td>
-<td></td>
-<td>Mandatory</td>
-<td>Order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>deliverCapacityInVolume</td>
-<td>10</td>
-<td>Double</td>
-<td>Optional</td>
-<td>Weight of package in Kg.</td>
-</tr>
-<tr>
-<td>deliverCapacityInUnits</td>
-<td>10</td>
-<td>Double</td>
-<td>Optional</td>
-<td>Volume of package in CC</td>
-</tr>
-<tr>
-<td>paymentType</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>Payment mode. Ex: COD, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the &#39;Authenticate&rsquo; API documentation for more details on this.</td>
-</tr>
-<tr>
-<td>packageValue</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Package Value (This will be used when paymentType is Prepaid)</td>
-</tr>
-<tr>
-<td>cashOnDelivery</td>
-<td>Double</td>
-<td>10</td>
-<td>Mandatory(if paymentType is Delivery)</td>
-<td>Cash to be collected on delivery</td>
-</tr>
-<tr>
-<td>cashOnPickup</td>
-<td>Double</td>
-<td>10</td>
-<td>Optional</td>
-<td>Cash to be given on pickup</td>
-</tr>
-<tr>
-<td>isPartialDeliveryAllowedFl</td>
-<td>String</td>
-<td>1</td>
-<td>Optional</td>
-<td>Is Partial Delivery allowed. Ex: Y/N</td>
-</tr>
-<tr>
-<td>pickupAccountCode</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Pickup customer-id</td>
-</tr>
-<tr>
-<td>pickupAccountName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Pickup customer name</td>
-</tr>
-<tr>
-<td>pickupEmail</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Pickup customer email-id</td>
-</tr>
-<tr>
-<td>pickupPhoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Pickup customer contact number</td>
-</tr>
-<tr>
-<td>pickupApartment</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup customer apartment</td>
-</tr>
-<tr>
-<td>pickupStreetName</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup customer street name</td>
-</tr>
-<tr>
-<td>pickupLandmark</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Pickup customer landmark</td>
-</tr>
-<tr>
-<td>pickupLocality</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup area name</td>
-</tr>
-<tr>
-<td>pickupCountry</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup country code</td>
-</tr>
-<tr>
-<td>pickupState</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup state code</td>
-</tr>
-<tr>
-<td>pickupCity</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Pickup city</td>
-</tr>
-<tr>
-<td>pickupPincode</td>
-<td>String</td>
-<td>20</td>
-<td>Mandatory</td>
-<td>Pickup pincode</td>
-</tr>
-<tr>
-<td>pickupStartTimeWindow</td>
-<td>Date</td>
-<td></td>
-<td>Mandatory</td>
-<td>Pickup Start time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>pickupEndTimeWindow</td>
-<td>Date</td>
-<td></td>
-<td>Mandatory</td>
-<td>Pickup End time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>pickupLatitude</td>
-<td>Double</td>
-<td></td>
-<td>Optional</td>
-<td>Latitude of pickup location</td>
-</tr>
-<tr>
-<td>pickupLongitude</td>
-<td>Double</td>
-<td></td>
-<td>Optional</td>
-<td>Longitude of pickup location</td>
-</tr>
-<tr>
-<td>pickupNotes</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Pickup notes</td>
-</tr>
-<tr>
-<td>deliverAccountCode</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Deliver customer-id</td>
-</tr>
-<tr>
-<td>deliverAccountName</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Deliver customer name</td>
-</tr>
-<tr>
-<td>deliverEmail</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>Deliver customer email-id</td>
-</tr>
-<tr>
-<td>deliverPhoneNumber</td>
-<td>String</td>
-<td>255</td>
-<td>Mandatory</td>
-<td>Deliver customer contact number</td>
-</tr>
-<tr>
-<td>deliverApartment</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver customer apartment</td>
-</tr>
-<tr>
-<td>deliverStreetName</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver customer street name</td>
-</tr>
-<tr>
-<td>deliverLandmark</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Deliver customer landmark</td>
-</tr>
-<tr>
-<td>deliverLocality</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver area name</td>
-</tr>
-<tr>
-<td>deliverCountry</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver country code</td>
-</tr>
-<tr>
-<td>deliverState</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver state code</td>
-</tr>
-<tr>
-<td>deliverCity</td>
-<td>String</td>
-<td>512</td>
-<td>Mandatory</td>
-<td>Deliver city</td>
-</tr>
-<tr>
-<td>deliverPincode</td>
-<td>String</td>
-<td>20</td>
-<td>Mandatory</td>
-<td>Deliver pincode</td>
-</tr>
-<tr>
-<td>deliverStartTimeWindow</td>
-<td>Date</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Deliver Start time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>deliverEndTimeWindow</td>
-<td>Date</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Deliver End time window of order. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-<tr>
-<td>deliverLatitude</td>
-<td>Double</td>
-<td></td>
-<td>Optional</td>
-<td>Latitude of deliver location</td>
-</tr>
-<tr>
-<td>deliverLongitude</td>
-<td>Double</td>
-<td></td>
-<td>Optional</td>
-<td>Longitude of deliver location</td>
-</tr>
-<tr>
-<td>deliverNotes</td>
-<td>String</td>
-<td>512</td>
-<td>Optional</td>
-<td>Deliver notes</td>
-</tr>
-<tr>
-<td>deliveryType</td>
-<td>String</td>
-<td>40</td>
-<td>Optional</td>
-<td>In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you.</td>
-</tr>
-</tbody></table>
-
-<h3 id="get">Get</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="w"> </span><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/shipment?end_date=</span><span class="mi">2017-03-07</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">29</span><span class="err">:</span><span class="mi">59</span><span class="err">&amp;start_date=</span><span class="mi">2016-02-01</span><span class="err">+</span><span class="mi">18</span><span class="err">:</span><span class="mi">30</span><span class="err">:</span><span class="mi">00</span><span class="err">&amp;status=ALL&amp;order_no=LN</span><span class="mi">01234567</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f68420e67be84b2894aab6ea9634c4f9"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN01234567"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awbcheck"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tezz Foods"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green Leaf"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment1,SC1,AN1,LM1,Mumbai,400076"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment2,SC2,AN2,LM2,Mumbai,400077"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468569600000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468569600000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468663200000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"packageValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedServiceTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.6</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"customerCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5678"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7788888899"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"noOfAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDelayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>With this API you can fetch the list of your orders and the associated order information.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/shipment?end_date=2017-03-07+18:29:59&amp;start_date=2016-02-01+18:30:00&amp;status=ALL&amp;order_no=LN01234567</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>start_date</td>
-<td>Date</td>
-<td>Conditional Mandatory</td>
-<td>If order_no is not passed in the request,then this field is mandatory.Range of date from which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
-</tr>
-<tr>
-<td>end_date</td>
-<td>Date</td>
-<td>Conditional Mandatory</td>
-<td>If order_no is not passed in the request,then this field is mandatory.Range of date upto which orders can be searched.<BR>Format &#39;yyyy-MM-dd HH:mm:ss&rsquo;</td>
-</tr>
-<tr>
-<td>status</td>
-<td>String</td>
-<td>Optional</td>
-<td>If order_no is passed in the request,then status will not be considered for filtering the orders.Order status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED</td>
-</tr>
-<tr>
-<td>order_no</td>
-<td>String</td>
-<td>Optional</td>
-<td>Order Number(Only one order number can be passed at a time.If not passed ,all the orders for the specified date range will be fetched)</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Filter applied on orders</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>NOTDISPATCHED</td>
-<td>Orders will be fetched for which either the Order Start Date &amp; Time Window or the Order End Date &amp; Time Window lies within the range specified.</td>
-</tr>
-<tr>
-<td>INTRANSIT</td>
-<td>Orders will be fetched for which the Actual Delivery Start Date &amp; Time lies within the range specified.</td>
-</tr>
-<tr>
-<td>COMPLETED</td>
-<td>For First Mile, an order is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
-</tr>
-<tr>
-<td>NOTCOMPLETED</td>
-<td>For First Mile, when the order is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the order is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Orders will be fetched for which the Actual Delivery End Date &amp; Time lies within the range specified.</td>
-</tr>
-<tr>
-<td>CANCELLED</td>
-<td>Orders will be fetched for which the Cancellation Date &amp; Time lies within the range specified.</td>
-</tr>
-<tr>
-<td>ALL</td>
-<td>Superset of all the filters mentioned for the above statuses will be considered.</td>
-</tr>
-</tbody></table>
-
-<h3 id="cancel">Cancel</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/ondemand/v</span><span class="mi">1</span><span class="err">/cancel</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"f68420e67be84b2894aab6ea9634c4f9"</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order(s) cancelled successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Use this API to cancel an order.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/ondemand/v1/cancel</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>reference_ids</td>
-<td>List</td>
-<td>Mandatory</td>
-<td>Reference Id associated with the order.</td>
-</tr>
-</tbody></table>
-
-<h2 id="mobile">Mobile</h2>
-
-<p>Push data into the LogiNext system through your field application. </p>
-
-<p>NOTE: These APIs require the Delivery Associate&rsquo;s token. Please view the Authenticate Section of this page for more information on acquiring a Delivery Associate Token.</p>
-
-<h3 id="accept-order">Accept Order</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/order/accept</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="s2">"a3bee4486d9f467d72e96f4d32c5569b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"parentOrderNo"</span><span class="p">:</span><span class="s2">"1316MDO"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"orderAcceptTime"</span><span class="p">:</span><span class="s2">"2017-12-27T10:00:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9099327</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>With this API, you can mark the Order as Accepted by the Delivery Associate / Associate / Driver / Fried Executive.
-Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
-
-<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/order/accept</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderReferenceId</td>
-<td>String</td>
-<td>32</td>
-<td>Mandatory</td>
-<td>This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order&rsquo;s Reference ID. <br>Please note, if you pass the Order Reference ID in combination with the Parent Order No., then all the orders under that Parent Order No. will be updated with the ACCEPTED status.<br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No.</td>
-</tr>
-<tr>
-<td>parentOrderNo</td>
-<td>String</td>
-<td>100</td>
-<td>Optional</td>
-<td>If your Order is Single Pick-up - Multiple destination and if you want to update the status of the all orders under the Parent Order, then pass the Parent Order No. <br>If you want to update the status of only one specific order (out of the many orders under a particular Parent Order No.) , then you need not have to pass the Parent Order No. <br>If your Order is Single Pick-up - Single, then you need not have to pass the Parent Order no.</td>
-</tr>
-<tr>
-<td>orderAcceptTime</td>
-<td>String</td>
-<td>32</td>
-<td>Optional</td>
-<td>This is the timestamp (in UTC format) when the order was accepted. <br>This cannot be greater than the current time (time at which the API request is called). <br>If not passed, the current timestamp will be considered as the timestamp for the order acceptance.<br>Sample Value - 2017-12-27T10:00:00Z</td>
-</tr>
-<tr>
-<td>latitude</td>
-<td>Double</td>
-<td>15</td>
-<td>Optional</td>
-<td>Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.</td>
-</tr>
-</tbody></table>
-
-<p>Sample Value - &ldquo;17.996&rdquo;
-longitude | Double | 15 | Optional | Geo-location where Order was accepted. Note that this is not used for ETA calculation. That happens using Tracking points.
-Sample Value - &ldquo;17.996&rdquo;</p>
-
-<h3 id="reject-order">Reject Order</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/checkin</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="mf">74.11223</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>With this API, the delivery assosicate can check In at the pickup or delivery location</p>
-
-<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
-
-<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderReferenceIds</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>This is the list of order Reference Ids for which the check in event is being called.</td>
-</tr>
-<tr>
-<td>checkInLocation</td>
-<td>String</td>
-<td>32</td>
-<td>Mandatory</td>
-<td>This will be &#39;PICKUP&rsquo; in case of the pickup location and &#39;DELIVER&rsquo; for the delivery location.</td>
-</tr>
-<tr>
-<td>checkinLatitude</td>
-<td>Double</td>
-<td>15</td>
-<td>Optional</td>
-<td>The geolocation coordinate (latitude) of the checkinLocation.</td>
-</tr>
-<tr>
-<td>checkinLongitude</td>
-<td>Double</td>
-<td>15</td>
-<td>Optional</td>
-<td>The geolocation coordinate (longitude) of the checkinLocation.</td>
-</tr>
-<tr>
-<td>checkinTime</td>
-<td>Date</td>
-<td></td>
-<td>Mandatory</td>
-<td>This is the timestamp of the check in event. Input is expected in UTC format</td>
-</tr>
-</tbody></table>
-
-<h3 id="check-in">Check In</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/checkin</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"6b106144208243ffb4b8c4114fd44f123d"</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"checkInLocation"</span><span class="p">:</span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLatitude"</span><span class="p">:</span><span class="s2">"40.760838"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkinLongitude"</span><span class="p">:</span><span class="s2">"74.11223"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"checkInTime"</span><span class="p">:</span><span class="s2">"2018-02-08T09:30:00Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check in marked successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>With this API, the Delivery associate can Check In at the time of Order Delivery at the Deliver location.</p>
-
-<p>Please note that in headers for this API, you will have to pass the Delivery Associate&rsquo;s Token and Key and not the Account level Token and Key.</p>
-
-<p>You can fetch the Delivery Associate&rsquo;s Token and Key by calling the Delivery Associate Authenticate API.</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/checkin</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderReferenceId</td>
-<td>List</td>
-<td>32</td>
-<td>Mandatory</td>
-<td>This is the LogiNext Order Reference ID created when the order is added in the LogiNext system.<br>If your Order is Single Pick-up - Single destination, then pass the Order Reference ID generated against that Order No.<br>If your Order is Single Pick-up - Multiple destination, then pass any one of the order&rsquo;s Reference ID.</td>
-</tr>
-<tr>
-<td>checkInLocation</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>This can be &ldquo;PICKUP&rdquo; or &ldquo;DELIVER&rdquo;.</td>
-</tr>
-<tr>
-<td>checkinLatitude</td>
-<td>Double</td>
-<td>100</td>
-<td>Optional</td>
-<td>Geocoordinate(Latitude) for the Check In location.</td>
-</tr>
-<tr>
-<td>checkinLongitude</td>
-<td>Double</td>
-<td>100</td>
-<td>Optional</td>
-<td>Geocoordinate(Longitude) for the Check In location.</td>
-</tr>
-<tr>
-<td>checkInTime</td>
-<td>Date</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Check In Time in UTC format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
-</tr>
-</tbody></table>
-
-<h3 id="esign-epod-upload">ESIGN / EPOD Upload</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/ShipmentApp/v</span><span class="mi">1</span><span class="err">/mobile/image/upload</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"imageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image.png"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"orderLocation"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVERYLOCATION"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"imageType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ESIGN"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"orderReferenceIds"</span><span class="p">:[</span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"a3bee2286d9f447d92e96f4d32c5569b"</span><span class="p">],</span><span class="w">
-</span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-</span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploaded successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>You can use this API to upload the Esign / Epod for the orders.
-Please note that in the API Header, you will have to pass Content Type as multipart/form-data</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/ShipmentApp/v1/mobile/image/upload</code></p>
-
-<h4 id="request-parameters">Request Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>imageName</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>This is the name with which the uploaded image will be saved. application.</td>
-</tr>
-<tr>
-<td>orderLocation</td>
-<td>Double</td>
-<td>15</td>
-<td>Mandatory</td>
-<td>Possible values: PICKUPLOCATION, DELIVERYLOCATION<br>This defines that the image being uploaded is for order Pickup location or order Delivery location</td>
-</tr>
-<tr>
-<td>imageType</td>
-<td>String</td>
-<td>100</td>
-<td>Mandatory</td>
-<td>Possible values: ESIGN, EPOD<br>This defines that the image being uploaded is of type ESIGN or EPOD</td>
-</tr>
-<tr>
-<td>orderReferenceId</td>
-<td>List</td>
-<td></td>
-<td></td>
-<td>This is the Order Reference ID generated by the LN system for the order created. At least one referenceId is mandatory.</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>Double</td>
-<td>15</td>
-<td>Optional</td>
-<td>Geo-location where where EPOD/ESIGN was taken<br>Sample Value - &ldquo;17.996&rdquo;</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>Double</td>
-<td>15</td>
-<td>Optional</td>
-<td>Geo-location where where EPOD/ESIGN was taken<br>Sample Value - &ldquo;17.996&rdquo;</td>
-</tr>
-</tbody></table>
-
 <h1 id="loginext-field-tm">LogiNext Field TM</h1>
 
 <h2 id="tasks">Tasks</h2>
@@ -20066,7 +20805,7 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.</li>
 <li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.</li>
 <li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.</li>
-<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext.</li>
+<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.</li>
 </ol>
 
 <h2 id="orders">Orders</h2>
