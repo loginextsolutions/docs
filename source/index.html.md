@@ -2806,12 +2806,13 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 ]
 ```
 
-> Sample Response
+> Success Response
 
 ```json
 {
   "status": 201,
   "message": "success",
+  "moreResultsExists": false,
   "data": [
     "d7b0f3f8e1174742bd6a8ae451866cb1"
   ],
@@ -2820,6 +2821,75 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 
 ```
 
+> Failure Response 1
+
+```json
+{
+    "status": 400,
+    "message": "Some issue encountered in server",
+    "moreResultsExists": false,
+    "error": {
+        "deliverymedium_0": [
+            {
+                "key": "employeeId",
+                "message": [
+                    "Employee Id is required" 
+                ]
+            }
+        ],
+        "deliverymedium_1": [
+            {
+                "key": "emailId",
+                "message": [
+                    "Invalid Email" 
+                ]
+            }
+        ]
+    },
+    "hasError": true
+}
+
+```
+
+> Failure Response 2
+
+```json
+{
+    "status": 400,
+    "message": "Some issue encountered in server",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "key": "Invalid client branch name(s) found.",
+            "message": [
+                "PowaiSd" 
+            ]
+        },
+        {
+            "key": "Invalid usergroup name(s) found.",
+            "message": [
+                "Mobil" 
+            ]
+        },
+        {
+            "key": "Invalid delivery types(s) found.",
+            "message": []
+        },
+        {
+            "key": "Invalid pincodes.",
+            "message": [
+                "14252" 
+            ]
+        },
+        {
+            "key": "Invalid country code(s) found.",
+            "message": []
+        }
+    ],
+    "hasError": true
+}
+
+```
 Create a new Delivery Associate in the LogiNext system with this API. A delivery associate will be created and assigned a unique Reference ID that can be used to identify the Delivery Associate later.
 
 Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a>
@@ -8190,6 +8260,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
    "status": 409,
    "message": "Order(s) couldn't be cancelled",
    "moreResultsExists": false,
+   "data": [
+        "ac07cbdb9be94d85ac467399117f05fd",
+        "b06fe5ef422211e6860c0653055f4dfd" 
+    ],
    "hasError": false
 }
 ```
@@ -8201,6 +8275,10 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/cancel
    "status": 409,
    "message": "Order(s) are already cancelled",
    "moreResultsExists": false,
+   "data": [
+        "ac07cbdb9be94d85ac467399117f05fd",
+        "b06fe5ef422211e6860c0653055f4dfd" 
+    ],
    "hasError": false
 }
 ```
@@ -9260,6 +9338,8 @@ The API accepts the details of your Owned and Outsourced Fleet and can plan for 
 
 This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.
 
+Note that with this API you can plan for upto 2500 orders in one request.
+
 API Type: Special Tier API. The rate Limit for this API is 1 request per minute.
 
 #### Request
@@ -9278,8 +9358,9 @@ hubReferenceIds | List | 32 | Optional | This is a list of Hubs the current Rout
 orderReferenceIds | List | 32 | Conditional Mandatory |  This is the list of Orders to be considered for Route Planning.If start and end time are not passed, this field is Mandatory.
 planningProfile | String | 32 | Optional | This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.
 territoryProfile | String | 32 | Optional | This is the name of the Territory Profile you wish to use for the Current Route Planning operation. You can setup multiple Territory profiles in your LogiNext account. If not passed, your default Territory profile will be considered.
-mode | String | 32 | Mandatory | Trip Reference ID for the trip you wish to replan.
+mode | String | 32 | Mandatory | The planning objective for the route planning operation. This can be one of - 'CONSIDER_RESOURCE_COST' to optimize Fleet capacity, 'OPTIMIZE_DISTANCE_TIME' to optimize time and distance, 'LOADBALANCING' for balanced optimization, or 'SEQUENCE' for sequence optimization
 deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery Associate's to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.
+deliveryMediumStartLocation | List |  | Optional | This is the  Delivery Associate's starting location to be considered in planning. This can be 'hub' or 'home'
 
 
 ###  Optimize
@@ -9448,7 +9529,6 @@ All Not Delivered Orders will be considered for replanning with this API. For ex
 
 This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.
 
-This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.
 
 API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seconds.
 

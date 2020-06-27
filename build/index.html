@@ -4768,15 +4768,86 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </span></code></pre>
 
 <blockquote>
-<p>Sample Response</p>
+<p>Success Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"d7b0f3f8e1174742bd6a8ae451866cb1"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response 1</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some issue encountered in server"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"deliverymedium_0"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employeeId"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"Employee Id is required"</span><span class="w"> 
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"deliverymedium_1"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emailId"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"Invalid Email"</span><span class="w"> 
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response 2</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some issue encountered in server"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid client branch name(s) found."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"PowaiSd"</span><span class="w"> 
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid usergroup name(s) found."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Mobil"</span><span class="w"> 
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid delivery types(s) found."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid pincodes."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"14252"</span><span class="w"> 
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid country code(s) found."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -17704,6 +17775,10 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order(s) couldn't be cancelled"</span><span class="p">,</span><span class="w">
    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"ac07cbdb9be94d85ac467399117f05fd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"b06fe5ef422211e6860c0653055f4dfd"</span><span class="w"> 
+    </span><span class="p">],</span><span class="w">
    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -17715,6 +17790,10 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order(s) are already cancelled"</span><span class="p">,</span><span class="w">
    </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"ac07cbdb9be94d85ac467399117f05fd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"b06fe5ef422211e6860c0653055f4dfd"</span><span class="w"> 
+    </span><span class="p">],</span><span class="w">
    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -19336,6 +19415,8 @@ Please note that in the API Header, you will have to pass Content Type as multip
 
 <p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.</p>
 
+<p>Note that with this API you can plan for upto 2500 orders in one request.</p>
+
 <p>API Type: Special Tier API. The rate Limit for this API is 1 request per minute.</p>
 
 <h4 id="request">Request</h4>
@@ -19407,7 +19488,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>String</td>
 <td>32</td>
 <td>Mandatory</td>
-<td>Trip Reference ID for the trip you wish to replan.</td>
+<td>The planning objective for the route planning operation. This can be one of - &#39;CONSIDER_RESOURCE_COST&rsquo; to optimize Fleet capacity, &#39;OPTIMIZE_DISTANCE_TIME&rsquo; to optimize time and distance, &#39;LOADBALANCING&rsquo; for balanced optimization, or &#39;SEQUENCE&rsquo; for sequence optimization</td>
 </tr>
 <tr>
 <td>deliveryMediumReferenceIds</td>
@@ -19415,6 +19496,13 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <td>32</td>
 <td>Optional</td>
 <td>This is the list of Delivery Associate&rsquo;s to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.</td>
+</tr>
+<tr>
+<td>deliveryMediumStartLocation</td>
+<td>List</td>
+<td></td>
+<td>Optional</td>
+<td>This is the  Delivery Associate&rsquo;s starting location to be considered in planning. This can be &#39;hub&rsquo; or &#39;home&rsquo;</td>
 </tr>
 </tbody></table>
 
@@ -19610,8 +19698,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
 <p>All Not Delivered Orders will be considered for replanning with this API. For example, if your Delivery Associate delivered Orders #1 and #4 in their Trip, and calls this API, then Orders #2 and #3 in their Trip will also be replanned. The new sequence of Orders after replanning will start from #5 in the above case as Order #4 was already Delviered. Sequence #2 and #3 will remain blank.</p>
 
 <p>This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequnce of Orders.</p>
-
-<p>This API will not accept Orders that are in any state besides Not Dispatched. If Orders that are In Transit or Delivered are passed in the API request, the API will return a failure response.</p>
 
 <p>API Type: Special Tier API. The rate Limit for this API is 1 request per 20 seconds.</p>
 
