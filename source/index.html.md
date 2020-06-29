@@ -3609,11 +3609,11 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "packageHeight":"10",
 "priority":"Priority 1",
 "paymentType":"COD",
-"numberOfItems":3,
+"numberOfItems":1,
 "deliveryType":"Groceries",
 "serviceType":"Express",
-"distributionCenter":"mea_allmile_sandbox Main Branch",
-"pickupBranch":"mea_allmile_sandbox Main Branch",
+"distributionCenter":"Main Branch",
+"pickupBranch":"Main Branch",
 "pickupServiceTime": "50",
 "pickupStartTimeWindow": "2020-05-19T14:24:00.000Z",
 "pickupEndTimeWindow": "2020-05-19T14:24:00.000Z",
@@ -3832,32 +3832,32 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "packageHeight":"10",
 "priority":"Priority 1",
 "paymentType":"COD",
-"numberOfItems":3,
+"numberOfItems":1,
 "deliveryType":"Groceries",
 "serviceType":"Express",
 "distributionCenter":""New York Main Branch",
 "deliverBranch":"New York Main Branch",
-deliverServiceTime:"10",
-deliverStartTimeWindow: "2020-04-10T10:31:00.000Z",
-deliverEndTimeWindow: "2020-04-10T10:31:00.000Z",
-deliverAccountCode: "Matt001",
-deliverAccountName:"Jane Doe",
-deliverEmail:"m.richardson@testmail.com",
-deliverPhoneNumber:"9891234567",
-deliverAddressId: "home",
-deliverAddressType:"Home",
-deliverApartment: "201",
-deliverStreetName: "E Randolph St",
-deliverLandmark: "Opp. Chiptole",
-deliverLocality: "Down Towm Chicago",
-deliverCity: "Chicago",
-deliverState: "IL",
-deliverCountry: "USA",
-deliverPinCode: "60602",
-deliverLatitude:41.882702,
-deliverLongitude:-87.619392,
-deliverAddressTimezone:"America/Chicago",
-deliverNotes:"notes for delivery",
+"deliverServiceTime":"10",
+"deliverStartTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverEndTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverAccountCode": "Matt001",
+"deliverAccountName":"Jane Doe",
+"deliverEmail":"m.richardson@testmail.com",
+"deliverPhoneNumber":"9891234567",
+"deliverAddressId": "home",
+"deliverAddressType":"Home",
+"deliverApartment": "201",
+"deliverStreetName": "E Randolph St",
+"deliverLandmark": "Opp. Chiptole",
+"deliverLocality": "Down Towm Chicago",
+"deliverCity": "Chicago",
+"deliverState": "IL",
+"deliverCountry": "USA",
+"deliverPinCode": "60602",
+"deliverLatitude":41.882702,
+"deliverLongitude":-87.619392,
+"deliverAddressTimezone":"America/Chicago",
+"deliverNotes":"notes for delivery",
 "shipmentCrateMappings": [
      {
          "crateCd": "CR041",
@@ -4050,7 +4050,7 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "packageHeight":"10",
 "priority":"Priority 1",
 "paymentType":"COD",
-"numberOfItems":3,
+"numberOfItems":1,
 "deliveryType":"Groceries",
 "serviceType":"Express",
 "distributionCenter":""New York Main Branch",
@@ -4076,27 +4076,27 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "pickupLongitude":-73.96732299999996,
 "pickupAddressTimezone":"America/New_York",
 "deliverBranch":"New York Main Branch",
-deliverServiceTime:"10",
-deliverStartTimeWindow: "2020-04-10T10:31:00.000Z",
-deliverEndTimeWindow: "2020-04-10T10:31:00.000Z",
-deliverAccountCode: "Matt001",
-deliverAccountName:"Jane Doe",
-deliverEmail:"m.richardson@testmail.com",
-deliverPhoneNumber:"9891234567",
-deliverAddressId: "home",
-deliverAddressType:"Home",
-deliverApartment: "201",
-deliverStreetName: "E Randolph St",
-deliverLandmark: "Opp. Chiptole",
-deliverLocality: "Down Towm Chicago",
-deliverCity: "Chicago",
-deliverState: "IL",
-deliverCountry: "USA",
-deliverPinCode: "60602",
-deliverLatitude:41.882702,
-deliverLongitude:-87.619392,
-deliverAddressTimezone:"America/Chicago",
-deliverNotes:"notes for delivery",
+"deliverServiceTime":"10",
+"deliverStartTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverEndTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverAccountCode": "Matt001",
+"deliverAccountName":"Jane Doe",
+"deliverEmail":"m.richardson@testmail.com",
+"deliverPhoneNumber":"9891234567",
+"deliverAddressId": "home",
+"deliverAddressType":"Home",
+"deliverApartment": "201",
+"deliverStreetName": "E Randolph St",
+"deliverLandmark": "Opp. Chiptole",
+"deliverLocality": "Down Towm Chicago",
+"deliverCity": "Chicago",
+"deliverState": "IL",
+"deliverCountry": "USA",
+"deliverPinCode": "60602",
+"deliverLatitude":41.882702,
+"deliverLongitude":-87.619392,
+"deliverAddressTimezone":"America/Chicago",
+"deliverNotes":"notes for delivery",
 "shipmentCrateMappings": [
      {
          "crateCd": "CR041",
@@ -4191,6 +4191,705 @@ API Type: Tier 1 API
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/BookingApp/mile/v1/create`
+
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentRequestNo | String | 100 | Optional | Order request Number. If not passed, the system will auto generate an Order request number
+awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
+shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
+shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
+distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
+serviceType | String | 16 | Optional | Order request Service Type.
+packageValue | Double | 10 | Optional | Order request value.
+paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+numberOfItems | Integer | 20 | Optional | Number of items in the order.
+deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
+deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
+pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
+pickupEmail | String | 100 | Optional | Pick-up Customer email ID.
+pickupPhoneNumber | String | 255 | Optional | Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.
+pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Conditional Mandatory | Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLocality | String | 512 | Conditional Mandatory | Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the "Country Codes" section.
+pickupPinCode | String | 20 | Conditional Mandatory | Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
+deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
+deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
+deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail | String | 100 | Optional | Delivery Customer email ID.
+deliverPhoneNumber | String | 255 | Optional | Delivery Customer phone number.
+deliverApartment | String | 512 | Conditional Mandatory | Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory |Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLandmark | String | 512 | Optional | Delivery Address landmark.
+deliverLocality | String | 512 | Conditional Mandatory | Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | Delivery Address state code. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | Delivery Address country code. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | Conditional Mandatory | Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLatitude | Double |  | Optional |  Delivery Address geolocation coordinate (latitude).
+deliverLongitude | Double |  | Optional | Delivery Address geolocation coordinate (longitude).
+deliverAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
+deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
+clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.
+
+#### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code.
+shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+
+
+### Create Pick Up Only E2E Order Request
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/BookingApp/middlemile/v1/create
+```
+
+> Request Body
+
+```json
+[
+   {
+"shipmentRequestNo":"SH12432",
+"awbNumber": "435-16685675",
+"shipmentRequestDispatchDate": "2020-05-19T10:30:00.000Z",
+"shipmentRequestType":"PICKUP",
+"packageWeight":"10",
+"packageVolume":"10",
+"packageValue":"10",
+"packageLength":"10",
+"packageBreadth":"10",
+"packageHeight":"10",
+"priority":"Priority 1",
+"paymentType":"COD",
+"numberOfItems":1,
+"deliveryType":"Groceries",
+"serviceType":"Express",
+"distributionCenter":"Main Branch",
+"pickupBranch":"Main Branch",
+"pickupServiceTime": "50",
+"pickupStartTimeWindow": "2020-05-19T14:24:00.000Z",
+"pickupEndTimeWindow": "2020-05-19T14:24:00.000Z",
+"pickupEmail":"james.w@ablogs.com",
+"pickupPhoneNumber": "5163063377",
+"pickupAccountCode": "jim001",
+"pickupAddressId": "Home",
+"pickupAddressType":"Home",
+"pickupAccountName": "James Walker",
+"pickupApartment": "901",
+"pickupStreetName": "2142 3rd Ave",
+"pickupLandmark": "Opp. McDonalds",
+"pickupLocality": "East Harlem",
+"pickupCity": "New York",
+"pickupState": "NY",
+"pickupCountry": "USA",
+"pickupPinCode": "10035",
+"pickupLatitude":40.760838,
+"pickupLongitude":-73.96732299999996,
+"pickupAddressTimezone":"America/New_York",
+"pickupNotes":"notes for pickup",
+"clientCode":"ShipGenie",
+"shipmentCrateMappings": [
+     {
+         "crateCd": "CR041",
+         "crateAmount": 100.65,
+         "crateType": "case",
+         "noOfUnits": 2,
+         "crateWeight": 10,
+         "crateVolume": 11,
+         "crateLength": 12,
+         "crateBreadth": 13,
+         "crateHeight": 14,
+         "shipmentlineitems": [
+             {
+                 "itemCd": "IT043",
+                 "itemName": "Chicken Soup 2X200gm",
+                 "itemPrice": 500,
+                 "itemQuantity": 1,
+                 "itemType": "soup",
+                 "itemWeight": 10,
+                 "itemVolume": 11,
+                 "itemLength": 12,
+                 "itemBreadth": 13,
+                 "itemHeight": 14
+             }
+         ]
+    }
+ ]
+}
+]
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Shipment Request(s) created successfully",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "shipmentRequestReferenceId": "2c0dcb93ca494cfc92d5b830c1c8033a",
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "PICKUP"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Shipment Request Creation Failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "PICKUP",
+            "errorList": [
+                {
+                    "key": "pickupAccountCode",
+                    "message": [
+                        "Address not serviceable"
+                    ]
+                },
+                {
+                    "key": "deliveryType",
+                    "message": [
+                        "DeliveryType is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+Create pickup Order requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/BookingApp/middlemile/v1/create`
+
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentRequestNo | String | 100 | Optional | Order request Number. If not passed, the system will auto generate an Order request number
+awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
+shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
+shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
+distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
+serviceType | String | 16 | Optional | Order request Service Type.
+packageValue | Double | 10 | Optional | Order request value.
+paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+numberOfItems | Integer | 20 | Optional | Number of items in the order.
+deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
+deliveryLocationType | String | 255 | Optional | This parameter if passed helps the Operation Managers / Pickup Associates to know if the Pick location is Residence or Office or Pick-up point, etc.<br>
+deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.
+pickupBranch | String | 255 | Optional | For Pick-Up type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the Order request to. It is recommended to not pass this field so the system can use the branch linked to the zone of the pickup location. You can pass this field if the Shipper the Order request is being created for is not linked with a Service area Profile on the LogiNext system.
+pickupServiceTime | Integer | 11 | Optional | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order. 
+
+distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+
+pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
+pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
+pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
+pickupEmail | String | 100 | Optional | Pick-up Customer email ID.
+pickupPhoneNumber | String | 255 | Optional | Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.
+pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
+pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLandmark | String | 512 | Conditional Mandatory | Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLocality | String | 512 | Conditional Mandatory | Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCity | String | 512 | Conditional Mandatory | Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.
+pickupState| String | 512 | Conditional Mandatory | Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+pickupCountry | String | 512 | Conditional Mandatory | Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the "Country Codes" section.
+pickupPinCode | String | 20 | Conditional Mandatory | Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
+pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
+pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
+pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
+deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
+clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.
+
+#### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code.
+shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+
+
+### Create Deliver Only E2E Order Request
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/BookingApp/middlemile/v1/create
+```
+
+> Request Body
+
+```json
+[
+   {
+"shipmentRequestNo":"SH12432",
+"awbNumber": "435-16685675",
+"shipmentRequestDispatchDate": "2020-05-19T10:30:00.000Z",
+"shipmentRequestType":"PICKUP",
+"packageWeight":"10",
+"packageVolume":"10",
+"packageValue":"10",
+"packageLength":"10",
+"packageBreadth":"10",
+"packageHeight":"10",
+"priority":"Priority 1",
+"paymentType":"COD",
+"numberOfItems":3,
+"deliveryType":"Groceries",
+"serviceType":"Express",
+"distributionCenter":""New York Main Branch",
+"deliverBranch":"New York Main Branch",
+"deliverServiceTime":"10",
+"deliverStartTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverEndTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverAccountCode": "Matt001",
+"deliverAccountName":"Jane Doe",
+"deliverEmail":"m.richardson@testmail.com",
+"deliverPhoneNumber":"9891234567",
+"deliverAddressId": "home",
+"deliverAddressType":"Home",
+"deliverApartment": "201",
+"deliverStreetName": "E Randolph St",
+"deliverLandmark": "Opp. Chiptole",
+"deliverLocality": "Down Towm Chicago",
+"deliverCity": "Chicago",
+"deliverState": "IL",
+"deliverCountry": "USA",
+"deliverPinCode": "60602",
+"deliverLatitude":41.882702,
+"deliverLongitude":-87.619392,
+"deliverAddressTimezone":"America/Chicago",
+"deliverNotes":"notes for delivery",
+"shipmentCrateMappings": [
+     {
+         "crateCd": "CR041",
+         "crateAmount": 100.65,
+         "crateType": "case",
+         "noOfUnits": 2,
+         "crateWeight": 10,
+         "crateVolume": 11,
+         "crateLength": 12,
+         "crateBreadth": 13,
+         "crateHeight": 14,
+         "shipmentlineitems": [
+             {
+                 "itemCd": "IT043",
+                 "itemName": "Chicken Soup 2X200gm",
+                 "itemPrice": 500,
+                 "itemQuantity": 1,
+                 "itemType": "soup",
+                 "itemWeight": 10,
+                 "itemVolume": 11,
+                 "itemLength": 12,
+                 "itemBreadth": 13,
+                 "itemHeight": 14
+             }
+         ]
+    }
+ ]
+}
+]
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Shipment Request(s) created successfully",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "shipmentRequestReferenceId": "2c0dcb93ca494cfc92d5b830c1c8033a",
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "PICKUP"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Shipment Request Creation Failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverAccountCode",
+                    "message": [
+                        "Address not serviceable"
+                    ]
+                },
+                {
+                    "key": "deliveryType",
+                    "message": [
+                        "DeliveryType is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+Create deliver Order requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/BookingApp/middlemile/v1/create`
+
+
+
+#### Request Parameters
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentRequestNo | String | 100 | Optional | Order request Number. If not passed, the system will auto generate an Order request number
+awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
+shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
+shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
+distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
+packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageBreadth| Double | 10,3 | Optional | Order request width.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+packageHeight| Double | 10,3 | Optional | Order request hieght.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+priority | String | 16 | Optional | Order priority. If you wish to segregate Orders based on certain Order priorities, say you want to Route Plan for Orders based on their priorities, you can set up this field in the settings module and define the values that LogiNext should accept of this field. For example, this could be 'PRIORITY1', 'PRIORITY2', or 'PRIORITY3'.
+serviceType | String | 16 | Optional | Order request Service Type.
+packageValue | Double | 10 | Optional | Order request value.
+paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
+numberOfItems | Integer | 20 | Optional | Number of items in the order.
+deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
+deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
+deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
+deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
+deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
+deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverEmail | String | 100 | Optional | Delivery Customer email ID.
+deliverPhoneNumber | String | 255 | Optional | Delivery Customer phone number.
+deliverApartment | String | 512 | Conditional Mandatory | Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.
+deliverStreetName | String | 512 | Conditional Mandatory |Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLandmark | String | 512 | Optional | Delivery Address landmark.
+deliverLocality | String | 512 | Conditional Mandatory | Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCity | String | 512 | Conditional Mandatory | Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.
+deliverState| String | 512 | Conditional Mandatory | Delivery Address state code. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverCountry | String | 512 | Conditional Mandatory | Delivery Address country code. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
+deliverPinCode | String | 20 | Conditional Mandatory | Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
+deliverLatitude | Double |  | Optional |  Delivery Address geolocation coordinate (latitude).
+deliverLongitude | Double |  | Optional | Delivery Address geolocation coordinate (longitude).
+deliverAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
+pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
+deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
+clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.
+
+#### Request Parameters (Crates)
+
+Param | DataType | Length |  Required | Description
+--------- | ------- | ------- | ---------- | ------------
+shipmentCrateMappings | Array of objects |  | Optional | Shipment crates
+shipmentCrateMappings.crateCd | String | 128 | Mandatory | Crate code.
+shipmentCrateMappings.crateAmount | Double |  | Optional | Crate amount
+shipmentCrateMappings.crateType | String | 100 | Optional | Type of crate. Ex: cake, juice, sweet, furniture etc.
+shipmentCrateMappings.noOfUnits | Integer | 10 | Optional | No. of crate units
+shipmentCrateMappings.crateVolume | Double | 10,3 | Optional | This is the volume of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in CC, and for Imperial system, this will be in cubic inches.
+shipmentCrateMappings.crateWeight | Double | 10,3 | Optional | This is the weight of crate. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
+shipmentCrateMappings.crateLength | Double | 10,3 | Optional | This is the length of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateBreadth| Double | 10,3 | Optional | This is the width of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.crateHeight| Double | 10,3 | Optional | This is the height of package.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemCd | String | 200 | Mandatory | Item code
+shipmentCrateMappings.shipmentlineitems.itemName | String | 255 | Optional | Item name
+shipmentCrateMappings.shipmentlineitems.itemPrice | Double |  | Mandatory | Item price
+shipmentCrateMappings.shipmentlineitems.itemQuantity | Double | 10 | Mandatory | Item quantity
+shipmentCrateMappings.shipmentlineitems.itemType | String | 100 | Optional | Item type
+shipmentCrateMappings.shipmentlineitems.itemWeight | Double | 10 | Optional | Item weight
+shipmentCrateMappings.shipmentlineitems.itemLength | Double | 10,3 | Optional | This is the length of item. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemBreadth| Double | 10,3 | Optional | This is the width of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | This is the height of item.  The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
+
+
+### Create Multi-Leg E2E Order Request
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/BookingApp/middlemile/v1/create
+```
+
+> Request Body
+
+```json
+[
+   {
+"shipmentRequestNo":"SH12432",
+"awbNumber": "435-16685675",
+"shipmentRequestDispatchDate": "2020-05-19T10:30:00.000Z",
+"shipmentRequestType":"ALLMILE",
+"packageWeight":"10",
+"packageVolume":"10",
+"packageValue":"10",
+"packageLength":"10",
+"packageBreadth":"10",
+"packageHeight":"10",
+"priority":"Priority 1",
+"paymentType":"COD",
+"numberOfItems":1,
+"deliveryType":"Groceries",
+"serviceType":"Express",
+"distributionCenter":"New York Main Branch",
+"pickupBranch":"New York Main Branch",
+"pickupServiceTime": "50",
+"pickupStartTimeWindow": "2020-05-19T14:24:00.000Z",
+"pickupEndTimeWindow": "2020-05-19T14:24:00.000Z",
+"pickupEmail":"james.w@ablogs.com",
+"pickupPhoneNumber": "5163063377",
+"pickupAccountCode": "jim001",
+"pickupAddressId": "Home",
+"pickupAddressType":"Home",
+"pickupAccountName": "James Walker",
+"pickupApartment": "901",
+"pickupStreetName": "2142 3rd Ave",
+"pickupLandmark": "Opp. McDonalds",
+"pickupLocality": "East Harlem",
+"pickupCity": "New York",
+"pickupState": "NY",
+"pickupCountry": "USA",
+"pickupPinCode": "10035",
+"pickupLatitude":40.760838,
+"pickupLongitude":-73.96732299999996,
+"pickupAddressTimezone":"America/New_York",
+"deliverBranch":"New York Main Branch",
+"deliverServiceTime":"10",
+"deliverStartTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverEndTimeWindow": "2020-04-10T10:31:00.000Z",
+"deliverAccountCode": "Matt001",
+"deliverAccountName":"Jane Doe",
+"deliverEmail":"m.richardson@testmail.com",
+"deliverPhoneNumber":"9891234567",
+"deliverAddressId": "home",
+"deliverAddressType":"Home",
+"deliverApartment": "201",
+"deliverStreetName": "E Randolph St",
+"deliverLandmark": "Opp. Chiptole",
+"deliverLocality": "Down Towm Chicago",
+"deliverCity": "Chicago",
+"deliverState": "IL",
+"deliverCountry": "USA",
+"deliverPinCode": "60602",
+"deliverLatitude":41.882702,
+"deliverLongitude":-87.619392,
+"deliverAddressTimezone":"America/Chicago",
+"deliverNotes":"notes for delivery",
+"shipmentCrateMappings": [
+     {
+         "crateCd": "CR041",
+         "crateAmount": 100.65,
+         "crateType": "case",
+         "noOfUnits": 2,
+         "crateWeight": 10,
+         "crateVolume": 11,
+         "crateLength": 12,
+         "crateBreadth": 13,
+         "crateHeight": 14,
+         "shipmentlineitems": [
+             {
+                 "itemCd": "IT043",
+                 "itemName": "Chicken Soup 2X200gm",
+                 "itemPrice": 500,
+                 "itemQuantity": 1,
+                 "itemType": "soup",
+                 "itemWeight": 10,
+                 "itemVolume": 11,
+                 "itemLength": 12,
+                 "itemBreadth": 13,
+                 "itemHeight": 14
+             }
+         ]
+    }
+ ]
+}
+]
+```
+
+
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Shipment Request(s) created successfully",
+    "moreResultsExists": false,
+    "data": [
+        {
+            "index": 0,
+            "shipmentRequestReferenceId": "2c0dcb93ca494cfc92d5b830c1c8033a",
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "BOTH"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+
+> Failure Response
+
+```json
+{
+    "status": 409,
+    "message": "Shipment Request Creation Failed",
+    "moreResultsExists": false,
+    "error": [
+        {
+            "index": 0,
+            "shipmentRequestNo": "SH12432",
+            "shipmentRequestType": "DELIVER",
+            "errorList": [
+                {
+                    "key": "deliverAccountCode",
+                    "message": [
+                        "Address not serviceable"
+                    ]
+                },
+                {
+                    "key": "deliveryType",
+                    "message": [
+                        "DeliveryType is invalid"
+                    ]
+                }
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+```
+
+Create pickup Oand deliverrder requests with this API in the LogiNext system. Order requests will be created and assigned a reference ID that can be used at a leter time to identify the order request.
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/BookingApp/middlemile/v1/create`
 
 
 
