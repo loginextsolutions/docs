@@ -20411,6 +20411,8 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <p>With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.</p>
 
+<p>You can pass upto 20 order reference IDs in a single request of the API to get the last location of all the orders in a single response.</p>
+
 <p>API Type: Tier 1 API</p>
 
 <h4 id="request">Request</h4>
@@ -20838,6 +20840,8 @@ Sample Value - &ldquo;17.996&rdquo;</p>
 </span></code></pre>
 
 <p>With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.</p>
+
+<p>Note that the &#39;msg&rsquo; field in the API success response is the time at which the API is called. The &#39;previousTime&rsquo; field in the success response is the timestamp of previous tracking date in epoch format.</p>
 
 <p>API Type: Tier 2 API</p>
 
@@ -22845,7 +22849,11 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This notification is sent when an order is updated.</p>
+<p>This notification is sent when an order is updated. This is triggered in the following scenarios - 
+1)Order attributes are updated
+2)Manual assignment of the order
+3)Change trip for the order
+4)relay of Order</p>
 
 <table><thead>
 <tr>
@@ -28718,6 +28726,212 @@ Mymensingh | MY</p>
 <tr>
 <td>Papua Barat</td>
 <td>PB</td>
+</tr>
+</tbody></table>
+
+<h2 id="japan">Japan</h2>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Aiti</td>
+<td>JP-23</td>
+</tr>
+<tr>
+<td>Akita</td>
+<td>JP-05</td>
+</tr>
+<tr>
+<td>Aomori</td>
+<td>JP-02</td>
+</tr>
+<tr>
+<td>Ehime</td>
+<td>JP-38</td>
+</tr>
+<tr>
+<td>Gifu</td>
+<td>JP-21</td>
+</tr>
+<tr>
+<td>Gunma</td>
+<td>JP-10</td>
+</tr>
+<tr>
+<td>Hiroshima</td>
+<td>JP-34</td>
+</tr>
+<tr>
+<td>Hokkaido</td>
+<td>JP-01</td>
+</tr>
+<tr>
+<td>Hukui</td>
+<td>JP-18</td>
+</tr>
+<tr>
+<td>Hukuoka</td>
+<td>JP-40</td>
+</tr>
+<tr>
+<td>Hukusima</td>
+<td>JP-07</td>
+</tr>
+<tr>
+<td>Hyogo</td>
+<td>JP-28</td>
+</tr>
+<tr>
+<td>Ibaraki</td>
+<td>JP-08</td>
+</tr>
+<tr>
+<td>Ishikawa</td>
+<td>JP-17</td>
+</tr>
+<tr>
+<td>Iwate</td>
+<td>JP-03</td>
+</tr>
+<tr>
+<td>Kagawa</td>
+<td>JP-37</td>
+</tr>
+<tr>
+<td>Kagoshima</td>
+<td>JP-46</td>
+</tr>
+<tr>
+<td>Kanagawa</td>
+<td>JP-14</td>
+</tr>
+<tr>
+<td>Kumamoto</td>
+<td>JP-43</td>
+</tr>
+<tr>
+<td>Kyoto</td>
+<td>JP-26</td>
+</tr>
+<tr>
+<td>Kôti</td>
+<td>JP-39</td>
+</tr>
+<tr>
+<td>Mie</td>
+<td>JP-24</td>
+</tr>
+<tr>
+<td>Miyagi</td>
+<td>JP-04</td>
+</tr>
+<tr>
+<td>Miyazaki</td>
+<td>JP-45</td>
+</tr>
+<tr>
+<td>Nagano</td>
+<td>JP-20</td>
+</tr>
+<tr>
+<td>Nagasaki</td>
+<td>JP-42</td>
+</tr>
+<tr>
+<td>Nara</td>
+<td>JP-29</td>
+</tr>
+<tr>
+<td>Niigata</td>
+<td>JP-15</td>
+</tr>
+<tr>
+<td>Okayama</td>
+<td>JP-33</td>
+</tr>
+<tr>
+<td>Okinawa</td>
+<td>JP-47</td>
+</tr>
+<tr>
+<td>Saga</td>
+<td>JP-41</td>
+</tr>
+<tr>
+<td>Saitama</td>
+<td>JP-11</td>
+</tr>
+<tr>
+<td>Siga</td>
+<td>JP-25</td>
+</tr>
+<tr>
+<td>Simane</td>
+<td>JP-32</td>
+</tr>
+<tr>
+<td>Sizuoka</td>
+<td>JP-22</td>
+</tr>
+<tr>
+<td>Tiba</td>
+<td>JP-12</td>
+</tr>
+<tr>
+<td>Tochigi</td>
+<td>JP-09</td>
+</tr>
+<tr>
+<td>Tokushima</td>
+<td>JP-36</td>
+</tr>
+<tr>
+<td>Tokyo</td>
+<td>JP-13</td>
+</tr>
+<tr>
+<td>Totigi</td>
+<td>JP-09</td>
+</tr>
+<tr>
+<td>Tottori</td>
+<td>JP-31</td>
+</tr>
+<tr>
+<td>Toyama</td>
+<td>JP-16</td>
+</tr>
+<tr>
+<td>Tôkyô</td>
+<td>JP-13</td>
+</tr>
+<tr>
+<td>Wakayama</td>
+<td>JP-30</td>
+</tr>
+<tr>
+<td>Yamagata</td>
+<td>JP-06</td>
+</tr>
+<tr>
+<td>Yamaguchi</td>
+<td>JP-35</td>
+</tr>
+<tr>
+<td>Yamanashi</td>
+<td>JP-19</td>
+</tr>
+<tr>
+<td>Ôita</td>
+<td>JP-44</td>
+</tr>
+<tr>
+<td>Ôsaka</td>
+<td>JP-27</td>
 </tr>
 </tbody></table>
 

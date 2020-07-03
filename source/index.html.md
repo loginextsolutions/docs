@@ -9568,6 +9568,8 @@ https://api.loginextsolutions.com/TrackingApp/mile/v1/track/lastlocation?shipmen
 ```
 With this API, you can find out last tracked location for any order. The API accepts the reference IDs of the Orders you wish to track in the request, and returns the last received geocoordinates of the Order.
 
+You can pass upto 20 order reference IDs in a single request of the API to get the last location of all the orders in a single response.
+
 API Type: Tier 1 API
 
 #### Request
@@ -9879,6 +9881,8 @@ https://products.loginextsolutions.com/TrackingApp/track/mobile/put
 
 
 With this API, you can send the current position of your Delivery Associates / Field Executives when they are not using LogiNext Mobile App.
+
+Note that the 'msg' field in the API success response is the time at which the API is called. The 'previousTime' field in the success response is the timestamp of previous tracking date in epoch format.
 
 API Type: Tier 2 API
 
@@ -10935,7 +10939,11 @@ clientCode | String | Account name. This field is sent if the Order was created 
 ```
 
 
-This notification is sent when an order is updated.
+This notification is sent when an order is updated. This is triggered in the following scenarios - 
+1)Order attributes are updated
+2)Manual assignment of the order
+3)Change trip for the order
+4)relay of Order
 
 Param | DataType | Description
 --------- | ------- | ----------
@@ -13372,6 +13380,59 @@ Kepulauan Riau|KR
 Kepulauan Bangka Belitung|BB
 Kalimantan Utara|KU
 Papua Barat|PB
+
+## Japan 
+State | Code
+--------- | ---------
+Aiti  | JP-23
+Akita | JP-05
+Aomori  | JP-02
+Ehime | JP-38
+Gifu  | JP-21
+Gunma | JP-10
+Hiroshima | JP-34
+Hokkaido  | JP-01
+Hukui | JP-18
+Hukuoka | JP-40
+Hukusima  | JP-07
+Hyogo | JP-28
+Ibaraki | JP-08
+Ishikawa  | JP-17
+Iwate | JP-03
+Kagawa  | JP-37
+Kagoshima | JP-46
+Kanagawa  | JP-14
+Kumamoto  | JP-43
+Kyoto | JP-26
+Kôti  | JP-39
+Mie | JP-24
+Miyagi  | JP-04
+Miyazaki  | JP-45
+Nagano  | JP-20
+Nagasaki  | JP-42
+Nara  | JP-29
+Niigata | JP-15
+Okayama | JP-33
+Okinawa | JP-47
+Saga  | JP-41
+Saitama | JP-11
+Siga  | JP-25
+Simane  | JP-32
+Sizuoka | JP-22
+Tiba  | JP-12
+Tochigi | JP-09
+Tokushima | JP-36
+Tokyo | JP-13
+Totigi  | JP-09
+Tottori | JP-31
+Toyama  | JP-16
+Tôkyô | JP-13
+Wakayama  | JP-30
+Yamagata  | JP-06
+Yamaguchi | JP-35
+Yamanashi | JP-19
+Ôita  | JP-44
+Ôsaka | JP-27
 
 ## Malaysia
 
