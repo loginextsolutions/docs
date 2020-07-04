@@ -21478,7 +21478,7 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>With this API you can replan Not Started or Started trips by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. The results </p>
+<p>With this API you can replan a single Not Started or Started trip by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. This API accepts one trip reference ID in one request.</p>
 
 <p>For Not Started Trips, the API considers the Hub location as the starting point. For Started Trips, the API considers the last tracked location of the Delivery Associate whose Trip it is. If no last tracking is received for the Delivery Associate, then the location of the last Delivered Order will be used.</p>
 
@@ -24956,14 +24956,14 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 </tr>
 </tbody></table>
 
-<h3 id="update-e2e-order">Update E2E Order</h3>
+<h3 id="update-e2e-order-status">Update E2E Order Status</h3>
 
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MILEE2EORDERUPDATESTATUSNOTIFICATION"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notificationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MILEE2EORDERSTATUSUPDATENOTIFICATION"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
 
@@ -25003,7 +25003,14 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This notification is triggered when an All Mile type of Order is updated in LogiNext. The update notification can be sent for upto 20 Orders in a single webhook object.</p>
+<p>This notification is triggered when the active milestone of a E2E  Order goes through a status update in LogiNext. </p>
+
+<p>The order status notification will be triggered on the following events - 
+1. Order assignment
+2. Trip start 
+3. Milestone delivered</p>
+
+<p>The update status notification can be sent for upto 20 Orders in a single webhook object.</p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
