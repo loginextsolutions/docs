@@ -10222,7 +10222,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/resequence
 }
 ```
 
-With this API you can replan Not Started or Started trips by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. The results 
+With this API you can replan a single Not Started or Started trip by providing the LogiNext reference ID of the trip in the request. The operation will provide an updated seqence in which the remaining Orders of that Trip should be delivered in. This API accepts one trip reference ID in one request.
 
 For Not Started Trips, the API considers the Hub location as the starting point. For Started Trips, the API considers the last tracked location of the Delivery Associate whose Trip it is. If no last tracking is received for the Delivery Associate, then the location of the last Delivered Order will be used.
 
@@ -11842,7 +11842,7 @@ milestoneReferenceId| String | Milestone reference ID
 orderDate| String | Order creation Date.
 
 
-### Update E2E Order
+### Update E2E Order Status
 
 
 > Response
@@ -11850,7 +11850,7 @@ orderDate| String | Order creation Date.
 ```json
 
 {
-  "notificationType": "MILEE2EORDERUPDATESTATUSNOTIFICATION",
+  "notificationType": "MILEE2EORDERSTATUSUPDATENOTIFICATION",
   "orderDetails": [
     {
 
@@ -11889,7 +11889,14 @@ orderDate| String | Order creation Date.
   ]
 }
 ```
-This notification is triggered when an All Mile type of Order is updated in LogiNext. The update notification can be sent for upto 20 Orders in a single webhook object.
+This notification is triggered when the active milestone of a E2E  Order goes through a status update in LogiNext. 
+
+The order status notification will be triggered on the following events - <br>
+1. Order assignment<br>
+2. Trip start <br>
+3. Milestone delivered<br>
+
+The update status notification can be sent for upto 20 Orders in a single webhook object.
 
 #### Response Parameters
 
