@@ -824,13 +824,12 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
 
 
         "driverEmployeeId":"D23",
-        "shiftList":[{
-                            "shiftStartTime"  :"07:03pm",
-                            "shiftEndTime":"07:10am",
-                            "startTime":"2016-06-13",
-                            "endTime":"2016-06-15"
-
-        }],
+        [
+          {   
+            "shiftStartTime":"2019-03-26T10:30:00Z",
+            "shiftEndTime":"2019-03-26T17:30:00Z"
+          }
+        ],
 
         "previousCompanyName":"ABC",
         "reportingManager":"Chris",
@@ -1062,13 +1061,12 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
 
 
         "driverEmployeeId":"D23",
-        "shiftList":[{
-                            "shiftStartTime"  :"07:03pm",
-                            "shiftEndTime":"07:10am",
-                            "startTime":"2016-06-13",
-                            "endTime":"2016-06-15"
-
-        }],
+        [
+          {   
+            "shiftStartTime":"2019-03-26T10:30:00Z",
+            "shiftEndTime":"2019-03-26T17:30:00Z"
+          }
+        ],
 
         "previousCompanyName":"ABC",
         "reportingManager":"Rahul",
