@@ -344,6 +344,8 @@ Note that all Rate Limits apply on a rolling time interval basis. If you are cal
 
 The LogiNext API supports multiple records per request. For eg - You can send upto 20 Orders to be created in a single call of the Create Order API. 
 
+APIs that support batching support a maximum of 20 records in a single request of the API. Note that sending above 20 records in a single API request will result in a failure response from the API.
+
 APIs that support batching will have rate limit depending on the tier of the API.
 
 ## Best Practices
@@ -10013,7 +10015,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/plan
 
 ```
 
-> Failure Response
+> Failure Response 1
 
 ```json
 {
@@ -10021,23 +10023,50 @@ https://api.loginextsolutions.com/TripApp/mile/v1/plan
     "message": "Bad Request",
     "errors": [
         {
-            "key": "routeName",
-            "code": "Duplicate Route Name"
-        },
-        {
-            "key": "deliveryMediumReferenceIds",
-            "code": "Delivery Medium reference ids are required"
+            "key": "plan",
+            "data": [
+                "5bc59a848ef4412495012c40af7ac22c"
+            ],
+            "message": "Delivery Associate(s) does not exist",
+            "errorCode": 62005
         }
     ]
 }
 
 ```
 
+> Failure Response 1
+
+```json
+{
+    "status": 409,
+    "message": "Bad Request",
+    "errors": [
+        {
+            "key": "delivery medium reference",
+            "message": "In the Sequence planning objective,there should be only one Delivery Associate",
+            "errorCode": 60005
+        },
+        {
+            "key": "startTimeWindow/endTimeWindow",
+            "message": "No Orders found in the selected time window ",
+            "errorCode": 68005
+        }
+    ]
+}
+
+```
+
+
+
+
 The Plan API allows you to create Optimised Route Plans in LogiNext for your Orders.
 
 The API accepts the details of your Owned and Outsourced Fleet and can plan for a single Route Planning operation using details of both fleets.
 
 This is an async API. The response to the API request will have a 202 status code. The results of the replanning operation will be sent back in the form of the Route Planning webhook to the URL configured in your system with new sequence of Orders.
+
+In the 'SEQUENCE' mode, you can pass only 1 Delivery Associate in the request.
 
 Note that with this API you can plan for upto 2500 orders in one request.
 
@@ -10059,7 +10088,7 @@ hubReferenceIds | List | 32 | Optional | This is a list of Hubs the current Rout
 orderReferenceIds | List | 32 | Conditional Mandatory |  This is the list of Orders to be considered for Route Planning.If start and end time are not passed, this field is Mandatory.
 planningProfile | String | 32 | Optional | This is the name of the Planning Profile you wish to use for the Current Route Planning operation. You can setup multiple Route Planning profiles in your LogiNext account. If not passed, your default Route Planning profile will be considered.
 territoryProfile | String | 32 | Optional | This is the name of the Territory Profile you wish to use for the Current Route Planning operation. You can setup multiple Territory profiles in your LogiNext account. If not passed, your default Territory profile will be considered.
-mode | String | 32 | Mandatory | The planning objective for the route planning operation. This can be one of - 'CONSIDER_RESOURCE_COST' to optimize Fleet capacity, 'OPTIMIZE_DISTANCE_TIME' to optimize time and distance, 'LOADBALANCING' for balanced optimization, or 'SEQUENCE' for sequence optimization
+mode | String | 32 | Mandatory | The planning objective for the route planning operation. This can be one of - 'CONSIDER_RESOURCE_COST' to optimize Fleet capacity <br> 'OPTIMIZE_DISTANCE_TIME' to optimize time and distance <br> 'LOADBALANCING' for balanced optimization <br> 'SEQUENCE' for sequence optimization
 deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery Associate's to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.
 deliveryMediumStartLocation | List |  | Optional | This is the  Delivery Associate's starting location to be considered in planning. This can be 'hub' or 'home'
 
