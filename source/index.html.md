@@ -49,9 +49,9 @@ Orders are the base transaction entities in the LogiNext system. An Order has de
 
 A Trip is a run where a Delivery Associate fulfills one or more Orders. A Trip is created in the LogiNext System as a result of Route Planning or Auto-Assignment operations.
 
-### Account
+### Shipper
 
-An Account is used to represent LogiNext’s Customer’s Customer. You can create an Account in LogiNext to represent different Customers. Orders can be created in LogiNext on behalf of your Customers using the 'clientCode' field in the APIs that support this functionality. Details will be mentioed in the specific APIs.
+An Shipper is used to represent LogiNext’s Customer’s Customer. You can create a Shipper in LogiNext to represent different Customers. Orders can be created in LogiNext on behalf of your Shippers using the 'clientCode' field in the APIs that support this functionality. Details will be mentioed in the specific APIs.
 
 ### Service Time 
 
@@ -216,7 +216,7 @@ You will have to pass the username and password entered at the time of creating 
 
 The response will contain an authentication token which is unique to every specific Delivery Associate. This token will have a validaity of 4 years from the time of creation.
 
-
+API Type: Tier 2 API
 
 > Definition
 
@@ -304,7 +304,9 @@ https://api.loginextsolutions.com/LoginApp/login/token/refresh
 }
 ```
 
-This endpoint invalidates a user.
+This endpoint invalidates a user
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -335,6 +337,8 @@ API Type | Description |Rate Limit
 Tier 1 APIs | Tier 1 APIs have a specified Rate Limit to allow for a varierty of operations in the LogiNext system.  | 5 requests per second
 Tier 2 APIs | Tier 2 APIs have a more generous rate Limit than Tier 1 APIs, to support burst behaviour. | 10 requests per second
 Special Tier APIs | Custom Rate Limits are defined for Special Tier APIs. For example, the  the Route Optimization API allows 1 request per minute. | Custom Rate Limits. Rate limit Will be mentioned in the API description.
+
+If you are working with Shippers, the mentioned Rate limits will apply across all of your Shippers. For example if you are working with multiple Shippers who are also integrated with the LogiNext API, the Rate Limit for a Tier 1 API will be 5 requests per second across all your Shippers. Rate Limits do not apply to individual Shippers.
 
 Going beyond your rate limit will cause you to receive a temporary ban. You will receive a 429 'Max Request Limit Reached' error to your API calls if you go beyond this limit.
 
@@ -434,6 +438,8 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1/create
 Create a new vehicle by passing form data through json.
 
 The acknowledgement will provide the vehicle number and reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -624,6 +630,9 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
 
 This API is used to list all existing vehicles in the system. All vehicle related data values will be returned.
 
+API Type: Tier 1 API
+
+
 #### Request
 
 <span class="get">GET</span>`https://api.loginextsolutions.com/VehicleApp/haul/v1`
@@ -689,6 +698,8 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
 
 ```
 This API is used to update a particular vehicle based on its reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -760,6 +771,8 @@ https://api.loginextsolutions.com/VehicleApp/haul/v1
 ```
 
 This API is used to delete a particular vehicle based on its reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -858,6 +871,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/create
 Create a new driver by passing form data through json.
 
 The acknowledgement will provide the driver reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -1000,6 +1015,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list
 
 Use this API to read all data for a particular driver using its reference ID.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">POST</span>` https://api.loginextsolutions.com/DriverApp/haul/v1/driver/list`
@@ -1092,6 +1109,8 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update
 
 This API is used to update a particular driver based on its reference ID.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">PUT</span>`https://api.loginextsolutions.com/DriverApp/haul/v1/driver/update`
@@ -1164,6 +1183,9 @@ https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete
 
 This API is used to delete a particular driver based on its reference ID.
 
+API Type: Tier 1 API
+
+
 #### Request
 
 <span class="post">DELETE</span>`https://api.loginextsolutions.com/DriverApp/haul/v1/driver/delete`
@@ -1224,6 +1246,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/create
 Create a new trip using this API. Form data is passed through json.
 
 The acknowledgement will contain the trip reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -1409,6 +1433,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/get
 
 With this API you can fetch the list of your trips and its associated trip information.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/get`
@@ -1461,6 +1487,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/update
 ```
 
 This API is used to update a trip using its reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -1516,6 +1544,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/cancel
 
 This API is used to cancel a trip using its reference ID.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/cancel`
@@ -1562,6 +1592,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/start
 
 This API is used to start a trip using its reference ID.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">PUT</span>`https://api.loginextsolutions.com/TripApp/haul/v1/trip/start`
@@ -1602,6 +1634,8 @@ https://api.loginextsolutions.com/TripApp/haul/v1/trip/stop
 ```
 
 This API is used to end an in-transit trip using its reference ID.
+
+API Type: Tier 1 API
 
 #### Request
 
@@ -1663,6 +1697,8 @@ tripname | TestTripName| Trip name
 
 This endpoint adds tracking record.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">POST</span>`https://api.loginextsolutions.com/TrackingApp/track/put`
@@ -1720,7 +1756,7 @@ doorStatus | Boolean |  | Optional | doorStatus=true represents the event when t
 
 This API allows you to add upto 20 tracking points in a single call of the API. For example - If you are receiving tracking data from multiple trackers simultaneously, you can batch them up and send them in one call to LogiNext in a single call of this API.
 
-This API has a rate limit of 1 req/sec.
+API Type: Special Tier API. This API has a rate limit of 1 req/sec.
 
 #### Request
 
@@ -1940,6 +1976,8 @@ https://api.loginextsolutions.com/DeviceApp/device/v1/haul
 
 Tracker API fetches the details of all the trackers of the client.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">GET</span>`https://api.loginextsolutions.com/DeviceApp/device/v1/haul`
@@ -1996,6 +2034,9 @@ https://api.loginextsolutions.com/TrackingApp/haul/v1/track/lastlocation?address
 ```
 
 This API fetches the latest location and the reverse geocoded address for a trip.
+
+API Type: Tier 1 API
+
 
 #### Request
 
@@ -2176,7 +2217,9 @@ This API will only accept inputs if your Customer Profiling property is set in L
 
 Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a>
 
-You can create a maximum of 5 Customers in LogiNext in one call of this API. This API has a rate limit of 1 request per second.
+You can create a maximum of 5 Customers in LogiNext in one call of this API. 
+
+API Type: Special Tier API. This API has a rate limit of 1 request per second.
 
 #### Request
 
@@ -2224,6 +2267,7 @@ This API does not return the Shipping/ Delivery Addresses Associated with a Cust
 
 This API accepts upto 20 Customer IDs or Reference IDs in a comma separated format in the URL.
 
+API Type: Tier 1
 
 > Success Response
 
@@ -2432,7 +2476,9 @@ This API will only accept inputs if your Customer Profiling property is set in L
 
 Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a>
 
-You can create a maximum of 5 Customers in LogiNExt in one call of this API.
+You can update a maximum of 5 Customers in LogiNext in one call of this API.
+
+API Type: Special Tier API. 1request per second.
 
 
 #### Request
@@ -2555,6 +2601,8 @@ This API will only accept inputs if your Customer Profiling property is set in L
 Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a>
 
 You can create a maximum of 5 Addresses in LogiNext in one call of this API.
+
+API Type: Special Tier API. 1 request per second
 
 #### Request
 
@@ -2684,7 +2732,11 @@ This API will only accept inputs if your Customer Profiling property is set in L
 
 Address field validations will be based on the behaviour defined in the Address Configuration screen of your LogiNext account<a href="https://products.loginextsolutions.com/product/#/settings/addressfieldConfiguration" target="_top">here</a>
 
-You can update one address in LogiNext in one call of this API. This API does not support bulk operations
+You can update one address in LogiNext in one call of this API. 
+
+This API does not support batch operations.
+
+API Type: Special Tier API. 1 request per second.
 
 #### Request
 
@@ -9011,6 +9063,8 @@ The URL in the webhook has a validity of 1 hour. If you wish to download and sav
 
 NOTE: The dates accepted are in UTC.
 
+API Type: Tier 1 API
+
 #### Request
 
 <span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/mile/v2/epod/list?orderReferenceId=5e7a0f2804f14cd591a4740dfc7abdf1`
@@ -9997,8 +10051,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/plan
   "planningProfile": "1",
   "territoryProfile": "80",
   "mode": "OPTIMIZE_DISTANCE_TIME",
-  "deliveryMediumReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"],
-  "deliveryMediumStartLocation" : "hub"
+  "deliveryMediumReferenceIds": ["8dd4e493c715493da182f52eb69d1bcb", "73d57cbe0dc147da8c6b4503b76d5bda"]
 }
 
 
@@ -10090,7 +10143,7 @@ planningProfile | String | 32 | Optional | This is the name of the Planning Prof
 territoryProfile | String | 32 | Optional | This is the name of the Territory Profile you wish to use for the Current Route Planning operation. You can setup multiple Territory profiles in your LogiNext account. If not passed, your default Territory profile will be considered.
 mode | String | 32 | Mandatory | The planning objective for the route planning operation. This can be one of - 'CONSIDER_RESOURCE_COST' to optimize Fleet capacity <br> 'OPTIMIZE_DISTANCE_TIME' to optimize time and distance <br> 'LOADBALANCING' for balanced optimization <br> 'SEQUENCE' for sequence optimization
 deliveryMediumReferenceIds | List | 32 | Optional | This is the list of Delivery Associate's to be considered for the current Route Planning Operation. If not passed then All active and present Delivery Associates will be considered.
-deliveryMediumStartLocation | List |  | Optional | This is the  Delivery Associate's starting location to be considered in planning. This can be 'hub' or 'home'
+
 
 
 ###  Optimize
@@ -10235,7 +10288,7 @@ https://api.loginextsolutions.com/TripApp/mile/v1/resequence
 
 ```json
 {
-    "status": 400,
+    "status": 409,
     "message": "Bad Request",
     "errors": [
         {
