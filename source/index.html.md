@@ -3108,6 +3108,7 @@ userName | List | 50 | Conditional Mandatory | This is the Username of the Deliv
 ```json
 
  {
+"referenceId":"1cbc69c0fd3e6895acc50b60c93810ce",
 "employeeId":"ALL123469",
 "userGroupName":"MobileUser",
 "branchName":"California",
@@ -3217,7 +3218,8 @@ API Type: Tier 1 API
 
 Parameter | DataType | Length |  Required | Description
 -----------|-------|------- |------- | ----------
-employeeId | String | 50 | Mandatory | Delivery Associate employee ID.
+referenceId | String | 32 | Mandatory | Delivery Associate reference ID
+employeeId | String | 50 | Optional | Delivery Associate employee ID.
 userGroupName | String | 255 | Optional | Delivery Associate user group name.
 branchName | String | 255 | Optional | Delivery Associate client branch name.
 deliveryMediumMasterName | String | 255 | Optional | Delivery Associate full name.
@@ -3463,7 +3465,6 @@ https://api.loginextsolutions.com/ClientApp/v1/branch/update
   "emailAddress":"hack1@gmail.com"
   "longitude": 40.760838,
   "latitude": 74.9095327,
-  "timeZone":"America/Chicago",
   "loadingTime": 20,
   "unloadingTime": 20
 }]
@@ -5064,6 +5065,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "pickupStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "pickupEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -5391,6 +5393,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Chicago",
     "packageWeight":"10",
@@ -5685,6 +5688,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
@@ -6045,6 +6049,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
   {
     "orderNo": "PPPL0001",
     "autoAllocateFl":"N",
+    "AllocateProfileName":"ETAProfile",
     "awbNumber": "435-16685675",
     "shipmentOrderDt": "2019-02-05T10:30:00.000Z",
     "shipmentOrderTypeCd": "DELIVER",
@@ -6365,7 +6370,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 > Definition
 
 ```json
- https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create
+ https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create
 ```
 
 > Request Body
@@ -6380,6 +6385,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "ALLMILE",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "originBranchName" :"Houston",
@@ -6661,7 +6667,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 > Definition
 
 ```json
- https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create
+ https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create
 ```
 
 > Request Body
@@ -6676,6 +6682,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "LM",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2019-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "serviceTypeCd": "Economy",
@@ -6829,7 +6836,7 @@ API Type: Tier 1 API
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create`
 
 
 #### Request Parameters
@@ -6907,7 +6914,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 > Definition
 
 ```json
- https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create
+ https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create
 ```
 
 > Request Body
@@ -6922,6 +6929,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "FM",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2019-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "deliveryType": "Groceries",
@@ -7074,7 +7082,7 @@ API Type: Tier 1 API
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create`
 
 
 #### Request Parameters
@@ -7151,7 +7159,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 > Definition
 
 ```json
- https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create
+ https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create
 ```
 
 > Request Body
@@ -7166,6 +7174,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "LM",
     "orderState": "FORWARD",
     "autoAllocateFl": "Y",
+    "AllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2020-02-19T09:30:00.000Z",
     "distributionCenter": "Middle Mile Main Hub",
     "serviceTypeCd": "Typgcvb b bjb jjhgkck",
@@ -7340,7 +7349,7 @@ API Type: Tier 1 API
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/shipment/order/api/create`
+<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/middlemile/v1/shipment/create`
 
 
 #### Request Parameters
@@ -7450,7 +7459,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 "awbNumber": "435-16685675",
 "shipmentOrderTypeCd": "ALLMILE",
 "orderState": "FORWARD",
-"autoAllocateFl": "N",
+"AllocateProfileName":"ETAProfile",
 "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
 "distributionCenter": "Down Town Chicago",
 "originBranchName" :"Houston",
@@ -10434,6 +10443,96 @@ country | String | Optional | Country
 state | String | Optional | State
 postalCode | String |Optional | Postal Code
 
+
+## Cash Transactions
+
+> Sample Request
+
+```json
+
+[
+{
+"transactionId":"NewTransaction01",
+"transactionAmount":100,
+"deliveryMediumReferenceId": "ad42275cc4194c30846ce0eccf776db2",
+"transactionType":"Debit",
+"reason":"Customer does not have change",
+"transactionDate":"",
+"comment":" Comment"
+}
+]
+
+{
+  "status": 200,
+  "message": "Transaction created successfully",
+  "moreResultsExists": false,
+  "hasError": false
+}
+
+```
+
+> Success Response
+
+```json
+
+
+{
+  "status": 200,
+  "message": "Transaction created successfully",
+  "moreResultsExists": false,
+  "hasError": false
+}
+
+
+```
+
+> Failure Response
+
+```json
+{
+  "status": 409,
+  "message": "Some issue encountered in server",
+  "moreResultsExists": false,
+  "error": [
+    {
+    "index": 0,
+    "errorList": [
+      {
+      "key": "transactionId",
+      "message": "Transaction ID already exists in system.",
+      "errorCode": 72000
+      }
+    ]
+  }
+],
+"hasError": true
+}
+
+```
+
+You can create Credit or Debit cash transactions for your drivers with this API. 
+
+This API requires the Transaction ID, Delivery Associate reference ID, for whom the transaction is being created and the amount details.
+
+The API create 1 transaction in a single request
+
+Rate limit of this API is 5 requests/second.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
+
+
+#### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+transactionId | String |  Mandatory | Unique transaction ID of the transaction being created. This field is mandatory.
+transactionAmount | Double | Transaction amount. This field is mandatory.
+deliveryMediumReferenceId | String | Mandatory | Reference ID of the Delivery Associate for whom the transaction is being created.
+transactionType | String | Mandatory | This can be either 'Credit' or 'Debit'.
+reason | String | Optional | Reason for Debit/ credit
+transactionDate | String | Optional | Timestamp of the transaction. By default this is the current date time
 
 # LogiNext Field TM
 
