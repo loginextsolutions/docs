@@ -5065,7 +5065,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "PICKUP",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "pickupStartTimeWindow": "2016-07-16T10:31:00.000Z",
     "pickupEndTimeWindow": "2016-07-18T10:31:00.000Z",
@@ -5306,6 +5306,7 @@ awbNumber | String | 1000 | Optional | Airway Bill Number associated with an ord
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 shipmentOrderDt | Date |  | Mandatory | Order Date.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T10:30:00.000Z"
 distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
@@ -5393,7 +5394,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "DELIVER",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Chicago",
     "packageWeight":"10",
@@ -5600,6 +5601,7 @@ awbNumber | String  | 1000 | Optional | Airway Bill Number associated with an or
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 shipmentOrderDt | Date |  | Mandatory | Order Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order package weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
@@ -5688,7 +5690,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "shipmentOrderTypeCd": "BOTH",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "packageWeight":"10",
@@ -6049,7 +6051,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
   {
     "orderNo": "PPPL0001",
     "autoAllocateFl":"N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "awbNumber": "435-16685675",
     "shipmentOrderDt": "2019-02-05T10:30:00.000Z",
     "shipmentOrderTypeCd": "DELIVER",
@@ -6385,7 +6387,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "ALLMILE",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "originBranchName" :"Houston",
@@ -6576,6 +6578,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 originBranchName |  String | 255 | Optional | This is the Origin branch of the Order
@@ -6682,7 +6685,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "LM",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2019-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "serviceTypeCd": "Economy",
@@ -6847,6 +6850,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 serviceTypeCd |  String | 255 | Conditional Mandatory | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
@@ -6929,7 +6933,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "FM",
     "orderState": "FORWARD",
     "autoAllocateFl": "N",
-    "AllocateProfileName":"ETAProfile",
+    "autoAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2019-07-15T10:30:00.000Z",
     "distributionCenter": "Down Town Chicago",
     "deliveryType": "Groceries",
@@ -7093,6 +7097,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 serviceTypeCd |  String | 255 | Conditional Mandatory | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
@@ -7174,7 +7179,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
     "shipmentOrderTypeCd": "LM",
     "orderState": "FORWARD",
     "autoAllocateFl": "Y",
-    "AllocateProfileName":"ETAProfile",
+    "autpAllocateProfileName":"ETAProfile",
     "shipmentOrderDt": "2020-02-19T09:30:00.000Z",
     "distributionCenter": "Middle Mile Main Hub",
     "serviceTypeCd": "Typgcvb b bjb jjhgkck",
@@ -7360,6 +7365,7 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 deliveryType | String | 40 | Conditional Mandatory | Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
@@ -7459,7 +7465,7 @@ shipmentCrateMappings.shipmentlineitems.itemHeight| Double | 10,3 | Optional | T
 "awbNumber": "435-16685675",
 "shipmentOrderTypeCd": "ALLMILE",
 "orderState": "FORWARD",
-"AllocateProfileName":"ETAProfile",
+"autoAllocateProfileName":"ETAProfile",
 "shipmentOrderDt": "2016-07-15T10:30:00.000Z",
 "distributionCenter": "Down Town Chicago",
 "originBranchName" :"Houston",
@@ -7607,6 +7613,7 @@ orderTemplateNumber | String | 100 | Mandatory |  This is the order Template Num
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
+autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 originBranchName |  String | 255 | Optional | This is the Origin branch of the Order
@@ -10462,12 +10469,6 @@ postalCode | String |Optional | Postal Code
 }
 ]
 
-{
-  "status": 200,
-  "message": "Transaction created successfully",
-  "moreResultsExists": false,
-  "hasError": false
-}
 
 ```
 
