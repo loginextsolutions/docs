@@ -10170,7 +10170,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PICKUP"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupStartTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-16T10:31:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"pickupEndTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-18T10:31:00.000Z"</span><span class="p">,</span><span class="w">
@@ -10443,6 +10443,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -10904,7 +10911,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -11148,6 +11155,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>shipmentOrderDt</td>
@@ -11623,7 +11637,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOTH"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"packageWeight"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
@@ -12588,7 +12602,7 @@ When Customer Profiling is turned ON -
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPPL0001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-05T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
@@ -13401,7 +13415,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLMILE"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"originBranchName"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Houston"</span><span class="p">,</span><span class="w">
@@ -13616,6 +13630,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -14184,7 +14205,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LM"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"serviceTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Economy"</span><span class="p">,</span><span class="w">
@@ -14373,6 +14394,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -14787,7 +14815,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Groceries"</span><span class="p">,</span><span class="w">
@@ -14975,6 +15003,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -15382,7 +15417,7 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LM"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAllocateFl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autpAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-19T09:30:00.000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Middle Mile Main Hub"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"serviceTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Typgcvb b bjb jjhgkck"</span><span class="p">,</span><span class="w">
@@ -15592,6 +15627,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -16138,7 +16180,7 @@ When Customer Profiling is turned ON -
 </span><span class="nt">"awbNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435-16685675"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLMILE"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"AllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"autoAllocateProfileName"</span><span class="p">:</span><span class="s2">"ETAProfile"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"shipmentOrderDt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-15T10:30:00.000Z"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"distributionCenter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Down Town Chicago"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"originBranchName"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Houston"</span><span class="p">,</span><span class="w">
@@ -16309,6 +16351,13 @@ When Customer Profiling is turned ON -
 <td>50</td>
 <td>Optional</td>
 <td>This can be &ldquo;Y&rdquo;, &ldquo;N&rdquo;, or &ldquo;P&rdquo;. If set to &ldquo;Y&rdquo;, the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the &#39;Auto Assignment Profile&rsquo; screen in your LogiNext Account settings screen. If &ldquo;N&rdquo;, the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as &#39;P&rsquo; if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.</td>
+</tr>
+<tr>
+<td>autoAllocateProfileName</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
+<td></td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -21907,12 +21956,6 @@ Please note that in the API Header, you will have to pass Content Type as multip
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction created successfully"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
