@@ -10459,7 +10459,7 @@ postalCode | String |Optional | Postal Code
 
 [
 {
-"transactionId":"NewTransaction01",
+"transactionId":"TR43244-5565232",
 "transactionAmount":100,
 "deliveryMediumReferenceId": "ad42275cc4194c30846ce0eccf776db2",
 "transactionType":"Debit",
@@ -10521,7 +10521,7 @@ Rate limit of this API is 5 requests/second.
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/GeofenceApp/mile/v1/serviceability/get`
+<span class="post">POST</span>`https://api.loginextsolutions.com/DeliveryMediumApp/mile/v1/create/transaction`
 
 
 #### Request Parameters
