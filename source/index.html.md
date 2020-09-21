@@ -10384,7 +10384,7 @@ pincode | String | Mandatory | This is the address pincode.
 {
 "latitude" : "40.760838", 
 "longitude" : "74.832830",
-"apartment": "Inorbit Mall",
+"apartmentName": "Inorbit Mall",
 "streetName": "Link Road",
 "locality": "Goregaon West",
 "city": "Mumbai",
@@ -10442,7 +10442,7 @@ Parameter | DataType |  Required | Description
 -----------|-------|------- | ----------
 latitude | String | Conditional Mandatory | Geocoordinates(latitude) of the location, serviceability is to be checked for. If longitude is passed in the request, this field is mandatory.
 longitude | String | Conditional Mandatory | Geocoordinates(longitude) of the location, serviceability is to be checked for. If latitude is passed in the request, this field is mandatory.
-apartment | String | Optional | Apartment 
+apartmentName | String | Optional | Apartment 
 streetName | String | Optional | Street Name.
 locality | String | Optional | Locality
 city | String | Optional | City
