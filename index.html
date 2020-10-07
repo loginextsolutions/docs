@@ -131,7 +131,7 @@
 
 <p>A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be maintainence men, repair men, or Delivery Associates.</p>
 
-<p>When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.</p>
+<p>When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the Driver app.</p>
 
 <h3 id="vehicle">Vehicle</h3>
 
@@ -13635,8 +13635,8 @@ When Customer Profiling is turned ON -
 <td>autoAllocateProfileName</td>
 <td>String</td>
 <td>Optional</td>
-<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
 <td></td>
+<td>The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered</td>
 </tr>
 <tr>
 <td>orderState</td>
@@ -13679,6 +13679,34 @@ When Customer Profiling is turned ON -
 <td>40</td>
 <td>Conditional Mandatory</td>
 <td>Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an &#39;ALLMILE&rsquo; type of Order.</td>
+</tr>
+<tr>
+<td>nextBranchName</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>If you do not pass a routeConfigurationName in the API at the time of creation, you will need to pass the details of the next branch the E2E order will flow through.</td>
+</tr>
+<tr>
+<td>nextBranchServiceTime</td>
+<td>Number</td>
+<td></td>
+<td>Optional</td>
+<td>The service time of the next branch the E2E order will flow through</td>
+</tr>
+<tr>
+<td>nextBranchStartTimeWindow</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Start time window of the next branch</td>
+</tr>
+<tr>
+<td>nextBranchEndTimeWindow</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>End time window of the next branch</td>
 </tr>
 <tr>
 <td>serviceTypeCd</td>
@@ -17105,7 +17133,7 @@ When Customer Profiling is turned ON -
 <td>String</td>
 <td>10</td>
 <td>Mandatory</td>
-<td>If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be &ldquo;PREPAID&rdquo;.<br>If the customer is going to pay for the order at the doorstep, then the value here should be &ldquo;COD&rdquo;.<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext TrackNext App., you can raise integration request with your Account Manager.</td>
+<td>If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be &ldquo;PREPAID&rdquo;.<br>If the customer is going to pay for the order at the doorstep, then the value here should be &ldquo;COD&rdquo;.<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext Driver App., you can raise integration request with your Account Manager.</td>
 </tr>
 <tr>
 <td>orders.packageValue</td>
@@ -19917,7 +19945,7 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>With this API you can fetch the details of Custom Forms associated with your Orders by passing the Order reference IDs of the required Orders.</p>
 
-<p>For example, if you capture the parking or toll charges against an Order using custom forms in the TrackNext application, you can fetch the details of that data with this API. </p>
+<p>For example, if you capture the parking or toll charges against an Order using custom forms in the  Driver App, you can fetch the details of that data with this API. </p>
 
 <p>The details of the form data filled when submitting a custom form are present inside the formdata object in the API response. 
 The &#39;field&rsquo; key denotes the field name code that this particular element refers to.
@@ -20026,31 +20054,31 @@ The &#39;type&rsquo; key denotes the data type of the data captured.</p>
 </thead><tbody>
 <tr>
 <td>CHECKIN_AFTER</td>
-<td>Custom form filled after the Check In screen on TrackNext.</td>
+<td>Custom form filled after the Check In screen on the Driver App.</td>
 </tr>
 <tr>
 <td>LOAD_AFTER</td>
-<td>Custom form filled after the Loading screen on TrackNext.</td>
+<td>Custom form filled after the Loading screen on the Driver App.</td>
 </tr>
 <tr>
 <td>UNLOAD_AFTER</td>
-<td>Custom form filled after the Unloading screen on TrackNext.</td>
+<td>Custom form filled after the Unloading screen on the Driver App.</td>
 </tr>
 <tr>
 <td>ESIGN_AFTER</td>
-<td>Custom form filled after the ESIGN screen on TrackNext.</td>
+<td>Custom form filled after the ESIGN screen on the Driver App.</td>
 </tr>
 <tr>
 <td>PAYMENT_AFTER</td>
-<td>Custom form filled after the Payment screen on TrackNext.</td>
+<td>Custom form filled after the Payment screen on the Driver App.</td>
 </tr>
 <tr>
 <td>EPOP_AFTER</td>
-<td>Custom form filled after the E Proof of Pickup screen on TrackNext.</td>
+<td>Custom form filled after the E Proof of Pickup screen on the Driver App.</td>
 </tr>
 <tr>
 <td>EPOD_AFTER</td>
-<td>Custom form filled after the E Proof of Delivery on TrackNext.</td>
+<td>Custom form filled after the E Proof of Delivery on the Driver App.</td>
 </tr>
 <tr>
 <td>PICKEDUP_AFTER</td>
@@ -22791,12 +22819,13 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <p>Note -</p>
 
 <ol>
-<li>LogiNext Webhooks are sent via HTTP REST protocol.</li>
-<li>The default content type for all the LogiNext Webhooks is &ldquo;application/ json&rdquo;.</li>
-<li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.</li>
-<li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.</li>
-<li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.</li>
-<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.</li>
+<li>LogiNext Webhooks are sent via HTTP REST protocol.<br></li>
+<li>The default content type for all the LogiNext Webhooks is &ldquo;application/ json&rdquo;.<br></li>
+<li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.<br></li>
+<li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br></li>
+<li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br></li>
+<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br></li>
+<li>If your system requires to whitelist LogiNext&rsquo;s IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that ill have to be whitelisted in your system: &#39;52.77.99.245&rsquo;, &#39;13.228.17.195&rsquo;, &#39;18.136.241.16&rsquo;, &#39;3.1.127.224&rsquo;, &#39;52.76.48.59&rsquo;.</li>
 </ol>
 
 <h2 id="orders">Orders</h2>
@@ -24861,31 +24890,31 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </thead><tbody>
 <tr>
 <td>CHECKIN_AFTER</td>
-<td>Custom form located after the Check In screen on TrackNext.</td>
+<td>Custom form located after the Check In screen on the Driver App.</td>
 </tr>
 <tr>
 <td>LOAD_AFTER</td>
-<td>Custom form located after the Loading screen on TrackNext.</td>
+<td>Custom form located after the Loading screen on the Driver App.</td>
 </tr>
 <tr>
 <td>UNLOAD_AFTER</td>
-<td>Custom form located after the Unloading screen on TrackNext.</td>
+<td>Custom form located after the Unloading screen on the Driver App.</td>
 </tr>
 <tr>
 <td>ESIGN_AFTER</td>
-<td>Custom form located after the ESIGN screen on TrackNext.</td>
+<td>Custom form located after the ESIGN screen on the Driver App.</td>
 </tr>
 <tr>
 <td>PAYMENT_AFTER</td>
-<td>Custom form located after the Payment screen on TrackNext.</td>
+<td>Custom form located after the Payment screen on the Driver App.</td>
 </tr>
 <tr>
 <td>EPOP_AFTER</td>
-<td>Custom form located after the E Proof of Pickup screen on TrackNext.</td>
+<td>Custom form located after the E Proof of Pickup screen on the Driver App.</td>
 </tr>
 <tr>
 <td>EPOD_AFTER</td>
-<td>Custom form located after the E Proof of Delivery on TrackNext.</td>
+<td>Custom form located after the E Proof of Delivery on the Driver App.</td>
 </tr>
 <tr>
 <td>PICKEDUP_AFTER</td>
@@ -31922,12 +31951,12 @@ Mymensingh | MY</p>
 <tr>
 <td>Active</td>
 <td>ACTIVE</td>
-<td>A Delivery Associate that is Active will be assigned Orders and can Sign In to their TrackNext account.</td>
+<td>A Delivery Associate that is Active will be assigned Orders and can Sign In to their Driver App account.</td>
 </tr>
 <tr>
 <td>Inactive</td>
 <td>INACTIVE</td>
-<td>A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their TrackNext account.</td>
+<td>A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their Driver App account.</td>
 </tr>
 <tr>
 <td>On Break</td>
