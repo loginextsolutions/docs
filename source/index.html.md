@@ -24,7 +24,7 @@ In this section we'll go over the elements that make up the LogiNext system, and
 
 A Delivery Associate is the resource that would pickup or deliver your customers’ orders. Delivery Associates can be maintainence men, repair men, or Delivery Associates.
 
-When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the TrackNext app.
+When a Delivery Associate is created in LogiNext, Login credentails are generated, using which the Delivery Associate can Sign-in to the Driver app.
 
 ###Vehicle
 
@@ -6578,13 +6578,17 @@ orderNo | String | 100 | Mandatory |  This is the order No.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
-autoAllocateProfileName | String | Optional | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
+autoAllocateProfileName | String | Optional | | The Auto assignment profile name to be used to auto assign this Order. If not passed, the default profile will be considered
 orderState | String | 512 | Mandatory | This is the state of order. Ex: FORWARD
 shipmentOrderDt | Date |  | Mandatory | This is the order Date. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
 originBranchName |  String | 255 | Optional | This is the Origin branch of the Order
 destinationBranchName |  String | 255 | Optional  | This is the Destination branch of the Order
 routeConfigurationName |  String | 255 | Optional | This is the route of the Order
 deliveryType | String | 40 | Conditional Mandatory | Order delivery type. For example - ‘Groceries’ for grocery type of Orders. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
+nextBranchName | String | | Optional | If you do not pass a routeConfigurationName in the API at the time of creation, you will need to pass the details of the next branch the E2E order will flow through.
+nextBranchServiceTime | Number | | Optional | The service time of the next branch the E2E order will flow through
+nextBranchStartTimeWindow | String | | Optional | Start time window of the next branch
+nextBranchEndTimeWindow| String | | Optional | End time window of the next branch
 serviceTypeCd |  String | 255 | Conditional Mandatory | This is the Service type of the Order. You can have different service types depending on your operations. For example - Orders having a 'Premium' service type can have shorter SLAs than Orders having 'Normal' service types. This field is Mandatory if you are creating an 'ALLMILE' type of Order.
 distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | This is the weight of package. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
@@ -7815,7 +7819,7 @@ orders.orderNo| String | 255 | Conditional Mandatory | This is the Order No.<br>
 orders.deliverySequence| String | 1 | Mandatory | In case of Single Destination, this is to be "1" always.<br>In case of Multi-destination, this is the sequence that you want the order to be delivered in.
 orders.packageWeight| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package weight that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (weight) of Delivery Associate. If particular capacity (weight) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.
 orders.packageVolume| String | 10 | Optional | This is an optional field. You can choose to leave it blank.<br>If you have any package volume that needs to be specified to the Delivery Associate, you can pass the value here as a FYI.<br>Also, LogiNext system allows you to configure the capacity (volume) of Delivery Associate. If particular capacity (volume) of an order is specified in this field, then the order will get assigned to the Delivery Associate whose capacity is greater than or equal to this capacity.<br>Note that volume here is overall cubic volume (L*B*H)
-orders.paymentType| String | 10 | Mandatory | If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be "PREPAID".<br>If the customer is going to pay for the order at the doorstep, then the value here should be "COD".<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext TrackNext App., you can raise integration request with your Account Manager.
+orders.paymentType| String | 10 | Mandatory | If an order value is already paid by the customer through online payment or wallet, etc. then the value here should be "PREPAID".<br>If the customer is going to pay for the order at the doorstep, then the value here should be "COD".<br>Note that COD either means Cash on Delivery or Card on Delivery.<br>If your Delivery Associates use mPOS devices for accepting Card on Delivery and you want it to integrate with LogiNext Driver App., you can raise integration request with your Account Manager.
 orders.packageValue| String | 10 | Conditional Mandatory | If the payment type is "PREPAID", then this can be optional.<br>If the payment type is "COD", then this is mandatory to be passed. This is the total amount that the Delivery Associate has to collect from the Customer.
 orders.numberOfItems| String | 255 | Conditional Mandatory | LogiNext system allows you to set your account as either of three level of Order Hierarchy - <br>1. Only Order - Single parcel, document, shipment.<br>2. Order and Crates - Single Shipment Bag and the items in that Shipment bag.<br>3. Order, Crate and Line Items - Single Shipment bag having multiple crates and each crate having multiple items.<br><br>If your account type is set to pass only orders, then this field is optional. <br>You can pass the no. of items (if any)  to let the delivery associate know as a FYI.<br>But, if your account is configured to have Order &  Crates Hierarchy or Order, Crates * Line Items Hierarchy, then it is mandatory for you pass the number of items and it should be equal to the number of Crates.
 orders.deliverServiceTime| String | 10 | Mandatory | In minutes. This is the time that the Delivery Associate is going to take at the Customer's doorstep to deliver the orders.
@@ -9238,7 +9242,7 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/customform/list
 
 With this API you can fetch the details of Custom Forms associated with your Orders by passing the Order reference IDs of the required Orders.
 
-For example, if you capture the parking or toll charges against an Order using custom forms in the TrackNext application, you can fetch the details of that data with this API. 
+For example, if you capture the parking or toll charges against an Order using custom forms in the  Driver App, you can fetch the details of that data with this API. 
 
 The details of the form data filled when submitting a custom form are present inside the formdata object in the API response. 
 The 'field' key denotes the field name code that this particular element refers to.
@@ -9277,13 +9281,13 @@ results.formdata.type | String | Data type of the input field.
 
 Event Key | Description
 ----------|------------
-CHECKIN_AFTER | Custom form filled after the Check In screen on TrackNext.
-LOAD_AFTER | Custom form filled after the Loading screen on TrackNext.
-UNLOAD_AFTER | Custom form filled after the Unloading screen on TrackNext.
-ESIGN_AFTER | Custom form filled after the ESIGN screen on TrackNext.
-PAYMENT_AFTER | Custom form filled after the Payment screen on TrackNext.
-EPOP_AFTER | Custom form filled after the E Proof of Pickup screen on TrackNext.
-EPOD_AFTER | Custom form filled after the E Proof of Delivery on TrackNext.
+CHECKIN_AFTER | Custom form filled after the Check In screen on the Driver App.
+LOAD_AFTER | Custom form filled after the Loading screen on the Driver App.
+UNLOAD_AFTER | Custom form filled after the Unloading screen on the Driver App.
+ESIGN_AFTER | Custom form filled after the ESIGN screen on the Driver App.
+PAYMENT_AFTER | Custom form filled after the Payment screen on the Driver App.
+EPOP_AFTER | Custom form filled after the E Proof of Pickup screen on the Driver App.
+EPOD_AFTER | Custom form filled after the E Proof of Delivery on the Driver App.
 PICKEDUP_AFTER | Custom form filled after the Pickup is complete for the Order.
 NOTPICKED-UP_AFTER | Custom form filled after the Order is marked Not Picked Up.
 DELIVERED_AFTER | Custom form filled after the Order is marked Delivered.
@@ -10895,12 +10899,15 @@ Webhooks allow you to build or set up integrations which subscribe to certain ev
 
 Note -
 
-1. LogiNext Webhooks are sent via HTTP REST protocol.
-2. The default content type for all the LogiNext Webhooks is "application/ json".
-3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.
-4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.
-5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.
-6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.
+1. LogiNext Webhooks are sent via HTTP REST protocol.<br>
+2. The default content type for all the LogiNext Webhooks is "application/ json".<br>
+3. If you have a request to support the other content types like "application/xml " or "application/x-www-form-urlencoded", then please get in touch with your assigned CSA (Customer Service Associate) and request the same.<br>
+4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br>
+5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br>
+6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br>
+7. Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence and that they get duplicated. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br>
+8. Webhooks will be timed out in 10 seconds if response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br>
+9. If your system requires to whitelist LogiNext's IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that ill have to be whitelisted in your system: '52.77.99.245', '13.228.17.195', '18.136.241.16', '3.1.127.224', '52.76.48.59'.
 
 
 ## Orders
@@ -11815,13 +11822,13 @@ formData.type | String | Data type of the custom form field.
  
 Event Key | Description
 ----------|------------
-CHECKIN_AFTER | Custom form located after the Check In screen on TrackNext.
-LOAD_AFTER | Custom form located after the Loading screen on TrackNext.
-UNLOAD_AFTER | Custom form located after the Unloading screen on TrackNext.
-ESIGN_AFTER | Custom form located after the ESIGN screen on TrackNext.
-PAYMENT_AFTER | Custom form located after the Payment screen on TrackNext.
-EPOP_AFTER | Custom form located after the E Proof of Pickup screen on TrackNext.
-EPOD_AFTER | Custom form located after the E Proof of Delivery on TrackNext.
+CHECKIN_AFTER | Custom form located after the Check In screen on the Driver App.
+LOAD_AFTER | Custom form located after the Loading screen on the Driver App.
+UNLOAD_AFTER | Custom form located after the Unloading screen on the Driver App.
+ESIGN_AFTER | Custom form located after the ESIGN screen on the Driver App.
+PAYMENT_AFTER | Custom form located after the Payment screen on the Driver App.
+EPOP_AFTER | Custom form located after the E Proof of Pickup screen on the Driver App.
+EPOD_AFTER | Custom form located after the E Proof of Delivery on the Driver App.
 PICKEDUP_AFTER | Custom form filled after the Pickup is complete for the Order.
 NOTPICKED-UP_AFTER | Custom form filled after the Order is marked Not Picked Up.
 DELIVERED_AFTER | Custom form filled after the Order is marked Delivered.
@@ -13670,6 +13677,33 @@ Galle | GL
 Gampaha | GM
 Hambantota | HA
 
+## Taiwan 
+
+State | Code
+--------- | ---------
+Changhua  | TW-CHA
+Chiayi  | TW-CYI
+Chiayi  | TW-CYQ
+Hsinchu | TW-HSZ
+Hsinchu | TW-HSQ
+Hualien | TW-HUA
+Kaohsiung | TW-KHH
+Keelung | TW-KEE
+Kinmen  | TW-KIN
+Lienchiang  | TW-LIE
+Miaoli  | TW-MIA
+Nantou  | TW-NAN
+New Taipei  | TW-NWT
+Penghu  | TW-PEN
+Pingtung  | TW-PIF
+Taichung  | TW-TXG
+Tainan  | TW-TNN
+Taipei  | TW-TPE
+Taitung | TW-TTT
+Taoyuan | TW-TAO
+Yilan | TW-ILA
+Yunlin  | TW-YUN
+
 ## Tanzania
 
 State | Code
@@ -14130,8 +14164,8 @@ The current Status of your Delivery Associate. The Status can be updated by call
 
 Status | Code | Description
 --------- | --------- | -------------
-Active | ACTIVE | A Delivery Associate that is Active will be assigned Orders and can Sign In to their TrackNext account. 
-Inactive | INACTIVE | A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their TrackNext account.
+Active | ACTIVE | A Delivery Associate that is Active will be assigned Orders and can Sign In to their Driver App account. 
+Inactive | INACTIVE | A Delivery Associate that is Inactive will not be assigned any orders, or be able to log in to their Driver App account.
 On Break | ONBREAK | The Delivery Associate is not currently fulfilling Orders. New Orders cannot be assigned to an On Break Delivery associate. Only Active Delivery Associates can be On Break.
 Off Break | OFFBREAK | Delivery Associate is back from Break and ready to fulfil Orders. Only Active Delivery Associates can be On Break.
 
