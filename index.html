@@ -6866,31 +6866,161 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>Optional</td>
 <td>This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order.</td>
 </tr>
+<tr>
+<td>distributionCenter</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
+</tr>
+<tr>
+<td>pickupStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</td>
+</tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Mandatory</td>
+<td>This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Pick-up Customer ID.</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer Address ID.</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Pick-up Customer email ID.</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>pickupPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>This is the geolocation coordinate (latitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Delivery notes associated with the order.</td>
+</tr>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</td>
+</tr>
 </tbody></table>
-
-<p>distributionCenter | String |  | Mandatory | Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</p>
-
-<p>pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;
-pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
-pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
-pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
-pickupEmail | String | 100 | Optional | Pick-up Customer email ID.
-pickupPhoneNumber | String | 255 | Optional | Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.
-pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
-pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLandmark | String | 512 | Conditional Mandatory | Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLocality | String | 512 | Conditional Mandatory | Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.
-pickupCity | String | 512 | Conditional Mandatory | Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.
-pickupState| String | 512 | Conditional Mandatory | Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.
-pickupCountry | String | 512 | Conditional Mandatory | Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.
-pickupPinCode | String | 20 | Conditional Mandatory | Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
-pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
-pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
-pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
-deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
-clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</p>
 
 <h4 id="request-parameters-crates">Request Parameters (Crates)</h4>
 
@@ -19765,6 +19895,8 @@ The orders will be added to the Default trip (Started or Not Started) of the Del
 
 <p>The URL in the webhook has a validity of 1 hour. If you wish to download and save the images in your system, please download these files within one hour of consuming this webhook.</p>
 
+<p>Note that this API accepts only 1 order number  or order reference ID in one request and does not support batching.</p>
+
 <p>NOTE: The dates accepted are in UTC.</p>
 
 <p>API Type: Tier 1 API</p>
@@ -22825,8 +22957,8 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br></li>
 <li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br></li>
 <li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br></li>
-<li>Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence and that they get duplicated. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br></li>
-<li>Webhooks will be timed out in 10 seconds if response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br></li>
+<li>Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br></li>
+<li>Webhooks will be timed out in 10 seconds if no response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br></li>
 <li>If your system requires to whitelist LogiNext&rsquo;s IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that ill have to be whitelisted in your system: &#39;52.77.99.245&rsquo;, &#39;13.228.17.195&rsquo;, &#39;18.136.241.16&rsquo;, &#39;3.1.127.224&rsquo;, &#39;52.76.48.59&rsquo;.</li>
 </ol>
 
@@ -22996,11 +23128,11 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This notification is sent when an order is updated. This is triggered in the following scenarios - 
-1)Order attributes are updated
-2)Manual assignment of the order
-3)Change trip for the order
-4)relay of Order</p>
+<p>This notification is sent when an order is updated. This is triggered in the following scenarios - <br>
+1)Order attributes are updated<br>
+2)Manual assignment of the order<br>
+3)Change trip for the order<br>
+4)relay of Order<br></p>
 
 <table><thead>
 <tr>
@@ -25511,7 +25643,10 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This webhook is triggered when the ETA for a particular Order is revised. This can happen at </p>
+<p>This webhook is triggered when the ETA for a particular Order is revised. This can happen at:
+1. Trip Start<br>
+2. Delivery Associate resmes from break<br>
+3. Delivery of an Order in the Trip<br></p>
 
 <h4 id="response-parameters">Response Parameters</h4>
 
