@@ -3810,10 +3810,8 @@ deliveryLocationType | String | 255 | Optional | This parameter if passed helps 
 deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associate who will be fulfilling the Order, pass their usernam in this field.
 pickupBranch | String | 255 | Optional | For Pick-Up type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the Order request to. It is recommended to not pass this field so the system can use the branch linked to the zone of the pickup location. You can pass this field if the Shipper the Order request is being created for is not linked with a Service area Profile on the LogiNext system.
 pickupServiceTime | Integer | 11 | Optional | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order. 
-
 distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-
 pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
@@ -9081,6 +9079,8 @@ Calling the URL in the webhook downloads a compressed zip file with the EPOD and
 
 The URL in the webhook has a validity of 1 hour. If you wish to download and save the images in your system, please download these files within one hour of consuming this webhook.
 
+Note that this API accepts only 1 order number  or order reference ID in one request and does not support batching.
+
 NOTE: The dates accepted are in UTC.
 
 API Type: Tier 1 API
@@ -10905,8 +10905,8 @@ Note -
 4. All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br>
 5. Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br>
 6. You can choose to configure an additional security parameter in the LogiNext webhooks Header in the 'x-loginext-signature' header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br>
-7. Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence and that they get duplicated. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br>
-8. Webhooks will be timed out in 10 seconds if response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br>
+7. Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br>
+8. Webhooks will be timed out in 10 seconds if no response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br>
 9. If your system requires to whitelist LogiNext's IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that ill have to be whitelisted in your system: '52.77.99.245', '13.228.17.195', '18.136.241.16', '3.1.127.224', '52.76.48.59'.
 
 
@@ -11015,11 +11015,11 @@ clientCode | String | Account name. This field is sent if the Order was created 
 ```
 
 
-This notification is sent when an order is updated. This is triggered in the following scenarios - 
-1)Order attributes are updated
-2)Manual assignment of the order
-3)Change trip for the order
-4)relay of Order
+This notification is sent when an order is updated. This is triggered in the following scenarios - <br>
+1)Order attributes are updated<br>
+2)Manual assignment of the order<br>
+3)Change trip for the order<br>
+4)relay of Order<br>
 
 Param | DataType | Description
 --------- | ------- | ----------
@@ -12167,7 +12167,10 @@ endTime | String |  Trip end time
 }
 ```
 
-This webhook is triggered when the ETA for a particular Order is revised. This can happen at 
+This webhook is triggered when the ETA for a particular Order is revised. This can happen at:
+1. Trip Start<br>
+2. Delivery Associate resmes from break<br>
+3. Delivery of an Order in the Trip<br>
 
 #### Response Parameters
 
