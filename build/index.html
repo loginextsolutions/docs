@@ -22951,16 +22951,81 @@ You can pass multiple task reference IDs and can update the status of a task.</p
 <p>Note -</p>
 
 <ol>
-<li>LogiNext Webhooks are sent via HTTP REST protocol.<br></li>
-<li>The default content type for all the LogiNext Webhooks is &ldquo;application/ json&rdquo;.<br></li>
-<li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.<br></li>
-<li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br></li>
-<li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br></li>
-<li>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br></li>
-<li>Webhooks are asynchronous which makes it possible that webhooks do not reach your application in sequence. Webhooks that fail with a 4xx or 5xx HTTP status response from your system will be retried 5 times in an exponential time gap.<br></li>
-<li>Webhooks will be timed out in 10 seconds if no response is received from your application within 10 seconds. We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously.<br></li>
-<li>If your system requires to whitelist LogiNext&rsquo;s IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that ill have to be whitelisted in your system: &#39;52.77.99.245&rsquo;, &#39;13.228.17.195&rsquo;, &#39;18.136.241.16&rsquo;, &#39;3.1.127.224&rsquo;, &#39;52.76.48.59&rsquo;.</li>
+<li>LogiNext Webhooks are sent via HTTP REST protocol.<br><br></li>
+<li>The default content type for all the LogiNext Webhooks is &ldquo;application/ json&rdquo;.<br><br></li>
+<li>If you have a request to support the other content types like &ldquo;application/xml &rdquo; or &ldquo;application/x-www-form-urlencoded&rdquo;, then please get in touch with your assigned CSA (Customer Service Associate) and request the same.<br><br></li>
+<li>All the dates and timestamps that are represented in the Webhooks are in the UTC timezones.<br><br></li>
+<li>Please share the end-point on your system to consume the Webhooks with your assigned CSAs.<br><br></li>
+<li><p>You can choose to configure an additional security parameter in the LogiNext webhooks Header in the &#39;x-loginext-signature&rsquo; header. You can choose to have an APP SECRET configured in LogiNext for this header, and LogiNext will send this APP SECRET in all your configured webhooks. You can validate the value of this header to verify that the webhook request originated from LogiNext. In order to configure this additional security parameter, please reach out to your Account Manager.<br><br></p></li>
+<li><p><b>Webhook Timeouts</b><br>
+There are 2 timeouts for LogiNext Webhooks<br>
+a. Connection timeout: The time in seconds the LogiNext webhook will try to make a connection to your system&rsquo;s server. For LogiNext Webhooks, the connection timeout is 10 seconds.<br>
+b. Read timeout: The time in seconds the LogiNext webhook will wait after establishing a connection with your system to receive an HTTP response. For LogiNext Webhooks, the read timeout is 10 seconds.<br>
+c. Total timeout: The time for the total execution of the webhook. LogiNext webhooks have a total timeout of 10 seconds, i.e, LogiNext webhooks must establish a connection and receive a response from your system within 10 seconds, failing which the webhook will be considered to have timed out.For LogiNext Webhooks, the total timeout is 20 seconds.<br></p></li>
 </ol>
+
+<p>We recommend that as soon as your system receives the webhook, it sends a 200 success response. Any tasks to be performed on basis of the receipt of a webhook should be done asynchronously. Webhooks that time out are considered to have failed and will be retried as per the standard retry logic.<br></p>
+
+<ol>
+<li><b>Webhook retries</b><br>
+Webhook execution can fail due to timeouts or errors. Errors are events for which LogiNext receives a 4xx or 5xx HTTP response code from your system. For each event whose webhook call fails, the calls are retried up to 5 times based on the following schedules:<br></li>
+</ol>
+
+<table><thead>
+<tr>
+<th>Retry</th>
+<th>Time</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>2 minutes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4 minutes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8 minutes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>16 minutes</td>
+</tr>
+<tr>
+<td>5</td>
+<td>32 minutes</td>
+</tr>
+</tbody></table>
+
+<p><br>
+Webhooks that fail for 5 retries will be displayed on the Dispatcher Web App as failed in the Webhook History screen. These webhooks can be manually retried as per your convenience.
+<br>
+9. <b>IP Whitelisting</b><br>
+If your system contains firewalls and requires to whitelist LogiNext’s IP Addresses in order to receive our webhook notifications, please note the following IP Addresses that will have to be whitelisted in your system: <br></p>
+
+<table><thead>
+<tr>
+<th>IP Address</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>52.77.99.245</td>
+</tr>
+<tr>
+<td>13.228.17.195</td>
+</tr>
+<tr>
+<td>18.136.241.16</td>
+</tr>
+<tr>
+<td>3.1.127.224</td>
+</tr>
+<tr>
+<td>52.76.48.59</td>
+</tr>
+</tbody></table>
 
 <h2 id="orders">Orders</h2>
 
