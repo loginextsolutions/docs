@@ -3874,7 +3874,7 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "shipmentRequestNo":"SH12432",
 "awbNumber": "435-16685675",
 "shipmentRequestDispatchDate": "2020-05-19T10:30:00.000Z",
-"shipmentRequestType":"PICKUP",
+"shipmentRequestType":"DELIVER",
 "packageWeight":"10",
 "packageVolume":"10",
 "packageValue":"10",
@@ -3909,6 +3909,7 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "deliverLongitude":-87.619392,
 "deliverAddressTimezone":"America/Chicago",
 "deliverNotes":"notes for delivery",
+"clientCode":"Ship Logistics",
 "shipmentCrateMappings": [
      {
          "crateCd": "CR041",
@@ -4148,6 +4149,7 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "deliverLongitude":-87.619392,
 "deliverAddressTimezone":"America/Chicago",
 "deliverNotes":"notes for delivery",
+"clientCode":"Ship Logistics",
 "shipmentCrateMappings": [
      {
          "crateCd": "CR041",
@@ -8032,7 +8034,6 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
 }
 
 
-
 {
   "status": 200,
   "message": "SUCCESS",
@@ -8049,12 +8050,17 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "destination": "2142 3rd Ave",
       "shipmentOrderTypeCd": "DELIVER",
       "orderState": "FORWARD",
+      "preparationTime": 20,
+      "shippingCost": 50
       "deliveryType": "TRK",
       "deliveryLocationType": "PUP",
       "shipmentOrderDt": 1485153536000,
       "startTimeWindow": 1485174600000,
       "endTimeWindow": 1485181800000,
+      "priority":"PRIORITY1",
+      "serviceType":"Express",
       "paymentType": "COD",
+      "orderState":"FORWARD",
       "notes": "Order recieved successfully.Thanks",
       "packageValue": 0,
       "shippingCost":50,
@@ -8065,7 +8071,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "deliveryMediumName": "5T-ACOM2",
       "assignedThrough": "Manually",
       "tripName": "T35D33",
-      "eta": 1485155640000,
+      "deliverEta": 1597327443000,
+      "pickupEta": 1597324443000,
+      "actualTravelledDistance": 0,
       "actualStartDt": 1485154380000,
       "actualEndDt": 1485155021000,
       "plannedDistance": 16.708,
@@ -8111,6 +8119,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v1/shipment?end_date=2017-03-
       "deliveryGeofenceEnterTime": 1484727378000,
       "deliveryGeofenceExitTime": 1484727387000,
       "isDelayed": false,
+      "partialDeliveryAllowedFl":false,
+      "returnAllowedFl":false,
+      "cancellationAllowedFl":false,
       "delayedBy": null,
       "pickupEmail":"steve@movenpick.com",
       "deliverEmail":"james@ablog.com",
@@ -10539,296 +10550,6 @@ transactionType | String | Mandatory | This can be either 'Credit' or 'Debit'.
 reason | String | Optional | Reason for Debit/ credit
 transactionDate | String | Optional | Timestamp of the transaction. By default this is the current date time
 
-# LogiNext Field TM
-
-## Tasks
-
-Create Tasks in the LogiNext system using the Tasks API. Tasks will be assigned a referenceId that will be returned in the API response. This refernceId can be used to identify the Task later.
-
-To view the Tasks created in the LogiNext Web Application, select the correct date range in the date filter on the screen.
-
-### Create
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/field/v2/create
-```
-
-> Request Body
-
-```json
-[
-  {
-    "taskNo": "GR432U5",
-    "awbNumber": "435-16685675",
-    "shipmentTaskTypeCd": "DELIVER",
-    "taskState": "FORWARD",
-    "autoAllocateFl": "N",
-    "shipmentTaskDt": "2016-07-15T10:30:00.000Z",
-    "distributionCenter": "Chicago",
-    "packageWeight":"10",
-    "packageVolume": "4500",
-    "paymentType": "Prepaid",
-    "packageValue": "500",
-    "numberOfItems": 1,
-    "partialDeliveryAllowedFl": "Y",
-    "returnAllowedFl": "Y",
-    "cancellationAllowedFl": "N",    
-    "deliverBranch": "Boston",
-    "deliverServiceTime": "20",
-    "deliverEndTimeWindow": "2016-07-18T10:31:00.000Z",
-    "deliverStartTimeWindow": "2016-07-16T10:31:00.000Z",
-    "deliveryType": "Groceries",
-    "deliveryLocationType":"Home",
-    "deliverAccountCode": "Matt001",
-    "deliverAddressId": "Home",
-    "deliverAccountName": "Mathew Richardson",
-    "deliverEmail":"m.richardson@testmail.com",
-    "deliverPhoneNumber":"3125096995",
-    "deliverApartment": "201",
-    "deliverStreetName": "E Randolph St",
-    "deliverLandmark": "Opp. Chiptole",
-    "deliverLocality": "Down Towm Chicago",
-    "deliverCity": "Chicago",
-    "deliverState": "IL",
-    "deliverCountry": "USA",
-    "deliverPinCode": "60602",
-    "deliverLatitude":40.760838,
-    "deliverLongitude":74.619392,    
-    "returnBranch": "Chicago",
-    "pickupNotes": "PickedUp",
-    "deliverNotes": "Delivered"
-    
-  }
-]
-```
-
-
-
-> Response
-
-```json
-{
-    "status": 200,
-    "message": "Task(s) created successfully",
-    "data": [
-        {
-            "index": 0,
-            "referenceId": "6a34c7274df0489f97c0f891514b488b",
-            "taskNumber": "ww1223",
-            "shipmentTaskTypeCd": "DELIVER",
-            "taskState": "FORWARD"
-        }
-    ],
-    "hasError": false
-}
-
-```
-Create delivery tasks with this API in the LogiNext system. Tasks will be created and assigned a reference ID that can be used at a leter time to identify the task.
-
-#### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/ShipmentApp/field/v2/create`
-
-#### Request Parameters
-
-Param | DataType | Length |  Required | Description
---------- | ------- | ---------- | ---------- | ------------
-taskNo | String | 100 | Mandatory |  This is the Task No.
-awbNumber | String  | 1000 | Optional | This is the airway Bill No.
-shipmentTaskTypeCd | String  | 40 | Mandatory | This is the task type code. DELIVER for delivery leg task
-taskState | String  | 512 | Mandatory | State of task. Ex: FORWARD
-autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Task will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Task will not be considered for auto assignment at the time of Task Creation
-shipmentTaskDt | Date |  | Mandatory | Task Date Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-distributionCenter | String | 255 | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-packageWeight | Double | 10 | Optional | This is the weight of package in Kg.
-packageVolume | Double | 10 | Optional | This is the volume of package in CC
-packageValue | Double | 10 | Optional | This is the value of package
-numberOfItems | Integer | 20 | Optional | This is the number of crates
-paymentType | String | 40 | Optional | This is the payment mode. Ex: COD - Cash On Delivery, Prepaid. Note that the Payment Type is dependant on the language preference configured for the user account the API token was created from. You can refer to the 'Authenticate' API documentation for more details on this.
-partialDeliveryAllowedFl | String | 50 | Optional | This is the is Partial Delivery allowed. Ex: Y/N. Default value is N.
-returnAllowedFl | String | 1 | Optional | This field specifies if the task can be returned. Ex: Y/N. Default value is Y.
-cancellationAllowedFl | String | 1 | Optional | Is Cancellation allowed. Ex: Y/N. Default value is Y.
-deliverBranch | String | 255 | Mandatory | Name of delivery branch
-deliverServiceTime | Integer | 11 | Mandatory | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliveryType | String | 40 | Optional | Task delivery type. Ex: TRK - Truck, VAN - Van, RIDER - Delivery Associate
-deliveryLocationType | String | 40 | Optional | Type of delivery location. Ex: CUSTOMER, PUP
-deliverAccountCode | String | 255 | Mandatory | This is the cutomer code of the deliver customer.
-deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
-deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
-deliverEmail | String | 100 | Optional | This is the email ID details of the customer.
-deliverPhoneNumber | String | 255 | Optional | This is the phone number of the delivery customer.
-deliverApartment | String | 512 | Conditional Mandatory | This is the apartment details of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
-deliverStreetName | String | 512 | Conditional Mandatory | This is the street name of the delivery customer.
-deliverLandmark | String | 512 | Optional | This field holds any identifying landmark's around the customer's addess.
-deliverLocality | String | 512 | Conditional Mandatory | This is the locality of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
-deliverCity | String | 512 | Conditional Mandatory | This is the city name of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
-deliverState| String | 512 | Conditional Mandatory | This is the state code of the delivery customer. Please refer to the list of state codes provided in the "State Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
-deliverCountry | String | 512 | Conditional Mandatory | This is the country code of the delivery customer. Please refer to the list of country codes provided in the "Country Codes" section. This field in Non Mandatory in case Customer Profiling in ON.
-deliverPinCode | String | 20 | Conditional Mandatory | This is the pincode of the delivery customer. This field in Non Mandatory in case Customer Profiling in ON.
-deliverLatitude | Double |  | Optional | The geolocation coordinate (latitude) of the delivery customer.
-deliverLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the delivery customer.
-returnBranch | String | 255 | Mandatory | Name of return branch.
-pickupNotes | String | 512 | Optional | Additional pickup comments associated with the task.
-deliverNotes | String | 512 | Optional | Additional delivery comments associated with the task.
-
-
-
-### Get
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/field/v1/task?end_date=2017-03-07+18:29:59&start_date=2016-02-01+18:30:00&status=ALL&task_no=GKS12567&customer_code=123&employee_id=134367&page_no=1&page_size=10
-```
-
-
-
-> Response
-
-```json
-{
-    "status": 200,
-    "message": "SUCCESS",
-    "data": [
-        {
-            "taskReferenceId": "d4f455a2ff074449acf79371ea55a0fe",
-            "taskNo": "ST3421S",
-            "clientName": "WritCare  Private Limited_UAT",
-            "branchName": "WritCare Private Limited Main Branch",
-            "origin": "WritCare  Private Limited Main Branch",
-            "destination": ".Mumbai, Maharashtra, INDIA, .",
-            "shipmentTaskTypeCd": "DELIVER",
-            "taskState": "FORWARD",
-            "shipmentTaskDt": 1529799037000,
-            "startTimeWindow": 1530347401000,
-            "endTimeWindow": 1530376801000,
-            "paymentType": "COD",
-            "packageValue": 0,
-            "status": "NOTDISPATCHED",
-            "deliveryMediumName": "Custodian4",
-            "deliverMediumPhoneNumber": "9999999994",
-            "assignedThrough": "Manually",
-            "tripName": "TRIP-58",
-            "eta": 1530361561000,
-            "plannedDistance": 3.254,
-            "distanceFromHub": 7.713,
-            "plannedStartDt": 1530342001000,
-            "plannedEndDt": 1530361561000,
-            "orderSequence": 20,
-            "customerCode": "P3ENMI17",
-            "customerName": "P3ENMI17",
-            "customerPhoneNumber": "",
-            "packageWeight": 0,
-            "noOfAttempts": 0,
-            "isDelayed": false,
-            "originLatitude": 40.760838,
-            "originLongitude": 74.849
-        }
-    ]
-}
-
-```
-
-Retrieve orders and all the order associated information with this API.
-
-#### Request
-
-<span class="post">GET</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/task`
-
-
-#### Request Parameters
-
-Param | DataType | Length |  Required | Description
---------- | ------- | ------- | ---------- | ------------
-start_date | Date |  | Conditional Mandatory |  If task_no is not passed in the request, then this field is mandatory. Range of date from which tasks can be searched. This will return tasks based on the task fulfillment date start time window. <BR>Format 'yyyy-MM-dd HH:mm:ss'
-end_date | Date |  | Conditional Mandatory |  If task_no is not passed in the request, then this field is mandatory. Range of date upto which tasks can be searched. This will return tasks that have fulfillment end times less than the entered time.<BR>Format 'yyyy-MM-dd HH:mm:ss'
-status | String | 20 | Optional |  If task_no is passed in the request,then status will not be considered for filtering the orders.Task status. <BR>Ex: NOTDISPATCHED,INTRANSIT,COMPLETED,<BR>NOTCOMPLETED,PICKEDUP(Only for First Mile),CANCELLED
-order_no | String | 100 | Optional | Task Number(Only one order number can be passed at a time.If not passed ,all the tasks for the specified date range will be fetched)
-page_no | Integer | | Optional | This parameter lets you specify the page number. It is used to page through the tasks. This is optional parameter and default value (if it isn't specified) will be 1. 
-page_size | Integer | |  Optional |  This parameter lets you specify the count of tasks to return in your API call. This is optional parameter and default value (if it isn't specified) will be 50. The maximum accepted value is 100; higher values will be accepted but you will only get 100 records.
-customer_code | String | |  Optional | This is the Customer Address ID parameter. You can pass one customer Id at a time. The result will be list of all the tasks created for the mentioned customer ID
-employee_id | String | | Optional | This is the Driver National ID  parameter. You can pass one driver Id at a time. The result will be list of all the tasks which were assigned to this Driver ID
-
-
-Status | Filter applied on orders
---------- | -------
-NOTDISPATCHED | Tasks will be fetched for which either the Tasks Start Date & Time Window or the Tasks End Date & Time Window lies within the range specified.
-INTRANSIT | Tasks will be fetched for which the Actual Delivery Start Date & Time lies within the range specified.
-COMPLETED | For First Mile, an Task is marked COMPLETED when it is PICKEDUP and DELIVERED at the hub. For Last Mile, an order is marked COMPLETED once it is DELIVERED to the end customer.<BR>Orders will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
-NOTCOMPLETED | For First Mile, when the Task is  NOTPICKEDUP,it is marked as NOTCOMPLETED. For Last Mile, when the Tasks is PICKEDUP but  NOTDELIVERED, it is marked as NOTCOMPLETED. <BR>Tasks will be fetched for which the Actual Delivery End Date & Time lies within the range specified.
-CANCELLED | Orders will be fetched for which the Cancellation Date & Time lies within the range specified.
-ALL | Superset of all the filters mentioned for the above statuses will be considered.
-
-
-### Update Status
-
-> Definition
-
-```json
-https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status
-```
-
-> Request Body
-
-```json
-{
-  "newStatus":"NOTDISPATCHED",
-  "taskDetails":
-  [{
-    "taskReferenceId":"6186d5fc6e324c42abb5ea1a32e05f66",
-    "reasonCd":"DBUNAVAILABLE",
-    "otherReason":"",
-    "latitude": 40.760838,
-    "longitude": 74.910214,
-    "updateTime":"2018-07-18T10:31:00.000Z"
-  },
-  {
-    "taskReferenceId":"6186d7r5te324c42abb5ea1a32x45f66",
-    "reasonCd":"DBUNAVAILABLE",
-    "otherReason":"",
-    "latitude": 40.760838,
-    "longitude": 74.913214,
-    "updateTime":"2018-07-18T10:31:00.000Z"
-
-  }]
-
-}
-```
-
-> Response
-
-```json
-{
-    "status": 200,
-    "message": "Task status changed successfully",
-    "hasError": false
-}
-
-
-```
-With this API, you will be able to update the the status of a Task.
-You can pass multiple task reference IDs and can update the status of a task.
-
-#### Request
-
-<span class="post">PUT</span>`https://api.loginextsolutions.com/ShipmentApp/field/v1/update/status`
-
-
-#### Request Parameters
-
-Param | DataType | Length |  Required | Description
---------- | ------- | ---------- | ---------- | ------------
-newStatus | String | 20 | Mandatory |  One status for multiple orders.The orders will be updated with this new status<br>Available Values - <PICKEDUP> - When an Order has been picked up by a Delivery Associate<br>DELIVERED - When an order has been Delivered by the associate<br>NOTPICKEDUP - When the associate reached the Pick-up location, but could not pick-up the order due to one or the other reason<br>NOTDELIVERED - When the associate reached the delivery location, but could not deliver the order due to one or the other reason
-orderReferenceId | String | 100 | Mandatory |  This is the LogiNext Reference ID for the Order<br>This is generated when the order is added in the LogiNext application.
-reasonCd | String | 255 | Conditional Mandatory | Mandatory depending upon the status selected : NOTDELIVERED, NOTPICKEDUP, CANCELLED<br>Else Optional.<br>If you have pre-configured the reasons for Order Status Update - NOTDELIVERED, NOTPICKEDUP and CANCELLED in LogiNext application, then it is mandatory to mention that relevant configured reason here.<br>One of the other values here is OTHER, in case the delivery Associate selects the reason as Others.
-otherReason | Date |  | Conditional Mandatory | Mandatory when reasonCd is OTHER
-latitude | Double | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "40.760838"
-otherReason | Date | 15 | Conditional Optional | Geo-location where Order status was updated<br>Sample Value - "74.996"
-updateTime | Date | 15 | Conditional Optional | This is the timestamp (in UTC format) when the order status was changed. This cannot be greater than the time at which the API is hit. If not passed, the timestamp of the API hit is considered as the timestamp for the status change.
 
 # Custom Fields
 
