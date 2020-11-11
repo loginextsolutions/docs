@@ -299,6 +299,11 @@
 <td>Service Unavailable</td>
 <td>This message means that the LogiNext applications are down for scheduled maintenance.  Please try accessing the request later.</td>
 </tr>
+<tr>
+<td>504</td>
+<td>Gateway Timed Out</td>
+<td>This response is sent when the request has not received a response from LogiNext in over 10 minutes and the connection has timed out.</td>
+</tr>
 </tbody></table>
 
 <h1 id="authentication">Authentication</h1>
@@ -24890,6 +24895,11 @@ This notification is triggered when a Mile E2E type of Order is created in LogiN
 <td>driverName</td>
 <td>String</td>
 <td>Name of driver</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>Name of the branch</td>
 </tr>
 <tr>
 <td>deliveryMediumName</td>
