@@ -2767,6 +2767,310 @@ clientCode | String | 50 | Optional | This is the identifier for an Account. An 
 timeZone | String | | Optional | The timzone of the address field. If not passed, it will default the timezone configured for your account for the address being created.
 
 
+## Shipper
+
+### Create
+
+> Sample Request
+
+```json
+[{
+“shipperName”: “Fresh Farm Produce Ltd.”,
+“adminContactName”: ”John Doe”,
+“emailAddress”: “johnDoe@freshfarm.com”,
+“contactNumber”: “334567781”,
+“userName”: “jack.klien@freshfarm.com”,
+“branchName”:"Marque Downtown Chicago",
+“Priority”: “High”,
+“custSupportNumber”: “5163063377”,
+“custSupportEmail”: “support@freshfarm.com”,
+“serviceType”: [“Express”, “Express Plus”],
+“serviceAreaProfileName”: “New York City Profile”,
+“rateChartName”: “Standard Rate Chart”,
+"address":{
+        "apartment":"Suite No. 99, Milsons Towers",
+        "streetName":"Michigan Avenue",
+        "landmark":"Opp. Subway",
+        "locality":"Downtown Chicago",
+        "city":"Chicago",
+        "stateShortCode":"IL",
+        "countryShortCode":"USA",
+        "pincode":"60606",
+        "longitude": 40.760838,
+        "latitude": 74.9095327,
+},
+"billingContactName":"Karen",
+"billingPhoneNumber":"5163063377",
+"billingEmailAddress":"karen@freshfarm.com",
+"billingAddress":{
+        "apartment":"Suite No. 99, Milsons Towers",
+        "streetName":"Michigan Avenue",
+        "landmark":"Opp. Subway",
+        "locality":"Downtown Chicago",
+        "city":"Chicago",
+        "stateShortCode":"IL",
+        "countryShortCode":"USA",
+        "pincode":"60606",
+},
+}]
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Shipper created successfully",
+    "data": [
+        {
+            "referenceId": "6a34c7274df0489f97c0f891514b488b"
+        },
+    ],
+    "hasError": false
+}
+
+
+```
+
+> Filure Response
+
+```json
+
+{
+         "status": 409,
+          "message": "Shipper Creation Failed",
+"moreResultsExists": false,
+"error": [
+        {
+            "index": 0,
+            "errorList": [
+                {
+                    "key": "serviceAreaProfileName",
+                    "message": [
+                        "Service Area Profile is invalid"
+                    ]
+                },
+               
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+
+```
+
+
+Create a Shipper  in the LogiNext Platform with this API. A new Shipper will be created and assigned a unique Reference ID that can be used to identify the Shipper later.
+
+If you have Shippers created in your current CRM or CX platform and want to sync it with the LogiNext Platfrom, you can call this API.
+
+This API will create a new Shipper and can also create a user that can access the Shipper Web App by passing the user name in the userName field.
+
+You can also pass the Shippers Organization and Billing addresses in the same API request for audit and invoicing purposes.
+
+You can create 1 Shipper in LogiNext in one call of this API.
+
+API Type: Tier 1 API. 
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/v1/shipper/create
+`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+shipperName|String|255|Mandatory|Name of the Shipper
+adminContactName|String|255|Mandatory|Name of the contact person
+emailAddress|String|255|Mandatory|Email Address of the contact person
+contactNumber|String|255|Mandatory|Contact Number of the contact person
+userName|String |255|Optional|Email Address with which a user of the Shipper will be created. The user will have the login access to the Shipper Portal.
+branchName|String|255|Mandatory|This is the name of Hub with which you want to map the new Shipper.
+priority|String|16|Optional|This is the order priority which will decide the priority of all orders of this Shipper. Priority set while creating an Order will take precedence over the priority allotted to a Shipper.
+customerSupportNumber|String|255||This is the customer helpline number. If not passed, then the support number of your parent branch will be considered. If absent at the parent branch level then the organization support number will be considered.
+customerSupportEmail|String|255||This is the customer support email. If not passed, then the support email of your parent branch will be considered. If absent at the parent branch level then the organization support email will be considered.
+serviceTypeList|[String]|255||This represents the list of service and service levels you offer to your customers. Pass already created service type in mile platform.  
+serviceAreaProfileName|String|255||This represents the service area for the shipper i.e. any Order Requests made by the Shipper should have a pickup or delivery address within the Service Area Profile
+rateChartName|String|255||The shipping cost calculated for the Shipper will be as per the selected rate chart. Service Area Profile is mandatory for selecting a rate chart. 
+Address.apartment|String|512|Mandatory|This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No. For example - A 203 Richmond Avenue
+Address.streetName|String|512|Mandatory|This is Address Line 2.This is the name of the Street where the Hub is situated. For example - Off Highway I96 or Walton Boulevard
+Address.landmark|String|512|Mandatory|Any nearby landmark to identify your Hub quickly. For example - Opp. McDonalds or Behind Mercy Hospital
+Address.locality|String|512||This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown
+Address.city|String|512|Mandatory|This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur
+Address.stateShortCode|String|11|Mandatory|Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.countryShortCode|String|11|Mandatory|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.
+For example - For United States use USA
+Address.pincode|String|20|Mandatory|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
+latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
+billingContactName|String|512|Mandatory|Name of the Contact Person for billing at the Shipper
+billingEmailAddress|String|255|Mandatory|Email of the contact person for billing  at the shipper
+billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
+billingAddress.apartment|String|512|Mandatory|Billing Address Apartment
+billingAddress.streetName|String|512|Mandatory|Billing Address Street
+billingAddress.landmark|String|512|Mandatory|Billing Address Landmark
+billingAddress.locality|String|512||Billing Address Locality
+billingAddress.city|String|512|Mandatory|Billing Address City
+billingAddress.stateShortCode|String|11|Mandatory|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+billingAddress.countryShortCode|String|11|Mandatory|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
+billingAddress.pincode|String|20|Mandatory|Billing Address Pincode
+
+
+### Update
+
+> Sample Request
+
+```json
+[{
+“referenceId”: “6a34c7274df0489f97c0f891514b488b”,
+“shipperName”: “Fresh Farm Produce Ltd.”,
+“adminContactName”: ”John Doe”,
+“emailAddress”: “johnDoe@freshfarm.com”,
+“contactNumber”: “334567781”,
+“userName”: “jack.klien@freshfarm.com”,
+“branchName”:"Marque Downtown Chicago",
+“Priority”: “High”,
+“custSupportNumber”: “5163063377”,
+“custSupportEmail”: “support@freshfarm.com”,
+“serviceType”: [“Express”, “Express Plus”],
+“serviceAreaProfileName”: “New York City Profile”,
+“rateChartName”: “Standard Rate Chart”,
+"address":{
+        "apartment":"Suite No. 99, Milsons Towers",
+        "streetName":"Michigan Avenue",
+        "landmark":"Opp. Subway",
+        "locality":"Downtown Chicago",
+        "city":"Chicago",
+        "stateShortCode":"IL",
+        "countryShortCode":"USA",
+        "pincode":"60606",
+        "longitude": 40.760838,
+        "latitude": 74.9095327,
+},
+"billingContactName":"Karen",
+"billingPhoneNumber":"5163063377",
+"billingEmailAddress":"karen@freshfarm.com",
+"billingAddress":{
+        "apartment":"Suite No. 99, Milsons Towers",
+        "streetName":"Michigan Avenue",
+        "landmark":"Opp. Subway",
+        "locality":"Downtown Chicago",
+        "city":"Chicago",
+        "stateShortCode":"IL",
+        "countryShortCode":"USA",
+        "pincode":"60606",
+},
+}]
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Shipper updated successfully",
+    "data": [
+        {
+            "referenceId": "6a34c7274df0489f97c0f891514b488b"
+        },
+    ],
+    "hasError": false
+}
+
+
+```
+
+> Filure Response
+
+```json
+
+{
+         "status": 409,
+          "message": "Shipper Updation Failed",
+"moreResultsExists": false,
+"error": [
+        {
+            "index": 0,
+            "errorList": [
+                {
+                    "key": "serviceAreaProfileName",
+                    "message": [
+                        "Service Area Profile is invalid"
+                    ]
+                },
+               
+            ]
+        }
+    ],
+    "hasError": true
+}
+
+
+```
+
+
+Update a Shipper in the LogiNext Platform with this API.
+
+If you have Shippers created in your current CRM or CX platform and want to sync it with the LogiNext Platfrom, you can call this API.
+
+This API will update an existing Shipper.
+
+You can also pass the Shippers Organization and Billing addresses in the same API request for audit and invoicing purposes.
+
+You can create 1 Shipper in LogiNext in one call of this API.
+
+API Type: Tier 1 API. 
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/ClientApp/v1/shipper/update
+`
+
+
+#### Request Parameters
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|------- |------- | ----------
+referenceId|String|32|Mandatory| Reference ID of the Shipper
+shipperName|String|255|Optional|Name of the Shipper
+adminContactName|String|255|Optional|Name of the contact person
+emailAddress|String|255|Optional|Email Address of the contact person
+contactNumber|String|255|Optional|Contact Number of the contact person
+userName|String |255|Optional|Email Address with which a user of the Shipper will be created. The user will have the login access to the Shipper Portal.
+branchName|String|255|Optional|This is the name of Hub with which you want to map the new Shipper.
+priority|String|16|Optional|This is the order priority which will decide the priority of all orders of this Shipper. Priority set while creating an Order will take precedence over the priority allotted to a Shipper.
+customerSupportNumber|String|255||This is the customer helpline number. If not passed, then the support number of your parent branch will be considered. If absent at the parent branch level then the organization support number will be considered.
+customerSupportEmail|String|255||This is the customer support email. If not passed, then the support email of your parent branch will be considered. If absent at the parent branch level then the organization support email will be considered.
+serviceTypeList|[String]|255||This represents the list of service and service levels you offer to your customers. Pass already created service type in mile platform.  
+serviceAreaProfileName|String|255||This represents the service area for the shipper i.e. any Order Requests made by the Shipper should have a pickup or delivery address within the Service Area Profile
+rateChartName|String|255||The shipping cost calculated for the Shipper will be as per the selected rate chart. Service Area Profile is mandatory for selecting a rate chart. 
+Address.apartment|String|512|Mandatory|This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No. For example - A 203 Richmond Avenue
+Address.streetName|String|512|Mandatory|This is Address Line 2.This is the name of the Street where the Hub is situated. For example - Off Highway I96 or Walton Boulevard
+Address.landmark|String|512|Mandatory|Any nearby landmark to identify your Hub quickly. For example - Opp. McDonalds or Behind Mercy Hospital
+Address.locality|String|512||This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown
+Address.city|String|512|Mandatory|This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur
+Address.stateShortCode|String|11|Optional|Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+Address.countryShortCode|String|11|Optional|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.
+For example - For United States use USA
+Address.pincode|String|20|Optional|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
+latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
+billingContactName|String|512|Optional|Name of the Contact Person for billing at the Shipper
+billingEmailAddress|String|255|Optional|Email of the contact person for billing  at the shipper
+billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
+billingAddress.apartment|String|512|Optional|Billing Address Apartment
+billingAddress.streetName|String|512|Optional|Billing Address Street
+billingAddress.landmark|String|512|Optional|Billing Address Landmark
+billingAddress.locality|String|512||Billing Address Locality
+billingAddress.city|String|512|Optional|Billing Address City
+billingAddress.stateShortCode|String|11|Optional|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+billingAddress.countryShortCode|String|11|Optional|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
+billingAddress.pincode|String|20|Optional|Billing Address Pincode
 
 ## Delivery Associate
 
@@ -3693,6 +3997,7 @@ https://api.loginextsolutions.com/BookingApp/mile/v1/create
 "shipmentCrateMappings": [
      {
          "crateCd": "CR041",
+         "crateName": "Crate501",
          "crateAmount": 100.65,
          "crateType": "case",
          "noOfUnits": 2,
@@ -5368,10 +5673,13 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupLongitude":-73.96732299999996,    
     "pickupAddressTimezone":"America/New_York",
     "clientCode": "Salestap",
-
+    "optimizePackingfl":"Y",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR5002",
+        "crateTemperatureCategory": "Ambient",
+        "crateMinTemperature": 10,
+        "crateMaxTemperature": 20,
         "crateAmount":1000,
         "crateType":"Case",
         "noOfUnits":3,
@@ -5380,6 +5688,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateLength":12,
         "crateBreadth":13,
         "crateHeight":14,
+        "crateTemperatureCategory": "Ambient",
+        "crateMinTemperature": 10,
+        "crateMaxTemperature": 20,
         "shipmentlineitems": [
           {
             "itemCd": "IT038",
@@ -5699,9 +6010,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered",
     "clientCode": "Salestap",
+    "optimizePackingfl":"Y",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR041",
+        "crateName": "Crate501",
         "crateAmount":100.65,
         "crateType":"case",
         "noOfUnits":2,
@@ -5710,6 +6023,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateLength":12,
         "crateBreadth":13,
         "crateHeight":14,
+        "crateTemperatureCategory": "Ambient",
+        "crateMinTemperature": 10,
+        "crateMaxTemperature": 20,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",
@@ -6026,9 +6342,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupNotes": "PickedUp",
     "deliverNotes": "Delivered",
     "clientCode": "Salestap",
+    "optimizePackingfl":"Y",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR041",
+        "crateName": "Crate501",
         "crateAmount":100.65,
         "crateType":"case",
         "noOfUnits":2,
@@ -6037,6 +6355,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateLength":12,
         "crateBreadth":13,
         "crateHeight":14,
+        "crateTemperatureCategory": "Ambient",
+        "crateMinTemperature": 10,
+        "crateMaxTemperature": 20,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",
@@ -6375,9 +6696,11 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
     "pickupAddressTimezone":"America/New_York",  
     "pickupNotes": "Don't ring the doorbell",
     "clientCode": "Salestap",
+    "optimizePackingfl":"Y",
     "shipmentCrateMappings": [
       {
         "crateCd": "CR041",
+        "crateName": "Crate501",
         "crateAmount":100.65,
         "crateType":"case",
         "noOfUnits":2,
@@ -6386,6 +6709,9 @@ https://api.loginextsolutions.com/ShipmentApp/mile/v2/create
         "crateLength":12,
         "crateBreadth":13,
         "crateHeight":14,
+        "crateTemperatureCategory": "Ambient",
+        "crateMinTemperature": 10,
+        "crateMaxTemperature": 20,
         "shipmentlineitems": [
           {
             "itemCd": "IT043",

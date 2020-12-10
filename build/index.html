@@ -4733,6 +4733,558 @@ You will have to pass the reference Id of the vehicle whose information needs to
 </tr>
 </tbody></table>
 
+<h2 id="shipper">Shipper</h2>
+
+<h3 id="create">Create</h3>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+</span><span class="err">“shipperName”:</span><span class="w"> </span><span class="err">“Fresh</span><span class="w"> </span><span class="err">Farm</span><span class="w"> </span><span class="err">Produce</span><span class="w"> </span><span class="err">Ltd.”,</span><span class="w">
+</span><span class="err">“adminContactName”:</span><span class="w"> </span><span class="err">”John</span><span class="w"> </span><span class="err">Doe”,</span><span class="w">
+</span><span class="err">“emailAddress”:</span><span class="w"> </span><span class="err">“johnDoe@freshfarm.com”,</span><span class="w">
+</span><span class="err">“contactNumber”:</span><span class="w"> </span><span class="err">“334567781”,</span><span class="w">
+</span><span class="err">“userName”:</span><span class="w"> </span><span class="err">“jack.klien@freshfarm.com”,</span><span class="w">
+</span><span class="err">“branchName”:</span><span class="nt">"Marque Downtown Chicago"</span><span class="err">,</span><span class="w">
+</span><span class="err">“Priority”</span><span class="p">:</span><span class="w"> </span><span class="err">“High”</span><span class="p">,</span><span class="w">
+</span><span class="err">“custSupportNumber”</span><span class="p">:</span><span class="w"> </span><span class="err">“</span><span class="mi">5163063377</span><span class="err">”</span><span class="p">,</span><span class="w">
+</span><span class="err">“custSupportEmail”</span><span class="p">:</span><span class="w"> </span><span class="err">“support@freshfarm.com”</span><span class="p">,</span><span class="w">
+</span><span class="err">“serviceType”</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">“Express”</span><span class="p">,</span><span class="w"> </span><span class="err">“Express</span><span class="w"> </span><span class="err">Plus”</span><span class="p">],</span><span class="w">
+</span><span class="err">“serviceAreaProfileName”</span><span class="p">:</span><span class="w"> </span><span class="err">“New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">City</span><span class="w"> </span><span class="err">Profile”</span><span class="p">,</span><span class="w">
+</span><span class="err">“rateChartName”</span><span class="p">:</span><span class="w"> </span><span class="err">“Standard</span><span class="w"> </span><span class="err">Rate</span><span class="w"> </span><span class="err">Chart”</span><span class="p">,</span><span class="w">
+</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"Karen"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingPhoneNumber"</span><span class="p">:</span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingEmailAddress"</span><span class="p">:</span><span class="s2">"karen@freshfarm.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingAddress"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipper created successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Filure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+         </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipper Creation Failed"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serviceAreaProfileName"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Service Area Profile is invalid"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Create a Shipper  in the LogiNext Platform with this API. A new Shipper will be created and assigned a unique Reference ID that can be used to identify the Shipper later.</p>
+
+<p>If you have Shippers created in your current CRM or CX platform and want to sync it with the LogiNext Platfrom, you can call this API.</p>
+
+<p>This API will create a new Shipper and can also create a user that can access the Shipper Web App by passing the user name in the userName field.</p>
+
+<p>You can also pass the Shippers Organization and Billing addresses in the same API request for audit and invoicing purposes.</p>
+
+<p>You can create 1 Shipper in LogiNext in one call of this API.</p>
+
+<p>API Type: Tier 1 API. </p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/shipper/create
+</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>shipperName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of the Shipper</td>
+</tr>
+<tr>
+<td>adminContactName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of the contact person</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Email Address of the contact person</td>
+</tr>
+<tr>
+<td>contactNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Contact Number of the contact person</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>String </td>
+<td>255</td>
+<td>Optional</td>
+<td>Email Address with which a user of the Shipper will be created. The user will have the login access to the Shipper Portal.</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the name of Hub with which you want to map the new Shipper.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>This is the order priority which will decide the priority of all orders of this Shipper. Priority set while creating an Order will take precedence over the priority allotted to a Shipper.</td>
+</tr>
+<tr>
+<td>customerSupportNumber</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This is the customer helpline number. If not passed, then the support number of your parent branch will be considered. If absent at the parent branch level then the organization support number will be considered.</td>
+</tr>
+<tr>
+<td>customerSupportEmail</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This is the customer support email. If not passed, then the support email of your parent branch will be considered. If absent at the parent branch level then the organization support email will be considered.</td>
+</tr>
+<tr>
+<td>serviceTypeList</td>
+<td>[String]</td>
+<td>255</td>
+<td></td>
+<td>This represents the list of service and service levels you offer to your customers. Pass already created service type in mile platform.  </td>
+</tr>
+<tr>
+<td>serviceAreaProfileName</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This represents the service area for the shipper i.e. any Order Requests made by the Shipper should have a pickup or delivery address within the Service Area Profile</td>
+</tr>
+<tr>
+<td>rateChartName</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>The shipping cost calculated for the Shipper will be as per the selected rate chart. Service Area Profile is mandatory for selecting a rate chart. </td>
+</tr>
+<tr>
+<td>Address.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No. For example - A 203 Richmond Avenue</td>
+</tr>
+<tr>
+<td>Address.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 2.This is the name of the Street where the Hub is situated. For example - Off Highway I96 or Walton Boulevard</td>
+</tr>
+<tr>
+<td>Address.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Any nearby landmark to identify your Hub quickly. For example - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>Address.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown</td>
+</tr>
+<tr>
+<td>Address.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur</td>
+</tr>
+<tr>
+<td>Address.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>Address.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+</tr>
+</tbody></table>
+
+<p>For example - For United States use USA
+Address.pincode|String|20|Mandatory|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
+latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
+billingContactName|String|512|Mandatory|Name of the Contact Person for billing at the Shipper
+billingEmailAddress|String|255|Mandatory|Email of the contact person for billing  at the shipper
+billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
+billingAddress.apartment|String|512|Mandatory|Billing Address Apartment
+billingAddress.streetName|String|512|Mandatory|Billing Address Street
+billingAddress.landmark|String|512|Mandatory|Billing Address Landmark
+billingAddress.locality|String|512||Billing Address Locality
+billingAddress.city|String|512|Mandatory|Billing Address City
+billingAddress.stateShortCode|String|11|Mandatory|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+billingAddress.countryShortCode|String|11|Mandatory|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
+billingAddress.pincode|String|20|Mandatory|Billing Address Pincode</p>
+
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+</span><span class="err">“referenceId”:</span><span class="w"> </span><span class="err">“6a34c7274df0489f97c0f891514b488b”,</span><span class="w">
+</span><span class="err">“shipperName”:</span><span class="w"> </span><span class="err">“Fresh</span><span class="w"> </span><span class="err">Farm</span><span class="w"> </span><span class="err">Produce</span><span class="w"> </span><span class="err">Ltd.”,</span><span class="w">
+</span><span class="err">“adminContactName”:</span><span class="w"> </span><span class="err">”John</span><span class="w"> </span><span class="err">Doe”,</span><span class="w">
+</span><span class="err">“emailAddress”:</span><span class="w"> </span><span class="err">“johnDoe@freshfarm.com”,</span><span class="w">
+</span><span class="err">“contactNumber”:</span><span class="w"> </span><span class="err">“334567781”,</span><span class="w">
+</span><span class="err">“userName”:</span><span class="w"> </span><span class="err">“jack.klien@freshfarm.com”,</span><span class="w">
+</span><span class="err">“branchName”:</span><span class="nt">"Marque Downtown Chicago"</span><span class="err">,</span><span class="w">
+</span><span class="err">“Priority”</span><span class="p">:</span><span class="w"> </span><span class="err">“High”</span><span class="p">,</span><span class="w">
+</span><span class="err">“custSupportNumber”</span><span class="p">:</span><span class="w"> </span><span class="err">“</span><span class="mi">5163063377</span><span class="err">”</span><span class="p">,</span><span class="w">
+</span><span class="err">“custSupportEmail”</span><span class="p">:</span><span class="w"> </span><span class="err">“support@freshfarm.com”</span><span class="p">,</span><span class="w">
+</span><span class="err">“serviceType”</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">“Express”</span><span class="p">,</span><span class="w"> </span><span class="err">“Express</span><span class="w"> </span><span class="err">Plus”</span><span class="p">],</span><span class="w">
+</span><span class="err">“serviceAreaProfileName”</span><span class="p">:</span><span class="w"> </span><span class="err">“New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">City</span><span class="w"> </span><span class="err">Profile”</span><span class="p">,</span><span class="w">
+</span><span class="err">“rateChartName”</span><span class="p">:</span><span class="w"> </span><span class="err">“Standard</span><span class="w"> </span><span class="err">Rate</span><span class="w"> </span><span class="err">Chart”</span><span class="p">,</span><span class="w">
+</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"Karen"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingPhoneNumber"</span><span class="p">:</span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingEmailAddress"</span><span class="p">:</span><span class="s2">"karen@freshfarm.com"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"billingAddress"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipper updated successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a34c7274df0489f97c0f891514b488b"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Filure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+         </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipper Updation Failed"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"moreResultsExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"errorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serviceAreaProfileName"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"Service Area Profile is invalid"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Update a Shipper in the LogiNext Platform with this API.</p>
+
+<p>If you have Shippers created in your current CRM or CX platform and want to sync it with the LogiNext Platfrom, you can call this API.</p>
+
+<p>This API will update an existing Shipper.</p>
+
+<p>You can also pass the Shippers Organization and Billing addresses in the same API request for audit and invoicing purposes.</p>
+
+<p>You can create 1 Shipper in LogiNext in one call of this API.</p>
+
+<p>API Type: Tier 1 API. </p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/ClientApp/v1/shipper/update
+</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference ID of the Shipper</td>
+</tr>
+<tr>
+<td>shipperName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Shipper</td>
+</tr>
+<tr>
+<td>adminContactName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the contact person</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Email Address of the contact person</td>
+</tr>
+<tr>
+<td>contactNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Contact Number of the contact person</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>String </td>
+<td>255</td>
+<td>Optional</td>
+<td>Email Address with which a user of the Shipper will be created. The user will have the login access to the Shipper Portal.</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the name of Hub with which you want to map the new Shipper.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>String</td>
+<td>16</td>
+<td>Optional</td>
+<td>This is the order priority which will decide the priority of all orders of this Shipper. Priority set while creating an Order will take precedence over the priority allotted to a Shipper.</td>
+</tr>
+<tr>
+<td>customerSupportNumber</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This is the customer helpline number. If not passed, then the support number of your parent branch will be considered. If absent at the parent branch level then the organization support number will be considered.</td>
+</tr>
+<tr>
+<td>customerSupportEmail</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This is the customer support email. If not passed, then the support email of your parent branch will be considered. If absent at the parent branch level then the organization support email will be considered.</td>
+</tr>
+<tr>
+<td>serviceTypeList</td>
+<td>[String]</td>
+<td>255</td>
+<td></td>
+<td>This represents the list of service and service levels you offer to your customers. Pass already created service type in mile platform.  </td>
+</tr>
+<tr>
+<td>serviceAreaProfileName</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>This represents the service area for the shipper i.e. any Order Requests made by the Shipper should have a pickup or delivery address within the Service Area Profile</td>
+</tr>
+<tr>
+<td>rateChartName</td>
+<td>String</td>
+<td>255</td>
+<td></td>
+<td>The shipping cost calculated for the Shipper will be as per the selected rate chart. Service Area Profile is mandatory for selecting a rate chart. </td>
+</tr>
+<tr>
+<td>Address.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 1. This is the Apartment Name / House Name / Building Name / Suite No. For example - A 203 Richmond Avenue</td>
+</tr>
+<tr>
+<td>Address.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is Address Line 2.This is the name of the Street where the Hub is situated. For example - Off Highway I96 or Walton Boulevard</td>
+</tr>
+<tr>
+<td>Address.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Any nearby landmark to identify your Hub quickly. For example - Opp. McDonalds or Behind Mercy Hospital</td>
+</tr>
+<tr>
+<td>Address.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown</td>
+</tr>
+<tr>
+<td>Address.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur</td>
+</tr>
+<tr>
+<td>Address.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>Address.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+</tr>
+</tbody></table>
+
+<p>For example - For United States use USA
+Address.pincode|String|20|Optional|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
+longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
+latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
+billingContactName|String|512|Optional|Name of the Contact Person for billing at the Shipper
+billingEmailAddress|String|255|Optional|Email of the contact person for billing  at the shipper
+billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
+billingAddress.apartment|String|512|Optional|Billing Address Apartment
+billingAddress.streetName|String|512|Optional|Billing Address Street
+billingAddress.landmark|String|512|Optional|Billing Address Landmark
+billingAddress.locality|String|512||Billing Address Locality
+billingAddress.city|String|512|Optional|Billing Address City
+billingAddress.stateShortCode|String|11|Optional|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
+billingAddress.countryShortCode|String|11|Optional|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
+billingAddress.pincode|String|20|Optional|Billing Address Pincode</p>
+
 <h2 id="delivery-associate">Delivery Associate</h2>
 
 <h3 id="create">Create</h3>
@@ -6631,6 +7183,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
      </span><span class="p">{</span><span class="w">
          </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"crateName"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Crate501"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.65</span><span class="p">,</span><span class="w">
          </span><span class="nt">"crateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -10835,10 +11388,13 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupLongitude"</span><span class="p">:</span><span class="mf">-73.96732299999996</span><span class="p">,</span><span class="w">    
     </span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
-
+    </span><span class="nt">"optimizePackingfl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR5002"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateTemperatureCategory"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Ambient"</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMinTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMaxTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"Case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -10847,6 +11403,9 @@ When Customer Profiling is turned ON -
         </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateTemperatureCategory"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Ambient"</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMinTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMaxTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT038"</span><span class="p">,</span><span class="w">
@@ -11578,9 +12137,11 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"optimizePackingfl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateName"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Crate501"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -11589,6 +12150,9 @@ When Customer Profiling is turned ON -
         </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateTemperatureCategory"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Ambient"</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMinTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMaxTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
@@ -12335,9 +12899,11 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PickedUp"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deliverNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"optimizePackingfl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateName"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Crate501"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -12346,6 +12912,9 @@ When Customer Profiling is turned ON -
         </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateTemperatureCategory"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Ambient"</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMinTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMaxTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
@@ -13288,9 +13857,11 @@ When Customer Profiling is turned ON -
     </span><span class="nt">"pickupAddressTimezone"</span><span class="p">:</span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">  
     </span><span class="nt">"pickupNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't ring the doorbell"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"clientCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salestap"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"optimizePackingfl"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentCrateMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"crateCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CR041"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"crateName"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Crate501"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateAmount"</span><span class="p">:</span><span class="mf">100.65</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateType"</span><span class="p">:</span><span class="s2">"case"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"noOfUnits"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -13299,6 +13870,9 @@ When Customer Profiling is turned ON -
         </span><span class="nt">"crateLength"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateBreadth"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="nt">"crateHeight"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateTemperatureCategory"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Ambient"</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMinTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+</span><span class="err">        </span><span class="nt">"crateMaxTemperature"</span><span class="p">:</span><span class="err"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipmentlineitems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"itemCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT043"</span><span class="p">,</span><span class="w">
