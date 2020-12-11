@@ -4986,25 +4986,107 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>11</td>
 <td>Mandatory</td>
-<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(longitude)</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(latitude)</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Name of the Contact Person for billing at the Shipper</td>
+</tr>
+<tr>
+<td>billingEmailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Email of the contact person for billing  at the shipper</td>
+</tr>
+<tr>
+<td>billingPhoneNumber</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Phone Number of the contact person for billing at the  shipper</td>
+</tr>
+<tr>
+<td>billingAddress.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Apartment</td>
+</tr>
+<tr>
+<td>billingAddress.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Street</td>
+</tr>
+<tr>
+<td>billingAddress.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Landmark</td>
+</tr>
+<tr>
+<td>billingAddress.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>Billing Address Locality</td>
+</tr>
+<tr>
+<td>billingAddress.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address City</td>
+</tr>
+<tr>
+<td>billingAddress.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>billingAddress.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>billingAddress.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>Billing Address Pincode</td>
 </tr>
 </tbody></table>
-
-<p>For example - For United States use USA
-Address.pincode|String|20|Mandatory|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
-longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
-latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
-billingContactName|String|512|Mandatory|Name of the Contact Person for billing at the Shipper
-billingEmailAddress|String|255|Mandatory|Email of the contact person for billing  at the shipper
-billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
-billingAddress.apartment|String|512|Mandatory|Billing Address Apartment
-billingAddress.streetName|String|512|Mandatory|Billing Address Street
-billingAddress.landmark|String|512|Mandatory|Billing Address Landmark
-billingAddress.locality|String|512||Billing Address Locality
-billingAddress.city|String|512|Mandatory|Billing Address City
-billingAddress.stateShortCode|String|11|Mandatory|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-billingAddress.countryShortCode|String|11|Mandatory|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
-billingAddress.pincode|String|20|Mandatory|Billing Address Pincode</p>
 
 <h3 id="update">Update</h3>
 
@@ -5265,25 +5347,107 @@ billingAddress.pincode|String|20|Mandatory|Billing Address Pincode</p>
 <td>String</td>
 <td>11</td>
 <td>Optional</td>
-<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(longitude)</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(latitude)</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Name of the Contact Person for billing at the Shipper</td>
+</tr>
+<tr>
+<td>billingEmailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Email of the contact person for billing  at the shipper</td>
+</tr>
+<tr>
+<td>billingPhoneNumber</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Phone Number of the contact person for billing at the  shipper</td>
+</tr>
+<tr>
+<td>billingAddress.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Apartment</td>
+</tr>
+<tr>
+<td>billingAddress.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Street</td>
+</tr>
+<tr>
+<td>billingAddress.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Landmark</td>
+</tr>
+<tr>
+<td>billingAddress.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>Billing Address Locality</td>
+</tr>
+<tr>
+<td>billingAddress.city</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address City</td>
+</tr>
+<tr>
+<td>billingAddress.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>billingAddress.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>billingAddress.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>Billing Address Pincode</td>
 </tr>
 </tbody></table>
-
-<p>For example - For United States use USA
-Address.pincode|String|20|Optional|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
-longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
-latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
-billingContactName|String|512|Optional|Name of the Contact Person for billing at the Shipper
-billingEmailAddress|String|255|Optional|Email of the contact person for billing  at the shipper
-billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
-billingAddress.apartment|String|512|Optional|Billing Address Apartment
-billingAddress.streetName|String|512|Optional|Billing Address Street
-billingAddress.landmark|String|512|Optional|Billing Address Landmark
-billingAddress.locality|String|512||Billing Address Locality
-billingAddress.city|String|512|Optional|Billing Address City
-billingAddress.stateShortCode|String|11|Optional|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-billingAddress.countryShortCode|String|11|Optional|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
-billingAddress.pincode|String|20|Optional|Billing Address Pincode</p>
 
 <h2 id="delivery-associate">Delivery Associate</h2>
 
