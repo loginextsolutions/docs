@@ -4741,42 +4741,42 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[{</span><span class="w">
-</span><span class="err">“shipperName”:</span><span class="w"> </span><span class="err">“Fresh</span><span class="w"> </span><span class="err">Farm</span><span class="w"> </span><span class="err">Produce</span><span class="w"> </span><span class="err">Ltd.”,</span><span class="w">
-</span><span class="err">“adminContactName”:</span><span class="w"> </span><span class="err">”John</span><span class="w"> </span><span class="err">Doe”,</span><span class="w">
-</span><span class="err">“emailAddress”:</span><span class="w"> </span><span class="err">“johnDoe@freshfarm.com”,</span><span class="w">
-</span><span class="err">“contactNumber”:</span><span class="w"> </span><span class="err">“334567781”,</span><span class="w">
-</span><span class="err">“userName”:</span><span class="w"> </span><span class="err">“jack.klien@freshfarm.com”,</span><span class="w">
-</span><span class="err">“branchName”:</span><span class="nt">"Marque Downtown Chicago"</span><span class="err">,</span><span class="w">
-</span><span class="err">“Priority”</span><span class="p">:</span><span class="w"> </span><span class="err">“High”</span><span class="p">,</span><span class="w">
-</span><span class="err">“custSupportNumber”</span><span class="p">:</span><span class="w"> </span><span class="err">“</span><span class="mi">5163063377</span><span class="err">”</span><span class="p">,</span><span class="w">
-</span><span class="err">“custSupportEmail”</span><span class="p">:</span><span class="w"> </span><span class="err">“support@freshfarm.com”</span><span class="p">,</span><span class="w">
-</span><span class="err">“serviceType”</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">“Express”</span><span class="p">,</span><span class="w"> </span><span class="err">“Express</span><span class="w"> </span><span class="err">Plus”</span><span class="p">],</span><span class="w">
-</span><span class="err">“serviceAreaProfileName”</span><span class="p">:</span><span class="w"> </span><span class="err">“New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">City</span><span class="w"> </span><span class="err">Profile”</span><span class="p">,</span><span class="w">
-</span><span class="err">“rateChartName”</span><span class="p">:</span><span class="w"> </span><span class="err">“Standard</span><span class="w"> </span><span class="err">Rate</span><span class="w"> </span><span class="err">Chart”</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.760838</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">74.9095327</span><span class="p">,</span><span class="w">
-</span><span class="err">}</span><span class="p">,</span><span class="w">
-</span><span class="nt">"billingContactName"</span><span class="p">:</span><span class="s2">"Karen"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"billingPhoneNumber"</span><span class="p">:</span><span class="s2">"5163063377"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"billingEmailAddress"</span><span class="p">:</span><span class="s2">"karen@freshfarm.com"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"billingAddress"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"apartment"</span><span class="p">:</span><span class="s2">"Suite No. 99, Milsons Towers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"streetName"</span><span class="p">:</span><span class="s2">"Michigan Avenue"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"landmark"</span><span class="p">:</span><span class="s2">"Opp. Subway"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"locality"</span><span class="p">:</span><span class="s2">"Downtown Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pincode"</span><span class="p">:</span><span class="s2">"60606"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"shipperName”: "</span><span class="err">Fresh</span><span class="w"> </span><span class="err">Farm</span><span class="w"> </span><span class="err">Produce</span><span class="w"> </span><span class="err">Ltd.</span><span class="nt">",
+"</span><span class="err">adminContactName</span><span class="nt">": "</span><span class="err">John</span><span class="w"> </span><span class="err">Doe</span><span class="nt">",
+"</span><span class="err">emailAddress</span><span class="nt">": "</span><span class="err">johnDoe@freshfarm.com</span><span class="nt">",
+"</span><span class="err">contactNumber</span><span class="nt">": "</span><span class="err">334567781</span><span class="nt">",
+"</span><span class="err">userName</span><span class="nt">": "</span><span class="err">jack.klien@freshfarm.com</span><span class="nt">",
+"</span><span class="err">branchName</span><span class="nt">":"</span><span class="err">Marque</span><span class="w"> </span><span class="err">Downtown</span><span class="w"> </span><span class="err">Chicago</span><span class="nt">",
+"</span><span class="err">Priority</span><span class="nt">": "</span><span class="err">High</span><span class="nt">",
+"</span><span class="err">custSupportNumber</span><span class="nt">": "</span><span class="err">5163063377</span><span class="nt">",
+"</span><span class="err">custSupportEmail</span><span class="nt">": "</span><span class="err">support@freshfarm.com</span><span class="nt">",
+"</span><span class="err">serviceType</span><span class="nt">": ["</span><span class="err">Express</span><span class="nt">", "</span><span class="err">Express</span><span class="w"> </span><span class="err">Plus</span><span class="nt">"],
+"</span><span class="err">serviceAreaProfileName</span><span class="nt">": "</span><span class="err">New</span><span class="w"> </span><span class="err">York</span><span class="w"> </span><span class="err">City</span><span class="w"> </span><span class="err">Profile</span><span class="nt">",
+"</span><span class="err">rateChartName</span><span class="nt">": "</span><span class="err">Standard</span><span class="w"> </span><span class="err">Rate</span><span class="w"> </span><span class="err">Chart</span><span class="nt">",
+"</span><span class="err">address</span><span class="nt">":{
+        "</span><span class="err">apartment</span><span class="nt">":"</span><span class="err">Suite</span><span class="w"> </span><span class="err">No.</span><span class="w"> </span><span class="err">99,</span><span class="w"> </span><span class="err">Milsons</span><span class="w"> </span><span class="err">Towers</span><span class="nt">",
+        "</span><span class="err">streetName</span><span class="nt">":"</span><span class="err">Michigan</span><span class="w"> </span><span class="err">Avenue</span><span class="nt">",
+        "</span><span class="err">landmark</span><span class="nt">":"</span><span class="err">Opp.</span><span class="w"> </span><span class="err">Subway</span><span class="nt">",
+        "</span><span class="err">locality</span><span class="nt">":"</span><span class="err">Downtown</span><span class="w"> </span><span class="err">Chicago</span><span class="nt">",
+        "</span><span class="err">city</span><span class="nt">":"</span><span class="err">Chicago</span><span class="nt">",
+        "</span><span class="err">stateShortCode</span><span class="nt">":"</span><span class="err">IL</span><span class="nt">",
+        "</span><span class="err">countryShortCode</span><span class="nt">":"</span><span class="err">USA</span><span class="nt">",
+        "</span><span class="err">pincode</span><span class="nt">":"</span><span class="err">60606</span><span class="nt">",
+        "</span><span class="err">longitude</span><span class="nt">": 40.760838,
+        "</span><span class="err">latitude</span><span class="nt">": 74.9095327,
+},
+"</span><span class="err">billingContactName</span><span class="nt">":"</span><span class="err">Karen</span><span class="nt">",
+"</span><span class="err">billingPhoneNumber</span><span class="nt">":"</span><span class="err">5163063377</span><span class="nt">",
+"</span><span class="err">billingEmailAddress</span><span class="nt">":"</span><span class="err">karen@freshfarm.com</span><span class="nt">",
+"</span><span class="err">billingAddress</span><span class="nt">":{
+        "</span><span class="err">apartment</span><span class="nt">":"</span><span class="err">Suite</span><span class="w"> </span><span class="err">No.</span><span class="w"> </span><span class="err">99,</span><span class="w"> </span><span class="err">Milsons</span><span class="w"> </span><span class="err">Towers</span><span class="nt">",
+        "</span><span class="err">streetName</span><span class="nt">":"</span><span class="err">Michigan</span><span class="w"> </span><span class="err">Avenue</span><span class="nt">",
+        "</span><span class="err">landmark</span><span class="nt">":"</span><span class="err">Opp.</span><span class="w"> </span><span class="err">Subway</span><span class="nt">",
+        "</span><span class="err">locality</span><span class="nt">":"</span><span class="err">Downtown</span><span class="w"> </span><span class="err">Chicago</span><span class="nt">",
+        "</span><span class="err">city</span><span class="nt">":"</span><span class="err">Chicago</span><span class="nt">",
+        "</span><span class="err">stateShortCode</span><span class="nt">":"</span><span class="err">IL</span><span class="nt">",
+        "</span><span class="err">countryShortCode</span><span class="nt">":"</span><span class="err">USA</span><span class="nt">",
+        "</span><span class="err">pincode</span><span class="nt">":"</span><span class="err">60606",</span><span class="w">
 </span><span class="err">}</span><span class="p">,</span><span class="w">
 </span><span class="err">}</span><span class="p">]</span><span class="w">
 
@@ -4986,25 +4986,107 @@ You will have to pass the reference Id of the vehicle whose information needs to
 <td>String</td>
 <td>11</td>
 <td>Mandatory</td>
-<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(longitude)</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(latitude)</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Name of the Contact Person for billing at the Shipper</td>
+</tr>
+<tr>
+<td>billingEmailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Email of the contact person for billing  at the shipper</td>
+</tr>
+<tr>
+<td>billingPhoneNumber</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Phone Number of the contact person for billing at the  shipper</td>
+</tr>
+<tr>
+<td>billingAddress.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Apartment</td>
+</tr>
+<tr>
+<td>billingAddress.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Street</td>
+</tr>
+<tr>
+<td>billingAddress.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address Landmark</td>
+</tr>
+<tr>
+<td>billingAddress.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>Billing Address Locality</td>
+</tr>
+<tr>
+<td>billingAddress.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Billing Address City</td>
+</tr>
+<tr>
+<td>billingAddress.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>billingAddress.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Mandatory</td>
+<td>This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>billingAddress.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Mandatory</td>
+<td>Billing Address Pincode</td>
 </tr>
 </tbody></table>
-
-<p>For example - For United States use USA
-Address.pincode|String|20|Mandatory|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
-longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
-latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
-billingContactName|String|512|Mandatory|Name of the Contact Person for billing at the Shipper
-billingEmailAddress|String|255|Mandatory|Email of the contact person for billing  at the shipper
-billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
-billingAddress.apartment|String|512|Mandatory|Billing Address Apartment
-billingAddress.streetName|String|512|Mandatory|Billing Address Street
-billingAddress.landmark|String|512|Mandatory|Billing Address Landmark
-billingAddress.locality|String|512||Billing Address Locality
-billingAddress.city|String|512|Mandatory|Billing Address City
-billingAddress.stateShortCode|String|11|Mandatory|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-billingAddress.countryShortCode|String|11|Mandatory|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
-billingAddress.pincode|String|20|Mandatory|Billing Address Pincode</p>
 
 <h3 id="update">Update</h3>
 
@@ -5265,25 +5347,107 @@ billingAddress.pincode|String|20|Mandatory|Billing Address Pincode</p>
 <td>String</td>
 <td>11</td>
 <td>Optional</td>
-<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.</td>
+<td>Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA</td>
+</tr>
+<tr>
+<td>Address.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(longitude)</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Double</td>
+<td>15</td>
+<td>Optional</td>
+<td>Shipper shipping Address geo-coordinate(latitude)</td>
+</tr>
+<tr>
+<td>billingContactName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Name of the Contact Person for billing at the Shipper</td>
+</tr>
+<tr>
+<td>billingEmailAddress</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Email of the contact person for billing  at the shipper</td>
+</tr>
+<tr>
+<td>billingPhoneNumber</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Phone Number of the contact person for billing at the  shipper</td>
+</tr>
+<tr>
+<td>billingAddress.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Apartment</td>
+</tr>
+<tr>
+<td>billingAddress.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Street</td>
+</tr>
+<tr>
+<td>billingAddress.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address Landmark</td>
+</tr>
+<tr>
+<td>billingAddress.locality</td>
+<td>String</td>
+<td>512</td>
+<td></td>
+<td>Billing Address Locality</td>
+</tr>
+<tr>
+<td>billingAddress.city</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Billing Address City</td>
+</tr>
+<tr>
+<td>billingAddress.stateShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.</td>
+</tr>
+<tr>
+<td>billingAddress.countryShortCode</td>
+<td>String</td>
+<td>11</td>
+<td>Optional</td>
+<td>This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.</td>
+</tr>
+<tr>
+<td>billingAddress.pincode</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>Billing Address Pincode</td>
 </tr>
 </tbody></table>
-
-<p>For example - For United States use USA
-Address.pincode|String|20|Optional|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
-longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
-latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
-billingContactName|String|512|Optional|Name of the Contact Person for billing at the Shipper
-billingEmailAddress|String|255|Optional|Email of the contact person for billing  at the shipper
-billingPhoneNumber||||Phone Number of the contact person for billing at the  shipper
-billingAddress.apartment|String|512|Optional|Billing Address Apartment
-billingAddress.streetName|String|512|Optional|Billing Address Street
-billingAddress.landmark|String|512|Optional|Billing Address Landmark
-billingAddress.locality|String|512||Billing Address Locality
-billingAddress.city|String|512|Optional|Billing Address City
-billingAddress.stateShortCode|String|11|Optional|Billing Address State. Please refer to the section where we have listed down state codes for each country.. If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-billingAddress.countryShortCode|String|11|Optional|This is the code of Country. For India use IND; For China use CHN. Please refer to the section where we have listed down country codes.
-billingAddress.pincode|String|20|Optional|Billing Address Pincode</p>
 
 <h2 id="delivery-associate">Delivery Associate</h2>
 
@@ -6950,6 +7114,948 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </tr>
 </tbody></table>
 
+<h2 id="driver">Driver</h2>
+
+<h3 id="create">Create</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DriverApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653764563</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@ablogistics.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-06-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spanish"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"married"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMV"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">72712</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-902"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">10075</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:30:00.000Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chris@ablogistic.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Driver Created Successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122e948ce6cc40fb85492c4c5a600816"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Create Drivers in the LogiNext Platform with the Create Driver API. Drivers will be created and will be assigned a unique Reference ID that can be used to look up the Driver later.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/mile/v1/create</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Driver’s full name</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the branch to which the vehicle belongs.</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Phone No</td>
+</tr>
+<tr>
+<td>emailId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>EmailId</td>
+</tr>
+<tr>
+<td>dateOfBirth</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Date of Birth. Format - YYYY-MM-DD For example, 2016-07-01</td>
+</tr>
+<tr>
+<td>vehicleReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>Assign vehicle to the driver</td>
+</tr>
+<tr>
+<td>languageList</td>
+<td>List of Objects</td>
+<td></td>
+<td>Optional</td>
+<td>Language(s) known to the driver</td>
+</tr>
+<tr>
+<td>languageList.name</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Name of language</td>
+</tr>
+<tr>
+<td>salary</td>
+<td>String</td>
+<td>18</td>
+<td>Optional</td>
+<td>Current salary of Driver</td>
+</tr>
+<tr>
+<td>maritalStatus</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>Marital Status. Ex: married, unmarried.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>String</td>
+<td>12</td>
+<td>Optional</td>
+<td>Gender. Ex - male,female.</td>
+</tr>
+<tr>
+<td>experience</td>
+<td>Integer</td>
+<td>3</td>
+<td>Optional</td>
+<td>No of yrs. of driving experience</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>License validity date. Format - YYYY-MM DDTHH:MM:SS.SSSZ For example, 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>licenseNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>License No</td>
+</tr>
+<tr>
+<td>licenseType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>License Type. Ex: 2 wheeler, 4 wheeler</td>
+</tr>
+<tr>
+<td>licenseIssueBy</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>License Issuing Authority Name</td>
+</tr>
+<tr>
+<td>addressList.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Apartment name/no</td>
+</tr>
+<tr>
+<td>addressList.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Society/Street name</td>
+</tr>
+<tr>
+<td>addressList.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>Landmark</td>
+</tr>
+<tr>
+<td>addressList.areaName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Locality/Area name</td>
+</tr>
+<tr>
+<td>addressList.countryShortCode</td>
+<td>String</td>
+<td>3</td>
+<td>Mandatory</td>
+<td>Country code.Please refer to the list of country codes provided in the “Country Codes” section.</td>
+</tr>
+<tr>
+<td>addressList.stateShortCode</td>
+<td>String</td>
+<td>3</td>
+<td>Mandatory</td>
+<td>State short code.Please refer to the list of state codes provided in the “State Codes” section.</td>
+</tr>
+<tr>
+<td>addressList.city</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>City</td>
+</tr>
+<tr>
+<td>addressList.pincode</td>
+<td>Integer</td>
+<td>12</td>
+<td>Mandatory</td>
+<td>Pincode</td>
+</tr>
+<tr>
+<td>addressList.isCurrentAddress</td>
+<td>Boolean</td>
+<td></td>
+<td>Mandatory</td>
+<td>Indicates whether this is the current address of the driver or not. Ex: true - Current Address, false - Permanent Address</td>
+</tr>
+<tr>
+<td>driverEmployeeId</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>EmployeeId</td>
+</tr>
+<tr>
+<td>shiftList.startTime</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Shift start date. Format - HH:MMaa e.g. : 07:00pm</td>
+</tr>
+<tr>
+<td>shiftList.endTime</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Shift end date. Format - HH:MMaa e.g. : 17:00pm</td>
+</tr>
+<tr>
+<td>shiftList.shiftStartTime</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Shift start time. Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>shiftList.shiftEndTime</td>
+<td>String</td>
+<td></td>
+<td>Mandatory</td>
+<td>Shift end time. Format -YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>previousCompanyName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Driver’s last company name</td>
+</tr>
+<tr>
+<td>reportingManager</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Driver’s last company’s reporting manager’s name</td>
+</tr>
+<tr>
+<td>managerPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Driver’s last company&rsquo;s manager’s phone no</td>
+</tr>
+<tr>
+<td>managerEmailId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Driver’s last company’s manager’s email id</td>
+</tr>
+<tr>
+<td>driverReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the record</td>
+</tr>
+</tbody></table>
+
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DriverApp/mile/v</span><span class="mi">1</span><span class="err">?referenceIds=</span><span class="p">{</span><span class="err">driverReferenceIds</span><span class="p">}</span><span class="err">&amp;licenseNumbers=</span><span class="p">{</span><span class="err">licenseNumbers</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653023543"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@ablogistics.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1591986600000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pinCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"defaultVehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"licenseAlertWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"attendance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workHour"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1465776000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"married"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spanish"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMV."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB Logistics"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chris@ablogistics.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"trackingDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deviceBarcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-12T14:00:00.000Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-12T15:00:00.000Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isPresent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tripStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"batteryPerc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"lastLicenseAlertSentDt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"previousPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>If you have configured Drivers in LogiNext to , you can call this API to fetch the details of your drivers.</p>
+
+<p>You can fetch the details for upto 20 Drivers in a single call of this API</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceIds</td>
+<td>String</td>
+<td>Optional</td>
+<td>Reference IDs of the Drivers</td>
+</tr>
+<tr>
+<td>licenseNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>License Number of the Drivers</td>
+</tr>
+</tbody></table>
+
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DriverApp/mile/v</span><span class="mi">1</span><span class="err">/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"driverReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653764563</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@ablogistics.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-06-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spanish"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"married"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMV"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">72712</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-902"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">10075</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:30:00.000Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chris@ablogistic.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Update Drivers in the LogiNext Platform with the Update Driver API. </p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/mile/v1/update</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>driverReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the record</td>
+</tr>
+<tr>
+<td>driverName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Driver’s full name</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the branch to which the vehicle belongs.</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Phone No</td>
+</tr>
+<tr>
+<td>emailId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>EmailId</td>
+</tr>
+<tr>
+<td>dateOfBirth</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Date of Birth. Format - YYYY-MM-DD For example, 2016-07-01</td>
+</tr>
+<tr>
+<td>vehicleReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>Assign vehicle to the driver</td>
+</tr>
+<tr>
+<td>languageList</td>
+<td>List of Objects</td>
+<td></td>
+<td>Optional</td>
+<td>Language(s) known to the driver</td>
+</tr>
+<tr>
+<td>languageList.name</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Name of language</td>
+</tr>
+<tr>
+<td>salary</td>
+<td>String</td>
+<td>18</td>
+<td>Optional</td>
+<td>Current salary of Driver</td>
+</tr>
+<tr>
+<td>maritalStatus</td>
+<td>String</td>
+<td>20</td>
+<td>Optional</td>
+<td>Marital Status. Ex: married, unmarried.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>String</td>
+<td>12</td>
+<td>Optional</td>
+<td>Gender. Ex - male,female.</td>
+</tr>
+<tr>
+<td>experience</td>
+<td>Integer</td>
+<td>3</td>
+<td>Optional</td>
+<td>No of yrs. of driving experience</td>
+</tr>
+<tr>
+<td>licenseValidity</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>License validity date. Format - YYYY-MM DDTHH:MM:SS.SSSZ For example, 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>licenseNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>License No</td>
+</tr>
+<tr>
+<td>licenseType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>License Type. Ex: 2 wheeler, 4 wheeler</td>
+</tr>
+<tr>
+<td>licenseIssueBy</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>License Issuing Authority Name</td>
+</tr>
+<tr>
+<td>addressList.apartment</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Apartment name/no</td>
+</tr>
+<tr>
+<td>addressList.streetName</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Society/Street name</td>
+</tr>
+<tr>
+<td>addressList.landmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Landmark</td>
+</tr>
+<tr>
+<td>addressList.areaName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Locality/Area name</td>
+</tr>
+<tr>
+<td>addressList.countryShortCode</td>
+<td>String</td>
+<td>3</td>
+<td>Optional</td>
+<td>Country code.Please refer to the list of country codes provided in the “Country Codes” section.</td>
+</tr>
+<tr>
+<td>addressList.stateShortCode</td>
+<td>String</td>
+<td>3</td>
+<td>Optional</td>
+<td>State short code.Please refer to the list of state codes provided in the “State Codes” section.</td>
+</tr>
+<tr>
+<td>addressList.city</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>City</td>
+</tr>
+<tr>
+<td>addressList.pincode</td>
+<td>Integer</td>
+<td>12</td>
+<td>Optional</td>
+<td>Pincode</td>
+</tr>
+<tr>
+<td>addressList.isCurrentAddress</td>
+<td>Boolean</td>
+<td></td>
+<td>Optional</td>
+<td>Indicates whether this is the current address of the driver or not. Ex: true - Current Address, false - Permanent Address</td>
+</tr>
+<tr>
+<td>driverEmployeeId</td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>EmployeeId</td>
+</tr>
+<tr>
+<td>shiftList.startTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift start date. Format - HH:MMaa e.g. : 07:00pm</td>
+</tr>
+<tr>
+<td>shiftList.endTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift end date. Format - HH:MMaa e.g. : 17:00pm</td>
+</tr>
+<tr>
+<td>shiftList.shiftStartTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift start time. Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>shiftList.shiftEndTime</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>Shift end time. Format -YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z</td>
+</tr>
+<tr>
+<td>previousCompanyName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Driver’s last company name</td>
+</tr>
+<tr>
+<td>reportingManager</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Driver’s last company’s reporting manager’s name</td>
+</tr>
+<tr>
+<td>managerPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Driver’s last company&rsquo;s manager’s phone no</td>
+</tr>
+<tr>
+<td>managerEmailId</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Driver’s last company’s manager’s email id</td>
+</tr>
+</tbody></table>
+
+<h3 id="delete">Delete</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/DriverApp/mile/v</span><span class="mi">1</span><span class="err">/delete</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"driverReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653764563</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@ablogistics.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-06-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spanish"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"married"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMV"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">72712</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-902"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">10075</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T10:30:00.000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:30:00.000Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chris@ablogistic.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Delete Drivers in the LogiNext Platform with the Delete Driver API. </p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/mile/v1/delete</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>driverReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the record</td>
+</tr>
+</tbody></table>
+
 <h2 id="geofence">Geofence</h2>
 
 <h3 id="get">Get</h3>
@@ -7316,7 +8422,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -7435,14 +8541,14 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
@@ -7913,7 +9019,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -7997,7 +9103,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>deliverBranch</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
@@ -8011,14 +9117,14 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
@@ -8517,7 +9623,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -8601,7 +9707,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>deliverBranch</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
@@ -8615,14 +9721,14 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>distributionCenter</td>
 <td>String</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
 <td>pickupEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
 </tr>
 <tr>
@@ -8748,14 +9854,14 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
@@ -9233,7 +10339,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -9343,9 +10449,9 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </tr>
 </tbody></table>
 
-<p>distributionCenter | String |  | Mandatory | Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;
+<p>distributionCenter | String |  | Optional | Distribution center&rsquo;s name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupStartTimeWindow | Date |  | Optional | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z
+pickupEndTimeWindow | Date |  | Optional | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
@@ -9699,7 +10805,7 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -9783,7 +10889,7 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>deliverBranch</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
@@ -9797,14 +10903,14 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
@@ -10302,7 +11408,7 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -10386,52 +11492,297 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</td>
 </tr>
+<tr>
+<td>pickupEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;</td>
+</tr>
+<tr>
+<td>pickupAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Pick-up Customer ID.</td>
+</tr>
+<tr>
+<td>pickupAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer Address ID.</td>
+</tr>
+<tr>
+<td>pickupEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Pick-up Customer email ID.</td>
+</tr>
+<tr>
+<td>pickupPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Mandatory</td>
+<td>This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.</td>
+</tr>
+<tr>
+<td>pickupPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>pickupLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>This is the geolocation coordinate (latitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>The geolocation coordinate (longitude) of the pickup customer.</td>
+</tr>
+<tr>
+<td>pickupAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
+</tr>
+<tr>
+<td>deliverServiceTime</td>
+<td>Integer</td>
+<td>11</td>
+<td>Optional</td>
+<td>Deliver service time in mins.</td>
+</tr>
+<tr>
+<td>deliverStartTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliverEndTimeWindow</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
+</tr>
+<tr>
+<td>deliveryLocationType</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Type of delivery location. For example - CUSTOMER</td>
+</tr>
+<tr>
+<td>deliverAccountCode</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>This is the customer code of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAddressId</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>This is the Address ID of the deliver customer.</td>
+</tr>
+<tr>
+<td>deliverAccountName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverEmail</td>
+<td>String</td>
+<td>100</td>
+<td>Optional</td>
+<td>Delivery Customer email ID.</td>
+</tr>
+<tr>
+<td>deliverPhoneNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Delivery Customer phone number.</td>
+</tr>
+<tr>
+<td>deliverApartment</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverStreetName</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLandmark</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Delivery Address landmark.</td>
+</tr>
+<tr>
+<td>deliverLocality</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCity</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverState</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverCountry</td>
+<td>String</td>
+<td>512</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverPinCode</td>
+<td>String</td>
+<td>20</td>
+<td>Conditional Mandatory</td>
+<td>Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.</td>
+</tr>
+<tr>
+<td>deliverLatitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (latitude).</td>
+</tr>
+<tr>
+<td>deliverLongitude</td>
+<td>Double</td>
+<td></td>
+<td>Optional</td>
+<td>Delivery Address geolocation coordinate (longitude).</td>
+</tr>
+<tr>
+<td>deliverAddressTimezone</td>
+<td>String</td>
+<td></td>
+<td>Optional</td>
+<td>The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.</td>
+</tr>
+<tr>
+<td>pickupNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.</td>
+</tr>
+<tr>
+<td>deliverNotes</td>
+<td>String</td>
+<td>512</td>
+<td>Optional</td>
+<td>Additional Delivery notes associated with the order.</td>
+</tr>
+<tr>
+<td>clientCode</td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</td>
+</tr>
 </tbody></table>
-
-<p>pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &quot;2017-07-15T12:30:00.000Z&rdquo;
-pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
-pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
-pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
-pickupEmail | String | 100 | Optional | Pick-up Customer email ID.
-pickupPhoneNumber | String | 255 | Optional | Pick-up Customer phone number. This field in Non Mandatory in case Customer Profiling in ON.
-pickupApartment | String | 512 | Conditional Mandatory | This is the apartment details of the pickup customer. This field in Non Mandatory in case Customer Profiling in ON.
-pickupStreetName | String | 512 | Mandatory | This is the street name of the pickup customer. Standard Address validations that were set while setting up your account in LogiNext will apply for this field. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLandmark | String | 512 | Conditional Mandatory | Pick-up Address landmark. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLocality | String | 512 | Conditional Mandatory | Pick-up Address locality. This field in Non Mandatory in case Customer Profiling in ON.
-pickupCity | String | 512 | Conditional Mandatory | Pick-up Address city. This field in Non Mandatory in case Customer Profiling in ON.
-pickupState| String | 512 | Conditional Mandatory | Pick-up Address State. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.
-pickupCountry | String | 512 | Conditional Mandatory | Pick-up Address Country. This field in Non Mandatory in case Customer Profiling in ON. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section.
-pickupPinCode | String | 20 | Conditional Mandatory | Pick-up Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
-pickupLatitude | Double |  | Optional | This is the geolocation coordinate (latitude) of the pickup customer.
-pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
-pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
-pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
-deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
-deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
-deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
-deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
-deliverAccountName | String | 255 | Conditional Mandatory | This is the deliver account name. This field in Non Mandatory in case Customer Profiling in ON.
-deliverEmail | String | 100 | Optional | Delivery Customer email ID.
-deliverPhoneNumber | String | 255 | Optional | Delivery Customer phone number.
-deliverApartment | String | 512 | Conditional Mandatory | Delivery Address Apartment. This field in Non Mandatory in case Customer Profiling in ON.
-deliverStreetName | String | 512 | Conditional Mandatory |Delivery Address street name. This field in Non Mandatory in case Customer Profiling in ON.
-deliverLandmark | String | 512 | Optional | Delivery Address landmark.
-deliverLocality | String | 512 | Conditional Mandatory | Delivery Address locality. This field in Non Mandatory in case Customer Profiling in ON.
-deliverCity | String | 512 | Conditional Mandatory | Delivery Address city.. This field in Non Mandatory in case Customer Profiling in ON.
-deliverState| String | 512 | Conditional Mandatory | Delivery Address state code. Please refer to the list of state codes provided in the &ldquo;State Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.
-deliverCountry | String | 512 | Conditional Mandatory | Delivery Address country code. Please refer to the list of country codes provided in the &ldquo;Country Codes&rdquo; section. This field in Non Mandatory in case Customer Profiling in ON.
-deliverPinCode | String | 20 | Conditional Mandatory | Delivery Address postal code. This field in Non Mandatory in case Customer Profiling in ON.
-deliverLatitude | Double |  | Optional |  Delivery Address geolocation coordinate (latitude).
-deliverLongitude | Double |  | Optional | Delivery Address geolocation coordinate (longitude).
-deliverAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
-pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
-deliverNotes | String | 512 | Optional | Additional Delivery notes associated with the order.
-clientCode | String | 32 | Optional | This is the identifier for an Account. Account is used to represent LogiNext’s Customer’s Customer. Pass the name of the Account in this field if you wish to create Orders on behalf of one of your Customers.</p>
 
 <h4 id="request-parameters-crates">Request Parameters (Crates)</h4>
 
@@ -10787,7 +12138,7 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>distributionCenter</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.</td>
 </tr>
 <tr>
@@ -10871,14 +12222,14 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>deliverBranch</td>
 <td>String</td>
 <td>255</td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager</td>
 </tr>
 <tr>
 <td>pickupStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - &ldquo;2017-07-15T11:30:00.000Z</td>
 </tr>
 <tr>
@@ -11018,14 +12369,14 @@ clientCode | String | 32 | Optional | This is the identifier for an Account. Acc
 <td>deliverStartTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
 <td>deliverEndTimeWindow</td>
 <td>Date</td>
 <td></td>
-<td>Mandatory</td>
+<td>Optional</td>
 <td>Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.</td>
 </tr>
 <tr>
@@ -11594,8 +12945,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>Order Number.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -12311,8 +13662,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>Order Number.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -13072,8 +14423,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>Order Number.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -14034,8 +15385,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -14803,8 +16154,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -15595,8 +16946,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -16204,8 +17555,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -16828,8 +18179,8 @@ When Customer Profiling is turned ON -
 <td>orderNo</td>
 <td>String</td>
 <td>100</td>
-<td>Mandatory</td>
-<td>This is the order No.</td>
+<td>Conditional Mandatory</td>
+<td>Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.</td>
 </tr>
 <tr>
 <td>awbNumber</td>
@@ -21406,6 +22757,378 @@ If it does not exist, then a new manifest will be created with the provided Mani
 
 <h2 id="trip">Trip</h2>
 
+<h3 id="create">Create</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/trip/start</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"deliveryMediumUserName"</span><span class="p">:</span><span class="s2">"jamesdeen"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="s2">"654fg654k76543456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverReferenceId"</span><span class="p">:</span><span class="s2">"2345f76543g76543y87654"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="s2">"M011A1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vehicleReferenceId"</span><span class="p">:</span><span class="s2">"87654gh87654hj8765"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA12070320191"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9906f4debe4260a4211b801b3b945c"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"pickupSequence"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"deliverSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA12070320191"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"orderReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed9906f4debe4260a4211b801b3b945c"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"pickupSequence"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"deliverSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> 
+ </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> 
+ </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip created successfully"</span><span class="p">,</span><span class="w"> 
+ </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+ </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="s2">"6186d5fc6e324c42"</span><span class="w"> </span><span class="p">,</span><span class="w"> 
+ </span><span class="nt">"tripName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23022020-Trip-Central Chicago"</span><span class="w">
+ </span><span class="p">},</span><span class="w"> 
+ </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> 
+</span><span class="p">}</span><span class="w"> 
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip creation failed"</span><span class="p">,</span><span class="w"> 
+  </span><span class="err">“errorList”</span><span class="p">:</span><span class="w">  
+  </span><span class="p">[</span><span class="w"> 
+  </span><span class="p">{</span><span class="w"> 
+    </span><span class="err">“key”:“licenseNumber”,</span><span class="w"> 
+    </span><span class="err">“message”:</span><span class="w"> </span><span class="err">“License</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">does</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">exist.”,</span><span class="w"> 
+    </span><span class="nt">"errorCode"</span><span class="p">:</span><span class="mi">20043</span><span class="w">  
+  </span><span class="p">}</span><span class="w"> 
+  </span><span class="p">],</span><span class="w">  
+  </span><span class="err">hasError</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> 
+</span><span class="p">}</span><span class="w"> 
+
+
+</span></code></pre>
+
+<p>Create a new Trip in the LogiNext system with this API. The trip will be created and Order ETAs will be caluculated based on the sequence passed when creating the trip.</p>
+
+<p>You can create 1 trip in a single call of this API</p>
+
+<p>Rate Limit: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/create</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripName </td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>New Trip Name to be updated in the system to be  tagged to this trip. If not passed, a unique trip name will be auto generated.</td>
+</tr>
+<tr>
+<td>deliveryMediumUserName</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Username of Delivery Medium. This is required if deliveryMediumReferenceId is not passed.</td>
+</tr>
+<tr>
+<td>deliveryMediumReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>LogiNext Reference Id associated with Delivery Medium. This is required if deliveryMediumUserName is not passed.</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Vehicle Number. This is required to set Vehicle if  LogiNext vehicleReferenceId is not passed.</td>
+</tr>
+<tr>
+<td>vehicleReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>LogiNext Reference Id associated with Vehicle. Required to set Vehicle if vehicleNumber is not  passed.</td>
+</tr>
+<tr>
+<td>licenseNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>License Number of the Driver. This is required to set Driver if  driverReferenceId is not passed.</td>
+</tr>
+<tr>
+<td>driverReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>LogiNext Reference Id associated with Driver . This is required to set Driver if licenseNumber is not passed </td>
+</tr>
+<tr>
+<td>orderNo </td>
+<td>String</td>
+<td>100</td>
+<td>Conditional Mandatory</td>
+<td>Unique Order No associated with every order. This  is required if orderReferenceId is not passed.</td>
+</tr>
+<tr>
+<td>orderReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Conditional Mandatory</td>
+<td>LogiNext Reference Id associated with every order.  This is required if orderNo is not passed.</td>
+</tr>
+<tr>
+<td>pickupSequence </td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>Sequence in which order should be picked up.</td>
+</tr>
+<tr>
+<td>deliverSequence </td>
+<td>String</td>
+<td>1</td>
+<td>Mandatory</td>
+<td>Sequence in which order should be delivered.</td>
+</tr>
+<tr>
+<td>tripReferenceId </td>
+<td>String</td>
+<td>32</td>
+<td>Optional</td>
+<td>Reference ID of the trip </td>
+</tr>
+</tbody></table>
+
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILE PARLE WEST-TRIP-13924"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2becf481189f4525a23889a35c554e61"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTSTARTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522618200000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522626600000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPlannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.1302</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPlannedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH04-HD9389"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetestrer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9968995522"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e7262c47a47441295d37dba81425827"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri55"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662000000</span><span class="w">
+
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7b47e622a33432da70c0fddec1b3a7d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri57"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661700000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baab317214584d0a996a4dfb0b7fac85"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri147"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662300000</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Param</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.</td>
+</tr>
+<tr>
+<td>tripname</td>
+<td>String</td>
+<td></td>
+<td>Conditional Mandatory</td>
+<td>If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.</td>
+</tr>
+</tbody></table>
+
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/trip/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"tripReferenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"65ba00dbdcf04fb789311df6aa40e3ba"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"tripName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23022020-Trip-Central Chicago"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"deliveryMediumReferenceId"</span><span class="w"> </span><span class="p">:</span><span class="s2">"96271ec538494ddf8e3ffe234c58b123"</span><span class="w">
+</span><span class="p">}</span><span class="w">  
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Updated Successfully."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65ba00dbdcf04fb789311df6aa40e3ba"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96271ec538494ddf8e3ffe234c58b123"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Failure Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Updation Failed."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tripReferenceId"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Reference Id is invalid."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Update an existing trip  using this API. You can change the Trip Name or the Delivery Associate of this Trip</p>
+
+<p>Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/update</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tripReferenceId</td>
+<td>String</td>
+<td>Mandatory</td>
+<td>Reference Id of the trip.</td>
+</tr>
+<tr>
+<td>tripName</td>
+<td>String</td>
+<td>Optional</td>
+<td>New Trip name to be updated in the system.</td>
+</tr>
+<tr>
+<td>deliveryMediumReferenceId</td>
+<td>String</td>
+<td>Optional</td>
+<td>The Reference ID of the new Delivery Associate to be tagged to this Trip.</td>
+</tr>
+</tbody></table>
+
 <h3 id="start">Start</h3>
 
 <blockquote>
@@ -21525,113 +23248,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 </tr>
 </tbody></table>
 
-<h3 id="get">Get</h3>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"tripName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILE PARLE WEST-TRIP-13924"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2becf481189f4525a23889a35c554e61"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTSTARTED"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"plannedStartDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522618200000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"plannedEndDt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522626600000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"totalPlannedDistance"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.1302</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"totalPlannedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH04-HD9389"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetestrer"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9968995522"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumBranch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"orderDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e7262c47a47441295d37dba81425827"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri55"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662000000</span><span class="w">
-
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7b47e622a33432da70c0fddec1b3a7d"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri57"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661700000</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baab317214584d0a996a4dfb0b7fac85"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andri147"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORWARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOTDISPATCHED"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"orderSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"shipmentOrderTypeCd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELIVER"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"startTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522661400000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"endTimeWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522665000000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546908814000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"plannedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1546914874000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedStartTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522657800000</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"revisedEndTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522662300000</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">},</span><span class="w">
-    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>Get all the details of a trip with this API. You can call this API to get the Order ETAs for Orders within a particular trip. The API will provide both the original ETAs and revised ETAs of Orders within that trip.</p>
-
-<p>API Type: Tier 1 API</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">GET</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/get?referenceId=7f389cfa7ae64d85a915ee6297bd9c3f&amp;tripname=TRIP-26516</code></p>
-
-<h4 id="request-parameters">Request Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Param</th>
-<th>DataType</th>
-<th>Length</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>referenceId</td>
-<td>String</td>
-<td></td>
-<td>Conditional Mandatory</td>
-<td>If tripname is not passed in the request, then this field is mandatory. This is the reference ID of the trip.</td>
-</tr>
-<tr>
-<td>tripname</td>
-<td>String</td>
-<td></td>
-<td>Conditional Mandatory</td>
-<td>If referenceId is not passed in the request, then this field is mandatory. This is the trip name of the trip for which details are to be fetched.</td>
-</tr>
-</tbody></table>
-
-<h3 id="update">Update</h3>
+<h3 id="reassign">Reassign</h3>
 
 <blockquote>
 <p>Definition</p>

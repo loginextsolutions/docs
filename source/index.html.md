@@ -2775,18 +2775,18 @@ timeZone | String | | Optional | The timzone of the address field. If not passed
 
 ```json
 [{
-“shipperName”: “Fresh Farm Produce Ltd.”,
-“adminContactName”: ”John Doe”,
-“emailAddress”: “johnDoe@freshfarm.com”,
-“contactNumber”: “334567781”,
-“userName”: “jack.klien@freshfarm.com”,
-“branchName”:"Marque Downtown Chicago",
-“Priority”: “High”,
-“custSupportNumber”: “5163063377”,
-“custSupportEmail”: “support@freshfarm.com”,
-“serviceType”: [“Express”, “Express Plus”],
-“serviceAreaProfileName”: “New York City Profile”,
-“rateChartName”: “Standard Rate Chart”,
+"shipperName”: "Fresh Farm Produce Ltd.",
+"adminContactName": "John Doe",
+"emailAddress": "johnDoe@freshfarm.com",
+"contactNumber": "334567781",
+"userName": "jack.klien@freshfarm.com",
+"branchName":"Marque Downtown Chicago",
+"Priority": "High",
+"custSupportNumber": "5163063377",
+"custSupportEmail": "support@freshfarm.com",
+"serviceType": ["Express", "Express Plus"],
+"serviceAreaProfileName": "New York City Profile",
+"rateChartName": "Standard Rate Chart",
 "address":{
         "apartment":"Suite No. 99, Milsons Towers",
         "streetName":"Michigan Avenue",
@@ -2902,8 +2902,7 @@ Address.landmark|String|512|Mandatory|Any nearby landmark to identify your Hub q
 Address.locality|String|512||This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown
 Address.city|String|512|Mandatory|This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur
 Address.stateShortCode|String|11|Mandatory|Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-Address.countryShortCode|String|11|Mandatory|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.
-For example - For United States use USA
+Address.countryShortCode|String|11|Mandatory|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA
 Address.pincode|String|20|Mandatory|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
 longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
 latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
@@ -3055,8 +3054,7 @@ Address.landmark|String|512|Mandatory|Any nearby landmark to identify your Hub q
 Address.locality|String|512||This is area in which the Shipper is located.For example - Southern Industry Park or Dubai Downtown
 Address.city|String|512|Mandatory|This is the name of the city in which Shipper is situated. For example - Atlanta or Kuala Lumpur
 Address.stateShortCode|String|11|Optional|Shipping address state. This will be based on the state codes in LogiNext for the country selected by you.If you think that your specific region in which you operate does not have States / Provinces, then please raise the support request with your Account Manager to make this non-mandatory.
-Address.countryShortCode|String|11|Optional|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section.
-For example - For United States use USA
+Address.countryShortCode|String|11|Optional|Shipping address country. Please refer to the list of country codes provided in the “Country Codes” section. For example - For United States use USA
 Address.pincode|String|20|Optional|This is the postal code / zip code of the area in which your Hub is situated. For example -  72712. If you think that your specific region in which you operate does not have postal codes, then please raise the support request with your Account Manager to make this non-mandatory.
 longitude|Double|15|Optional|Shipper shipping Address geo-coordinate(longitude)
 latitude|Double|15|Optional|Shipper shipping Address geo-coordinate(latitude)
@@ -3824,6 +3822,489 @@ mobileNumber | String | 255 | Optional | Mobile Phone No. of the contact person
 emailAddress | String | 255 | Optional | Email Address of the contact person
 loadingTime | Number | Optional | 32 | Total time taken in minutes to load Orders into the Vehicle at the Branch. This can be used to consider the time spent in processes like security at the branch to load vehicles.
 unloadingTime | Number | Optional | 32 | Total time taken in minutes to unload Orders from the Vehicle at the Branch. This can be used to consider the time spent in processes like security at the branch to unload vehicles.
+
+## Driver
+
+### Create
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DriverApp/mile/v1/create
+```
+
+> Request Body
+
+```json
+
+[
+    {
+        "driverName": "John Doe",
+        "branchName": "Manhattan",
+        "phoneNumber": 1653764563,
+        "emailId": "johndoe@ablogistics.com",
+        "dateOfBirth": "1990-06-13",
+        "languageList": [
+            {
+                "name": "English"
+            },
+            {
+                "name": "Spanish"
+            }
+        ],
+        "salary": "1000",
+        "maritalStatus": "married",
+        "gender": "male",
+        "experience": 10,
+        "licenseValidity": "2026-07-01T11:18:00.000Z",
+        "licenseNumber": "LIC_104",
+        "licenseType": "4 wheeler",
+        "licenseIssueBy": "DMV",
+        "addressList": [
+            {
+                "apartment": "10 Suite No. A1901",
+                "streetName": "Walton Avenue",
+                "landmark": "Opp. Chiptole",
+                "countryShortCode": "USA",
+                "stateShortCode": "IL",
+                "city": "Chicago",
+                "pincode": 72712,
+                "isCurrentAddress": true
+            },
+            {
+                "apartment": "A-902",
+                "streetName": "50 E 78th St",
+                "landmark": "Opp. Strand Bookstore",
+                "countryShortCode": "USA",
+                "stateShortCode": "NY",
+                "city": "New York",
+                "pincode": 10075,
+                "isCurrentAddress": false
+            }
+        ],
+        "driverEmployeeId": "D23",
+        "shiftList": [
+            {
+                "shiftStartTime": "2019-03-26T10:30:00.000Z",
+                "shiftEndTime": "2019-03-26T17:30:00.000Z"
+            }
+        ],
+        "previousCompanyName": "ABC",
+        "reportingManager": "Chris",
+        "managerPhoneNumber": 1234567890,
+        "managerEmailId": "chris@ablogistic.com"
+    }
+]
+
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 201,
+    "message": "Driver Created Successfully",
+    "data": [
+        {
+            "referenceId": "122e948ce6cc40fb85492c4c5a600816",
+            "licenseNumber": "LIC_104"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+Create Drivers in the LogiNext Platform with the Create Driver API. Drivers will be created and will be assigned a unique Reference ID that can be used to look up the Driver later.
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/DriverApp/mile/v1/create`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+driverName|String|255|Mandatory|Driver’s full name
+branchName|String|255|Optional|Name of the branch to which the vehicle belongs.
+phoneNumber|String|255|Mandatory|Phone No
+emailId|String|100|Optional|EmailId
+dateOfBirth|String||Optional|Date of Birth. Format - YYYY-MM-DD For example, 2016-07-01
+vehicleReferenceId |String|32|Optional|Assign vehicle to the driver
+languageList|List of Objects||Optional|Language(s) known to the driver
+languageList.name|String|40|Optional|Name of language
+salary|String|18|Optional|Current salary of Driver
+maritalStatus|String|20|Optional|Marital Status. Ex: married, unmarried.
+gender|String|12|Optional|Gender. Ex - male,female.
+experience|Integer|3|Optional|No of yrs. of driving experience
+licenseValidity|String||Optional|License validity date. Format - YYYY-MM DDTHH:MM:SS.SSSZ For example, 2016-07-01T11:18:00.000Z
+licenseNumber|String|255|Mandatory|License No
+licenseType|String|40|Optional|License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy|String|40|Optional|License Issuing Authority Name
+addressList.apartment|String|512|Mandatory|Apartment name/no
+addressList.streetName|String|512|Mandatory|Society/Street name
+addressList.landmark|String|512|Mandatory|Landmark
+addressList.areaName|String|255|Optional|Locality/Area name
+addressList.countryShortCode|String|3|Mandatory|Country code.Please refer to the list of country codes provided in the “Country Codes” section.
+addressList.stateShortCode|String|3|Mandatory|State short code.Please refer to the list of state codes provided in the “State Codes” section.
+addressList.city|String|512|Mandatory|City
+addressList.pincode|Integer|12|Mandatory|Pincode
+addressList.isCurrentAddress|Boolean||Mandatory|Indicates whether this is the current address of the driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId|String|50|Optional|EmployeeId
+shiftList.startTime|String||Mandatory|Shift start date. Format - HH:MMaa e.g. : 07:00pm
+shiftList.endTime|String||Mandatory|Shift end date. Format - HH:MMaa e.g. : 17:00pm
+shiftList.shiftStartTime|String||Mandatory|Shift start time. Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z
+shiftList.shiftEndTime|String||Mandatory|Shift end time. Format -YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z
+previousCompanyName|String|255|Optional|Driver’s last company name
+reportingManager|String|40|Optional|Driver’s last company’s reporting manager’s name
+managerPhoneNumber|String|255|Optional|Driver’s last company's manager’s phone no
+managerEmailId|String|100|Optional|Driver’s last company’s manager’s email id
+driverReferenceId|String|32|Mandatory|Reference Id of the record
+
+
+### Get
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DriverApp/mile/v1?referenceIds={driverReferenceIds}&licenseNumbers={licenseNumbers}
+```
+
+> Response
+
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": [
+        {
+            "referenceId": "1c3a551f47534b98a29d916b0405",
+            "driverName": "John Doe",
+            "phoneNumber": "1653023543",
+            "emailId": "johndoe@ablogistics.com",
+            "licenseNumber": "LIC_104",
+            "licenseValidity": 1591986600000,
+            "license": null,
+            "salary": 10000,
+            "capacity": null,
+            "addressLine1": null,
+            "addressLine2": null,
+            "city": null,
+            "state": null,
+            "pinCode": null,
+            "licenseType": "4 wheeler",
+            "defaultVehicle": null,
+            "vehicleNumber": null,
+            "licenseAlertWindow": null,
+            "attendance": null,
+            "workHour": null,
+            "status": null,
+            "dateOfBirth": 1465776000000,
+            "experience": "11",
+            "maritalStatus": "married",
+            "gender": "female",
+            "languageList": [
+                {
+                    "name": "English"
+                },
+                {
+                    "name": "Spanish"
+                }
+            ],
+            "licenseIssueBy": "DMV.",
+            "tripName": null,
+            "previousCompanyName": "AB Logistics",
+            "driverEmployeeId": "D23",
+            "reportingManager": "Chris",
+            "managerPhoneNumber": "1234567890",
+            "managerEmailId": "chris@ablogistics.com",
+            "deviceId": null,
+            "trackingDate": null,
+            "deviceBarcode": null,
+            "shiftList": [
+                {
+                    "shiftStartTime": "2017-09-12T14:00:00.000Z",
+                    "shiftEndTime": "2017-09-12T15:00:00.000Z",
+                    "startTime": null,
+                    "endTime": null
+                }
+            ],
+            "addressList": [],
+            "lat": null,
+            "lng": null,
+            "isPresent": null,
+            "tripStatus": null,
+            "batteryPerc": null,
+            "lastLicenseAlertSentDt": null,
+            "clientBranchName": null,
+            "previousPhoneNumber": null
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+If you have configured Drivers in LogiNext to , you can call this API to fetch the details of your drivers.
+
+You can fetch the details for upto 20 Drivers in a single call of this API
+
+API Type: Tier 1 API
+
+#### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+referenceIds | String | Optional | Reference IDs of the Drivers
+licenseNumber | String | Optional | License Number of the Drivers
+
+### Update
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DriverApp/mile/v1/update
+```
+
+> Request Body
+
+```json
+
+[
+    {
+        "driverReferenceId": "1c3a551f47534b98a29d916b0405fd6d",
+        "driverName": "John Doe",
+        "branchName": "Manhattan",
+        "phoneNumber": 1653764563,
+        "emailId": "johndoe@ablogistics.com",
+        "dateOfBirth": "1990-06-13",
+        "languageList": [
+            {
+                "name": "English"
+            },
+            {
+                "name": "Spanish"
+            }
+        ],
+        "salary": "1000",
+        "maritalStatus": "married",
+        "gender": "male",
+        "experience": 10,
+        "licenseValidity": "2026-07-01T11:18:00.000Z",
+        "licenseNumber": "LIC_104",
+        "licenseType": "4 wheeler",
+        "licenseIssueBy": "DMV",
+        "addressList": [
+            {
+                "apartment": "10 Suite No. A1901",
+                "streetName": "Walton Avenue",
+                "landmark": "Opp. Chiptole",
+                "countryShortCode": "USA",
+                "stateShortCode": "IL",
+                "city": "Chicago",
+                "pincode": 72712,
+                "isCurrentAddress": true
+            },
+            {
+                "apartment": "A-902",
+                "streetName": "50 E 78th St",
+                "landmark": "Opp. Strand Bookstore",
+                "countryShortCode": "USA",
+                "stateShortCode": "NY",
+                "city": "New York",
+                "pincode": 10075,
+                "isCurrentAddress": false
+            }
+        ],
+        "driverEmployeeId": "D23",
+        "shiftList": [
+            {
+                "shiftStartTime": "2019-03-26T10:30:00.000Z",
+                "shiftEndTime": "2019-03-26T17:30:00.000Z"
+            }
+        ],
+        "previousCompanyName": "ABC",
+        "reportingManager": "Chris",
+        "managerPhoneNumber": 1234567890,
+        "managerEmailId": "chris@ablogistic.com"
+    }
+]
+
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": null,
+    "hasError": false
+}
+
+
+```
+
+Update Drivers in the LogiNext Platform with the Update Driver API. 
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/DriverApp/mile/v1/update`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+driverReferenceId|String|32|Mandatory|Reference Id of the record
+driverName|String|255|Optional|Driver’s full name
+branchName|String|255|Optional|Name of the branch to which the vehicle belongs.
+phoneNumber|String|255|Optional|Phone No
+emailId|String|100|Optional|EmailId
+dateOfBirth|String||Optional|Date of Birth. Format - YYYY-MM-DD For example, 2016-07-01
+vehicleReferenceId |String|32|Optional|Assign vehicle to the driver
+languageList|List of Objects||Optional|Language(s) known to the driver
+languageList.name|String|40|Optional|Name of language
+salary|String|18|Optional|Current salary of Driver
+maritalStatus|String|20|Optional|Marital Status. Ex: married, unmarried.
+gender|String|12|Optional|Gender. Ex - male,female.
+experience|Integer|3|Optional|No of yrs. of driving experience
+licenseValidity|String||Optional|License validity date. Format - YYYY-MM DDTHH:MM:SS.SSSZ For example, 2016-07-01T11:18:00.000Z
+licenseNumber|String|255|Optional|License No
+licenseType|String|40|Optional|License Type. Ex: 2 wheeler, 4 wheeler
+licenseIssueBy|String|40|Optional|License Issuing Authority Name
+addressList.apartment|String|512|Optional|Apartment name/no
+addressList.streetName|String|512|Optional|Society/Street name
+addressList.landmark|String|512|Optional|Landmark
+addressList.areaName|String|255|Optional|Locality/Area name
+addressList.countryShortCode|String|3|Optional|Country code.Please refer to the list of country codes provided in the “Country Codes” section.
+addressList.stateShortCode|String|3|Optional|State short code.Please refer to the list of state codes provided in the “State Codes” section.
+addressList.city|String|512|Optional|City
+addressList.pincode|Integer|12|Optional|Pincode
+addressList.isCurrentAddress|Boolean||Optional|Indicates whether this is the current address of the driver or not. Ex: true - Current Address, false - Permanent Address
+driverEmployeeId|String|50|Optional|EmployeeId
+shiftList.startTime|String||Optional|Shift start date. Format - HH:MMaa e.g. : 07:00pm
+shiftList.endTime|String||Optional|Shift end date. Format - HH:MMaa e.g. : 17:00pm
+shiftList.shiftStartTime|String||Optional|Shift start time. Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z
+shiftList.shiftEndTime|String||Optional|Shift end time. Format -YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z
+previousCompanyName|String|255|Optional|Driver’s last company name
+reportingManager|String|40|Optional|Driver’s last company’s reporting manager’s name
+managerPhoneNumber|String|255|Optional|Driver’s last company's manager’s phone no
+managerEmailId|String|100|Optional|Driver’s last company’s manager’s email id
+
+
+### Delete
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/DriverApp/mile/v1/delete
+```
+
+> Request Body
+
+```json
+
+[
+    {
+        "driverReferenceId": "1c3a551f47534b98a29d916b0405fd6d",
+        "driverName": "John Doe",
+        "branchName": "Manhattan",
+        "phoneNumber": 1653764563,
+        "emailId": "johndoe@ablogistics.com",
+        "dateOfBirth": "1990-06-13",
+        "languageList": [
+            {
+                "name": "English"
+            },
+            {
+                "name": "Spanish"
+            }
+        ],
+        "salary": "1000",
+        "maritalStatus": "married",
+        "gender": "male",
+        "experience": 10,
+        "licenseValidity": "2026-07-01T11:18:00.000Z",
+        "licenseNumber": "LIC_104",
+        "licenseType": "4 wheeler",
+        "licenseIssueBy": "DMV",
+        "addressList": [
+            {
+                "apartment": "10 Suite No. A1901",
+                "streetName": "Walton Avenue",
+                "landmark": "Opp. Chiptole",
+                "countryShortCode": "USA",
+                "stateShortCode": "IL",
+                "city": "Chicago",
+                "pincode": 72712,
+                "isCurrentAddress": true
+            },
+            {
+                "apartment": "A-902",
+                "streetName": "50 E 78th St",
+                "landmark": "Opp. Strand Bookstore",
+                "countryShortCode": "USA",
+                "stateShortCode": "NY",
+                "city": "New York",
+                "pincode": 10075,
+                "isCurrentAddress": false
+            }
+        ],
+        "driverEmployeeId": "D23",
+        "shiftList": [
+            {
+                "shiftStartTime": "2019-03-26T10:30:00.000Z",
+                "shiftEndTime": "2019-03-26T17:30:00.000Z"
+            }
+        ],
+        "previousCompanyName": "ABC",
+        "reportingManager": "Chris",
+        "managerPhoneNumber": 1234567890,
+        "managerEmailId": "chris@ablogistic.com"
+    }
+]
+
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": null,
+    "hasError": false
+}
+
+
+```
+
+Delete Drivers in the LogiNext Platform with the Delete Driver API. 
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/DriverApp/mile/v1/delete`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+driverReferenceId|String|32|Mandatory|Reference Id of the record
+
+
 ## Geofence
 
 ### Get
@@ -4100,7 +4581,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4117,8 +4598,8 @@ deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associa
 pickupBranch | String | 255 | Optional | For Pick-Up type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the Order request to. It is recommended to not pass this field so the system can use the branch linked to the zone of the pickup location. You can pass this field if the Shipper the Order request is being created for is not linked with a Service area Profile on the LogiNext system.
 pickupServiceTime | Integer | 11 | Optional | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order. 
 distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+pickupStartTimeWindow | Date |  | Optional | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+pickupEndTimeWindow | Date |  | Optional | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
@@ -4321,7 +4802,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4333,10 +4814,10 @@ packageValue | Double | 10 | Optional | Order request value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | Number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
-deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+deliverBranch | String | 255 | Optional | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
 deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -4561,7 +5042,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4573,10 +5054,10 @@ packageValue | Double | 10 | Optional | Order request value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | Number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
-deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+deliverBranch | String | 255 | Optional | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+distributionCenter | String |  | Optional | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupEndTimeWindow | Date |  | Optional | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
@@ -4594,8 +5075,8 @@ pickupLatitude | Double |  | Optional | This is the geolocation coordinate (lati
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
 deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -4799,7 +5280,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -4816,9 +5297,9 @@ deliveryMediumUsername | STRING | | Optional |  If you know the Delivery Associa
 pickupBranch | String | 255 | Optional | For Pick-Up type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will Deliver the Order request to. It is recommended to not pass this field so the system can use the branch linked to the zone of the pickup location. You can pass this field if the Shipper the Order request is being created for is not linked with a Service area Profile on the LogiNext system.
 pickupServiceTime | Integer | 11 | Optional | This is the time that the Pickup Associate is going to take at the Pickup location to pickup the order. 
 
-distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+distributionCenter | String |  | Optional | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+pickupStartTimeWindow | Date |  | Optional | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+pickupEndTimeWindow | Date |  | Optional | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
@@ -5021,7 +5502,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -5033,10 +5514,10 @@ packageValue | Double | 10 | Optional | Order request value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | Number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
-deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+deliverBranch | String | 255 | Optional | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
 deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -5260,7 +5741,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -5272,9 +5753,8 @@ packageValue | Double | 10 | Optional | Order request value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | Number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
-
-pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
+pickupStartTimeWindow | Date |  | Optional | This is the start date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed, and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+pickupEndTimeWindow | Date |  | Optional | This is the end date and time for the time slot of the Pickup. It is recommended to not pass this field so the system can calculate the Order Time Windows based on the Service type or capacity configuration setup in your account. If this field is passed,  and no Service area profile exists for the Shipper, the Time Window calculations will be skipped and the passed Time Windows will be used at Order level.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
 pickupAccountName | String | 255 | Conditional Mandatory | Pick-up Customer name. This field in Non Mandatory in case Customer Profiling in ON.
 pickupAddressId | String | 255 | Optional | Pick-up Customer Address ID.
@@ -5293,8 +5773,8 @@ pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) 
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 pickupNotes | String | 512 | Optional | Additional Pick-up notes associated with the order. For example, This can have details regarding whether the Order is fragile.
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
 deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -5519,7 +5999,7 @@ shipmentRequestNo | String | 100 | Optional | Order request Number. If not passe
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an Order request.
 shipmentRequestDispatchDate | | | Optional | The requested Dispatch date for the Order request. The requested dispatch date is the date from which the system looks to start serviceing the order request, either through the service types, or zonal capacities configured. If not passed, the system considers the current date.
 shipmentRequestType | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
-distributionCenter | String | 255 | Mandatory | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
+distributionCenter | String | 255 | Optional | Distribution center name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 packageWeight | Double | 10,3 | Optional | Order request weight. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in Kg, and for Imperial system, this will be in pounds.
 packageVolume | Double | 10,3 | Optional | Order request  volume. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in cubic centimeters(CC), and for Imperial system, this will be in cubic inches(CBI).
 packageLength | Double | 10,3 | Optional | Order request length. The unit of measurement will be based on the unit of measurement selected for your account. For metric system this will be in centimeters(CM), and for Imperial system, this will be in inches.
@@ -5531,8 +6011,8 @@ packageValue | Double | 10 | Optional | Order request value.
 paymentType | String | 40 | Optional | Payment mode. Ex: COD - Cash On Delivery, Prepaid. If not passed, this will be defaulted to COD.
 numberOfItems | Integer | 20 | Optional | Number of items in the order.
 deliveryType | String | 40 | Optional | In certain operations, there are different skill sets / special delivery requirements through which the Delivery has to take place.<br>For e.g. - Groceries / Food items has to be separated with Toiletries<br>Orders for Cake cannot be clubbed with the Order for Flowers while delivering.<br>In such cases, if you want to classify the orders by using Delivery Type such that these orders get assigned to Pickup Associates who are configured in LogiNext system with these special skill-sets or types, then you can use this field.<br>Please note that before you pass orders with certain Delivery Types, you will have to first configure the Delivery Types.<br>Please ask your Account Manager to set these values for you. Note that you can pass multiple Delivery Types in a comma separated manner in this API.
-deliverBranch | String | 255 | Mandatory | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
-pickupStartTimeWindow | Date |  | Mandatory | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
+deliverBranch | String | 255 | Optional | For Deliver type of order requests, this is the Branch / Distribution Center / Hub to which the Delivery Associate will pickup the Order request from.<br>Note that you will have to first Add your Operation Branch / Distribution Center / Hub either through the Add Branch API or through the Add Branch Screen. <br>If you have any access related issue while creating branch, please reach out to your Account Manager
+pickupStartTimeWindow | Date |  | Optional | This is the start date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Order Creation Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T11:30:00.000Z
 distributionCenter | String |  | Mandatory | Distribution center's name. The Distribution center is the Hub that is responsibile for fulfilling the Order. An Order can have different Pickup and Delivery leg branches, but will require a single Distribution center that is responsible for the fulfillment of the Order.
 pickupEndTimeWindow | Date |  | Mandatory | This is the end date and time for the time slot of the Pickup.<br>Note that this date and time has to be greater than the Pickup Start Date and Time.<br>Note that this date and time has to be in UTC.<br>For example - "2017-07-15T12:30:00.000Z"
 pickupAccountCode | String | 255 | Mandatory | Pick-up Customer ID.
@@ -5552,8 +6032,8 @@ pickupLatitude | Double |  | Optional | This is the geolocation coordinate (lati
 pickupLongitude | Double |  | Optional | The geolocation coordinate (longitude) of the pickup customer.
 pickupAddressTimezone | String | | Optional | The timezone of the pickup location. Refer to the timezone codes list to get the full list of values you can pass here. If not passed, the timezone associated with the pickup location will be the branch timezone.
 deliverServiceTime | Integer | 11 | Optional | Deliver service time in mins.
-deliverStartTimeWindow | Date |  | Mandatory | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
-deliverEndTimeWindow | Date |  | Mandatory | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
+deliverStartTimeWindow | Date |  | Optional | Deliver start time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z.
+deliverEndTimeWindow | Date |  | Optional | Deliver end time window. Format - YYYY-MM-DDTHH:MM:SS.SSSZ. For example - 2016-07-01T11:18:00.000Z.
 deliveryLocationType | String | 40 | Optional | Type of delivery location. For example - CUSTOMER
 deliverAccountCode | String | 255 | Mandatory | This is the customer code of the deliver customer.
 deliverAddressId | String |255 | Optional | This is the Address ID of the deliver customer.
@@ -5872,7 +6352,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory | Order Number.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 1000 | Optional | Airway Bill Number associated with an order.
 shipmentOrderTypeCd | String | 40 | Mandatory | The value in this field has to be "PICKUP" always.
 orderState | String | 512 | Mandatory | If an order is a Forward way (Pickup from Merchant for Customer Delivery), then value here should be "FORWARD"<br>If an order is a Return way (Return from the Customer), then value here should be "REVERSE"
@@ -6172,7 +6652,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ---------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  Order Number.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String  | 1000 | Optional | Airway Bill Number associated with an order.
 shipmentOrderTypeCd | String  | 40 | Mandatory | This is the order type code. DELIVER for delivery leg order
 orderState | String  | 512 | Mandatory | State of order. Ex: FORWARD
@@ -6507,7 +6987,7 @@ Create pickup and delivery orders with this API in the LogiNext system. Orders w
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  Order Number.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 1000 | Optional | Airway Bill No associated with the Order.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. BOTH for pickup & delivery leg order
 autoAllocateFl| String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -6867,7 +7347,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  This is the order No.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 1000 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. This will be DELIVER for a point to point type of Order.
 autoAllocateFl| String | 50 | Optional |This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -7160,7 +7640,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  This is the order No.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -7436,7 +7916,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  This is the order No.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -7683,7 +8163,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  This is the order No.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -7951,7 +8431,7 @@ API Type: Tier 1 API
 
 Param | DataType | Length |  Required | Description
 --------- | ------- | ------- | ---------- | ------------
-orderNo | String | 100 | Mandatory |  This is the order No.
+orderNo | String | 100 | Conditional Mandatory | Order Number. This field is optional if you are auto-generating ordernumbers in the LogiNext Platform.
 awbNumber | String | 100 | Optional | This is the airway Bill No.
 shipmentOrderTypeCd | String | 40 | Mandatory | This is the order type code. With this API you can create 'FM'(First Mile), 'LM'(Last Mile), or 'ALLMILE' type of Orders. 'ALLMILE' Orders are Orders that have more than one leg of movements.
 autoAllocateFl | String | 50 | Optional | This can be "Y", "N", or "P". If set to "Y", the Order will be automatially allocated to the nearest Delivery Associate when it is created in the system. The behaviour of the auto assignment will be dependant on the configurations set in the 'Auto Assignment Profile' screen in your LogiNext Account settings screen. If "N", the Order will not be considered for auto assignment at the time of Order Creation.<br>Pass this Flag as 'P' if you want to assign the newly created Order to an existing planned trip. This assignment event can impact the sequence of Order previously created for that trip.
@@ -9960,8 +10440,7 @@ orderReferenceIds | List |  | Mandatory | This is the LogiNext Order Reference I
 
 ## Trip
 
-
-### Start
+### Create
 
 > Definition
 
@@ -9972,75 +10451,92 @@ https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
 > Request Body
 
 ```json
-[
-    "a9be39b9347911e6829f000d3aa04450",
-    "a9be39b9347911e6829f07657aa04450"
-]
+ {
+  "deliveryMediumUserName":"jamesdeen",
+  "deliveryMediumReferenceId":"654fg654k76543456",
+  "licenseNumber":"LIC_104",
+  "driverReferenceId":"2345f76543g76543y87654",
+  "vehicleNumber":"M011A1",
+  "vehicleReferenceId":"87654gh87654hj8765",
+  "orderDetails": [
+     {
+       "orderNo": "NA12070320191",
+       "orderReferenceId": "ed9906f4debe4260a4211b801b3b945c",
+       "pickupSequence":"3",
+       "deliverSequence": "7"
+     },
+     {
+       "orderNo": "NA12070320191",
+       "orderReferenceId": "ed9906f4debe4260a4211b801b3b945c",
+       "pickupSequence":"1",
+       "deliverSequence": "2"
+     }
+    ]
+} 
+
 ```
 
-> Response
+> Success Response
 
 ```json
-{
-  "status": 200,
-  "message": "2 trip(s) started",
-  "data": true,
-  "hasError": false
-}
+{ 
+ "status": 200, 
+ "message": "Trip created successfully", 
+ "data": { 
+ "tripReferenceId":"6186d5fc6e324c42" , 
+ "tripName" : "23022020-Trip-Central Chicago"
+ }, 
+ "hasError": false 
+} 
 
 ```
-Start the trip for a Delivery Associate using this API.
+
+> Failure Response
+
+```json
+{ 
+  "status": 409, 
+  "message": "Trip creation failed", 
+  “errorList”:  
+  [ 
+  { 
+    “key”:“licenseNumber”, 
+    “message”: “License Number does not exist.”, 
+    "errorCode":20043  
+  } 
+  ],  
+  hasError: true 
+} 
+
+
+```
+
+Create a new Trip in the LogiNext system with this API. The trip will be created and Order ETAs will be caluculated based on the sequence passed when creating the trip.
+
+You can create 1 trip in a single call of this API
+
+Rate Limit: Tier 1 API
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/create`
 
 #### Request Body
 
-Parameter | DataType |  Required | Description
------------|-------|------- | ----------
-reference_ids | List | Mandatory | Reference Id associated with the trip.
-
-### Stop
-
-> Request Body
-
-```json
-[{
-    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
-    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
-    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
-}]
-```
-
-> Response
-
-```json
-{
-  "status": 200,  
-  "message": "Trips ended successfully",
-  "data": true,
-  "hasError": false
-}
-
-```
-Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
-
-API Type: Tier 1 API
-
-
-#### Request
-
-<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
-
-#### Request Body
-
-Parameter | DataType | Length |  Required | Description
------------|-------|-------|------- | ----------
-tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
-notDispatchedOrders | List  |  | Mandatory | Order Reference Ids of Orders to be marked as Not Dispatched on the Stop Trip event. If no Orders are to be marked Not Dispatched, send an empty list.
-deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be marked as Delviered on the Stop Trip event. If no Orders are to be marked Delivered, send an empty list.
-
+Parameter | DataType | Length|  Required | Description
+-----------|-------|------- | ---------- | ----------
+tripName |String|255|Optional|New Trip Name to be updated in the system to be  tagged to this trip. If not passed, a unique trip name will be auto generated.
+deliveryMediumUserName|String|255|Conditional Mandatory|Username of Delivery Medium. This is required if deliveryMediumReferenceId is not passed.
+deliveryMediumReferenceId |String|32|Conditional Mandatory|LogiNext Reference Id associated with Delivery Medium. This is required if deliveryMediumUserName is not passed.
+vehicleNumber|String|255|Optional|Vehicle Number. This is required to set Vehicle if  LogiNext vehicleReferenceId is not passed.
+vehicleReferenceId |String|32|Optional|LogiNext Reference Id associated with Vehicle. Required to set Vehicle if vehicleNumber is not  passed.
+licenseNumber|String|255|Optional|License Number of the Driver. This is required to set Driver if  driverReferenceId is not passed.
+driverReferenceId |String|32|Optional|LogiNext Reference Id associated with Driver . This is required to set Driver if licenseNumber is not passed 
+orderNo |String|100|Conditional Mandatory|Unique Order No associated with every order. This  is required if orderReferenceId is not passed.
+orderReferenceId |String|32|Conditional Mandatory|LogiNext Reference Id associated with every order.  This is required if orderNo is not passed.
+pickupSequence |String|1|Mandatory|Sequence in which order should be picked up.
+deliverSequence |String|1|Mandatory|Sequence in which order should be delivered.
+tripReferenceId |String|32|Optional|Reference ID of the trip 
 
 ### Get 
 
@@ -10192,6 +10688,150 @@ tripReferenceId | String | Mandatory | Reference Id of the trip.
 tripName | String | Optional | New Trip name to be updated in the system.
 deliveryMediumReferenceId | String | Optional | The Reference ID of the new Delivery Associate to be tagged to this Trip.
 
+### Start
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/start
+```
+
+> Request Body
+
+```json
+[
+    "a9be39b9347911e6829f000d3aa04450",
+    "a9be39b9347911e6829f07657aa04450"
+]
+```
+
+> Response
+
+```json
+{
+  "status": 200,
+  "message": "2 trip(s) started",
+  "data": true,
+  "hasError": false
+}
+
+```
+Start the trip for a Delivery Associate using this API.
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/start`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+reference_ids | List | Mandatory | Reference Id associated with the trip.
+
+### Stop
+
+> Request Body
+
+```json
+[{
+    "tripReferenceId":"a9be39b9347911e6829f000d3aa04450",
+    "notDispatchedOrders":["c8714df4347911e6829f000d3aa04450"],
+    "deliveredOrders":["c8714cac347911e6829f000d3aa04450"]
+}]
+```
+
+> Response
+
+```json
+{
+  "status": 200,  
+  "message": "Trips ended successfully",
+  "data": true,
+  "hasError": false
+}
+
+```
+Stop the trip for a Delivery Associate using this API. The API accepts 2 lists of Order reference IDs to update the statuses of these Orders when the trip is stopped. For example, if there are 5 Not Delivered Orders at the time of calling this API, you can specify which Orders are to be marked Delivered and which ones are to be marked Not Dispatched, so they can be assigned to another trip and fulfilled at a later time.
+
+API Type: Tier 1 API
+
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/stop`
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------|-------|------- | ----------
+tripReferenceId | String  | 32 | Mandatory | Reference Id associated with the trip.
+notDispatchedOrders | List  |  | Mandatory | Order Reference Ids of Orders to be marked as Not Dispatched on the Stop Trip event. If no Orders are to be marked Not Dispatched, send an empty list.
+deliveredOrders | List |  | Mandatory | Order Reference Ids of Orders to be marked as Delviered on the Stop Trip event. If no Orders are to be marked Delivered, send an empty list.
+
+### Reassign
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/TripApp/mile/v1/trip/update
+```
+
+> Request Body
+
+```json
+{
+"tripReferenceId" : "65ba00dbdcf04fb789311df6aa40e3ba",
+"tripName" : "23022020-Trip-Central Chicago",
+"deliveryMediumReferenceId" :"96271ec538494ddf8e3ffe234c58b123"
+}  
+```
+
+> Success Response
+
+```json
+{
+  "status": 200,
+  "message": "Trip Updated Successfully.",
+  "data": {
+    "tripReferenceId": "65ba00dbdcf04fb789311df6aa40e3ba",
+    "deliveryMediumReferenceId": "96271ec538494ddf8e3ffe234c58b123"
+  },
+  "hasError": false
+}
+
+```
+
+> Failure Response
+
+```json
+{
+  "status": 409,
+  "message": "Trip Updation Failed.",
+  "error": [
+    {
+      "key": "tripReferenceId",
+      "message": "Trip Reference Id is invalid."
+    }
+  ],
+  "hasError": true
+}
+
+```
+Update an existing trip  using this API. You can change the Trip Name or the Delivery Associate of this Trip
+
+Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/TripApp/mile/v1/trip/update`
+
+#### Request Body
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+tripReferenceId | String | Mandatory | Reference Id of the trip.
+tripName | String | Optional | New Trip name to be updated in the system.
+deliveryMediumReferenceId | String | Optional | The Reference ID of the new Delivery Associate to be tagged to this Trip.
 
 ## Tracking
 
