@@ -22762,7 +22762,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 <blockquote>
 <p>Definition</p>
 </blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/trip/start</span><span class="w">
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -23041,94 +23041,6 @@ If it does not exist, then a new manifest will be created with the provided Mani
 </tr>
 </tbody></table>
 
-<h3 id="update">Update</h3>
-
-<blockquote>
-<p>Definition</p>
-</blockquote>
-<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/TripApp/mile/v</span><span class="mi">1</span><span class="err">/trip/update</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Request Body</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"tripReferenceId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"65ba00dbdcf04fb789311df6aa40e3ba"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"tripName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23022020-Trip-Central Chicago"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"deliveryMediumReferenceId"</span><span class="w"> </span><span class="p">:</span><span class="s2">"96271ec538494ddf8e3ffe234c58b123"</span><span class="w">
-</span><span class="p">}</span><span class="w">  
-</span></code></pre>
-
-<blockquote>
-<p>Success Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Updated Successfully."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"tripReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65ba00dbdcf04fb789311df6aa40e3ba"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveryMediumReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96271ec538494ddf8e3ffe234c58b123"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<blockquote>
-<p>Failure Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Updation Failed."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tripReferenceId"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trip Reference Id is invalid."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<p>Update an existing trip  using this API. You can change the Trip Name or the Delivery Associate of this Trip</p>
-
-<p>Type: Tier 1 API</p>
-
-<h4 id="request">Request</h4>
-
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/TripApp/mile/v1/trip/update</code></p>
-
-<h4 id="request-body">Request Body</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>DataType</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tripReferenceId</td>
-<td>String</td>
-<td>Mandatory</td>
-<td>Reference Id of the trip.</td>
-</tr>
-<tr>
-<td>tripName</td>
-<td>String</td>
-<td>Optional</td>
-<td>New Trip name to be updated in the system.</td>
-</tr>
-<tr>
-<td>deliveryMediumReferenceId</td>
-<td>String</td>
-<td>Optional</td>
-<td>The Reference ID of the new Delivery Associate to be tagged to this Trip.</td>
-</tr>
-</tbody></table>
-
 <h3 id="start">Start</h3>
 
 <blockquote>
@@ -23248,7 +23160,7 @@ If it does not exist, then a new manifest will be created with the provided Mani
 </tr>
 </tbody></table>
 
-<h3 id="reassign">Reassign</h3>
+<h3 id="update">Update</h3>
 
 <blockquote>
 <p>Definition</p>
