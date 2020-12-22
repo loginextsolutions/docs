@@ -3823,6 +3823,351 @@ emailAddress | String | 255 | Optional | Email Address of the contact person
 loadingTime | Number | Optional | 32 | Total time taken in minutes to load Orders into the Vehicle at the Branch. This can be used to consider the time spent in processes like security at the branch to load vehicles.
 unloadingTime | Number | Optional | 32 | Total time taken in minutes to unload Orders from the Vehicle at the Branch. This can be used to consider the time spent in processes like security at the branch to unload vehicles.
 
+## Vehicle
+
+### Create
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/VehicleApp/mile/v1/create
+```
+
+> Request Body
+
+```json
+
+[
+    {
+        "vehicleNumber": "1A1CD",
+        "branchName": "New York Hub",
+        "vehicleMake": "2015",
+        "vehicleModel": "OMNI",
+        "typeOfBody": "Flat Bed",
+        "unladdenWeight": 10,
+        "capacityInWeight": 10,
+        "capacityInUnits": 10,
+        "capacityInVolume": 10,
+        "chassisNumber": "CHASIS-123",
+        "engineNumber": "A-12353-D1234",
+        "markerName": "Marker-1",
+        "registrationNumber": "",
+        "pucValidity": "2016-07-01T11:18:00.000Z",
+        "insuranceValidity": "2016-07-01T11:18:00.000Z",
+        "vehiclePermit": "New York, NY",
+        "ownership": "company",
+        "ownerName": "Mathew Richardson",
+        "transporter": "",
+        "financer": "",
+        "accidentHistory": "",
+        "rentStartDate": null,
+        "rentEndDate": null,
+        "vehicleProductionYear": null,
+        "maxDistance": null,
+        "loadingTimeInMins": null,
+        "deviceId": {
+            "barcode": "LN12345678"
+        }
+    }
+]
+
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Vehicle created Successfully",
+    "data": [
+        {
+            "referenceId": "6186d5fc6e324c42",
+            "vehicleNumber": "MH-111"
+        }
+    ],
+    "hasError": false
+}
+
+
+```
+
+Create Vehicles in the LogiNext Platform with the Create Vehicle API. Vehicles will be created and will be assigned a unique Reference ID that can be used to look up the Vehicle later.
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">POST</span>`https://api.loginextsolutions.com/VehicleApp/mile/v1/create`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+branchName|String|255|Mandatory|Name of the branch to which the vehicle is associated.
+vehicleNumber|String|255|Mandatory|Unique name to identify the vehicle.
+vehicleMake|String|255|Optional|Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel|String|40|Optional|Model of the vehicle as specified by manufacturers like FH series,  MethaneDiesel, etc.
+typeOfBody|String|40|Optional|Body Type of the vehicle. This is static field and can have only one of  the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
+unladdenWeight|Integer|10|Optional|Unladen weight of the vehicle in Kg. 
+capacityInWeight|Integer|10|Optional|Capacity of vehicle in Kg. 
+capacityInUnits|Integer|10|Optional|Capacity of the vehicle in Units 
+capacityInVolume |Integer|10|Optional|Capacity of the vehicle on cubic centimeters 
+chassisNumber|String|255|Optional|Chassis / VIN number of the vehicle 
+engineNumber|String|255|Optional|Engine Number of the vehicle 
+markerName|String|255|Optional|Name of the Sub-ordinate who is driving along with the driver 
+registrationNumber |String|255|Optional|Registered Number provided by the local transportation authority 
+pucValidity |Date||Optional|Date till which PUC certificate is valid.Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date. 
+insuranceValidity |Date||Optional|Date till which insurance of the vehicle is valid. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always  needs to be later than the current date. 
+vehiclePermit |String|40|Optional|Full name of the states of India in which the vehicle is permitted to  travel 
+vehicleProductionYear|Date||Optional|The year in which the vehicle was produced. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.
+ownership |String|50|Optional|Entity that owns the vehicle. This field can have only below two values  - Company , Vendor
+ownerName |String|255|Optional|Name of the Company / Vendor who owns the vehicle 
+transporter |String|40|Optional|Name of the transporter / carrier / 3PL provider responsible for the  delivery. 
+financer |String|40|Optional|If the vehicle is on loan, then name of the financer 
+accidentHistory |String|160|Optional|If vehicle has any accident records against it, then please document  the details through this field 
+maxDistance|Integer|20|Optional|Maximum distance to be covered by vehicle in a day
+loadingTimeInMins|Number|32|Optional|Loading Time of the vehicle in minutes
+rentStartDate |Date||Optional|This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent Start Date should be earlier than the Rent End Date. 
+rentEndDate |Date||Optional|This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent  End Date should be later than the Rent Start Date. 
+deviceId.barcode |String|50|Optional|This input should be the barcode of the tracker in order to map the  Vehicle with the tracker. 
+referenceId|String|32|Mandatory|Reference Id of the record
+
+### Get
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/VehicleApp/mile/v1?referenceIds={vehicleReferenceIds}&vehicleNumbers={VehicleNumbers}
+```
+
+> Response
+
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": [
+        {
+            "vehicleReferenceId": "6186d5fc6e324c42",
+            "vehicleName": null,
+            "guid": "1efc418bd9f54bd99955cfdcccdc27a2",
+            "vehicleNumber": "1ABC234",
+            "vehicleMake": null,
+            "vehicleModel": null,
+            "vehicleType": null,
+            "typeOfBody": "",
+            "unladdenWeight": null,
+            "capacityInUnits": 12,
+            "capacityInVolume": 12,
+            "capacityInWeight": 12,
+            "chasisNumber": null,
+            "engineNumber": null,
+            "markerName": null,
+            "registrationNumber": null,
+            "pucValidity": null,
+            "insuranceValidity": null,
+            "vehiclePermit": null,
+            "ownerName": null,
+            "clientBranchId": 1402,
+            "rentEndDate": null,
+            "rentStartDate": null,
+            "transporter": null,
+            "financer": null,
+            "permit": null,
+            "ownership": null,
+            "accidentHistory": null,
+            "vehicleProductionYear": null,
+            "maxDistance": null,
+            "loadingTimeInMins": null,
+            "deviceId": {
+                "deviceId": null,
+                "barcode": null,
+                "statusCd": null,
+                "trackeeId": null
+            },
+            "registrationCopy": [],
+            "pucCopy": [],
+            "insuranceCopy": [],
+            "registrationCopyExists": null,
+            "insuranceCopyExists": null,
+            "pucValidityExists": null,
+            "clientBranchName": "Jonson Logistics"
+        }
+    ],
+    "hasError": false
+}
+
+```
+
+If you have configured Drivers in LogiNext to , you can call this API to fetch the details of your drivers.
+
+You can fetch the details for upto 20 Vehicles in a single call of this API
+
+API Type: Tier 1 API
+
+#### Request Parameters
+
+Parameter | DataType |  Required | Description
+-----------|-------|------- | ----------
+referenceIds | String | Optional | Reference IDs of the Vehicle
+vehicleNumber | String | Optional | Vehicle Number
+
+### Update
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/VehicleApp/mile/v1/update
+```
+
+> Request Body
+
+```json
+
+[
+    {
+        "vehicleReferenceId": "a9be39b9347911e6829f000d3aa04450",
+        "vehicleNumber": "MH-111",
+        "branchName": "Powai",
+        "vehicleMake": "2015",
+        "vehicleModel": "Chevy",
+        "typeOfBody": "Flat Bed",
+        "unladdenWeight": 1099,
+        "capacityInWeight": 1099,
+        "capacityInUnits": 1099,
+        "capacityInVolume": 1099,
+        "chasisNumber": "CHASIS-123",
+        "engineNumber": "A-12353-D1234",
+        "markerName": "Marker-1",
+        "registrationNumber": "",
+        "pucValidity": "2016-07-01T11:18:00.000Z",
+        "insuranceValidity": "2016-07-01T11:18:00.000Z",
+        "vehiclePermit": "New York, NY",
+        "ownership": "company",
+        "ownerName": "Mathew Richardson",
+        "transporter": "",
+        "financer": "",
+        "accidentHistory": "",
+        "rentStartDate": null,
+        "rentEndDate": null,
+        "vehicleProductionYear": null,
+        "maxDistance": null,
+        "loadingTimeInMins": null,
+        "deviceId": {
+            "barcode": ""
+        }
+    }
+]
+
+
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": null,
+    "hasError": false
+}
+
+```
+
+Update Vehicle in the LogiNext Platform with the Update Vehicle API. 
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">PUT</span>`https://api.loginextsolutions.com/VehicleApp/mile/v1/update`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+vehicleReferenceId|String|16|Conditional Mandatory| Reference ID of the vehicle
+branchName|String|255|Optional|Name of the branch to which the vehicle is associated.
+vehicleNumber|String|255|Conditional Mandatory|Unique name to identify the vehicle.
+vehicleMake|String|255|Optional|Make of the vehicle like Mazda, Volvo, etc.
+vehicleModel|String|40|Optional|Model of the vehicle as specified by manufacturers like FH series,  MethaneDiesel, etc.
+typeOfBody|String|40|Optional|Body Type of the vehicle. This is static field and can have only one of  the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK 
+unladdenWeight|Integer|10|Optional|Unladen weight of the vehicle in Kg. 
+capacityInWeight|Integer|10|Optional|Capacity of vehicle in Kg. 
+capacityInUnits|Integer|10|Optional|Capacity of the vehicle in Units 
+capacityInVolume |Integer|10|Optional|Capacity of the vehicle on cubic centimeters 
+chassisNumber|String|255|Optional|Chassis / VIN number of the vehicle 
+engineNumber|String|255|Optional|Engine Number of the vehicle 
+markerName|String|255|Optional|Name of the Sub-ordinate who is driving along with the driver 
+registrationNumber |String|255|Optional|Registered Number provided by the local transportation authority 
+pucValidity |Date||Optional|Date till which PUC certificate is valid.Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date. 
+insuranceValidity |Date||Optional|Date till which insurance of the vehicle is valid. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always  needs to be later than the current date. 
+vehiclePermit |String|40|Optional|Full name of the states of India in which the vehicle is permitted to  travel 
+vehicleProductionYear|Date||Optional|The year in which the vehicle was produced. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.
+ownership |String|50|Optional|Entity that owns the vehicle. This field can have only below two values  - Company , Vendor
+ownerName |String|255|Optional|Name of the Company / Vendor who owns the vehicle 
+transporter |String|40|Optional|Name of the transporter / carrier / 3PL provider responsible for the  delivery. 
+financer |String|40|Optional|If the vehicle is on loan, then name of the financer 
+accidentHistory |String|160|Optional|If vehicle has any accident records against it, then please document  the details through this field 
+maxDistance|Integer|20|Optional|Maximum distance to be covered by vehicle in a day
+loadingTimeInMins|Number|32|Optional|Loading Time of the vehicle in minutes
+rentStartDate |Date||Optional|This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent Start Date should be earlier than the Rent End Date. 
+rentEndDate |Date||Optional|This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent  End Date should be later than the Rent Start Date. 
+deviceId.barcode |String|50|Optional|This input should be the barcode of the tracker in order to map the  Vehicle with the tracker. 
+referenceId|String|32|Mandatory|Reference Id of the record
+
+### Delete
+
+> Definition
+
+```json
+https://api.loginextsolutions.com/VehicleApp/mile/v1/delete
+```
+
+> Request Body
+
+```json
+
+ ["a9be39b9347911e6829f000d3aa04450"]
+
+```
+
+> Success Response
+
+```json
+{
+    "status": 200,
+    "message": "Success",
+    "data": null,
+    "hasError": false
+}
+
+
+
+```
+
+Delete Drivers in the LogiNext Platform with the Delete Vehicle API. 
+
+API Type: Tier 1 API
+
+#### Request
+
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/VehicleApp/mile/v1/delete`
+
+
+#### Request Body
+
+Parameter | DataType | Length |  Required | Description
+-----------|-------| ------- |------- | ----------
+vehicleReferenceId|String|32|Mandatory|Reference Id of the vehicle
+
+
+
 ## Driver
 
 ### Create
@@ -4213,66 +4558,7 @@ https://api.loginextsolutions.com/DriverApp/mile/v1/delete
 
 ```json
 
-[
-    {
-        "driverReferenceId": "1c3a551f47534b98a29d916b0405fd6d",
-        "driverName": "John Doe",
-        "branchName": "Manhattan",
-        "phoneNumber": 1653764563,
-        "emailId": "johndoe@ablogistics.com",
-        "dateOfBirth": "1990-06-13",
-        "languageList": [
-            {
-                "name": "English"
-            },
-            {
-                "name": "Spanish"
-            }
-        ],
-        "salary": "1000",
-        "maritalStatus": "married",
-        "gender": "male",
-        "experience": 10,
-        "licenseValidity": "2026-07-01T11:18:00.000Z",
-        "licenseNumber": "LIC_104",
-        "licenseType": "4 wheeler",
-        "licenseIssueBy": "DMV",
-        "addressList": [
-            {
-                "apartment": "10 Suite No. A1901",
-                "streetName": "Walton Avenue",
-                "landmark": "Opp. Chiptole",
-                "countryShortCode": "USA",
-                "stateShortCode": "IL",
-                "city": "Chicago",
-                "pincode": 72712,
-                "isCurrentAddress": true
-            },
-            {
-                "apartment": "A-902",
-                "streetName": "50 E 78th St",
-                "landmark": "Opp. Strand Bookstore",
-                "countryShortCode": "USA",
-                "stateShortCode": "NY",
-                "city": "New York",
-                "pincode": 10075,
-                "isCurrentAddress": false
-            }
-        ],
-        "driverEmployeeId": "D23",
-        "shiftList": [
-            {
-                "shiftStartTime": "2019-03-26T10:30:00.000Z",
-                "shiftEndTime": "2019-03-26T17:30:00.000Z"
-            }
-        ],
-        "previousCompanyName": "ABC",
-        "reportingManager": "Chris",
-        "managerPhoneNumber": 1234567890,
-        "managerEmailId": "chris@ablogistic.com"
-    }
-]
-
+["e0eaebdd84ac4c40af72d827ab610090"]
 
 ```
 
@@ -4295,7 +4581,7 @@ API Type: Tier 1 API
 
 #### Request
 
-<span class="post">POST</span>`https://api.loginextsolutions.com/DriverApp/mile/v1/delete`
+<span class="post">DELETE</span>`https://api.loginextsolutions.com/DriverApp/mile/v1/delete`
 
 
 #### Request Body
