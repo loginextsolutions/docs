@@ -7114,6 +7114,734 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 </tr>
 </tbody></table>
 
+<h2 id="vehicle">Vehicle</h2>
+
+<h3 id="create">Create</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/mile/v</span><span class="mi">1</span><span class="err">/create</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A1CD"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York Hub"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chassisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York, NY"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleProductionYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LN12345678"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vehicle created Successfully"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6186d5fc6e324c42"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH-111"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<p>Create Vehicles in the LogiNext Platform with the Create Vehicle API. Vehicles will be created and will be assigned a unique Reference ID that can be used to look up the Vehicle later.</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/mile/v1/create</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Name of the branch to which the vehicle is associated.</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Mandatory</td>
+<td>Unique name to identify the vehicle.</td>
+</tr>
+<tr>
+<td>vehicleMake</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Make of the vehicle like Mazda, Volvo, etc.</td>
+</tr>
+<tr>
+<td>vehicleModel</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Model of the vehicle as specified by manufacturers like FH series,  MethaneDiesel, etc.</td>
+</tr>
+<tr>
+<td>typeOfBody</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Body Type of the vehicle. This is static field and can have only one of  the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK </td>
+</tr>
+<tr>
+<td>unladdenWeight</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Unladen weight of the vehicle in Kg. </td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of vehicle in Kg. </td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of the vehicle in Units </td>
+</tr>
+<tr>
+<td>capacityInVolume </td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of the vehicle on cubic centimeters </td>
+</tr>
+<tr>
+<td>chassisNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Chassis / VIN number of the vehicle </td>
+</tr>
+<tr>
+<td>engineNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Engine Number of the vehicle </td>
+</tr>
+<tr>
+<td>markerName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Sub-ordinate who is driving along with the driver </td>
+</tr>
+<tr>
+<td>registrationNumber </td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Registered Number provided by the local transportation authority </td>
+</tr>
+<tr>
+<td>pucValidity </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Date till which PUC certificate is valid.Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date. </td>
+</tr>
+<tr>
+<td>insuranceValidity </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Date till which insurance of the vehicle is valid. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always  needs to be later than the current date. </td>
+</tr>
+<tr>
+<td>vehiclePermit </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Full name of the states of India in which the vehicle is permitted to  travel </td>
+</tr>
+<tr>
+<td>vehicleProductionYear</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>The year in which the vehicle was produced. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.</td>
+</tr>
+<tr>
+<td>ownership </td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>Entity that owns the vehicle. This field can have only below two values  - Company , Vendor</td>
+</tr>
+<tr>
+<td>ownerName </td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Company / Vendor who owns the vehicle </td>
+</tr>
+<tr>
+<td>transporter </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Name of the transporter / carrier / 3PL provider responsible for the  delivery. </td>
+</tr>
+<tr>
+<td>financer </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>If the vehicle is on loan, then name of the financer </td>
+</tr>
+<tr>
+<td>accidentHistory </td>
+<td>String</td>
+<td>160</td>
+<td>Optional</td>
+<td>If vehicle has any accident records against it, then please document  the details through this field </td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Maximum distance to be covered by vehicle in a day</td>
+</tr>
+<tr>
+<td>loadingTimeInMins</td>
+<td>Number</td>
+<td>32</td>
+<td>Optional</td>
+<td>Loading Time of the vehicle in minutes</td>
+</tr>
+<tr>
+<td>rentStartDate </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent Start Date should be earlier than the Rent End Date. </td>
+</tr>
+<tr>
+<td>rentEndDate </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent  End Date should be later than the Rent Start Date. </td>
+</tr>
+<tr>
+<td>deviceId.barcode </td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This input should be the barcode of the tracker in order to map the  Vehicle with the tracker. </td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the record</td>
+</tr>
+</tbody></table>
+
+<h3 id="get">Get</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/mile/v</span><span class="mi">1</span><span class="err">?referenceIds=</span><span class="p">{</span><span class="err">vehicleReferenceIds</span><span class="p">}</span><span class="err">&amp;vehicleNumbers=</span><span class="p">{</span><span class="err">VehicleNumbers</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"vehicleReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6186d5fc6e324c42"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1efc418bd9f54bd99955cfdcccdc27a2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ABC234"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientBranchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1402</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"vehicleProductionYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"statusCd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"trackeeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"registrationCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"pucCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"insuranceCopy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"registrationCopyExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"insuranceCopyExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pucValidityExists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clientBranchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jonson Logistics"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>If you have configured Drivers in LogiNext to , you can call this API to fetch the details of your drivers.</p>
+
+<p>You can fetch the details for upto 20 Vehicles in a single call of this API</p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request-parameters">Request Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceIds</td>
+<td>String</td>
+<td>Optional</td>
+<td>Reference IDs of the Vehicle</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>Optional</td>
+<td>Vehicle Number</td>
+</tr>
+</tbody></table>
+
+<h3 id="update">Update</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/mile/v</span><span class="mi">1</span><span class="err">/update</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"vehicleReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MH-111"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Powai"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleMake"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chevy"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"typeOfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Bed"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unladdenWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"capacityInVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1099</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"chasisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHASIS-123"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"engineNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-12353-D1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"markerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marker-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pucValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"insuranceValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehiclePermit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York, NY"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathew Richardson"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"transporter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"financer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"accidentHistory"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentStartDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rentEndDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"vehicleProductionYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"loadingTimeInMins"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Update Vehicle in the LogiNext Platform with the Update Vehicle API. </p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">PUT</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/mile/v1/update</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vehicleReferenceId</td>
+<td>String</td>
+<td>16</td>
+<td>Conditional Mandatory</td>
+<td>Reference ID of the vehicle</td>
+</tr>
+<tr>
+<td>branchName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the branch to which the vehicle is associated.</td>
+</tr>
+<tr>
+<td>vehicleNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Conditional Mandatory</td>
+<td>Unique name to identify the vehicle.</td>
+</tr>
+<tr>
+<td>vehicleMake</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Make of the vehicle like Mazda, Volvo, etc.</td>
+</tr>
+<tr>
+<td>vehicleModel</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Model of the vehicle as specified by manufacturers like FH series,  MethaneDiesel, etc.</td>
+</tr>
+<tr>
+<td>typeOfBody</td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Body Type of the vehicle. This is static field and can have only one of  the below values - 4 wheeler, 2 wheeler, 24FT, 20FT, 32FT, 19FT, TATA 407, 14 FT CANTER, 17FT, TRLR, TRUCK </td>
+</tr>
+<tr>
+<td>unladdenWeight</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Unladen weight of the vehicle in Kg. </td>
+</tr>
+<tr>
+<td>capacityInWeight</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of vehicle in Kg. </td>
+</tr>
+<tr>
+<td>capacityInUnits</td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of the vehicle in Units </td>
+</tr>
+<tr>
+<td>capacityInVolume </td>
+<td>Integer</td>
+<td>10</td>
+<td>Optional</td>
+<td>Capacity of the vehicle on cubic centimeters </td>
+</tr>
+<tr>
+<td>chassisNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Chassis / VIN number of the vehicle </td>
+</tr>
+<tr>
+<td>engineNumber</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Engine Number of the vehicle </td>
+</tr>
+<tr>
+<td>markerName</td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Sub-ordinate who is driving along with the driver </td>
+</tr>
+<tr>
+<td>registrationNumber </td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Registered Number provided by the local transportation authority </td>
+</tr>
+<tr>
+<td>pucValidity </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Date till which PUC certificate is valid.Format - YYYY-MM DDTHH:MM:SS.SSSZ e.g. : 2016-07-01T11:18:00.000Z. This date always needs to be later than the current date. </td>
+</tr>
+<tr>
+<td>insuranceValidity </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>Date till which insurance of the vehicle is valid. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.This date always  needs to be later than the current date. </td>
+</tr>
+<tr>
+<td>vehiclePermit </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Full name of the states of India in which the vehicle is permitted to  travel </td>
+</tr>
+<tr>
+<td>vehicleProductionYear</td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>The year in which the vehicle was produced. Format - YYYY-MM DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ.</td>
+</tr>
+<tr>
+<td>ownership </td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>Entity that owns the vehicle. This field can have only below two values  - Company , Vendor</td>
+</tr>
+<tr>
+<td>ownerName </td>
+<td>String</td>
+<td>255</td>
+<td>Optional</td>
+<td>Name of the Company / Vendor who owns the vehicle </td>
+</tr>
+<tr>
+<td>transporter </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>Name of the transporter / carrier / 3PL provider responsible for the  delivery. </td>
+</tr>
+<tr>
+<td>financer </td>
+<td>String</td>
+<td>40</td>
+<td>Optional</td>
+<td>If the vehicle is on loan, then name of the financer </td>
+</tr>
+<tr>
+<td>accidentHistory </td>
+<td>String</td>
+<td>160</td>
+<td>Optional</td>
+<td>If vehicle has any accident records against it, then please document  the details through this field </td>
+</tr>
+<tr>
+<td>maxDistance</td>
+<td>Integer</td>
+<td>20</td>
+<td>Optional</td>
+<td>Maximum distance to be covered by vehicle in a day</td>
+</tr>
+<tr>
+<td>loadingTimeInMins</td>
+<td>Number</td>
+<td>32</td>
+<td>Optional</td>
+<td>Loading Time of the vehicle in minutes</td>
+</tr>
+<tr>
+<td>rentStartDate </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent Start Date should be earlier than the Rent End Date. </td>
+</tr>
+<tr>
+<td>rentEndDate </td>
+<td>Date</td>
+<td></td>
+<td>Optional</td>
+<td>This input is valid only if the vehicle’s owner is a vendor. Format - YYYY-MM-DDTHH:MM:SS.000Z e.g. : 2016-07-01T11:18:00.SSSZ. Rent  End Date should be later than the Rent Start Date. </td>
+</tr>
+<tr>
+<td>deviceId.barcode </td>
+<td>String</td>
+<td>50</td>
+<td>Optional</td>
+<td>This input should be the barcode of the tracker in order to map the  Vehicle with the tracker. </td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the record</td>
+</tr>
+</tbody></table>
+
+<h3 id="delete">Delete</h3>
+
+<blockquote>
+<p>Definition</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">https://api.loginextsolutions.com/VehicleApp/mile/v</span><span class="mi">1</span><span class="err">/delete</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+ </span><span class="p">[</span><span class="s2">"a9be39b9347911e6829f000d3aa04450"</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasError"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+
+</span></code></pre>
+
+<p>Delete Drivers in the LogiNext Platform with the Delete Vehicle API. </p>
+
+<p>API Type: Tier 1 API</p>
+
+<h4 id="request">Request</h4>
+
+<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/VehicleApp/mile/v1/delete</code></p>
+
+<h4 id="request-body">Request Body</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Length</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vehicleReferenceId</td>
+<td>String</td>
+<td>32</td>
+<td>Mandatory</td>
+<td>Reference Id of the vehicle</td>
+</tr>
+</tbody></table>
+
 <h2 id="driver">Driver</h2>
 
 <h3 id="create">Create</h3>
@@ -7952,66 +8680,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 <p>Request Body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="w">
-</span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"driverReferenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c3a551f47534b98a29d916b0405fd6d"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"driverName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653764563</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@ablogistics.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-06-13"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"languageList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spanish"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"married"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseValidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-01T11:18:00.000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIC_104"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 wheeler"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"licenseIssueBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DMV"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"addressList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 Suite No. A1901"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walton Avenue"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Chiptole"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">72712</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A-902"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 E 78th St"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"landmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opp. Strand Bookstore"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"countryShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"stateShortCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="mi">10075</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"isCurrentAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"driverEmployeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D23"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shiftList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"shiftStartTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T10:30:00.000Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"shiftEndTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:30:00.000Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"previousCompanyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"reportingManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"managerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"managerEmailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chris@ablogistic.com"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-
+</span><span class="p">[</span><span class="s2">"e0eaebdd84ac4c40af72d827ab610090"</span><span class="p">]</span><span class="w">
 
 </span></code></pre>
 
@@ -8034,7 +8703,7 @@ If no tracking location was received for the Delviery Associate in the last 5 mi
 
 <h4 id="request">Request</h4>
 
-<p><span class="post">POST</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/mile/v1/delete</code></p>
+<p><span class="post">DELETE</span><code class="prettyprint">https://api.loginextsolutions.com/DriverApp/mile/v1/delete</code></p>
 
 <h4 id="request-body">Request Body</h4>
 
